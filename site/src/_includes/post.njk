@@ -6,20 +6,20 @@ layout: base.njk
   .post-back { font-size: 0.8rem; color: #b45309; text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
   .post-back:hover { color: #78350f; }
 
-  /* Per-post accent colours — JS picks one based on title hash */
+  /* Accent colours — driven by topic at build time, same palette as home cards */
   :root {
     --accent-bg: #fef9c3; --accent-border: #fde047;
     --accent-text: #713f12; --accent-muted: #b45309;
   }
-  .accent-orange  { --accent-bg:#ffedd5; --accent-border:#fb923c; --accent-text:#7c2d12; --accent-muted:#c2410c; }
-  .accent-rose    { --accent-bg:#ffe4e6; --accent-border:#fb7185; --accent-text:#881337; --accent-muted:#be123c; }
-  .accent-purple  { --accent-bg:#f3e8ff; --accent-border:#c084fc; --accent-text:#581c87; --accent-muted:#7e22ce; }
-  .accent-blue    { --accent-bg:#dbeafe; --accent-border:#60a5fa; --accent-text:#1e3a5f; --accent-muted:#1d4ed8; }
-  .accent-cyan    { --accent-bg:#cffafe; --accent-border:#22d3ee; --accent-text:#164e63; --accent-muted:#0891b2; }
-  .accent-teal    { --accent-bg:#ccfbf1; --accent-border:#2dd4bf; --accent-text:#134e4a; --accent-muted:#0d9488; }
-  .accent-green   { --accent-bg:#dcfce7; --accent-border:#4ade80; --accent-text:#14532d; --accent-muted:#15803d; }
-  .accent-lime    { --accent-bg:#ecfccb; --accent-border:#a3e635; --accent-text:#365314; --accent-muted:#4d7c0f; }
-  .accent-pink    { --accent-bg:#fce7f3; --accent-border:#f472b6; --accent-text:#831843; --accent-muted:#be185d; }
+  .accent-orange { --accent-bg:#ffedd5; --accent-border:#fb923c; --accent-text:#7c2d12; --accent-muted:#c2410c; }
+  .accent-rose   { --accent-bg:#ffe4e6; --accent-border:#fb7185; --accent-text:#881337; --accent-muted:#be123c; }
+  .accent-purple { --accent-bg:#f3e8ff; --accent-border:#c084fc; --accent-text:#581c87; --accent-muted:#7e22ce; }
+  .accent-blue   { --accent-bg:#dbeafe; --accent-border:#60a5fa; --accent-text:#1e3a5f; --accent-muted:#1d4ed8; }
+  .accent-cyan   { --accent-bg:#cffafe; --accent-border:#22d3ee; --accent-text:#164e63; --accent-muted:#0891b2; }
+  .accent-teal   { --accent-bg:#ccfbf1; --accent-border:#2dd4bf; --accent-text:#134e4a; --accent-muted:#0d9488; }
+  .accent-green  { --accent-bg:#dcfce7; --accent-border:#4ade80; --accent-text:#14532d; --accent-muted:#15803d; }
+  .accent-lime   { --accent-bg:#ecfccb; --accent-border:#a3e635; --accent-text:#365314; --accent-muted:#4d7c0f; }
+  .accent-pink   { --accent-bg:#fce7f3; --accent-border:#f472b6; --accent-text:#831843; --accent-muted:#be185d; }
 
   .post-header {
     background: var(--accent-bg); border: 2px solid var(--accent-border);
@@ -49,6 +49,9 @@ layout: base.njk
   }
   .post-source:hover { filter: brightness(0.95); }
 </style>
+
+{# Apply topic-based accent at build time — no JS hash needed #}
+<script>document.documentElement.classList.add('accent-{{ topic | topicColor }}');</script>
 
 <a href="/positiviteiten/" class="post-back">← Back to all posts</a>
 
@@ -80,16 +83,6 @@ layout: base.njk
 </a>
 
 <script>
-  // Pick a stable accent colour from the post title
-  (function() {
-    var ACCENTS = ['orange','rose','purple','blue','cyan','teal','green','lime','pink'];
-    var title = document.querySelector('.post-title') ? document.querySelector('.post-title').textContent : '';
-    var hash = 0;
-    for (var i = 0; i < title.length; i++) { hash = (hash * 31 + title.charCodeAt(i)) | 0; }
-    var accent = ACCENTS[Math.abs(hash) % ACCENTS.length];
-    document.documentElement.classList.add('accent-' + accent);
-  })();
-
   const LANGS = ['en', 'nl', 'fr'];
   function setLang(lang, btn) {
     LANGS.forEach(function(l) {
