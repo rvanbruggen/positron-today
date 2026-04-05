@@ -31,6 +31,16 @@ export default function RootLayout({
               <Link href="/scheduled" className="hover:text-amber-600 transition-colors">Scheduled</Link>
               <Link href="/history" className="hover:text-amber-600 transition-colors">History</Link>
             </div>
+            <div className="ml-auto">
+              <a
+                href="https://rvanbruggen.github.io/positiviteiten/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs bg-amber-900 text-yellow-300 px-3 py-1.5 rounded-lg hover:bg-amber-800 transition-colors font-medium"
+              >
+                View site ↗
+              </a>
+            </div>
           </div>
         </nav>
         <main className="max-w-5xl mx-auto px-4 py-8">

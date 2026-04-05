@@ -1,0 +1,149 @@
+---
+layout: base.njk
+title: Contact
+---
+
+<style>
+  .contact-wrap { max-width: 620px; }
+  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+  .lang-tab {
+    padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
+    font-weight: 600; cursor: pointer; border: none;
+    background: #fef3c7; color: #92400e; transition: background 0.15s;
+  }
+  .lang-tab.active { background: #facc15; color: #78350f; }
+  .contact-block { display: none; }
+  .contact-block.visible { display: block; }
+  .contact-block h1 { font-size: 1.75rem; font-weight: 700; color: #78350f; margin-bottom: 0.5rem; }
+  .contact-block .intro { font-size: 0.95rem; color: #451a03; line-height: 1.75; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    background: white; border: 1px solid #fde68a; border-radius: 1rem;
+    padding: 1rem 1.25rem; text-decoration: none; color: #451a03;
+    transition: border-color 0.15s;
+  }
+  .contact-link:hover { border-color: #fbbf24; }
+  .contact-link-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .contact-link-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #b45309; margin-bottom: 0.15rem; }
+  .contact-link-value { font-size: 0.9rem; font-weight: 600; color: #78350f; }
+  .contact-link-note { font-size: 0.75rem; color: #d97706; margin-top: 0.1rem; }
+</style>
+
+<div class="contact-wrap">
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="setLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="setLang('nl', this)">NL</button>
+    <button class="lang-tab" onclick="setLang('fr', this)">FR</button>
+  </div>
+
+  <div class="contact-block visible" id="contact-en">
+    <h1>Say hello</h1>
+    <p class="intro">Got a tip for a positive story? A thought, a suggestion, or just want to say hi? I'd genuinely love to hear from you. This site is a labour of love and every bit of encouragement helps.</p>
+    <div class="contact-links">
+      <a href="mailto:rik@vanbruggen.be" class="contact-link">
+        <div class="contact-link-icon">✉️</div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">rik@vanbruggen.be</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/rikvanbruggen/" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <div class="contact-link-icon">💼</div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">Rik Van Bruggen</div>
+          <div class="contact-link-note">Who is this guy anyway?</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/positiviteiten" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <div class="contact-link-icon">📸</div>
+        <div>
+          <div class="contact-link-label">Instagram</div>
+          <div class="contact-link-value">@positiviteiten</div>
+          <div class="contact-link-note">Coming soon - follow us for daily positive news</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-block" id="contact-nl">
+    <h1>Zeg het maar</h1>
+    <p class="intro">Heb je een tip voor een positief verhaal? Een gedachte, een suggestie, of wil je gewoon even hallo zeggen? Ik hoor het graag. Deze site is een arbeidsproject vol liefde en elk beetje aanmoediging helpt.</p>
+    <div class="contact-links">
+      <a href="mailto:rik@vanbruggen.be" class="contact-link">
+        <div class="contact-link-icon">✉️</div>
+        <div>
+          <div class="contact-link-label">E-mail</div>
+          <div class="contact-link-value">rik@vanbruggen.be</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/rikvanbruggen/" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <div class="contact-link-icon">💼</div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">Rik Van Bruggen</div>
+          <div class="contact-link-note">Wie is die vent eigenlijk?</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/positiviteiten" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <div class="contact-link-icon">📸</div>
+        <div>
+          <div class="contact-link-label">Instagram</div>
+          <div class="contact-link-value">@positiviteiten</div>
+          <div class="contact-link-note">Binnenkort - volg ons voor dagelijks positief nieuws</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-block" id="contact-fr">
+    <h1>Dites bonjour</h1>
+    <p class="intro">Vous avez un tuyau pour une histoire positive? Une idée, une suggestion, ou juste envie de dire bonjour? Je serais vraiment ravi d'avoir de vos nouvelles. Ce site est un projet fait avec amour et chaque encouragement compte.</p>
+    <div class="contact-links">
+      <a href="mailto:rik@vanbruggen.be" class="contact-link">
+        <div class="contact-link-icon">✉️</div>
+        <div>
+          <div class="contact-link-label">E-mail</div>
+          <div class="contact-link-value">rik@vanbruggen.be</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/rikvanbruggen/" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <div class="contact-link-icon">💼</div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">Rik Van Bruggen</div>
+          <div class="contact-link-note">Mais qui est ce type au juste?</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/positiviteiten" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <div class="contact-link-icon">📸</div>
+        <div>
+          <div class="contact-link-label">Instagram</div>
+          <div class="contact-link-value">@positiviteiten</div>
+          <div class="contact-link-note">Bientôt - suivez-nous pour les bonnes nouvelles du jour</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const LANGS = ['en', 'nl', 'fr'];
+  function setLang(lang, btn) {
+    LANGS.forEach(function(l) {
+      var el = document.getElementById('contact-' + l);
+      if (el) el.className = 'contact-block' + (l === lang ? ' visible' : '');
+    });
+    document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    localStorage.setItem('positiviteiten-lang', lang);
+  }
+  (function() {
+    var saved = localStorage.getItem('positiviteiten-lang');
+    if (saved && saved !== 'en') {
+      var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
+      if (btn) setLang(saved, btn);
+    }
+  })();
+</script>
