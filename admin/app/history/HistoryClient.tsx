@@ -8,10 +8,17 @@ type Article = {
   title_nl: string | null;
   source_url: string;
   source_name: string;
+  topic_id: number | null;
   topic_name: string | null;
   topic_emoji: string | null;
   published_at: string | null;
   publish_date: string | null;
+};
+
+type Topic = {
+  id: number;
+  name: string;
+  emoji: string;
 };
 
 function slugify(text: string): string {
@@ -43,11 +50,20 @@ function formatMonth(ym: string): string {
   });
 }
 
-export default function HistoryClient({ initialArticles }: { initialArticles: Article[] }) {
+export default function HistoryClient({
+  initialArticles,
+  topics,
+}: {
+  initialArticles: Article[];
+  topics: Topic[];
+}) {
   const [articles, setArticles] = useState<Article[]>(initialArticles);
   const [resetting, setResetting] = useState<Set<number>>(new Set());
+  const [republishing, setRepublishing] = useState<Set<number>>(new Set());
+  const [republished, setRepublished] = useState<Set<number>>(new Set());
   const [filterTopic, setFilterTopic] = useState("all");
   const [filterMonth, setFilterMonth] = useState("all");
+  const [error, setError] = useState<string | null>(null);
 
   const availableTopics = useMemo(
     () => [...new Set(articles.map((a) => a.topic_name).filter(Boolean) as string[])].sort(),
@@ -64,6 +80,46 @@ export default function HistoryClient({ initialArticles }: { initialArticles: Ar
     if (filterMonth !== "all" && articleMonth(a) !== filterMonth) return false;
     return true;
   });
+
+  async function changeTopic(id: number, topicId: number | null) {
+    const topic = topics.find((t) => t.id === topicId) ?? null;
+    await fetch("/api/articles", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, topic_id: topicId }),
+    });
+    setArticles((prev) =>
+      prev.map((a) =>
+        a.id === id
+          ? { ...a, topic_id: topicId, topic_name: topic?.name ?? null, topic_emoji: topic?.emoji ?? null }
+          : a
+      )
+    );
+  }
+
+  async function republish(id: number) {
+    setRepublishing((prev) => new Set(prev).add(id));
+    setError(null);
+    try {
+      const res = await fetch("/api/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? `Republish failed: ${res.status}`);
+        return;
+      }
+      setRepublished((prev) => new Set(prev).add(id));
+      setTimeout(() => {
+        setRepublished((prev) => { const s = new Set(prev); s.delete(id); return s; });
+      }, 2000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unexpected error");
+    }
+    setRepublishing((prev) => { const s = new Set(prev); s.delete(id); return s; });
+  }
 
   async function resetToDraft(id: number) {
     setResetting((prev) => new Set(prev).add(id));
@@ -86,8 +142,14 @@ export default function HistoryClient({ initialArticles }: { initialArticles: Ar
         <span className="text-sm text-amber-500">{displayed.length} of {articles.length} articles</span>
       </div>
       <p className="text-amber-700 text-sm mb-6">
-        All published articles. Click a title to open the original source.
+        All published articles. Click a title to open the original source. Change a topic and hit Republish to update the live post.
       </p>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-2 text-sm text-red-700 mb-4">
+          {error}
+        </div>
+      )}
 
       {/* Filters */}
       <div className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200 mb-6 flex flex-wrap gap-4 items-center">
@@ -104,7 +166,6 @@ export default function HistoryClient({ initialArticles }: { initialArticles: Ar
             ))}
           </select>
         </div>
-
         <div className="flex items-center gap-2">
           <label className="text-xs font-semibold text-amber-700 uppercase tracking-wide">Month</label>
           <select
@@ -118,7 +179,6 @@ export default function HistoryClient({ initialArticles }: { initialArticles: Ar
             ))}
           </select>
         </div>
-
         {(filterTopic !== "all" || filterMonth !== "all") && (
           <button
             onClick={() => { setFilterTopic("all"); setFilterMonth("all"); }}
@@ -140,56 +200,76 @@ export default function HistoryClient({ initialArticles }: { initialArticles: Ar
             return (
               <div
                 key={a.id}
-                className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200 flex items-center justify-between gap-4"
+                className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200"
               >
-                <div className="flex items-center gap-3 min-w-0">
-                  <span className="text-xl shrink-0">{a.topic_emoji ?? "📰"}</span>
-                  <div className="min-w-0">
+                {/* Top row: emoji + title + source */}
+                <div className="flex items-start gap-3 mb-3">
+                  <span className="text-xl shrink-0 mt-0.5">{a.topic_emoji ?? "📰"}</span>
+                  <div className="min-w-0 flex-1">
                     <a
                       href={a.source_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-amber-900 text-sm hover:text-amber-600 transition-colors block truncate"
+                      className="font-medium text-amber-900 text-sm hover:text-amber-600 transition-colors block"
                       title="Open original source article"
                     >
                       {a.title_en ?? a.title_nl ?? a.source_url}
                     </a>
-                    <div className="flex items-center gap-2 mt-0.5">
-                      <p className="text-xs text-amber-500">{a.source_name}</p>
-                      {a.topic_name && (
-                        <span className="text-xs bg-yellow-100 text-amber-700 px-1.5 py-0.5 rounded-full">
-                          {a.topic_name}
-                        </span>
-                      )}
-                    </div>
+                    <p className="text-xs text-amber-500 mt-0.5">{a.source_name}</p>
                   </div>
-                </div>
-                <div className="flex items-center gap-3 shrink-0">
-                  {postUrl && (
-                    <a
-                      href={postUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-amber-600 hover:text-amber-800 transition-colors font-medium"
-                    >
-                      Live post ↗
-                    </a>
-                  )}
-                  <span className="text-xs text-amber-400 whitespace-nowrap">
+                  <span className="text-xs text-amber-400 whitespace-nowrap shrink-0">
                     {a.published_at
                       ? new Date(a.published_at).toLocaleDateString("en-GB", {
                           day: "numeric", month: "short", year: "numeric",
                         })
                       : ""}
                   </span>
-                  <button
-                    onClick={() => resetToDraft(a.id)}
-                    disabled={resetting.has(a.id)}
-                    className="text-xs text-blue-400 hover:text-blue-600 transition-colors disabled:opacity-50 whitespace-nowrap"
-                    title="Reset to draft for re-summarisation"
-                  >
-                    {resetting.has(a.id) ? "Resetting…" : "Re-summarise"}
-                  </button>
+                </div>
+
+                {/* Bottom row: topic selector + actions */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  {topics.length > 0 && (
+                    <select
+                      value={a.topic_id ?? ""}
+                      onChange={(e) => changeTopic(a.id, e.target.value ? Number(e.target.value) : null)}
+                      className="border border-yellow-200 rounded-lg px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400 bg-amber-50"
+                    >
+                      <option value="">No topic</option>
+                      {topics.map((t) => (
+                        <option key={t.id} value={t.id}>
+                          {t.emoji} {t.name}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+
+                  <div className="ml-auto flex items-center gap-2">
+                    {postUrl && (
+                      <a
+                        href={postUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-amber-600 hover:text-amber-800 transition-colors font-medium"
+                      >
+                        Live post ↗
+                      </a>
+                    )}
+                    <button
+                      onClick={() => republish(a.id)}
+                      disabled={republishing.has(a.id) || republished.has(a.id)}
+                      className="text-xs bg-green-100 hover:bg-green-200 text-green-700 px-2.5 py-1 rounded-lg transition-colors disabled:opacity-50 font-medium"
+                    >
+                      {republished.has(a.id) ? "Updated ✓" : republishing.has(a.id) ? "Updating…" : "Republish ↑"}
+                    </button>
+                    <button
+                      onClick={() => resetToDraft(a.id)}
+                      disabled={resetting.has(a.id)}
+                      className="text-xs text-blue-400 hover:text-blue-600 transition-colors disabled:opacity-50"
+                      title="Reset to draft for full re-summarisation"
+                    >
+                      {resetting.has(a.id) ? "Resetting…" : "Re-summarise"}
+                    </button>
+                  </div>
                 </div>
               </div>
             );
