@@ -5,7 +5,8 @@ title_fr: "Les meilleurs pays où prendre sa retraite en 2026"
 date: 2026-04-05
 source_url: "https://www.lefigaro.fr/international/ici-j-ai-retrouve-mon-ame-d-enfant-notre-palmares-2026-des-pays-ou-s-installer-a-la-retraite-20260405"
 source_name: "Le Figaro"
-topic: ""
+topic: "Economy"
+tags: ["Economy","Society","Travel"]
 emoji: "📰"
 summary: "Le Figaro has just released its 2026 ranking of the best countries to retire to, and here's the thing - Spain, the perennial favourite, has dropped off the podium entirely this year. The ranking is based on 41 carefully chosen criteria covering everything from climate and healthcare to safety and cost of living. So: it's a genuinely useful guide, especially since a great holiday destination doesn't always translate into a great place to actually live full-time. Which brings me to the bigger picture - with so many retirees looking for a fresh start abroad, having a well-researched compass like this feels more valuable than ever."
 summary_nl: "Le Figaro heeft opnieuw zijn jaarlijkse ranglijst samengesteld van de beste landen om met pensioen te gaan - en dit jaar zijn de kaarten flink herschud. Spanje, dat jarenlang de absolute favoriet was, staat niet meer op het podium, wat meteen de nieuwsgierigheid prikkelt. So: welke bestemmingen scoren dan wel het best op criteria als klimaat, gezondheid, veiligheid en levenskost? Nu steeds meer Franse gepensioneerden dromen van een nieuw leven in het buitenland, is zo'n kompas meer dan welkom. En here's the thing - niet elke vakantiebestemming is ook een ideale plek om te wonen, en die nuance maakt dit onderzoek extra waardevol."
