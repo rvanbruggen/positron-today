@@ -7,14 +7,20 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  // Returns one of 10 colour names based on a 1-based loop index.
-  // The sequence is shuffled so adjacent cards rarely share a colour.
+  // Deterministically maps a topic name to one of 10 colour names.
+  // Same topic always gets the same colour; no topic → "yellow".
   const CARD_COLORS = [
     "yellow", "teal", "rose", "blue", "lime",
     "purple", "orange", "cyan", "green", "pink",
   ];
-  eleventyConfig.addFilter("cardColor", (index) => {
-    return CARD_COLORS[(Number(index) - 1) % CARD_COLORS.length];
+  function hashStr(str) {
+    let h = 0;
+    for (let i = 0; i < str.length; i++) h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
+    return Math.abs(h);
+  }
+  eleventyConfig.addFilter("topicColor", (topic) => {
+    if (!topic) return "yellow";
+    return CARD_COLORS[hashStr(String(topic)) % CARD_COLORS.length];
   });
 
   eleventyConfig.addCollection("posts", function (collectionApi) {

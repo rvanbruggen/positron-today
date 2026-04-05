@@ -4,16 +4,55 @@ title: Home
 ---
 
 <style>
-  .page-header { margin-bottom: 1.5rem; }
+  .page-header { margin-bottom: 1.25rem; }
   .page-header h1 { font-size: 1.75rem; font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
   .page-header p { font-size: 0.9rem; color: #b45309; }
-  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+
+  /* Language tabs */
+  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; }
   .lang-tab {
     padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
     font-weight: 600; cursor: pointer; border: none;
     background: #fef3c7; color: #92400e; transition: background 0.15s;
   }
   .lang-tab.active { background: #facc15; color: #78350f; }
+
+  /* Topic filter bar */
+  .topic-bar {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;
+    align-items: center;
+  }
+  .topic-bar-label { font-size: 0.75rem; font-weight: 600; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.25rem; }
+  .topic-btn {
+    padding: 0.3rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
+    font-weight: 600; cursor: pointer; border: 2px solid transparent;
+    transition: all 0.15s; white-space: nowrap;
+  }
+  .topic-btn.active { border-color: currentColor; box-shadow: 0 0 0 2px rgba(0,0,0,0.08); }
+
+  /* Topic button colours */
+  .tbtn-yellow { background:#fef9c3; color:#713f12; }
+  .tbtn-yellow.active { background:#fde047; }
+  .tbtn-orange { background:#ffedd5; color:#7c2d12; }
+  .tbtn-orange.active { background:#fb923c; }
+  .tbtn-rose   { background:#ffe4e6; color:#881337; }
+  .tbtn-rose.active   { background:#fb7185; }
+  .tbtn-purple { background:#f3e8ff; color:#581c87; }
+  .tbtn-purple.active { background:#c084fc; }
+  .tbtn-blue   { background:#dbeafe; color:#1e3a5f; }
+  .tbtn-blue.active   { background:#60a5fa; }
+  .tbtn-cyan   { background:#cffafe; color:#164e63; }
+  .tbtn-cyan.active   { background:#22d3ee; }
+  .tbtn-teal   { background:#ccfbf1; color:#134e4a; }
+  .tbtn-teal.active   { background:#2dd4bf; }
+  .tbtn-green  { background:#dcfce7; color:#14532d; }
+  .tbtn-green.active  { background:#4ade80; }
+  .tbtn-lime   { background:#ecfccb; color:#365314; }
+  .tbtn-lime.active   { background:#a3e635; }
+  .tbtn-pink   { background:#fce7f3; color:#831843; }
+  .tbtn-pink.active   { background:#f472b6; }
+
+  /* Card grid */
   .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
   .card {
     border-radius: 1rem; padding: 1.25rem;
@@ -29,18 +68,20 @@ title: Home
   .card-meta { font-size: 0.7rem; opacity: 0.6; margin-top: auto; padding-top: 0.5rem; display: flex; justify-content: space-between; }
   .card-emoji { font-size: 1.5rem; }
   .empty { color: #b45309; font-size: 0.9rem; }
+  .no-match { display: none; color: #b45309; font-size: 0.9rem; margin-top: 1rem; }
+  .no-match.visible { display: block; }
 
-  /* Color palette for cards */
-  .card-yellow  { background: #fef9c3; border-color: #fde047; color: #713f12; }
-  .card-orange  { background: #ffedd5; border-color: #fb923c; color: #7c2d12; }
-  .card-rose    { background: #ffe4e6; border-color: #fb7185; color: #881337; }
-  .card-purple  { background: #f3e8ff; border-color: #c084fc; color: #581c87; }
-  .card-blue    { background: #dbeafe; border-color: #60a5fa; color: #1e3a5f; }
-  .card-cyan    { background: #cffafe; border-color: #22d3ee; color: #164e63; }
-  .card-teal    { background: #ccfbf1; border-color: #2dd4bf; color: #134e4a; }
-  .card-green   { background: #dcfce7; border-color: #4ade80; color: #14532d; }
-  .card-lime    { background: #ecfccb; border-color: #a3e635; color: #365314; }
-  .card-pink    { background: #fce7f3; border-color: #f472b6; color: #831843; }
+  /* Card colour palette */
+  .card-yellow  { background:#fef9c3; border-color:#fde047; color:#713f12; }
+  .card-orange  { background:#ffedd5; border-color:#fb923c; color:#7c2d12; }
+  .card-rose    { background:#ffe4e6; border-color:#fb7185; color:#881337; }
+  .card-purple  { background:#f3e8ff; border-color:#c084fc; color:#581c87; }
+  .card-blue    { background:#dbeafe; border-color:#60a5fa; color:#1e3a5f; }
+  .card-cyan    { background:#cffafe; border-color:#22d3ee; color:#164e63; }
+  .card-teal    { background:#ccfbf1; border-color:#2dd4bf; color:#134e4a; }
+  .card-green   { background:#dcfce7; border-color:#4ade80; color:#14532d; }
+  .card-lime    { background:#ecfccb; border-color:#a3e635; color:#365314; }
+  .card-pink    { background:#fce7f3; border-color:#f472b6; color:#831843; }
 </style>
 
 <div class="page-header">
@@ -57,9 +98,39 @@ title: Home
 {% if collections.posts.length == 0 %}
   <p class="empty">No posts yet - check back soon!</p>
 {% else %}
-  <div class="card-grid">
+
+  {# Collect unique topics in insertion order #}
+  {% set seenTopics = [] %}
+  {% for post in collections.posts %}
+    {% if post.data.topic and post.data.topic != "" %}
+      {% if post.data.topic not in seenTopics %}
+        {% set seenTopics = (seenTopics.concat([post.data.topic])) %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {# Topic filter bar — only show if there are topics #}
+  {% if seenTopics.length > 0 %}
+  <div class="topic-bar" id="topic-bar">
+    <span class="topic-bar-label">Topic</span>
+    <button class="topic-btn tbtn-yellow active" data-topic="all" onclick="filterTopic('all', this)">All</button>
+    {% for topic in seenTopics %}
+    <button
+      class="topic-btn tbtn-{{ topic | topicColor }}"
+      data-topic="{{ topic }}"
+      onclick="filterTopic('{{ topic }}', this)"
+    >{{ topic }}</button>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="card-grid" id="card-grid">
     {% for post in collections.posts %}
-    <a href="{{ post.url | url }}" class="card card-{{ loop.index | cardColor }}">
+    <a
+      href="{{ post.url | url }}"
+      class="card card-{{ post.data.topic | topicColor }}"
+      data-topic="{{ post.data.topic }}"
+    >
       <div class="card-emoji">{{ post.data.emoji }}</div>
       <div class="card-topic">{{ post.data.topic }}</div>
       <div class="card-title">
@@ -81,9 +152,12 @@ title: Home
     </a>
     {% endfor %}
   </div>
+  <p class="no-match" id="no-match">No articles for this topic yet.</p>
+
 {% endif %}
 
 <script>
+  /* ── Language switcher ── */
   const LANGS = ['en', 'nl', 'fr'];
   function setLang(lang, btn) {
     LANGS.forEach(function(l) {
@@ -100,6 +174,38 @@ title: Home
     if (saved && saved !== 'en') {
       var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
       if (btn) setLang(saved, btn);
+    }
+  })();
+
+  /* ── Topic filter ── */
+  function filterTopic(topic, btn) {
+    // Update button active states
+    document.querySelectorAll('.topic-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    if (btn) btn.classList.add('active');
+
+    // Show/hide cards
+    var cards = document.querySelectorAll('#card-grid .card');
+    var visible = 0;
+    cards.forEach(function(card) {
+      var match = topic === 'all' || card.dataset.topic === topic;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    var noMatch = document.getElementById('no-match');
+    if (noMatch) noMatch.classList.toggle('visible', visible === 0);
+
+    localStorage.setItem('positiviteiten-topic', topic);
+  }
+
+  // Restore saved topic filter on page load
+  (function() {
+    var saved = localStorage.getItem('positiviteiten-topic');
+    if (saved && saved !== 'all') {
+      var btn = document.querySelector('.topic-btn[data-topic="' + saved + '"]');
+      if (btn) filterTopic(saved, btn);
     }
   })();
 </script>
