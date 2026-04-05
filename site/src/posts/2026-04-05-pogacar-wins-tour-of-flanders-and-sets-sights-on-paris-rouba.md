@@ -1,0 +1,17 @@
+---
+title: "Pogacar wins Tour of Flanders and sets sights on Paris-Roubaix"
+title_nl: "Pogacar wint Ronde van Vlaanderen en mikt op Parijs-Roubaix"
+title_fr: "Pogacar remporte le Tour des Flandres et vise Paris-Roubaix"
+date: 2026-04-05
+source_url: "https://www.lefigaro.fr/sports/cyclisme/cyclisme-je-n-en-suis-qu-a-deux-sur-cinq-pogacar-compte-bien-s-offrir-paris-roubaix-20260405"
+source_name: "Le Figaro"
+topic: "Sports"
+tags: ["Sports"]
+emoji: "🚴"
+summary: "Tadej Pogacar took a stunning victory at the Tour of Flanders on Sunday - his third win there - beating Van der Poel, Evenepoel and Van Aert in the process. Now with Milan-Sanremo already won this season, he's at two out of five Monuments, and he's heading into Paris-Roubaix next week feeling, as he put it, very motivated but with \"low pressure - like in the tyres.\" And here's the thing: what really stands out is how he credits his rivals for pushing him to keep improving, genuinely seeing their competition as a gift rather than a threat. Which brings me to this - watching someone dominate a sport while staying this curious and grounded is just a real joy."
+summary_nl: "Tadej Pogacar heeft zondag de Ronde van Vlaanderen gewonnen - zijn derde overwinning in die wedstrijd - en hij is duidelijk nog lang niet klaar. Met al Milan-Sanremo op zak staat de teller nu op twee van de vijf Monumenten, en Pogacar is \"zeer gemotiveerd\" om volgende week ook Parijs-Roubaix aan te vallen. En hier is het mooie: hij zegt de druk laag te willen houden, \"zoals in de banden\", wat toch een heerlijk relaxte attitude is voor iemand die de koers volledig domineert. Hij versloeg in Vlaanderen niemand minder dan Van der Poel, Evenepoel en Van Aert, wat gewoon spectaculair is. Iemand die blijft groeien én zijn rivalen beschouwt als zijn grootste motivatie - dat is gewoon een prachtig verhaal."
+summary_fr: "Tadej Pogacar a remporté dimanche le Tour des Flandres pour la troisième fois, devançant Van der Poel, Evenepoel et Van Aert dans une course tout simplement spectaculaire. Avec déjà Milan-Sanremo en poche, il en est maintenant à deux Monuments sur cinq cette saison, et il aborde Paris-Roubaix la semaine prochaine avec une grande motivation - mais \"sans trop de pression, comme dans les pneus\", comme il l'a plaisanté en conférence de presse. So: ce qui est vraiment beau ici, c'est qu'il attribue sa progression à ses rivaux qui le poussent constamment à faire mieux. Un champion qui reste humble et curieux de ses propres limites, c'est quelque chose."
+layout: post.njk
+---
+
+Tadej Pogacar took a stunning victory at the Tour of Flanders on Sunday - his third win there - beating Van der Poel, Evenepoel and Van Aert in the process. Now with Milan-Sanremo already won this season, he's at two out of five Monuments, and he's heading into Paris-Roubaix next week feeling, as he put it, very motivated but with "low pressure - like in the tyres." And here's the thing: what really stands out is how he credits his rivals for pushing him to keep improving, genuinely seeing their competition as a gift rather than a threat. Which brings me to this - watching someone dominate a sport while staying this curious and grounded is just a real joy.
