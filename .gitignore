@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# local env files
+.env*.local
+.env
+
+# database
+*.db
+*.db-shm
+*.db-wal
+
+# Next.js
+admin/.next/
+admin/out/
+
+# Eleventy
+site/_site/
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*

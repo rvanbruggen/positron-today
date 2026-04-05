@@ -1,0 +1,54 @@
+---
+layout: base.njk
+---
+
+<style>
+  .post-back { font-size: 0.8rem; color: #b45309; text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
+  .post-back:hover { color: #78350f; }
+  .post-header { margin-bottom: 1.5rem; }
+  .post-emoji { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .post-topic { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #b45309; margin-bottom: 0.5rem; }
+  .post-title { font-size: 1.5rem; font-weight: 700; color: #451a03; line-height: 1.3; margin-bottom: 0.75rem; }
+  .post-meta { font-size: 0.8rem; color: #d97706; }
+  .post-summary {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #fde68a;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #451a03;
+    margin-bottom: 1.5rem;
+  }
+  .post-source {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #92400e;
+    text-decoration: none;
+  }
+  .post-source:hover { background: #fde68a; }
+</style>
+
+<a href="/" class="post-back">← Back to all posts</a>
+
+<div class="post-header">
+  <div class="post-emoji">{{ emoji }}</div>
+  <div class="post-topic">{{ topic }}</div>
+  <h1 class="post-title">{{ title }}</h1>
+  <p class="post-meta">{{ source_name }} · {{ page.date | dateDisplay }}</p>
+</div>
+
+<div class="post-summary">
+  {{ content | safe }}
+</div>
+
+<a href="{{ source_url }}" target="_blank" rel="noopener noreferrer" class="post-source">
+  Read the original article ↗
+</a>

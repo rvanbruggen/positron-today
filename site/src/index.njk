@@ -1,0 +1,55 @@
+---
+layout: base.njk
+title: Home
+---
+
+<style>
+  .page-header { margin-bottom: 2rem; }
+  .page-header h1 { font-size: 1.75rem; font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
+  .page-header p { font-size: 0.9rem; color: #b45309; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+  .card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    border: 1px solid #fde68a;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.15s;
+  }
+  .card:hover { border-color: #fbbf24; }
+  .card-topic { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #b45309; }
+  .card-title { font-size: 0.95rem; font-weight: 600; color: #451a03; line-height: 1.4; }
+  .card-summary { font-size: 0.825rem; color: #78350f; line-height: 1.55; }
+  .card-meta { font-size: 0.7rem; color: #d97706; margin-top: auto; padding-top: 0.5rem; display: flex; justify-content: space-between; }
+  .card-emoji { font-size: 1.5rem; }
+  .empty { color: #b45309; font-size: 0.9rem; }
+</style>
+
+<div class="page-header">
+  <h1>Positive news, every day ✨</h1>
+  <p>A curated selection of good things happening in the world.</p>
+</div>
+
+{% if collections.posts.length == 0 %}
+  <p class="empty">No posts yet - check back soon!</p>
+{% else %}
+  <div class="card-grid">
+    {% for post in collections.posts %}
+    <a href="{{ post.url }}" class="card">
+      <div class="card-emoji">{{ post.data.emoji }}</div>
+      <div class="card-topic">{{ post.data.topic }}</div>
+      <div class="card-title">{{ post.data.title }}</div>
+      {% if post.data.summary %}
+        <div class="card-summary">{{ post.data.summary }}</div>
+      {% endif %}
+      <div class="card-meta">
+        <span>{{ post.data.source_name }}</span>
+        <span>{{ post.date | dateDisplay }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+{% endif %}
