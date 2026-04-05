@@ -59,7 +59,7 @@ title: Home
 {% else %}
   <div class="card-grid">
     {% for post in collections.posts %}
-    <a href="{{ post.url }}" class="card card-{{ loop.index | cardColor }}">
+    <a href="{{ post.url | url }}" class="card card-{{ loop.index | cardColor }}">
       <div class="card-emoji">{{ post.data.emoji }}</div>
       <div class="card-topic">{{ post.data.topic }}</div>
       <div class="card-title">
