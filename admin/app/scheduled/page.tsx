@@ -4,22 +4,26 @@ import db from "@/lib/db";
 import ScheduledClient from "./ScheduledClient";
 
 export default async function ScheduledPage() {
-  const result = await db.execute(`
-    SELECT a.*, t.name as topic_name, t.emoji as topic_emoji,
-           r.title as raw_title
-    FROM articles a
-    LEFT JOIN topics t ON a.topic_id = t.id
-    LEFT JOIN raw_articles r ON a.raw_article_id = r.id
-    WHERE a.status IN ('draft', 'scheduled')
-    ORDER BY a.status ASC, a.publish_date ASC
-  `);
+  const [articlesResult, topicsResult] = await Promise.all([
+    db.execute(`
+      SELECT a.*, t.name as topic_name, t.emoji as topic_emoji,
+             r.title as raw_title
+      FROM articles a
+      LEFT JOIN topics t ON a.topic_id = t.id
+      LEFT JOIN raw_articles r ON a.raw_article_id = r.id
+      WHERE a.status IN ('draft', 'scheduled')
+      ORDER BY a.status ASC, a.publish_date ASC
+    `),
+    db.execute("SELECT id, name, emoji FROM topics ORDER BY name ASC"),
+  ]);
 
-  const articles = result.rows.map((a) => ({
+  const articles = articlesResult.rows.map((a) => ({
     id: Number(a.id),
     status: String(a.status),
     source_url: String(a.source_url),
     source_name: String(a.source_name),
     raw_title: a.raw_title ? String(a.raw_title) : null,
+    topic_id: a.topic_id ? Number(a.topic_id) : null,
     topic_name: a.topic_name ? String(a.topic_name) : null,
     topic_emoji: a.topic_emoji ? String(a.topic_emoji) : null,
     title_en: a.title_en ? String(a.title_en) : null,
@@ -31,5 +35,11 @@ export default async function ScheduledPage() {
     publish_date: a.publish_date ? String(a.publish_date) : null,
   }));
 
-  return <ScheduledClient initialArticles={articles} />;
+  const topics = topicsResult.rows.map((t) => ({
+    id: Number(t.id),
+    name: String(t.name),
+    emoji: String(t.emoji),
+  }));
+
+  return <ScheduledClient initialArticles={articles} topics={topics} />;
 }

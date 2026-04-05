@@ -13,9 +13,24 @@ async function fetchArticleText(url: string): Promise<string> {
       signal: AbortSignal.timeout(10000),
     });
     const html = await res.text();
+
+    // Try to extract og:description as a rich fallback
+    const descMatch =
+      html.match(/property="og:description"\s+content="([^"]{30,})"/i) ||
+      html.match(/content="([^"]{30,})"\s+property="og:description"/i) ||
+      html.match(/name="description"\s+content="([^"]{30,})"/i);
+    const metaDesc = descMatch ? descMatch[1].trim() : "";
+
     const dom = new JSDOM(html, { url });
     const article = new Readability(dom.window.document).parse();
-    return article?.textContent?.slice(0, 4000) ?? "";
+    const readabilityText = article?.textContent?.trim() ?? "";
+
+    // If Readability returned meaningful text (> 200 chars) use it,
+    // otherwise fall back to og:description, which at least is real content.
+    if (readabilityText.length > 200) {
+      return readabilityText.slice(0, 4000);
+    }
+    return metaDesc.slice(0, 1000);
   } catch {
     return "";
   }
@@ -43,8 +58,8 @@ Key rules:
   const articleContext = sourceText
     ? `Article title: ${rawTitle ?? ""}\nArticle text:\n${sourceText}`
     : rawTitle
-    ? `The full article text is not available (paywalled or JS-rendered). Use this title to write the summary card: "${rawTitle}". Do not mention that the text was unavailable.`
-    : `No article text or title available. Write a short positive teaser based only on the source name and URL.`;
+    ? `The full article text is not available (paywalled or JS-rendered). Use this title to write the summary card: "${rawTitle}". Do not mention that the text was unavailable. You MUST still output valid JSON — never explain that you cannot summarize.`
+    : `No article text or title available. Write a short positive teaser based only on the source name and URL. You MUST still output valid JSON.`;
 
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
