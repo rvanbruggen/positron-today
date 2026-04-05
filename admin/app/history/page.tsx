@@ -3,14 +3,24 @@ export const dynamic = "force-dynamic";
 import db from "@/lib/db";
 import HistoryClient from "./HistoryClient";
 
+function parseTagData(raw: unknown): { id: number; name: string; emoji: string }[] {
+  if (!raw) return [];
+  return String(raw).split("~~").filter(Boolean).map((s) => {
+    const [id, name, emoji] = s.split("|");
+    return { id: Number(id), name: name ?? "", emoji: emoji ?? "📰" };
+  });
+}
+
 export default async function HistoryPage() {
-  const [articlesResult, topicsResult] = await Promise.all([
+  const [articlesResult, tagsResult] = await Promise.all([
     db.execute(`
       SELECT a.id, a.title_en, a.title_nl, a.source_url, a.source_name,
-             a.topic_id, a.published_at, a.publish_date,
-             t.name as topic_name, t.emoji as topic_emoji
+             a.article_emoji, a.published_at, a.publish_date,
+             (SELECT GROUP_CONCAT(t.id || '|' || t.name || '|' || t.emoji, '~~')
+              FROM article_tags at2
+              JOIN topics t ON at2.tag_id = t.id
+              WHERE at2.article_id = a.id) as tag_data
       FROM articles a
-      LEFT JOIN topics t ON a.topic_id = t.id
       WHERE a.status = 'published'
       ORDER BY a.published_at DESC
       LIMIT 100
@@ -24,18 +34,17 @@ export default async function HistoryPage() {
     title_nl: a.title_nl ? String(a.title_nl) : null,
     source_url: String(a.source_url),
     source_name: String(a.source_name),
-    topic_id: a.topic_id ? Number(a.topic_id) : null,
-    topic_name: a.topic_name ? String(a.topic_name) : null,
-    topic_emoji: a.topic_emoji ? String(a.topic_emoji) : null,
+    article_emoji: a.article_emoji ? String(a.article_emoji) : null,
+    tags: parseTagData(a.tag_data),
     published_at: a.published_at ? String(a.published_at) : null,
     publish_date: a.publish_date ? String(a.publish_date) : null,
   }));
 
-  const topics = topicsResult.rows.map((t) => ({
+  const allTags = tagsResult.rows.map((t) => ({
     id: Number(t.id),
     name: String(t.name),
     emoji: String(t.emoji),
   }));
 
-  return <HistoryClient initialArticles={articles} topics={topics} />;
+  return <HistoryClient initialArticles={articles} allTags={allTags} />;
 }

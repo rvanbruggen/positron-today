@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   const body = await request.json();
-  const { id, status, publish_date, topic_id, reset_to_draft } = body;
+  const { id, status, publish_date, topic_id, tags, reset_to_draft } = body;
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
 
   // Reset a published article back to draft for re-summarisation
@@ -27,7 +27,7 @@ export async function PATCH(request: NextRequest) {
       sql: `UPDATE articles SET status = 'draft',
               title_en = NULL, title_nl = NULL, title_fr = NULL,
               summary_en = NULL, summary_nl = NULL, summary_fr = NULL,
-              published_at = NULL
+              article_emoji = NULL, published_at = NULL
             WHERE id = ?`,
       args: [id],
     });
@@ -42,11 +42,34 @@ export async function PATCH(request: NextRequest) {
     return Response.json({ ok: true });
   }
 
+  // Multi-tag update: replace all tags for this article
+  if (tags !== undefined) {
+    await db.execute({
+      sql: "DELETE FROM article_tags WHERE article_id = ?",
+      args: [id],
+    });
+    for (const tagId of (tags as number[])) {
+      await db.execute({
+        sql: "INSERT OR IGNORE INTO article_tags (article_id, tag_id) VALUES (?, ?)",
+        args: [id, tagId],
+      });
+    }
+    return Response.json({ ok: true });
+  }
+
+  // Legacy single topic_id update (kept for backward compat)
   if (topic_id !== undefined) {
     await db.execute({
       sql: "UPDATE articles SET topic_id = ? WHERE id = ?",
       args: [topic_id === null ? null : Number(topic_id), id],
     });
+    // Also mirror into article_tags
+    if (topic_id !== null) {
+      await db.execute({
+        sql: "INSERT OR IGNORE INTO article_tags (article_id, tag_id) VALUES (?, ?)",
+        args: [id, topic_id],
+      });
+    }
     return Response.json({ ok: true });
   }
 
@@ -83,6 +106,7 @@ export async function DELETE(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
+  // article_tags rows cascade-delete automatically
   await db.execute({ sql: "DELETE FROM articles WHERE id = ?", args: [id] });
   return Response.json({ ok: true });
 }

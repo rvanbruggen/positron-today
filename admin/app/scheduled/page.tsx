@@ -3,13 +3,24 @@ export const dynamic = "force-dynamic";
 import db from "@/lib/db";
 import ScheduledClient from "./ScheduledClient";
 
+function parseTagData(raw: unknown): { id: number; name: string; emoji: string }[] {
+  if (!raw) return [];
+  return String(raw).split("~~").filter(Boolean).map((s) => {
+    const [id, name, emoji] = s.split("|");
+    return { id: Number(id), name: name ?? "", emoji: emoji ?? "📰" };
+  });
+}
+
 export default async function ScheduledPage() {
-  const [articlesResult, topicsResult] = await Promise.all([
+  const [articlesResult, tagsResult] = await Promise.all([
     db.execute(`
-      SELECT a.*, t.name as topic_name, t.emoji as topic_emoji,
-             r.title as raw_title
+      SELECT a.*,
+             r.title as raw_title,
+             (SELECT GROUP_CONCAT(t.id || '|' || t.name || '|' || t.emoji, '~~')
+              FROM article_tags at2
+              JOIN topics t ON at2.tag_id = t.id
+              WHERE at2.article_id = a.id) as tag_data
       FROM articles a
-      LEFT JOIN topics t ON a.topic_id = t.id
       LEFT JOIN raw_articles r ON a.raw_article_id = r.id
       WHERE a.status IN ('draft', 'scheduled')
       ORDER BY a.status ASC, a.publish_date ASC
@@ -23,9 +34,8 @@ export default async function ScheduledPage() {
     source_url: String(a.source_url),
     source_name: String(a.source_name),
     raw_title: a.raw_title ? String(a.raw_title) : null,
-    topic_id: a.topic_id ? Number(a.topic_id) : null,
-    topic_name: a.topic_name ? String(a.topic_name) : null,
-    topic_emoji: a.topic_emoji ? String(a.topic_emoji) : null,
+    article_emoji: a.article_emoji ? String(a.article_emoji) : null,
+    tags: parseTagData(a.tag_data),
     title_en: a.title_en ? String(a.title_en) : null,
     title_nl: a.title_nl ? String(a.title_nl) : null,
     title_fr: a.title_fr ? String(a.title_fr) : null,
@@ -35,11 +45,11 @@ export default async function ScheduledPage() {
     publish_date: a.publish_date ? String(a.publish_date) : null,
   }));
 
-  const topics = topicsResult.rows.map((t) => ({
+  const tags = tagsResult.rows.map((t) => ({
     id: Number(t.id),
     name: String(t.name),
     emoji: String(t.emoji),
   }));
 
-  return <ScheduledClient initialArticles={articles} topics={topics} />;
+  return <ScheduledClient initialArticles={articles} tags={tags} />;
 }

@@ -8,34 +8,26 @@ title: Home
   .page-header h1 { font-size: clamp(1.35rem, 5vw, 1.75rem); font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
   .page-header p { font-size: 0.875rem; color: #b45309; }
 
-  /* Language tabs */
   .lang-tabs { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .lang-tab {
     padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.8rem;
     font-weight: 600; cursor: pointer; border: none;
     background: #fef3c7; color: #92400e; transition: background 0.15s;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 36px;
+    -webkit-tap-highlight-color: transparent; min-height: 36px;
   }
   .lang-tab.active { background: #facc15; color: #78350f; }
 
-  /* Topic filter bar */
-  .topic-bar {
-    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;
-    align-items: center;
-  }
+  .topic-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; align-items: center; }
   .topic-bar-label { font-size: 0.7rem; font-weight: 600; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
   .topic-btn {
     padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.8rem;
     font-weight: 600; cursor: pointer; border: 2px solid transparent;
     transition: all 0.15s; white-space: nowrap;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 36px;
+    -webkit-tap-highlight-color: transparent; min-height: 36px;
   }
   .topic-btn.active { border-color: currentColor; box-shadow: 0 0 0 2px rgba(0,0,0,0.08); }
   @media (min-width: 480px) { .topic-bar-label { width: auto; } }
 
-  /* Topic button colours */
   .tbtn-yellow { background:#fef9c3; color:#713f12; } .tbtn-yellow.active { background:#fde047; }
   .tbtn-orange { background:#ffedd5; color:#7c2d12; } .tbtn-orange.active { background:#fb923c; }
   .tbtn-rose   { background:#ffe4e6; color:#881337; } .tbtn-rose.active   { background:#fb7185; }
@@ -47,35 +39,26 @@ title: Home
   .tbtn-lime   { background:#ecfccb; color:#365314; } .tbtn-lime.active   { background:#a3e635; }
   .tbtn-pink   { background:#fce7f3; color:#831843; } .tbtn-pink.active   { background:#f472b6; }
 
-  /* Card grid — single column on phones, multi on wider screens */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-    gap: 1rem;
-  }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 1rem; }
   @media (min-width: 640px) { .card-grid { gap: 1.25rem; } }
-
   .card {
-    border-radius: 1rem; padding: 1.1rem;
-    border: 2px solid transparent;
-    text-decoration: none;
-    display: flex; flex-direction: column; gap: 0.4rem;
-    transition: transform 0.15s, box-shadow 0.15s;
-    -webkit-tap-highlight-color: transparent;
+    border-radius: 1rem; padding: 1.1rem; border: 2px solid transparent;
+    text-decoration: none; display: flex; flex-direction: column; gap: 0.4rem;
+    transition: transform 0.15s, box-shadow 0.15s; -webkit-tap-highlight-color: transparent;
   }
   @media (min-width: 640px) { .card { padding: 1.25rem; gap: 0.5rem; } }
   @media (hover: hover) { .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.10); } }
 
-  .card-topic { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; }
+  .card-emoji { font-size: 1.5rem; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+  .card-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.7; }
   .card-title { font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
   .card-summary { font-size: 0.825rem; line-height: 1.55; opacity: 0.85; }
   .card-meta { font-size: 0.7rem; opacity: 0.6; margin-top: auto; padding-top: 0.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.25rem; }
-  .card-emoji { font-size: 1.5rem; }
   .empty { color: #b45309; font-size: 0.9rem; }
   .no-match { display: none; color: #b45309; font-size: 0.9rem; margin-top: 1rem; }
   .no-match.visible { display: block; }
 
-  /* Card colour palette */
   .card-yellow  { background:#fef9c3; border-color:#fde047; color:#713f12; }
   .card-orange  { background:#ffedd5; border-color:#fb923c; color:#7c2d12; }
   .card-rose    { background:#ffe4e6; border-color:#fb7185; color:#881337; }
@@ -103,40 +86,50 @@ title: Home
   <p class="empty">No posts yet - check back soon!</p>
 {% else %}
 
-  {# Collect unique topics in insertion order #}
-  {% set seenTopics = [] %}
+  {# Collect unique tags across all posts (tags array or legacy topic string) #}
+  {% set seenTags = [] %}
   {% for post in collections.posts %}
-    {% if post.data.topic and post.data.topic != "" %}
-      {% if post.data.topic not in seenTopics %}
-        {% set seenTopics = (seenTopics.concat([post.data.topic])) %}
-      {% endif %}
+    {% if post.data.tags and post.data.tags.length > 0 %}
+      {% for tag in post.data.tags %}
+        {% if tag and tag != "" and tag not in seenTags %}
+          {% set seenTags = (seenTags.concat([tag])) %}
+        {% endif %}
+      {% endfor %}
+    {% elif post.data.topic and post.data.topic != "" and post.data.topic not in seenTags %}
+      {% set seenTags = (seenTags.concat([post.data.topic])) %}
     {% endif %}
   {% endfor %}
 
-  {# Topic filter bar — only show if there are topics #}
-  {% if seenTopics.length > 0 %}
+  {% if seenTags.length > 0 %}
   <div class="topic-bar" id="topic-bar">
-    <span class="topic-bar-label">Topic</span>
+    <span class="topic-bar-label">Tag</span>
     <button class="topic-btn tbtn-yellow active" data-topic="all" onclick="filterTopic('all', this)">All</button>
-    {% for topic in seenTopics %}
-    <button
-      class="topic-btn tbtn-{{ topic | topicColor }}"
-      data-topic="{{ topic }}"
-      onclick="filterTopic('{{ topic }}', this)"
-    >{{ topic }}</button>
+    {% for tag in seenTags %}
+    <button class="topic-btn tbtn-{{ tag | topicColor }}" data-topic="{{ tag }}" onclick="filterTopic('{{ tag }}', this)">{{ tag }}</button>
     {% endfor %}
   </div>
   {% endif %}
 
   <div class="card-grid" id="card-grid">
     {% for post in collections.posts %}
+      {# Resolve tags: use tags[] if present, fall back to topic string #}
+      {% if post.data.tags and post.data.tags.length > 0 %}
+        {% set cardTags = post.data.tags %}
+      {% elif post.data.topic %}
+        {% set cardTags = [post.data.topic] %}
+      {% else %}
+        {% set cardTags = [] %}
+      {% endif %}
+      {% set firstTag = cardTags[0] if cardTags.length > 0 else "" %}
     <a
       href="{{ post.url | url }}"
-      class="card card-{{ post.data.topic | topicColor }}"
-      data-topic="{{ post.data.topic }}"
+      class="card card-{{ firstTag | topicColor }}"
+      data-tags="{{ cardTags | join(',') }}"
     >
       <div class="card-emoji">{{ post.data.emoji }}</div>
-      <div class="card-topic">{{ post.data.topic }}</div>
+      <div class="card-tags">
+        {% for tag in cardTags %}<span class="card-tag">{{ tag }}{% if not loop.last %} · {% endif %}</span>{% endfor %}
+      </div>
       <div class="card-title">
         <span class="t-en">{{ post.data.title }}</span>
         <span class="t-nl" style="display:none">{{ post.data.title_nl if post.data.title_nl else post.data.title }}</span>
@@ -156,18 +149,15 @@ title: Home
     </a>
     {% endfor %}
   </div>
-  <p class="no-match" id="no-match">No articles for this topic yet.</p>
+  <p class="no-match" id="no-match">No articles for this tag yet.</p>
 
 {% endif %}
 
 <script>
-  /* ── Language switcher ── */
   const LANGS = ['en', 'nl', 'fr'];
   function setLang(lang, btn) {
     LANGS.forEach(function(l) {
-      document.querySelectorAll('.t-' + l).forEach(function(el) {
-        el.style.display = l === lang ? '' : 'none';
-      });
+      document.querySelectorAll('.t-' + l).forEach(function(el) { el.style.display = l === lang ? '' : 'none'; });
     });
     document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
@@ -181,14 +171,14 @@ title: Home
     }
   })();
 
-  /* ── Topic filter ── */
   function filterTopic(topic, btn) {
     document.querySelectorAll('.topic-btn').forEach(function(b) { b.classList.remove('active'); });
     if (btn) btn.classList.add('active');
     var cards = document.querySelectorAll('#card-grid .card');
     var visible = 0;
     cards.forEach(function(card) {
-      var match = topic === 'all' || card.dataset.topic === topic;
+      var cardTags = (card.dataset.tags || '').split(',').map(function(t) { return t.trim(); }).filter(Boolean);
+      var match = topic === 'all' || cardTags.includes(topic);
       card.style.display = match ? '' : 'none';
       if (match) visible++;
     });

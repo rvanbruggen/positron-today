@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import db from "@/lib/db";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
-const GITHUB_REPO = process.env.GITHUB_REPO!; // e.g. "rikvanbruggen/positiviteiten"
+const GITHUB_REPO = process.env.GITHUB_REPO!;
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH ?? "main";
 
 function slugify(text: string): string {
@@ -15,25 +15,35 @@ function slugify(text: string): string {
     .replace(/-$/, "");
 }
 
-function generateMarkdown(article: Record<string, unknown>): string {
+function yamlStr(s: string): string {
+  return `"${s.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+}
+
+function generateMarkdown(article: Record<string, unknown>, tagNames: string[]): string {
   const title = String(article.title_en ?? article.title_nl ?? "Untitled");
   const date = article.publish_date
     ? String(article.publish_date).slice(0, 10)
     : new Date().toISOString().slice(0, 10);
 
+  // Primary tag for backward compat (post template still reads `topic`)
+  const primaryTag = tagNames[0] ?? "";
+  // Per-article emoji from Claude, fallback to 📰
+  const emoji = String(article.article_emoji ?? "📰");
+
   const yaml = [
     `---`,
-    `title: "${title.replace(/"/g, '\\"')}"`,
-    `title_nl: "${String(article.title_nl ?? title).replace(/"/g, '\\"')}"`,
-    `title_fr: "${String(article.title_fr ?? title).replace(/"/g, '\\"')}"`,
+    `title: ${yamlStr(title)}`,
+    `title_nl: ${yamlStr(String(article.title_nl ?? title))}`,
+    `title_fr: ${yamlStr(String(article.title_fr ?? title))}`,
     `date: ${date}`,
-    `source_url: "${String(article.source_url)}"`,
-    `source_name: "${String(article.source_name).replace(/"/g, '\\"')}"`,
-    `topic: "${String(article.topic_name ?? "").replace(/"/g, '\\"')}"`,
-    `emoji: "${String(article.topic_emoji ?? "📰")}"`,
-    `summary: "${String(article.summary_en ?? "").replace(/"/g, '\\"')}"`,
-    `summary_nl: "${String(article.summary_nl ?? "").replace(/"/g, '\\"')}"`,
-    `summary_fr: "${String(article.summary_fr ?? "").replace(/"/g, '\\"')}"`,
+    `source_url: ${yamlStr(String(article.source_url))}`,
+    `source_name: ${yamlStr(String(article.source_name))}`,
+    `topic: ${yamlStr(primaryTag)}`,
+    `tags: ${JSON.stringify(tagNames)}`,
+    `emoji: ${yamlStr(emoji)}`,
+    `summary: ${yamlStr(String(article.summary_en ?? ""))}`,
+    `summary_nl: ${yamlStr(String(article.summary_nl ?? ""))}`,
+    `summary_fr: ${yamlStr(String(article.summary_fr ?? ""))}`,
     `layout: post.njk`,
     `---`,
     ``,
@@ -46,29 +56,16 @@ function generateMarkdown(article: Record<string, unknown>): string {
 async function commitToGitHub(path: string, content: string, message: string) {
   const encoded = Buffer.from(content).toString("base64");
   const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
-  console.log("GitHub PUT URL:", url);
-  console.log("Branch:", GITHUB_BRANCH);
-  console.log("Token prefix:", GITHUB_TOKEN?.slice(0, 15));
+  console.log("GitHub PUT URL:", url, "| Branch:", GITHUB_BRANCH);
 
-  // Check if file already exists (to get its SHA for updates)
   let sha: string | undefined;
   const existing = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-    },
+    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" },
   });
   console.log("GET status:", existing.status);
-  if (existing.ok) {
-    const data = await existing.json();
-    sha = data.sha;
-  }
+  if (existing.ok) sha = (await existing.json()).sha;
 
-  const body: Record<string, unknown> = {
-    message,
-    content: encoded,
-    branch: GITHUB_BRANCH,
-  };
+  const body: Record<string, unknown> = { message, content: encoded, branch: GITHUB_BRANCH };
   if (sha) body.sha = sha;
 
   const res = await fetch(url, {
@@ -81,10 +78,7 @@ async function commitToGitHub(path: string, content: string, message: string) {
     body: JSON.stringify(body),
   });
 
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`GitHub API error ${res.status}: ${err}`);
-  }
+  if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
 }
 
 export async function POST(request: NextRequest) {
@@ -99,19 +93,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await db.execute({
-      sql: `SELECT a.*, t.name as topic_name, t.emoji as topic_emoji
-            FROM articles a
-            LEFT JOIN topics t ON a.topic_id = t.id
-            WHERE a.id = ?`,
-      args: [id],
-    });
-    const article = result.rows[0];
-    if (!article) return Response.json({ error: "Article not found" }, { status: 404 });
+    // Fetch article + all its tags via the join table
+    const [articleResult, tagsResult] = await Promise.all([
+      db.execute({ sql: "SELECT * FROM articles WHERE id = ?", args: [id] }),
+      db.execute({
+        sql: `SELECT t.name FROM article_tags at2
+              JOIN topics t ON at2.tag_id = t.id
+              WHERE at2.article_id = ?
+              ORDER BY t.name ASC`,
+        args: [id],
+      }),
+    ]);
 
+    const article = articleResult.rows[0];
+    if (!article) return Response.json({ error: "Article not found" }, { status: 404 });
     if (!article.summary_en) {
       return Response.json({ error: "Article has no summary - run Summarise first" }, { status: 400 });
     }
+
+    const tagNames = tagsResult.rows.map((r) => String(r.name));
 
     const date = article.publish_date
       ? String(article.publish_date).slice(0, 10)
@@ -120,10 +120,9 @@ export async function POST(request: NextRequest) {
     const filename = `${date}-${titleSlug}.md`;
     const path = `site/src/posts/${filename}`;
 
-    const markdown = generateMarkdown(article as Record<string, unknown>);
+    const markdown = generateMarkdown(article as Record<string, unknown>, tagNames);
     await commitToGitHub(path, markdown, `Add post: ${String(article.title_en ?? filename)}`);
 
-    // Mark as published
     await db.execute({
       sql: "UPDATE articles SET status = 'published', published_at = datetime('now') WHERE id = ?",
       args: [id],

@@ -1,6 +1,7 @@
 import db from "./db";
 
 export async function initSchema() {
+  // Core tables (idempotent)
   await db.executeMultiple(`
     CREATE TABLE IF NOT EXISTS sources (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -48,4 +49,29 @@ export async function initSchema() {
       published_at TEXT
     );
   `);
+
+  // Migrations — each is safe to run repeatedly; errors are silently ignored
+  const migrations = [
+    // v0.4: per-article emoji chosen by Claude during summarisation
+    "ALTER TABLE articles ADD COLUMN article_emoji TEXT",
+
+    // v0.4: many-to-many article ↔ tag join table
+    `CREATE TABLE IF NOT EXISTS article_tags (
+      article_id INTEGER NOT NULL REFERENCES articles(id) ON DELETE CASCADE,
+      tag_id     INTEGER NOT NULL REFERENCES topics(id)   ON DELETE CASCADE,
+      PRIMARY KEY (article_id, tag_id)
+    )`,
+  ];
+
+  for (const sql of migrations) {
+    try { await db.execute(sql); } catch { /* already applied */ }
+  }
+
+  // One-time data migration: promote existing topic_id → article_tags
+  try {
+    await db.execute(`
+      INSERT OR IGNORE INTO article_tags (article_id, tag_id)
+      SELECT id, topic_id FROM articles WHERE topic_id IS NOT NULL
+    `);
+  } catch { /* already migrated */ }
 }

@@ -25,11 +25,7 @@ async function fetchArticleText(url: string): Promise<string> {
     const article = new Readability(dom.window.document).parse();
     const readabilityText = article?.textContent?.trim() ?? "";
 
-    // If Readability returned meaningful text (> 200 chars) use it,
-    // otherwise fall back to og:description, which at least is real content.
-    if (readabilityText.length > 200) {
-      return readabilityText.slice(0, 4000);
-    }
+    if (readabilityText.length > 200) return readabilityText.slice(0, 4000);
     return metaDesc.slice(0, 1000);
   } catch {
     return "";
@@ -44,6 +40,7 @@ async function summariseAndTranslate(
 ): Promise<{
   title_nl: string; title_fr: string; title_en: string;
   summary_nl: string; summary_fr: string; summary_en: string;
+  emoji: string;
 }> {
   const STYLE = `You write in the voice of Rik Van Bruggen - a curious, enthusiastic Belgian who thinks out loud.
 Key rules:
@@ -63,7 +60,7 @@ Key rules:
 
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
-    max_tokens: 1024,
+    max_tokens: 1200,
     system: "You output only raw JSON. No prose, no markdown, no code fences, no explanation. Every response is a single JSON object.",
     messages: [
       {
@@ -74,18 +71,22 @@ Write a summary card for an article from ${sourceName} (${sourceUrl}).
 
 ${articleContext}
 
+Also pick a single emoji that best represents the mood or subject of this specific article (not the news category in general - something that captures this particular story).
+
 Output this exact JSON shape and nothing else:
-{"title_nl":"...","title_fr":"...","title_en":"...","summary_nl":"...","summary_fr":"...","summary_en":"..."}`,
+{"title_nl":"...","title_fr":"...","title_en":"...","summary_nl":"...","summary_fr":"...","summary_en":"...","emoji":"..."}`,
       },
     ],
   });
 
   const raw = (message.content[0] as { type: string; text: string }).text.trim();
-  // Strip markdown fences if Claude added them despite instructions
   const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
   const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
   if (!jsonMatch) throw new Error(`Unexpected Claude response: ${raw.slice(0, 120)}`);
-  return JSON.parse(jsonMatch[0]);
+  const parsed = JSON.parse(jsonMatch[0]);
+  // Ensure emoji field has a fallback
+  if (!parsed.emoji) parsed.emoji = "✨";
+  return parsed;
 }
 
 export async function POST(request: NextRequest) {
@@ -103,11 +104,9 @@ export async function POST(request: NextRequest) {
     const article = result.rows[0];
     if (!article) return Response.json({ error: "Article not found" }, { status: 404 });
 
-    // Fetch the article text
     const articleText = await fetchArticleText(String(article.source_url));
     const rawTitle = article.raw_title ? String(article.raw_title) : null;
 
-    // Summarise and translate
     const summaries = await summariseAndTranslate(
       articleText,
       String(article.source_url),
@@ -115,16 +114,17 @@ export async function POST(request: NextRequest) {
       rawTitle,
     );
 
-    // Save back to database
     await db.execute({
       sql: `UPDATE articles SET
               title_nl = ?, title_fr = ?, title_en = ?,
               summary_nl = ?, summary_fr = ?, summary_en = ?,
+              article_emoji = ?,
               status = 'scheduled'
             WHERE id = ?`,
       args: [
         summaries.title_nl, summaries.title_fr, summaries.title_en,
         summaries.summary_nl, summaries.summary_fr, summaries.summary_en,
+        summaries.emoji,
         id,
       ],
     });

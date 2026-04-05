@@ -2,15 +2,16 @@
 
 import { useState } from "react";
 
+type ArticleTag = { id: number; name: string; emoji: string };
+
 type Article = {
   id: number;
   status: string;
   source_url: string;
   source_name: string;
   raw_title: string | null;
-  topic_id: number | null;
-  topic_name: string | null;
-  topic_emoji: string | null;
+  article_emoji: string | null;
+  tags: ArticleTag[];
   title_en: string | null;
   title_nl: string | null;
   title_fr: string | null;
@@ -20,18 +21,47 @@ type Article = {
   publish_date: string | null;
 };
 
-type Topic = {
-  id: number;
-  name: string;
-  emoji: string;
-};
+function TagPills({
+  articleId,
+  articleTags,
+  allTags,
+  onToggle,
+}: {
+  articleId: number;
+  articleTags: ArticleTag[];
+  allTags: ArticleTag[];
+  onToggle: (articleId: number, tag: ArticleTag, selected: boolean) => void;
+}) {
+  if (allTags.length === 0) return null;
+  const selectedIds = new Set(articleTags.map((t) => t.id));
+  return (
+    <div className="flex flex-wrap gap-1 mt-1.5">
+      {allTags.map((tag) => {
+        const sel = selectedIds.has(tag.id);
+        return (
+          <button
+            key={tag.id}
+            onClick={() => onToggle(articleId, tag, sel)}
+            className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
+              sel
+                ? "bg-yellow-400 border-yellow-500 text-amber-900 font-semibold"
+                : "bg-white border-yellow-200 text-amber-600 hover:border-yellow-400"
+            }`}
+          >
+            {tag.emoji} {tag.name}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function ScheduledClient({
   initialArticles,
-  topics,
+  tags,
 }: {
   initialArticles: Article[];
-  topics: Topic[];
+  tags: ArticleTag[];
 }) {
   const [articles, setArticles] = useState<Article[]>(initialArticles);
   const [summarising, setSummarising] = useState<number | null>(null);
@@ -39,6 +69,24 @@ export default function ScheduledClient({
   const [published, setPublished] = useState<Set<number>>(new Set());
   const [error, setError] = useState<string | null>(null);
   const [previewLang, setPreviewLang] = useState<"en" | "nl" | "fr">("en");
+
+  function toggleTag(articleId: number, tag: ArticleTag, wasSelected: boolean) {
+    setArticles((prev) =>
+      prev.map((a) => {
+        if (a.id !== articleId) return a;
+        const newTags = wasSelected
+          ? a.tags.filter((t) => t.id !== tag.id)
+          : [...a.tags, tag];
+        // Persist asynchronously
+        fetch("/api/articles", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: articleId, tags: newTags.map((t) => t.id) }),
+        });
+        return { ...a, tags: newTags };
+      })
+    );
+  }
 
   async function remove(id: number) {
     await fetch(`/api/articles?id=${id}`, { method: "DELETE" });
@@ -51,30 +99,7 @@ export default function ScheduledClient({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, publish_date: date }),
     });
-    setArticles((prev) =>
-      prev.map((a) => (a.id === id ? { ...a, publish_date: date } : a))
-    );
-  }
-
-  async function setTopic(id: number, topicId: number | null) {
-    await fetch("/api/articles", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, topic_id: topicId }),
-    });
-    const topic = topics.find((t) => t.id === topicId) ?? null;
-    setArticles((prev) =>
-      prev.map((a) =>
-        a.id === id
-          ? {
-              ...a,
-              topic_id: topicId,
-              topic_name: topic?.name ?? null,
-              topic_emoji: topic?.emoji ?? null,
-            }
-          : a
-      )
-    );
+    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, publish_date: date } : a)));
   }
 
   async function summarise(id: number) {
@@ -88,22 +113,16 @@ export default function ScheduledClient({
       });
       const text = await res.text();
       const data = text ? JSON.parse(text) : {};
-      if (!res.ok) {
-        setError(data.error ?? `Server error ${res.status}`);
-        return;
-      }
+      if (!res.ok) { setError(data.error ?? `Server error ${res.status}`); return; }
       setArticles((prev) =>
         prev.map((a) =>
           a.id === id
             ? {
                 ...a,
                 status: "scheduled",
-                title_en: data.title_en,
-                title_nl: data.title_nl,
-                title_fr: data.title_fr,
-                summary_en: data.summary_en,
-                summary_nl: data.summary_nl,
-                summary_fr: data.summary_fr,
+                article_emoji: data.emoji ?? a.article_emoji,
+                title_en: data.title_en, title_nl: data.title_nl, title_fr: data.title_fr,
+                summary_en: data.summary_en, summary_nl: data.summary_nl, summary_fr: data.summary_fr,
               }
             : a
         )
@@ -124,10 +143,7 @@ export default function ScheduledClient({
         body: JSON.stringify({ id }),
       });
       const data = await res.json();
-      if (!res.ok) {
-        setError(data.error ?? `Publish failed: ${res.status}`);
-        return;
-      }
+      if (!res.ok) { setError(data.error ?? `Publish failed: ${res.status}`); return; }
       setPublished((prev) => new Set(prev).add(id));
       setTimeout(() => {
         setArticles((prev) => prev.filter((a) => a.id !== id));
@@ -164,55 +180,45 @@ export default function ScheduledClient({
       ) : (
         <div className="flex flex-col gap-8">
 
+          {/* ── Drafts ── */}
           {drafts.length > 0 && (
             <div>
               <h2 className="text-sm font-semibold text-amber-700 uppercase tracking-wide mb-3">
-                Drafts - needs summarisation ({drafts.length})
+                Drafts — needs summarisation ({drafts.length})
               </h2>
               <div className="flex flex-col gap-3">
                 {drafts.map((a) => (
                   <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200">
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3 min-w-0">
-                        <span className="text-lg">✍️</span>
-                        <div className="min-w-0">
-                          <a
-                            href={a.source_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-amber-900 text-sm hover:text-amber-600 transition-colors block leading-snug"
-                          >
-                            {a.raw_title ?? a.source_url}
-                          </a>
-                          <p className="text-xs text-amber-500 mt-0.5">{a.source_name}</p>
-                        </div>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0 flex-1">
+                        <a
+                          href={a.source_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-amber-900 text-sm hover:text-amber-600 transition-colors block leading-snug"
+                        >
+                          {a.raw_title ?? a.source_url}
+                        </a>
+                        <p className="text-xs text-amber-500 mt-0.5">{a.source_name}</p>
+                        <TagPills
+                          articleId={a.id}
+                          articleTags={a.tags}
+                          allTags={tags}
+                          onToggle={toggleTag}
+                        />
                       </div>
-                      <div className="flex items-center gap-2 shrink-0">
-                        {topics.length > 0 && (
-                          <select
-                            value={a.topic_id ?? ""}
-                            onChange={(e) => setTopic(a.id, e.target.value ? Number(e.target.value) : null)}
-                            className="border border-yellow-200 rounded-lg px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400 bg-white"
-                          >
-                            <option value="">No topic</option>
-                            {topics.map((t) => (
-                              <option key={t.id} value={t.id}>
-                                {t.emoji} {t.name}
-                              </option>
-                            ))}
-                          </select>
-                        )}
+                      <div className="flex gap-2 shrink-0 items-start">
                         <button
                           onClick={() => summarise(a.id)}
                           disabled={summarising === a.id}
-                          className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50"
+                          className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50 whitespace-nowrap"
                         >
                           {summarising === a.id ? "Summarising..." : "Summarise ✨"}
                         </button>
                         <button
                           onClick={() => remove(a.id)}
                           disabled={summarising === a.id}
-                          className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50"
+                          className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50 mt-1.5"
                         >
                           Remove
                         </button>
@@ -224,6 +230,7 @@ export default function ScheduledClient({
             </div>
           )}
 
+          {/* ── Scheduled ── */}
           {scheduled.length > 0 && (
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -236,9 +243,7 @@ export default function ScheduledClient({
                       key={lang}
                       onClick={() => setPreviewLang(lang)}
                       className={`text-xs px-2 py-1 rounded font-medium uppercase transition-colors ${
-                        previewLang === lang
-                          ? "bg-yellow-400 text-amber-900"
-                          : "text-amber-600 hover:text-amber-900"
+                        previewLang === lang ? "bg-yellow-400 text-amber-900" : "text-amber-600 hover:text-amber-900"
                       }`}
                     >
                       {lang}
@@ -251,37 +256,33 @@ export default function ScheduledClient({
                   <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200">
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          {a.topic_emoji && <span className="text-base">{a.topic_emoji}</span>}
-                          <a
-                            href={a.source_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-semibold text-amber-900 text-sm hover:text-amber-600 transition-colors leading-snug"
-                          >
-                            {String(a[titleKey] ?? a.source_url)}
-                          </a>
+                        <div className="flex items-start gap-2">
+                          {a.article_emoji && (
+                            <span className="text-xl shrink-0 leading-snug">{a.article_emoji}</span>
+                          )}
+                          <div className="min-w-0">
+                            <a
+                              href={a.source_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-semibold text-amber-900 text-sm hover:text-amber-600 transition-colors block leading-snug"
+                            >
+                              {String(a[titleKey] ?? a.source_url)}
+                            </a>
+                            <p className="text-xs text-amber-600 leading-relaxed mt-1">
+                              {String(a[summaryKey] ?? "")}
+                            </p>
+                            <p className="text-xs text-amber-400 mt-1">{a.source_name}</p>
+                          </div>
                         </div>
-                        <p className="text-xs text-amber-600 leading-relaxed mb-1.5">
-                          {String(a[summaryKey] ?? "")}
-                        </p>
-                        <p className="text-xs text-amber-400">{a.source_name}</p>
+                        <TagPills
+                          articleId={a.id}
+                          articleTags={a.tags}
+                          allTags={tags}
+                          onToggle={toggleTag}
+                        />
                       </div>
                       <div className="flex flex-col items-end gap-2 shrink-0">
-                        {topics.length > 0 && (
-                          <select
-                            value={a.topic_id ?? ""}
-                            onChange={(e) => setTopic(a.id, e.target.value ? Number(e.target.value) : null)}
-                            className="border border-yellow-200 rounded-lg px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400 bg-white"
-                          >
-                            <option value="">No topic</option>
-                            {topics.map((t) => (
-                              <option key={t.id} value={t.id}>
-                                {t.emoji} {t.name}
-                              </option>
-                            ))}
-                          </select>
-                        )}
                         <input
                           type="date"
                           value={a.publish_date?.slice(0, 10) ?? new Date().toISOString().slice(0, 10)}
