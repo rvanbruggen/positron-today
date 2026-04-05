@@ -123,6 +123,7 @@ export default function ScheduledClient({
                 article_emoji: data.emoji ?? a.article_emoji,
                 title_en: data.title_en, title_nl: data.title_nl, title_fr: data.title_fr,
                 summary_en: data.summary_en, summary_nl: data.summary_nl, summary_fr: data.summary_fr,
+                tags: Array.isArray(data.matched_tags) ? data.matched_tags : a.tags,
               }
             : a
         )
