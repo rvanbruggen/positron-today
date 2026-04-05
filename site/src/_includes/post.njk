@@ -3,10 +3,15 @@ layout: base.njk
 ---
 
 <style>
-  .post-back { font-size: 0.8rem; color: #b45309; text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
+  .post-back {
+    font-size: 0.8rem; color: #b45309; text-decoration: none;
+    display: inline-block; margin-bottom: 1.25rem;
+    min-height: 36px; line-height: 36px;
+    -webkit-tap-highlight-color: transparent;
+  }
   .post-back:hover { color: #78350f; }
 
-  /* Accent colours — driven by topic at build time, same palette as home cards */
+  /* Accent colours — driven by topic at build time */
   :root {
     --accent-bg: #fef9c3; --accent-border: #fde047;
     --accent-text: #713f12; --accent-muted: #b45309;
@@ -23,34 +28,50 @@ layout: base.njk
 
   .post-header {
     background: var(--accent-bg); border: 2px solid var(--accent-border);
-    border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem;
+    border-radius: 1rem; padding: 1.1rem; margin-bottom: 1.25rem;
   }
-  .post-emoji { font-size: 2.5rem; margin-bottom: 0.5rem; }
-  .post-topic { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-muted); margin-bottom: 0.5rem; }
-  .post-title { font-size: 1.5rem; font-weight: 700; color: var(--accent-text); line-height: 1.3; margin-bottom: 0.75rem; }
+  .post-emoji { font-size: 2rem; margin-bottom: 0.4rem; }
+  .post-topic { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-muted); margin-bottom: 0.4rem; }
+  .post-title {
+    font-size: clamp(1.15rem, 4.5vw, 1.5rem);
+    font-weight: 700; color: var(--accent-text); line-height: 1.3; margin-bottom: 0.6rem;
+  }
   .post-meta { font-size: 0.8rem; color: var(--accent-muted); }
-  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; }
+
+  .lang-tabs { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .lang-tab {
-    padding: 0.3rem 0.75rem; border-radius: 99px; font-size: 0.75rem;
+    padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.75rem;
     font-weight: 600; cursor: pointer; border: none;
     background: #fef3c7; color: #92400e; transition: background 0.15s;
+    -webkit-tap-highlight-color: transparent; min-height: 36px;
   }
   .lang-tab.active { background: var(--accent-border); color: var(--accent-text); }
+
   .post-body {
-    background: white; border-radius: 1rem; padding: 1.5rem;
-    border: 2px solid var(--accent-border); font-size: 0.95rem;
-    line-height: 1.7; color: #451a03; margin-bottom: 1.5rem;
+    background: white; border-radius: 1rem; padding: 1.1rem;
+    border: 2px solid var(--accent-border);
+    font-size: clamp(0.875rem, 2.5vw, 0.95rem);
+    line-height: 1.75; color: #451a03; margin-bottom: 1.25rem;
   }
+
   .post-source {
     display: inline-flex; align-items: center; gap: 0.4rem;
     background: var(--accent-bg); border: 2px solid var(--accent-border);
-    border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.85rem;
+    border-radius: 0.5rem; padding: 0.6rem 1rem; font-size: 0.875rem;
     font-weight: 500; color: var(--accent-text); text-decoration: none;
+    min-height: 44px; /* comfortable touch target */
+    -webkit-tap-highlight-color: transparent;
   }
   .post-source:hover { filter: brightness(0.95); }
+
+  @media (min-width: 640px) {
+    .post-header { padding: 1.5rem; }
+    .post-emoji { font-size: 2.5rem; }
+    .post-body { padding: 1.5rem; }
+  }
 </style>
 
-{# Apply topic-based accent at build time — no JS hash needed #}
+{# Apply topic-based accent at build time #}
 <script>document.documentElement.classList.add('accent-{{ topic | topicColor }}');</script>
 
 <a href="/positiviteiten/" class="post-back">← Back to all posts</a>

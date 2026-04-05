@@ -5,67 +5,71 @@ title: Home
 
 <style>
   .page-header { margin-bottom: 1.25rem; }
-  .page-header h1 { font-size: 1.75rem; font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
-  .page-header p { font-size: 0.9rem; color: #b45309; }
+  .page-header h1 { font-size: clamp(1.35rem, 5vw, 1.75rem); font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
+  .page-header p { font-size: 0.875rem; color: #b45309; }
 
   /* Language tabs */
-  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .lang-tabs { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .lang-tab {
-    padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
+    padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.8rem;
     font-weight: 600; cursor: pointer; border: none;
     background: #fef3c7; color: #92400e; transition: background 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 36px;
   }
   .lang-tab.active { background: #facc15; color: #78350f; }
 
   /* Topic filter bar */
   .topic-bar {
-    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;
     align-items: center;
   }
-  .topic-bar-label { font-size: 0.75rem; font-weight: 600; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.25rem; }
+  .topic-bar-label { font-size: 0.7rem; font-weight: 600; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
   .topic-btn {
-    padding: 0.3rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
+    padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.8rem;
     font-weight: 600; cursor: pointer; border: 2px solid transparent;
     transition: all 0.15s; white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 36px;
   }
   .topic-btn.active { border-color: currentColor; box-shadow: 0 0 0 2px rgba(0,0,0,0.08); }
+  @media (min-width: 480px) { .topic-bar-label { width: auto; } }
 
   /* Topic button colours */
-  .tbtn-yellow { background:#fef9c3; color:#713f12; }
-  .tbtn-yellow.active { background:#fde047; }
-  .tbtn-orange { background:#ffedd5; color:#7c2d12; }
-  .tbtn-orange.active { background:#fb923c; }
-  .tbtn-rose   { background:#ffe4e6; color:#881337; }
-  .tbtn-rose.active   { background:#fb7185; }
-  .tbtn-purple { background:#f3e8ff; color:#581c87; }
-  .tbtn-purple.active { background:#c084fc; }
-  .tbtn-blue   { background:#dbeafe; color:#1e3a5f; }
-  .tbtn-blue.active   { background:#60a5fa; }
-  .tbtn-cyan   { background:#cffafe; color:#164e63; }
-  .tbtn-cyan.active   { background:#22d3ee; }
-  .tbtn-teal   { background:#ccfbf1; color:#134e4a; }
-  .tbtn-teal.active   { background:#2dd4bf; }
-  .tbtn-green  { background:#dcfce7; color:#14532d; }
-  .tbtn-green.active  { background:#4ade80; }
-  .tbtn-lime   { background:#ecfccb; color:#365314; }
-  .tbtn-lime.active   { background:#a3e635; }
-  .tbtn-pink   { background:#fce7f3; color:#831843; }
-  .tbtn-pink.active   { background:#f472b6; }
+  .tbtn-yellow { background:#fef9c3; color:#713f12; } .tbtn-yellow.active { background:#fde047; }
+  .tbtn-orange { background:#ffedd5; color:#7c2d12; } .tbtn-orange.active { background:#fb923c; }
+  .tbtn-rose   { background:#ffe4e6; color:#881337; } .tbtn-rose.active   { background:#fb7185; }
+  .tbtn-purple { background:#f3e8ff; color:#581c87; } .tbtn-purple.active { background:#c084fc; }
+  .tbtn-blue   { background:#dbeafe; color:#1e3a5f; } .tbtn-blue.active   { background:#60a5fa; }
+  .tbtn-cyan   { background:#cffafe; color:#164e63; } .tbtn-cyan.active   { background:#22d3ee; }
+  .tbtn-teal   { background:#ccfbf1; color:#134e4a; } .tbtn-teal.active   { background:#2dd4bf; }
+  .tbtn-green  { background:#dcfce7; color:#14532d; } .tbtn-green.active  { background:#4ade80; }
+  .tbtn-lime   { background:#ecfccb; color:#365314; } .tbtn-lime.active   { background:#a3e635; }
+  .tbtn-pink   { background:#fce7f3; color:#831843; } .tbtn-pink.active   { background:#f472b6; }
 
-  /* Card grid */
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+  /* Card grid — single column on phones, multi on wider screens */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: 1rem;
+  }
+  @media (min-width: 640px) { .card-grid { gap: 1.25rem; } }
+
   .card {
-    border-radius: 1rem; padding: 1.25rem;
+    border-radius: 1rem; padding: 1.1rem;
     border: 2px solid transparent;
     text-decoration: none;
-    display: flex; flex-direction: column; gap: 0.5rem;
+    display: flex; flex-direction: column; gap: 0.4rem;
     transition: transform 0.15s, box-shadow 0.15s;
+    -webkit-tap-highlight-color: transparent;
   }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.10); }
+  @media (min-width: 640px) { .card { padding: 1.25rem; gap: 0.5rem; } }
+  @media (hover: hover) { .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.10); } }
+
   .card-topic { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; }
   .card-title { font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
   .card-summary { font-size: 0.825rem; line-height: 1.55; opacity: 0.85; }
-  .card-meta { font-size: 0.7rem; opacity: 0.6; margin-top: auto; padding-top: 0.5rem; display: flex; justify-content: space-between; }
+  .card-meta { font-size: 0.7rem; opacity: 0.6; margin-top: auto; padding-top: 0.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.25rem; }
   .card-emoji { font-size: 1.5rem; }
   .empty { color: #b45309; font-size: 0.9rem; }
   .no-match { display: none; color: #b45309; font-size: 0.9rem; margin-top: 1rem; }
@@ -179,13 +183,8 @@ title: Home
 
   /* ── Topic filter ── */
   function filterTopic(topic, btn) {
-    // Update button active states
-    document.querySelectorAll('.topic-btn').forEach(function(b) {
-      b.classList.remove('active');
-    });
+    document.querySelectorAll('.topic-btn').forEach(function(b) { b.classList.remove('active'); });
     if (btn) btn.classList.add('active');
-
-    // Show/hide cards
     var cards = document.querySelectorAll('#card-grid .card');
     var visible = 0;
     cards.forEach(function(card) {
@@ -193,14 +192,10 @@ title: Home
       card.style.display = match ? '' : 'none';
       if (match) visible++;
     });
-
     var noMatch = document.getElementById('no-match');
     if (noMatch) noMatch.classList.toggle('visible', visible === 0);
-
     localStorage.setItem('positiviteiten-topic', topic);
   }
-
-  // Restore saved topic filter on page load
   (function() {
     var saved = localStorage.getItem('positiviteiten-topic');
     if (saved && saved !== 'all') {
