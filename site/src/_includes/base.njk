@@ -12,7 +12,22 @@
       color: #451a03;
       min-height: 100vh;
       -webkit-text-size-adjust: 100%;
+      position: relative;
     }
+
+    /* ── Watermark sun behind all content ── */
+    .page-watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -42%);
+      width: 700px;
+      height: 700px;
+      opacity: 0.055;
+      pointer-events: none;
+      z-index: 0;
+    }
+    nav, main, footer { position: relative; z-index: 1; }
 
     /* ── Nav ── */
     nav {
@@ -24,10 +39,14 @@
       gap: 0.5rem 1rem;
     }
     nav .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
       font-size: 1.1rem; font-weight: 700;
       text-decoration: none; color: #78350f;
       margin-right: 0.25rem;
     }
+    nav .brand svg { flex-shrink: 0; }
     nav .nav-links {
       display: flex; align-items: center; gap: 0.75rem;
     }
@@ -47,20 +66,77 @@
       padding: 1.5rem 1rem;
       font-size: 0.75rem;
       color: #92400e;
+      position: relative; z-index: 1;
     }
 
     /* ── Desktop upgrades ── */
     @media (min-width: 640px) {
       nav { padding: 0.75rem 1.5rem; gap: 0.75rem 1.5rem; }
       nav .brand { font-size: 1.25rem; }
+      nav .brand svg { width: 38px; height: 38px; }
       main { padding: 2.5rem 1.5rem; }
       footer { padding: 2rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Large faint logo watermark -->
+  <div class="page-watermark" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+      <g fill="#f59e0b">
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(0 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(30 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(60 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(90 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(120 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(150 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(180 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(210 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(240 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(270 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(300 50 50)"/>
+        <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(330 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="31" fill="#fde68a"/>
+      <circle cx="50" cy="50" r="25" fill="#f59e0b"/>
+      <circle cx="50" cy="50" r="21" fill="#fbbf24"/>
+      <circle cx="42" cy="45" r="3.5" fill="#78350f"/>
+      <circle cx="58" cy="45" r="3.5" fill="#78350f"/>
+      <circle cx="43.3" cy="43.4" r="1.3" fill="white" opacity="0.8"/>
+      <circle cx="59.3" cy="43.4" r="1.3" fill="white" opacity="0.8"/>
+      <path d="M38,55 Q50,67 62,55" stroke="#78350f" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+
   <nav>
-    <a href="/positiviteiten/" class="brand">✨ Positiviteiten</a>
+    <a href="/positiviteiten/" class="brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
+        <g fill="#fbbf24">
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(0 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(30 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(60 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(90 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(120 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(150 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(180 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(210 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(240 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(270 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(300 50 50)"/>
+          <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(330 50 50)"/>
+        </g>
+        <circle cx="50" cy="50" r="31" fill="#fde68a"/>
+        <circle cx="50" cy="50" r="25" fill="#f59e0b"/>
+        <circle cx="50" cy="50" r="21" fill="#fbbf24"/>
+        <circle cx="42" cy="45" r="3.5" fill="#78350f"/>
+        <circle cx="58" cy="45" r="3.5" fill="#78350f"/>
+        <circle cx="43.3" cy="43.4" r="1.3" fill="white" opacity="0.8"/>
+        <circle cx="59.3" cy="43.4" r="1.3" fill="white" opacity="0.8"/>
+        <path d="M38,55 Q50,67 62,55" stroke="#78350f" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      Positiviteiten
+    </a>
     <div class="nav-links">
       <a href="/positiviteiten/about/">About</a>
       <a href="/positiviteiten/contact/">Contact</a>

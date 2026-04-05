@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 12 rounded rays, evenly spaced 30° apart -->
+  <g fill="#fbbf24">
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(0 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(30 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(60 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(90 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(120 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(150 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(180 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(210 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(240 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(270 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(300 50 50)"/>
+    <rect x="47" y="3" width="6" height="19" rx="3" transform="rotate(330 50 50)"/>
+  </g>
+  <!-- Soft outer glow ring -->
+  <circle cx="50" cy="50" r="31" fill="#fde68a"/>
+  <!-- Main face disc -->
+  <circle cx="50" cy="50" r="25" fill="#f59e0b"/>
+  <!-- Bright inner face -->
+  <circle cx="50" cy="50" r="21" fill="#fbbf24"/>
+  <!-- Eyes -->
+  <circle cx="42" cy="45" r="3.5" fill="#78350f"/>
+  <circle cx="58" cy="45" r="3.5" fill="#78350f"/>
+  <!-- Eye-shine highlights -->
+  <circle cx="43.3" cy="43.4" r="1.3" fill="white" opacity="0.8"/>
+  <circle cx="59.3" cy="43.4" r="1.3" fill="white" opacity="0.8"/>
+  <!-- Smile -->
+  <path d="M38,55 Q50,67 62,55" stroke="#78350f" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>
