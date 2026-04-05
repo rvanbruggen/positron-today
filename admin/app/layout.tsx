@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Link from "next/link";
+import { APP_VERSION } from "@/lib/version";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
@@ -17,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${geist.className} bg-amber-50 min-h-screen`}>
+      <body className={`${geist.className} bg-amber-50 min-h-screen flex flex-col`}>
         <nav className="bg-yellow-400 shadow-sm">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-6">
             <Link href="/" className="text-xl font-bold text-amber-900 tracking-tight">
@@ -31,7 +32,8 @@ export default function RootLayout({
               <Link href="/scheduled" className="hover:text-amber-600 transition-colors">Scheduled</Link>
               <Link href="/history" className="hover:text-amber-600 transition-colors">History</Link>
             </div>
-            <div className="ml-auto">
+            <div className="ml-auto flex items-center gap-3">
+              <span className="text-xs text-amber-700 font-mono">v{APP_VERSION}</span>
               <a
                 href="https://rvanbruggen.github.io/positiviteiten/"
                 target="_blank"
@@ -43,9 +45,12 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main className="max-w-5xl mx-auto px-4 py-8">
+        <main className="max-w-5xl mx-auto px-4 py-8 flex-1 w-full">
           {children}
         </main>
+        <footer className="max-w-5xl mx-auto w-full px-4 py-4 text-center text-xs text-amber-500">
+          Positiviteiten admin · v{APP_VERSION}
+        </footer>
       </body>
     </html>
   );
