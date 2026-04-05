@@ -46,6 +46,9 @@ function generateMarkdown(article: Record<string, unknown>): string {
 async function commitToGitHub(path: string, content: string, message: string) {
   const encoded = Buffer.from(content).toString("base64");
   const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+  console.log("GitHub PUT URL:", url);
+  console.log("Branch:", GITHUB_BRANCH);
+  console.log("Token prefix:", GITHUB_TOKEN?.slice(0, 15));
 
   // Check if file already exists (to get its SHA for updates)
   let sha: string | undefined;
@@ -55,6 +58,7 @@ async function commitToGitHub(path: string, content: string, message: string) {
       Accept: "application/vnd.github+json",
     },
   });
+  console.log("GET status:", existing.status);
   if (existing.ok) {
     const data = await existing.json();
     sha = data.sha;

@@ -10,45 +10,73 @@ layout: base.njk
   .post-topic { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #b45309; margin-bottom: 0.5rem; }
   .post-title { font-size: 1.5rem; font-weight: 700; color: #451a03; line-height: 1.3; margin-bottom: 0.75rem; }
   .post-meta { font-size: 0.8rem; color: #d97706; }
-  .post-summary {
-    background: white;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    border: 1px solid #fde68a;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #451a03;
-    margin-bottom: 1.5rem;
+  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .lang-tab {
+    padding: 0.3rem 0.75rem; border-radius: 99px; font-size: 0.75rem;
+    font-weight: 600; cursor: pointer; border: none;
+    background: #fef3c7; color: #92400e; transition: background 0.15s;
+  }
+  .lang-tab.active { background: #facc15; color: #78350f; }
+  .post-body {
+    background: white; border-radius: 1rem; padding: 1.5rem;
+    border: 1px solid #fde68a; font-size: 0.95rem;
+    line-height: 1.7; color: #451a03; margin-bottom: 1.5rem;
   }
   .post-source {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: #fef3c7;
-    border: 1px solid #fde68a;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #92400e;
-    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: #fef3c7; border: 1px solid #fde68a; border-radius: 0.5rem;
+    padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 500;
+    color: #92400e; text-decoration: none;
   }
   .post-source:hover { background: #fde68a; }
 </style>
 
-<a href="/" class="post-back">← Back to all posts</a>
+<a href="/positiviteiten/" class="post-back">← Back to all posts</a>
+
+<div class="lang-tabs">
+  <button class="lang-tab active" onclick="setLang('en', this)">EN</button>
+  <button class="lang-tab" onclick="setLang('nl', this)">NL</button>
+  <button class="lang-tab" onclick="setLang('fr', this)">FR</button>
+</div>
 
 <div class="post-header">
   <div class="post-emoji">{{ emoji }}</div>
   <div class="post-topic">{{ topic }}</div>
-  <h1 class="post-title">{{ title }}</h1>
+  <h1 class="post-title">
+    <span class="t-en">{{ title }}</span>
+    <span class="t-nl" style="display:none">{{ title_nl if title_nl else title }}</span>
+    <span class="t-fr" style="display:none">{{ title_fr if title_fr else title }}</span>
+  </h1>
   <p class="post-meta">{{ source_name }} · {{ page.date | dateDisplay }}</p>
 </div>
 
-<div class="post-summary">
-  {{ content | safe }}
+<div class="post-body">
+  <span class="t-en">{{ summary }}</span>
+  <span class="t-nl" style="display:none">{{ summary_nl if summary_nl else summary }}</span>
+  <span class="t-fr" style="display:none">{{ summary_fr if summary_fr else summary }}</span>
 </div>
 
 <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer" class="post-source">
   Read the original article ↗
 </a>
+
+<script>
+  const LANGS = ['en', 'nl', 'fr'];
+  function setLang(lang, btn) {
+    LANGS.forEach(function(l) {
+      document.querySelectorAll('.t-' + l).forEach(function(el) {
+        el.style.display = l === lang ? '' : 'none';
+      });
+    });
+    document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    localStorage.setItem('positiviteiten-lang', lang);
+  }
+  (function() {
+    var saved = localStorage.getItem('positiviteiten-lang');
+    if (saved && saved !== 'en') {
+      var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
+      if (btn) setLang(saved, btn);
+    }
+  })();
+</script>

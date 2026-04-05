@@ -14,6 +14,7 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
+    pathPrefix: "/positiviteiten/",
     dir: {
       input: "src",
       output: "_site",
