@@ -5,7 +5,8 @@ title_fr: "Un nouveau vaccin nasal contre le covid montre des résultats précoc
 date: 2026-04-05
 source_url: "https://www.cnn.com/2023/04/03/health/nasal-vaccine-sterilizing-immunity/index.html"
 source_name: "CNN"
-topic: ""
+topic: "Health"
+tags: ["Health","Science","Technology"]
 emoji: "📰"
 summary: "Scientists in Germany have developed a new nasal vaccine that can stop Covid-19 right where the virus first enters the body - in the nose and throat. And here's the thing: in experiments with hamsters, it completely blocked the virus from copying itself in the upper airways, achieving what researchers call sterilizing immunity. So, instead of building antibodies in the blood that take time to respond, this vaccine is like stationing firefighters right under the smoke alarm. It uses a weakened form of the coronavirus through a technique called codon pair deoptimization, which is actually a clever twist on an idea going back to the 1870s. There are still more hurdles to clear before it reaches people, but this is genuinely exciting progress!"
 summary_nl: "Duitse wetenschappers hebben een nieuw nasaal vaccin ontwikkeld dat Covid-19 kan stoppen precies waar het virus het lichaam binnenkomt - in de neus en keel. En hier is het interessante: in experimenten met hamsters blokkeerde het vaccin het virus volledig van zichzelf te kopiëren in de luchtwegen, wat ze 'steriliserende immuniteit' noemen. Zo werkt het - in plaats van antistoffen in het bloed te bouwen die tijd nodig hebben om te reageren, plaatst dit vaccin als het ware brandweerlieden direct onder het rookalarm. Het maakt gebruik van een verzwakte vorm van het coronavirus via een techniek die codon pair deoptimization heet, een slimme aanpak die teruggaat tot de jaren 1870. Er zijn nog meer stappen nodig voor het klaar is voor mensen, maar dit is echt een opwindende stap voorwaarts!"
