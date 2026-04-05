@@ -8,6 +8,7 @@ type Article = {
   source_url: string;
   source_name: string;
   raw_title: string | null;
+  topic_id: number | null;
   topic_name: string | null;
   topic_emoji: string | null;
   title_en: string | null;
@@ -19,7 +20,19 @@ type Article = {
   publish_date: string | null;
 };
 
-export default function ScheduledClient({ initialArticles }: { initialArticles: Article[] }) {
+type Topic = {
+  id: number;
+  name: string;
+  emoji: string;
+};
+
+export default function ScheduledClient({
+  initialArticles,
+  topics,
+}: {
+  initialArticles: Article[];
+  topics: Topic[];
+}) {
   const [articles, setArticles] = useState<Article[]>(initialArticles);
   const [summarising, setSummarising] = useState<number | null>(null);
   const [publishing, setPublishing] = useState<Set<number>>(new Set());
@@ -40,6 +53,27 @@ export default function ScheduledClient({ initialArticles }: { initialArticles: 
     });
     setArticles((prev) =>
       prev.map((a) => (a.id === id ? { ...a, publish_date: date } : a))
+    );
+  }
+
+  async function setTopic(id: number, topicId: number | null) {
+    await fetch("/api/articles", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, topic_id: topicId }),
+    });
+    const topic = topics.find((t) => t.id === topicId) ?? null;
+    setArticles((prev) =>
+      prev.map((a) =>
+        a.id === id
+          ? {
+              ...a,
+              topic_id: topicId,
+              topic_name: topic?.name ?? null,
+              topic_emoji: topic?.emoji ?? null,
+            }
+          : a
+      )
     );
   }
 
@@ -94,7 +128,6 @@ export default function ScheduledClient({ initialArticles }: { initialArticles: 
         setError(data.error ?? `Publish failed: ${res.status}`);
         return;
       }
-      // Show "Published!" briefly before removing the card
       setPublished((prev) => new Set(prev).add(id));
       setTimeout(() => {
         setArticles((prev) => prev.filter((a) => a.id !== id));
@@ -138,36 +171,52 @@ export default function ScheduledClient({ initialArticles }: { initialArticles: 
               </h2>
               <div className="flex flex-col gap-3">
                 {drafts.map((a) => (
-                  <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200 flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className="text-lg">✍️</span>
-                      <div className="min-w-0">
-                        <a
-                          href={a.source_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-medium text-amber-900 text-sm hover:text-amber-600 transition-colors block leading-snug"
-                        >
-                          {a.raw_title ?? a.source_url}
-                        </a>
-                        <p className="text-xs text-amber-500 mt-0.5">{a.source_name}</p>
+                  <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <span className="text-lg">✍️</span>
+                        <div className="min-w-0">
+                          <a
+                            href={a.source_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-amber-900 text-sm hover:text-amber-600 transition-colors block leading-snug"
+                          >
+                            {a.raw_title ?? a.source_url}
+                          </a>
+                          <p className="text-xs text-amber-500 mt-0.5">{a.source_name}</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex gap-2 shrink-0">
-                      <button
-                        onClick={() => summarise(a.id)}
-                        disabled={summarising === a.id}
-                        className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50"
-                      >
-                        {summarising === a.id ? "Summarising..." : "Summarise ✨"}
-                      </button>
-                      <button
-                        onClick={() => remove(a.id)}
-                        disabled={summarising === a.id}
-                        className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50"
-                      >
-                        Remove
-                      </button>
+                      <div className="flex items-center gap-2 shrink-0">
+                        {topics.length > 0 && (
+                          <select
+                            value={a.topic_id ?? ""}
+                            onChange={(e) => setTopic(a.id, e.target.value ? Number(e.target.value) : null)}
+                            className="border border-yellow-200 rounded-lg px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400 bg-white"
+                          >
+                            <option value="">No topic</option>
+                            {topics.map((t) => (
+                              <option key={t.id} value={t.id}>
+                                {t.emoji} {t.name}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                        <button
+                          onClick={() => summarise(a.id)}
+                          disabled={summarising === a.id}
+                          className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50"
+                        >
+                          {summarising === a.id ? "Summarising..." : "Summarise ✨"}
+                        </button>
+                        <button
+                          onClick={() => remove(a.id)}
+                          disabled={summarising === a.id}
+                          className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50"
+                        >
+                          Remove
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -202,20 +251,37 @@ export default function ScheduledClient({ initialArticles }: { initialArticles: 
                   <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200">
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0 flex-1">
-                        <a
-                          href={a.source_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-semibold text-amber-900 text-sm hover:text-amber-600 transition-colors block leading-snug"
-                        >
-                          {String(a[titleKey] ?? a.source_url)}
-                        </a>
-                        <p className="text-xs text-amber-600 leading-relaxed my-1.5">
+                        <div className="flex items-center gap-2 mb-1">
+                          {a.topic_emoji && <span className="text-base">{a.topic_emoji}</span>}
+                          <a
+                            href={a.source_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-semibold text-amber-900 text-sm hover:text-amber-600 transition-colors leading-snug"
+                          >
+                            {String(a[titleKey] ?? a.source_url)}
+                          </a>
+                        </div>
+                        <p className="text-xs text-amber-600 leading-relaxed mb-1.5">
                           {String(a[summaryKey] ?? "")}
                         </p>
                         <p className="text-xs text-amber-400">{a.source_name}</p>
                       </div>
                       <div className="flex flex-col items-end gap-2 shrink-0">
+                        {topics.length > 0 && (
+                          <select
+                            value={a.topic_id ?? ""}
+                            onChange={(e) => setTopic(a.id, e.target.value ? Number(e.target.value) : null)}
+                            className="border border-yellow-200 rounded-lg px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400 bg-white"
+                          >
+                            <option value="">No topic</option>
+                            {topics.map((t) => (
+                              <option key={t.id} value={t.id}>
+                                {t.emoji} {t.name}
+                              </option>
+                            ))}
+                          </select>
+                        )}
                         <input
                           type="date"
                           value={a.publish_date?.slice(0, 10) ?? new Date().toISOString().slice(0, 10)}

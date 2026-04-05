@@ -18,13 +18,34 @@ export async function GET(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   const body = await request.json();
-  const { id, status, publish_date } = body;
+  const { id, status, publish_date, topic_id, reset_to_draft } = body;
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
+
+  // Reset a published article back to draft for re-summarisation
+  if (reset_to_draft) {
+    await db.execute({
+      sql: `UPDATE articles SET status = 'draft',
+              title_en = NULL, title_nl = NULL, title_fr = NULL,
+              summary_en = NULL, summary_nl = NULL, summary_fr = NULL,
+              published_at = NULL
+            WHERE id = ?`,
+      args: [id],
+    });
+    return Response.json({ ok: true });
+  }
 
   if (publish_date !== undefined) {
     await db.execute({
       sql: "UPDATE articles SET publish_date = ? WHERE id = ?",
       args: [publish_date, id],
+    });
+    return Response.json({ ok: true });
+  }
+
+  if (topic_id !== undefined) {
+    await db.execute({
+      sql: "UPDATE articles SET topic_id = ? WHERE id = ?",
+      args: [topic_id === null ? null : Number(topic_id), id],
     });
     return Response.json({ ok: true });
   }

@@ -16,6 +16,9 @@ export default function PreviewPage() {
   const [articles, setArticles] = useState<RawArticle[]>([]);
   const [fetching, setFetching] = useState(false);
   const [fetchResult, setFetchResult] = useState<{ added: number; filtered: number; skipped: number } | null>(null);
+  const [manualUrl, setManualUrl] = useState("");
+  const [manualLoading, setManualLoading] = useState(false);
+  const [manualResult, setManualResult] = useState<{ ok: boolean; message: string } | null>(null);
 
   async function load() {
     const res = await fetch("/api/articles?status=pending");
@@ -32,6 +35,31 @@ export default function PreviewPage() {
     setFetchResult(data);
     setFetching(false);
     load();
+  }
+
+  async function addManualUrl(e: React.FormEvent) {
+    e.preventDefault();
+    if (!manualUrl.trim()) return;
+    setManualLoading(true);
+    setManualResult(null);
+    try {
+      const res = await fetch("/api/manual-url", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: manualUrl.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setManualResult({ ok: false, message: data.error ?? `Error ${res.status}` });
+      } else {
+        setManualResult({ ok: true, message: `Added: "${data.title}"` });
+        setManualUrl("");
+        load();
+      }
+    } catch (err) {
+      setManualResult({ ok: false, message: err instanceof Error ? err.message : "Unknown error" });
+    }
+    setManualLoading(false);
   }
 
   async function updateStatus(id: number, status: "approved" | "discarded") {
@@ -59,6 +87,29 @@ export default function PreviewPage() {
         Review incoming articles. Approve the ones worth summarising, discard the rest.
       </p>
 
+      {/* Manual URL input */}
+      <form onSubmit={addManualUrl} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200 mb-4 flex gap-3 items-center">
+        <input
+          type="url"
+          placeholder="Paste a URL to add manually…"
+          value={manualUrl}
+          onChange={(e) => { setManualUrl(e.target.value); setManualResult(null); }}
+          className="flex-1 border border-yellow-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-yellow-400 text-amber-900 placeholder:text-amber-300"
+        />
+        <button
+          type="submit"
+          disabled={manualLoading || !manualUrl.trim()}
+          className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50 shrink-0"
+        >
+          {manualLoading ? "Adding…" : "Add URL"}
+        </button>
+      </form>
+      {manualResult && (
+        <div className={`rounded-lg px-4 py-2 text-sm mb-4 ${manualResult.ok ? "bg-green-50 border border-green-200 text-green-700" : "bg-red-50 border border-red-200 text-red-700"}`}>
+          {manualResult.message}
+        </div>
+      )}
+
       {fetchResult && (
         <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-2 text-sm text-green-700 mb-6">
           {fetchResult.added} positive article{fetchResult.added !== 1 ? "s" : ""} found
@@ -70,7 +121,7 @@ export default function PreviewPage() {
       <div className="flex flex-col gap-4">
         {articles.length === 0 && (
           <p className="text-amber-600 text-sm">
-            No pending articles. Hit &quot;Fetch new articles&quot; to pull from your sources.
+            No pending articles. Hit "Fetch new articles" to pull from your sources, or paste a URL above.
           </p>
         )}
         {articles.map((article) => (
