@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type RawArticle = {
   id: number;
@@ -12,29 +12,89 @@ type RawArticle = {
   status: string;
 };
 
+type LogLine =
+  | { type: "start"; totalSources: number }
+  | { type: "source"; name: string; url: string }
+  | { type: "article"; verdict: "added" | "filtered"; title: string; reason?: string }
+  | { type: "source_done"; name: string; added: number; filtered: number; skipped: number }
+  | { type: "source_error"; name: string; message: string }
+  | { type: "done"; added: number; filtered: number; skipped: number }
+  | { type: "fatal"; message: string };
+
 export default function PreviewPage() {
   const [articles, setArticles] = useState<RawArticle[]>([]);
   const [fetching, setFetching] = useState(false);
-  const [fetchResult, setFetchResult] = useState<{ added: number; filtered: number; skipped: number } | null>(null);
+  const [logs, setLogs] = useState<LogLine[]>([]);
+  const [progress, setProgress] = useState(0); // 0–100
+  const [totalSources, setTotalSources] = useState(0);
+  const [sourcesDone, setSourcesDone] = useState(0);
   const [manualUrl, setManualUrl] = useState("");
   const [manualLoading, setManualLoading] = useState(false);
   const [manualResult, setManualResult] = useState<{ ok: boolean; message: string } | null>(null);
+  const logRef = useRef<HTMLDivElement>(null);
 
   async function load() {
     const res = await fetch("/api/articles?status=pending");
     setArticles(await res.json());
   }
-
   useEffect(() => { load(); }, []);
+
+  // Auto-scroll log to bottom as lines arrive
+  useEffect(() => {
+    if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
+  }, [logs]);
 
   async function fetchNew() {
     setFetching(true);
-    setFetchResult(null);
-    const res = await fetch("/api/fetch", { method: "POST" });
-    const data = await res.json();
-    setFetchResult(data);
-    setFetching(false);
-    load();
+    setLogs([]);
+    setProgress(0);
+    setTotalSources(0);
+    setSourcesDone(0);
+
+    try {
+      const res = await fetch("/api/fetch", { method: "POST" });
+      if (!res.body) throw new Error("No response body");
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let total = 0;
+      let done_ = 0;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          try {
+            const event = JSON.parse(line) as LogLine;
+            setLogs(prev => [...prev, event]);
+
+            if (event.type === "start") {
+              total = event.totalSources;
+              setTotalSources(total);
+            }
+            if (event.type === "source_done" || event.type === "source_error") {
+              done_++;
+              setSourcesDone(done_);
+              setProgress(total > 0 ? Math.round((done_ / total) * 100) : 0);
+            }
+            if (event.type === "done" || event.type === "fatal") {
+              setProgress(100);
+              setFetching(false);
+              load();
+            }
+          } catch { /* malformed line */ }
+        }
+      }
+    } catch (err) {
+      setLogs(prev => [...prev, { type: "fatal", message: String(err) }]);
+      setFetching(false);
+    }
   }
 
   async function addManualUrl(e: React.FormEvent) {
@@ -68,8 +128,11 @@ export default function PreviewPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, status }),
     });
-    setArticles((prev) => prev.filter((a) => a.id !== id));
+    setArticles(prev => prev.filter(a => a.id !== id));
   }
+
+  const isDone = logs.some(l => l.type === "done" || l.type === "fatal");
+  const doneEvent = logs.find((l): l is Extract<LogLine, { type: "done" }> => l.type === "done");
 
   return (
     <div>
@@ -80,7 +143,7 @@ export default function PreviewPage() {
           disabled={fetching}
           className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
         >
-          {fetching ? "Fetching..." : "Fetch new articles"}
+          {fetching ? "Fetching…" : "Fetch new articles"}
         </button>
       </div>
       <p className="text-amber-700 text-sm mb-4">
@@ -93,7 +156,7 @@ export default function PreviewPage() {
           type="url"
           placeholder="Paste a URL to add manually…"
           value={manualUrl}
-          onChange={(e) => { setManualUrl(e.target.value); setManualResult(null); }}
+          onChange={e => { setManualUrl(e.target.value); setManualResult(null); }}
           className="flex-1 border border-yellow-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-yellow-400 text-amber-900 placeholder:text-amber-300"
         />
         <button
@@ -110,56 +173,96 @@ export default function PreviewPage() {
         </div>
       )}
 
-      {fetchResult && (
-        <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-2 text-sm text-green-700 mb-6">
-          {fetchResult.added} positive article{fetchResult.added !== 1 ? "s" : ""} found
-          {fetchResult.filtered > 0 && ` · ${fetchResult.filtered} filtered out as not a fit`}
-          {fetchResult.skipped > 0 && ` · ${fetchResult.skipped} already known`}
+      {/* ── Fetch log panel ── */}
+      {(fetching || logs.length > 0) && (
+        <div className="bg-amber-950 rounded-xl mb-6 overflow-hidden shadow-lg">
+
+          {/* Progress bar */}
+          <div className="px-4 pt-3 pb-2">
+            <div className="flex items-center justify-between text-xs text-amber-400 mb-1.5">
+              <span>
+                {fetching
+                  ? `Scanning source ${sourcesDone + 1} of ${totalSources}…`
+                  : isDone ? "Fetch complete" : "Starting…"}
+              </span>
+              <span>{progress}%</span>
+            </div>
+            <div className="h-1.5 bg-amber-800 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-yellow-400 rounded-full transition-all duration-300"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+
+          {/* Log lines */}
+          <div
+            ref={logRef}
+            className="px-4 pb-4 font-mono text-xs leading-relaxed overflow-y-auto max-h-72"
+          >
+            {logs.map((line, i) => {
+              if (line.type === "start")
+                return <div key={i} className="text-amber-400 mt-1">Found {line.totalSources} sources to scan</div>;
+              if (line.type === "source")
+                return <div key={i} className="text-yellow-300 font-semibold mt-2">📡 {line.name}</div>;
+              if (line.type === "article" && line.verdict === "added")
+                return <div key={i} className="text-green-400 pl-3">✓ {line.title}</div>;
+              if (line.type === "article" && line.verdict === "filtered")
+                return <div key={i} className="text-red-400 pl-3">✗ {line.title}{line.reason ? <span className="text-red-600"> — {line.reason}</span> : null}</div>;
+              if (line.type === "source_done")
+                return <div key={i} className="text-amber-600 pl-3 pb-1">↳ +{line.added} added · {line.filtered} filtered · {line.skipped} already known</div>;
+              if (line.type === "source_error")
+                return <div key={i} className="text-orange-400 pl-3">⚠ {line.name}: {line.message}</div>;
+              if (line.type === "done")
+                return <div key={i} className="text-green-300 font-semibold mt-2">✅ Done — {line.added} added · {line.filtered} filtered · {line.skipped} already known</div>;
+              if (line.type === "fatal")
+                return <div key={i} className="text-red-300 font-semibold mt-2">💥 {line.message}</div>;
+              return null;
+            })}
+            {fetching && <div className="text-amber-700 animate-pulse mt-1">▌</div>}
+          </div>
+
+          {/* Summary bar when done */}
+          {doneEvent && (
+            <div className="border-t border-amber-800 px-4 py-2 flex gap-4 text-xs">
+              <span className="text-green-400 font-semibold">+{doneEvent.added} new</span>
+              <span className="text-red-400">{doneEvent.filtered} filtered</span>
+              <span className="text-amber-600">{doneEvent.skipped} skipped</span>
+            </div>
+          )}
         </div>
       )}
 
+      {/* Article list */}
       <div className="flex flex-col gap-4">
-        {articles.length === 0 && (
+        {articles.length === 0 && !fetching && (
           <p className="text-amber-600 text-sm">
             No pending articles. Hit "Fetch new articles" to pull from your sources, or paste a URL above.
           </p>
         )}
-        {articles.map((article) => (
-          <div
-            key={article.id}
-            className="bg-white rounded-xl p-5 shadow-sm border border-yellow-200"
-          >
+        {articles.map(article => (
+          <div key={article.id} className="bg-white rounded-xl p-5 shadow-sm border border-yellow-200">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
                 <p className="text-xs text-amber-500 mb-1">{article.source_name}</p>
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-amber-900 hover:text-amber-600 transition-colors text-sm leading-snug"
-                >
+                <a href={article.url} target="_blank" rel="noopener noreferrer"
+                  className="font-medium text-amber-900 hover:text-amber-600 transition-colors text-sm leading-snug">
                   {article.title}
                 </a>
                 {article.content && (
                   <p className="text-xs text-amber-600 mt-2 line-clamp-3">{article.content}</p>
                 )}
                 <p className="text-xs text-amber-400 mt-2">
-                  {new Date(article.fetched_at).toLocaleDateString("en-GB", {
-                    day: "numeric", month: "short", year: "numeric",
-                  })}
+                  {new Date(article.fetched_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                 </p>
               </div>
               <div className="flex gap-2 shrink-0">
-                <button
-                  onClick={() => updateStatus(article.id, "approved")}
-                  className="bg-green-100 hover:bg-green-200 text-green-700 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"
-                >
+                <button onClick={() => updateStatus(article.id, "approved")}
+                  className="bg-green-100 hover:bg-green-200 text-green-700 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
                   ✓ Approve
                 </button>
-                <button
-                  onClick={() => updateStatus(article.id, "discarded")}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-500 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"
-                >
+                <button onClick={() => updateStatus(article.id, "discarded")}
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-500 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
                   ✕ Discard
                 </button>
               </div>

@@ -35,73 +35,95 @@ Reply with JSON only — no other text:
     const parsed = JSON.parse(raw);
     return { fits: parsed.verdict === "YES", reason: parsed.reason ?? "" };
   } catch {
-    // Fallback: treat as YES/NO plain text
     return { fits: raw.toUpperCase().startsWith("YES"), reason: "" };
   }
 }
 
 export async function POST() {
-  // Fetch all active sources that have either a feed_url or are type='rss'
-  const sourcesResult = await db.execute(
-    "SELECT * FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss')"
-  );
+  const encoder = new TextEncoder();
 
-  let added = 0;
-  let filtered = 0;
-  let skipped = 0;
+  const stream = new ReadableStream({
+    async start(controller) {
+      const send = (data: object) => {
+        try {
+          controller.enqueue(encoder.encode(JSON.stringify(data) + "\n"));
+        } catch { /* stream already closed */ }
+      };
 
-  for (const source of sourcesResult.rows) {
-    // Use feed_url if set, otherwise fall back to url (legacy rss type)
-    const feedUrl = (source.feed_url ?? source.url) as string;
-    try {
-      const feed = await parser.parseURL(feedUrl);
-      for (const item of feed.items.slice(0, 20)) {
-        if (!item.link || !item.title) continue;
+      try {
+        const sourcesResult = await db.execute(
+          "SELECT * FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss')"
+        );
+        const sources = sourcesResult.rows;
 
-        // Skip if already seen (either pending/approved/discarded or previously rejected)
-        const [existingRaw, existingRejected] = await Promise.all([
-          db.execute({ sql: "SELECT id FROM raw_articles WHERE url = ?", args: [item.link] }),
-          db.execute({ sql: "SELECT id FROM rejected_articles WHERE url = ?", args: [item.link] }),
-        ]);
-        if (existingRaw.rows.length > 0 || existingRejected.rows.length > 0) {
-          skipped++;
-          continue;
-        }
+        send({ type: "start", totalSources: sources.length });
 
-        const snippet = item.contentSnippet ?? item.content ?? "";
-        const { fits, reason } = await checkPositivity(item.title, snippet);
+        let totalAdded = 0, totalFiltered = 0, totalSkipped = 0;
 
-        if (!fits) {
-          filtered++;
-          // Store in rejection log with the reason
+        for (const source of sources) {
+          const feedUrl = (source.feed_url ?? source.url) as string;
+          send({ type: "source", name: source.name as string, url: feedUrl });
+
+          let added = 0, filtered = 0, skipped = 0;
+
           try {
-            await db.execute({
-              sql: `INSERT OR IGNORE INTO rejected_articles
-                    (source_id, source_name, url, title, snippet, rejection_reason)
-                    VALUES (?, ?, ?, ?, ?, ?)`,
-              args: [
-                source.id,
-                source.name as string,
-                item.link,
-                item.title,
-                snippet.slice(0, 500),
-                reason,
-              ],
-            });
-          } catch { /* duplicate url — fine */ }
-          continue;
+            const feed = await parser.parseURL(feedUrl);
+            const items = feed.items.slice(0, 20).filter(i => i.link && i.title);
+
+            for (const item of items) {
+              const [existingRaw, existingRejected] = await Promise.all([
+                db.execute({ sql: "SELECT id FROM raw_articles WHERE url = ?", args: [item.link!] }),
+                db.execute({ sql: "SELECT id FROM rejected_articles WHERE url = ?", args: [item.link!] }),
+              ]);
+
+              if (existingRaw.rows.length > 0 || existingRejected.rows.length > 0) {
+                skipped++;
+                continue; // don't log individual skips — too noisy
+              }
+
+              const snippet = item.contentSnippet ?? item.content ?? "";
+              const { fits, reason } = await checkPositivity(item.title!, snippet);
+
+              if (!fits) {
+                filtered++;
+                send({ type: "article", verdict: "filtered", title: item.title!, reason });
+                try {
+                  await db.execute({
+                    sql: `INSERT OR IGNORE INTO rejected_articles
+                          (source_id, source_name, url, title, snippet, rejection_reason)
+                          VALUES (?, ?, ?, ?, ?, ?)`,
+                    args: [source.id, source.name as string, item.link!, item.title!, snippet.slice(0, 500), reason],
+                  });
+                } catch { /* duplicate */ }
+              } else {
+                await db.execute({
+                  sql: "INSERT INTO raw_articles (source_id, url, title, content) VALUES (?, ?, ?, ?)",
+                  args: [source.id, item.link!, item.title!, snippet],
+                });
+                added++;
+                send({ type: "article", verdict: "added", title: item.title! });
+              }
+            }
+          } catch (err) {
+            send({ type: "source_error", name: source.name as string, message: String(err) });
+          }
+
+          send({ type: "source_done", name: source.name as string, added, filtered, skipped });
+          totalAdded += added;
+          totalFiltered += filtered;
+          totalSkipped += skipped;
         }
 
-        await db.execute({
-          sql: "INSERT INTO raw_articles (source_id, url, title, content) VALUES (?, ?, ?, ?)",
-          args: [source.id, item.link, item.title, snippet],
-        });
-        added++;
+        send({ type: "done", added: totalAdded, filtered: totalFiltered, skipped: totalSkipped });
+      } catch (err) {
+        send({ type: "fatal", message: String(err) });
       }
-    } catch (err) {
-      console.error(`Failed to fetch source ${source.name as string}:`, err);
-    }
-  }
 
-  return Response.json({ added, filtered, skipped });
+      controller.close();
+    },
+  });
+
+  return new Response(stream, {
+    headers: { "Content-Type": "application/x-ndjson" },
+  });
 }
