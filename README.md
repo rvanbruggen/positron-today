@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 ---
 
@@ -299,6 +299,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.1.0** | Source publication dates captured from RSS, shown on cards and in admin tables; date-range filter on homepage; dual dates in History and Rejections admin tables; start.sh / stop.sh scripts to launch all services from the repo root |
 | **1.0.0** | Language switcher moved to nav bar (global, all pages); compact multi-select tag filter on homepage; 5 new rejection categories; source publication date captured from RSS and shown alongside publish date; fetch counter bug fixed; language restore fixed on negativity page |
 | **0.9.0** | Sortable rejections table; stop/reset backfill controls; backfill category fix (generate vs classify); Ollama model mismatch guard; settings empty-string fallback |
 | **0.8.1** | History page redesigned as compact table with live-post link, source, tags, date, and Republish / Re-summarise / Remove actions; Remove now deletes the file from GitHub too |
