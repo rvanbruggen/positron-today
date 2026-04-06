@@ -86,9 +86,20 @@ Output this exact JSON shape and nothing else:
   const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
   if (!jsonMatch) throw new Error(`Unexpected LLM response: ${raw.slice(0, 120)}`);
   const parsed = JSON.parse(jsonMatch[0]);
-  if (!parsed.emoji) parsed.emoji = "✨";
-  if (!Array.isArray(parsed.suggested_tags)) parsed.suggested_tags = [];
-  return parsed;
+
+  // Ensure every field has a non-undefined string value so libsql never
+  // receives undefined as a query argument (happens when the model omits a field).
+  const str = (v: unknown, fallback = "") => (typeof v === "string" && v.trim() ? v.trim() : fallback);
+  return {
+    title_nl:       str(parsed.title_nl),
+    title_fr:       str(parsed.title_fr),
+    title_en:       str(parsed.title_en),
+    summary_nl:     str(parsed.summary_nl),
+    summary_fr:     str(parsed.summary_fr),
+    summary_en:     str(parsed.summary_en),
+    emoji:          str(parsed.emoji, "✨"),
+    suggested_tags: Array.isArray(parsed.suggested_tags) ? parsed.suggested_tags : [],
+  };
 }
 
 export async function POST(request: NextRequest) {
