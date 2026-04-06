@@ -34,9 +34,13 @@ Reply with JSON only — no other text:
   const raw = (message.content[0] as { type: string; text: string }).text.trim();
   try {
     const parsed = JSON.parse(raw);
-    return { fits: parsed.verdict === "YES", reason: parsed.reason ?? "" };
+    return {
+      fits: parsed.verdict === "YES",
+      reason: parsed.reason || (parsed.verdict === "NO" ? "does not fit positive news criteria" : ""),
+    };
   } catch {
-    return { fits: raw.toUpperCase().startsWith("YES"), reason: "" };
+    const fits = raw.toUpperCase().startsWith("YES");
+    return { fits, reason: fits ? "" : "does not fit positive news criteria" };
   }
 }
 

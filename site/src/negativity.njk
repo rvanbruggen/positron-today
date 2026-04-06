@@ -111,9 +111,9 @@ title: The News We Skip
         <span>{{ item.source }}</span>
         <span>{{ item.date }}</span>
       </div>
-      {% if item.reason %}
-      <p class="rejection-reason">{{ item.reason }}</p>
-      {% endif %}
+      <p class="rejection-reason">
+        {% if item.reason %}{{ item.reason }}{% else %}does not fit positive news criteria{% endif %}
+      </p>
     </div>
     {% endfor %}
   </div>

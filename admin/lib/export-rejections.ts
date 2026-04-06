@@ -38,7 +38,6 @@ export async function exportRejections(): Promise<{ exported: number }> {
     db.execute(`
       SELECT source_name, url, title, rejection_reason, fetched_at
       FROM rejected_articles
-      WHERE rejection_reason IS NOT NULL AND rejection_reason != ''
       ORDER BY fetched_at DESC
       LIMIT 300
     `),
@@ -57,7 +56,7 @@ export async function exportRejections(): Promise<{ exported: number }> {
     articles: articles.rows.map(r => ({
       source: r.source_name as string,
       title:  r.title as string,
-      reason: r.rejection_reason as string,
+      reason: (r.rejection_reason as string) || null,
       url:    r.url as string,
       date:   String(r.fetched_at).slice(0, 10),
     })),
