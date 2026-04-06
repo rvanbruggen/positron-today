@@ -50,8 +50,14 @@ Key rules:
 - Use casual connectives: "So:", "Now,", "Which brings me to...", "And here's the thing."
 - Use a dash "-" never an em-dash "—".
 - Titles: capitalise only the first word, everything else lowercase.
-- Keep summaries to 3-5 sentences. No bullet lists. No sign-off needed (this is a card, not a full post).
-- Always positive tone - this is a positive news site.`;
+- Each summary MUST be exactly 4-5 sentences. Never fewer than 4. No bullet lists. No sign-off.
+- Always positive tone - this is a positive news site.
+
+LANGUAGE RULES — this is mandatory, never skip any language:
+- title_en and summary_en: write in ENGLISH
+- title_nl and summary_nl: write in DUTCH (Nederlands) - fully translate, do not copy the English
+- title_fr and summary_fr: write in FRENCH (Français) - fully translate, do not copy the English
+All six text fields are required. Never leave any field empty or copy text from another language field.`;
 
   const articleContext = sourceText
     ? `Article title: ${rawTitle ?? ""}\nArticle text:\n${sourceText}`
@@ -76,10 +82,19 @@ Also pick a single emoji that best represents the mood or subject of this specif
 
 ${tagInstructions}
 
-Output this exact JSON shape and nothing else:
-{"title_nl":"...","title_fr":"...","title_en":"...","summary_nl":"...","summary_fr":"...","summary_en":"...","emoji":"...","suggested_tags":[]}`,
-    "You output only raw JSON. No prose, no markdown, no code fences, no explanation. Every response is a single JSON object.",
-    1200,
+Output ONLY this exact JSON object and nothing else. All fields are required:
+{
+  "title_en": "Title in English",
+  "title_nl": "Titel in het Nederlands",
+  "title_fr": "Titre en français",
+  "summary_en": "4-5 sentence summary written in English.",
+  "summary_nl": "Samenvatting van 4-5 zinnen geschreven in het Nederlands.",
+  "summary_fr": "Résumé de 4-5 phrases écrit en français.",
+  "emoji": "🌟",
+  "suggested_tags": []
+}`,
+    "You output only raw JSON. No prose, no markdown, no code fences, no explanation. Every response must be a single complete JSON object with all 8 fields filled in.",
+    2400,
   );
 
   const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();

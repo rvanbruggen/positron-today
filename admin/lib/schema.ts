@@ -82,6 +82,10 @@ export async function initSchema() {
       key   TEXT PRIMARY KEY,
       value TEXT NOT NULL
     )`,
+
+    // v0.8.1: remember the GitHub path used when an article was first published
+    // so re-publishing always overwrites the same file instead of creating a new one
+    "ALTER TABLE articles ADD COLUMN published_path TEXT",
   ];
 
   for (const sql of migrations) {

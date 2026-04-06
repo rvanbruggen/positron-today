@@ -116,16 +116,26 @@ export async function POST(request: NextRequest) {
     const date = article.publish_date
       ? String(article.publish_date).slice(0, 10)
       : new Date().toISOString().slice(0, 10);
-    const titleSlug = slugify(String(article.title_en ?? article.title_nl ?? String(article.id)));
-    const filename = `${date}-${titleSlug}.md`;
-    const path = `site/src/posts/${filename}`;
+
+    // Reuse the path from the first publish so re-publishing always overwrites
+    // the same file rather than creating a duplicate with a slightly different slug.
+    const path: string = article.published_path
+      ? String(article.published_path)
+      : `site/src/posts/${date}-${slugify(String(article.title_en ?? article.title_nl ?? String(article.id)))}.md`;
 
     const markdown = generateMarkdown(article as Record<string, unknown>, tagNames);
-    await commitToGitHub(path, markdown, `Add post: ${String(article.title_en ?? filename)}`);
+    const isRepublish = !!article.published_path;
+    await commitToGitHub(
+      path,
+      markdown,
+      isRepublish
+        ? `Update post: ${String(article.title_en ?? path)}`
+        : `Add post: ${String(article.title_en ?? path)}`
+    );
 
     await db.execute({
-      sql: "UPDATE articles SET status = 'published', published_at = datetime('now') WHERE id = ?",
-      args: [id],
+      sql: "UPDATE articles SET status = 'published', published_at = datetime('now'), published_path = ? WHERE id = ?",
+      args: [path, id],
     });
 
     return Response.json({ ok: true, path });
