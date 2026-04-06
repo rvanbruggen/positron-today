@@ -15,7 +15,7 @@ export default async function HistoryPage() {
   const [articlesResult, tagsResult] = await Promise.all([
     db.execute(`
       SELECT a.id, a.title_en, a.title_nl, a.source_url, a.source_name,
-             a.article_emoji, a.published_at, a.publish_date,
+             a.article_emoji, a.published_at, a.publish_date, a.published_path,
              (SELECT GROUP_CONCAT(t.id || '|' || t.name || '|' || t.emoji, '~~')
               FROM article_tags at2
               JOIN topics t ON at2.tag_id = t.id
@@ -23,7 +23,7 @@ export default async function HistoryPage() {
       FROM articles a
       WHERE a.status = 'published'
       ORDER BY a.published_at DESC
-      LIMIT 100
+      LIMIT 200
     `),
     db.execute("SELECT id, name, emoji FROM topics ORDER BY name ASC"),
   ]);
@@ -38,6 +38,7 @@ export default async function HistoryPage() {
     tags: parseTagData(a.tag_data),
     published_at: a.published_at ? String(a.published_at) : null,
     publish_date: a.publish_date ? String(a.publish_date) : null,
+    published_path: a.published_path ? String(a.published_path) : null,
   }));
 
   const allTags = tagsResult.rows.map((t) => ({

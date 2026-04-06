@@ -105,7 +105,39 @@ export async function PATCH(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
+  const publishedPath = searchParams.get("published_path");
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
+
+  // If the article has a published_path, delete the file from GitHub too
+  if (publishedPath) {
+    const token  = process.env.GITHUB_TOKEN;
+    const repo   = process.env.GITHUB_REPO;
+    const branch = process.env.GITHUB_BRANCH ?? "main";
+    if (token && repo) {
+      try {
+        const url = `https://api.github.com/repos/${repo}/contents/${publishedPath}`;
+        const getRes = await fetch(url, {
+          headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json" },
+        });
+        if (getRes.ok) {
+          const { sha } = await getRes.json();
+          await fetch(url, {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: "application/vnd.github+json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message: `Remove post: ${publishedPath}`, sha, branch }),
+          });
+        }
+      } catch (err) {
+        console.error("GitHub file deletion failed:", err);
+        // Don't block the DB deletion if GitHub fails
+      }
+    }
+  }
+
   // article_tags rows cascade-delete automatically
   await db.execute({ sql: "DELETE FROM articles WHERE id = ?", args: [id] });
   return Response.json({ ok: true });
