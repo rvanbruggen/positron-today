@@ -4,6 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if title %}{{ title }} - {% endif %}Positiviteiten</title>
+  <script>
+    // Define setLang early (in <head>) so it is available to all page scripts
+    // before base.njk's closing <script> block runs.
+    // Pages that need extra block toggling (about, contact) override this
+    // in their own <script> block; because base.njk's bottom script no longer
+    // redefines setLang, the page-specific override persists for nav-button clicks.
+    function setLang(lang, btn) {
+      ['en','nl','fr'].forEach(function(l) {
+        document.querySelectorAll('.t-' + l).forEach(function(el) {
+          el.style.display = l === lang ? '' : 'none';
+        });
+      });
+      document.querySelectorAll('.nav-lang-btn').forEach(function(b) { b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      localStorage.setItem('positiviteiten-lang', lang);
+    }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -150,19 +167,9 @@
     &nbsp;·&nbsp; v{{ meta.version }}
   </footer>
   <script>
-    // Global setLang — toggles all .t-en/.t-nl/.t-fr spans across the whole page
-    // (nav, footer, page content). Pages may call this directly from their own JS.
-    function setLang(lang, btn) {
-      ['en','nl','fr'].forEach(function(l) {
-        document.querySelectorAll('.t-' + l).forEach(function(el) {
-          el.style.display = l === lang ? '' : 'none';
-        });
-      });
-      document.querySelectorAll('.nav-lang-btn').forEach(function(b) { b.classList.remove('active'); });
-      if (btn) btn.classList.add('active');
-      localStorage.setItem('positiviteiten-lang', lang);
-    }
-    // Restore saved language on every page load
+    // Restore saved language on every page load.
+    // setLang is already defined in <head> (or overridden by a page-specific
+    // script for about/contact), so it is always available here.
     (function() {
       var lang = localStorage.getItem('positiviteiten-lang') || 'en';
       if (lang !== 'en') {
