@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
+import { exportRejections } from "@/lib/export-rejections";
 
 export async function GET() {
   const result = await db.execute(`
@@ -39,6 +40,9 @@ export async function POST(request: NextRequest) {
 
   // Remove from rejected so it doesn't show as both
   await db.execute({ sql: "DELETE FROM rejected_articles WHERE id = ?", args: [id] });
+
+  // Keep the public rejection log in sync — fire and forget, don't block the response
+  exportRejections().catch(err => console.error("Export after override failed:", err));
 
   return Response.json({ ok: true });
 }
