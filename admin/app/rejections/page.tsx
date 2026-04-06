@@ -47,7 +47,9 @@ export default function RejectionsPage() {
   const [backfillLog, setBackfillLog] = useState<string[]>([]);
   const [backfillDone, setBackfillDone] = useState(false);
   const [backfillProgress, setBackfillProgress] = useState<{ processed: number; total: number } | null>(null);
+  const [resetting, setResetting] = useState(false);
   const logRef = useRef<HTMLDivElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   async function load() {
     const res = await fetch("/api/rejected");
@@ -88,55 +90,85 @@ export default function RejectionsPage() {
     setExportMsg(res.ok ? `✓ Exported ${data.exported} articles to the public site` : `Error: ${data.error}`);
   }
 
+  function stopBackfill() {
+    abortRef.current?.abort();
+    setBackfillLog(prev => [...prev, "⏹ Stopped by user."]);
+    setBackfillDone(true);
+    setBackfilling(false);
+  }
+
+  async function resetCategories() {
+    if (!confirm("This will clear all rejection categories so you can re-run the backfill. Continue?")) return;
+    setResetting(true);
+    await fetch("/api/backfill-categories", { method: "DELETE" });
+    setResetting(false);
+    setBackfillLog([]);
+    setBackfillDone(false);
+    setBackfillProgress(null);
+    await load(); // reload items so uncategorised count updates
+  }
+
   async function startBackfill() {
+    const abort = new AbortController();
+    abortRef.current = abort;
     setBackfilling(true);
     setBackfillDone(false);
     setBackfillLog(["Starting backfill…"]);
     setBackfillProgress(null);
 
-    const res = await fetch("/api/backfill-categories", { method: "POST" });
+    let res: Response;
+    try {
+      res = await fetch("/api/backfill-categories", { method: "POST", signal: abort.signal });
+    } catch {
+      setBackfillLog(prev => [...prev, "⏹ Aborted."]);
+      setBackfilling(false);
+      return;
+    }
     if (!res.body) { setBackfilling(false); return; }
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
     let buf = "";
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buf += decoder.decode(value, { stream: true });
-      const lines = buf.split("\n");
-      buf = lines.pop() ?? "";
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        const lines = buf.split("\n");
+        buf = lines.pop() ?? "";
 
-      for (const line of lines) {
-        if (!line.trim()) continue;
-        try {
-          const ev = JSON.parse(line) as BackfillEvent;
-          if (ev.type === "start") {
-            setBackfillLog(prev => [...prev, `Found ${ev.total} articles to categorise.`]);
-          } else if (ev.type === "progress") {
-            setBackfillProgress({ processed: ev.processed, total: ev.total });
-            const cat = CATEGORY_MAP.get(ev.category);
-            setBackfillLog(prev => [...prev, `[${ev.processed}/${ev.total}] ${cat?.emoji ?? "?"} ${cat?.label ?? ev.category} — ${ev.title.slice(0, 60)}`]);
-            // Update item in local state
-            setItems(prev => prev.map(i => i.id === ev.id ? { ...i, rejection_category: ev.category, rejection_reason: ev.reason } : i));
-          } else if (ev.type === "item_error") {
-            setBackfillLog(prev => [...prev, `⚠ Error on "${ev.title.slice(0, 40)}": ${ev.message}`]);
-          } else if (ev.type === "done") {
-            setBackfillLog(prev => [...prev, `✓ Done — ${ev.processed} categorised, ${ev.errors ?? 0} errors.`]);
-            setBackfillDone(true);
-          } else if (ev.type === "exporting") {
-            setBackfillLog(prev => [...prev, "Exporting to public site…"]);
-          } else if (ev.type === "exported") {
-            setBackfillLog(prev => [...prev, `✓ Exported ${ev.count} articles.`]);
-          } else if (ev.type === "export_error") {
-            setBackfillLog(prev => [...prev, `⚠ Export error: ${ev.message}`]);
-          } else if (ev.type === "fatal") {
-            setBackfillLog(prev => [...prev, `✗ Fatal: ${ev.message}`]);
-            setBackfillDone(true);
-          }
-        } catch { /* malformed line */ }
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          try {
+            const ev = JSON.parse(line) as BackfillEvent;
+            if (ev.type === "start") {
+              setBackfillLog(prev => [...prev, `Found ${ev.total} articles to categorise.`]);
+            } else if (ev.type === "progress") {
+              setBackfillProgress({ processed: ev.processed, total: ev.total });
+              const cat = CATEGORY_MAP.get(ev.category);
+              setBackfillLog(prev => [...prev, `[${ev.processed}/${ev.total}] ${cat?.emoji ?? "?"} ${cat?.label ?? ev.category} — ${ev.title.slice(0, 60)}`]);
+              setItems(prev => prev.map(i => i.id === ev.id ? { ...i, rejection_category: ev.category, rejection_reason: ev.reason } : i));
+            } else if (ev.type === "item_error") {
+              setBackfillLog(prev => [...prev, `⚠ Error on "${ev.title.slice(0, 40)}": ${ev.message}`]);
+            } else if (ev.type === "done") {
+              setBackfillLog(prev => [...prev, `✓ Done — ${ev.processed} categorised, ${ev.errors ?? 0} errors.`]);
+              setBackfillDone(true);
+            } else if (ev.type === "exporting") {
+              setBackfillLog(prev => [...prev, "Exporting to public site…"]);
+            } else if (ev.type === "exported") {
+              setBackfillLog(prev => [...prev, `✓ Exported ${ev.count} articles.`]);
+            } else if (ev.type === "export_error") {
+              setBackfillLog(prev => [...prev, `⚠ Export error: ${ev.message}`]);
+            } else if (ev.type === "fatal") {
+              setBackfillLog(prev => [...prev, `✗ Fatal: ${ev.message}`]);
+              setBackfillDone(true);
+            }
+          } catch { /* malformed line */ }
+        }
       }
+    } catch {
+      // AbortError or network error — already handled by stopBackfill
     }
     setBackfilling(false);
   }
@@ -232,7 +264,7 @@ export default function RejectionsPage() {
 
       {/* Backfill panel */}
       <div className="bg-white rounded-xl border border-yellow-200 p-4 mb-6">
-        <div className="flex items-center justify-between gap-4 mb-2">
+        <div className="flex items-center justify-between gap-4 mb-2 flex-wrap">
           <div>
             <p className="text-sm font-semibold text-amber-900">Backfill categories</p>
             <p className="text-xs text-amber-600 mt-0.5">
@@ -241,11 +273,26 @@ export default function RejectionsPage() {
                 : "All articles have been categorised. ✓"}
             </p>
           </div>
-          <button onClick={startBackfill}
-            disabled={backfilling || uncategorisedCount === 0}
-            className="bg-amber-100 hover:bg-amber-200 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50 whitespace-nowrap shrink-0">
-            {backfilling ? "Running…" : "Backfill now"}
-          </button>
+          <div className="flex gap-2 shrink-0">
+            {backfilling ? (
+              <button onClick={stopBackfill}
+                className="bg-red-100 hover:bg-red-200 text-red-800 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors whitespace-nowrap">
+                ⏹ Stop
+              </button>
+            ) : (
+              <button onClick={startBackfill}
+                disabled={uncategorisedCount === 0}
+                className="bg-amber-100 hover:bg-amber-200 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50 whitespace-nowrap">
+                Backfill now
+              </button>
+            )}
+            <button onClick={resetCategories}
+              disabled={backfilling || resetting}
+              title="Clear all categories and re-run backfill"
+              className="bg-white hover:bg-red-50 text-red-600 border border-red-200 font-medium px-3 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50 whitespace-nowrap">
+              {resetting ? "Resetting…" : "Reset"}
+            </button>
+          </div>
         </div>
 
         {backfillLog.length > 0 && (

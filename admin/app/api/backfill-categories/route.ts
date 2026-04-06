@@ -26,11 +26,40 @@ Reply with JSON only — no other text:
 Valid category slugs:
 ${CATEGORY_PROMPT_LIST}`;
 
-  const result = await provider.classify(prompt);
-  return {
-    reason: result.reason || existingReason || "does not fit positive news criteria",
-    category: result.category ?? "other-negative",
-  };
+  // Use generate() so we get the raw text back and can parse {"reason","category"}
+  // directly — classify() expects a {"verdict":"YES"/"NO"} response shape and would
+  // discard the category field when no verdict key is present.
+  const raw = await provider.generate(prompt);
+
+  // Strip markdown fences if the model wrapped the JSON
+  const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+  const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+  try {
+    const parsed = JSON.parse(jsonMatch ? jsonMatch[0] : cleaned);
+    return {
+      reason:   (typeof parsed.reason === "string" && parsed.reason)
+                  ? parsed.reason
+                  : existingReason || "does not fit positive news criteria",
+      category: (typeof parsed.category === "string" && parsed.category)
+                  ? parsed.category
+                  : "other-negative",
+    };
+  } catch {
+    return {
+      reason:   existingReason || "does not fit positive news criteria",
+      category: "other-negative",
+    };
+  }
+}
+
+/** DELETE — reset all rejection_category values so backfill can re-run cleanly */
+export async function DELETE() {
+  try {
+    await db.execute(`UPDATE rejected_articles SET rejection_category = NULL`);
+    return Response.json({ ok: true });
+  } catch (err) {
+    return Response.json({ error: String(err) }, { status: 500 });
+  }
 }
 
 export async function POST() {
