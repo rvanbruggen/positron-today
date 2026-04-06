@@ -19,6 +19,7 @@ import { getSettings, type LLMSettings } from "./settings";
 export interface ClassifyResult {
   fits: boolean;
   reason: string;
+  category?: string;   // rejection category slug, present only when fits === false
 }
 
 export interface LLMProvider {
@@ -47,7 +48,7 @@ class AnthropicProvider implements LLMProvider {
   async classify(prompt: string): Promise<ClassifyResult> {
     const message = await anthropic.messages.create({
       model: this.model,
-      max_tokens: 80,
+      max_tokens: 200,
       messages: [{ role: "user", content: prompt }],
     });
     const raw = (message.content[0] as { type: string; text: string }).text.trim();
@@ -125,15 +126,20 @@ class OllamaProvider implements LLMProvider {
 // ---------------------------------------------------------------------------
 
 function parseClassifyResponse(raw: string): ClassifyResult {
+  // Strip markdown code fences if the model wrapped the JSON
+  const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+  const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+  const jsonStr = jsonMatch ? jsonMatch[0] : cleaned;
   try {
-    const parsed = JSON.parse(raw);
+    const parsed = JSON.parse(jsonStr);
     return {
       fits: parsed.verdict === "YES",
       reason: parsed.reason || (parsed.verdict === "NO" ? "does not fit positive news criteria" : ""),
+      category: parsed.verdict === "NO" ? (parsed.category ?? "other-negative") : undefined,
     };
   } catch {
     const fits = raw.toUpperCase().includes('"YES"') || raw.toUpperCase().startsWith("YES");
-    return { fits, reason: fits ? "" : "does not fit positive news criteria" };
+    return { fits, reason: fits ? "" : "does not fit positive news criteria", category: fits ? undefined : "other-negative" };
   }
 }
 

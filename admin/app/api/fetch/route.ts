@@ -1,6 +1,7 @@
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
 import { getFilterProvider } from "@/lib/llm";
+import { CATEGORY_PROMPT_LIST, CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import RSSParser from "rss-parser";
 
 const parser = new RSSParser();
@@ -8,7 +9,7 @@ const parser = new RSSParser();
 async function checkPositivity(
   title: string,
   snippet: string
-): Promise<{ fits: boolean; reason: string }> {
+): Promise<{ fits: boolean; reason: string; category: string }> {
   const provider = await getFilterProvider();
 
   const prompt = `You are a filter for "Positiviteiten", a positive-news website.
@@ -20,10 +21,21 @@ NOT a good fit: crime, war, political conflict, disasters, economic doom, health
 Article title: ${title}
 Snippet: ${snippet}
 
-Reply with JSON only — no other text:
-{"verdict":"YES"} if it fits, or {"verdict":"NO","reason":"reason in 10 words or fewer"} if not.`;
+Reply with JSON only — no other text.
 
-  return provider.classify(prompt);
+If it fits: {"verdict":"YES"}
+
+If it does NOT fit: {"verdict":"NO","reason":"1-2 sentence explanation of why this story is too negative or not uplifting","category":"<slug>"}
+
+Valid category slugs (pick the single best match):
+${CATEGORY_PROMPT_LIST}`;
+
+  const result = await provider.classify(prompt);
+  return {
+    fits: result.fits,
+    reason: result.reason,
+    category: result.category ?? "other-negative",
+  };
 }
 
 export async function POST() {
@@ -69,17 +81,19 @@ export async function POST() {
               }
 
               const snippet = item.contentSnippet ?? item.content ?? "";
-              const { fits, reason } = await checkPositivity(item.title!, snippet);
+              const { fits, reason, category } = await checkPositivity(item.title!, snippet);
 
               if (!fits) {
                 filtered++;
-                send({ type: "article", verdict: "filtered", title: item.title!, reason });
+                send({ type: "article", verdict: "filtered", title: item.title!, reason, category });
+                // Validate category slug
+                const safeCategory = CATEGORY_SLUGS.includes(category) ? category : "other-negative";
                 try {
                   await db.execute({
                     sql: `INSERT OR IGNORE INTO rejected_articles
-                          (source_id, source_name, url, title, snippet, rejection_reason)
-                          VALUES (?, ?, ?, ?, ?, ?)`,
-                    args: [source.id, source.name as string, item.link!, item.title!, snippet.slice(0, 500), reason],
+                          (source_id, source_name, url, title, snippet, rejection_reason, rejection_category)
+                          VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                    args: [source.id, source.name as string, item.link!, item.title!, snippet.slice(0, 500), reason, safeCategory],
                   });
                 } catch { /* duplicate */ }
               } else {

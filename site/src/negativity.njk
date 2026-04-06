@@ -17,24 +17,63 @@ title: The News We Skip
   }
   .lang-tab.active { background:#facc15; color:#78350f; }
 
-  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin-bottom:2rem; }
+  /* ── Summary stats ── */
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1rem; margin-bottom:2rem; }
   .stat-card { background:#fff; border:2px solid #fde047; border-radius:1rem; padding:1.25rem 1rem; text-align:center; }
   .stat-num  { font-size:2rem; font-weight:700; color:#78350f; }
   .stat-lbl  { font-size:0.75rem; color:#b45309; margin-top:0.25rem; }
 
+  /* ── Category breakdown chart ── */
+  .breakdown-section { background:#fff; border:1.5px solid #fde68a; border-radius:1rem; padding:1.25rem 1.5rem; margin-bottom:2rem; }
+  .breakdown-title { font-size:0.75rem; font-weight:700; color:#b45309; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:1rem; }
+  .breakdown-row { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.55rem; }
+  .breakdown-label { font-size:0.78rem; color:#78350f; width:180px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .breakdown-bar-wrap { flex:1; height:8px; background:#fef3c7; border-radius:99px; overflow:hidden; }
+  .breakdown-bar { height:100%; border-radius:99px; }
+  .breakdown-count { font-size:0.72rem; color:#b45309; width:42px; text-align:right; flex-shrink:0; }
+
+  /* ── Filter bar ── */
+  .filter-bar { display:flex; gap:0.5rem; margin-bottom:1.25rem; flex-wrap:wrap; }
+  .cat-pill {
+    padding:0.3rem 0.8rem; border-radius:99px; font-size:0.75rem; font-weight:600;
+    cursor:pointer; border:1.5px solid #fde68a; background:#fff; color:#78350f;
+    transition:background 0.15s; white-space:nowrap;
+  }
+  .cat-pill.active { background:#facc15; border-color:#f59e0b; }
+
+  /* ── Article cards ── */
   .rejection-list { display:flex; flex-direction:column; gap:0.75rem; }
   .rejection-card {
     background:#fff7ed; border:1.5px solid #fde68a; border-radius:0.75rem;
     padding:0.9rem 1.1rem;
   }
+  .rejection-card[data-cat] { border-left-width:4px; }
   .rejection-title { font-size:0.9rem; font-weight:600; color:#78350f; line-height:1.4; }
-  .rejection-meta  { font-size:0.75rem; color:#b45309; margin-top:0.25rem; display:flex; gap:1rem; flex-wrap:wrap; }
-  .rejection-reason { font-size:0.8rem; color:#b45309; margin-top:0.4rem; font-style:italic; }
+  .rejection-meta  { font-size:0.75rem; color:#b45309; margin-top:0.3rem; display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center; }
+  .cat-badge {
+    display:inline-flex; align-items:center; gap:0.3rem;
+    font-size:0.7rem; font-weight:600; padding:0.15rem 0.55rem;
+    border-radius:99px; border:1px solid currentColor;
+  }
+  .rejection-reason { font-size:0.82rem; color:#92400e; margin-top:0.5rem; line-height:1.55; }
   .rejection-reason::before { content:"✗ "; color:#ef4444; }
 
   .empty { color:#b45309; font-size:0.9rem; }
   .updated { font-size:0.75rem; color:#d97706; margin-bottom:1.5rem; }
 </style>
+
+{% set catMeta = {
+  "war-conflict":       { label_en: "War & Conflict",            label_nl: "Oorlog & Conflict",          label_fr: "Guerre & Conflit",         emoji: "⚔️",  color: "#fca5a5", border: "#f87171" },
+  "crime-violence":     { label_en: "Crime & Violence",          label_nl: "Misdaad & Geweld",           label_fr: "Crime & Violence",         emoji: "🔫",  color: "#fdba74", border: "#fb923c" },
+  "political-conflict": { label_en: "Political Conflict",        label_nl: "Politiek Conflict",          label_fr: "Conflit Politique",        emoji: "🏛️",  color: "#d8b4fe", border: "#c084fc" },
+  "economic-doom":      { label_en: "Economic Doom",             label_nl: "Economische Ellende",        label_fr: "Catastrophe Économique",   emoji: "📉",  color: "#fde047", border: "#facc15" },
+  "disaster-accident":  { label_en: "Disaster & Accident",       label_nl: "Ramp & Ongeluk",             label_fr: "Catastrophe & Accident",   emoji: "🌊",  color: "#93c5fd", border: "#60a5fa" },
+  "health-scare":       { label_en: "Health Scare",              label_nl: "Gezondheidsalarm",           label_fr: "Alerte Sanitaire",         emoji: "🦠",  color: "#86efac", border: "#4ade80" },
+  "divisive-social":    { label_en: "Divisive & Social Tension", label_nl: "Verdeeldheid & Spanningen",  label_fr: "Tensions Sociales",        emoji: "⚡",  color: "#fcd34d", border: "#fbbf24" },
+  "lgbtq-rights":       { label_en: "LGBTQ Rights",              label_nl: "LGBTQ-rechten",              label_fr: "Droits LGBTQ",             emoji: "🏳️‍🌈", color: "#f9a8d4", border: "#f472b6" },
+  "divisive-racism":    { label_en: "Divisive & Racism",         label_nl: "Verdeeldheid & Racisme",     label_fr: "Racisme & Division",       emoji: "✊",  color: "#d6d3d1", border: "#a8a29e" },
+  "other-negative":     { label_en: "Other Negative",            label_nl: "Overig Negatief",            label_fr: "Autre Négatif",            emoji: "😔",  color: "#d1d5db", border: "#9ca3af" }
+} %}
 
 <div class="page-header">
   <h1>
@@ -43,9 +82,9 @@ title: The News We Skip
     <span class="t-fr" style="display:none">Les nouvelles que nous ignorons 🚫</span>
   </h1>
   <p>
-    <span class="t-en">Every time we scan news sources, our AI reads the headline and filters out stories that are negative, anxiety-inducing, or just plain gloomy. This page shows what gets left behind — a small illustration of how skewed towards the negative most news coverage tends to be.</span>
-    <span class="t-nl" style="display:none">Elke keer dat we nieuwsbronnen scannen, leest onze AI de kop en filtert verhalen die negatief, angstaanjagend of gewoon somber zijn. Deze pagina toont wat er overblijft — een kleine illustratie van hoe sterk het nieuws naar het negatieve neigt.</span>
-    <span class="t-fr" style="display:none">Chaque fois que nous analysons des sources d'actualité, notre IA lit le titre et filtre les articles négatifs, anxiogènes ou simplement moroses. Cette page montre ce qui reste — une petite illustration du biais négatif dominant dans les médias.</span>
+    <span class="t-en">Every time we scan news sources, our AI reads the headline and filters out stories that are negative, anxiety-inducing, or just plain gloomy. This page shows what gets left behind — a transparent illustration of how skewed towards the negative most news coverage tends to be.</span>
+    <span class="t-nl" style="display:none">Elke keer dat we nieuwsbronnen scannen, leest onze AI de kop en filtert verhalen die negatief, angstaanjagend of gewoon somber zijn. Deze pagina toont wat er overblijft — een transparante illustratie van hoe sterk het nieuws naar het negatieve neigt.</span>
+    <span class="t-fr" style="display:none">Chaque fois que nous analysons des sources d'actualité, notre IA lit le titre et filtre les articles négatifs, anxiogènes ou simplement moroses. Cette page montre ce qui reste — une illustration transparente du biais négatif dominant dans les médias.</span>
   </p>
 </div>
 
@@ -71,6 +110,7 @@ title: The News We Skip
   </p>
   {% endif %}
 
+  <!-- Summary stats -->
   <div class="stat-grid">
     <div class="stat-card">
       <div class="stat-num">{{ rejections.total_rejected }}</div>
@@ -85,7 +125,7 @@ title: The News We Skip
       <div class="stat-lbl">
         <span class="t-en">news sources scanned</span>
         <span class="t-nl" style="display:none">nieuwsbronnen gescand</span>
-        <span class="t-fr" style="display:none">sources d'actualité analysées</span>
+        <span class="t-fr" style="display:none">sources analysées</span>
       </div>
     </div>
     <div class="stat-card">
@@ -98,22 +138,89 @@ title: The News We Skip
     </div>
   </div>
 
-  <div class="rejection-list">
+  <!-- Category breakdown chart -->
+  {% if rejections.category_breakdown and rejections.category_breakdown.length > 0 %}
+  <div class="breakdown-section">
+    <div class="breakdown-title">
+      <span class="t-en">What kind of negativity dominates the news</span>
+      <span class="t-nl" style="display:none">Welk soort negativiteit domineert het nieuws</span>
+      <span class="t-fr" style="display:none">Quel type de négativité domine l'actualité</span>
+    </div>
+    {% for row in rejections.category_breakdown %}
+      {% set meta = catMeta[row.category] %}
+      {% if meta %}
+      {% set pct = (row.count / rejections.total_rejected * 100) | round %}
+      <div class="breakdown-row">
+        <div class="breakdown-label">
+          {{ meta.emoji }}&nbsp;
+          <span class="t-en">{{ meta.label_en }}</span>
+          <span class="t-nl" style="display:none">{{ meta.label_nl }}</span>
+          <span class="t-fr" style="display:none">{{ meta.label_fr }}</span>
+        </div>
+        <div class="breakdown-bar-wrap">
+          <div class="breakdown-bar" style="width:{{ pct }}%; background-color:{{ meta.border }};"></div>
+        </div>
+        <div class="breakdown-count">{{ row.count }} ({{ pct }}%)</div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Category filter pills -->
+  {% if rejections.category_breakdown and rejections.category_breakdown.length > 0 %}
+  <div class="filter-bar" id="cat-filter-bar">
+    <button class="cat-pill active" onclick="filterCat('all', this)">
+      <span class="t-en">All</span>
+      <span class="t-nl" style="display:none">Alles</span>
+      <span class="t-fr" style="display:none">Tout</span>
+    </button>
+    {% for row in rejections.category_breakdown %}
+      {% set meta = catMeta[row.category] %}
+      {% if meta %}
+      <button class="cat-pill" onclick="filterCat('{{ row.category }}', this)" data-cat="{{ row.category }}">
+        {{ meta.emoji }}&nbsp;
+        <span class="t-en">{{ meta.label_en }}</span>
+        <span class="t-nl" style="display:none">{{ meta.label_nl }}</span>
+        <span class="t-fr" style="display:none">{{ meta.label_fr }}</span>
+        ({{ row.count }})
+      </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Article list -->
+  <div class="rejection-list" id="rejection-list">
     {% for item in rejections.articles %}
-    <div class="rejection-card">
+    {% set meta = catMeta[item.category] if item.category else null %}
+    <div class="rejection-card" data-cat="{{ item.category }}"
+      {% if meta %}style="border-left-color:{{ meta.border }};"{% endif %}>
       <p class="rejection-title">
         <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer"
-           style="color:inherit;text-decoration:none;">
-          {{ item.title }}
-        </a>
+           style="color:inherit;text-decoration:none;">{{ item.title }}</a>
       </p>
       <div class="rejection-meta">
         <span>{{ item.source }}</span>
         <span>{{ item.date }}</span>
+        {% if meta %}
+        <span class="cat-badge" style="color:{{ meta.border }}; border-color:{{ meta.border }}; background:{{ meta.color }}20;">
+          {{ meta.emoji }}&nbsp;
+          <span class="t-en">{{ meta.label_en }}</span>
+          <span class="t-nl" style="display:none">{{ meta.label_nl }}</span>
+          <span class="t-fr" style="display:none">{{ meta.label_fr }}</span>
+        </span>
+        {% endif %}
       </div>
+      {% if item.reason %}
+      <p class="rejection-reason">{{ item.reason }}</p>
+      {% else %}
       <p class="rejection-reason">
-        {% if item.reason %}{{ item.reason }}{% else %}does not fit positive news criteria{% endif %}
+        <span class="t-en">does not fit positive news criteria</span>
+        <span class="t-nl" style="display:none">past niet bij positief nieuws</span>
+        <span class="t-fr" style="display:none">ne correspond pas aux critères de l'actualité positive</span>
       </p>
+      {% endif %}
     </div>
     {% endfor %}
   </div>
@@ -122,6 +229,8 @@ title: The News We Skip
 
 <script>
   var LANGS = ['en','nl','fr'];
+  var activeCat = 'all';
+
   function setLang(lang, btn) {
     LANGS.forEach(function(l) {
       document.querySelectorAll('.t-' + l).forEach(function(el) {
@@ -132,6 +241,17 @@ title: The News We Skip
     if (btn) btn.classList.add('active');
     localStorage.setItem('positiviteiten-lang', lang);
   }
+
+  function filterCat(cat, btn) {
+    activeCat = cat;
+    document.querySelectorAll('.cat-pill').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.rejection-card').forEach(function(card) {
+      var cardCat = card.getAttribute('data-cat') || '';
+      card.style.display = (cat === 'all' || cardCat === cat) ? '' : 'none';
+    });
+  }
+
   // Restore saved language on load
   (function() {
     var saved = localStorage.getItem('positiviteiten-lang');

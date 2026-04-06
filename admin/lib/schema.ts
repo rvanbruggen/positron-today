@@ -86,6 +86,9 @@ export async function initSchema() {
     // v0.8.1: remember the GitHub path used when an article was first published
     // so re-publishing always overwrites the same file instead of creating a new one
     "ALTER TABLE articles ADD COLUMN published_path TEXT",
+
+    // v0.9: rejection category slug for breakdown charts + backfill support
+    "ALTER TABLE rejected_articles ADD COLUMN rejection_category TEXT",
   ];
 
   for (const sql of migrations) {
