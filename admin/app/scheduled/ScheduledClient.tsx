@@ -157,6 +157,14 @@ export default function ScheduledClient({
     setPublishing((prev) => { const s = new Set(prev); s.delete(id); return s; });
   }
 
+    const TRANSLATION_FIELDS: (keyof Article)[] = [
+    "title_en", "title_nl", "title_fr",
+    "summary_en", "summary_nl", "summary_fr",
+  ];
+  function missingTranslations(a: Article): string[] {
+    return TRANSLATION_FIELDS.filter((f) => !a[f]);
+  }
+
   const drafts = articles.filter((a) => a.status === "draft");
   const scheduled = articles.filter((a) => a.status === "scheduled");
   const titleKey = `title_${previewLang}` as keyof Article;
@@ -255,7 +263,20 @@ export default function ScheduledClient({
               </div>
               <div className="flex flex-col gap-3">
                 {scheduled.map((a) => (
-                  <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200">
+                  <div key={a.id} className={`bg-white rounded-xl px-5 py-4 shadow-sm border ${missingTranslations(a).length > 0 ? "border-orange-300" : "border-yellow-200"}`}>
+                    {missingTranslations(a).length > 0 && (
+                      <div className="flex items-center gap-1.5 mb-2 text-xs text-orange-700 bg-orange-50 border border-orange-200 rounded-lg px-3 py-1.5">
+                        <span>⚠️</span>
+                        <span>Missing translations: {missingTranslations(a).join(", ")}</span>
+                        <button
+                          onClick={() => summarise(a.id)}
+                          disabled={summarising.has(a.id)}
+                          className="ml-auto bg-orange-400 hover:bg-orange-500 text-white font-medium px-2.5 py-0.5 rounded text-xs transition-colors disabled:opacity-50 whitespace-nowrap"
+                        >
+                          {summarising.has(a.id) ? "Re-summarising..." : "Re-summarise ✨"}
+                        </button>
+                      </div>
+                    )}
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0 flex-1">
                         <div className="flex items-start gap-2">

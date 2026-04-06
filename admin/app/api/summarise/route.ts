@@ -31,6 +31,12 @@ async function fetchArticleText(url: string): Promise<string> {
 
 type TagRow = { id: number; name: string; emoji: string };
 
+// All six text fields must be non-empty for a summary to be accepted.
+const REQUIRED_TRANSLATION_FIELDS = [
+  "title_en", "title_nl", "title_fr",
+  "summary_en", "summary_nl", "summary_fr",
+] as const;
+
 async function summariseAndTranslate(
   sourceText: string,
   sourceUrl: string,
@@ -70,9 +76,7 @@ All six text fields are required. Never leave any field empty or copy text from 
 Pick 0-3 tags from that list that best fit this article. Only use names from the list exactly as written. Return them as the "suggested_tags" array.`
     : `No tags are defined yet. Return an empty "suggested_tags" array.`;
 
-  const provider = await getSummariseProvider();
-  const raw = await provider.generate(
-    `${STYLE}
+  const basePrompt = `${STYLE}
 
 Write a summary card for an article from ${sourceName} (${sourceUrl}).
 
@@ -92,29 +96,68 @@ Output ONLY this exact JSON object and nothing else. All fields are required:
   "summary_fr": "Résumé de 4-5 phrases écrit en français.",
   "emoji": "🌟",
   "suggested_tags": []
-}`,
-    "You output only raw JSON. No prose, no markdown, no code fences, no explanation. Every response must be a single complete JSON object with all 8 fields filled in.",
-    2400,
-  );
+}`;
 
-  const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
-  const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error(`Unexpected LLM response: ${raw.slice(0, 120)}`);
-  const parsed = JSON.parse(jsonMatch[0]);
+  const systemPrompt = "You output only raw JSON. No prose, no markdown, no code fences, no explanation. Every response must be a single complete JSON object with all 8 fields filled in.";
 
-  // Ensure every field has a non-undefined string value so libsql never
-  // receives undefined as a query argument (happens when the model omits a field).
   const str = (v: unknown, fallback = "") => (typeof v === "string" && v.trim() ? v.trim() : fallback);
-  return {
-    title_nl:       str(parsed.title_nl),
-    title_fr:       str(parsed.title_fr),
-    title_en:       str(parsed.title_en),
-    summary_nl:     str(parsed.summary_nl),
-    summary_fr:     str(parsed.summary_fr),
-    summary_en:     str(parsed.summary_en),
-    emoji:          str(parsed.emoji, "✨"),
-    suggested_tags: Array.isArray(parsed.suggested_tags) ? parsed.suggested_tags : [],
-  };
+  const MAX_ATTEMPTS = 3;
+  const provider = await getSummariseProvider();
+  let missingFields: string[] = [];
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    // On retries, append a targeted reminder so the model knows exactly what it missed.
+    const prompt = (attempt > 1 && missingFields.length > 0)
+      ? `${basePrompt}\n\nRETRY ${attempt}/${MAX_ATTEMPTS}: Your previous response had these fields empty or missing: ${missingFields.join(", ")}. Every field MUST contain text in the correct language. Empty strings are not acceptable.`
+      : basePrompt;
+
+    const raw = await provider.generate(prompt, systemPrompt, 2400);
+    const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+    const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+
+    if (!jsonMatch) {
+      missingFields = ["(no JSON found in response)"];
+      console.warn(`[summarise] attempt ${attempt}/${MAX_ATTEMPTS}: ${missingFields[0]}`);
+      if (attempt === MAX_ATTEMPTS) throw new Error(`Unexpected LLM response: ${raw.slice(0, 120)}`);
+      continue;
+    }
+
+    let parsed: Record<string, unknown>;
+    try {
+      parsed = JSON.parse(jsonMatch[0]);
+    } catch {
+      missingFields = ["(JSON parse error)"];
+      console.warn(`[summarise] attempt ${attempt}/${MAX_ATTEMPTS}: JSON parse failed`);
+      if (attempt === MAX_ATTEMPTS) throw new Error(`LLM returned invalid JSON after ${MAX_ATTEMPTS} attempts`);
+      continue;
+    }
+
+    const result = {
+      title_nl:       str(parsed.title_nl),
+      title_fr:       str(parsed.title_fr),
+      title_en:       str(parsed.title_en),
+      summary_nl:     str(parsed.summary_nl),
+      summary_fr:     str(parsed.summary_fr),
+      summary_en:     str(parsed.summary_en),
+      emoji:          str(parsed.emoji, "✨"),
+      suggested_tags: Array.isArray(parsed.suggested_tags) ? parsed.suggested_tags : [],
+    };
+
+    missingFields = REQUIRED_TRANSLATION_FIELDS.filter(f => !result[f]);
+
+    if (missingFields.length === 0) return result;  // ✓ all fields present
+
+    console.warn(`[summarise] attempt ${attempt}/${MAX_ATTEMPTS}: missing fields: ${missingFields.join(", ")}`);
+    if (attempt === MAX_ATTEMPTS) {
+      throw new Error(
+        `LLM failed to provide all translations after ${MAX_ATTEMPTS} attempts. ` +
+        `Missing: ${missingFields.join(", ")}`
+      );
+    }
+  }
+
+  // Unreachable — TypeScript needs this.
+  throw new Error("Unreachable");
 }
 
 export async function POST(request: NextRequest) {
