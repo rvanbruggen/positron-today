@@ -120,6 +120,7 @@ title: Contact
   // Override global setLang to also toggle contact-block visibility
   function setLang(lang, btn) {
     document.documentElement.setAttribute('data-lang', lang);
+    _updateLangUrl(lang);
     ['en','nl','fr'].forEach(function(l) {
       document.querySelectorAll('.t-' + l).forEach(function(el) { el.style.display = l === lang ? '' : 'none'; });
       var block = document.getElementById('contact-' + l);

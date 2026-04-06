@@ -5,11 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if title %}{{ title }} - {% endif %}Positiviteiten</title>
   <script>
-    // Apply stored language to <html> immediately — before the body renders —
-    // so CSS can hide the wrong-language spans without a flash.
-    document.documentElement.setAttribute(
-      'data-lang', localStorage.getItem('positiviteiten-lang') || 'en'
-    );
+    // Resolve language: URL ?lang= param takes priority, then localStorage, then 'en'.
+    // URL param wins so that a shared link always overrides whatever the visitor
+    // had stored locally.
+    (function() {
+      var VALID = ['en', 'nl', 'fr'];
+      var urlLang = new URLSearchParams(window.location.search).get('lang');
+      var lang = (urlLang && VALID.indexOf(urlLang) !== -1)
+        ? urlLang
+        : (localStorage.getItem('positiviteiten-lang') || 'en');
+      if (urlLang && VALID.indexOf(urlLang) !== -1) {
+        localStorage.setItem('positiviteiten-lang', urlLang);
+      }
+      // Apply immediately so CSS hides the wrong-language spans before first paint.
+      document.documentElement.setAttribute('data-lang', lang);
+    })();
+
+    // Updates the page URL to reflect the active language without a reload.
+    // English is the default so it gets no param (cleaner URLs).
+    // Called by setLang and all page-specific overrides so every page is shareable.
+    function _updateLangUrl(lang) {
+      try {
+        var u = new URL(window.location.href);
+        if (lang === 'en') { u.searchParams.delete('lang'); }
+        else               { u.searchParams.set('lang', lang); }
+        history.replaceState(null, '', u.toString());
+      } catch(e) {}
+    }
 
     // Define setLang early (in <head>) so it is available to all page scripts
     // before base.njk's closing <script> block runs.
@@ -18,6 +40,7 @@
     // redefines setLang, the page-specific override persists for nav-button clicks.
     function setLang(lang, btn) {
       document.documentElement.setAttribute('data-lang', lang);
+      _updateLangUrl(lang);
       ['en','nl','fr'].forEach(function(l) {
         document.querySelectorAll('.t-' + l).forEach(function(el) {
           el.style.display = l === lang ? '' : 'none';
