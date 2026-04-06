@@ -187,7 +187,11 @@ export default function PreviewPage() {
             <div className="flex items-center justify-between text-xs text-amber-400 mb-1.5">
               <span>
                 {fetching
-                  ? `Scanning source ${sourcesDone + 1} of ${totalSources}…`
+                  ? totalSources === 0
+                    ? "Starting…"
+                    : sourcesDone < totalSources
+                      ? `Scanning source ${sourcesDone + 1} of ${totalSources}…`
+                      : "Finalising…"
                   : isDone ? "Fetch complete" : "Starting…"}
               </span>
               <span>{progress}%</span>

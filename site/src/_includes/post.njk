@@ -80,7 +80,15 @@ layout: base.njk
     <span class="t-nl" style="display:none">{{ title_nl if title_nl else title }}</span>
     <span class="t-fr" style="display:none">{{ title_fr if title_fr else title }}</span>
   </h1>
-  <p class="post-meta">{{ source_name }} · {{ page.date | dateDisplay }}</p>
+  <p class="post-meta">
+    {{ source_name }}
+    {% if source_pub_date %}
+      · <span title="Date the original article was published by the source">{{ source_pub_date | dateDisplay }}</span>
+      · <span title="Date we added this story to Positiviteiten">added {{ page.date | dateDisplay }}</span>
+    {% else %}
+      · {{ page.date | dateDisplay }}
+    {% endif %}
+  </p>
 </div>
 
 <div class="post-body">

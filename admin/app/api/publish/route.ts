@@ -25,6 +25,11 @@ function generateMarkdown(article: Record<string, unknown>, tagNames: string[]):
     ? String(article.publish_date).slice(0, 10)
     : new Date().toISOString().slice(0, 10);
 
+  // Original source publication date (from RSS isoDate/pubDate), if captured
+  const sourcePubDate = article.source_pub_date
+    ? String(article.source_pub_date).slice(0, 10)
+    : null;
+
   // Primary tag for backward compat (post template still reads `topic`)
   const primaryTag = tagNames[0] ?? "";
   // Per-article emoji from Claude, fallback to 📰
@@ -36,6 +41,7 @@ function generateMarkdown(article: Record<string, unknown>, tagNames: string[]):
     `title_nl: ${yamlStr(String(article.title_nl ?? title))}`,
     `title_fr: ${yamlStr(String(article.title_fr ?? title))}`,
     `date: ${date}`,
+    ...(sourcePubDate ? [`source_pub_date: ${sourcePubDate}`] : []),
     `source_url: ${yamlStr(String(article.source_url))}`,
     `source_name: ${yamlStr(String(article.source_name))}`,
     `topic: ${yamlStr(primaryTag)}`,
@@ -94,8 +100,15 @@ export async function POST(request: NextRequest) {
     }
 
     // Fetch article + all its tags via the join table
+    // JOIN raw_articles to pick up source_pub_date (original RSS publication date)
     const [articleResult, tagsResult] = await Promise.all([
-      db.execute({ sql: "SELECT * FROM articles WHERE id = ?", args: [id] }),
+      db.execute({
+        sql: `SELECT a.*, r.source_pub_date
+              FROM articles a
+              LEFT JOIN raw_articles r ON a.raw_article_id = r.id
+              WHERE a.id = ?`,
+        args: [id],
+      }),
       db.execute({
         sql: `SELECT t.name FROM article_tags at2
               JOIN topics t ON at2.tag_id = t.id

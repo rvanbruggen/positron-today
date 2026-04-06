@@ -89,6 +89,9 @@ export async function initSchema() {
 
     // v0.9: rejection category slug for breakdown charts + backfill support
     "ALTER TABLE rejected_articles ADD COLUMN rejection_category TEXT",
+
+    // v0.10: original source publication date captured from RSS isoDate/pubDate
+    "ALTER TABLE raw_articles ADD COLUMN source_pub_date TEXT",
   ];
 
   for (const sql of migrations) {

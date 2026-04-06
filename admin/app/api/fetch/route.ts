@@ -97,9 +97,15 @@ export async function POST() {
                   });
                 } catch { /* duplicate */ }
               } else {
+                // Capture the original publication date from the RSS item
+                const sourcePubDate = item.isoDate
+                  ? item.isoDate.slice(0, 10)
+                  : item.pubDate
+                  ? new Date(item.pubDate).toISOString().slice(0, 10)
+                  : null;
                 await db.execute({
-                  sql: "INSERT INTO raw_articles (source_id, url, title, content) VALUES (?, ?, ?, ?)",
-                  args: [source.id, item.link!, item.title!, snippet],
+                  sql: "INSERT INTO raw_articles (source_id, url, title, content, source_pub_date) VALUES (?, ?, ?, ?, ?)",
+                  args: [source.id, item.link!, item.title!, snippet, sourcePubDate],
                 });
                 added++;
                 send({ type: "article", verdict: "added", title: item.title! });

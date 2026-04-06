@@ -230,7 +230,7 @@ title: Home
       {% endif %}
       <div class="card-meta">
         <span>{{ post.data.source_name }}</span>
-        <span>{{ post.date | dateDisplay }}</span>
+        <span>{% if post.data.source_pub_date %}{{ post.data.source_pub_date | dateDisplay }}{% else %}{{ post.date | dateDisplay }}{% endif %}</span>
       </div>
     </a>
     {% endfor %}
