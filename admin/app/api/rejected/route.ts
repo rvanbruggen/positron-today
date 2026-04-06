@@ -4,7 +4,7 @@ import { exportRejections } from "@/lib/export-rejections";
 
 export async function GET() {
   const result = await db.execute(`
-    SELECT id, source_name, url, title, snippet, rejection_reason, rejection_category, fetched_at
+    SELECT id, source_name, url, title, snippet, rejection_reason, rejection_category, fetched_at, source_pub_date
     FROM rejected_articles
     ORDER BY fetched_at DESC
     LIMIT 500

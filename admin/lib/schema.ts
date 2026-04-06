@@ -92,6 +92,9 @@ export async function initSchema() {
 
     // v0.10: original source publication date captured from RSS isoDate/pubDate
     "ALTER TABLE raw_articles ADD COLUMN source_pub_date TEXT",
+
+    // v0.10: same field on rejected_articles so rejections also carry the source date
+    "ALTER TABLE rejected_articles ADD COLUMN source_pub_date TEXT",
   ];
 
   for (const sql of migrations) {

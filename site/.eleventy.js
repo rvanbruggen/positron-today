@@ -7,6 +7,21 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Short date: "6 Apr 2026" — used in cards where space is tight
+  eleventyConfig.addFilter("dateShort", (dateOrStr) => {
+    // For bare YYYY-MM-DD strings, anchor to noon UTC to avoid timezone shift
+    const d = typeof dateOrStr === "string"
+      ? new Date(dateOrStr + "T12:00:00Z")
+      : dateOrStr;
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  });
+
+  // ISO date string: "2026-04-06" — used as a data attribute for JS date-range filtering
+  eleventyConfig.addFilter("dateIso", (date) => {
+    if (typeof date === "string") return date.slice(0, 10);
+    return date.toISOString().slice(0, 10);
+  });
+
   // Returns "YYYY-MM" for use as a data attribute on cards
   eleventyConfig.addFilter("dateMonthKey", (date) => {
     const d = new Date(date);

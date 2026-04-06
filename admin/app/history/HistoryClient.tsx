@@ -15,6 +15,7 @@ type Article = {
   published_at: string | null;
   publish_date: string | null;
   published_path: string | null;
+  source_pub_date: string | null;
 };
 
 const SITE_BASE = "https://rvanbruggen.github.io/positiviteiten";
@@ -283,7 +284,14 @@ export default function HistoryClient({
 
                     {/* Date */}
                     <td className="px-4 py-2.5 text-xs text-amber-500 whitespace-nowrap">
-                      {formatDate(a.published_at)}
+                      {a.source_pub_date ? (
+                        <div>
+                          <div title="Original source date">{formatDate(a.source_pub_date)}</div>
+                          <div className="text-amber-300 text-[10px]" title="Date published to site">published {formatDate(a.published_at ?? a.publish_date)}</div>
+                        </div>
+                      ) : (
+                        formatDate(a.published_at ?? a.publish_date)
+                      )}
                     </td>
 
                     {/* Actions */}

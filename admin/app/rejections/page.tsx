@@ -15,6 +15,7 @@ type Rejection = {
   rejection_reason: string | null;
   rejection_category: string | null;
   fetched_at: string;
+  source_pub_date: string | null;
 };
 
 type BackfillEvent =
@@ -422,7 +423,14 @@ export default function RejectionsPage() {
 
                     {/* Date */}
                     <td className="px-4 py-2.5 text-xs text-amber-500 whitespace-nowrap">
-                      {item.fetched_at.slice(0, 10)}
+                      {item.source_pub_date ? (
+                        <div>
+                          <div title="Original source date">{item.source_pub_date.slice(0, 10)}</div>
+                          <div className="text-amber-300 text-[10px]" title="Date fetched by us">fetched {item.fetched_at.slice(0, 10)}</div>
+                        </div>
+                      ) : (
+                        item.fetched_at.slice(0, 10)
+                      )}
                     </td>
 
                     {/* Actions */}

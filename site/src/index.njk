@@ -38,13 +38,18 @@ title: Home
   .tag-chip-all { background: #fef3c7; color: #92400e; }
   .tag-chip-all.selected { background: #facc15; border-color: #f59e0b; color: #78350f; }
 
-  /* Month select */
-  .month-select {
+  /* Date-range select (replaces month select) */
+  .date-range-select {
     padding: 0.4rem 0.75rem; border-radius: 0.6rem; font-size: 0.8rem;
     font-weight: 600; border: 2px solid #fde68a; background: #fef9c3;
     color: #78350f; cursor: pointer; font-family: inherit;
   }
-  .month-select:focus { outline: none; border-color: #f59e0b; }
+  .date-range-select:focus { outline: none; border-color: #f59e0b; }
+  .date-range-select.has-selection { background: #facc15; border-color: #f59e0b; }
+
+  /* Two-line date on cards */
+  .card-date-wrap { text-align: right; line-height: 1.3; }
+  .card-date-added { font-size: 0.6rem; opacity: 0.55; }
 
   /* Clear button */
   .filter-clear {
@@ -145,15 +150,6 @@ title: Home
     {% endif %}
   {% endfor %}
 
-  {# Collect unique months (most-recent first, since posts are sorted that way) #}
-  {% set seenMonths = [] %}
-  {% for post in collections.posts %}
-    {% set mk = post.date | dateMonthKey %}
-    {% if mk not in seenMonths %}
-      {% set seenMonths = seenMonths.concat([mk]) %}
-    {% endif %}
-  {% endfor %}
-
   <div class="filter-bar">
     {% if seenTags.length > 0 %}
     <div class="tag-picker" id="tag-picker">
@@ -180,17 +176,14 @@ title: Home
     </div>
     {% endif %}
 
-    {% if seenMonths.length > 1 %}
-    <select class="month-select" id="month-select" onchange="filterMonth(this.value)">
-      <option value="all">
-        {# inline text only — no spans inside <option> #}
-        All months
-      </option>
-      {% for mk in seenMonths %}
-      <option value="{{ mk }}">{{ mk | dateMonthLabel }}</option>
-      {% endfor %}
+    <select class="date-range-select" id="date-range-select" onchange="filterDateRange(this.value)">
+      <option value="all">All time</option>
+      <option value="7d">Last 7 days</option>
+      <option value="30d">Last 30 days</option>
+      <option value="3m">Last 3 months</option>
+      <option value="6m">Last 6 months</option>
+      <option value="year">This year</option>
     </select>
-    {% endif %}
 
     <button class="filter-clear" id="filter-clear" onclick="clearAllFilters()" style="display:none">Clear ✕</button>
   </div>
@@ -211,6 +204,7 @@ title: Home
       class="card card-{{ firstTag | topicColor }}"
       data-tags="{{ cardTags | join(',') }}"
       data-date="{{ post.date | dateMonthKey }}"
+      data-fulldate="{% if post.data.source_pub_date %}{{ post.data.source_pub_date }}{% else %}{{ post.date | dateIso }}{% endif %}"
     >
       <div class="card-emoji">{{ post.data.emoji }}</div>
       <div class="card-tags">
@@ -230,7 +224,14 @@ title: Home
       {% endif %}
       <div class="card-meta">
         <span>{{ post.data.source_name }}</span>
-        <span>{% if post.data.source_pub_date %}{{ post.data.source_pub_date | dateDisplay }}{% else %}{{ post.date | dateDisplay }}{% endif %}</span>
+        {% if post.data.source_pub_date %}
+          <span class="card-date-wrap">
+            {{ post.data.source_pub_date | dateShort }}<br>
+            <span class="card-date-added">added {{ post.date | dateShort }}</span>
+          </span>
+        {% else %}
+          <span>{{ post.date | dateShort }}</span>
+        {% endif %}
       </div>
     </a>
     {% endfor %}
@@ -240,18 +241,31 @@ title: Home
 {% endif %}
 
 <script>
-  // ── Tag multi-select filter ───────────────────────────────────────────────
+  // ── Tag multi-select + date-range filter ─────────────────────────────────
   var activeTags = new Set(); // empty = show all
-  var activeMonth = 'all';
+  var activeDateRange = 'all';
+
+  // Returns a YYYY-MM-DD cutoff string, or null for "all time"
+  function dateCutoff(range) {
+    if (range === 'all') return null;
+    var d = new Date();
+    if (range === '7d')   { d.setDate(d.getDate() - 7);      }
+    else if (range === '30d')  { d.setDate(d.getDate() - 30);     }
+    else if (range === '3m')   { d.setMonth(d.getMonth() - 3);    }
+    else if (range === '6m')   { d.setMonth(d.getMonth() - 6);    }
+    else if (range === 'year') { d = new Date(d.getFullYear(), 0, 1); }
+    return d.toISOString().slice(0, 10);
+  }
 
   function applyFilters() {
     var cards = document.querySelectorAll('#card-grid .card');
     var visible = 0;
+    var cutoff = dateCutoff(activeDateRange);
     cards.forEach(function(card) {
       var cardTags = (card.dataset.tags || '').split(',').map(function(t) { return t.trim(); }).filter(Boolean);
-      var tagMatch = activeTags.size === 0 || cardTags.some(function(t) { return activeTags.has(t); });
-      var monthMatch = activeMonth === 'all' || card.dataset.date === activeMonth;
-      var show = tagMatch && monthMatch;
+      var tagMatch  = activeTags.size === 0 || cardTags.some(function(t) { return activeTags.has(t); });
+      var dateMatch = !cutoff || (card.dataset.fulldate || '') >= cutoff;
+      var show = tagMatch && dateMatch;
       card.style.display = show ? '' : 'none';
       if (show) visible++;
     });
@@ -261,49 +275,37 @@ title: Home
   }
 
   function updateFilterUI() {
-    var btn = document.getElementById('tag-picker-btn');
+    var btn   = document.getElementById('tag-picker-btn');
     var clear = document.getElementById('filter-clear');
     var allChip = document.querySelector('.tag-chip-all');
+    var rangeEl = document.getElementById('date-range-select');
     if (!btn) return;
 
+    // Tag picker button state
     if (activeTags.size === 0) {
       btn.classList.remove('has-selection');
-      btn.querySelector('#tag-picker-label').dataset.count = '';
       if (allChip) allChip.classList.add('selected');
     } else {
       btn.classList.add('has-selection');
-      btn.querySelector('#tag-picker-label').dataset.count = activeTags.size;
       if (allChip) allChip.classList.remove('selected');
     }
-
-    // Update chip selected states
     document.querySelectorAll('.tag-chip:not(.tag-chip-all)').forEach(function(chip) {
       chip.classList.toggle('selected', activeTags.has(chip.dataset.tag));
     });
-
-    // Show clear button if any filter active
-    var hasFilter = activeTags.size > 0 || activeMonth !== 'all';
-    if (clear) clear.style.display = hasFilter ? '' : 'none';
-
-    // Update button label
-    var label = btn.querySelector('#tag-picker-label');
-    if (label && activeTags.size > 0) {
-      // Prepend count to existing language span text
-      var existing = label.innerHTML;
-      // Just add a count suffix by updating a count span
-    }
-    // Simpler: show count as suffix on button itself
     var countEl = document.getElementById('tag-count-suffix');
     if (countEl) countEl.textContent = activeTags.size > 0 ? ' (' + activeTags.size + ')' : '';
+
+    // Date-range select highlight
+    if (rangeEl) rangeEl.classList.toggle('has-selection', activeDateRange !== 'all');
+
+    // Clear button
+    var hasFilter = activeTags.size > 0 || activeDateRange !== 'all';
+    if (clear) clear.style.display = hasFilter ? '' : 'none';
   }
 
   function toggleTag(tag) {
-    if (tag === 'all') {
-      activeTags.clear();
-    } else {
-      if (activeTags.has(tag)) activeTags.delete(tag);
-      else activeTags.add(tag);
-    }
+    if (tag === 'all') { activeTags.clear(); }
+    else { if (activeTags.has(tag)) activeTags.delete(tag); else activeTags.add(tag); }
     localStorage.setItem('positiviteiten-tags', JSON.stringify([...activeTags]));
     applyFilters();
   }
@@ -314,25 +316,24 @@ title: Home
     if (panel) panel.classList.toggle('open');
   }
 
-  // Close panel on outside click
   document.addEventListener('click', function(e) {
     var picker = document.getElementById('tag-picker');
-    var panel = document.getElementById('tag-picker-panel');
+    var panel  = document.getElementById('tag-picker-panel');
     if (panel && picker && !picker.contains(e.target)) panel.classList.remove('open');
   });
 
-  function filterMonth(val) {
-    activeMonth = val;
-    localStorage.setItem('positiviteiten-month', val);
+  function filterDateRange(val) {
+    activeDateRange = val;
+    localStorage.setItem('positiviteiten-daterange', val);
     applyFilters();
   }
 
   function clearAllFilters() {
     activeTags.clear();
-    activeMonth = 'all';
+    activeDateRange = 'all';
     localStorage.removeItem('positiviteiten-tags');
-    localStorage.removeItem('positiviteiten-month');
-    var sel = document.getElementById('month-select');
+    localStorage.removeItem('positiviteiten-daterange');
+    var sel = document.getElementById('date-range-select');
     if (sel) sel.value = 'all';
     applyFilters();
   }
@@ -343,13 +344,13 @@ title: Home
       var savedTags = JSON.parse(localStorage.getItem('positiviteiten-tags') || '[]');
       savedTags.forEach(function(t) { activeTags.add(t); });
     } catch(e) {}
-    var savedMonth = localStorage.getItem('positiviteiten-month');
-    if (savedMonth && savedMonth !== 'all') {
-      activeMonth = savedMonth;
-      var sel = document.getElementById('month-select');
-      if (sel) sel.value = savedMonth;
+    var savedRange = localStorage.getItem('positiviteiten-daterange');
+    if (savedRange && savedRange !== 'all') {
+      activeDateRange = savedRange;
+      var sel = document.getElementById('date-range-select');
+      if (sel) sel.value = savedRange;
     }
-    if (activeTags.size > 0 || activeMonth !== 'all') applyFilters();
+    if (activeTags.size > 0 || activeDateRange !== 'all') applyFilters();
     else updateFilterUI();
   })();
 </script>

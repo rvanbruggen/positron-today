@@ -81,6 +81,14 @@ export async function POST() {
               }
 
               const snippet = item.contentSnippet ?? item.content ?? "";
+
+              // Capture the original publication date from the RSS item (used for both paths)
+              const sourcePubDate = item.isoDate
+                ? item.isoDate.slice(0, 10)
+                : item.pubDate
+                ? new Date(item.pubDate).toISOString().slice(0, 10)
+                : null;
+
               const { fits, reason, category } = await checkPositivity(item.title!, snippet);
 
               if (!fits) {
@@ -91,18 +99,12 @@ export async function POST() {
                 try {
                   await db.execute({
                     sql: `INSERT OR IGNORE INTO rejected_articles
-                          (source_id, source_name, url, title, snippet, rejection_reason, rejection_category)
-                          VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                    args: [source.id, source.name as string, item.link!, item.title!, snippet.slice(0, 500), reason, safeCategory],
+                          (source_id, source_name, url, title, snippet, rejection_reason, rejection_category, source_pub_date)
+                          VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+                    args: [source.id, source.name as string, item.link!, item.title!, snippet.slice(0, 500), reason, safeCategory, sourcePubDate],
                   });
                 } catch { /* duplicate */ }
               } else {
-                // Capture the original publication date from the RSS item
-                const sourcePubDate = item.isoDate
-                  ? item.isoDate.slice(0, 10)
-                  : item.pubDate
-                  ? new Date(item.pubDate).toISOString().slice(0, 10)
-                  : null;
                 await db.execute({
                   sql: "INSERT INTO raw_articles (source_id, url, title, content, source_pub_date) VALUES (?, ?, ?, ?, ?)",
                   args: [source.id, item.link!, item.title!, snippet, sourcePubDate],
