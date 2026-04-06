@@ -11,4 +11,4 @@
 [Le Figaro](https://www.lefigaro.fr/)
 [CNN](https://edition.cnn.com/)
 [Humo](https://www.humo.be/)
-[Dansende Beren](http://dansendeberen.be/)
+[Dansende Beren](https://www.dansendeberen.be/)
