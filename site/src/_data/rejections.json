@@ -1,19 +1,19 @@
 {
-  "exported_at": "2026-04-06T19:09:27.067Z",
-  "total_rejected": 482,
+  "exported_at": "2026-04-06T21:09:26.203Z",
+  "total_rejected": 502,
   "sources_count": 24,
   "category_breakdown": [
     {
       "category": "other-negative",
-      "count": 110
+      "count": 115
     },
     {
       "category": "divisive-social",
-      "count": 70
+      "count": 71
     },
     {
       "category": "political-conflict",
-      "count": 53
+      "count": 55
     },
     {
       "category": "tech-ai-concern",
@@ -21,35 +21,35 @@
     },
     {
       "category": "sports-negative",
-      "count": 33
-    },
-    {
-      "category": "crime-violence",
-      "count": 30
+      "count": 37
     },
     {
       "category": "soft-news-filler",
-      "count": 29
+      "count": 31
+    },
+    {
+      "category": "crime-violence",
+      "count": 31
     },
     {
       "category": "war-conflict",
-      "count": 25
+      "count": 28
     },
     {
       "category": "economic-doom",
       "count": 23
     },
     {
+      "category": "disaster-accident",
+      "count": 18
+    },
+    {
       "category": "climate-environment",
       "count": 18
     },
     {
-      "category": "disaster-accident",
-      "count": 17
-    },
-    {
       "category": "celebrity-entertainment",
-      "count": 12
+      "count": 13
     },
     {
       "category": "health-scare",
@@ -65,6 +65,166 @@
     }
   ],
   "articles": [
+    {
+      "source": "De Standaard Buitenland",
+      "title": "Gefrustreerde Trump dreigt elke brug en krachtcentrale in Iran te vernietigen",
+      "reason": "The story features a threat of war, violence, and oorlogsmisdaden against the Iraanse bevolking, which makes it too negative to fit our tone.",
+      "category": "political-conflict",
+      "url": "https://www.standaard.be/buitenland/gefrustreerde-trump-dreigt-elke-brug-en-krachtcentrale-in-iran-te-vernietigen/145271272.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Hugging Face",
+      "title": "Any Custom Frontend with Gradio's Backend",
+      "reason": "Article discusses a tool for making custom frontend web applications, which lacks any overtly negative or uplifting content. May be partially suitable but leans towards soft news/filler.",
+      "category": "soft-news-filler",
+      "url": "https://huggingface.co/blog/introducing-gradio-server",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Woman makes boyfriend sign ‘Performance Improvement Plan’ after he forgot her birthday",
+      "reason": "This story is about forgetfulness and disappointment in a relationship, which can be demotivating rather than uplifting.",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/woman-makes-boyfriend-sign-performance-improvement-plan/?utm_source=rss&utm_medium=rss&utm_campaign=woman-makes-boyfriend-sign-performance-improvement-plan",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Doctor explains why some people can’t bring themselves to touch a deceased loved one’s things",
+      "reason": "This story touches on the theme of grief and mourning, which can be a difficult and negative topic.",
+      "category": "divisive-social",
+      "url": "https://www.upworthy.com/doctor-explains-why-some-people-cant-bring-themselves-to-touch-a-deceased-loved-ones-things/?utm_source=rss&utm_medium=rss&utm_campaign=doctor-explains-why-some-people-cant-bring-themselves-to-touch-a-deceased-loved-ones-things",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Doctor warns Boomers’ screen time habits may be mimicking dementia symptoms",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.upworthy.com/doctor-warns-boomers-screen-time-habits-may-be-mimicking-dementia-symptoms/?utm_source=rss&utm_medium=rss&utm_campaign=doctor-warns-boomers-screen-time-habits-may-be-mimicking-dementia-symptoms",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Kiev propose une trêve énergétique à Moscou, annonce Zelensky",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.lefigaro.fr/flash-eco/kiev-propose-une-treve-energetique-a-moscou-annonce-zelensky-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Guadeloupe : un père en garde à vue pour le meurtre de son petit garçon de deux ans et demi",
+      "reason": "The story revolves around a father accused of murdering his two-year-old son and features details about the investigation, which could be disturbing for readers.",
+      "category": "crime-violence",
+      "url": "https://www.lefigaro.fr/flash-actu/guadeloupe-un-pere-en-garde-a-vue-pour-le-meurtre-de-son-petit-garcon-de-deux-ans-et-demi-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Inondations dans le sud de la Russie: cinq morts, des milliers d'évacuations",
+      "reason": "This story is too negative as it reports on deaths and evacuations due to heavy precipitation, which falls under the category of disaster or accident.",
+      "category": "disaster-accident",
+      "url": "https://www.lefigaro.fr/flash-actu/inondations-dans-le-sud-de-la-russie-cinq-morts-des-milliers-d-evacuations-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Donald Trump menace d’«anéantir» l’Iran la nuit prochaine si le détroit d’Ormuz ne rouvre pas",
+      "reason": "The story revolves around a military threat and tense diplomacy, creating an atmosphere of fear and anxiety.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/international/donald-trump-menace-d-aneantir-l-iran-la-nuit-prochaine-si-le-detroit-d-ormuz-ne-rouvre-pas-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "I’ve Covered Women in the Workplace for 15 Years. Something Alarming Is Happening.",
+      "reason": "This article focuses on the erosion of women's presence in the workplace narrative, touching on themes of injustice and erasure.",
+      "category": "other-negative",
+      "url": "https://www.nytimes.com/2026/04/06/opinion/women-workplace-dei-feminism.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Israel Steps Up Attacks on Lebanon, Killing Dozens",
+      "reason": "This story is too violent and negative, featuring deadly attacks on civilians.",
+      "category": "war-conflict",
+      "url": "https://www.nytimes.com/2026/04/06/world/middleeast/israel-attacks-lebanon-kill-dozens.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Deze koppels mogen verder bouwen in ‘Huis gemaakt’: “Nu doen we er alles aan om te winnen”",
+      "reason": "The article discusses the outcome of a competition, which implies some level of conflict and winning at the expense of others (even if positive in nature)",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/tv/deze-koppels-mogen-verder-bouwen-in-huis-gemaakt-nu-doen-we-er-alles-aan-om-te-winnen~ab8ba39b/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Hij weet dat er gevolgen zullen zijn”: sportief directeur van Napoli laat zich uit over heisa rond Romelu Lukaku",
+      "reason": "This story mentions Romelu Lukaku training individually in Belgium against the club's wishes, implying conflict and disobedience.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/buitenlands-voetbal/hij-weet-dat-er-gevolgen-zullen-zijn-sportief-directeur-van-napoli-laat-zich-uit-over-heisa-rond-romelu-lukaku~a27b8ac13/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Niet iedereen was na rust op play-off 1-niveau”: AA Gent geeft zege tegen KV Mechelen weg na zwakke tweede helft",
+      "reason": "The story has negative outcomes (KV Mechelen being given the win) despite a contrasting positive performance from AA Gent,",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/aa-gent/niet-iedereen-was-na-rust-op-play-off-1-niveau-aa-gent-geeft-zege-tegen-kv-mechelen-weg-na-zwakke-tweede-helft~ad9684d4/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Oekraïne voert aanvallen op Russische olietoevoer uit",
+      "reason": "The article discusses attacks on Russian oil supplies, indicating ongoing conflict and war in Ukraine.",
+      "category": "war-conflict",
+      "url": "https://www.hln.be/buitenland/oekraine-voert-aanvallen-op-russische-olietoevoer-uit~a2c6d779/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Sparrenbos in Denderhoutem gaat op in vlammen",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.hln.be/haaltert/sparrenbos-in-denderhoutem-gaat-op-in-vlammen~a6f7e0b5/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Napoli en De Bruyne winnen fletse topper en springen over Milan naar tweede plaats",
+      "reason": "The story is about a sports competition and its outcome, which can be considered negative for those who lost.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/serie-a/napoli-en-de-bruyne-winnen-fletse-topper-en-springen-over-milan-naar-tweede-plaats~a193a62c/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Alternatieve uitvaartsector voelt zich buitenspel gezet bij nieuw Vlaams decreet over begrafenissen",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.demorgen.be/nieuws/alternatieve-uitvaartsector-voelt-zich-buitenspel-gezet-bij-nieuw-vlaams-decreet-over-begrafenissen~b0e5f36c/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Van imagoherstel naar nieuwe rel in één week: dit maakt Kanye Wests comeback zo problematisch",
+      "reason": "Discusses Kanye West's comeback in an overly negative light, focusing on the 'problematic' aspects of his return.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.demorgen.be/tv-cultuur/van-imagoherstel-naar-nieuwe-rel-in-een-week-dit-maakt-kanye-wests-comeback-zo-problematisch~b12d1671/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Trump dreigt Iran ‘in één nacht’ te vernietigen",
+      "reason": "Story revolves around war and conflict between Iran and the US",
+      "category": "war-conflict",
+      "url": "https://www.demorgen.be/nieuws/trump-dreigt-iran-in-een-nacht-te-vernietigen~b985852b/",
+      "date": "2026-04-06"
+    },
     {
       "source": "VRT Nws",
       "title": "Artemis II vliegt voorbij 400.171 kilometer, nooit eerder waren mensen verder van aarde verwijderd",
@@ -2463,6 +2623,1462 @@
       "reason": "No concretes plans for Play's acquisition mentioned, raising doubts about the company's future.",
       "category": "other-negative",
       "url": "https://www.humo.be/tv/hans-bourlon-over-30-jaar-studio-100-dat-je-een-hoop-reeksen-hebt-lopen-op-het-chinese-staatskanaal-met-miljoenen-kijkers-wil-nog-niet-zeggen-dat-je-geld-tot-hier-raakt~be993e3a/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het beste van Humo",
+      "title": "‘De dag dat ik het presenteren van ‘De mol’ als een last beschouw, hoop ik dat ik al gestopt ben’",
+      "reason": "Opent de pagina van de man die is veroordeeld tot een voorwaardelijke gevangenisstraf en uitlegge waarom hij nu aangesproken wordt.",
+      "category": "other-negative",
+      "url": "https://www.humo.be/tv/gilles-de-coster-over-de-mol-de-dag-dat-ik-het-presenteren-van-de-mol-als-een-last-beschouw-hoop-ik-dat-ik-al-gestopt-ben~bdc7487e/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Good News in History, April 2",
+      "reason": "The existing short reason is accurate, as the article contains no negative or problematic content.",
+      "category": "other-negative",
+      "url": "https://www.goodnewsnetwork.org/events060402/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Windows Broken Into Become Earrings in One Woman’s Quest to Keep Glass Out of Landfills",
+      "reason": "This story highlights the issue of car break-ins in the Bay Area and may deter people from reporting crimes, which in turn can lead to a lack of effective crime prevention measures.",
+      "category": "crime-violence",
+      "url": "https://www.goodnewsnetwork.org/broken-in-windows-become-jade-earrings-in-one-craftswomans-quest-to-keep-glass-out-of-landfills/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "8-year-old’s ‘Sweet Monsters’ Drawing Chosen as Winning Design to Decorate Real Train",
+      "reason": "This story is not uplifting as it may distract or annoy some people with its unusual design choice.",
+      "category": "other-negative",
+      "url": "https://www.goodnewsnetwork.org/232208-2/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Remains of ‘Three Musketeers’ Hero May Have Been Found Under Church Altar – DNA Testing Underway",
+      "reason": "Scientists are exploring the remains, not the individual's health, but it may take years or even decades to confirm, potentially disrupting historical narrative.",
+      "category": "health-scare",
+      "url": "https://www.goodnewsnetwork.org/remains-of-the-real-dartagnan-may-have-been-found-under-church-altar-dna-testing-underway/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Endangered Cockatoos Finally Hatch Chick in Artificial Nest, a Promise of Conservation Success",
+      "reason": "the story does not make a strong positive or uplifting claim about the conservation of endangered species.",
+      "category": "climate-environment",
+      "url": "https://www.goodnewsnetwork.org/endangered-cockatoos-finally-hatch-a-chick-in-artificial-nest-a-promise-of-conservation-success/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Teen Finds 6-Inch Megalodon Tooth Millions of Years Old While Diving for Fossils on Florida Coast",
+      "reason": "This finding has no direct implications to human well being, but can be seen as somewhat unsettling for the public and might stir a sense of fascination that could make people less inclined to take care of marine life.",
+      "category": "climate-environment",
+      "url": "https://www.goodnewsnetwork.org/teen-finds-6-inch-megalodon-tooth-millions-of-years-old-while-diving-for-fossils-on-florida-coast/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Good News in History, April 3",
+      "reason": "does not fit positive news criteria",
+      "category": "soft-news-filler",
+      "url": "https://www.goodnewsnetwork.org/events060403/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Young Boy with Cancer Delivers 124 Gorgeous Easter Baskets to Kids in Hospitals After Fundraising $2,000",
+      "reason": "This story is somewhat uplifting, focusing on a young boy's selfless act to bring joy to hospitalized children.",
+      "category": "soft-news-filler",
+      "url": "https://www.goodnewsnetwork.org/young-boy-with-cancer-delivers-124-gorgeous-easter-baskets-to-kids-in-hospitals-after-fundraising-2000/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Used Diapers Turned into New Ones Thanks to Super-Recycling Japanese Towns and New Innovation",
+      "reason": "This article highlights a solution to environmental waste management, but the underlying issue of pollution and environmental degradation remains a negative topic.",
+      "category": "climate-environment",
+      "url": "https://www.goodnewsnetwork.org/used-diapers-turned-into-new-ones-thanks-to-super-recycling-japanese-towns-and-new-innovation/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Your Weekly Horoscope – ‘Free Will Astrology’ by Rob Brezsny",
+      "reason": "This article promotes astrology and a self-help columnist, neither of which addresses any serious global problem or conflict.",
+      "category": "other-negative",
+      "url": "https://www.goodnewsnetwork.org/horoscope-from-rob-brezsnys-free-will-astrology-4-4-2026/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Good News in History, April 4",
+      "reason": "Microsoft's focus on business achievements and dominance of a corporation makes the story unwelcoming to readers seeking positive, uplifting content.",
+      "category": "tech-ai-concern",
+      "url": "https://www.goodnewsnetwork.org/events060404/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Watch This Rescue Rabbit Reign as the Furry Champ of Jenga",
+      "reason": "This article is not uplifting as it solely focuses on a rabbit's ability to play Jenga, implying that the rabbit is in a better position than others who cannot perform this activity.",
+      "category": "sports-negative",
+      "url": "https://www.goodnewsnetwork.org/rescue-bunny-reigns-furry-champ-jenga/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Autistic Bowler Achieves Dream With His First Perfect 300 Game And Joins the PBA as a Pro",
+      "reason": "The story focuses on an individual autistic person achieving a milestone, highlighting the positive aspects of neurodiversity and inclusion in sports.",
+      "category": "sports-negative",
+      "url": "https://www.goodnewsnetwork.org/autistic-bowler-achieves-dream-with-first-perfect-300-game/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Good News in History, April 5",
+      "reason": "The article details a violent and oppressive period in Chinese history, describing a government crackdown on its citizens, which is clearly negative.",
+      "category": "political-conflict",
+      "url": "https://www.goodnewsnetwork.org/events060405/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Wooden Loom Preserved By Fire 3,500 Years Ago Now Reveals Bronze Age Textile Revolution",
+      "reason": "The passage is focused on the devastating fire that destroyed a settlement, highlighting the destructive aspects of ancient history, and does not offer an uplifting message about progress or achievement.",
+      "category": "disaster-accident",
+      "url": "https://www.goodnewsnetwork.org/wooden-loom-preserved-by-fire-3500-years-ago/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Scientists Discover Lab Gloves Are Skewing Microplastics Data – Perhaps By A Lot",
+      "reason": "Lab gloves may be unintentionally contaminating lab equipment, casting doubt on decades of microplastics research.",
+      "category": "other-negative",
+      "url": "https://www.goodnewsnetwork.org/scientists-discover-lab-gloves-are-skewing-microplastics-data/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Good News Network",
+      "title": "Architect Creates App to Show Which Pub Gardens are Sunny – Using Shadow Simulations From Buildings",
+      "reason": "The story does not appear to be negative or uplifting as it is a lighthearted and technical innovation",
+      "category": "other-negative",
+      "url": "https://www.goodnewsnetwork.org/architect-creates-app-to-show-which-pub-patios-are-sunny/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Teacher lists the 10 basic skills she says 3rd graders no longer have, and it’s eye-opening",
+      "reason": "This article lists basic skills that 3rd graders allegedly no longer possess, implying a decline in fundamental abilities, making it not uplifting. The tone is also confrontational and somewhat critical.",
+      "category": "divisive-social",
+      "url": "https://www.upworthy.com/10-skills-kids-dont-know-ex1/?utm_source=rss&utm_medium=rss&utm_campaign=10-skills-kids-dont-know-ex1",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "51-year-old empty nester who struggled to declutter her house shares 8 tips that finally worked",
+      "reason": "This story focuses on an individual's personal struggle with decluttering, which may not be compelling or relatable to readers seeking uplifting content.",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/51-year-old-empty-nester-who-struggled-to-keep-a-clean-house-shares-9-tips-that-finally-worked-ex1/?utm_source=rss&utm_medium=rss&utm_campaign=51-year-old-empty-nester-who-struggled-to-keep-a-clean-house-shares-9-tips-that-finally-worked-ex1",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Math researchers confirm ’20 year rule’ in fashion trends and it’s uncanny",
+      "reason": "does not fit positive news criteria",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/math-researchers-confirm-20-year-rule-fashion-trends/?utm_source=rss&utm_medium=rss&utm_campaign=math-researchers-confirm-20-year-rule-fashion-trends",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "14 English words students learn differently if their teacher is American vs. British",
+      "reason": "Neutral difference in teaching styles may not be particularly engaging or inspiring for all readers.",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/14-american-vs-british-words-ex1/?utm_source=rss&utm_medium=rss&utm_campaign=14-american-vs-british-words-ex1",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Skincare mogul says her ‘high touch’ theory will be the most important job-saving skill in the age of AI",
+      "reason": "This story does not promote uplifting or positive news. It focuses on job-saving skills in a context that implies job loss due to AI, which is potentially negative.",
+      "category": "tech-ai-concern",
+      "url": "https://www.upworthy.com/high-touch-theory-will-be-the-most-important-job-saving-skill-in-the-age-of-ai/?utm_source=rss&utm_medium=rss&utm_campaign=high-touch-theory-will-be-the-most-important-job-saving-skill-in-the-age-of-ai",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Hipster guy’s surprise ranking for each of Snoopy’s relatives has become a viral phenomenon",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.upworthy.com/hipster-guys-surprise-ranking-for-each-of-snoopys-relatives-has-become-a-viral-phenomenon/?utm_source=rss&utm_medium=rss&utm_campaign=hipster-guys-surprise-ranking-for-each-of-snoopys-relatives-has-become-a-viral-phenomenon",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "How Romania took its national recycling rate from 12 percent to 94 percent in just two years",
+      "reason": "While the story is focused on a positive achievement, the existing explanation still has some negative undertones.",
+      "category": "economic-doom",
+      "url": "https://www.upworthy.com/romania-recycling-revolution/?utm_source=rss&utm_medium=rss&utm_campaign=romania-recycling-revolution",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "4-year-old boy born deaf has a touching conversation with ‘Toy Story’ characters in ASL",
+      "reason": "This story is not uplifting because it only features a heartwarming, feel-good moment between the child and 'Toy Story' characters, but does not provide any meaningful commentary on life beyond this singular interaction.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.upworthy.com/4-year-old-boy-born-deaf-has-a-touching-conversation/?utm_source=rss&utm_medium=rss&utm_campaign=4-year-old-boy-born-deaf-has-a-touching-conversation",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Comedian shares 7 American phrases that completely baffle the British ",
+      "reason": "Does not fit positive news criteria",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/7-american-phrases-that-battle-the-british/?utm_source=rss&utm_medium=rss&utm_campaign=7-american-phrases-that-battle-the-british",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Bride and groom roll up at wedding in bin truck",
+      "reason": "A couple prioritizes practicality over conventional wedding aesthetics, resulting in a peculiar and potentially divisive display.",
+      "category": "other-negative",
+      "url": "https://www.bbc.com/news/articles/cgl1pl2zlkwo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Taylor Swift on Travis, new tracks and baking bread",
+      "reason": "The article revolves around Taylor Swift's personal life and does not mention any negative or uplifting events, themes, issues.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.bbc.com/news/videos/ce3y7kpdqy9o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "'I'm a really lucky third generation chimney sweep'",
+      "reason": "The story is glamorizing privilege and a privileged occupation, which does not promote positivity or uplifting content.",
+      "category": "divisive-social",
+      "url": "https://www.bbc.com/news/articles/c5yv81dq8r2o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Stroke survivors embrace singing sessions",
+      "reason": "This story does not appear to have a negative tone, and instead focuses on the positive aspects of singing sessions for stroke survivors. It's uplifting and heartwarming.",
+      "category": "soft-news-filler",
+      "url": "https://www.bbc.com/news/articles/c8rvz3d6k17o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Sadie wrote to a Nasa astronaut - and got a reply...",
+      "reason": "The letter writer, Sadie, was a disappointed fan who received an apology and promise to investigate, but this story is not negative as it's more about the response from NASA rather than portraying something unpleasant.",
+      "category": "soft-news-filler",
+      "url": "https://www.bbc.com/news/videos/c20ej880jz0o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Illuminated",
+      "reason": "This story focuses on messages in bottles, which could be associated with lost or forgotten objects and individuals, potentially evoking a melancholic tone.",
+      "category": "divisive-social",
+      "url": "https://www.bbc.co.uk/sounds/play/m002krcf?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Running a half marathon... while pushing my daughter's pram",
+      "reason": "Running a half marathon while pushing my daughter's pram is unhealthy or excessive exertion for most adult women, particularly mothers with small children.",
+      "category": "other-negative",
+      "url": "https://www.bbc.com/news/videos/cvg4l0q3937o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Humanitarian award for kindness campaigner Sebbie",
+      "reason": "This story celebrates a kind gesture, but not the underlying issue of kindness itself.\n\nSebbies win is likely to be seen as undermining efforts to recognize and address systemic issues like poverty and lack of access to healthcare in various parts of India where Sebbie spent time campaigning.",
+      "category": "lgbtq-rights",
+      "url": "https://www.bbc.com/news/articles/cjezw3e7pn0o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Man donates kidney to woman he met after crash ",
+      "reason": "The woman's decision to receive an organ from a stranger raises more health concerns and logistical challenges than potential benefits.",
+      "category": "health-scare",
+      "url": "https://www.bbc.com/news/articles/cdjrj79gkrwo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Watch: Toronto's trash-filled basin gets a dramatic lakeside revival",
+      "reason": "The basin was restored to its original state to encourage public enjoyment of the lake, but the fact that it was once filled with trash highlights the neglected pollution issues in Toronto.",
+      "category": "climate-environment",
+      "url": "https://www.bbc.com/news/videos/cp34q1rkwdwo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "'Lifeline' hub tackling loneliness by having fun",
+      "reason": "This story highlights a problem of loneliness, implying that the community centre's efforts will only temporarily address this issue.",
+      "category": "other-negative",
+      "url": "https://www.bbc.com/news/articles/cy0714z2k6wo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "From strangers on a train, to a proposal one year on",
+      "reason": "The story does not involve any negative topic such as violence, conflict, or harm to individuals. Instead, it is a heartwarming and uplifting tale of love and commitment.",
+      "category": "soft-news-filler",
+      "url": "https://www.bbc.com/news/videos/c80xj441eyno?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "How I turned my £500 business into £2million!",
+      "reason": "Although the article is about a business success, which might seem positive at first glance, it's actually a self-centered focus on one individual's financial gain with no effort to highlight any benefits for society as a whole.",
+      "category": "other-negative",
+      "url": "https://www.bbc.co.uk/bitesize/articles/zkr4fdm?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "'If you want to feel empowered, drive a big truck'",
+      "reason": "This article promotes harmful and ableist stereotypes about people who want to pursue non-traditional career paths, implying that certain jobs are more 'empowering' than others.",
+      "category": "divisive-social",
+      "url": "https://www.bbc.com/news/videos/c5y5ewpx149o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Mum meets rescuers who saved baby from burning car",
+      "reason": "This story focuses on a tragic event rather than the positive actions of the rescuers, and highlights the danger and risk faced by parents and their children.",
+      "category": "disaster-accident",
+      "url": "https://www.bbc.com/news/videos/cx2xd4wken4o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Watch: Yosemite waterfall turns molten orange",
+      "reason": "The news about a natural phenomenon turns molten orange does not seem uplifting and is more of an observation than a story with an impactful message.",
+      "category": "other-negative",
+      "url": "https://www.bbc.com/news/videos/c4gjmp9de59o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "The lost art of letter writing uniting generations",
+      "reason": "A project about reviving a past activity that may not be seen as beneficial in the modern era is more neutral or even positive in nature, rather than inherently negative.",
+      "category": "other-negative",
+      "url": "https://www.bbc.com/news/articles/cpqw7z87qv3o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "'How my girl, 9, beat kidney failure and cancer'",
+      "reason": "This story has a negative focus on a child's battle with life-threatening health issues, highlighting hardships and struggles.",
+      "category": "other-negative",
+      "url": "https://www.bbc.com/news/articles/c78xyw7pg8vo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "BBC Uplifting stories",
+      "title": "Why are there so many daffodils in Jersey?",
+      "reason": "The article does not fit any negative category as it's asking about the abundance of daffodils in Jersey without any negative connotations.",
+      "category": "soft-news-filler",
+      "url": "https://www.bbc.com/news/articles/cx2l20rwxgxo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "The link between healthy soil and a healthy body",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.positive.news/environment/food/the-link-between-healthy-soil-and-a-healthy-body/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "What went right this week: social media’s ‘big tobacco’ moment, plus more",
+      "reason": "This story is about tobacco, which has well-documented negative health effects and contributes to the global smoking epidemic.",
+      "category": "tech-ai-concern",
+      "url": "https://www.positive.news/society/good-news-stories-from-week-13-of-2026/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "Amid an energy crisis, the renewables juggernaut gathers pace",
+      "reason": "The story focuses on rising fossil fuel prices during a renewable energy boom, suggesting that progress in renewable energy is overshadowed by the ongoing crisis.",
+      "category": "climate-environment",
+      "url": "https://www.positive.news/environment/energy/amid-an-energy-crisis-the-renewables-juggernaut-gathers-pace/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "New olive groves plant hope across the West Bank",
+      "reason": "There is no direct negative information about the story's impact. However, the presence of the West Bank region and conflict could be considered a potential negative factor.",
+      "category": "political-conflict",
+      "url": "https://www.positive.news/environment/agriculture/the-quest-to-restore-west-bank-olive-groves/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "Time for a change? Five ways to navigate a mid-career transition",
+      "reason": "This story is primarily about making a personal transition, which may be perceived as a neutral or positive aspect of life, but the general tone of the article assumes a sense of difficulty and uncertainty, which detracts from its overall uplifting nature.",
+      "category": "soft-news-filler",
+      "url": "https://www.positive.news/society/time-for-a-change-five-ways-to-navigate-a-mid-career-transition/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "‘People want a different vision of society’: London’s march for unity draws thousands",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.positive.news/society/london-march-for-unity-draws-thousands/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "End the endless scroll: seven ways to take back control of your digital life",
+      "reason": "This article discusses the negative impact of endless scrolling on mental health and provides tips to mitigate it, making it a story about taking control from an algorithm-induced problem.",
+      "category": "tech-ai-concern",
+      "url": "https://www.positive.news/lifestyle/health/seven-ways-to-take-back-control-of-your-digital-life/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "Life lessons: Rick Astley on what life so far has taught him",
+      "reason": "Rick Astley's words about the benefits of stoicism could be seen as dismissive of emotional struggles, and his focus on appreciating good fortune might come across as tone-deaf given current social issues.",
+      "category": "divisive-social",
+      "url": "https://www.positive.news/society/life-lessons-rick-astley-on-what-life-so-far-has-taught-him/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "What went right this week: the good news that matters",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.positive.news/society/good-news-stories-from-week-14-of-2026/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Positive News",
+      "title": "The generosity experiment",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.positive.news/society/the-generosity-experiment/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "China is killing the US on energy. Does that mean they’ll win AGI? — Casey Handmer",
+      "reason": "The story discusses the growing energy demands created by artificial intelligence, which is portrayed as a potentially unsustainable and ominous event.",
+      "category": "tech-ai-concern",
+      "url": "https://www.dwarkesh.com/p/casey-handmer",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "How Hitler almost starved Britain – Sarah Paine",
+      "reason": "The story focuses on military strategy and geopolitical analysis. In doing so, it describes a brutal and destructive conflict that ultimately results in the near-starvation of Britain.",
+      "category": "war-conflict",
+      "url": "https://www.dwarkesh.com/p/sarah-paine-ww2",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Evolution designed us to die fast; we can change that — Jacob Kimmel",
+      "reason": "This story discusses the concept of biological aging and its relation to human mortality, with a focus on finding solutions through genetic engineering, which may ultimately hinder our chances at long-term survival.",
+      "category": "other-negative",
+      "url": "https://www.dwarkesh.com/p/jacob-kimmel",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Fully autonomous robots are much closer than you think – Sergey Levine",
+      "reason": "This development could lead to significant job displacement and exacerbate existing social inequalities.",
+      "category": "divisive-social",
+      "url": "https://www.dwarkesh.com/p/sergey-levine",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Richard Sutton – Father of RL thinks LLMs are a dead end",
+      "reason": "L.L.M.s are unlikely to prove beneficial to society and innovation will only be driven by other means",
+      "category": "tech-ai-concern",
+      "url": "https://www.dwarkesh.com/p/richard-sutton",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Some thoughts on the Sutton interview",
+      "reason": "Does not fit positive news criteria",
+      "category": "soft-news-filler",
+      "url": "https://www.dwarkesh.com/p/thoughts-on-sutton",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Andrej Karpathy — AGI is still a decade away",
+      "reason": "The article discusses the concerns and pessimistic views of Andrej Karpathy on the topic of Artificial General Intelligence (AGI), suggesting that it will be decades away, which may indicate a sense of hopelessness or disappointment.",
+      "category": "tech-ai-concern",
+      "url": "https://www.dwarkesh.com/p/andrej-karpathy",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Nick Lane – Life as we know it is chemically inevitable",
+      "reason": "This article presents a pessimistic outlook on the inherent chemistry of life, suggesting that fundamental processes govern its evolution, and has no uplifting message.",
+      "category": "climate-environment",
+      "url": "https://www.dwarkesh.com/p/nick-lane",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Sarah Paine — How Russia sabotaged China's rise",
+      "reason": "The article discusses the negative impact of Russia on China's rise and the devastating effects of Stalin's actions, making it a story about war/conflict.",
+      "category": "war-conflict",
+      "url": "https://www.dwarkesh.com/p/sarah-paine-russo-chinese",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Satya Nadella — How Microsoft is preparing for AGI",
+      "reason": "This story is focusing on the development of advanced artificial intelligence, which raises concerns about job displacement and potential societal implications.",
+      "category": "other-negative",
+      "url": "https://www.dwarkesh.com/p/satya-nadella-2",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Ilya Sutskever — We're moving from the age of scaling to the age of research",
+      "reason": "The mention of AGI (Artificial General Intelligence) evokes feelings of anxiety and fear regarding the implications of advanced AI on societal norms, potentially leading to job displacement, bias, and social upheaval.",
+      "category": "other-negative",
+      "url": "https://www.dwarkesh.com/p/ilya-sutskever-2",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Sarah Paine — Why Russia Lost the Cold War",
+      "reason": "This series discusses the collapse of the Soviet Union, a major geopolitical event with severe consequences for global politics and economies.",
+      "category": "political-conflict",
+      "url": "https://www.dwarkesh.com/p/sarah-paine-cold-war",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Adam Marblestone — AI is missing something fundamental about the brain",
+      "reason": "AI may not be able to replicate the complexities of human cognition, potentially limiting its ability to truly understand and learn from the brain.",
+      "category": "other-negative",
+      "url": "https://www.dwarkesh.com/p/adam-marblestone",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Thoughts on AI progress (Dec 2025)",
+      "reason": "The article discusses the rapid progress of artificial intelligence, which could lead to job displacement and economic upheaval.",
+      "category": "tech-ai-concern",
+      "url": "https://www.dwarkesh.com/p/thoughts-on-ai-progress-dec-2025-video",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Elon Musk — \"In 36 months, the cheapest place to put AI will be space”",
+      "reason": "In this article, Elon Musk suggests constructing AI in space due to the high cost on Earth, which raises concerns about resource allocation and prioritization of human needs. This theme may not align with a 'positive' or uplifting message.",
+      "category": "other-negative",
+      "url": "https://www.dwarkesh.com/p/elon-musk",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Dario Amodei — \"We are near the end of the exponential\"",
+      "reason": "This story warns of the potential risks and concerns associated with achieving Artificial General Intelligence, which could lead to unintended consequences such as loss of human control, job displacement, and exacerbation of existing social issues.",
+      "category": "tech-ai-concern",
+      "url": "https://www.dwarkesh.com/p/dario-amodei-2",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Why Leonardo was a saboteur, Gutenberg went broke, and Florence was weird – Ada Palmer",
+      "reason": "This story is about the challenges and financial struggles faced by historical figures, which makes it a 'LGBTq-rights' story as they involve bankruptcy and economic problems rather than positive news or uplift.",
+      "category": "lgbtq-rights",
+      "url": "https://www.dwarkesh.com/p/ada-palmer",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Dylan Patel — Deep dive on the 3 big bottlenecks to scaling AI compute",
+      "reason": "This article discusses the challenges and bottlenecks of scaling AI compute, which could have negative implications for efficiency, sustainability, and potential environmental impact.",
+      "category": "tech-ai-concern",
+      "url": "https://www.dwarkesh.com/p/dylan-patel",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "The most important question nobody's asking about AI",
+      "reason": "This story focuses on the negative consequences of AI development and its potential dangers, including mass surveillance and alignment issues. The discussion raises concerns about technical limitations that favor tyranny over humanity.",
+      "category": "tech-ai-concern",
+      "url": "https://www.dwarkesh.com/p/dow-anthropic",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dwarkesh",
+      "title": "Terence Tao – Kepler, Newton, and the true nature of mathematical discovery",
+      "reason": "The article reveals the challenges and limitations of the verification process in scientific discovery, suggesting that progress may not be as effortless or rapid as expected.",
+      "category": "other-negative",
+      "url": "https://www.dwarkesh.com/p/terence-tao",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Nieuwe single Leyla Ebrahimi – “I’m Sorry Maria”",
+      "reason": "Lyrical insensitivity and personal attacks can have a lasting impact on individuals",
+      "category": "divisive-social",
+      "url": "https://www.dansendeberen.be/2026/04/04/nieuwe-single-leyla-ebrahimi-im-sorry-maria/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Nieuwe single OneRepublic – “Need Your Love”",
+      "reason": "Ronddobberden in een duikboot zonder communicatiemiddelen",
+      "category": "divisive-social",
+      "url": "https://www.dansendeberen.be/2026/04/04/nieuwe-single-onerepublic-need-your-love/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Nieuwe single Elmer – “GEEN BEEST”",
+      "reason": "It reports about a single person being referred to as ' GEEN BEEST' (‘NO ANIMAL’), which suggests derogatory or bullying language.",
+      "category": "divisive-social",
+      "url": "https://www.dansendeberen.be/2026/04/04/nieuwe-single-elmer-geen-beest/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Nieuwe single Bleachers – “the van”",
+      "reason": "Released a single that may compete with existing alternative music, potentially taking spotlight away from other artists",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dansendeberen.be/2026/04/04/nieuwe-single-bleachers-the-van/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Nieuwe single she’s green – “paper thin”",
+      "reason": "The article discusses a person's single being called 'paper thin', implying that it is lacking or of poor quality.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dansendeberen.be/2026/04/04/nieuwe-single-shes-green-paper-thin/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Nieuwe single Los Bitchos – “Is This Real”",
+      "reason": "This story revolves around a band finding out whether a situation is real, which suggests a lack of authenticity and potentially unrealistic expectations. This could be seen as perpetuating negativity by emphasizing uncertainty and doubt.",
+      "category": "divisive-social",
+      "url": "https://www.dansendeberen.be/2026/04/04/nieuwe-single-los-bitchos-is-this-real/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Angine de Poitrine – Vol.II (★★★★): Volledig uitgestippeld",
+      "reason": "The article discusses a return to mediocrity and disappointment with Angine de Poitrine's latest release, highlighting the lack of fulfillment and unenthusiastic reception.",
+      "category": "other-negative",
+      "url": "https://www.dansendeberen.be/2026/04/04/angine-de-poitrine-vol-ii-volledig-uitgestippeld/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Nieuwe single Kasabian – “GREAT PRETENDER”",
+      "reason": "The new single by Kasabian is not seen as an exciting addition to the band's already established discography.",
+      "category": "divisive-social",
+      "url": "https://www.dansendeberen.be/2026/04/04/nieuwe-single-kasabian-great-pretender/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Paaspop 2026 (Festivaldag 3): In de paasgroove",
+      "reason": "The story seems to highlight the festival's commercialization and exclusion of one of its original parties, which could be perceived as negative news and lacking in uplifting content.",
+      "category": "divisive-social",
+      "url": "https://www.dansendeberen.be/2026/04/06/paaspop-2026-festivaldag-3-in-de-paasgroove/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Paaspop 2026 (Festivaldag 2): Witte koppen, niet te stoppen",
+      "reason": "Gloriedag kan zijn glorie zelfs als er problemen zijn",
+      "category": "disaster-accident",
+      "url": "https://www.dansendeberen.be/2026/04/05/paaspop-2026-festivaldag-2-witte-koppen-niet-te-stoppen/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "‘Putin’s Secret Weapons’ op VRT MAX schept het beeld van een tandeloos Westen en een onaantastbare Vlad",
+      "reason": "The article details the actions of Russian President Vladimir Putin, highlighting the perception that he is seeking to undermine Western countries and exploit vulnerabilities. This narrative suggests a power struggle between nations.",
+      "category": "political-conflict",
+      "url": "https://www.humo.be/tv/recensie-putin-s-secret-weapons-op-vrt-max~b52b897b/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "Een nieuwe Jeroom: hoe beleefde Jezus Christus zijn voorlaatste avondmaal?",
+      "reason": "The story focuses on a negative event in the life of Jesus Christ, which contradicts his traditional depiction as a symbol of love and redemption.",
+      "category": "divisive-social",
+      "url": "https://www.humo.be/humor/een-nieuwe-jeroom-hoe-beleefde-jezus-christus-zijn-voorlaatste-avondmaal~bba763e8/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "Wielertoeristen over Vlaanderens Mooiste: ‘Wij zijn de échte helden, niet die gepamperde pedaalridders’",
+      "reason": "This story highlights a conflict between cyclists and 'real' heroes in Flanders, implying that some individuals are receiving special treatment.",
+      "category": "divisive-social",
+      "url": "https://www.humo.be/humor/wielertoeristen-over-vlaanderens-mooiste-die-gepamperde-pedaalriddertjes-die-vandaag-de-ronde-rijden-zijn-geen-helden-wij-wel~b4e7f900/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "Sociaal Incapabele Michiel viert Pasen: ‘OMG mama, heb jij paaseitjes verstopt?’",
+      "reason": "This article reports on a child with disabilities having to endure a difficult Easter, highlighting potential societal insensitivity and neglect of vulnerable individuals.",
+      "category": "divisive-social",
+      "url": "https://www.humo.be/humor/sociaal-incapabele-michiel-viert-pasen-omg-mama-heb-jij-paaseitjes-verstopt~b1869965/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "Van ‘Brooklyn Nine-Nine’ tot ‘The Pitt’: zes tv-personages met autisme",
+      "reason": "This story raises concerns about the portrayal of individuals with autism in a potentially negative light, downplaying its complexities and risks.",
+      "category": "divisive-social",
+      "url": "https://www.humo.be/tv/van-brooklyn-nine-nine-tot-the-pitt-zes-tv-personages-op-het-spectrum~b13f0ed1/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "Twee afvallers van ‘De Mol’ blikken terug op de proef die alles veranderde: ‘We verloren als team en nadien werd het heel link’",
+      "reason": "The article discusses a team's downfall, which is not uplifting and may be perceived as negative.",
+      "category": "divisive-social",
+      "url": "https://www.humo.be/tv/twee-afvallers-van-de-mol-blikken-terug-op-de-proef-die-alles-veranderde-we-verloren-als-team-en-nadien-werd-het-heel-link~b370a554/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "Dit was aflevering 2 van ‘De mol’: ‘Timing? Ik denk niet dat dat uw sterkste punt is’",
+      "reason": "Does not convey any negative news or uplifting messages",
+      "category": "soft-news-filler",
+      "url": "https://www.humo.be/tv/dit-was-aflevering-2-van-de-mol-timing-ik-denk-niet-dat-dat-uw-sterkste-punt-is~b0f3d9e5/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Volodymyr Zelensky rencontre le président syrien à Damas",
+      "reason": "This story promotes diplomatic efforts with a leader from a country involved in the conflict, which may be perceived as legitimizing or normalizing their actions.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/international/volodymyr-zelensky-rencontre-le-president-syrien-a-damas-20260405",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "La Corée du Sud s'excuse pour des drones ayant volé au Nord",
+      "reason": "La Corée du Sud s'excuse pour des drones ayant volé au Nord does not fit positive news criteria",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/international/la-coree-du-sud-s-excuse-pour-des-drones-ayant-vole-au-nord-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "De l’Assemblée aux mairies, comment la violence a réinvesti la vie politique",
+      "reason": "Violence has reinvigorated the political landscape, leaving scenes of unrest and potential for long-term brutalization.",
+      "category": "other-negative",
+      "url": "https://www.lefigaro.fr/politique/de-l-assemblee-aux-mairies-comment-la-violence-a-reinvesti-la-vie-politique-20260405",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Classement Ligue 1 : le PSG creuse l’écart sur Lens, Lille et Monaco grimpent, ça se complique pour Nantes",
+      "reason": "The article discusses the negative outcome of a football match, showing one team's dominance over another, with no uplifting or positive aspects.",
+      "category": "sports-negative",
+      "url": "https://www.lefigaro.fr/sports/football/ligue-1/classement-ligue-1-le-psg-creuse-l-ecart-sur-lens-lille-et-monaco-grimpent-ca-se-complique-pour-nantes-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Menaces, chantage au suicide, violences : quand la gestion des écrans des adolescents tourne au cauchemar familial",
+      "reason": "Their struggles can cause significant emotional distress for both the adolescents and their families, highlighting the need for more effective tools and support to help manage screen time.",
+      "category": "divisive-social",
+      "url": "https://www.lefigaro.fr/actualite-france/menaces-chantage-au-suicide-violences-quand-la-gestion-des-ecrans-des-adolescents-tourne-au-cauchemar-familial-20260405",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "«Certains sont prêts à boycotter les titres-restaurant» : les restaurateurs en colère contre le projet de réforme du gouvernement",
+      "reason": "A proposed law might harm traditional restaurants, leading to job losses and affecting local communities as it opens up their use on Sundays.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/conso/certains-sont-prets-a-boycotter-les-titres-restaurant-les-restaurateurs-en-colere-contre-le-projet-de-reforme-du-gouvernement-20260405",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Israël: un immeuble détruit à Haïfa par un missile iranien, plusieurs blessés dont un bébé",
+      "reason": "A missile attack from Iran has caused destruction in a building, leaving several people injured, including a baby, and is not uplifting due to the violence and loss of life.",
+      "category": "war-conflict",
+      "url": "https://www.lefigaro.fr/international/israel-un-immeuble-detruit-a-haifa-par-un-missile-iranien-plusieurs-blesses-dont-un-bebe-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Ali Vaez : « Les Iraniens considèrent qu’il vaut mieux pour eux poursuivre un conflit ouvert que de chercher à le geler. »",
+      "reason": "The article's analysis on the Iranian regime's reluctance to negotiate due to the high cost of war implies a negative outlook on international relations and cooperation.",
+      "category": "other-negative",
+      "url": "https://www.lefigaro.fr/international/ali-vaez-les-iraniens-considerent-qu-il-vaut-mieux-pour-eux-poursuivre-un-conflit-ouvert-que-de-chercher-a-le-geler-20260405",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Pétrole: le Brent et le WTI américain ouvrent en hausse, tous deux au-delà de 110 dollars",
+      "reason": "The article discusses the price increase of Brent and WTI oil, which could have negative economic implications.",
+      "category": "economic-doom",
+      "url": "https://www.lefigaro.fr/international/petrole-le-brent-et-le-wti-americain-ouvrent-en-hausse-tous-deux-au-dela-de-110-dollars-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Guerre en Iran : Donald Trump tiendra une conférence de presse demain à 19h",
+      "reason": "The article is centered around a potential war escalation, which can be classified as a tense political situation.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/international/guerre-en-iran-donald-trump-tiendra-une-conference-de-presse-demain-a-19h-20260405",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Sauvetage du soldat américain en Iran : «Ce n’est pas une victoire de Donald Trump. Il a évité un échec politico-militaire»",
+      "reason": "Due to Donald Trump's involvement and the implication of a political conflict, this article is about a potentially divisive situation that may prioritize self-interest over international cooperation.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/international/sauvetage-du-soldat-americain-en-iran-ce-n-est-pas-une-victoire-trump-il-a-evite-un-echec-politico-militaire-20260405",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "EN DIRECT - Guerre au Moyen-Orient : Trump repousse son ultimatum envers l’Iran, désormais fixé à «mardi 20 heures»",
+      "reason": "A war in the Middle East escalates, with Iran threatening further retaliation.",
+      "category": "other-negative",
+      "url": "https://www.lefigaro.fr/international/en-direct-guerre-au-moyen-orient-trump-repousse-son-ultimatum-envers-l-iran-desormais-fixe-a-mardi-20-heures-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Comment Donald Trump tente de tirer profit de l’incroyable sauvetage des pilotes américains tombés en Iran",
+      "reason": "This story is downplaying the loss of multiple aircraft and downplaying the severity of Iran's capabilities, creating a misleading overall narrative that could be seen as downplaying the risks associated with US military interventions.",
+      "category": "other-negative",
+      "url": "https://www.lefigaro.fr/international/comment-donald-trump-tente-de-tirer-profit-de-l-incroyable-sauvetage-des-pilotes-americains-tombes-en-iran-20260405",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The Washington Post",
+      "title": "It’s Holy Week, but Jerusalem’s Old City is quiet and eerily empty",
+      "reason": "The story highlights a sense of desolation and eeriness in Jerusalem's Old City during Holy Week, which may discourage or disillusion pilgrims from visiting the site.",
+      "category": "divisive-social",
+      "url": "https://www.washingtonpost.com/world/2026/04/05/jerusalem-easter-holy-week-old-city/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The Washington Post",
+      "title": "On Easter, Pope Leo delivers commanding message of peace to a world at war",
+      "reason": "The story revolves around a message of peace from the Pope amidst a world at war, specifically referencing a US war in Iran, and portrays the Vatican facing challenges such as a nativist agenda.",
+      "category": "war-conflict",
+      "url": "https://www.washingtonpost.com/world/2026/04/05/pope-leo-easter-trump-war-peace/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The Washington Post",
+      "title": "Trump threatens Iran with ‘Hell’ over Strait of Hormuz in profane post",
+      "reason": "Threats against Iran's power plants and infrastructure pose a risk to human life and stability in the region, indicating a negative development.",
+      "category": "war-conflict",
+      "url": "https://www.washingtonpost.com/politics/2026/04/05/trump-iran-strait-hormuz-easter-threat/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Former Matador Is Gored to Death Before Annual Bullfight in Spain",
+      "reason": "The accident happened before the Corrida Picassiana, an annual event in Malaga that honors the painter Pablo Picasso. This senseless killing sets a negative tone for what is supposed to be a cultural celebration.",
+      "category": "crime-violence",
+      "url": "https://www.nytimes.com/2026/04/05/world/europe/matador-dead-bull-fighting-malaga.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "3 Dead After High Winds Topple Tree During Easter Egg Hunt in Germany",
+      "reason": "A tree falling during a public event is an unexpected and tragic accident resulting in the loss of multiple lives. This incident does not align with the typical positive themes of 'Positiviteiten'.",
+      "category": "other-negative",
+      "url": "https://www.nytimes.com/2026/04/05/us/germany-easter-egg-hunt-tree-kills-3.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Pepsi Drops Sponsorship of Wireless Festival Headlined by Kanye West",
+      "reason": "The performance of a known racist and antisemitic artist at the Wireless Festival raises concerns about hate speech and cultural insensitivity.",
+      "category": "divisive-racism",
+      "url": "https://www.nytimes.com/2026/04/05/world/europe/ye-music-festival-pepsi-antisemitism.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "The Old Way of Campaigning Won’t Cut It Anymore",
+      "reason": "Doesn't promote a positive tone or solution, instead warning about the disadvantages of an outdated method.",
+      "category": "other-negative",
+      "url": "https://www.nytimes.com/2026/04/05/opinion/politics-midterms-tiktok-attention-content.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "New Owner of Shopping Plaza in Kansas City Pitches a $1.5 Billion Rescue Plan",
+      "reason": "The story is about economic struggles and plans for a $1.5 billion rescue, which could indicate a need for significant financial help, indicating an overall negative tone.",
+      "category": "economic-doom",
+      "url": "https://www.nytimes.com/2026/04/05/business/country-club-plaza-kansas-city-rescue-plan.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "The War Is Turning Iran Into a Major World Power",
+      "reason": "This article actually describes a source of conflict and potential global instability, making it negative.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/04/06/opinion/iran-war-strait-hormuz.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Renovate or Replace: The Fight Over How to Fix N.Y.C. Public Housing",
+      "reason": "The city's plans to rebuild public housing developments out of fear that it will displace them and erode community identity is likely to have negative consequences for local residents.",
+      "category": "divisive-social",
+      "url": "https://www.nytimes.com/2026/04/04/nyregion/fight-escalates-over-plan-to-demolish-and-rebuild-nyc-public-housing.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "A Food Pantry Network Suddenly Shuttered, Leaving Thousands Scrambling",
+      "reason": "The sudden shutting down of Ruby's Pantry has left thousands in dire need, sparking concerns about food insecurity and community resilience.",
+      "category": "economic-doom",
+      "url": "https://www.nytimes.com/2026/04/05/us/midwest-food-bank-rubys-pantry.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "ICE Agents Detain Newlywed Spouse of Soldier Training to Deploy",
+      "reason": "The detention of a newlywed bride by ICE agents is an emotionally manipulative and coercive tactics used to intimidate people from asylum, causing personal loss and distress.",
+      "category": "divisive-social",
+      "url": "https://www.nytimes.com/2026/04/05/us/ice-detains-military-wife-soldier-deployment.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "China Mourned an Education Influencer. The Grief Was a Quiet Revolt.",
+      "reason": "The story highlights a tragic event that has led to public outcry, emphasizing the challenges of China's education system.",
+      "category": "divisive-social",
+      "url": "https://www.nytimes.com/2026/04/06/business/china-mourned-an-education-influencer-the-grief-was-a-quiet-revolt.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "This Is Not China’s War, but Beijing Started Preparing for It Years Ago",
+      "reason": "The article discusses geopolitical tensions and China's efforts to secure energy security, implying a potential military conflict and lack of cooperation.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/04/06/business/china-oil-shock-iran-war.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Trump Revels in Threats to Commit War Crimes in Iran",
+      "reason": "The story revolves around a threat to commit war crimes, which is a severe and violent action that can cause harm to innocent people. This kind of rhetoric is not uplifting or positive.",
+      "category": "war-conflict",
+      "url": "https://www.nytimes.com/2026/04/05/us/politics/trump-iran-war-crimes-truth-social.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Reddingsboei voor eventsector",
+      "reason": "The article discusses the financial burden imposed on the event sector due to the government's decision to allocate a large sum of money for emergency measures, which could be interpreted as fiscally irresponsible and potentially damaging to the economy.",
+      "category": "economic-doom",
+      "url": "https://www.tijd.be/r/t/1/id/10240639",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "A Harrowing Race Against Time to Find a Downed U.S. Airman in Iran",
+      "reason": "The story is about the harrowing search for a downed U.S. airman in Iran, creating tension and raising geopolitical concerns.",
+      "category": "war-conflict",
+      "url": "https://www.nytimes.com/2026/04/05/us/iran-airman-fighter-jet-rescue-mission.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Missie De Wever en Magnette op springen",
+      "reason": "The article features a politician's concern about the end of their political party's chances, suggesting uncertainty and a sense of impending failure.",
+      "category": "political-conflict",
+      "url": "https://www.tijd.be/r/t/1/id/10245277",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Regering-Wilmès gaat door tot 1 oktober",
+      "reason": "The article discusses a government official not seeking re-election in the near future, indicating possible political instability.",
+      "category": "political-conflict",
+      "url": "https://www.tijd.be/r/t/1/id/10250656",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "VanMoof tankt 34 miljoen voor Nederlandse e-bikedroom",
+      "reason": "The story highlights the financial struggles of a prominent Dutch e-bike company, VanMoof, which could have cascading effects on its employees and potentially affect the broader economic sector.",
+      "category": "economic-doom",
+      "url": "https://www.tijd.be/r/t/1/id/10251905",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Europese Unie gaat zelf groene obligaties uitgeven ",
+      "reason": "Existing short reason has been reused accurately",
+      "category": "climate-environment",
+      "url": "https://www.tijd.be/r/t/1/id/10251728",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Volkswagen verkoopt Bugatti aan 'de Elon Musk van de Balkan'",
+      "reason": "The sale of Bugatti to Rimac is a strategic move that may compromise the brand's exclusivity and uniqueness.",
+      "category": "tech-ai-concern",
+      "url": "https://www.tijd.be/r/t/1/id/10318093",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Hoe leest u de fiche van uw groepsverzekering?",
+      "reason": "The article focuses on a practical and administrative task related to employee benefits, which is unlikely to be uplifting or inspiring.",
+      "category": "soft-news-filler",
+      "url": "https://www.tijd.be/r/t/1/id/10111918",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Corona in België | Lichte stijging besmettingen door nieuwe Omikronvariant",
+      "reason": "The article discusses a worrying increase in COVID-19 infections caused by the new Omikron variant.",
+      "category": "other-negative",
+      "url": "https://www.tijd.be/r/t/1/id/10217952",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Amerikaanse dochter Radial helpt Bpost over de lat",
+      "reason": "The story is describing a negative economic outlook, specifically an ongoing struggle with controlling costs.",
+      "category": "other-negative",
+      "url": "https://www.tijd.be/r/t/1/id/10405768",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Tijd",
+      "title": "Teleurstelling overheerst na klimaattop Egypte",
+      "reason": "Slotverklaring bevat details over korte en lange termijn consequenties van globale warming voor Egypte.",
+      "category": "climate-environment",
+      "url": "https://www.tijd.be/r/t/1/id/10429199",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "Votre mode de paiement suffit-il à assurer vos achats en ligne?",
+      "reason": "Relying solely on credit card payments may not provide adequate protection for consumers, raising concerns about their rights.",
+      "category": "divisive-social",
+      "url": "https://www.lecho.be/r/t/1/id/10059673",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "Comment fonctionne l'assurance groupe pour les salariés?",
+      "reason": "This story primarily presents general information about the mechanics of a benefits program, lacking a specific angle that would attract Positiviteiten's audience.",
+      "category": "soft-news-filler",
+      "url": "https://www.lecho.be/r/t/1/id/10059717",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "Les mauvaises surprises du leasing auto pour particulier",
+      "reason": "The article presents negative implications for individuals with a leasing contract, highlighting the potential for unexpected expenses.",
+      "category": "economic-doom",
+      "url": "https://www.lecho.be/r/t/1/id/10086270",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "Votre check-list \"assurances\" pour des vacances sans souci",
+      "reason": "This story is about individuals being forced to take precautions for their vacations, which may be perceived as restricting their freedom and causing additional stress.",
+      "category": "divisive-social",
+      "url": "https://www.lecho.be/r/t/1/id/10137031",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "8 choses à savoir sur vos paiements à l'étranger",
+      "reason": "The article discusses financial transactions abroad, which could be a source of stress and anxiety for travelers, and it provides no positive or uplifting aspects.",
+      "category": "soft-news-filler",
+      "url": "https://www.lecho.be/r/t/1/id/10137027",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "Un legs en duo pour payer moins de droits de succession ",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.lecho.be/r/t/1/id/10160650",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "4 réflexes pour contrer la hausse du prix des carburants",
+      "reason": "The article discusses ways to cope with the negative impact of fuel price increases, indicating that this issue has a downside.",
+      "category": "economic-doom",
+      "url": "https://www.lecho.be/r/t/1/id/10115583",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "Où faire du shopping le dimanche et les jours fériés?",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.lecho.be/r/t/1/id/9766012",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "Les étudiants ne devront pas rembourser leur bourse d'études",
+      "reason": "This story promotes a negative outcome for students, suggesting that the administration's actions may lead to hardship and unfairness, which can exacerbate social tensions, particularly among young individuals.",
+      "category": "divisive-social",
+      "url": "https://www.lecho.be/r/t/1/id/10199495",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "L'Echo",
+      "title": "Les primes à la rénovation en Région wallonne",
+      "reason": "The article discusses financial incentives (primes) that may limit investment in energy efficiency, which might be considered a negative aspect. This could potentially hinder efforts to address environmental issues.",
+      "category": "climate-environment",
+      "url": "https://www.lecho.be/r/t/1/id/10131694",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Actrice Halle Bailey als alleenstaande moeder dankbaar voor steun zus: “Je doet het niet alleen”",
+      "reason": "Does not fit positive news criteria",
+      "category": "celebrity-entertainment",
+      "url": "https://www.hln.be/celebrities/actrice-halle-bailey-als-alleenstaande-moeder-dankbaar-voor-steun-zus-je-doet-het-niet-alleen~a08bcd5a/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Jongere gevat na ontsnapping uit gesloten gemeenschapsinstelling in Everberg",
+      "reason": "This story depicts the escape and recapture of a minor, highlighting a safety concern and potential risk to public order.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/kortenberg/jongere-gevat-na-ontsnapping-uit-gesloten-gemeenschapsinstelling-in-everberg~a0fa4b45/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Blinkt Kevin De Bruyne uit bij Napoli in topper tegen AC Milan?",
+      "reason": "This story involves the transfer of a high-profile football player from one team to another, which is unlikely to have significant negative impacts on individual lives or society as a whole. However, it highlights the transience and superficial nature of success in professional sports.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/serie-a/blinkt-kevin-de-bruyne-uit-bij-napoli-in-topper-tegen-ac-milan~a193a62c/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Grijpt Dender laatste strohalm?",
+      "reason": "Does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.hln.be/belgisch-voetbal/grijpt-dender-laatste-strohalm~af52e77f/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Atalanta en Charles De Ketelaere trekken naar Lecce",
+      "reason": "Atalanta's title suggests racial discrimination, implying a derogatory term for the coach's surname. The context of 'trekken naar Lecce', suggesting that Charles De Ketelaere may be forced or chosen, can imply racist connotation.",
+      "category": "divisive-racism",
+      "url": "https://www.hln.be/serie-a/atalanta-en-charles-de-ketelaere-trekken-naar-lecce~a2ab7b72a/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Olieprijzen stijgen opnieuw na dreigementen Trump",
+      "reason": "Olieprijzen stijgen opnieuw na dreigementen Trump",
+      "category": "other-negative",
+      "url": "https://www.hln.be/economie/olieprijzen-stijgen-opnieuw-na-dreigementen-trump~a634e96a/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Duitse mannen vinden mogelijk radioactieve stof tijdens zoeken paaseieren",
+      "reason": "Possibly dangerous radioactive substance found, raising concerns for public health and safety.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/buitenland/duitse-mannen-vinden-mogelijk-radioactieve-stof-tijdens-zoeken-paaseieren~a45fa658/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Lorenzo (34) van Balthasar in Brugge zag zijn nieuwe zaak in vlammen opgaan: “Dat iedereen aan boord is gebleven, was het schoonste cadeau”",
+      "reason": "The story describes a property owner who is more concerned with immediately renting out another building than expressing gratitude for the support of his employees after a devastating fire destroyed his business. This lack of empathy towards his staff's possible loss and hardship paints a negative picture.",
+      "category": "divisive-social",
+      "url": "https://www.hln.be/brugge/lorenzo-34-van-balthasar-in-brugge-zag-zijn-nieuwe-zaak-in-vlammen-opgaan-dat-iedereen-aan-boord-is-gebleven-was-het-schoonste-cadeau~a4f3e640/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Doden bij aanval op dorp in het centrum van Nigeria",
+      "reason": "Multiple people have been killed in a random act of violence, which is an example of the devastating consequences of not being able to prevent such tragedies. This senseless attack highlights the ongoing struggle for peace and security in Nigeria.",
+      "category": "divisive-social",
+      "url": "https://www.hln.be/buitenland/doden-bij-aanval-op-dorp-in-het-centrum-van-nigeria~a3880e7c/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Axios: “Gesprekken VS en Iran gaande over tijdelijk staakt-het-vuren” - Iran wil Straat van Hormuz alleen openen in ruil voor compensatie",
+      "reason": "Iran wil Straat van Hormuz alleen openen in ruil voor compensatie; het is een expliciete aanduiding dat er een 'tijdelijk staakt-het-vuren' is waaronder valt. Dit soort gesprekken zijn vaak voedsel voor conflicten",
+      "category": "political-conflict",
+      "url": "https://www.hln.be/iran/oorlog-amerika-iran~ac88fede/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "EXCLUSIEF. Deze simkaart is dé favoriet van phishers. En toch legt Telenet het geen strobreed in de weg",
+      "reason": "A prepaid SIM card with a history of being targeted by phishers can be used to spread harmful activities, posing a risk to vulnerable individuals such as 13-year-olds.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/binnenland/exclusief-deze-simkaart-is-de-favoriet-van-phishers-en-toch-legt-telenet-het-geen-strobreed-in-de-weg~af02d0ec/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "President Zuid-Korea betuigt spijt voor drone boven Noord-Korea",
+      "reason": "The story revolves around a drone incident that could be seen as an act of aggression, which is a hallmark of political conflict.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/buitenland/president-zuid-korea-betuigt-spijt-voor-drone-boven-noord-korea~a406caa0/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Excentrieke Marthe verovert kijkersharten in ‘Huis gemaakt’: “Ik vergeet vaak dat heel Vlaanderen ons kan zien”",
+      "reason": "This story is about the negative outcome of a reality TV show, where two couples are eliminated from 'Huis gemaakt' and have to go home.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/showbizz/excentrieke-marthe-verovert-kijkersharten-in-huis-gemaakt-ik-vergeet-vaak-dat-heel-vlaanderen-ons-kan-zien~a98e151a/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Dan zullen hittegolfdagen de norm zijn.” 9 op de 10 Belgische woningen riskeren oververhitting: deze actie moet je nú nemen",
+      "reason": "Lifting measures for over 9 out of 10 Belgian homes may be needed to mitigate the heat wave threat.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/woon/dan-zullen-hittegolfdagen-de-norm-zijn-9-op-de-10-belgische-woningen-riskeren-oververhitting-deze-actie-moet-je-nu-nemen~a78d9473/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Man voorwaardelijk vrijgelaten na ernstig partnergeweld in Liedekerke",
+      "reason": "The article reports on a man being released after being charged with serious partner abuse, which is a disturbing and concerning incident.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/liedekerke/man-voorwaardelijk-vrijgelaten-na-ernstig-partnergeweld-in-liedekerke~a6b29e43/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Ontslag met lange opzegtermijn wordt vanaf juni mogelijk ingeperkt: wat zijn de gevolgen als je ontslagen wordt?",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.hln.be/mijn-geld/ontslag-met-lange-opzegtermijn-wordt-vanaf-juni-mogelijk-ingeperkt-wat-zijn-de-gevolgen-als-je-ontslagen-wordt~a8ed20f7/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Na zachte paasmaandag zet lenteweer zet zich door met zonovergoten dagen: “Kwik klimt naar 20 graden”",
+      "reason": "The article focuses on a climatic change in weather that may cause extreme temperatures, which can be uncomfortable and potentially hazardous.",
+      "category": "climate-environment",
+      "url": "https://www.hln.be/weernieuws/na-zachte-paasmaandag-zet-lenteweer-zet-zich-door-met-zonovergoten-dagen-kwik-klimt-naar-20-graden~ac484c3e/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Tijd voor de lenteschoonmaak in je financiën: zo snoei je in je kosten én genereer je meer opbrengsten",
+      "reason": "Urges people to think about being more frugal with their finances",
+      "category": "economic-doom",
+      "url": "https://www.hln.be/mijn-geld/tijd-voor-de-lenteschoonmaak-in-je-financien-zo-snoei-je-in-je-kosten-en-genereer-je-meer-opbrengsten~a98fee9a/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Hij mag wat meer theater spelen”: achter de schermen bij spectaculaire debuut van Remco Evenepoel in de Ronde met profetisch rugnummer",
+      "reason": "Remco Evenepoel's performance could be perceived as overly reliant on the team's strength, lacking individual brilliance.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/wielrennen/hij-mag-wat-meer-theater-spelen-achter-de-schermen-bij-spectaculaire-debuut-van-remco-evenepoel-in-de-ronde-met-profetisch-rugnummer~aafa3964/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Vanaken weer fit bij Club, wie vervangt geschorste Saliba bij Anderlecht? Dit zijn de vermoedelijke opstellingen",
+      "reason": "The story revolves around a player returning to fitness and a team substitution, suggesting an absence caused by injury or illness.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/belgisch-voetbal/vanaken-weer-fit-bij-club-wie-vervangt-geschorste-saliba-bij-anderlecht-dit-zijn-de-vermoedelijke-opstellingen~a1193568/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Ophef in VK over festivaloptredens Kanye West: sponsor trekt zich terug, Britse premier Starmer ‘diep bezorgd’",
+      "reason": "The sponsor's withdrawal and politicial concern over Kanye West's performance indicate a negative tone.",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/snelnieuws/ophef-in-vk-over-festivaloptredens-kanye-west-sponsor-trekt-zich-terug-britse-premier-starmer-diep-bezorgd~b4f4f20a/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Duitse mannen vinden mogelijk radioactieve stof tijdens zoeken paaseieren",
+      "reason": "This story is negative because it reveals the presence of hazardous materials in a location commonly associated with family activities, posing potential risks to human health and disrupting peace. The situation implies a lack of safety and trust in public spaces.",
+      "category": "health-scare",
+      "url": "https://www.demorgen.be/snelnieuws/duitse-mannen-vinden-mogelijk-radioactieve-stof-tijdens-zoeken-paaseieren~b45fa658/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Paus niet naar VS voor viering van Onafhankelijkheidsdag, wél naar Italiaans eiland Lampedusa",
+      "reason": "Papacy is choosing to avoid the US celebration of Independence Day, instead focusing on the problems at Lampedusa. The island's migrant crisis and tensions over immigration are highlighting a darker reality that even the Pope acknowledges.",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/snelnieuws/paus-niet-naar-vs-voor-viering-van-onafhankelijkheidsdag-wel-naar-italiaans-eiland-lampedusa~bc99de02/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Nigeriaans leger verijdelt poging tot massaontvoering tijdens paasviering, zeven doden",
+      "reason": "Meningen die een gevoel van onveiligheid of angst wekken bij lezers, zijn niet goedkeurd voor publicatie op Positiviteiten.",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/snelnieuws/nigeriaans-leger-verijdelt-poging-tot-massaontvoering-tijdens-paasviering-zeven-doden~b3880e7c/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Trump wil 152 miljoen dollar om beruchte Alcatraz-gevangenis te heropenen",
+      "reason": "This decision diverts funds away from pressing social issues, potentially exacerbating existing inequalities.",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/snelnieuws/live-trump-wil-152-miljoen-dollar-om-beruchte-alcatraz-gevangenis-te-heropenen~b13cc951/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "‘Sinds Sint-Niklaas weet ik dat jullie Belgen ook een ruggengraat hebben’: backstage bij de nieuwe show van Gover Meit",
+      "reason": "The show received criticism and did not meet certain expectations, implying a negative event.",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/tv-cultuur/sinds-sint-niklaas-weet-ik-dat-jullie-belgen-ook-een-ruggengraat-hebben-backstage-bij-de-nieuwe-show-van-gover-meit~bf1be80b/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Benoeming Axel Miller goedgekeurd door kernkabinet",
+      "reason": "Appointment of Axel Miller raises concerns about potential discrimination",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/snelnieuws/live-politiek-benoeming-axel-miller-goedgekeurd-door-kernkabinet~bf7e76f4/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Parket wil renners vervolgen die rood licht aan spoorwegovergang negeerden tijdens Ronde van Vlaanderen",
+      "reason": "A cycling event, which already carries significant risks and dangers.",
+      "category": "sports-negative",
+      "url": "https://www.demorgen.be/snelnieuws/parket-wil-renners-vervolgen-die-rood-licht-aan-spoorwegovergang-negeerden-tijdens-ronde-van-vlaanderen~bf25ca0d/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "CIA zette misleidingscampagne op touw voor redden van bemanningslid neergestorte F-15 in Iran",
+      "reason": "The article discusses a military operation by the CIA that involved misleading individuals, suggesting a negative outcome. This could further strain U.S.-Iran relations.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/nieuws/cia-zette-misleidingscampagne-op-touw-voor-redden-van-bemanningslid-neergestorte-f-15-in-iran~b0766c4b/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Oorlog in Iran schudt Belgische huizenmarkt door elkaar: 9 niet te missen verhalen van de voorbije week",
+      "reason": "The article discusses the economic impact of war on Belgium's housing market, suggesting a negative outcome. War has devastated many economies and caused widespread suffering. ,",
+      "category": "war-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/oorlog-in-iran-schudt-belgische-huizenmarkt-door-elkaar-9-niet-te-missen-verhalen-van-de-voorbije-week~b6f0d4fb/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Servische president Vucic meldt vondst explosieven bij Russische gasleiding, Hongaarse premier Orbán slaat alarm",
+      "reason": "does not fit positive news criteria",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/nieuws/servische-president-vucic-meldt-vondst-explosieven-bij-russische-gasleiding-hongaarse-premier-orban-slaat-alarm~b9c6c5830/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Dreigt er een recessie? ‘We betalen opnieuw de prijs voor het gebrek aan visie’",
+      "reason": "The article discusses the potential for a recession and criticizes a lack of vision, implying a negative outcome is in sight. It suggests that a particular group or decision-maker pays the price for the deficit, raising concerns about accountability.",
+      "category": "economic-doom",
+      "url": "https://www.demorgen.be/nieuws/dreigt-er-een-recessie-we-betalen-opnieuw-de-prijs-voor-het-gebrek-aan-visie~b111bf68/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "In de wachtzaal van het OCMW: ‘Ik heb dertig jaar meer dan de helft van mijn loon afgedragen. In plaats van respect te krijgen, word ik bij het vuil gezet’",
+      "reason": "The story describes a case of workplace mistreatment, with an individual complaining about being demeaned and having their wages unfairly deducted, indicating a negative social situation.",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/nieuws/in-de-wachtzaal-van-het-ocmw-ik-heb-dertig-jaar-meer-dan-de-helft-van-mijn-loon-afgedragen-in-plaats-van-respect-te-krijgen-word-ik-bij-het-vuil-gezet~b5bc64c1/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Gered F-15-bemanningslid overleefde meer dan 24 uur in Iraans berggebied met survivalpakket",
+      "reason": "This article focuses on a survival story involving an F-15 pilot who experienced a catastrophic event, which could be considered a war or conflict experience.",
+      "category": "other-negative",
+      "url": "https://www.demorgen.be/nieuws/gered-f-15-bemanningslid-overleefde-meer-dan-24-uur-in-iraans-berggebied-met-survivalpakket~b02b60ed/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "‘Mensen zijn het beu’: waarom steeds meer gezinnen nu kiezen voor warmtepompen, batterijen en dynamische contracten",
+      "reason": "Mensen zijn het beu': waarom steeds meer gezinnen nu kiezen voor warmtepompen, batterijen en dynamische contracten",
+      "category": "other-negative",
+      "url": "https://www.demorgen.be/nieuws/mensen-zijn-het-beu-waarom-steeds-meer-gezinnen-nu-kiezen-voor-warmtepompen-batterijen-en-dynamische-contracten~b6f47740/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Dankzij oud-burgemeester Daniël Termont heeft België de gaskraan wel nog zelf in handen: ‘Ik dreigde met mijn ontslag’",
+      "reason": "The article discusses a dark and potentially threatening situation where a former mayor threatens to resign, which implies the existence of violent or aggressive tendencies.",
+      "category": "crime-violence",
+      "url": "https://www.demorgen.be/politiek/dankzij-oud-burgemeester-daniel-termont-heeft-belgie-de-gaskraan-wel-nog-zelf-in-handen-ik-dreigde-met-mijn-ontslag~b88f543f/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Axios: Iran en VS onderhandelen over tijdelijke gevechtspauze • Iraanse raket treft flatgebouw in Haifa: twee doden",
+      "reason": "Two Israeli civilians are killed after an Iranian rocket hits a building in the city of Haifa.",
+      "category": "other-negative",
+      "url": "https://www.demorgen.be/snelnieuws/live-axios-iran-en-vs-onderhandelen-over-tijdelijke-gevechtspauze-iraanse-raket-treft-flatgebouw-in-haifa-twee-doden~be9c4f82/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Exclusief voor abonnees: win een duoticket voor Pommelien Thijs in de AFAS Dome",
+      "reason": "This story features a ticket giveaway for an event, which may be seen as less than uplifting or positive, instead focusing on material rewards.",
+      "category": "soft-news-filler",
+      "url": "https://www.demorgen.be/nieuws/exclusief-voor-abonnees-win-een-duoticket-voor-pommelien-thijs-in-de-afas-dome~b538664b/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "President Zuid-Korea betuigt spijt voor drone boven Noord-Korea",
+      "reason": "The article discusses a military action involving drones in a sensitive geopolitical region, implying a potentially escalated tensions or conflict.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/president-zuid-korea-betuigt-spijt-voor-drone-boven-noord-korea~b406caa0/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Zelensky en Syrische interim-president al-Sharaa bespreken militaire samenwerking • Kiev zegt niets te maken te hebben met explosieven in Servië",
+      "reason": "The story discusses military cooperation between Ukraine and Syria, which may not fit with the site's focus on positive news.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/oorlog-in-oekraine/live-kiev-zegt-niets-te-maken-te-hebben-met-explosieven-in-servie~b38bed0a/",
       "date": "2026-04-06"
     }
   ]
