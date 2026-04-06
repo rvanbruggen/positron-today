@@ -2,5 +2,9 @@
   "name": "positiviteiten",
   "version": "1.0.0",
   "private": true,
-  "description": "Positiviteiten - positive news, every day"
+  "description": "Positiviteiten - positive news, every day",
+  "scripts": {
+    "start": "bash start.sh",
+    "stop":  "bash stop.sh"
+  }
 }

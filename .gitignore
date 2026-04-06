@@ -23,3 +23,9 @@ site/_site/
 .DS_Store
 *.pem
 npm-debug.log*
+
+# start.sh / stop.sh runtime files
+.admin.log
+.site.log
+.ollama.log
+.ollama-external
