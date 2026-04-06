@@ -84,18 +84,25 @@ export default function SettingsPage() {
     if (!settings) return;
     setSaving(true);
     setSaveMsg(null);
-    const res = await fetch("/api/llm-settings", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(settings),
-    });
-    setSaving(false);
-    if (res.ok) {
-      setSaveMsg("Settings saved.");
-      setTimeout(() => setSaveMsg(null), 3000);
-    } else {
-      const d = await res.json();
-      setSaveMsg(`Error: ${d.error}`);
+    try {
+      const res = await fetch("/api/llm-settings", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(settings),
+      });
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : {};
+      setSaving(false);
+      if (res.ok) {
+        setSettings(data);
+        setSaveMsg("Settings saved.");
+        setTimeout(() => setSaveMsg(null), 3000);
+      } else {
+        setSaveMsg(`Error: ${data.error ?? res.statusText ?? "Unknown error"}`);
+      }
+    } catch (err) {
+      setSaving(false);
+      setSaveMsg(`Error: ${err instanceof Error ? err.message : String(err)}`);
     }
   }
 
