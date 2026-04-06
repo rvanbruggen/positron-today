@@ -63,16 +63,21 @@ title: The News We Skip
 </style>
 
 {% set catMeta = {
-  "war-conflict":       { label_en: "War & Conflict",            label_nl: "Oorlog & Conflict",          label_fr: "Guerre & Conflit",         emoji: "⚔️",  color: "#fca5a5", border: "#f87171" },
-  "crime-violence":     { label_en: "Crime & Violence",          label_nl: "Misdaad & Geweld",           label_fr: "Crime & Violence",         emoji: "🔫",  color: "#fdba74", border: "#fb923c" },
-  "political-conflict": { label_en: "Political Conflict",        label_nl: "Politiek Conflict",          label_fr: "Conflit Politique",        emoji: "🏛️",  color: "#d8b4fe", border: "#c084fc" },
-  "economic-doom":      { label_en: "Economic Doom",             label_nl: "Economische Ellende",        label_fr: "Catastrophe Économique",   emoji: "📉",  color: "#fde047", border: "#facc15" },
-  "disaster-accident":  { label_en: "Disaster & Accident",       label_nl: "Ramp & Ongeluk",             label_fr: "Catastrophe & Accident",   emoji: "🌊",  color: "#93c5fd", border: "#60a5fa" },
-  "health-scare":       { label_en: "Health Scare",              label_nl: "Gezondheidsalarm",           label_fr: "Alerte Sanitaire",         emoji: "🦠",  color: "#86efac", border: "#4ade80" },
-  "divisive-social":    { label_en: "Divisive & Social Tension", label_nl: "Verdeeldheid & Spanningen",  label_fr: "Tensions Sociales",        emoji: "⚡",  color: "#fcd34d", border: "#fbbf24" },
-  "lgbtq-rights":       { label_en: "LGBTQ Rights",              label_nl: "LGBTQ-rechten",              label_fr: "Droits LGBTQ",             emoji: "🏳️‍🌈", color: "#f9a8d4", border: "#f472b6" },
-  "divisive-racism":    { label_en: "Divisive & Racism",         label_nl: "Verdeeldheid & Racisme",     label_fr: "Racisme & Division",       emoji: "✊",  color: "#d6d3d1", border: "#a8a29e" },
-  "other-negative":     { label_en: "Other Negative",            label_nl: "Overig Negatief",            label_fr: "Autre Négatif",            emoji: "😔",  color: "#d1d5db", border: "#9ca3af" }
+  "war-conflict":            { label_en: "War & Conflict",            label_nl: "Oorlog & Conflict",            label_fr: "Guerre & Conflit",            emoji: "⚔️",  color: "#fca5a5", border: "#f87171" },
+  "crime-violence":          { label_en: "Crime & Violence",          label_nl: "Misdaad & Geweld",             label_fr: "Crime & Violence",            emoji: "🔫",  color: "#fdba74", border: "#fb923c" },
+  "political-conflict":      { label_en: "Political Conflict",        label_nl: "Politiek Conflict",            label_fr: "Conflit Politique",           emoji: "🏛️",  color: "#d8b4fe", border: "#c084fc" },
+  "economic-doom":           { label_en: "Economic Doom",             label_nl: "Economische Ellende",          label_fr: "Catastrophe Économique",      emoji: "📉",  color: "#fde047", border: "#facc15" },
+  "disaster-accident":       { label_en: "Disaster & Accident",       label_nl: "Ramp & Ongeluk",               label_fr: "Catastrophe & Accident",      emoji: "🌊",  color: "#93c5fd", border: "#60a5fa" },
+  "health-scare":            { label_en: "Health Scare",              label_nl: "Gezondheidsalarm",             label_fr: "Alerte Sanitaire",            emoji: "🦠",  color: "#86efac", border: "#4ade80" },
+  "divisive-social":         { label_en: "Divisive & Social Tension", label_nl: "Verdeeldheid & Spanningen",    label_fr: "Tensions Sociales",           emoji: "⚡",  color: "#fcd34d", border: "#fbbf24" },
+  "lgbtq-rights":            { label_en: "LGBTQ Rights",              label_nl: "LGBTQ-rechten",                label_fr: "Droits LGBTQ",                emoji: "🏳️‍🌈", color: "#f9a8d4", border: "#f472b6" },
+  "divisive-racism":         { label_en: "Divisive & Racism",         label_nl: "Verdeeldheid & Racisme",       label_fr: "Racisme & Division",          emoji: "✊",  color: "#d6d3d1", border: "#a8a29e" },
+  "sports-negative":         { label_en: "Sports & Competition",      label_nl: "Sport & Competitie",           label_fr: "Sport & Compétition",         emoji: "⚽",  color: "#bef264", border: "#84cc16" },
+  "celebrity-entertainment": { label_en: "Celebrity & Entertainment", label_nl: "Celebrities & Entertainment",  label_fr: "Célébrités & Divertissement", emoji: "🎬",  color: "#f0abfc", border: "#d946ef" },
+  "tech-ai-concern":         { label_en: "Tech & AI Anxiety",         label_nl: "Tech & AI-zorgen",             label_fr: "Inquiétudes Tech & IA",       emoji: "🤖",  color: "#a5f3fc", border: "#06b6d4" },
+  "climate-environment":     { label_en: "Climate & Environment",     label_nl: "Klimaat & Milieu",             label_fr: "Climat & Environnement",      emoji: "🌍",  color: "#99f6e4", border: "#14b8a6" },
+  "soft-news-filler":        { label_en: "Soft News & Filler",        label_nl: "Soft news & opvulling",        label_fr: "Info légère & remplissage",   emoji: "📰",  color: "#e2e8f0", border: "#94a3b8" },
+  "other-negative":          { label_en: "Other Negative",            label_nl: "Overig Negatief",              label_fr: "Autre Négatif",               emoji: "😔",  color: "#d1d5db", border: "#9ca3af" }
 } %}
 
 <div class="page-header">
