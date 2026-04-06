@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { REJECTION_CATEGORIES, CATEGORY_MAP } from "@/lib/rejection-categories";
+
+type SortKey = "title" | "source" | "category" | "date";
+type SortDir = "asc" | "desc";
 
 type Rejection = {
   id: number;
@@ -48,6 +51,8 @@ export default function RejectionsPage() {
   const [backfillDone, setBackfillDone] = useState(false);
   const [backfillProgress, setBackfillProgress] = useState<{ processed: number; total: number } | null>(null);
   const [resetting, setResetting] = useState(false);
+  const [sortKey, setSortKey] = useState<SortKey>("date");
+  const [sortDir, setSortDir] = useState<SortDir>("desc");
   const logRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -183,15 +188,35 @@ export default function RejectionsPage() {
 
   const uncategorisedCount = items.filter(i => !i.rejection_category).length;
 
-  const shown = items.filter(i => {
-    if (categoryFilter !== "all" && (i.rejection_category ?? "") !== categoryFilter) return false;
-    if (!filter) return true;
-    return (
-      i.title.toLowerCase().includes(filter.toLowerCase()) ||
-      i.source_name.toLowerCase().includes(filter.toLowerCase()) ||
-      (i.rejection_reason ?? "").toLowerCase().includes(filter.toLowerCase())
-    );
-  });
+  function handleSort(key: SortKey) {
+    if (sortKey === key) setSortDir(d => d === "asc" ? "desc" : "asc");
+    else { setSortKey(key); setSortDir("asc"); }
+  }
+
+  function SortIcon({ col }: { col: SortKey }) {
+    if (sortKey !== col) return <span className="ml-1 opacity-30">↕</span>;
+    return <span className="ml-1">{sortDir === "asc" ? "↑" : "↓"}</span>;
+  }
+
+  const shown = useMemo(() => {
+    const filtered = items.filter(i => {
+      if (categoryFilter !== "all" && (i.rejection_category ?? "") !== categoryFilter) return false;
+      if (!filter) return true;
+      return (
+        i.title.toLowerCase().includes(filter.toLowerCase()) ||
+        i.source_name.toLowerCase().includes(filter.toLowerCase()) ||
+        (i.rejection_reason ?? "").toLowerCase().includes(filter.toLowerCase())
+      );
+    });
+    return [...filtered].sort((a, b) => {
+      let cmp = 0;
+      if (sortKey === "title")    cmp = a.title.localeCompare(b.title);
+      else if (sortKey === "source")   cmp = a.source_name.localeCompare(b.source_name);
+      else if (sortKey === "category") cmp = (a.rejection_category ?? "").localeCompare(b.rejection_category ?? "");
+      else cmp = a.fetched_at.localeCompare(b.fetched_at); // date
+      return sortDir === "asc" ? cmp : -cmp;
+    });
+  }, [items, filter, categoryFilter, sortKey, sortDir]);
 
   return (
     <div>
@@ -312,61 +337,113 @@ export default function RejectionsPage() {
       </div>
 
       {/* Filters */}
-      <div className="flex gap-3 mb-4 flex-wrap">
+      <div className="bg-white rounded-xl px-5 py-3 shadow-sm border border-yellow-200 mb-5 flex flex-wrap gap-4 items-center">
         <input
-          className="border border-yellow-200 rounded-lg px-3 py-2 text-sm flex-1 min-w-[200px] focus:outline-none focus:border-yellow-400"
+          className="border border-yellow-200 rounded-lg px-3 py-1.5 text-sm flex-1 min-w-[200px] focus:outline-none focus:border-yellow-400"
           placeholder="Filter by title, source, or reason…"
           value={filter}
           onChange={e => setFilter(e.target.value)}
         />
         <select value={categoryFilter} onChange={e => setCategoryFilter(e.target.value)}
-          className="border border-yellow-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:border-yellow-400">
+          className="border border-yellow-200 rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-yellow-400">
           <option value="all">All categories</option>
           {REJECTION_CATEGORIES.map(c => (
             <option key={c.slug} value={c.slug}>{c.emoji} {c.label}</option>
           ))}
         </select>
+        {(filter || categoryFilter !== "all") && (
+          <button onClick={() => { setFilter(""); setCategoryFilter("all"); }}
+            className="text-xs text-amber-500 hover:text-amber-700 transition-colors">
+            Clear ✕
+          </button>
+        )}
+        <span className="text-sm text-amber-500 ml-auto">{shown.length} of {items.length}</span>
       </div>
 
-      {/* List */}
+      {/* Table */}
       {shown.length === 0 ? (
         <p className="text-amber-600 text-sm">
           {items.length === 0 ? "No rejections yet — fetch some articles first." : "No matches."}
         </p>
       ) : (
-        <div className="flex flex-col gap-2">
-          {shown.map(item => (
-            <div key={item.id} className="bg-white rounded-xl px-5 py-3 shadow-sm border border-yellow-200">
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  <a href={item.url} target="_blank" rel="noopener noreferrer"
-                    className="font-medium text-amber-900 text-sm hover:text-amber-600 transition-colors leading-snug block">
-                    {item.title}
-                  </a>
-                  <div className="flex gap-3 mt-1 flex-wrap items-center">
-                    <span className="text-xs text-amber-500">{item.source_name}</span>
-                    <span className="text-xs text-amber-400">{item.fetched_at.slice(0, 10)}</span>
-                    <CategoryBadge slug={item.rejection_category} />
-                  </div>
-                  {item.rejection_reason && (
-                    <p className="text-xs text-red-500 mt-1.5 italic leading-relaxed">
-                      ✗ {item.rejection_reason}
-                    </p>
-                  )}
-                </div>
-                <div className="flex gap-2 shrink-0">
-                  <button onClick={() => approve(item.id)}
-                    className="text-xs bg-yellow-100 hover:bg-yellow-200 text-amber-800 font-medium px-3 py-1 rounded-lg transition-colors">
-                    Override ↑
+        <div className="bg-white rounded-xl shadow-sm border border-yellow-200 overflow-hidden">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-yellow-100 bg-amber-50">
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide">
+                  <button onClick={() => handleSort("title")} className="flex items-center hover:text-amber-900 transition-colors">
+                    Title<SortIcon col="title" />
                   </button>
-                  <button onClick={() => remove(item.id)}
-                    className="text-xs text-red-400 hover:text-red-600 transition-colors">
-                    Delete
+                </th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden md:table-cell">
+                  <button onClick={() => handleSort("source")} className="flex items-center hover:text-amber-900 transition-colors">
+                    Source<SortIcon col="source" />
                   </button>
-                </div>
-              </div>
-            </div>
-          ))}
+                </th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden lg:table-cell">
+                  <button onClick={() => handleSort("category")} className="flex items-center hover:text-amber-900 transition-colors">
+                    Category<SortIcon col="category" />
+                  </button>
+                </th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide whitespace-nowrap">
+                  <button onClick={() => handleSort("date")} className="flex items-center hover:text-amber-900 transition-colors">
+                    Date<SortIcon col="date" />
+                  </button>
+                </th>
+                <th className="text-right px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shown.map((item, i) => {
+                const isLast = i === shown.length - 1;
+                return (
+                  <tr key={item.id} className={`${!isLast ? "border-b border-yellow-50" : ""} hover:bg-amber-50/40 transition-colors`}>
+
+                    {/* Title */}
+                    <td className="px-4 py-2.5 max-w-xs">
+                      <a href={item.url} target="_blank" rel="noopener noreferrer"
+                        className="font-medium text-amber-900 hover:text-amber-600 transition-colors line-clamp-2 leading-snug block">
+                        {item.title}
+                      </a>
+                      {item.rejection_reason && (
+                        <p className="text-xs text-red-400 italic mt-0.5 line-clamp-1">✗ {item.rejection_reason}</p>
+                      )}
+                    </td>
+
+                    {/* Source */}
+                    <td className="px-4 py-2.5 hidden md:table-cell">
+                      <span className="text-xs text-amber-500 whitespace-nowrap">{item.source_name}</span>
+                    </td>
+
+                    {/* Category */}
+                    <td className="px-4 py-2.5 hidden lg:table-cell">
+                      <CategoryBadge slug={item.rejection_category} />
+                    </td>
+
+                    {/* Date */}
+                    <td className="px-4 py-2.5 text-xs text-amber-500 whitespace-nowrap">
+                      {item.fetched_at.slice(0, 10)}
+                    </td>
+
+                    {/* Actions */}
+                    <td className="px-4 py-2.5">
+                      <div className="flex items-center gap-2 justify-end whitespace-nowrap">
+                        <button onClick={() => approve(item.id)}
+                          className="text-xs bg-yellow-100 hover:bg-yellow-200 text-amber-800 font-medium px-2 py-1 rounded transition-colors">
+                          Override ↑
+                        </button>
+                        <button onClick={() => remove(item.id)}
+                          className="text-xs text-red-400 hover:text-red-600 transition-colors">
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
