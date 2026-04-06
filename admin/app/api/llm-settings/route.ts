@@ -1,8 +1,10 @@
 import { NextRequest } from "next/server";
 import { getSettings, setSettings, type LLMSettings } from "@/lib/settings";
+import { initSchema } from "@/lib/schema";
 
 export async function GET() {
   try {
+    await initSchema();
     const settings = await getSettings();
     return Response.json(settings);
   } catch (err) {
