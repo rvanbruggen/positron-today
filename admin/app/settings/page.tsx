@@ -49,6 +49,13 @@ export default function SettingsPage() {
       })
       .then(data => {
         if (data.error) throw new Error(data.error);
+        // Auto-correct mismatched provider/model pairs (e.g. Ollama provider + Claude model name)
+        if (data.filter_provider === "ollama" && data.filter_model?.startsWith("claude-")) {
+          data.filter_model = "";
+        }
+        if (data.summarise_provider === "ollama" && data.summarise_model?.startsWith("claude-")) {
+          data.summarise_model = "";
+        }
         setSettings(data);
       })
       .catch(err => setLoadError(err.message));

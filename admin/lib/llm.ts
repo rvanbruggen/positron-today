@@ -162,13 +162,22 @@ const OLLAMA_DEFAULT_MODELS: Record<"filter" | "summarise", string> = {
   summarise: "gemma3:27b",
 };
 
+function isAnthropicModelName(model: string): boolean {
+  return model.startsWith("claude-");
+}
+
 function buildProvider(settings: LLMSettings, task: "filter" | "summarise"): LLMProvider {
   const provider = task === "filter" ? settings.filter_provider : settings.summarise_provider;
   const rawModel = task === "filter" ? settings.filter_model    : settings.summarise_model;
 
   if (provider === "ollama") {
-    // Guard: if no model is stored yet, use a sensible local default
-    const model = rawModel || OLLAMA_DEFAULT_MODELS[task];
+    // Guard 1: empty model stored → use sensible Ollama default
+    // Guard 2: Anthropic model name stored while provider is Ollama (mismatched settings)
+    //          → swap to Ollama default instead of sending "claude-*" to Ollama
+    const model =
+      !rawModel || isAnthropicModelName(rawModel)
+        ? OLLAMA_DEFAULT_MODELS[task]
+        : rawModel;
     return new OllamaProvider(model, settings.ollama_base_url || "http://localhost:11434");
   }
   // Default: anthropic
