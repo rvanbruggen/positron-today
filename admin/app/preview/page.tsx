@@ -18,6 +18,9 @@ type LogLine =
   | { type: "article"; verdict: "added" | "filtered"; title: string; reason?: string }
   | { type: "source_done"; name: string; added: number; filtered: number; skipped: number }
   | { type: "source_error"; name: string; message: string }
+  | { type: "exporting" }
+  | { type: "exported"; count: number }
+  | { type: "export_error"; message: string }
   | { type: "done"; added: number; filtered: number; skipped: number }
   | { type: "fatal"; message: string };
 
@@ -83,10 +86,12 @@ export default function PreviewPage() {
               setSourcesDone(done_);
               setProgress(total > 0 ? Math.round((done_ / total) * 100) : 0);
             }
-            if (event.type === "done" || event.type === "fatal") {
+            if (event.type === "done") {
               setProgress(100);
-              setFetching(false);
               load();
+            }
+            if (event.type === "exported" || event.type === "export_error" || event.type === "fatal") {
+              setFetching(false);
             }
           } catch { /* malformed line */ }
         }
@@ -131,7 +136,7 @@ export default function PreviewPage() {
     setArticles(prev => prev.filter(a => a.id !== id));
   }
 
-  const isDone = logs.some(l => l.type === "done" || l.type === "fatal");
+  const isDone = logs.some(l => l.type === "exported" || l.type === "export_error" || l.type === "fatal");
   const doneEvent = logs.find((l): l is Extract<LogLine, { type: "done" }> => l.type === "done");
 
   return (
@@ -217,6 +222,12 @@ export default function PreviewPage() {
                 return <div key={i} className="text-green-300 font-semibold mt-2">✅ Done — {line.added} added · {line.filtered} filtered · {line.skipped} already known</div>;
               if (line.type === "fatal")
                 return <div key={i} className="text-red-300 font-semibold mt-2">💥 {line.message}</div>;
+              if (line.type === "exporting")
+                return <div key={i} className="text-amber-400 mt-2">📤 Publishing rejection log to public site…</div>;
+              if (line.type === "exported")
+                return <div key={i} className="text-green-400">✓ Public rejection log updated ({line.count} articles)</div>;
+              if (line.type === "export_error")
+                return <div key={i} className="text-orange-400">⚠ Could not update public site: {line.message}</div>;
               return null;
             })}
             {fetching && <div className="text-amber-700 animate-pulse mt-1">▌</div>}

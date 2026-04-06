@@ -1,4 +1,5 @@
 import db from "@/lib/db";
+import { exportRejections } from "@/lib/export-rejections";
 import RSSParser from "rss-parser";
 import Anthropic from "@anthropic-ai/sdk";
 
@@ -115,6 +116,15 @@ export async function POST() {
         }
 
         send({ type: "done", added: totalAdded, filtered: totalFiltered, skipped: totalSkipped });
+
+        // Auto-publish rejection log to the public site
+        try {
+          send({ type: "exporting" });
+          const { exported } = await exportRejections();
+          send({ type: "exported", count: exported });
+        } catch (err) {
+          send({ type: "export_error", message: String(err) });
+        }
       } catch (err) {
         send({ type: "fatal", message: String(err) });
       }
