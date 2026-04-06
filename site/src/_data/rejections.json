@@ -1,39 +1,39 @@
 {
-  "exported_at": "2026-04-06T15:54:15.834Z",
-  "total_rejected": 377,
+  "exported_at": "2026-04-06T16:46:00.687Z",
+  "total_rejected": 392,
   "sources_count": 21,
   "category_breakdown": [
     {
       "category": "other-negative",
-      "count": 88
+      "count": 90
     },
     {
       "category": "divisive-social",
-      "count": 62
+      "count": 63
     },
     {
       "category": "tech-ai-concern",
-      "count": 38
+      "count": 40
     },
     {
       "category": "political-conflict",
-      "count": 38
-    },
-    {
-      "category": "soft-news-filler",
-      "count": 27
+      "count": 39
     },
     {
       "category": "sports-negative",
-      "count": 25
+      "count": 28
+    },
+    {
+      "category": "soft-news-filler",
+      "count": 28
     },
     {
       "category": "crime-violence",
-      "count": 21
+      "count": 23
     },
     {
       "category": "war-conflict",
-      "count": 17
+      "count": 19
     },
     {
       "category": "economic-doom",
@@ -44,12 +44,12 @@
       "count": 14
     },
     {
-      "category": "celebrity-entertainment",
+      "category": "disaster-accident",
       "count": 10
     },
     {
-      "category": "disaster-accident",
-      "count": 9
+      "category": "celebrity-entertainment",
+      "count": 10
     },
     {
       "category": "health-scare",
@@ -67,10 +67,130 @@
   "articles": [
     {
       "source": "VRT Nws",
-      "title": "Nieuw sportcomplex en renovatie sociale woonblokken in wijk Peterbos in Anderlecht",
-      "reason": "The story is about a renovation project, which could be perceived as negative given 'wijk Peterbos in Anderlecht' implying poverty-stricken conditions",
+      "title": "\"Welkom in mijn oude buurt\": crew ontwaakt met postume boodschap van commandant Apollo 13-recordvlucht",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://vrtnws.be/p.LNBpdGyNk",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "Man in levensgevaar na steekpartij in stationsbuurt Antwerpen",
+      "reason": "Story revolves around a violent altercation leading to the perpetrator being in life danger, which has negative connotations.",
+      "category": "crime-violence",
+      "url": "https://vrtnws.be/p.lOq8pLqOZ",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Levée du contrôle judiciaire d'Andrew Tate en Roumanie",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.lefigaro.fr/international/levee-du-controle-judiciaire-d-andrew-tate-en-roumanie-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Giorgia Meloni piégée par son amitié toxique avec Donald Trump",
+      "reason": "Story focuses on toxic friendship with a divisive figure, lacks uplifting tone.",
       "category": "divisive-social",
-      "url": "https://vrtnws.be/p.11yZ7VaGW",
+      "url": "https://www.lefigaro.fr/international/giorgia-meloni-piegee-par-son-amitie-toxique-avec-donald-trump-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "L’armée israélienne intensifie la pression sur le sud du Liban",
+      "reason": "This article is about war and conflict, which falls under the category of War & Conflict. It provides too much negativity and tension related to conflict.",
+      "category": "war-conflict",
+      "url": "https://www.lefigaro.fr/international/l-armee-israelienne-intensifie-la-pression-sur-le-sud-du-liban-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "A.I. Is on Its Way to Upending Cybersecurity",
+      "reason": "This story has a predominantly negative angle as it discusses new systems that can be used for malicious purposes by hackers, creating a sense of anxiety and insecurity.",
+      "category": "tech-ai-concern",
+      "url": "https://www.nytimes.com/2026/04/06/technology/ai-cybersecurity-hackers.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "The Big Bang: A.I. Has Created a Code Overload",
+      "reason": "This story is dominated by a negative aspect (a code overload) and does not have an uplifting angle.",
+      "category": "tech-ai-concern",
+      "url": "https://www.nytimes.com/2026/04/06/technology/ai-code-overload.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "What Does an Ultra-Luxury First Class Ticket Get You? Flying in a Frictionless Bubble.",
+      "reason": "This article appears to focus on the luxurious experience of first-class travel, highlighting its perks like a 'frictionless bubble' and absence of petty annoyances. The tone seems to emphasize comfort rather than conveying a clear message or achieving a specific goal that would leave the reader feeling better.",
+      "category": "soft-news-filler",
+      "url": "https://www.nytimes.com/2026/04/06/travel/first-class-luxury-flight-air-france-la-premiere.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Dender pakt tegen La Louvière laatste strohalm op een diefje na strafschopgoal van Jahanbakhsh",
+      "reason": "This story is about a sports match with a negative tone due to the opponent's last gesture, causing disappointment and tension.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/belgisch-voetbal/dender-pakt-tegen-la-louviere-laatste-strohalm-op-een-diefje-na-strafschopgoal-van-jahanbakhsh~af52e77f/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Een teambuilding hier, een spa resort daar”: ondanks zege haalt Ivan Leko snoeihard uit naar werkwijze nationale ploegen",
+      "reason": "The story focuses on Ivan Leko's coaching methods and the negative comparison to his teambuilding approach, which may not be uplifting for all readers.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/club-brugge/een-teambuilding-hier-een-spa-resort-daar-ondanks-zege-haalt-ivan-leko-snoeihard-uit-naar-werkwijze-nationale-ploegen~a15f8cff/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Twee doden en twee gewonden door lawine in Noorwegen",
+      "reason": "The story involves the loss of life and injury, which is predominantly negative and anxiety-inducing.",
+      "category": "disaster-accident",
+      "url": "https://www.hln.be/buitenland/twee-doden-en-twee-gewonden-door-lawine-in-noorwegen~a16e0839/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Max Dean zet Nacho Miras voor het eerst aan het werk voor de Buffalo’s, KV Mechelen moet even terug",
+      "reason": " KV Mechelen moet even terug, wat niet de geest van een 'positiviteiten' artikel is.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/aa-gent/max-dean-zet-nacho-miras-voor-het-eerst-aan-het-werk-voor-de-buffalos-kv-mechelen-moet-even-terug~ad9684d4/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Met een rotsspleet als schuiloord: hoe de Amerikaanse militair uit Iran werd gered",
+      "reason": "This story is primarily about a military operation in Iran and the rescue of an American, with a focus on conflict and danger.",
+      "category": "war-conflict",
+      "url": "https://www.demorgen.be/niet-te-missen/met-een-rotsspleet-als-schuiloord-hoe-de-amerikaanse-militair-uit-iran-werd-gered~b2736d4d/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Joël De Ceulaer: ‘Het is zonneklaar dat deze mannen het slachtoffer zijn van discriminatie op basis van hun geslacht’",
+      "reason": "Discrimination on the basis of gender is a serious issue and this article appears to be primarily focused on negative social problems.",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/nieuws/joel-de-ceulaer-het-is-zonneklaar-dat-deze-mannen-het-slachtoffer-zijn-van-discriminatie-op-basis-van-hun-geslacht~b1cb2721/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Trump herhaalt ‘uiterste deadline’ voor Iran om akkoord te sluiten: ‘Als ze dat niet doen, zullen ze niets meer hebben’",
+      "reason": "This article revolves around a diplomatic conflict and has a high chance of triggering negative emotions rather than being heartwarming or uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/live-trump-herhaalt-uiterste-deadline-voor-iran-om-akkoord-te-sluiten-als-ze-dat-niet-doen-zullen-ze-niets-meer-hebben~be9c4f82/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Terwijl strafonderzoek loopt, organiseert gynaecoloog G.D. een ‘fijn en verdiend feest’: ‘Dit zegt veel over zijn moraliteit’",
+      "reason": "The article is about a medical professional being under investigation while celebrating a 'fijn en verdiend feest', which implies potential misconduct or ethics concerns.",
+      "category": "crime-violence",
+      "url": "https://www.demorgen.be/nieuws/terwijl-strafonderzoek-loopt-organiseert-gynaecoloog-g-d-een-fijn-en-verdiend-feest-dit-zegt-veel-over-zijn-moraliteit~b7b64c82/",
       "date": "2026-04-06"
     },
     {
@@ -2343,126 +2463,6 @@
       "reason": "This article reports on a child with disabilities having to endure a difficult Easter, highlighting potential societal insensitivity and neglect of vulnerable individuals.",
       "category": "divisive-social",
       "url": "https://www.humo.be/humor/sociaal-incapabele-michiel-viert-pasen-omg-mama-heb-jij-paaseitjes-verstopt~b1869965/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Humo",
-      "title": "Van ‘Brooklyn Nine-Nine’ tot ‘The Pitt’: zes tv-personages met autisme",
-      "reason": "This story raises concerns about the portrayal of individuals with autism in a potentially negative light, downplaying its complexities and risks.",
-      "category": "divisive-social",
-      "url": "https://www.humo.be/tv/van-brooklyn-nine-nine-tot-the-pitt-zes-tv-personages-op-het-spectrum~b13f0ed1/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Humo",
-      "title": "Twee afvallers van ‘De Mol’ blikken terug op de proef die alles veranderde: ‘We verloren als team en nadien werd het heel link’",
-      "reason": "The article discusses a team's downfall, which is not uplifting and may be perceived as negative.",
-      "category": "divisive-social",
-      "url": "https://www.humo.be/tv/twee-afvallers-van-de-mol-blikken-terug-op-de-proef-die-alles-veranderde-we-verloren-als-team-en-nadien-werd-het-heel-link~b370a554/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Humo",
-      "title": "Dit was aflevering 2 van ‘De mol’: ‘Timing? Ik denk niet dat dat uw sterkste punt is’",
-      "reason": "Does not convey any negative news or uplifting messages",
-      "category": "soft-news-filler",
-      "url": "https://www.humo.be/tv/dit-was-aflevering-2-van-de-mol-timing-ik-denk-niet-dat-dat-uw-sterkste-punt-is~b0f3d9e5/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Volodymyr Zelensky rencontre le président syrien à Damas",
-      "reason": "This story promotes diplomatic efforts with a leader from a country involved in the conflict, which may be perceived as legitimizing or normalizing their actions.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/international/volodymyr-zelensky-rencontre-le-president-syrien-a-damas-20260405",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "La Corée du Sud s'excuse pour des drones ayant volé au Nord",
-      "reason": "La Corée du Sud s'excuse pour des drones ayant volé au Nord does not fit positive news criteria",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/international/la-coree-du-sud-s-excuse-pour-des-drones-ayant-vole-au-nord-20260406",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "De l’Assemblée aux mairies, comment la violence a réinvesti la vie politique",
-      "reason": "Violence has reinvigorated the political landscape, leaving scenes of unrest and potential for long-term brutalization.",
-      "category": "other-negative",
-      "url": "https://www.lefigaro.fr/politique/de-l-assemblee-aux-mairies-comment-la-violence-a-reinvesti-la-vie-politique-20260405",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Classement Ligue 1 : le PSG creuse l’écart sur Lens, Lille et Monaco grimpent, ça se complique pour Nantes",
-      "reason": "The article discusses the negative outcome of a football match, showing one team's dominance over another, with no uplifting or positive aspects.",
-      "category": "sports-negative",
-      "url": "https://www.lefigaro.fr/sports/football/ligue-1/classement-ligue-1-le-psg-creuse-l-ecart-sur-lens-lille-et-monaco-grimpent-ca-se-complique-pour-nantes-20260406",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Menaces, chantage au suicide, violences : quand la gestion des écrans des adolescents tourne au cauchemar familial",
-      "reason": "Their struggles can cause significant emotional distress for both the adolescents and their families, highlighting the need for more effective tools and support to help manage screen time.",
-      "category": "divisive-social",
-      "url": "https://www.lefigaro.fr/actualite-france/menaces-chantage-au-suicide-violences-quand-la-gestion-des-ecrans-des-adolescents-tourne-au-cauchemar-familial-20260405",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "«Certains sont prêts à boycotter les titres-restaurant» : les restaurateurs en colère contre le projet de réforme du gouvernement",
-      "reason": "A proposed law might harm traditional restaurants, leading to job losses and affecting local communities as it opens up their use on Sundays.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/conso/certains-sont-prets-a-boycotter-les-titres-restaurant-les-restaurateurs-en-colere-contre-le-projet-de-reforme-du-gouvernement-20260405",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Israël: un immeuble détruit à Haïfa par un missile iranien, plusieurs blessés dont un bébé",
-      "reason": "A missile attack from Iran has caused destruction in a building, leaving several people injured, including a baby, and is not uplifting due to the violence and loss of life.",
-      "category": "war-conflict",
-      "url": "https://www.lefigaro.fr/international/israel-un-immeuble-detruit-a-haifa-par-un-missile-iranien-plusieurs-blesses-dont-un-bebe-20260406",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Ali Vaez : « Les Iraniens considèrent qu’il vaut mieux pour eux poursuivre un conflit ouvert que de chercher à le geler. »",
-      "reason": "The article's analysis on the Iranian regime's reluctance to negotiate due to the high cost of war implies a negative outlook on international relations and cooperation.",
-      "category": "other-negative",
-      "url": "https://www.lefigaro.fr/international/ali-vaez-les-iraniens-considerent-qu-il-vaut-mieux-pour-eux-poursuivre-un-conflit-ouvert-que-de-chercher-a-le-geler-20260405",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Pétrole: le Brent et le WTI américain ouvrent en hausse, tous deux au-delà de 110 dollars",
-      "reason": "The article discusses the price increase of Brent and WTI oil, which could have negative economic implications.",
-      "category": "economic-doom",
-      "url": "https://www.lefigaro.fr/international/petrole-le-brent-et-le-wti-americain-ouvrent-en-hausse-tous-deux-au-dela-de-110-dollars-20260406",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Guerre en Iran : Donald Trump tiendra une conférence de presse demain à 19h",
-      "reason": "The article is centered around a potential war escalation, which can be classified as a tense political situation.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/international/guerre-en-iran-donald-trump-tiendra-une-conference-de-presse-demain-a-19h-20260405",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Sauvetage du soldat américain en Iran : «Ce n’est pas une victoire de Donald Trump. Il a évité un échec politico-militaire»",
-      "reason": "Due to Donald Trump's involvement and the implication of a political conflict, this article is about a potentially divisive situation that may prioritize self-interest over international cooperation.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/international/sauvetage-du-soldat-americain-en-iran-ce-n-est-pas-une-victoire-trump-il-a-evite-un-echec-politico-militaire-20260405",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "EN DIRECT - Guerre au Moyen-Orient : Trump repousse son ultimatum envers l’Iran, désormais fixé à «mardi 20 heures»",
-      "reason": "A war in the Middle East escalates, with Iran threatening further retaliation.",
-      "category": "other-negative",
-      "url": "https://www.lefigaro.fr/international/en-direct-guerre-au-moyen-orient-trump-repousse-son-ultimatum-envers-l-iran-desormais-fixe-a-mardi-20-heures-20260406",
       "date": "2026-04-06"
     }
   ]
