@@ -110,8 +110,16 @@
       Positiviteiten
     </a>
     <div class="nav-links">
-      <a href="/positiviteiten/about/">About</a>
-      <a href="/positiviteiten/negativity/" id="nav-skip">What we skip</a>
+      <a href="/positiviteiten/about/">
+        <span class="t-en">About</span>
+        <span class="t-nl" style="display:none">Over ons</span>
+        <span class="t-fr" style="display:none">À propos</span>
+      </a>
+      <a href="/positiviteiten/negativity/">
+        <span class="t-en">What we skip</span>
+        <span class="t-nl" style="display:none">Wat we overslaan</span>
+        <span class="t-fr" style="display:none">Ce qu'on ignore</span>
+      </a>
       <a href="/positiviteiten/contact/">Contact</a>
     </div>
   </nav>
@@ -119,15 +127,29 @@
     {{ content | safe }}
   </main>
   <footer>
-    Positiviteiten &nbsp;·&nbsp; positive news, every day &nbsp;·&nbsp; v{{ meta.version }}
+    Positiviteiten &nbsp;·&nbsp;
+    <span class="t-en">positive news, every day</span>
+    <span class="t-nl" style="display:none">positief nieuws, elke dag</span>
+    <span class="t-fr" style="display:none">actualités positives, chaque jour</span>
+    &nbsp;·&nbsp; v{{ meta.version }}
   </footer>
   <script>
-    // Apply saved language to the nav link label
+    // On every page: restore saved language by toggling all .t-en/.t-nl/.t-fr spans
+    // (nav, footer, and any page-level spans are all covered by this one pass).
     (function() {
-      var labels = { en: 'What we skip', nl: 'Wat we overslaan', fr: 'Ce qu\'on ignore' };
       var lang = localStorage.getItem('positiviteiten-lang') || 'en';
-      var el = document.getElementById('nav-skip');
-      if (el && labels[lang]) el.textContent = labels[lang];
+      if (lang !== 'en') {
+        ['en', 'nl', 'fr'].forEach(function(l) {
+          document.querySelectorAll('.t-' + l).forEach(function(el) {
+            el.style.display = l === lang ? '' : 'none';
+          });
+        });
+        var btn = document.querySelector('.lang-tab[onclick*="' + lang + '"]');
+        if (btn) {
+          document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+        }
+      }
     })();
   </script>
 </body>
