@@ -7,8 +7,8 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Positiviteiten - Admin",
-  description: "Admin panel for the Positiviteiten positive news site",
+  title: "Positron Today - Admin",
+  description: "Admin panel for the Positron Today positive news site",
 };
 
 export default function RootLayout({
@@ -22,15 +22,16 @@ export default function RootLayout({
         <nav className="bg-yellow-400 shadow-sm">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2 text-xl font-bold text-amber-900 tracking-tight">
+              {/* Positron atom icon: three orbitals + nucleus with + */}
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
-                <path fill="#f59e0b" d="M15,10 L85,10 Q92,10 92,17 L92,62 Q92,70 85,70 L58,70 L50,84 L42,70 L15,70 Q8,70 8,62 L8,17 Q8,10 15,10 Z"/>
-                <polygon fill="white" opacity="0.92" points="50,20 54,31 66,32 57,39 60,51 50,44 40,51 43,39 34,32 46,31"/>
-                <circle fill="white" opacity="0.55" cx="22" cy="22" r="2.5"/>
-                <circle fill="white" opacity="0.55" cx="78" cy="22" r="2.5"/>
-                <circle fill="white" opacity="0.40" cx="80" cy="57" r="1.8"/>
-                <circle fill="white" opacity="0.40" cx="20" cy="57" r="1.8"/>
+                <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" strokeWidth="5"/>
+                <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" strokeWidth="5" transform="rotate(60 50 50)"/>
+                <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" strokeWidth="5" transform="rotate(120 50 50)"/>
+                <circle cx="50" cy="50" r="13" fill="#f59e0b"/>
+                <rect x="43.5" y="47" width="13" height="6" rx="2" fill="white" opacity="0.95"/>
+                <rect x="47" y="43.5" width="6" height="13" rx="2" fill="white" opacity="0.95"/>
               </svg>
-              Positiviteiten
+              Positron Today
             </Link>
             <span className="text-amber-700 text-sm font-medium">admin</span>
             <div className="flex gap-5 ml-6 text-sm font-medium text-amber-900">
@@ -59,7 +60,7 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="max-w-5xl mx-auto w-full px-4 py-4 text-center text-xs text-amber-500">
-          Positiviteiten admin · v{APP_VERSION}
+          Positron Today admin · v{APP_VERSION}
         </footer>
       </body>
     </html>
