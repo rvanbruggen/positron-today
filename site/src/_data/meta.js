@@ -4,5 +4,5 @@ const pkg = require("../../../package.json");
 
 module.exports = {
   version: pkg.version,
-  siteName: "Positiviteiten",
+  siteName: "Positron Today",
 };
