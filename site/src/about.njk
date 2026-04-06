@@ -232,47 +232,38 @@ title: About
 
   <div class="sources-section">
 
-    <!-- English sources -->
+    {% if sources.by_language.en.length %}
     <div class="sources-lang-group">
       <div class="sources-lang-label">🇬🇧 English</div>
       <div class="sources-pills">
-        <a href="https://www.bbc.com/news/topics/cx2pk70323et" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>BBC Uplifting Stories</a>
-        <a href="https://www.goodnewsnetwork.org/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Good News Network</a>
-        <a href="https://www.positive.news/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Positive News</a>
-        <a href="https://www.upworthy.com/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Upworthy</a>
-        <a href="https://www.dwarkesh.com/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Dwarkesh</a>
-        <a href="https://positiviteit.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Positiviteit</a>
-        <a href="http://rss.cnn.com/rss/edition.rss" target="_blank" rel="noopener noreferrer" class="source-pill">CNN</a>
-        <a href="https://nytimes.com/" target="_blank" rel="noopener noreferrer" class="source-pill">The New York Times</a>
-        <a href="https://www.washingtonpost.com/" target="_blank" rel="noopener noreferrer" class="source-pill">The Washington Post</a>
-        <a href="https://www.samharris.org/" target="_blank" rel="noopener noreferrer" class="source-pill">Sam Harris</a>
+        {% for source in sources.by_language.en %}
+        <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer" class="source-pill">{% if source.feed_url %}<span class="feed-dot"></span>{% endif %}{{ source.name }}</a>
+        {% endfor %}
       </div>
     </div>
+    {% endif %}
 
-    <!-- Dutch sources -->
+    {% if sources.by_language.nl.length %}
     <div class="sources-lang-group">
       <div class="sources-lang-label">🇧🇪 Nederlands</div>
       <div class="sources-pills">
-        <a href="https://www.standaard.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>De Standaard</a>
-        <a href="https://www.demorgen.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>De Morgen</a>
-        <a href="https://www.tijd.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>De Tijd</a>
-        <a href="https://www.hln.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Het Laatste Nieuws</a>
-        <a href="https://www.humo.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Humo</a>
-        <a href="https://www.humo.be/gemist/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Het beste van Humo</a>
-        <a href="https://www.dansendeberen.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Dansende Beren</a>
-        <a href="https://www.hbvl.be/" target="_blank" rel="noopener noreferrer" class="source-pill">Het Belang van Limburg</a>
+        {% for source in sources.by_language.nl %}
+        <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer" class="source-pill">{% if source.feed_url %}<span class="feed-dot"></span>{% endif %}{{ source.name }}</a>
+        {% endfor %}
       </div>
     </div>
+    {% endif %}
 
-    <!-- French sources -->
+    {% if sources.by_language.fr.length %}
     <div class="sources-lang-group">
       <div class="sources-lang-label">🇫🇷 Français</div>
       <div class="sources-pills">
-        <a href="https://www.lesoir.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Le Soir</a>
-        <a href="https://www.lecho.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>L'Echo</a>
-        <a href="https://www.lefigaro.fr/" target="_blank" rel="noopener noreferrer" class="source-pill">Le Figaro</a>
+        {% for source in sources.by_language.fr %}
+        <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer" class="source-pill">{% if source.feed_url %}<span class="feed-dot"></span>{% endif %}{{ source.name }}</a>
+        {% endfor %}
       </div>
     </div>
+    {% endif %}
 
   </div>
 

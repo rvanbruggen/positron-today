@@ -1,5 +1,11 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
+import { exportSources } from "@/lib/export-sources";
+
+// Fire-and-forget: keep the UI snappy while the GitHub commit happens in the background.
+function triggerExport() {
+  exportSources().catch(err => console.error("[export-sources]", err));
+}
 
 export async function GET() {
   const result = await db.execute("SELECT * FROM sources ORDER BY name ASC");
@@ -19,6 +25,7 @@ export async function POST(request: NextRequest) {
       sql: "INSERT INTO sources (name, url, feed_url, type, language) VALUES (?, ?, ?, ?, ?) RETURNING *",
       args: [name, url, feed_url || null, type, language ?? "en"],
     });
+    triggerExport();
     return Response.json(result.rows[0], { status: 201 });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Unknown error";
@@ -48,6 +55,7 @@ export async function PATCH(request: NextRequest) {
     });
   }
 
+  triggerExport();
   return Response.json({ ok: true });
 }
 
@@ -56,5 +64,6 @@ export async function DELETE(request: NextRequest) {
   const id = searchParams.get("id");
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
   await db.execute({ sql: "DELETE FROM sources WHERE id = ?", args: [id] });
+  triggerExport();
   return Response.json({ ok: true });
 }

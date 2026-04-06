@@ -112,12 +112,24 @@ export default function SourcesPage() {
   const [editState, setEditState] = useState<EditState>({ name: "", url: "", feed_url: "", language: "en" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [exportStatus, setExportStatus] = useState<"idle"|"exporting"|"ok"|"error">("idle");
 
   async function load() {
     const res = await fetch("/api/sources");
     setSources(await res.json());
   }
   useEffect(() => { load(); }, []);
+
+  async function publishToSite() {
+    setExportStatus("exporting");
+    try {
+      const res = await fetch("/api/export-sources", { method: "POST" });
+      setExportStatus(res.ok ? "ok" : "error");
+    } catch {
+      setExportStatus("error");
+    }
+    setTimeout(() => setExportStatus("idle"), 4000);
+  }
 
   async function add(e: React.FormEvent) {
     e.preventDefault();
@@ -169,9 +181,22 @@ export default function SourcesPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-amber-900 mb-1">Sources</h1>
+      <div className="flex items-start justify-between gap-4 mb-1">
+        <h1 className="text-2xl font-bold text-amber-900">Sources</h1>
+        <button
+          onClick={publishToSite}
+          disabled={exportStatus === "exporting"}
+          className="shrink-0 bg-amber-400 hover:bg-amber-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50"
+        >
+          {exportStatus === "exporting" ? "Publishing…" :
+           exportStatus === "ok"        ? "✓ Published!" :
+           exportStatus === "error"     ? "✗ Error" :
+                                          "Publish to site"}
+        </button>
+      </div>
       <p className="text-amber-700 text-sm mb-8">
         Sources with an RSS feed URL are fetched automatically. Website-only sources can be browsed manually via the Preview tab.
+        Changes are published to the About page automatically; use the button to force a manual sync.
       </p>
 
       <div className="bg-white rounded-xl p-6 shadow-sm border border-yellow-200 mb-8">
