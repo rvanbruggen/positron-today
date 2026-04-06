@@ -111,7 +111,7 @@
     </a>
     <div class="nav-links">
       <a href="/positiviteiten/about/">About</a>
-      <a href="/positiviteiten/negativity/">What we skip</a>
+      <a href="/positiviteiten/negativity/" id="nav-skip">What we skip</a>
       <a href="/positiviteiten/contact/">Contact</a>
     </div>
   </nav>
@@ -121,5 +121,14 @@
   <footer>
     Positiviteiten &nbsp;·&nbsp; positive news, every day &nbsp;·&nbsp; v{{ meta.version }}
   </footer>
+  <script>
+    // Apply saved language to the nav link label
+    (function() {
+      var labels = { en: 'What we skip', nl: 'Wat we overslaan', fr: 'Ce qu\'on ignore' };
+      var lang = localStorage.getItem('positiviteiten-lang') || 'en';
+      var el = document.getElementById('nav-skip');
+      if (el && labels[lang]) el.textContent = labels[lang];
+    })();
+  </script>
 </body>
 </html>

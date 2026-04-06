@@ -4,9 +4,18 @@ title: The News We Skip
 ---
 
 <style>
-  .page-header { margin-bottom: 2rem; }
+  .page-header { margin-bottom: 1.5rem; }
   .page-header h1 { font-size: clamp(1.35rem,5vw,1.75rem); font-weight:700; color:#78350f; margin-bottom:0.5rem; }
   .page-header p  { font-size:0.9rem; color:#b45309; max-width:640px; line-height:1.6; }
+
+  .lang-tabs { display:flex; gap:0.4rem; margin-bottom:1.25rem; flex-wrap:wrap; }
+  .lang-tab {
+    padding:0.4rem 0.9rem; border-radius:99px; font-size:0.8rem;
+    font-weight:600; cursor:pointer; border:none;
+    background:#fef3c7; color:#92400e; transition:background 0.15s;
+    -webkit-tap-highlight-color:transparent; min-height:36px;
+  }
+  .lang-tab.active { background:#facc15; color:#78350f; }
 
   .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin-bottom:2rem; }
   .stat-card { background:#fff; border:2px solid #fde047; border-radius:1rem; padding:1.25rem 1rem; text-align:center; }
@@ -25,41 +34,67 @@ title: The News We Skip
 
   .empty { color:#b45309; font-size:0.9rem; }
   .updated { font-size:0.75rem; color:#d97706; margin-bottom:1.5rem; }
-
-  @media(min-width:640px) {
-    .rejection-list { gap:1rem; }
-  }
 </style>
 
 <div class="page-header">
-  <h1>The News We Skip 🚫</h1>
+  <h1>
+    <span class="t-en">The News We Skip 🚫</span>
+    <span class="t-nl" style="display:none">Het nieuws dat we overslaan 🚫</span>
+    <span class="t-fr" style="display:none">Les nouvelles que nous ignorons 🚫</span>
+  </h1>
   <p>
-    Every time we scan news sources, our AI reads the headline and filters out stories that are negative,
-    anxiety-inducing, or just plain gloomy. This page shows what gets left behind — a small illustration
-    of how skewed towards the negative most news coverage tends to be.
+    <span class="t-en">Every time we scan news sources, our AI reads the headline and filters out stories that are negative, anxiety-inducing, or just plain gloomy. This page shows what gets left behind — a small illustration of how skewed towards the negative most news coverage tends to be.</span>
+    <span class="t-nl" style="display:none">Elke keer dat we nieuwsbronnen scannen, leest onze AI de kop en filtert verhalen die negatief, angstaanjagend of gewoon somber zijn. Deze pagina toont wat er overblijft — een kleine illustratie van hoe sterk het nieuws naar het negatieve neigt.</span>
+    <span class="t-fr" style="display:none">Chaque fois que nous analysons des sources d'actualité, notre IA lit le titre et filtre les articles négatifs, anxiogènes ou simplement moroses. Cette page montre ce qui reste — une petite illustration du biais négatif dominant dans les médias.</span>
   </p>
 </div>
 
+<div class="lang-tabs">
+  <button class="lang-tab active" onclick="setLang('en', this)">EN</button>
+  <button class="lang-tab" onclick="setLang('nl', this)">NL</button>
+  <button class="lang-tab" onclick="setLang('fr', this)">FR</button>
+</div>
+
 {% if rejections.total_rejected == 0 %}
-  <p class="empty">No data yet — the rejection log will appear here after the first fetch.</p>
+  <p class="empty">
+    <span class="t-en">No data yet — the rejection log will appear here after the first fetch.</span>
+    <span class="t-nl" style="display:none">Nog geen data — het logboek verschijnt hier na de eerste fetch.</span>
+    <span class="t-fr" style="display:none">Pas encore de données — le journal apparaîtra ici après la première récupération.</span>
+  </p>
 {% else %}
 
   {% if rejections.exported_at %}
-  <p class="updated">Last updated: {{ rejections.exported_at | truncate(10, true, "") }}</p>
+  <p class="updated">
+    <span class="t-en">Last updated: {{ rejections.exported_at | truncate(10, true, "") }}</span>
+    <span class="t-nl" style="display:none">Laatste update: {{ rejections.exported_at | truncate(10, true, "") }}</span>
+    <span class="t-fr" style="display:none">Dernière mise à jour : {{ rejections.exported_at | truncate(10, true, "") }}</span>
+  </p>
   {% endif %}
 
   <div class="stat-grid">
     <div class="stat-card">
       <div class="stat-num">{{ rejections.total_rejected }}</div>
-      <div class="stat-lbl">articles filtered out</div>
+      <div class="stat-lbl">
+        <span class="t-en">articles filtered out</span>
+        <span class="t-nl" style="display:none">artikels gefilterd</span>
+        <span class="t-fr" style="display:none">articles filtrés</span>
+      </div>
     </div>
     <div class="stat-card">
       <div class="stat-num">{{ rejections.sources_count }}</div>
-      <div class="stat-lbl">news sources scanned</div>
+      <div class="stat-lbl">
+        <span class="t-en">news sources scanned</span>
+        <span class="t-nl" style="display:none">nieuwsbronnen gescand</span>
+        <span class="t-fr" style="display:none">sources d'actualité analysées</span>
+      </div>
     </div>
     <div class="stat-card">
       <div class="stat-num">{{ rejections.articles.length }}</div>
-      <div class="stat-lbl">shown here</div>
+      <div class="stat-lbl">
+        <span class="t-en">shown here</span>
+        <span class="t-nl" style="display:none">hier weergegeven</span>
+        <span class="t-fr" style="display:none">affichés ici</span>
+      </div>
     </div>
   </div>
 
@@ -84,3 +119,25 @@ title: The News We Skip
   </div>
 
 {% endif %}
+
+<script>
+  var LANGS = ['en','nl','fr'];
+  function setLang(lang, btn) {
+    LANGS.forEach(function(l) {
+      document.querySelectorAll('.t-' + l).forEach(function(el) {
+        el.style.display = l === lang ? '' : 'none';
+      });
+    });
+    document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    localStorage.setItem('positiviteiten-lang', lang);
+  }
+  // Restore saved language on load
+  (function() {
+    var saved = localStorage.getItem('positiviteiten-lang');
+    if (saved && saved !== 'en') {
+      var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
+      if (btn) setLang(saved, btn);
+    }
+  })();
+</script>
