@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if title %}{{ title }} - {% endif %}Positiviteiten</title>
   <script>
+    // Apply stored language to <html> immediately — before the body renders —
+    // so CSS can hide the wrong-language spans without a flash.
+    document.documentElement.setAttribute(
+      'data-lang', localStorage.getItem('positiviteiten-lang') || 'en'
+    );
+
     // Define setLang early (in <head>) so it is available to all page scripts
     // before base.njk's closing <script> block runs.
     // Pages that need extra block toggling (about, contact) override this
     // in their own <script> block; because base.njk's bottom script no longer
     // redefines setLang, the page-specific override persists for nav-button clicks.
     function setLang(lang, btn) {
+      document.documentElement.setAttribute('data-lang', lang);
       ['en','nl','fr'].forEach(function(l) {
         document.querySelectorAll('.t-' + l).forEach(function(el) {
           el.style.display = l === lang ? '' : 'none';
@@ -96,6 +103,20 @@
       color: #92400e;
     }
 
+    /* ── Language-controlled nav & footer spans (no FOUC) ──
+       The <head> script sets data-lang on <html> before the body renders,
+       so these rules apply before any span is painted.                   */
+    nav .t-nl, nav .t-fr,
+    footer .t-nl, footer .t-fr { display: none; }
+    html[data-lang="nl"] nav .t-en,
+    html[data-lang="nl"] footer .t-en { display: none; }
+    html[data-lang="nl"] nav .t-nl,
+    html[data-lang="nl"] footer .t-nl { display: inline; }
+    html[data-lang="fr"] nav .t-en,
+    html[data-lang="fr"] footer .t-en { display: none; }
+    html[data-lang="fr"] nav .t-fr,
+    html[data-lang="fr"] footer .t-fr { display: inline; }
+
     /* ── Desktop upgrades ── */
     @media (min-width: 640px) {
       nav { padding: 0.75rem 1.5rem; gap: 0.75rem 1.5rem; }
@@ -136,19 +157,19 @@
         <circle fill="white" opacity="0.40" cx="20" cy="57" r="1.8"/>
       </svg>
       <span class="t-en">Positivities</span>
-      <span class="t-nl" style="display:none">Positiviteiten</span>
-      <span class="t-fr" style="display:none">Positivités</span>
+      <span class="t-nl">Positiviteiten</span>
+      <span class="t-fr">Positivités</span>
     </a>
     <div class="nav-links">
       <a href="/positiviteiten/about/">
         <span class="t-en">About</span>
-        <span class="t-nl" style="display:none">Over ons</span>
-        <span class="t-fr" style="display:none">À propos</span>
+        <span class="t-nl">Over ons</span>
+        <span class="t-fr">À propos</span>
       </a>
       <a href="/positiviteiten/negativity/">
         <span class="t-en">What we skip</span>
-        <span class="t-nl" style="display:none">Wat we overslaan</span>
-        <span class="t-fr" style="display:none">Ce qu'on ignore</span>
+        <span class="t-nl">Wat we overslaan</span>
+        <span class="t-fr">Ce qu'on ignore</span>
       </a>
       <a href="/positiviteiten/contact/">Contact</a>
     </div>
@@ -164,8 +185,8 @@
   <footer>
     Positiviteiten &nbsp;·&nbsp;
     <span class="t-en">positive news, every day</span>
-    <span class="t-nl" style="display:none">positief nieuws, elke dag</span>
-    <span class="t-fr" style="display:none">actualités positives, chaque jour</span>
+    <span class="t-nl">positief nieuws, elke dag</span>
+    <span class="t-fr">actualités positives, chaque jour</span>
     &nbsp;·&nbsp; v{{ meta.version }}
   </footer>
   <script>

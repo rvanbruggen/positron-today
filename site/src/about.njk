@@ -283,6 +283,7 @@ title: About
 
   // Override global setLang to also toggle about-prose block visibility
   function setLang(lang, btn) {
+    document.documentElement.setAttribute('data-lang', lang);
     ABOUT_LANGS.forEach(function(l) {
       var el = document.getElementById('about-' + l);
       if (el) el.className = 'about-prose' + (l === lang ? ' visible' : '');
