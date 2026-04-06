@@ -1,17 +1,17 @@
 ---
 title: "Why Generalists Own the Future"
-title_nl: "Waarom Algemene Experten Toekomstigen Bezitten"
-title_fr: "Pourquoi les spécialistes généraux contrôlent l'avenir"
+title_nl: "Redeneringen: over de toekomst van de breedkunstiggen"
+title_fr: "Les généralistes : propriétaire de l'avenir"
 date: 2026-04-06
 source_url: "https://every.to/chain-of-thought/why-generalists-own-the-future-e695c27f-b6f0-447b-bcd4-e5e144439693"
 source_name: "Chain of thought"
-topic: ""
-tags: []
+topic: "Economy"
+tags: ["Economy","Science"]
 emoji: "✨"
-summary: "In an AI-driven world, generalists are emerging as the most valuable asset. Being a master of all domains may be overrated, and expertise in multiple fields is essential for solving complex problems. Generalists bring diverse perspectives together to create innovative solutions. They thrive in environments where rules are unclear and patterns aren't obvious. By embracing flexibility and adaptability, generalists can seize the future"
-summary_nl: "In een wereld waar AI dominant is, komen algemene experten in opkomende rol. Het hebben en behouden alles mag in het nu niet de krachtigste verklaring zijn, maar eigenaarschap over expertise van meerdere gebieden is essentiëel voor hetlossen van complexe problemen. Algemene specialisten combineren diverse kennisuitgang en creëren zo innovatieve oplossingen. Ze bloeien in omgevingen waar regels onduidelijk zijn en patronenen niet duidelijk voorstaan. Algemeenheid geef je de schakel voor flexibiliteit en aanpassing, en dat is wat nodig hebt om toekomst te grijpen"
-summary_fr: "Dans un monde où l'IA règne suprême, les spécialistes généraux émergent comme l'actuelle valeur réelle. Être aux prises avec tout et rien garder est sans doute en court pour le présent et les avoir à jamais sur tous les domaines peut être une déclaration sans fondement. Mais c'est la maîtrise des savoirs et de leurs relations et leur combinaison qui permet le passage de solutions innovantes. Ils ont en effet l'aptitude à apporter des éléments de connaissance de diverses disciplines ensemble, ils sont aussi très adaptés dans une situation où règles sont indécises et modèles se font rarement à venir"
+summary: "The rapid pace of AI development has made the importance of generalists even more relevant. Generalists are not just jack-of-all-trades, but curious problem-solvers who thrive in environments with unclear rules and patterns. In an allocation economy, generalists will own the future instead of those with narrow expertise. This means being adaptable and able to bring diverse knowledge together to solve complex problems. The value of generalization cannot be undervalued."
+summary_nl: "De snelle uitkomsten van de AI-golf maken de breedkunstigen nog belangrijker. Breedkunstigen zijn niet alleen alleskunnen, maar enthousiast probleemsolvers die goed kunnen functioneren in omgevingen met warrige regels en patronen. In een bemiddelingseconomie zullen breedkunstigen de toekomst eigenen, in plaats van mensen met nauwe expertise. Dit betekent dat je kunt aanpassen en diverse kennis samen te voegen om complexe problemen op te lossen. Het waarde van generalisatie kan niet te laag geschat worden."
+summary_fr: "La vitesse des progrès de l'intelligence artificielle rend encore plus pertinente le importance des généralistes. Les générales sont ce n'est pas seulement tout faire, mais des passionnés d'enquêter, excellents pour résoudre les problèmes qui dépassent ces chercheurs dans chaque domaine."
 layout: post.njk
 ---
 
-In an AI-driven world, generalists are emerging as the most valuable asset. Being a master of all domains may be overrated, and expertise in multiple fields is essential for solving complex problems. Generalists bring diverse perspectives together to create innovative solutions. They thrive in environments where rules are unclear and patterns aren't obvious. By embracing flexibility and adaptability, generalists can seize the future
+The rapid pace of AI development has made the importance of generalists even more relevant. Generalists are not just jack-of-all-trades, but curious problem-solvers who thrive in environments with unclear rules and patterns. In an allocation economy, generalists will own the future instead of those with narrow expertise. This means being adaptable and able to bring diverse knowledge together to solve complex problems. The value of generalization cannot be undervalued.
