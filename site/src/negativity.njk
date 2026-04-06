@@ -235,7 +235,7 @@ title: The News We Skip
   // Restore saved language. setLang is defined in base.njk <head>, so it is
   // already available when this script runs (page content is inside <main>).
   (function() {
-    var lang = localStorage.getItem('positiviteiten-lang') || 'en';
+    var lang = localStorage.getItem('positron-today-lang') || 'en';
     if (lang !== 'en') {
       var btn = document.querySelector('.nav-lang-btn[onclick*="' + lang + '"]');
       setLang(lang, btn);

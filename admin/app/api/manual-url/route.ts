@@ -11,7 +11,7 @@ async function getManualSourceId(): Promise<number> {
 
   const result = await db.execute({
     sql: "INSERT INTO sources (name, url, type, language) VALUES (?, ?, ?, ?) RETURNING id",
-    args: ["Manual", "https://manual.positiviteiten", "website", "en"],
+    args: ["Manual", "https://manual.positron-today", "website", "en"],
   });
   return Number(result.rows[0].id);
 }
@@ -19,7 +19,7 @@ async function getManualSourceId(): Promise<number> {
 async function fetchPageInfo(url: string): Promise<{ title: string; content: string }> {
   try {
     const res = await fetch(url, {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; Positiviteiten/1.0)" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; PositronToday/1.0)" },
       signal: AbortSignal.timeout(12000),
     });
     const html = await res.text();

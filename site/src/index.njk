@@ -319,7 +319,7 @@ title: Home
   function toggleTag(tag) {
     if (tag === 'all') { activeTags.clear(); }
     else { if (activeTags.has(tag)) activeTags.delete(tag); else activeTags.add(tag); }
-    localStorage.setItem('positiviteiten-tags', JSON.stringify([...activeTags]));
+    localStorage.setItem('positron-today-tags', JSON.stringify([...activeTags]));
     applyFilters();
   }
 
@@ -337,15 +337,15 @@ title: Home
 
   function filterDateRange(val) {
     activeDateRange = val;
-    localStorage.setItem('positiviteiten-daterange', val);
+    localStorage.setItem('positron-today-daterange', val);
     applyFilters();
   }
 
   function clearAllFilters() {
     activeTags.clear();
     activeDateRange = 'all';
-    localStorage.removeItem('positiviteiten-tags');
-    localStorage.removeItem('positiviteiten-daterange');
+    localStorage.removeItem('positron-today-tags');
+    localStorage.removeItem('positron-today-daterange');
     var sel = document.getElementById('date-range-select');
     if (sel) sel.value = 'all';
     applyFilters();
@@ -354,10 +354,10 @@ title: Home
   // Restore saved filters on load
   (function() {
     try {
-      var savedTags = JSON.parse(localStorage.getItem('positiviteiten-tags') || '[]');
+      var savedTags = JSON.parse(localStorage.getItem('positron-today-tags') || '[]');
       savedTags.forEach(function(t) { activeTags.add(t); });
     } catch(e) {}
-    var savedRange = localStorage.getItem('positiviteiten-daterange');
+    var savedRange = localStorage.getItem('positron-today-daterange');
     if (savedRange && savedRange !== 'all') {
       activeDateRange = savedRange;
       var sel = document.getElementById('date-range-select');

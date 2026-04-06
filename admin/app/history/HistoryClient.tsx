@@ -18,7 +18,7 @@ type Article = {
   source_pub_date: string | null;
 };
 
-const SITE_BASE = "https://rvanbruggen.github.io/positiviteiten";
+const SITE_BASE = "https://positron.today";
 
 function slugify(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").slice(0, 60).replace(/-$/, "");

@@ -128,10 +128,10 @@ title: Contact
     });
     document.querySelectorAll('.nav-lang-btn').forEach(function(b) { b.classList.remove('active'); });
     if (btn) btn.classList.add('active');
-    localStorage.setItem('positiviteiten-lang', lang);
+    localStorage.setItem('positron-today-lang', lang);
   }
   (function() {
-    var saved = localStorage.getItem('positiviteiten-lang');
+    var saved = localStorage.getItem('positron-today-lang');
     if (saved && saved !== 'en') {
       var btn = document.querySelector('.nav-lang-btn[onclick*="' + saved + '"]');
       setLang(saved, btn);

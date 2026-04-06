@@ -45,7 +45,7 @@ export async function exportSources(): Promise<{ exported: number }> {
     SELECT name, url, feed_url, language
     FROM sources
     WHERE active = 1
-      AND url NOT LIKE '%manual.positiviteiten%'
+      AND url NOT LIKE '%manual.positron-today%'
     ORDER BY language, name ASC
   `);
 

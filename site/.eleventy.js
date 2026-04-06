@@ -1,5 +1,6 @@
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/CNAME");
 
   eleventyConfig.addFilter("dateDisplay", (dateStr) => {
     return new Date(dateStr).toLocaleDateString("en-GB", {
@@ -109,7 +110,7 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
-    pathPrefix: "/positiviteiten/",
+    pathPrefix: "/",
     dir: {
       input: "src",
       output: "_site",

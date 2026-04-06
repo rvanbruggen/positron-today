@@ -7,7 +7,7 @@ import { Readability } from "@mozilla/readability";
 async function fetchArticleText(url: string): Promise<string> {
   try {
     const res = await fetch(url, {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; Positiviteiten/1.0)" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; PositronToday/1.0)" },
       signal: AbortSignal.timeout(10000),
     });
     const html = await res.text();

@@ -45,7 +45,7 @@ export default function RootLayout({
             <div className="ml-auto flex items-center gap-3">
               <span className="text-xs text-amber-700 font-mono">v{APP_VERSION}</span>
               <a
-                href="https://rvanbruggen.github.io/positiviteiten/"
+                href="https://positron.today/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs bg-amber-900 text-yellow-300 px-3 py-1.5 rounded-lg hover:bg-amber-800 transition-colors font-medium"
