@@ -49,7 +49,7 @@ title: Home
 
   /* Two-line date on cards */
   .card-date-wrap { text-align: right; line-height: 1.3; }
-  .card-date-added { font-size: 0.6rem; opacity: 0.55; }
+  .card-date-site { font-size: 0.6rem; opacity: 0.55; }
 
   /* Clear button */
   .filter-clear {
@@ -226,11 +226,11 @@ title: Home
         <span>{{ post.data.source_name }}</span>
         {% if post.data.source_pub_date %}
           <span class="card-date-wrap">
-            {{ post.data.source_pub_date | dateShort }}<br>
-            <span class="card-date-added">added {{ post.date | dateShort }}</span>
+            <span title="Original publication date">{{ post.data.source_pub_date | dateShort }}</span><br>
+            <span class="card-date-site" title="Published on Positiviteiten">on site {{ post.date | dateShort }}</span>
           </span>
         {% else %}
-          <span>{{ post.date | dateShort }}</span>
+          <span class="card-date-site" title="Published on Positiviteiten">on site {{ post.date | dateShort }}</span>
         {% endif %}
       </div>
     </a>

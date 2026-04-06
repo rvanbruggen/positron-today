@@ -83,10 +83,10 @@ layout: base.njk
   <p class="post-meta">
     {{ source_name }}
     {% if source_pub_date %}
-      · <span title="Date the original article was published by the source">{{ source_pub_date | dateDisplay }}</span>
-      · <span title="Date we added this story to Positiviteiten">added {{ page.date | dateDisplay }}</span>
+      · <span title="Date the original article was published by the source">orig. {{ source_pub_date | dateDisplay }}</span>
+      · <span title="Date we published this on Positiviteiten">on site {{ page.date | dateDisplay }}</span>
     {% else %}
-      · {{ page.date | dateDisplay }}
+      · <span title="Date we published this on Positiviteiten">on site {{ page.date | dateDisplay }}</span>
     {% endif %}
   </p>
 </div>

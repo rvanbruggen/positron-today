@@ -30,6 +30,11 @@ function generateMarkdown(article: Record<string, unknown>, tagNames: string[]):
     ? String(article.source_pub_date).slice(0, 10)
     : null;
 
+  // Date we fetched this article from the RSS feed
+  const fetchedDate = article.fetched_at
+    ? String(article.fetched_at).slice(0, 10)
+    : null;
+
   // Primary tag for backward compat (post template still reads `topic`)
   const primaryTag = tagNames[0] ?? "";
   // Per-article emoji from Claude, fallback to 📰
@@ -42,6 +47,7 @@ function generateMarkdown(article: Record<string, unknown>, tagNames: string[]):
     `title_fr: ${yamlStr(String(article.title_fr ?? title))}`,
     `date: ${date}`,
     ...(sourcePubDate ? [`source_pub_date: ${sourcePubDate}`] : []),
+    ...(fetchedDate   ? [`fetched_date: ${fetchedDate}`]      : []),
     `source_url: ${yamlStr(String(article.source_url))}`,
     `source_name: ${yamlStr(String(article.source_name))}`,
     `topic: ${yamlStr(primaryTag)}`,
@@ -103,7 +109,7 @@ export async function POST(request: NextRequest) {
     // JOIN raw_articles to pick up source_pub_date (original RSS publication date)
     const [articleResult, tagsResult] = await Promise.all([
       db.execute({
-        sql: `SELECT a.*, r.source_pub_date
+        sql: `SELECT a.*, r.source_pub_date, r.fetched_at
               FROM articles a
               LEFT JOIN raw_articles r ON a.raw_article_id = r.id
               WHERE a.id = ?`,
