@@ -1,31 +1,31 @@
 {
-  "exported_at": "2026-04-06T13:22:31.482Z",
-  "total_rejected": 275,
-  "sources_count": 15,
+  "exported_at": "2026-04-06T13:35:06.734Z",
+  "total_rejected": 319,
+  "sources_count": 19,
   "category_breakdown": [
     {
       "category": "other-negative",
-      "count": 67
+      "count": 75
     },
     {
       "category": "divisive-social",
-      "count": 58
-    },
-    {
-      "category": "political-conflict",
-      "count": 25
-    },
-    {
-      "category": "soft-news-filler",
-      "count": 22
+      "count": 60
     },
     {
       "category": "tech-ai-concern",
-      "count": 17
+      "count": 37
+    },
+    {
+      "category": "political-conflict",
+      "count": 27
+    },
+    {
+      "category": "soft-news-filler",
+      "count": 23
     },
     {
       "category": "sports-negative",
-      "count": 16
+      "count": 18
     },
     {
       "category": "war-conflict",
@@ -33,27 +33,27 @@
     },
     {
       "category": "economic-doom",
-      "count": 12
-    },
-    {
-      "category": "climate-environment",
-      "count": 12
+      "count": 13
     },
     {
       "category": "crime-violence",
-      "count": 11
+      "count": 13
+    },
+    {
+      "category": "climate-environment",
+      "count": 13
+    },
+    {
+      "category": "celebrity-entertainment",
+      "count": 9
+    },
+    {
+      "category": "disaster-accident",
+      "count": 7
     },
     {
       "category": "health-scare",
       "count": 6
-    },
-    {
-      "category": "celebrity-entertainment",
-      "count": 6
-    },
-    {
-      "category": "disaster-accident",
-      "count": 5
     },
     {
       "category": "divisive-racism",
@@ -65,6 +65,358 @@
     }
   ],
   "articles": [
+    {
+      "source": "Microsoft Research",
+      "title": "Media Authenticity Methods in Practice: Capabilities, Limitations, and Directions",
+      "reason": "This story focuses on media integrity issues, which is not in line with Positiviteiten's focus on genuine good news and heartwarming stories.",
+      "category": "tech-ai-concern",
+      "url": "https://www.microsoft.com/en-us/research/blog/media-authenticity-methods-in-practice-capabilities-limitations-and-directions/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Microsoft Research",
+      "title": "Phi-4-reasoning-vision and the lessons of training a multimodal reasoning model",
+      "reason": "The story promotes a scientific breakthrough, a positive technological development that aims to improve AI capabilities, with no negative or impactful aspects mentioned.",
+      "category": "tech-ai-concern",
+      "url": "https://www.microsoft.com/en-us/research/blog/phi-4-reasoning-vision-and-the-lessons-of-training-a-multimodal-reasoning-model/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Microsoft Research",
+      "title": "PlugMem: Transforming raw agent interactions into reusable knowledge",
+      "reason": "This story is about a technical advancement in AI, which has no inherently negative or uplifting aspects.",
+      "category": "other-negative",
+      "url": "https://www.microsoft.com/en-us/research/blog/from-raw-interaction-to-reusable-knowledge-rethinking-memory-for-ai-agents/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Microsoft Research",
+      "title": "Will machines ever be intelligent? ",
+      "reason": "Story focuses on the limitations of current AI models and whether they can reach human intelligence, which may lead to anxiety or concern about the future of technology.",
+      "category": "tech-ai-concern",
+      "url": "https://www.microsoft.com/en-us/research/podcast/will-machines-ever-be-intelligent/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Microsoft Research",
+      "title": "GroundedPlanBench: Spatially grounded long-horizon task planning for robot manipulation",
+      "reason": "This science-focused article is about a technical improvement in robot manipulation, not uplifting or informative in the traditional sense of positive news.",
+      "category": "tech-ai-concern",
+      "url": "https://www.microsoft.com/en-us/research/blog/groundedplanbench-spatially-grounded-long-horizon-task-planning-for-robot-manipulation/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Microsoft Research",
+      "title": "AsgardBench: A benchmark for visually grounded interactive planning",
+      "reason": "Story is focused on an artificial intelligence related topic without any negative or uplifting context.",
+      "category": "tech-ai-concern",
+      "url": "https://www.microsoft.com/en-us/research/blog/asgardbench-a-benchmark-for-visually-grounded-interactive-planning/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Microsoft Research",
+      "title": "ADeLe: Predicting and explaining AI performance across tasks",
+      "reason": "Lack of human impact and potential to exacerbate tech anxiety ",
+      "category": "tech-ai-concern",
+      "url": "https://www.microsoft.com/en-us/research/blog/adele-predicting-and-explaining-ai-performance-across-tasks/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Hugging Face",
+      "title": "Bringing Robotics AI to Embedded Platforms: Dataset Recording, VLA Fine‑Tuning, and On‑Device Optimizations",
+      "reason": "The story discusses technical aspects of AI technology and optimization strategies, which may not be inherently uplifting or positive.",
+      "category": "tech-ai-concern",
+      "url": "https://huggingface.co/blog/nxp/bringing-robotics-ai-to-embedded-platforms",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Hugging Face",
+      "title": "LeRobot v0.5.0: Scaling Every Dimension",
+      "reason": "This story may have positive aspects about advancements in artificial intelligence for broad applications, but the 'negative' part of the title suggests a potential focus on the challenges or limitations it addresses. ",
+      "category": "tech-ai-concern",
+      "url": "https://huggingface.co/blog/lerobot-release-v050",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Hugging Face",
+      "title": "Introducing Storage Buckets on the Hugging Face Hub",
+      "reason": "This article is about tech, AI and a product, which means it's likely to be neutral or of little relevance to our positive news focus. It does not contain anything inherently negative or scary.",
+      "category": "tech-ai-concern",
+      "url": "https://huggingface.co/blog/storage-buckets",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Hugging Face",
+      "title": "Holotron-12B - High Throughput Computer Use Agent",
+      "reason": "This artificial intelligence development raises concerns about job displacement, while highlighting no positive aspect of the technology itself. Category: tech-ai-concern",
+      "category": "other-negative",
+      "url": "https://huggingface.co/blog/Hcompany/holotron-12b",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Hugging Face",
+      "title": "State of Open Source on Hugging Face: Spring 2026",
+      "reason": "The story discusses financial difficulties faced by Hugging Face, and potential negative impact on the open source community.",
+      "category": "tech-ai-concern",
+      "url": "https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Hugging Face",
+      "title": "Liberate your OpenClaw",
+      "reason": "This story mentions a 'negative' outcome, suggesting that the OpenClaw is still causing harm or difficulty.",
+      "category": "climate-environment",
+      "url": "https://huggingface.co/blog/liberate-your-openclaw",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Hugging Face",
+      "title": "Granite 4.0 3B Vision: Compact Multimodal Intelligence for Enterprise Documents",
+      "reason": "Lacks uplift and positivity. A story about AI technology advancements in a corporate setting may have limited appeal or relevance.",
+      "category": "tech-ai-concern",
+      "url": "https://huggingface.co/blog/ibm-granite/granite-4-vision",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Chain of thought",
+      "title": "How to Figure Out What People Want",
+      "reason": "This story focuses on a lack of clear needs in starting a new business, which may perpetuate frustration or anxiety for some readers. The tone could also be seen as slightly negative, focusing on what doesn't work instead of providing uplifting messages.",
+      "category": "other-negative",
+      "url": "https://every.to/chain-of-thought/how-to-figure-out-what-people-want-90fad8a3-fb2e-4a54-b355-44d35b6d3e86",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Chain of thought",
+      "title": "Toward a Definition of AGI",
+      "reason": "The article appears to discuss the development of Artificial General Intelligence (AGI) and its potential future trajectory, which may imply a focus on complex systems and machines that could have unintended consequences. The tone is not explicitly negative but leans towards technical explanation rather than uplifting stories.",
+      "category": "tech-ai-concern",
+      "url": "https://every.to/chain-of-thought/toward-a-definition-of-agi",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Chain of thought",
+      "title": "Seeing Science Like a Language Model",
+      "reason": "The article discussed limitations of the scientific method, replication crisis in psychology, and the problem of generalizability, which are predominantly negative topics.",
+      "category": "tech-ai-concern",
+      "url": "https://every.to/chain-of-thought/seeing-science-like-a-language-model",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Chain of thought",
+      "title": "How Tools Shape How We See the World",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://every.to/chain-of-thought/how-tools-shape-how-we-see-the-world",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Chain of thought",
+      "title": "OpenAI Has Some Catching Up to Do",
+      "reason": "Although the story is light-hearted and humorous, it mainly discusses Claude Code's rise to popularity in startup circles and OpenAI's competitor status, which implies a sense of competition that might be perceived as negative or anxiety-inducing by some readers. The tone is generally positive, but the overall theme leans more towards tech industry gossip rather than genuinely uplifting content.",
+      "category": "tech-ai-concern",
+      "url": "https://every.to/chain-of-thought/openai-has-some-catching-up-to-do",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Chain of thought",
+      "title": "The Two-slice Team",
+      "reason": "This article revolves around restructuring of Amazon's teams due to technical advancements, which may have implications for employment and working conditions, leaning slightly towards not being uplifting.",
+      "category": "tech-ai-concern",
+      "url": "https://every.to/chain-of-thought/the-two-slice-team",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "Secure governance accelerates financial AI revenue growth",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.artificialintelligence-news.com/news/secure-governance-accelerates-financial-ai-revenue-growth/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "DeepL’s Borderless Business report reveals 83% of enterprises are still behind on language AI",
+      "reason": "The story reports on enterprises being behind on language AI, indicating a lack of progress in leveraging technology to improve business processes.",
+      "category": "tech-ai-concern",
+      "url": "https://www.artificialintelligence-news.com/news/deepls-borderless-business-report-reveals-83-of-enterprises-are-still-behind-on-language-ai/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "KPMG: Inside the AI agent playbook driving enterprise margin gains",
+      "reason": "This story is too focused on economic figures and investment, which tends towards economic doom.",
+      "category": "economic-doom",
+      "url": "https://www.artificialintelligence-news.com/news/kpmg-inside-ai-agent-playbook-enterprise-margin-gains/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "Experian uncovers fraud paradox in financial services’ AI adoption",
+      "reason": "The story revolves around the misuse of AI technology in financial services, creating a sense of unease and tension regarding fraud prevention.",
+      "category": "tech-ai-concern",
+      "url": "https://www.artificialintelligence-news.com/news/experian-ai-fraud-detection-financial-services-2026/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "Autonomous AI systems depend on data governance",
+      "reason": "The story focuses on the potential risks and unpredictability of autonomous AI systems due to data governance issues, which is a negative aspect.",
+      "category": "tech-ai-concern",
+      "url": "https://www.artificialintelligence-news.com/news/autonomous-ai-systems-depend-on-data-governance/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "China’s Five-Year Plan details the targets for AI deployment",
+      "reason": "The story primarily focuses on economic and developmental priorities, but doesn't explicitly mention any negative aspects of AI deployment, however the overall outlook is not positive or uplifting.",
+      "category": "soft-news-filler",
+      "url": "https://www.artificialintelligence-news.com/news/chinas-five-year-plan-details-the-targets-for-ai-deployment/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "5 best practices to secure AI systems",
+      "reason": "This story is too focused on security concerns and threats related to artificial intelligence, which creates a sense of unease rather than promoting positivity or uplift.",
+      "category": "tech-ai-concern",
+      "url": "https://www.artificialintelligence-news.com/news/5-best-practices-to-secure-ai-systems/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "KiloClaw targets shadow AI with autonomous agent governance",
+      "reason": "This story is about the use of autonomous agents and managing shadow AI, which may be perceived as negative or concerning, especially in the context of AI development)",
+      "category": "tech-ai-concern",
+      "url": "https://www.artificialintelligence-news.com/news/kiloclaw-targets-shadow-ai-autonomous-agent-governance/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "AI news",
+      "title": "As AI agents take on more tasks, governance becomes a priority",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.artificialintelligence-news.com/news/as-ai-agents-take-on-more-tasks-governance-becomes-a-priority/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Freddie Gibbs @ La Madeleine: Avond vol hits en enthousiasme",
+      "reason": "This story about a music event by Freddie Gibbs has a strong emphasis on the entertainment aspect but appears to lack significant positive news, scientific breakthroughs or uplifting achievements.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dansendeberen.be/2026/04/06/freddie-gibbs-la-madeleine-avond-vol-hits-en-enthousiasme/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Dansende Beren",
+      "title": "Nieuwe single Anyma & Joji – “Beautiful”",
+      "reason": "Deze artikkel is te georiosteerd op een muzieksingle en bevat meer negatieve informatie über Anyma & Joji dan positiviteit. Ook het ontbreken van actuele tijdsvoorziening maakt dit geen hartverschuivers",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dansendeberen.be/2026/04/06/nieuwe-single-anyma-joji-beautiful/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "‘Veel mannen willen alleen maar situationships, relaties die ze geen relatie noemen. Wat heb je daar nu aan?’",
+      "reason": "This story is based on a negative social topic (situationships) and may not leave the reader feeling better.",
+      "category": "divisive-social",
+      "url": "https://www.humo.be/tv/miss-angel-veel-mannen-willen-alleen-maar-situationships-relaties-die-ze-geen-relatie-noemen-wat-heb-je-daar-nu-aan~b38f295d/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Humo",
+      "title": "‘Je moet de anus zo proper mogelijk houden. Het is zoals een kind met choco aan de mond: daar begin je ook niet met papier aan te vegen’",
+      "reason": "The story tackles a taboo topic in an explicit manner, making it too uncomfortable for readers.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.humo.be/nieuws/darmdeskundige-magali-surmont-je-moet-de-anus-zo-proper-mogelijk-houden-het-is-zoals-een-kind-met-choco-aan-de-mond-daar-begin-je-ook-niet-met-papier-aan-te-vegen~b0680311/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Anne de Guigné : « Et si les consommateurs étaient en fait les dindons de la farce ? »",
+      "reason": "The article title implies a critique of the consumer culture, which could be seen as negative. While it may also touch on positive aspects of reduction in waste and overconsumption, the overall tone appears predominantly critical.",
+      "category": "divisive-social",
+      "url": "https://www.lefigaro.fr/economie/anne-de-guigne-et-si-les-consommateurs-etaient-en-fait-les-dindons-de-la-farce-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Dix ans après la création d’En Marche, le macronisme éparpillé façon puzzle",
+      "reason": "This story carries an overall negative tone with the description of the political fragmentation and immobilism under President Macron's leadership.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/politique/dix-ans-apres-la-creation-d-en-marche-le-macronisme-eparpille-facon-puzzle-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Marc Ferracci, dix ans après la création d’«En Marche!» : «Certaines réformes n’ont pas été assez ambitieuses»",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.lefigaro.fr/politique/marc-ferracci-dix-ans-apres-la-creation-d-en-marche-certaines-reformes-n-ont-pas-ete-assez-ambitieuses-20260406",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "The New York Times",
+      "title": "What We Know About the Kidnapping of Nancy Guthrie, Savannah Guthrie’s Mother",
+      "reason": "Nancy Guthrie's disappearance is a tragic case of kidnapping that may have serious emotional and psychological repercussions on the entire Guthrie family, particularly Savannah Guthrie.",
+      "category": "crime-violence",
+      "url": "https://www.nytimes.com/2026/02/03/us/savannah-guthrie-mom-missing.html",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Hond bijt kindje (4) in gezicht op kermis in Herzele: slachtoffer overgebracht naar UZ Gent",
+      "reason": "A young child was bitten in the face by a dog at a carnival, leading to potential health concerns.",
+      "category": "disaster-accident",
+      "url": "https://www.hln.be/herzele/hond-bijt-kindje-4-in-gezicht-op-kermis-in-herzele-slachtoffer-overgebracht-naar-uz-gent~abc0661e/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Artemis II-missie vliegt straks achter de maan in cruciale fase: astronauten verliezen 40 minuten lang contact met Aarde",
+      "reason": "The story focuses on a loss of contact between astronauts and Earth, creating a sense of separation and isolation. It is primarily negative and lacks uplifting elements.",
+      "category": "disaster-accident",
+      "url": "https://www.hln.be/wetenschap/artemis-ii-missie-vliegt-straks-achter-de-maan-in-cruciale-fase-astronauten-verliezen-40-minuten-lang-contact-met-aarde~va59d1829/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Alweer een stilstaande fase en dramátisch verdedigen: tegengoals illustreren machteloosheid van Anderlecht in eerste helft",
+      "reason": "This story is negative as it reports on a soccer team's struggles and defeat, with a focus on their loss rather than any positive aspects.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/anderlecht/alweer-een-stilstaande-fase-en-dramatisch-verdedigen-tegengoals-illustreren-machteloosheid-van-anderlecht-in-eerste-helft~a0323202/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "OPROEP. Mag Nina je liefdesproblemen helpen oplossen met advies van een relatietherapeut?",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.hln.be/nina/oproep-mag-nina-je-liefdesproblemen-helpen-oplossen-met-advies-van-een-relatietherapeut~afa98c1d4/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Primoz Roglic met vroege richttijd in pittige tijdrit, jong klimgeweld pas later van start",
+      "reason": "This story contains information about a physical challenge and competition, which may be perceived as competitive and negative.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/wielrennen/primoz-roglic-met-vroege-richttijd-in-pittige-tijdrit-jong-klimgeweld-pas-later-van-start~a466f394/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Scheepvaartverkeer door Straat van Hormuz neemt toe • Iran wijst wapenstilstand zonder garanties af",
+      "reason": "The story focuses on a potential wapenstilstand without guarantees, emphasizing conflict and uncertainty.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/live-scheepvaartverkeer-door-straat-van-hormuz-neemt-toe-iran-wijst-wapenstilstand-zonder-garanties-af~be9c4f82/",
+      "date": "2026-04-06"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Liam en Aurélie zijn een koppel, en trans: ‘Ik werd bang door wat er in Amerika gebeurde’",
+      "reason": "This story discusses a trans couple feeling afraid due to an incident in America, indicating it has negative elements that don't align with the 'Positiviteiten' format.",
+      "category": "crime-violence",
+      "url": "https://www.demorgen.be/beter-leven/liam-en-aurelie-zijn-een-koppel-en-trans-ik-werd-bang-door-wat-er-in-amerika-gebeurde~b6071a29/",
+      "date": "2026-04-06"
+    },
     {
       "source": "Le Figaro",
       "title": "Accusations de Rachida Dati contre «Complément d'enquête» : Jérémie Patrier-Leitus conclut finalement à la «bonne foi» des deux",
@@ -2111,158 +2463,6 @@
       "reason": "The sponsor's withdrawal and politicial concern over Kanye West's performance indicate a negative tone.",
       "category": "divisive-social",
       "url": "https://www.demorgen.be/snelnieuws/ophef-in-vk-over-festivaloptredens-kanye-west-sponsor-trekt-zich-terug-britse-premier-starmer-diep-bezorgd~b4f4f20a/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Duitse mannen vinden mogelijk radioactieve stof tijdens zoeken paaseieren",
-      "reason": "This story is negative because it reveals the presence of hazardous materials in a location commonly associated with family activities, posing potential risks to human health and disrupting peace. The situation implies a lack of safety and trust in public spaces.",
-      "category": "health-scare",
-      "url": "https://www.demorgen.be/snelnieuws/duitse-mannen-vinden-mogelijk-radioactieve-stof-tijdens-zoeken-paaseieren~b45fa658/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Paus niet naar VS voor viering van Onafhankelijkheidsdag, wél naar Italiaans eiland Lampedusa",
-      "reason": "Papacy is choosing to avoid the US celebration of Independence Day, instead focusing on the problems at Lampedusa. The island's migrant crisis and tensions over immigration are highlighting a darker reality that even the Pope acknowledges.",
-      "category": "divisive-social",
-      "url": "https://www.demorgen.be/snelnieuws/paus-niet-naar-vs-voor-viering-van-onafhankelijkheidsdag-wel-naar-italiaans-eiland-lampedusa~bc99de02/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Nigeriaans leger verijdelt poging tot massaontvoering tijdens paasviering, zeven doden",
-      "reason": "Meningen die een gevoel van onveiligheid of angst wekken bij lezers, zijn niet goedkeurd voor publicatie op Positiviteiten.",
-      "category": "divisive-social",
-      "url": "https://www.demorgen.be/snelnieuws/nigeriaans-leger-verijdelt-poging-tot-massaontvoering-tijdens-paasviering-zeven-doden~b3880e7c/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Live - Trump wil 152 miljoen dollar om beruchte Alcatraz-gevangenis te heropenen",
-      "reason": "This decision diverts funds away from pressing social issues, potentially exacerbating existing inequalities.",
-      "category": "divisive-social",
-      "url": "https://www.demorgen.be/snelnieuws/live-trump-wil-152-miljoen-dollar-om-beruchte-alcatraz-gevangenis-te-heropenen~b13cc951/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "‘Sinds Sint-Niklaas weet ik dat jullie Belgen ook een ruggengraat hebben’: backstage bij de nieuwe show van Gover Meit",
-      "reason": "The show received criticism and did not meet certain expectations, implying a negative event.",
-      "category": "divisive-social",
-      "url": "https://www.demorgen.be/tv-cultuur/sinds-sint-niklaas-weet-ik-dat-jullie-belgen-ook-een-ruggengraat-hebben-backstage-bij-de-nieuwe-show-van-gover-meit~bf1be80b/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Live - Benoeming Axel Miller goedgekeurd door kernkabinet",
-      "reason": "Appointment of Axel Miller raises concerns about potential discrimination",
-      "category": "divisive-social",
-      "url": "https://www.demorgen.be/snelnieuws/live-politiek-benoeming-axel-miller-goedgekeurd-door-kernkabinet~bf7e76f4/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Parket wil renners vervolgen die rood licht aan spoorwegovergang negeerden tijdens Ronde van Vlaanderen",
-      "reason": "A cycling event, which already carries significant risks and dangers.",
-      "category": "sports-negative",
-      "url": "https://www.demorgen.be/snelnieuws/parket-wil-renners-vervolgen-die-rood-licht-aan-spoorwegovergang-negeerden-tijdens-ronde-van-vlaanderen~bf25ca0d/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "CIA zette misleidingscampagne op touw voor redden van bemanningslid neergestorte F-15 in Iran",
-      "reason": "The article discusses a military operation by the CIA that involved misleading individuals, suggesting a negative outcome. This could further strain U.S.-Iran relations.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/nieuws/cia-zette-misleidingscampagne-op-touw-voor-redden-van-bemanningslid-neergestorte-f-15-in-iran~b0766c4b/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Oorlog in Iran schudt Belgische huizenmarkt door elkaar: 9 niet te missen verhalen van de voorbije week",
-      "reason": "The article discusses the economic impact of war on Belgium's housing market, suggesting a negative outcome. War has devastated many economies and caused widespread suffering. ,",
-      "category": "war-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/oorlog-in-iran-schudt-belgische-huizenmarkt-door-elkaar-9-niet-te-missen-verhalen-van-de-voorbije-week~b6f0d4fb/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Servische president Vucic meldt vondst explosieven bij Russische gasleiding, Hongaarse premier Orbán slaat alarm",
-      "reason": "does not fit positive news criteria",
-      "category": "divisive-social",
-      "url": "https://www.demorgen.be/nieuws/servische-president-vucic-meldt-vondst-explosieven-bij-russische-gasleiding-hongaarse-premier-orban-slaat-alarm~b9c6c5830/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Dreigt er een recessie? ‘We betalen opnieuw de prijs voor het gebrek aan visie’",
-      "reason": "The article discusses the potential for a recession and criticizes a lack of vision, implying a negative outcome is in sight. It suggests that a particular group or decision-maker pays the price for the deficit, raising concerns about accountability.",
-      "category": "economic-doom",
-      "url": "https://www.demorgen.be/nieuws/dreigt-er-een-recessie-we-betalen-opnieuw-de-prijs-voor-het-gebrek-aan-visie~b111bf68/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "In de wachtzaal van het OCMW: ‘Ik heb dertig jaar meer dan de helft van mijn loon afgedragen. In plaats van respect te krijgen, word ik bij het vuil gezet’",
-      "reason": "The story describes a case of workplace mistreatment, with an individual complaining about being demeaned and having their wages unfairly deducted, indicating a negative social situation.",
-      "category": "divisive-social",
-      "url": "https://www.demorgen.be/nieuws/in-de-wachtzaal-van-het-ocmw-ik-heb-dertig-jaar-meer-dan-de-helft-van-mijn-loon-afgedragen-in-plaats-van-respect-te-krijgen-word-ik-bij-het-vuil-gezet~b5bc64c1/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Gered F-15-bemanningslid overleefde meer dan 24 uur in Iraans berggebied met survivalpakket",
-      "reason": "This article focuses on a survival story involving an F-15 pilot who experienced a catastrophic event, which could be considered a war or conflict experience.",
-      "category": "other-negative",
-      "url": "https://www.demorgen.be/nieuws/gered-f-15-bemanningslid-overleefde-meer-dan-24-uur-in-iraans-berggebied-met-survivalpakket~b02b60ed/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "‘Mensen zijn het beu’: waarom steeds meer gezinnen nu kiezen voor warmtepompen, batterijen en dynamische contracten",
-      "reason": "Mensen zijn het beu': waarom steeds meer gezinnen nu kiezen voor warmtepompen, batterijen en dynamische contracten",
-      "category": "other-negative",
-      "url": "https://www.demorgen.be/nieuws/mensen-zijn-het-beu-waarom-steeds-meer-gezinnen-nu-kiezen-voor-warmtepompen-batterijen-en-dynamische-contracten~b6f47740/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Dankzij oud-burgemeester Daniël Termont heeft België de gaskraan wel nog zelf in handen: ‘Ik dreigde met mijn ontslag’",
-      "reason": "The article discusses a dark and potentially threatening situation where a former mayor threatens to resign, which implies the existence of violent or aggressive tendencies.",
-      "category": "crime-violence",
-      "url": "https://www.demorgen.be/politiek/dankzij-oud-burgemeester-daniel-termont-heeft-belgie-de-gaskraan-wel-nog-zelf-in-handen-ik-dreigde-met-mijn-ontslag~b88f543f/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Live - Axios: Iran en VS onderhandelen over tijdelijke gevechtspauze • Iraanse raket treft flatgebouw in Haifa: twee doden",
-      "reason": "Two Israeli civilians are killed after an Iranian rocket hits a building in the city of Haifa.",
-      "category": "other-negative",
-      "url": "https://www.demorgen.be/snelnieuws/live-axios-iran-en-vs-onderhandelen-over-tijdelijke-gevechtspauze-iraanse-raket-treft-flatgebouw-in-haifa-twee-doden~be9c4f82/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Exclusief voor abonnees: win een duoticket voor Pommelien Thijs in de AFAS Dome",
-      "reason": "This story features a ticket giveaway for an event, which may be seen as less than uplifting or positive, instead focusing on material rewards.",
-      "category": "soft-news-filler",
-      "url": "https://www.demorgen.be/nieuws/exclusief-voor-abonnees-win-een-duoticket-voor-pommelien-thijs-in-de-afas-dome~b538664b/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "President Zuid-Korea betuigt spijt voor drone boven Noord-Korea",
-      "reason": "The article discusses a military action involving drones in a sensitive geopolitical region, implying a potentially escalated tensions or conflict.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/president-zuid-korea-betuigt-spijt-voor-drone-boven-noord-korea~b406caa0/",
-      "date": "2026-04-06"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Live - Zelensky en Syrische interim-president al-Sharaa bespreken militaire samenwerking • Kiev zegt niets te maken te hebben met explosieven in Servië",
-      "reason": "The story discusses military cooperation between Ukraine and Syria, which may not fit with the site's focus on positive news.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/oorlog-in-oekraine/live-kiev-zegt-niets-te-maken-te-hebben-met-explosieven-in-servie~b38bed0a/",
       "date": "2026-04-06"
     }
   ]
