@@ -51,6 +51,9 @@ function formatDate(s: string | null): string {
   return new Date(s).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
 
+type SortKey = "title" | "source" | "date";
+type SortDir = "asc" | "desc";
+
 export default function HistoryClient({
   initialArticles,
   allTags,
@@ -65,7 +68,23 @@ export default function HistoryClient({
   const [removing, setRemoving]         = useState<Set<number>>(new Set());
   const [filterTag, setFilterTag]       = useState("all");
   const [filterMonth, setFilterMonth]   = useState("all");
+  const [sortKey, setSortKey]           = useState<SortKey>("date");
+  const [sortDir, setSortDir]           = useState<SortDir>("desc");
   const [error, setError]               = useState<string | null>(null);
+
+  function handleSort(key: SortKey) {
+    if (sortKey === key) {
+      setSortDir((d) => d === "asc" ? "desc" : "asc");
+    } else {
+      setSortKey(key);
+      setSortDir("asc");
+    }
+  }
+
+  function SortIcon({ col }: { col: SortKey }) {
+    if (sortKey !== col) return <span className="ml-1 opacity-30">↕</span>;
+    return <span className="ml-1">{sortDir === "asc" ? "↑" : "↓"}</span>;
+  }
 
   const availableTags = useMemo(
     () => [...new Set(articles.flatMap((a) => a.tags.map((t) => t.name)))].sort(),
@@ -77,11 +96,25 @@ export default function HistoryClient({
     [articles]
   );
 
-  const displayed = articles.filter((a) => {
-    if (filterTag !== "all" && !a.tags.some((t) => t.name === filterTag)) return false;
-    if (filterMonth !== "all" && articleMonth(a) !== filterMonth) return false;
-    return true;
-  });
+  const displayed = useMemo(() => {
+    const filtered = articles.filter((a) => {
+      if (filterTag !== "all" && !a.tags.some((t) => t.name === filterTag)) return false;
+      if (filterMonth !== "all" && articleMonth(a) !== filterMonth) return false;
+      return true;
+    });
+    return [...filtered].sort((a, b) => {
+      let cmp = 0;
+      if (sortKey === "title") {
+        cmp = (a.title_en ?? a.title_nl ?? "").localeCompare(b.title_en ?? b.title_nl ?? "");
+      } else if (sortKey === "source") {
+        cmp = a.source_name.localeCompare(b.source_name);
+      } else {
+        // date — compare ISO strings directly
+        cmp = (a.published_at ?? "").localeCompare(b.published_at ?? "");
+      }
+      return sortDir === "asc" ? cmp : -cmp;
+    });
+  }, [articles, filterTag, filterMonth, sortKey, sortDir]);
 
   async function republish(id: number) {
     setRepublishing((prev) => new Set(prev).add(id));
@@ -182,10 +215,22 @@ export default function HistoryClient({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-yellow-100 bg-amber-50">
-                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide">Title</th>
-                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden md:table-cell">Source</th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide">
+                  <button onClick={() => handleSort("title")} className="flex items-center hover:text-amber-900 transition-colors">
+                    Title<SortIcon col="title" />
+                  </button>
+                </th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden md:table-cell">
+                  <button onClick={() => handleSort("source")} className="flex items-center hover:text-amber-900 transition-colors">
+                    Source<SortIcon col="source" />
+                  </button>
+                </th>
                 <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden lg:table-cell">Tags</th>
-                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide whitespace-nowrap">Date</th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide whitespace-nowrap">
+                  <button onClick={() => handleSort("date")} className="flex items-center hover:text-amber-900 transition-colors">
+                    Date<SortIcon col="date" />
+                  </button>
+                </th>
                 <th className="text-right px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide">Actions</th>
               </tr>
             </thead>
