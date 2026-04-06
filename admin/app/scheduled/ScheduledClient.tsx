@@ -64,7 +64,7 @@ export default function ScheduledClient({
   tags: ArticleTag[];
 }) {
   const [articles, setArticles] = useState<Article[]>(initialArticles);
-  const [summarising, setSummarising] = useState<number | null>(null);
+  const [summarising, setSummarising] = useState<Set<number>>(new Set());
   const [publishing, setPublishing] = useState<Set<number>>(new Set());
   const [published, setPublished] = useState<Set<number>>(new Set());
   const [error, setError] = useState<string | null>(null);
@@ -103,7 +103,7 @@ export default function ScheduledClient({
   }
 
   async function summarise(id: number) {
-    setSummarising(id);
+    setSummarising((prev) => new Set(prev).add(id));
     setError(null);
     try {
       const res = await fetch("/api/summarise", {
@@ -130,8 +130,9 @@ export default function ScheduledClient({
       );
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unexpected error");
+    } finally {
+      setSummarising((prev) => { const s = new Set(prev); s.delete(id); return s; });
     }
-    setSummarising(null);
   }
 
   async function publish(id: number) {
@@ -211,14 +212,14 @@ export default function ScheduledClient({
                       <div className="flex gap-2 shrink-0 items-start">
                         <button
                           onClick={() => summarise(a.id)}
-                          disabled={summarising === a.id}
+                          disabled={summarising.has(a.id)}
                           className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50 whitespace-nowrap"
                         >
-                          {summarising === a.id ? "Summarising..." : "Summarise ✨"}
+                          {summarising.has(a.id) ? "Summarising..." : "Summarise ✨"}
                         </button>
                         <button
                           onClick={() => remove(a.id)}
-                          disabled={summarising === a.id}
+                          disabled={summarising.has(a.id)}
                           className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50 mt-1.5"
                         >
                           Remove
