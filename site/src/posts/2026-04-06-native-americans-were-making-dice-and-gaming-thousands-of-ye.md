@@ -1,0 +1,17 @@
+---
+title: "Native Americans were making dice and gaming thousands of years before anyone else"
+title_nl: "Inheemse Amerikanen maakten dobbelstenen duizenden jaren voor de rest van de wereld"
+title_fr: "Les Amérindiens fabriquaient des dés des milliers d'années avant tout le monde"
+date: 2026-04-06
+source_url: "https://www.goodnewsnetwork.org/native-americans-were-making-dice-and-gaming-thousands-of-years-before-anyone-else/"
+source_name: "Good News Network"
+topic: "Arts"
+tags: ["Arts","Science","Society"]
+emoji: "🎲"
+summary: "So, this is genuinely exciting: new research shows that the oldest known dice in human history were made over 12,000 years ago by hunter-gatherers on the western Great Plains - more than 6,000 years before the earliest dice from the Old World. These were small, carefully crafted two-sided bone pieces, tossed in groups to generate random outcomes in structured games of chance. Now, what makes this even better is that researchers developed a brand new identification checklist, and using it they found more than 600 dice across 57 archaeological sites spanning all of North America. Which brings me to the big takeaway - gaming and probability weren't Old World inventions at all, they've been part of Native American culture for an astonishingly long time."
+summary_nl: "Zo, dit is fascinerend: nieuw onderzoek toont aan dat de oudste dobbelstenen ter wereld meer dan 12.000 jaar geleden werden gemaakt door jager-verzamelaars op de westelijke Great Plains - ruim 6.000 jaar vóór de vroegste bekende dobbelstenen uit de Oude Wereld. Het ging om kleine, zorgvuldig gemaakte beenbotjes met twee zijden, die in groepjes werden gegooid om willekeurige uitkomsten te genereren in gestructureerde spellen. En hier is het mooie: onderzoekers ontwikkelden een nieuwe testmethode om deze artefacten te herkennen, en ontdekten daarmee meer dan 600 dobbelstenen op 57 sites in heel Noord-Amerika. Wat een herschrijving van de spelgeschiedenis!"
+summary_fr: "Voilà qui est fascinant : une nouvelle étude montre que les plus anciens dés connus dans l'histoire de l'humanité ont été fabriqués il y a plus de 12 000 ans par des chasseurs-cueilleurs des Grandes Plaines de l'Ouest - soit plus de 6 000 ans avant les premiers dés du Vieux Monde. Ces petits objets en os, soigneusement façonnés avec deux faces distinctes, étaient lancés en groupe pour produire des résultats aléatoires dans des jeux structurés. Les chercheurs ont développé un nouveau système d'identification qui leur a permis de repérer plus de 600 dés sur 57 sites archéologiques à travers l'Amérique du Nord. Une vraie réécriture de l'histoire du jeu !"
+layout: post.njk
+---
+
+So, this is genuinely exciting: new research shows that the oldest known dice in human history were made over 12,000 years ago by hunter-gatherers on the western Great Plains - more than 6,000 years before the earliest dice from the Old World. These were small, carefully crafted two-sided bone pieces, tossed in groups to generate random outcomes in structured games of chance. Now, what makes this even better is that researchers developed a brand new identification checklist, and using it they found more than 600 dice across 57 archaeological sites spanning all of North America. Which brings me to the big takeaway - gaming and probability weren't Old World inventions at all, they've been part of Native American culture for an astonishingly long time.
