@@ -1,0 +1,56 @@
+---
+layout: base.njk
+title: Archive
+permalink: /archive/
+---
+
+<style>
+  .archive-header { margin-bottom: 1.75rem; }
+  .archive-header h1 { font-size: clamp(1.35rem, 5vw, 1.75rem); font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
+  .archive-header p { font-size: 0.875rem; color: #b45309; }
+  .archive-back { font-size: 0.85rem; margin-bottom: 1.5rem; }
+  .archive-back a { color: #b45309; text-decoration: none; font-weight: 600; border-bottom: 1.5px solid #fde68a; padding-bottom: 1px; }
+  .archive-back a:hover { border-color: #f59e0b; }
+  .month-list { display: flex; flex-direction: column; gap: 0.5rem; max-width: 520px; }
+  .month-link {
+    display: flex; align-items: center; justify-content: space-between;
+    background: white; border: 1.5px solid #fde68a; border-radius: 1rem;
+    padding: 0.85rem 1.25rem; text-decoration: none; color: #451a03;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .month-link:hover { border-color: #fbbf24; box-shadow: 0 4px 12px rgba(0,0,0,0.07); }
+  .month-name { font-weight: 600; font-size: 0.95rem; }
+  .month-count { font-size: 0.8rem; color: #b45309; background: #fef3c7; border-radius: 99px; padding: 0.2rem 0.65rem; white-space: nowrap; }
+</style>
+
+<div class="archive-header">
+  <h1>
+    <span class="t-en">Archive</span>
+    <span class="t-nl" style="display:none">Archief</span>
+    <span class="t-fr" style="display:none">Archives</span>
+  </h1>
+  <p>
+    <span class="t-en">All {{ collections.posts.length }} articles, organised by month.</span>
+    <span class="t-nl" style="display:none">Alle {{ collections.posts.length }} artikelen, per maand geordend.</span>
+    <span class="t-fr" style="display:none">Tous les {{ collections.posts.length }} articles, organisés par mois.</span>
+  </p>
+</div>
+
+<div class="month-list">
+  {% for m in collections.postsByMonth %}
+    {% set href = ("/archive/" + m.key + "/") | replace("-", "/") | url %}
+    <a href="{{ href }}" class="month-link">
+      <span class="month-name">
+        <span class="t-en">{{ m.key | dateMonthLabel }}</span>
+        <span class="t-nl" style="display:none">{{ m.key | dateMonthLabelNl }}</span>
+        <span class="t-fr" style="display:none">{{ m.key | dateMonthLabelFr }}</span>
+      </span>
+      <span class="month-count">
+        {{ m.posts.length }}
+        <span class="t-en">{% if m.posts.length == 1 %}article{% else %}articles{% endif %}</span>
+        <span class="t-nl" style="display:none">{% if m.posts.length == 1 %}artikel{% else %}artikelen{% endif %}</span>
+        <span class="t-fr" style="display:none">{% if m.posts.length == 1 %}article{% else %}articles{% endif %}</span>
+      </span>
+    </a>
+  {% endfor %}
+</div>

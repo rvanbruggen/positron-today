@@ -40,6 +40,30 @@ module.exports = function (eleventyConfig) {
     return d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
   });
 
+  // Dutch month label — "april 2026"
+  eleventyConfig.addFilter("dateMonthLabelNl", (dateOrKey) => {
+    let d;
+    if (typeof dateOrKey === "string" && /^\d{4}-\d{2}$/.test(dateOrKey)) {
+      const [year, month] = dateOrKey.split("-");
+      d = new Date(year, Number(month) - 1, 1);
+    } else {
+      d = new Date(dateOrKey);
+    }
+    return d.toLocaleDateString("nl-BE", { month: "long", year: "numeric" });
+  });
+
+  // French month label — "avril 2026"
+  eleventyConfig.addFilter("dateMonthLabelFr", (dateOrKey) => {
+    let d;
+    if (typeof dateOrKey === "string" && /^\d{4}-\d{2}$/.test(dateOrKey)) {
+      const [year, month] = dateOrKey.split("-");
+      d = new Date(year, Number(month) - 1, 1);
+    } else {
+      d = new Date(dateOrKey);
+    }
+    return d.toLocaleDateString("fr-BE", { month: "long", year: "numeric" });
+  });
+
   // Deterministically maps a topic name to one of 10 colour names.
   // Same topic always gets the same colour; no topic → "yellow".
   const CARD_COLORS = [
@@ -60,6 +84,24 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
       return new Date(b.date) - new Date(a.date);
     });
+  });
+
+  // Groups all posts by month (YYYY-MM), sorted newest-first.
+  // Each entry: { key: "2026-04", posts: [...] }
+  eleventyConfig.addCollection("postsByMonth", function (collectionApi) {
+    const posts = collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+    const monthMap = new Map();
+    for (const post of posts) {
+      const d = post.date instanceof Date ? post.date : new Date(post.date);
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+      if (!monthMap.has(key)) monthMap.set(key, []);
+      monthMap.get(key).push(post);
+    }
+    return [...monthMap.entries()]
+      .sort(([a], [b]) => b.localeCompare(a))
+      .map(([key, posts]) => ({ key, posts }));
   });
 
   return {

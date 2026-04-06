@@ -54,6 +54,8 @@ export default function RejectionsPage() {
   const [resetting, setResetting] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("date");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 100;
   const logRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -197,6 +199,15 @@ export default function RejectionsPage() {
   function SortIcon({ col }: { col: SortKey }) {
     if (sortKey !== col) return <span className="ml-1 opacity-30">↕</span>;
     return <span className="ml-1">{sortDir === "asc" ? "↑" : "↓"}</span>;
+  }
+
+  // Reset to page 1 whenever filters or sort change
+  const prevFilter = useRef(filter);
+  const prevCategoryFilter = useRef(categoryFilter);
+  if (prevFilter.current !== filter || prevCategoryFilter.current !== categoryFilter) {
+    prevFilter.current = filter;
+    prevCategoryFilter.current = categoryFilter;
+    if (currentPage !== 1) setCurrentPage(1);
   }
 
   const shown = useMemo(() => {
@@ -362,11 +373,15 @@ export default function RejectionsPage() {
       </div>
 
       {/* Table */}
-      {shown.length === 0 ? (
+      {(() => {
+        const totalPages = Math.ceil(shown.length / PAGE_SIZE);
+        const pageItems = shown.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+        return shown.length === 0 ? (
         <p className="text-amber-600 text-sm">
           {items.length === 0 ? "No rejections yet — fetch some articles first." : "No matches."}
         </p>
       ) : (
+        <>
         <div className="bg-white rounded-xl shadow-sm border border-yellow-200 overflow-hidden">
           <table className="w-full text-sm">
             <thead>
@@ -395,8 +410,8 @@ export default function RejectionsPage() {
               </tr>
             </thead>
             <tbody>
-              {shown.map((item, i) => {
-                const isLast = i === shown.length - 1;
+              {pageItems.map((item, i) => {
+                const isLast = i === pageItems.length - 1;
                 return (
                   <tr key={item.id} className={`${!isLast ? "border-b border-yellow-50" : ""} hover:bg-amber-50/40 transition-colors`}>
 
@@ -452,8 +467,32 @@ export default function RejectionsPage() {
               })}
             </tbody>
           </table>
-        </div>
-      )}
+          </div>
+
+          {totalPages > 1 && (
+            <div className="flex items-center justify-between mt-4 text-sm text-amber-700">
+              <button
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="px-3 py-1.5 rounded-lg border border-yellow-200 bg-white disabled:opacity-40 hover:border-yellow-400 transition-colors text-xs font-medium"
+              >
+                ← Previous
+              </button>
+              <span className="text-xs text-amber-500">
+                Page {currentPage} of {totalPages} &nbsp;·&nbsp; {shown.length} results
+              </span>
+              <button
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="px-3 py-1.5 rounded-lg border border-yellow-200 bg-white disabled:opacity-40 hover:border-yellow-400 transition-colors text-xs font-medium"
+              >
+                Next →
+              </button>
+            </div>
+          )}
+        </>
+      );
+      })()}
     </div>
   );
 }

@@ -136,9 +136,12 @@ title: Home
   <p class="empty">No posts yet - check back soon!</p>
 {% else %}
 
-  {# Collect unique tags across all posts #}
+  {# Show the 60 most recent posts on the homepage; older articles live in the archive #}
+  {% set recentPosts = collections.posts | slice(0, 60) %}
+
+  {# Collect unique tags across the displayed posts only #}
   {% set seenTags = [] %}
-  {% for post in collections.posts %}
+  {% for post in recentPosts %}
     {% if post.data.tags and post.data.tags.length > 0 %}
       {% for tag in post.data.tags %}
         {% if tag and tag != "" and tag not in seenTags %}
@@ -189,7 +192,7 @@ title: Home
   </div>
 
   <div class="card-grid" id="card-grid">
-    {% for post in collections.posts %}
+    {% for post in recentPosts %}
       {# Resolve tags: use tags[] if present, fall back to topic string #}
       {% if post.data.tags and post.data.tags.length > 0 %}
         {% set cardTags = post.data.tags %}
@@ -237,6 +240,16 @@ title: Home
     {% endfor %}
   </div>
   <p class="no-match" id="no-match">No articles for this tag yet.</p>
+
+  {% if collections.posts.length > 60 %}
+  <p style="text-align:center; margin-top:1.75rem; font-size:0.875rem; color:#b45309;">
+    <a href="{{ '/archive/' | url }}" style="color:#b45309; font-weight:600; text-decoration:none; border-bottom: 1.5px solid #fde68a; padding-bottom:1px;">
+      <span class="t-en">Browse the full archive ({{ collections.posts.length }} articles) →</span>
+      <span class="t-nl" style="display:none">Volledig archief bekijken ({{ collections.posts.length }} artikelen) →</span>
+      <span class="t-fr" style="display:none">Parcourir les archives complètes ({{ collections.posts.length }} articles) →</span>
+    </a>
+  </p>
+  {% endif %}
 
 {% endif %}
 

@@ -38,8 +38,8 @@ export async function exportRejections(): Promise<{ exported: number }> {
     db.execute(`
       SELECT source_name, url, title, rejection_reason, rejection_category, fetched_at
       FROM rejected_articles
+      WHERE fetched_at >= date('now', '-90 days')
       ORDER BY fetched_at DESC
-      LIMIT 300
     `),
     db.execute(`
       SELECT

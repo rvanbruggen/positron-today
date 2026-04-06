@@ -25,7 +25,6 @@ export default async function HistoryPage() {
       LEFT JOIN raw_articles r ON a.raw_article_id = r.id
       WHERE a.status = 'published'
       ORDER BY a.published_at DESC
-      LIMIT 200
     `),
     db.execute("SELECT id, name, emoji FROM topics ORDER BY name ASC"),
   ]);
