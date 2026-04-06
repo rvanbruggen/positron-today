@@ -137,7 +137,7 @@ title: Home
 {% else %}
 
   {# Show the 60 most recent posts on the homepage; older articles live in the archive #}
-  {% set recentPosts = collections.posts | slice(0, 60) %}
+  {% set recentPosts = collections.posts | limit(60) %}
 
   {# Collect unique tags across the displayed posts only #}
   {% set seenTags = [] %}

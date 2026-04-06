@@ -80,6 +80,10 @@ module.exports = function (eleventyConfig) {
     return CARD_COLORS[hashStr(String(topic)) % CARD_COLORS.length];
   });
 
+  // Returns the first N items from an array — use instead of Nunjucks | slice
+  // (which splits into columns, not a range)
+  eleventyConfig.addFilter("limit", (array, n) => array.slice(0, n));
+
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
       return new Date(b.date) - new Date(a.date);
