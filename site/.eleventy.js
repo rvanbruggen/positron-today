@@ -7,6 +7,24 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Returns "YYYY-MM" for use as a data attribute on cards
+  eleventyConfig.addFilter("dateMonthKey", (date) => {
+    const d = new Date(date);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+  });
+
+  // Returns "April 2026" style label — accepts a Date object OR a "YYYY-MM" string
+  eleventyConfig.addFilter("dateMonthLabel", (dateOrKey) => {
+    let d;
+    if (typeof dateOrKey === "string" && /^\d{4}-\d{2}$/.test(dateOrKey)) {
+      const [year, month] = dateOrKey.split("-");
+      d = new Date(year, Number(month) - 1, 1);
+    } else {
+      d = new Date(dateOrKey);
+    }
+    return d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+  });
+
   // Deterministically maps a topic name to one of 10 colour names.
   // Same topic always gets the same colour; no topic → "yellow".
   const CARD_COLORS = [

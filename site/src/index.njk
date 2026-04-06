@@ -17,16 +17,18 @@ title: Home
   }
   .lang-tab.active { background: #facc15; color: #78350f; }
 
-  .topic-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; align-items: center; }
-  .topic-bar-label { font-size: 0.7rem; font-weight: 600; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
-  .topic-btn {
+  .topic-bar, .month-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; align-items: center; }
+  .topic-bar-label, .month-bar-label { font-size: 0.7rem; font-weight: 600; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
+  .topic-btn, .month-btn {
     padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.8rem;
     font-weight: 600; cursor: pointer; border: 2px solid transparent;
     transition: all 0.15s; white-space: nowrap;
     -webkit-tap-highlight-color: transparent; min-height: 36px;
   }
   .topic-btn.active { border-color: currentColor; box-shadow: 0 0 0 2px rgba(0,0,0,0.08); }
-  @media (min-width: 480px) { .topic-bar-label { width: auto; } }
+  .month-btn { background: #fef3c7; color: #92400e; }
+  .month-btn.active { background: #f59e0b; border-color: #d97706; color: #78350f; box-shadow: 0 0 0 2px rgba(0,0,0,0.08); }
+  @media (min-width: 480px) { .topic-bar-label, .month-bar-label { width: auto; } }
 
   .tbtn-yellow { background:#fef9c3; color:#713f12; } .tbtn-yellow.active { background:#fde047; }
   .tbtn-orange { background:#ffedd5; color:#7c2d12; } .tbtn-orange.active { background:#fb923c; }
@@ -91,7 +93,7 @@ title: Home
   <p class="empty">No posts yet - check back soon!</p>
 {% else %}
 
-  {# Collect unique tags across all posts (tags array or legacy topic string) #}
+  {# Collect unique tags across all posts #}
   {% set seenTags = [] %}
   {% for post in collections.posts %}
     {% if post.data.tags and post.data.tags.length > 0 %}
@@ -105,12 +107,31 @@ title: Home
     {% endif %}
   {% endfor %}
 
+  {# Collect unique months (most-recent first, since posts are sorted that way) #}
+  {% set seenMonths = [] %}
+  {% for post in collections.posts %}
+    {% set mk = post.date | dateMonthKey %}
+    {% if mk not in seenMonths %}
+      {% set seenMonths = seenMonths.concat([mk]) %}
+    {% endif %}
+  {% endfor %}
+
   {% if seenTags.length > 0 %}
   <div class="topic-bar" id="topic-bar">
     <span class="topic-bar-label">Tag</span>
     <button class="topic-btn tbtn-yellow active" data-topic="all" onclick="filterTopic('all', this)">All</button>
     {% for tag in seenTags %}
     <button class="topic-btn tbtn-{{ tag | topicColor }}" data-topic="{{ tag }}" onclick="filterTopic('{{ tag }}', this)">{{ tag }}</button>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if seenMonths.length > 1 %}
+  <div class="month-bar" id="month-bar">
+    <span class="month-bar-label">Month</span>
+    <button class="month-btn active" data-month="all" onclick="filterMonth('all', this)">All</button>
+    {% for mk in seenMonths %}
+    <button class="month-btn" data-month="{{ mk }}" onclick="filterMonth('{{ mk }}', this)">{{ mk | dateMonthLabel }}</button>
     {% endfor %}
   </div>
   {% endif %}
@@ -130,6 +151,7 @@ title: Home
       href="{{ post.url | url }}"
       class="card card-{{ firstTag | topicColor }}"
       data-tags="{{ cardTags | join(',') }}"
+      data-date="{{ post.date | dateMonthKey }}"
     >
       <div class="card-emoji">{{ post.data.emoji }}</div>
       <div class="card-tags">
@@ -176,26 +198,51 @@ title: Home
     }
   })();
 
-  function filterTopic(topic, btn) {
-    document.querySelectorAll('.topic-btn').forEach(function(b) { b.classList.remove('active'); });
-    if (btn) btn.classList.add('active');
+  var activeTag = 'all';
+  var activeMonth = 'all';
+
+  function applyFilters() {
     var cards = document.querySelectorAll('#card-grid .card');
     var visible = 0;
     cards.forEach(function(card) {
       var cardTags = (card.dataset.tags || '').split(',').map(function(t) { return t.trim(); }).filter(Boolean);
-      var match = topic === 'all' || cardTags.includes(topic);
-      card.style.display = match ? '' : 'none';
-      if (match) visible++;
+      var tagMatch = activeTag === 'all' || cardTags.includes(activeTag);
+      var monthMatch = activeMonth === 'all' || card.dataset.date === activeMonth;
+      var show = tagMatch && monthMatch;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
     });
     var noMatch = document.getElementById('no-match');
     if (noMatch) noMatch.classList.toggle('visible', visible === 0);
-    localStorage.setItem('positiviteiten-topic', topic);
   }
+
+  function filterTopic(topic, btn) {
+    document.querySelectorAll('.topic-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    activeTag = topic;
+    localStorage.setItem('positiviteiten-topic', topic);
+    applyFilters();
+  }
+
+  function filterMonth(month, btn) {
+    document.querySelectorAll('.month-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    activeMonth = month;
+    localStorage.setItem('positiviteiten-month', month);
+    applyFilters();
+  }
+
   (function() {
-    var saved = localStorage.getItem('positiviteiten-topic');
-    if (saved && saved !== 'all') {
-      var btn = document.querySelector('.topic-btn[data-topic="' + saved + '"]');
-      if (btn) filterTopic(saved, btn);
+    var savedTopic = localStorage.getItem('positiviteiten-topic');
+    var savedMonth = localStorage.getItem('positiviteiten-month');
+    if (savedTopic && savedTopic !== 'all') {
+      var btn = document.querySelector('.topic-btn[data-topic="' + savedTopic + '"]');
+      if (btn) { activeTag = savedTopic; document.querySelectorAll('.topic-btn').forEach(function(b) { b.classList.remove('active'); }); btn.classList.add('active'); }
     }
+    if (savedMonth && savedMonth !== 'all') {
+      var btn2 = document.querySelector('.month-btn[data-month="' + savedMonth + '"]');
+      if (btn2) { activeMonth = savedMonth; document.querySelectorAll('.month-btn').forEach(function(b) { b.classList.remove('active'); }); btn2.classList.add('active'); }
+    }
+    if (activeTag !== 'all' || activeMonth !== 'all') applyFilters();
   })();
 </script>
