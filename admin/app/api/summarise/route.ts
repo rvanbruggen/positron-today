@@ -1,10 +1,8 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
-import Anthropic from "@anthropic-ai/sdk";
+import { getSummariseProvider } from "@/lib/llm";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
-
-const anthropic = new Anthropic();
 
 async function fetchArticleText(url: string): Promise<string> {
   try {
@@ -66,14 +64,9 @@ Key rules:
 Pick 0-3 tags from that list that best fit this article. Only use names from the list exactly as written. Return them as the "suggested_tags" array.`
     : `No tags are defined yet. Return an empty "suggested_tags" array.`;
 
-  const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-6",
-    max_tokens: 1200,
-    system: "You output only raw JSON. No prose, no markdown, no code fences, no explanation. Every response is a single JSON object.",
-    messages: [
-      {
-        role: "user",
-        content: `${STYLE}
+  const provider = await getSummariseProvider();
+  const raw = await provider.generate(
+    `${STYLE}
 
 Write a summary card for an article from ${sourceName} (${sourceUrl}).
 
@@ -85,14 +78,13 @@ ${tagInstructions}
 
 Output this exact JSON shape and nothing else:
 {"title_nl":"...","title_fr":"...","title_en":"...","summary_nl":"...","summary_fr":"...","summary_en":"...","emoji":"...","suggested_tags":[]}`,
-      },
-    ],
-  });
+    "You output only raw JSON. No prose, no markdown, no code fences, no explanation. Every response is a single JSON object.",
+    1200,
+  );
 
-  const raw = (message.content[0] as { type: string; text: string }).text.trim();
   const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
   const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error(`Unexpected Claude response: ${raw.slice(0, 120)}`);
+  if (!jsonMatch) throw new Error(`Unexpected LLM response: ${raw.slice(0, 120)}`);
   const parsed = JSON.parse(jsonMatch[0]);
   if (!parsed.emoji) parsed.emoji = "✨";
   if (!Array.isArray(parsed.suggested_tags)) parsed.suggested_tags = [];

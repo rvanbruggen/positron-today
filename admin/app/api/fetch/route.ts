@@ -1,22 +1,17 @@
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
+import { getFilterProvider } from "@/lib/llm";
 import RSSParser from "rss-parser";
-import Anthropic from "@anthropic-ai/sdk";
 
 const parser = new RSSParser();
-const anthropic = new Anthropic();
 
 async function checkPositivity(
   title: string,
   snippet: string
 ): Promise<{ fits: boolean; reason: string }> {
-  const message = await anthropic.messages.create({
-    model: "claude-haiku-4-5-20251001",
-    max_tokens: 80,
-    messages: [
-      {
-        role: "user",
-        content: `You are a filter for "Positiviteiten", a positive-news website.
+  const provider = await getFilterProvider();
+
+  const prompt = `You are a filter for "Positiviteiten", a positive-news website.
 
 A good fit: genuinely good news, heartwarming stories, scientific breakthroughs, environmental wins, funny/lighthearted stories, inspiring achievements — anything that leaves the reader feeling better.
 
@@ -26,22 +21,9 @@ Article title: ${title}
 Snippet: ${snippet}
 
 Reply with JSON only — no other text:
-{"verdict":"YES"} if it fits, or {"verdict":"NO","reason":"reason in 10 words or fewer"} if not.`,
-      },
-    ],
-  });
+{"verdict":"YES"} if it fits, or {"verdict":"NO","reason":"reason in 10 words or fewer"} if not.`;
 
-  const raw = (message.content[0] as { type: string; text: string }).text.trim();
-  try {
-    const parsed = JSON.parse(raw);
-    return {
-      fits: parsed.verdict === "YES",
-      reason: parsed.reason || (parsed.verdict === "NO" ? "does not fit positive news criteria" : ""),
-    };
-  } catch {
-    const fits = raw.toUpperCase().startsWith("YES");
-    return { fits, reason: fits ? "" : "does not fit positive news criteria" };
-  }
+  return provider.classify(prompt);
 }
 
 export async function POST() {
@@ -83,7 +65,7 @@ export async function POST() {
 
               if (existingRaw.rows.length > 0 || existingRejected.rows.length > 0) {
                 skipped++;
-                continue; // don't log individual skips — too noisy
+                continue;
               }
 
               const snippet = item.contentSnippet ?? item.content ?? "";

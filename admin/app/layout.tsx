@@ -40,6 +40,7 @@ export default function RootLayout({
               <Link href="/scheduled" className="hover:text-amber-600 transition-colors">Scheduled</Link>
               <Link href="/history" className="hover:text-amber-600 transition-colors">History</Link>
               <Link href="/rejections" className="hover:text-amber-600 transition-colors">Rejections</Link>
+              <Link href="/settings" className="hover:text-amber-600 transition-colors">Settings</Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
               <span className="text-xs text-amber-700 font-mono">v{APP_VERSION}</span>
