@@ -1,0 +1,17 @@
+---
+title: "Seal loves his rubber duckie - adorable video goes viral"
+title_nl: "Zeehond dol op zijn badeendje - schattige video gaat viraal"
+title_fr: "Un phoque fou de son canard en plastique - la vidéo adorable devient virale"
+date: 2026-04-06
+source_url: "https://www.goodnewsnetwork.org/aquarium-shares-video-of-harbor-seal-playing-with-his-rubber-duckie/"
+source_name: "Good News Network"
+topic: "Animals"
+tags: ["Animals","Nature"]
+emoji: "🦭"
+summary: "Reggae, a 33-year-old Atlantic harbor seal at the New England Aquarium in Boston, is absolutely smitten with his little yellow rubber duckie - and honestly, the whole internet seems to agree. The aquarium posted a video on Instagram and Facebook of Reggae hugging and kissing his favourite floaty toy, and it racked up a whopping 80,000 likes. Now, officially it's called an enrichment activity designed to sharpen the animals' problem-solving skills, but let's be honest - it's just wonderfully heartwarming to watch. And here's the thing: all five seals at the aquarium are naturally curious, so unusual toys like this help keep them mentally engaged in their rocky New England coastline-inspired habitat. Reggae is clearly a born social media star!"
+summary_nl: "Reggae, een 33-jarige Atlantische zeehond in het New England Aquarium in Boston, is helemaal gek op zijn gele badeendje - en de rest van het internet ook. Het aquarium deelde een video op Instagram en Facebook van Reggae die zijn knalgele speeltje knuffelt en kust, en die post verzamelde maar liefst 80.000 likes. Nu, dat noemen ze officieel een 'verrijkingsactiviteit' om de probleemoplossende vaardigheden van de dieren te stimuleren, maar eerlijk gezegd is het gewoon hartverwarmend om naar te kijken. En hier is het mooie: alle vijf de zeehonden in het aquarium zijn van nature nieuwsgierig, dus dit soort onverwachte speeltjes houdt ze scherp en mentaal actief. Reggae is duidelijk een nieuwe social media-ster!"
+summary_fr: "Reggae, un phoque commun de l'Atlantique âgé de 33 ans vivant au New England Aquarium à Boston, est absolument fou de son petit canard en plastique jaune - et visiblement, tout le monde sur internet partage cet enthousiasme. L'aquarium a partagé une vidéo sur Instagram et Facebook montrant Reggae câlinant et embrassant son jouet flottant préféré, et la publication a récolté pas moins de 80 000 likes. Alors, officiellement c'est une \"activité d'enrichissement\" pour stimuler les capacités de résolution de problèmes des animaux, mais franchement c'est surtout un régal pour les yeux. Ce qui nous amène à ceci: les cinq phoques de l'aquarium sont naturellement curieux, et ces jouets insolites les gardent engagés et mentalement stimulés dans leur habitat inspiré des côtes rocheuses de la Nouvelle-Angleterre."
+layout: post.njk
+---
+
+Reggae, a 33-year-old Atlantic harbor seal at the New England Aquarium in Boston, is absolutely smitten with his little yellow rubber duckie - and honestly, the whole internet seems to agree. The aquarium posted a video on Instagram and Facebook of Reggae hugging and kissing his favourite floaty toy, and it racked up a whopping 80,000 likes. Now, officially it's called an enrichment activity designed to sharpen the animals' problem-solving skills, but let's be honest - it's just wonderfully heartwarming to watch. And here's the thing: all five seals at the aquarium are naturally curious, so unusual toys like this help keep them mentally engaged in their rocky New England coastline-inspired habitat. Reggae is clearly a born social media star!
