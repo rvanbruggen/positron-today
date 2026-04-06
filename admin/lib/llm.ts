@@ -157,14 +157,22 @@ export async function getSummariseProvider(): Promise<LLMProvider> {
   return buildProvider(settings, "summarise");
 }
 
+const OLLAMA_DEFAULT_MODELS: Record<"filter" | "summarise", string> = {
+  filter: "llama3.2:3b",
+  summarise: "gemma3:27b",
+};
+
 function buildProvider(settings: LLMSettings, task: "filter" | "summarise"): LLMProvider {
   const provider = task === "filter" ? settings.filter_provider : settings.summarise_provider;
-  const model    = task === "filter" ? settings.filter_model    : settings.summarise_model;
+  const rawModel = task === "filter" ? settings.filter_model    : settings.summarise_model;
 
   if (provider === "ollama") {
-    return new OllamaProvider(model, settings.ollama_base_url);
+    // Guard: if no model is stored yet, use a sensible local default
+    const model = rawModel || OLLAMA_DEFAULT_MODELS[task];
+    return new OllamaProvider(model, settings.ollama_base_url || "http://localhost:11434");
   }
   // Default: anthropic
+  const model = rawModel || (task === "filter" ? "claude-haiku-4-5-20251001" : "claude-sonnet-4-6");
   return new AnthropicProvider(ANTHROPIC_MODELS[model] ?? model);
 }
 

@@ -26,11 +26,11 @@ export async function getSettings(): Promise<LLMSettings> {
       map[row.key as string] = row.value as string;
     }
     return {
-      filter_provider: (map.filter_provider as LLMProvider) ?? DEFAULTS.filter_provider,
-      filter_model: map.filter_model ?? DEFAULTS.filter_model,
-      summarise_provider: (map.summarise_provider as LLMProvider) ?? DEFAULTS.summarise_provider,
-      summarise_model: map.summarise_model ?? DEFAULTS.summarise_model,
-      ollama_base_url: map.ollama_base_url ?? DEFAULTS.ollama_base_url,
+      filter_provider: ((map.filter_provider as LLMProvider) || DEFAULTS.filter_provider),
+      filter_model: map.filter_model || DEFAULTS.filter_model,
+      summarise_provider: ((map.summarise_provider as LLMProvider) || DEFAULTS.summarise_provider),
+      summarise_model: map.summarise_model || DEFAULTS.summarise_model,
+      ollama_base_url: map.ollama_base_url || DEFAULTS.ollama_base_url,
     };
   } catch {
     // Table may not exist yet (migration pending) — return defaults
