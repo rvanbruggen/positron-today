@@ -61,6 +61,21 @@ export async function initSchema() {
       tag_id     INTEGER NOT NULL REFERENCES topics(id)   ON DELETE CASCADE,
       PRIMARY KEY (article_id, tag_id)
     )`,
+
+    // v0.7: RSS feed URL separate from website URL on sources
+    "ALTER TABLE sources ADD COLUMN feed_url TEXT",
+
+    // v0.7: store AI-rejected articles with reason for the negativity-bias log
+    `CREATE TABLE IF NOT EXISTS rejected_articles (
+      id             INTEGER PRIMARY KEY AUTOINCREMENT,
+      source_id      INTEGER REFERENCES sources(id) ON DELETE SET NULL,
+      source_name    TEXT NOT NULL DEFAULT '',
+      url            TEXT NOT NULL UNIQUE,
+      title          TEXT NOT NULL,
+      snippet        TEXT,
+      rejection_reason TEXT,
+      fetched_at     TEXT NOT NULL DEFAULT (datetime('now'))
+    )`,
   ];
 
   for (const sql of migrations) {

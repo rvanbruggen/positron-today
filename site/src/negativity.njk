@@ -1,0 +1,86 @@
+---
+layout: base.njk
+title: The News We Skip
+---
+
+<style>
+  .page-header { margin-bottom: 2rem; }
+  .page-header h1 { font-size: clamp(1.35rem,5vw,1.75rem); font-weight:700; color:#78350f; margin-bottom:0.5rem; }
+  .page-header p  { font-size:0.9rem; color:#b45309; max-width:640px; line-height:1.6; }
+
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin-bottom:2rem; }
+  .stat-card { background:#fff; border:2px solid #fde047; border-radius:1rem; padding:1.25rem 1rem; text-align:center; }
+  .stat-num  { font-size:2rem; font-weight:700; color:#78350f; }
+  .stat-lbl  { font-size:0.75rem; color:#b45309; margin-top:0.25rem; }
+
+  .rejection-list { display:flex; flex-direction:column; gap:0.75rem; }
+  .rejection-card {
+    background:#fff7ed; border:1.5px solid #fde68a; border-radius:0.75rem;
+    padding:0.9rem 1.1rem;
+  }
+  .rejection-title { font-size:0.9rem; font-weight:600; color:#78350f; line-height:1.4; }
+  .rejection-meta  { font-size:0.75rem; color:#b45309; margin-top:0.25rem; display:flex; gap:1rem; flex-wrap:wrap; }
+  .rejection-reason { font-size:0.8rem; color:#b45309; margin-top:0.4rem; font-style:italic; }
+  .rejection-reason::before { content:"✗ "; color:#ef4444; }
+
+  .empty { color:#b45309; font-size:0.9rem; }
+  .updated { font-size:0.75rem; color:#d97706; margin-bottom:1.5rem; }
+
+  @media(min-width:640px) {
+    .rejection-list { gap:1rem; }
+  }
+</style>
+
+<div class="page-header">
+  <h1>The News We Skip 🚫</h1>
+  <p>
+    Every time we scan news sources, our AI reads the headline and filters out stories that are negative,
+    anxiety-inducing, or just plain gloomy. This page shows what gets left behind — a small illustration
+    of how skewed towards the negative most news coverage tends to be.
+  </p>
+</div>
+
+{% if rejections.total_rejected == 0 %}
+  <p class="empty">No data yet — the rejection log will appear here after the first fetch.</p>
+{% else %}
+
+  {% if rejections.exported_at %}
+  <p class="updated">Last updated: {{ rejections.exported_at | truncate(10, true, "") }}</p>
+  {% endif %}
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num">{{ rejections.total_rejected }}</div>
+      <div class="stat-lbl">articles filtered out</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">{{ rejections.sources_count }}</div>
+      <div class="stat-lbl">news sources scanned</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">{{ rejections.articles.length }}</div>
+      <div class="stat-lbl">shown here</div>
+    </div>
+  </div>
+
+  <div class="rejection-list">
+    {% for item in rejections.articles %}
+    <div class="rejection-card">
+      <p class="rejection-title">
+        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer"
+           style="color:inherit;text-decoration:none;">
+          {{ item.title }}
+        </a>
+      </p>
+      <div class="rejection-meta">
+        <span>{{ item.source }}</span>
+        <span>{{ item.date }}</span>
+      </div>
+      {% if item.reason %}
+      <p class="rejection-reason">{{ item.reason }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+{% endif %}
