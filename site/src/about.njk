@@ -4,29 +4,110 @@ title: About
 ---
 
 <style>
-  .about-wrap { max-width: 720px; }
-  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+  .about-wrap { max-width: 780px; }
+
+  /* ── Language tabs ── */
+  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
   .lang-tab {
     padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
     font-weight: 600; cursor: pointer; border: none;
     background: #fef3c7; color: #92400e; transition: background 0.15s;
+    min-height: 34px;
   }
   .lang-tab.active { background: #facc15; color: #78350f; }
-  .about-block { display: none; }
-  .about-block.visible { display: block; }
-  .about-block h1 { font-size: 1.75rem; font-weight: 700; color: #78350f; margin-bottom: 1rem; line-height: 1.2; }
-  .about-block p { font-size: 0.95rem; color: #451a03; line-height: 1.75; margin-bottom: 1rem; }
-  .about-block p:last-child { margin-bottom: 0; }
+
+  /* ── Translatable spans ── */
+  .t-en, .t-nl, .t-fr { display: inline; }
+
+  /* ── Prose ── */
+  .about-prose { display: none; }
+  .about-prose.visible { display: block; }
+  .about-prose h1 { font-size: 1.75rem; font-weight: 700; color: #78350f; margin-bottom: 1rem; line-height: 1.2; }
+  .about-prose p { font-size: 0.95rem; color: #451a03; line-height: 1.75; margin-bottom: 1rem; }
+  .about-prose p:last-child { margin-bottom: 0; }
+
+  /* ── Section headings (shared) ── */
+  .section-heading {
+    font-size: 1.25rem; font-weight: 700; color: #78350f;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #fde047;
+  }
+
+  /* ── Pipeline infographic ── */
+  .pipeline {
+    display: flex; align-items: stretch; gap: 0;
+    margin: 1.5rem 0 2rem;
+    overflow-x: auto;
+  }
+  .pipeline-step {
+    flex: 1; min-width: 110px;
+    background: #fff; border: 2px solid #fde68a; border-radius: 1rem;
+    padding: 1rem 0.75rem;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  }
+  .pipeline-arrow {
+    display: flex; align-items: center; padding: 0 0.25rem; color: #fbbf24;
+    font-size: 1.4rem; line-height: 1; flex-shrink: 0;
+  }
+  .pipeline-icon { font-size: 1.75rem; line-height: 1; }
+  .pipeline-label {
+    font-size: 0.72rem; font-weight: 700; color: #78350f;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    line-height: 1.3;
+  }
+  .pipeline-desc {
+    font-size: 0.7rem; color: #b45309; line-height: 1.4;
+    margin-top: 0.1rem;
+  }
+  .pipeline-step.highlight {
+    background: #fef9c3; border-color: #facc15;
+  }
+
+  @media (max-width: 600px) {
+    .pipeline { flex-direction: column; gap: 0; }
+    .pipeline-arrow { transform: rotate(90deg); align-self: center; padding: 0.1rem 0; }
+    .pipeline-step { flex-direction: row; text-align: left; gap: 0.75rem; min-width: 0; }
+    .pipeline-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .pipeline-label, .pipeline-desc { text-align: left; }
+  }
+
+  /* ── Sources grid ── */
+  .sources-section { margin-bottom: 2rem; }
+  .sources-lang-group { margin-bottom: 1.5rem; }
+  .sources-lang-label {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #b45309; margin-bottom: 0.6rem;
+  }
+  .sources-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .source-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: #fff; border: 1.5px solid #fde68a;
+    border-radius: 99px; padding: 0.3rem 0.75rem;
+    font-size: 0.8rem; color: #78350f; text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+  .source-pill:hover { background: #fef9c3; border-color: #facc15; }
+  .source-pill .feed-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #f59e0b; flex-shrink: 0;
+  }
 </style>
 
 <div class="about-wrap">
+
+  <!-- Language tabs -->
   <div class="lang-tabs">
-    <button class="lang-tab active" onclick="setLang('en', this)">EN</button>
-    <button class="lang-tab" onclick="setLang('nl', this)">NL</button>
-    <button class="lang-tab" onclick="setLang('fr', this)">FR</button>
+    <button class="lang-tab active" onclick="setAboutLang('en', this)">EN</button>
+    <button class="lang-tab" onclick="setAboutLang('nl', this)">NL</button>
+    <button class="lang-tab" onclick="setAboutLang('fr', this)">FR</button>
   </div>
 
-  <div class="about-block visible" id="about-en">
+  <!-- ══ Intro prose ══════════════════════════════════════════════════════ -->
+
+  <div class="about-prose visible" id="about-en">
     <h1>About Positiviteiten</h1>
     <p>Let's be honest - the news is pretty relentless. War, crisis, outrage, repeat. And I get it: bad news sells, bad news clicks, bad news spreads. It's not a conspiracy, it's just how human attention works. But it means that a whole lot of genuinely good things happening in the world just... get lost.</p>
     <p>That frustrated me for years. So I decided to do something about it - which is exactly why this site exists.</p>
@@ -35,7 +116,7 @@ title: About
     <p>Nothing here is paid for, sponsored, or algorithmically optimised. Just one Belgian with a stubborn belief that there is plenty worth celebrating - if you know where to look.</p>
   </div>
 
-  <div class="about-block" id="about-nl">
+  <div class="about-prose" id="about-nl">
     <h1>Over Positiviteiten</h1>
     <p>Laten we eerlijk zijn - het nieuws is behoorlijk meedogenloos. Oorlog, crisis, verontwaardiging, herhaling. En ik begrijp het: slecht nieuws verkoopt, slecht nieuws krijgt klikken, slecht nieuws verspreidt zich. Het is geen samenzwering, het is gewoon hoe menselijke aandacht werkt. Maar het betekent wel dat een heleboel echt goede dingen die in de wereld gebeuren gewoon... verloren gaan.</p>
     <p>Dat frustreerde me al jaren. Dus besloot ik er iets aan te doen - en dat is precies waarom deze site bestaat.</p>
@@ -44,7 +125,7 @@ title: About
     <p>Niets hier is betaald, gesponsord of algoritmisch geoptimaliseerd. Gewoon een Belg met de hardnekkige overtuiging dat er genoeg te vieren valt - als je weet waar je moet kijken.</p>
   </div>
 
-  <div class="about-block" id="about-fr">
+  <div class="about-prose" id="about-fr">
     <h1>À propos de Positiviteiten</h1>
     <p>Soyons honnêtes - l'actualité est assez implacable. Guerre, crise, indignation, répétition. Et je comprends : les mauvaises nouvelles se vendent, font cliquer, se répandent. Ce n'est pas un complot, c'est simplement ainsi que fonctionne l'attention humaine. Mais cela signifie que beaucoup de choses vraiment positives qui se passent dans le monde... se perdent tout simplement.</p>
     <p>Cela m'a frustré pendant des années. Alors j'ai décidé de faire quelque chose - et c'est exactement pour ça que ce site existe.</p>
@@ -52,24 +133,193 @@ title: About
     <p>Le site est disponible en néerlandais, français et anglais - parce que les bonnes nouvelles méritent de franchir les frontières aussi facilement que les mauvaises.</p>
     <p>Rien ici n'est payé, sponsorisé ou optimisé algorithmiquement. Juste un Belge avec la conviction tenace qu'il y a beaucoup à célébrer - si on sait où chercher.</p>
   </div>
+
+  <!-- ══ How it works ══════════════════════════════════════════════════════ -->
+
+  <h2 class="section-heading">
+    <span class="t-en">How it works</span>
+    <span class="t-nl" style="display:none">Hoe het werkt</span>
+    <span class="t-fr" style="display:none">Comment ça fonctionne</span>
+  </h2>
+
+  <!-- Pipeline infographic -->
+  <div class="pipeline" role="img" aria-label="Article pipeline diagram">
+
+    <div class="pipeline-step">
+      <div class="pipeline-icon">📡</div>
+      <div class="pipeline-label">
+        <span class="t-en">News Sources</span>
+        <span class="t-nl" style="display:none">Nieuwsbronnen</span>
+        <span class="t-fr" style="display:none">Sources</span>
+      </div>
+      <div class="pipeline-desc">
+        <span class="t-en">RSS feeds scanned automatically, multiple times a day</span>
+        <span class="t-nl" style="display:none">RSS-feeds automatisch gescand, meerdere keren per dag</span>
+        <span class="t-fr" style="display:none">Flux RSS analysés automatiquement, plusieurs fois par jour</span>
+      </div>
+    </div>
+
+    <div class="pipeline-arrow">›</div>
+
+    <div class="pipeline-step">
+      <div class="pipeline-icon">🤖</div>
+      <div class="pipeline-label">
+        <span class="t-en">AI Filter</span>
+        <span class="t-nl" style="display:none">AI-filter</span>
+        <span class="t-fr" style="display:none">Filtre IA</span>
+      </div>
+      <div class="pipeline-desc">
+        <span class="t-en">An AI model scores each headline for positivity and discards negative stories</span>
+        <span class="t-nl" style="display:none">Een AI-model beoordeelt elke kop op positiviteit en filtert negatieve verhalen</span>
+        <span class="t-fr" style="display:none">Un modèle IA évalue chaque titre et élimine les articles négatifs</span>
+      </div>
+    </div>
+
+    <div class="pipeline-arrow">›</div>
+
+    <div class="pipeline-step highlight">
+      <div class="pipeline-icon">👁</div>
+      <div class="pipeline-label">
+        <span class="t-en">Human Review</span>
+        <span class="t-nl" style="display:none">Menselijke selectie</span>
+        <span class="t-fr" style="display:none">Sélection humaine</span>
+      </div>
+      <div class="pipeline-desc">
+        <span class="t-en">I personally read and approve every article before it goes further</span>
+        <span class="t-nl" style="display:none">Ik lees en keur elk artikel persoonlijk goed voor het verder gaat</span>
+        <span class="t-fr" style="display:none">Je lis et approuve personnellement chaque article avant qu'il continue</span>
+      </div>
+    </div>
+
+    <div class="pipeline-arrow">›</div>
+
+    <div class="pipeline-step">
+      <div class="pipeline-icon">✍️</div>
+      <div class="pipeline-label">
+        <span class="t-en">AI Summary</span>
+        <span class="t-nl" style="display:none">AI-samenvatting</span>
+        <span class="t-fr" style="display:none">Résumé IA</span>
+      </div>
+      <div class="pipeline-desc">
+        <span class="t-en">An AI writes a summary in my voice, in English, Dutch and French</span>
+        <span class="t-nl" style="display:none">Een AI schrijft een samenvatting in mijn stem, in het EN, NL en FR</span>
+        <span class="t-fr" style="display:none">Une IA rédige un résumé dans mon style, en anglais, néerlandais et français</span>
+      </div>
+    </div>
+
+    <div class="pipeline-arrow">›</div>
+
+    <div class="pipeline-step">
+      <div class="pipeline-icon">🌟</div>
+      <div class="pipeline-label">
+        <span class="t-en">Published</span>
+        <span class="t-nl" style="display:none">Gepubliceerd</span>
+        <span class="t-fr" style="display:none">Publié</span>
+      </div>
+      <div class="pipeline-desc">
+        <span class="t-en">The article appears on this site, with a link to the original</span>
+        <span class="t-nl" style="display:none">Het artikel verschijnt op deze site, met een link naar het origineel</span>
+        <span class="t-fr" style="display:none">L'article paraît sur ce site, avec un lien vers l'original</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:0.82rem; color:#b45309; margin-top:-1rem; margin-bottom:2rem;">
+    <span class="t-en">Curious what gets filtered out? See <a href="{{ '/negativity/' | url }}" style="color:#b45309; font-weight:600;">The News We Skip</a>.</span>
+    <span class="t-nl" style="display:none">Benieuwd wat er gefilterd wordt? Bekijk <a href="{{ '/negativity/' | url }}" style="color:#b45309; font-weight:600;">Het nieuws dat we overslaan</a>.</span>
+    <span class="t-fr" style="display:none">Curieux de savoir ce qui est filtré ? Consultez <a href="{{ '/negativity/' | url }}" style="color:#b45309; font-weight:600;">Les nouvelles que nous ignorons</a>.</span>
+  </p>
+
+  <!-- ══ Sources ═══════════════════════════════════════════════════════════ -->
+
+  <h2 class="section-heading">
+    <span class="t-en">Our sources</span>
+    <span class="t-nl" style="display:none">Onze bronnen</span>
+    <span class="t-fr" style="display:none">Nos sources</span>
+  </h2>
+
+  <p style="font-size:0.88rem; color:#b45309; margin-bottom:1.25rem; line-height:1.6;">
+    <span class="t-en">We scan the following news sources. Sources with a <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#f59e0b;vertical-align:middle;margin:0 2px;"></span> orange dot are fetched automatically via RSS; others are added manually.</span>
+    <span class="t-nl" style="display:none">We scannen de volgende nieuwsbronnen. Bronnen met een <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#f59e0b;vertical-align:middle;margin:0 2px;"></span> oranje punt worden automatisch opgehaald via RSS; andere worden handmatig toegevoegd.</span>
+    <span class="t-fr" style="display:none">Nous analysons les sources d'actualité suivantes. Les sources avec un <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#f59e0b;vertical-align:middle;margin:0 2px;"></span> point orange sont récupérées automatiquement via RSS ; les autres sont ajoutées manuellement.</span>
+  </p>
+
+  <div class="sources-section">
+
+    <!-- English sources -->
+    <div class="sources-lang-group">
+      <div class="sources-lang-label">🇬🇧 English</div>
+      <div class="sources-pills">
+        <a href="https://www.bbc.com/news/topics/cx2pk70323et" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>BBC Uplifting Stories</a>
+        <a href="https://www.goodnewsnetwork.org/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Good News Network</a>
+        <a href="https://www.positive.news/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Positive News</a>
+        <a href="https://www.upworthy.com/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Upworthy</a>
+        <a href="https://www.dwarkesh.com/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Dwarkesh</a>
+        <a href="https://positiviteit.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Positiviteit</a>
+        <a href="http://rss.cnn.com/rss/edition.rss" target="_blank" rel="noopener noreferrer" class="source-pill">CNN</a>
+        <a href="https://nytimes.com/" target="_blank" rel="noopener noreferrer" class="source-pill">The New York Times</a>
+        <a href="https://www.washingtonpost.com/" target="_blank" rel="noopener noreferrer" class="source-pill">The Washington Post</a>
+        <a href="https://www.samharris.org/" target="_blank" rel="noopener noreferrer" class="source-pill">Sam Harris</a>
+      </div>
+    </div>
+
+    <!-- Dutch sources -->
+    <div class="sources-lang-group">
+      <div class="sources-lang-label">🇧🇪 Nederlands</div>
+      <div class="sources-pills">
+        <a href="https://www.standaard.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>De Standaard</a>
+        <a href="https://www.demorgen.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>De Morgen</a>
+        <a href="https://www.tijd.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>De Tijd</a>
+        <a href="https://www.hln.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Het Laatste Nieuws</a>
+        <a href="https://www.humo.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Humo</a>
+        <a href="https://www.humo.be/gemist/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Het beste van Humo</a>
+        <a href="https://www.dansendeberen.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Dansende Beren</a>
+        <a href="https://www.hbvl.be/" target="_blank" rel="noopener noreferrer" class="source-pill">Het Belang van Limburg</a>
+      </div>
+    </div>
+
+    <!-- French sources -->
+    <div class="sources-lang-group">
+      <div class="sources-lang-label">🇫🇷 Français</div>
+      <div class="sources-pills">
+        <a href="https://www.lesoir.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>Le Soir</a>
+        <a href="https://www.lecho.be/" target="_blank" rel="noopener noreferrer" class="source-pill"><span class="feed-dot"></span>L'Echo</a>
+        <a href="https://www.lefigaro.fr/" target="_blank" rel="noopener noreferrer" class="source-pill">Le Figaro</a>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <script>
-  const LANGS = ['en', 'nl', 'fr'];
-  function setLang(lang, btn) {
-    LANGS.forEach(function(l) {
+  var ABOUT_LANGS = ['en', 'nl', 'fr'];
+
+  function setAboutLang(lang, btn) {
+    // Show/hide prose blocks
+    ABOUT_LANGS.forEach(function(l) {
       var el = document.getElementById('about-' + l);
-      if (el) el.className = 'about-block' + (l === lang ? ' visible' : '');
+      if (el) el.className = 'about-prose' + (l === lang ? ' visible' : '');
     });
+    // Show/hide translatable spans (infographic labels, section headings, source description)
+    ABOUT_LANGS.forEach(function(l) {
+      document.querySelectorAll('.t-' + l).forEach(function(el) {
+        el.style.display = l === lang ? '' : 'none';
+      });
+    });
+    // Update tab state
     document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
+    if (btn) btn.classList.add('active');
     localStorage.setItem('positiviteiten-lang', lang);
   }
+
+  // Restore saved language on load
   (function() {
     var saved = localStorage.getItem('positiviteiten-lang');
     if (saved && saved !== 'en') {
       var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
-      if (btn) setLang(saved, btn);
+      if (btn) setAboutLang(saved, btn);
     }
   })();
 </script>
