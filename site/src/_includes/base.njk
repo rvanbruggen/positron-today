@@ -52,6 +52,17 @@
     }
     nav a { color: #78350f; text-decoration: none; font-size: 0.875rem; font-weight: 500; }
     nav a:hover { color: #d97706; }
+    nav .nav-lang { display: flex; align-items: center; gap: 0.25rem; margin-left: auto; }
+    .nav-lang-btn {
+      background: transparent;
+      border: 1.5px solid rgba(120,53,15,0.3);
+      color: #78350f; font-size: 0.72rem; font-weight: 700;
+      padding: 0.2rem 0.55rem; border-radius: 99px; cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+      -webkit-tap-highlight-color: transparent; line-height: 1.4;
+    }
+    .nav-lang-btn:hover:not(.active) { background: rgba(120,53,15,0.1); }
+    .nav-lang-btn.active { background: #78350f; color: #facc15; border-color: #78350f; }
 
     /* ── Main content ── */
     main {
@@ -122,6 +133,11 @@
       </a>
       <a href="/positiviteiten/contact/">Contact</a>
     </div>
+    <div class="nav-lang">
+      <button class="nav-lang-btn active" onclick="setLang('en',this)">EN</button>
+      <button class="nav-lang-btn" onclick="setLang('nl',this)">NL</button>
+      <button class="nav-lang-btn" onclick="setLang('fr',this)">FR</button>
+    </div>
   </nav>
   <main>
     {{ content | safe }}
@@ -134,21 +150,24 @@
     &nbsp;·&nbsp; v{{ meta.version }}
   </footer>
   <script>
-    // On every page: restore saved language by toggling all .t-en/.t-nl/.t-fr spans
-    // (nav, footer, and any page-level spans are all covered by this one pass).
+    // Global setLang — toggles all .t-en/.t-nl/.t-fr spans across the whole page
+    // (nav, footer, page content). Pages may call this directly from their own JS.
+    function setLang(lang, btn) {
+      ['en','nl','fr'].forEach(function(l) {
+        document.querySelectorAll('.t-' + l).forEach(function(el) {
+          el.style.display = l === lang ? '' : 'none';
+        });
+      });
+      document.querySelectorAll('.nav-lang-btn').forEach(function(b) { b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      localStorage.setItem('positiviteiten-lang', lang);
+    }
+    // Restore saved language on every page load
     (function() {
       var lang = localStorage.getItem('positiviteiten-lang') || 'en';
       if (lang !== 'en') {
-        ['en', 'nl', 'fr'].forEach(function(l) {
-          document.querySelectorAll('.t-' + l).forEach(function(el) {
-            el.style.display = l === lang ? '' : 'none';
-          });
-        });
-        var btn = document.querySelector('.lang-tab[onclick*="' + lang + '"]');
-        if (btn) {
-          document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-        }
+        var btn = document.querySelector('.nav-lang-btn[onclick*="' + lang + '"]');
+        setLang(lang, btn);
       }
     })();
   </script>

@@ -31,15 +31,6 @@ layout: base.njk
   .post-title { font-size: clamp(1.15rem, 4.5vw, 1.5rem); font-weight: 700; color: var(--accent-text); line-height: 1.3; margin-bottom: 0.6rem; }
   .post-meta { font-size: 0.8rem; color: var(--accent-muted); }
 
-  .lang-tabs { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
-  .lang-tab {
-    padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.75rem;
-    font-weight: 600; cursor: pointer; border: none;
-    background: #fef3c7; color: #92400e; transition: background 0.15s;
-    -webkit-tap-highlight-color: transparent; min-height: 36px;
-  }
-  .lang-tab.active { background: var(--accent-border); color: var(--accent-text); }
-
   .post-body {
     background: white; border-radius: 1rem; padding: 1.1rem;
     border: 2px solid var(--accent-border);
@@ -77,12 +68,6 @@ layout: base.njk
 
 <a href="/positiviteiten/" class="post-back">← Back to all posts</a>
 
-<div class="lang-tabs">
-  <button class="lang-tab active" onclick="setLang('en', this)">EN</button>
-  <button class="lang-tab" onclick="setLang('nl', this)">NL</button>
-  <button class="lang-tab" onclick="setLang('fr', this)">FR</button>
-</div>
-
 <div class="post-header">
   <div class="post-emoji">{{ emoji }}</div>
   {% if postTags.length > 0 %}
@@ -108,21 +93,3 @@ layout: base.njk
   Read the original article ↗
 </a>
 
-<script>
-  const LANGS = ['en', 'nl', 'fr'];
-  function setLang(lang, btn) {
-    LANGS.forEach(function(l) {
-      document.querySelectorAll('.t-' + l).forEach(function(el) { el.style.display = l === lang ? '' : 'none'; });
-    });
-    document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    localStorage.setItem('positiviteiten-lang', lang);
-  }
-  (function() {
-    var saved = localStorage.getItem('positiviteiten-lang');
-    if (saved && saved !== 'en') {
-      var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
-      if (btn) setLang(saved, btn);
-    }
-  })();
-</script>

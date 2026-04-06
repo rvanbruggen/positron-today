@@ -8,15 +8,6 @@ title: The News We Skip
   .page-header h1 { font-size: clamp(1.35rem,5vw,1.75rem); font-weight:700; color:#78350f; margin-bottom:0.5rem; }
   .page-header p  { font-size:0.9rem; color:#b45309; max-width:640px; line-height:1.6; }
 
-  .lang-tabs { display:flex; gap:0.4rem; margin-bottom:1.25rem; flex-wrap:wrap; }
-  .lang-tab {
-    padding:0.4rem 0.9rem; border-radius:99px; font-size:0.8rem;
-    font-weight:600; cursor:pointer; border:none;
-    background:#fef3c7; color:#92400e; transition:background 0.15s;
-    -webkit-tap-highlight-color:transparent; min-height:36px;
-  }
-  .lang-tab.active { background:#facc15; color:#78350f; }
-
   /* ── Summary stats ── */
   .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1rem; margin-bottom:2rem; }
   .stat-card { background:#fff; border:2px solid #fde047; border-radius:1rem; padding:1.25rem 1rem; text-align:center; }
@@ -93,11 +84,6 @@ title: The News We Skip
   </p>
 </div>
 
-<div class="lang-tabs">
-  <button class="lang-tab active" onclick="setLang('en', this)">EN</button>
-  <button class="lang-tab" onclick="setLang('nl', this)">NL</button>
-  <button class="lang-tab" onclick="setLang('fr', this)">FR</button>
-</div>
 
 {% if rejections.total_rejected == 0 %}
   <p class="empty">
@@ -236,17 +222,6 @@ title: The News We Skip
   var LANGS = ['en','nl','fr'];
   var activeCat = 'all';
 
-  function setLang(lang, btn) {
-    LANGS.forEach(function(l) {
-      document.querySelectorAll('.t-' + l).forEach(function(el) {
-        el.style.display = l === lang ? '' : 'none';
-      });
-    });
-    document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
-    if (btn) btn.classList.add('active');
-    localStorage.setItem('positiviteiten-lang', lang);
-  }
-
   function filterCat(cat, btn) {
     activeCat = cat;
     document.querySelectorAll('.cat-pill').forEach(function(b) { b.classList.remove('active'); });
@@ -257,12 +232,4 @@ title: The News We Skip
     });
   }
 
-  // Restore saved language on load
-  (function() {
-    var saved = localStorage.getItem('positiviteiten-lang');
-    if (saved && saved !== 'en') {
-      var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
-      if (btn) setLang(saved, btn);
-    }
-  })();
 </script>

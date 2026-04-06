@@ -7,15 +7,6 @@ title: About
   .about-wrap { max-width: 780px; }
 
   /* ── Language tabs ── */
-  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-  .lang-tab {
-    padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
-    font-weight: 600; cursor: pointer; border: none;
-    background: #fef3c7; color: #92400e; transition: background 0.15s;
-    min-height: 34px;
-  }
-  .lang-tab.active { background: #facc15; color: #78350f; }
-
   /* ── Translatable spans ── */
   .t-en, .t-nl, .t-fr { display: inline; }
 
@@ -98,12 +89,6 @@ title: About
 
 <div class="about-wrap">
 
-  <!-- Language tabs -->
-  <div class="lang-tabs">
-    <button class="lang-tab active" onclick="setAboutLang('en', this)">EN</button>
-    <button class="lang-tab" onclick="setAboutLang('nl', this)">NL</button>
-    <button class="lang-tab" onclick="setAboutLang('fr', this)">FR</button>
-  </div>
 
   <!-- ══ Intro prose ══════════════════════════════════════════════════════ -->
 
@@ -296,20 +281,16 @@ title: About
 <script>
   var ABOUT_LANGS = ['en', 'nl', 'fr'];
 
-  function setAboutLang(lang, btn) {
-    // Show/hide prose blocks
+  // Override global setLang to also toggle about-prose block visibility
+  function setLang(lang, btn) {
     ABOUT_LANGS.forEach(function(l) {
       var el = document.getElementById('about-' + l);
       if (el) el.className = 'about-prose' + (l === lang ? ' visible' : '');
-    });
-    // Show/hide translatable spans (infographic labels, section headings, source description)
-    ABOUT_LANGS.forEach(function(l) {
       document.querySelectorAll('.t-' + l).forEach(function(el) {
         el.style.display = l === lang ? '' : 'none';
       });
     });
-    // Update tab state
-    document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.nav-lang-btn').forEach(function(b) { b.classList.remove('active'); });
     if (btn) btn.classList.add('active');
     localStorage.setItem('positiviteiten-lang', lang);
   }
@@ -318,8 +299,8 @@ title: About
   (function() {
     var saved = localStorage.getItem('positiviteiten-lang');
     if (saved && saved !== 'en') {
-      var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
-      if (btn) setAboutLang(saved, btn);
+      var btn = document.querySelector('.nav-lang-btn[onclick*="' + saved + '"]');
+      setLang(saved, btn);
     }
   })();
 </script>

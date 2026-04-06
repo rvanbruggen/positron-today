@@ -5,13 +5,6 @@ title: Contact
 
 <style>
   .contact-wrap { max-width: 620px; }
-  .lang-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
-  .lang-tab {
-    padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
-    font-weight: 600; cursor: pointer; border: none;
-    background: #fef3c7; color: #92400e; transition: background 0.15s;
-  }
-  .lang-tab.active { background: #facc15; color: #78350f; }
   .contact-block { display: none; }
   .contact-block.visible { display: block; }
   .contact-block h1 { font-size: 1.75rem; font-weight: 700; color: #78350f; margin-bottom: 0.5rem; }
@@ -31,11 +24,6 @@ title: Contact
 </style>
 
 <div class="contact-wrap">
-  <div class="lang-tabs">
-    <button class="lang-tab active" onclick="setLang('en', this)">EN</button>
-    <button class="lang-tab" onclick="setLang('nl', this)">NL</button>
-    <button class="lang-tab" onclick="setLang('fr', this)">FR</button>
-  </div>
 
   <div class="contact-block visible" id="contact-en">
     <h1>Say hello</h1>
@@ -129,21 +117,22 @@ title: Contact
 </div>
 
 <script>
-  const LANGS = ['en', 'nl', 'fr'];
+  // Override global setLang to also toggle contact-block visibility
   function setLang(lang, btn) {
-    LANGS.forEach(function(l) {
-      var el = document.getElementById('contact-' + l);
-      if (el) el.className = 'contact-block' + (l === lang ? ' visible' : '');
+    ['en','nl','fr'].forEach(function(l) {
+      document.querySelectorAll('.t-' + l).forEach(function(el) { el.style.display = l === lang ? '' : 'none'; });
+      var block = document.getElementById('contact-' + l);
+      if (block) block.className = 'contact-block' + (l === lang ? ' visible' : '');
     });
-    document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
+    document.querySelectorAll('.nav-lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
     localStorage.setItem('positiviteiten-lang', lang);
   }
   (function() {
     var saved = localStorage.getItem('positiviteiten-lang');
     if (saved && saved !== 'en') {
-      var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
-      if (btn) setLang(saved, btn);
+      var btn = document.querySelector('.nav-lang-btn[onclick*="' + saved + '"]');
+      setLang(saved, btn);
     }
   })();
 </script>

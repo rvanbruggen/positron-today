@@ -8,38 +8,74 @@ title: Home
   .page-header h1 { font-size: clamp(1.35rem, 5vw, 1.75rem); font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
   .page-header p { font-size: 0.875rem; color: #b45309; }
 
-  .lang-tabs { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
-  .lang-tab {
-    padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.8rem;
-    font-weight: 600; cursor: pointer; border: none;
-    background: #fef3c7; color: #92400e; transition: background 0.15s;
-    -webkit-tap-highlight-color: transparent; min-height: 36px;
-  }
-  .lang-tab.active { background: #facc15; color: #78350f; }
+  /* ── Filter bar ── */
+  .filter-bar { display: flex; gap: 0.6rem; margin-bottom: 1.25rem; align-items: center; flex-wrap: wrap; }
 
-  .topic-bar, .month-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; align-items: center; }
-  .topic-bar-label, .month-bar-label { font-size: 0.7rem; font-weight: 600; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
-  .topic-btn, .month-btn {
-    padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.8rem;
+  /* Tag picker */
+  .tag-picker { position: relative; }
+  .tag-picker-btn {
+    padding: 0.4rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
+    font-weight: 600; cursor: pointer; border: 2px solid #fde68a;
+    background: #fef9c3; color: #78350f; transition: all 0.15s;
+    white-space: nowrap; -webkit-tap-highlight-color: transparent;
+  }
+  .tag-picker-btn.has-selection { background: #facc15; border-color: #f59e0b; }
+  .tag-picker-panel {
+    display: none; position: absolute; top: calc(100% + 0.4rem); left: 0;
+    background: white; border: 1.5px solid #fde68a; border-radius: 1rem;
+    padding: 0.75rem; z-index: 100; min-width: 260px; max-width: 340px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  }
+  .tag-picker-panel.open { display: block; }
+  .tag-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tag-chip {
+    padding: 0.3rem 0.7rem; border-radius: 99px; font-size: 0.75rem;
     font-weight: 600; cursor: pointer; border: 2px solid transparent;
     transition: all 0.15s; white-space: nowrap;
-    -webkit-tap-highlight-color: transparent; min-height: 36px;
+    -webkit-tap-highlight-color: transparent;
   }
-  .topic-btn.active { border-color: currentColor; box-shadow: 0 0 0 2px rgba(0,0,0,0.08); }
-  .month-btn { background: #fef3c7; color: #92400e; }
-  .month-btn.active { background: #f59e0b; border-color: #d97706; color: #78350f; box-shadow: 0 0 0 2px rgba(0,0,0,0.08); }
-  @media (min-width: 480px) { .topic-bar-label, .month-bar-label { width: auto; } }
+  .tag-chip.selected { border-color: currentColor; box-shadow: 0 0 0 2px rgba(0,0,0,0.08); }
+  .tag-chip-all { background: #fef3c7; color: #92400e; }
+  .tag-chip-all.selected { background: #facc15; border-color: #f59e0b; color: #78350f; }
 
-  .tbtn-yellow { background:#fef9c3; color:#713f12; } .tbtn-yellow.active { background:#fde047; }
-  .tbtn-orange { background:#ffedd5; color:#7c2d12; } .tbtn-orange.active { background:#fb923c; }
-  .tbtn-rose   { background:#ffe4e6; color:#881337; } .tbtn-rose.active   { background:#fb7185; }
-  .tbtn-purple { background:#f3e8ff; color:#581c87; } .tbtn-purple.active { background:#c084fc; }
-  .tbtn-blue   { background:#dbeafe; color:#1e3a5f; } .tbtn-blue.active   { background:#60a5fa; }
-  .tbtn-cyan   { background:#cffafe; color:#164e63; } .tbtn-cyan.active   { background:#22d3ee; }
-  .tbtn-teal   { background:#ccfbf1; color:#134e4a; } .tbtn-teal.active   { background:#2dd4bf; }
-  .tbtn-green  { background:#dcfce7; color:#14532d; } .tbtn-green.active  { background:#4ade80; }
-  .tbtn-lime   { background:#ecfccb; color:#365314; } .tbtn-lime.active   { background:#a3e635; }
-  .tbtn-pink   { background:#fce7f3; color:#831843; } .tbtn-pink.active   { background:#f472b6; }
+  /* Month select */
+  .month-select {
+    padding: 0.4rem 0.75rem; border-radius: 0.6rem; font-size: 0.8rem;
+    font-weight: 600; border: 2px solid #fde68a; background: #fef9c3;
+    color: #78350f; cursor: pointer; font-family: inherit;
+  }
+  .month-select:focus { outline: none; border-color: #f59e0b; }
+
+  /* Clear button */
+  .filter-clear {
+    padding: 0.35rem 0.7rem; border-radius: 99px; font-size: 0.75rem;
+    font-weight: 600; cursor: pointer; border: none;
+    background: transparent; color: #b45309; text-decoration: underline;
+  }
+
+  /* Tag chip colour palette (same as old tbtn-*) */
+  .tchip-yellow { background:#fef9c3; color:#713f12; } .tchip-yellow.selected { background:#fde047; }
+  .tchip-orange { background:#ffedd5; color:#7c2d12; } .tchip-orange.selected { background:#fb923c; }
+  .tchip-rose   { background:#ffe4e6; color:#881337; } .tchip-rose.selected   { background:#fb7185; }
+  .tchip-purple { background:#f3e8ff; color:#581c87; } .tchip-purple.selected { background:#c084fc; }
+  .tchip-blue   { background:#dbeafe; color:#1e3a5f; } .tchip-blue.selected   { background:#60a5fa; }
+  .tchip-cyan   { background:#cffafe; color:#164e63; } .tchip-cyan.selected   { background:#22d3ee; }
+  .tchip-teal   { background:#ccfbf1; color:#134e4a; } .tchip-teal.selected   { background:#2dd4bf; }
+  .tchip-green  { background:#dcfce7; color:#14532d; } .tchip-green.selected  { background:#4ade80; }
+  .tchip-lime   { background:#ecfccb; color:#365314; } .tchip-lime.selected   { background:#a3e635; }
+  .tchip-pink   { background:#fce7f3; color:#831843; } .tchip-pink.selected   { background:#f472b6; }
+
+  /* Card colours (unchanged) */
+  .tbtn-yellow { background:#fef9c3; color:#713f12; }
+  .tbtn-orange { background:#ffedd5; color:#7c2d12; }
+  .tbtn-rose   { background:#ffe4e6; color:#881337; }
+  .tbtn-purple { background:#f3e8ff; color:#581c87; }
+  .tbtn-blue   { background:#dbeafe; color:#1e3a5f; }
+  .tbtn-cyan   { background:#cffafe; color:#164e63; }
+  .tbtn-teal   { background:#ccfbf1; color:#134e4a; }
+  .tbtn-green  { background:#dcfce7; color:#14532d; }
+  .tbtn-lime   { background:#ecfccb; color:#365314; }
+  .tbtn-pink   { background:#fce7f3; color:#831843; }
 
   /* Masonry column layout — cards vary in height naturally */
   .card-grid { columns: 1; column-gap: 1rem; }
@@ -91,12 +127,6 @@ title: Home
   </p>
 </div>
 
-<div class="lang-tabs">
-  <button class="lang-tab active" onclick="setLang('en', this)">EN</button>
-  <button class="lang-tab" onclick="setLang('nl', this)">NL</button>
-  <button class="lang-tab" onclick="setLang('fr', this)">FR</button>
-</div>
-
 {% if collections.posts.length == 0 %}
   <p class="empty">No posts yet - check back soon!</p>
 {% else %}
@@ -124,25 +154,46 @@ title: Home
     {% endif %}
   {% endfor %}
 
-  {% if seenTags.length > 0 %}
-  <div class="topic-bar" id="topic-bar">
-    <span class="topic-bar-label">Tag</span>
-    <button class="topic-btn tbtn-yellow active" data-topic="all" onclick="filterTopic('all', this)">All</button>
-    {% for tag in seenTags %}
-    <button class="topic-btn tbtn-{{ tag | topicColor }}" data-topic="{{ tag }}" onclick="filterTopic('{{ tag }}', this)">{{ tag }}</button>
-    {% endfor %}
-  </div>
-  {% endif %}
+  <div class="filter-bar">
+    {% if seenTags.length > 0 %}
+    <div class="tag-picker" id="tag-picker">
+      <button class="tag-picker-btn" id="tag-picker-btn" onclick="toggleTagPicker(event)">
+        <span id="tag-picker-label">
+          <span class="t-en">Topics</span>
+          <span class="t-nl" style="display:none">Onderwerpen</span>
+          <span class="t-fr" style="display:none">Sujets</span>
+          <span id="tag-count-suffix"></span>
+        </span> ▾
+      </button>
+      <div class="tag-picker-panel" id="tag-picker-panel">
+        <div class="tag-chips">
+          <button class="tag-chip tag-chip-all selected" data-tag="all" onclick="toggleTag('all')">
+            <span class="t-en">All</span>
+            <span class="t-nl" style="display:none">Alle</span>
+            <span class="t-fr" style="display:none">Tout</span>
+          </button>
+          {% for tag in seenTags %}
+          <button class="tag-chip tchip-{{ tag | topicColor }}" data-tag="{{ tag }}" onclick="toggleTag('{{ tag }}')">{{ tag }}</button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
 
-  {% if seenMonths.length > 1 %}
-  <div class="month-bar" id="month-bar">
-    <span class="month-bar-label">Month</span>
-    <button class="month-btn active" data-month="all" onclick="filterMonth('all', this)">All</button>
-    {% for mk in seenMonths %}
-    <button class="month-btn" data-month="{{ mk }}" onclick="filterMonth('{{ mk }}', this)">{{ mk | dateMonthLabel }}</button>
-    {% endfor %}
+    {% if seenMonths.length > 1 %}
+    <select class="month-select" id="month-select" onchange="filterMonth(this.value)">
+      <option value="all">
+        {# inline text only — no spans inside <option> #}
+        All months
+      </option>
+      {% for mk in seenMonths %}
+      <option value="{{ mk }}">{{ mk | dateMonthLabel }}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
+
+    <button class="filter-clear" id="filter-clear" onclick="clearAllFilters()" style="display:none">Clear ✕</button>
   </div>
-  {% endif %}
 
   <div class="card-grid" id="card-grid">
     {% for post in collections.posts %}
@@ -189,24 +240,8 @@ title: Home
 {% endif %}
 
 <script>
-  const LANGS = ['en', 'nl', 'fr'];
-  function setLang(lang, btn) {
-    LANGS.forEach(function(l) {
-      document.querySelectorAll('.t-' + l).forEach(function(el) { el.style.display = l === lang ? '' : 'none'; });
-    });
-    document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    localStorage.setItem('positiviteiten-lang', lang);
-  }
-  (function() {
-    var saved = localStorage.getItem('positiviteiten-lang');
-    if (saved && saved !== 'en') {
-      var btn = document.querySelector('.lang-tab[onclick*="' + saved + '"]');
-      if (btn) setLang(saved, btn);
-    }
-  })();
-
-  var activeTag = 'all';
+  // ── Tag multi-select filter ───────────────────────────────────────────────
+  var activeTags = new Set(); // empty = show all
   var activeMonth = 'all';
 
   function applyFilters() {
@@ -214,7 +249,7 @@ title: Home
     var visible = 0;
     cards.forEach(function(card) {
       var cardTags = (card.dataset.tags || '').split(',').map(function(t) { return t.trim(); }).filter(Boolean);
-      var tagMatch = activeTag === 'all' || cardTags.includes(activeTag);
+      var tagMatch = activeTags.size === 0 || cardTags.some(function(t) { return activeTags.has(t); });
       var monthMatch = activeMonth === 'all' || card.dataset.date === activeMonth;
       var show = tagMatch && monthMatch;
       card.style.display = show ? '' : 'none';
@@ -222,35 +257,99 @@ title: Home
     });
     var noMatch = document.getElementById('no-match');
     if (noMatch) noMatch.classList.toggle('visible', visible === 0);
+    updateFilterUI();
   }
 
-  function filterTopic(topic, btn) {
-    document.querySelectorAll('.topic-btn').forEach(function(b) { b.classList.remove('active'); });
-    if (btn) btn.classList.add('active');
-    activeTag = topic;
-    localStorage.setItem('positiviteiten-topic', topic);
+  function updateFilterUI() {
+    var btn = document.getElementById('tag-picker-btn');
+    var clear = document.getElementById('filter-clear');
+    var allChip = document.querySelector('.tag-chip-all');
+    if (!btn) return;
+
+    if (activeTags.size === 0) {
+      btn.classList.remove('has-selection');
+      btn.querySelector('#tag-picker-label').dataset.count = '';
+      if (allChip) allChip.classList.add('selected');
+    } else {
+      btn.classList.add('has-selection');
+      btn.querySelector('#tag-picker-label').dataset.count = activeTags.size;
+      if (allChip) allChip.classList.remove('selected');
+    }
+
+    // Update chip selected states
+    document.querySelectorAll('.tag-chip:not(.tag-chip-all)').forEach(function(chip) {
+      chip.classList.toggle('selected', activeTags.has(chip.dataset.tag));
+    });
+
+    // Show clear button if any filter active
+    var hasFilter = activeTags.size > 0 || activeMonth !== 'all';
+    if (clear) clear.style.display = hasFilter ? '' : 'none';
+
+    // Update button label
+    var label = btn.querySelector('#tag-picker-label');
+    if (label && activeTags.size > 0) {
+      // Prepend count to existing language span text
+      var existing = label.innerHTML;
+      // Just add a count suffix by updating a count span
+    }
+    // Simpler: show count as suffix on button itself
+    var countEl = document.getElementById('tag-count-suffix');
+    if (countEl) countEl.textContent = activeTags.size > 0 ? ' (' + activeTags.size + ')' : '';
+  }
+
+  function toggleTag(tag) {
+    if (tag === 'all') {
+      activeTags.clear();
+    } else {
+      if (activeTags.has(tag)) activeTags.delete(tag);
+      else activeTags.add(tag);
+    }
+    localStorage.setItem('positiviteiten-tags', JSON.stringify([...activeTags]));
     applyFilters();
   }
 
-  function filterMonth(month, btn) {
-    document.querySelectorAll('.month-btn').forEach(function(b) { b.classList.remove('active'); });
-    if (btn) btn.classList.add('active');
-    activeMonth = month;
-    localStorage.setItem('positiviteiten-month', month);
+  function toggleTagPicker(e) {
+    e.stopPropagation();
+    var panel = document.getElementById('tag-picker-panel');
+    if (panel) panel.classList.toggle('open');
+  }
+
+  // Close panel on outside click
+  document.addEventListener('click', function(e) {
+    var picker = document.getElementById('tag-picker');
+    var panel = document.getElementById('tag-picker-panel');
+    if (panel && picker && !picker.contains(e.target)) panel.classList.remove('open');
+  });
+
+  function filterMonth(val) {
+    activeMonth = val;
+    localStorage.setItem('positiviteiten-month', val);
     applyFilters();
   }
 
+  function clearAllFilters() {
+    activeTags.clear();
+    activeMonth = 'all';
+    localStorage.removeItem('positiviteiten-tags');
+    localStorage.removeItem('positiviteiten-month');
+    var sel = document.getElementById('month-select');
+    if (sel) sel.value = 'all';
+    applyFilters();
+  }
+
+  // Restore saved filters on load
   (function() {
-    var savedTopic = localStorage.getItem('positiviteiten-topic');
+    try {
+      var savedTags = JSON.parse(localStorage.getItem('positiviteiten-tags') || '[]');
+      savedTags.forEach(function(t) { activeTags.add(t); });
+    } catch(e) {}
     var savedMonth = localStorage.getItem('positiviteiten-month');
-    if (savedTopic && savedTopic !== 'all') {
-      var btn = document.querySelector('.topic-btn[data-topic="' + savedTopic + '"]');
-      if (btn) { activeTag = savedTopic; document.querySelectorAll('.topic-btn').forEach(function(b) { b.classList.remove('active'); }); btn.classList.add('active'); }
-    }
     if (savedMonth && savedMonth !== 'all') {
-      var btn2 = document.querySelector('.month-btn[data-month="' + savedMonth + '"]');
-      if (btn2) { activeMonth = savedMonth; document.querySelectorAll('.month-btn').forEach(function(b) { b.classList.remove('active'); }); btn2.classList.add('active'); }
+      activeMonth = savedMonth;
+      var sel = document.getElementById('month-select');
+      if (sel) sel.value = savedMonth;
     }
-    if (activeTag !== 'all' || activeMonth !== 'all') applyFilters();
+    if (activeTags.size > 0 || activeMonth !== 'all') applyFilters();
+    else updateFilterUI();
   })();
 </script>
