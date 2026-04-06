@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 0.7.0
+**Version:** 0.8.0
 
 ---
 
@@ -240,6 +240,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **0.8.0** | Configurable LLM providers — pick Anthropic or local Ollama independently for filtering and summarisation; new Settings admin page with Ollama connection test and model browser |
 | **0.7.0** | RSS feed support for all sources; streaming fetch progress; rejection log with auto-export; "What We Skip" public page (EN/NL/FR); editable sources; auto-export on fetch and override |
 | **0.6.0** | Date/month filter on homepage with localStorage persistence |
 | **0.5.2** | Masonry card layout (CSS columns); speech-bubble-star logo |

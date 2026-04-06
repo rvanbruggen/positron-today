@@ -76,6 +76,12 @@ export async function initSchema() {
       rejection_reason TEXT,
       fetched_at     TEXT NOT NULL DEFAULT (datetime('now'))
     )`,
+
+    // v0.8: key-value settings store for configurable LLM providers
+    `CREATE TABLE IF NOT EXISTS settings (
+      key   TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    )`,
   ];
 
   for (const sql of migrations) {
