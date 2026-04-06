@@ -86,17 +86,35 @@ export default function RejectionsPage() {
 
       {/* Stats */}
       {items.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-          <div className="bg-white rounded-xl p-4 border border-yellow-200 text-center">
-            <p className="text-2xl font-bold text-amber-900">{items.length}</p>
-            <p className="text-xs text-amber-600 mt-0.5">Total rejected</p>
+        <div className="flex gap-4 mb-6 flex-wrap items-start">
+          {/* Total */}
+          <div className="bg-white rounded-xl p-4 border border-yellow-200 text-center min-w-[110px]">
+            <p className="text-3xl font-bold text-amber-900">{items.length}</p>
+            <p className="text-xs text-amber-600 mt-0.5">articles rejected<br/>in total</p>
           </div>
-          {topSources.slice(0, 3).map(([src, count]) => (
-            <div key={src} className="bg-white rounded-xl p-4 border border-yellow-200 text-center">
-              <p className="text-2xl font-bold text-amber-900">{count}</p>
-              <p className="text-xs text-amber-600 mt-0.5 truncate">{src}</p>
+
+          {/* Per-source breakdown */}
+          <div className="bg-white rounded-xl p-4 border border-yellow-200 flex-1 min-w-[220px]">
+            <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-3">
+              Rejections per source
+            </p>
+            <div className="flex flex-col gap-1.5">
+              {topSources.map(([src, count]) => {
+                const pct = Math.round((count / items.length) * 100);
+                return (
+                  <div key={src} className="flex items-center gap-2">
+                    <span className="text-xs text-amber-800 w-36 truncate shrink-0">{src}</span>
+                    <div className="flex-1 h-2 bg-amber-100 rounded-full overflow-hidden">
+                      <div className="h-full bg-amber-400 rounded-full" style={{ width: `${pct}%` }} />
+                    </div>
+                    <span className="text-xs text-amber-600 w-14 text-right shrink-0">
+                      {count} ({pct}%)
+                    </span>
+                  </div>
+                );
+              })}
             </div>
-          ))}
+          </div>
         </div>
       )}
 
