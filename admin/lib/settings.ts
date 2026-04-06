@@ -19,18 +19,23 @@ const DEFAULTS: LLMSettings = {
 };
 
 export async function getSettings(): Promise<LLMSettings> {
-  const result = await db.execute("SELECT key, value FROM settings");
-  const map: Record<string, string> = {};
-  for (const row of result.rows) {
-    map[row.key as string] = row.value as string;
+  try {
+    const result = await db.execute("SELECT key, value FROM settings");
+    const map: Record<string, string> = {};
+    for (const row of result.rows) {
+      map[row.key as string] = row.value as string;
+    }
+    return {
+      filter_provider: (map.filter_provider as LLMProvider) ?? DEFAULTS.filter_provider,
+      filter_model: map.filter_model ?? DEFAULTS.filter_model,
+      summarise_provider: (map.summarise_provider as LLMProvider) ?? DEFAULTS.summarise_provider,
+      summarise_model: map.summarise_model ?? DEFAULTS.summarise_model,
+      ollama_base_url: map.ollama_base_url ?? DEFAULTS.ollama_base_url,
+    };
+  } catch {
+    // Table may not exist yet (migration pending) — return defaults
+    return { ...DEFAULTS };
   }
-  return {
-    filter_provider: (map.filter_provider as LLMProvider) ?? DEFAULTS.filter_provider,
-    filter_model: map.filter_model ?? DEFAULTS.filter_model,
-    summarise_provider: (map.summarise_provider as LLMProvider) ?? DEFAULTS.summarise_provider,
-    summarise_model: map.summarise_model ?? DEFAULTS.summarise_model,
-    ollama_base_url: map.ollama_base_url ?? DEFAULTS.ollama_base_url,
-  };
 }
 
 export async function setSetting(key: keyof LLMSettings, value: string): Promise<void> {

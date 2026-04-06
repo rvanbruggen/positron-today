@@ -2,8 +2,13 @@ import { NextRequest } from "next/server";
 import { getSettings, setSettings, type LLMSettings } from "@/lib/settings";
 
 export async function GET() {
-  const settings = await getSettings();
-  return Response.json(settings);
+  try {
+    const settings = await getSettings();
+    return Response.json(settings);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    return Response.json({ error: message }, { status: 500 });
+  }
 }
 
 export async function PUT(request: NextRequest) {

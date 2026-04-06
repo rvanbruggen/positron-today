@@ -32,6 +32,7 @@ function Badge({ ok }: { ok: boolean | null }) {
 
 export default function SettingsPage() {
   const [settings, setSettings]       = useState<LLMSettings | null>(null);
+  const [loadError, setLoadError]     = useState<string | null>(null);
   const [saving, setSaving]           = useState(false);
   const [saveMsg, setSaveMsg]         = useState<string | null>(null);
   const [ollamaOk, setOllamaOk]       = useState<boolean | null>(null);
@@ -41,8 +42,16 @@ export default function SettingsPage() {
 
   useEffect(() => {
     fetch("/api/llm-settings")
-      .then(r => r.json())
-      .then(setSettings);
+      .then(async r => {
+        const text = await r.text();
+        if (!text) throw new Error("Empty response from settings API — try restarting the admin server.");
+        return JSON.parse(text);
+      })
+      .then(data => {
+        if (data.error) throw new Error(data.error);
+        setSettings(data);
+      })
+      .catch(err => setLoadError(err.message));
   }, []);
 
   const checkOllama = useCallback(async (baseUrl?: string) => {
@@ -92,6 +101,20 @@ export default function SettingsPage() {
 
   function patch(key: keyof LLMSettings, value: string) {
     setSettings(prev => prev ? { ...prev, [key]: value } : prev);
+  }
+
+  if (loadError) {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-xl p-5 max-w-xl">
+        <p className="font-semibold text-red-700 mb-1">Could not load settings</p>
+        <p className="text-sm text-red-600 mb-3">{loadError}</p>
+        <p className="text-xs text-red-500">
+          Restart the admin dev server (<code className="font-mono bg-red-100 px-1 rounded">npm run dev</code>) so the
+          database migration that creates the <code className="font-mono bg-red-100 px-1 rounded">settings</code> table runs,
+          then reload this page.
+        </p>
+      </div>
+    );
   }
 
   if (!settings) {
