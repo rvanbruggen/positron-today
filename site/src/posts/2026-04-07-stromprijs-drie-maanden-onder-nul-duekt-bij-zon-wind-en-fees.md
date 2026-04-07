@@ -1,5 +1,5 @@
 ---
-title: "Stromprijs drie maanden onder nul duekt bij zon, wind en feestdag"
+title: "Sun, wind and public holiday push the electricity prices into a tailspin"
 title_nl: "Stroomprijzen lager dan ooit door zon, wind en feestdagen"
 title_fr: "Les tarifs électriques tombent sous effet par tempête, vent et jours fériés"
 date: 2026-04-07
