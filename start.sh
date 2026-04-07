@@ -29,6 +29,9 @@ else
   rm -f "$REPO/.ollama-external"
   ollama serve >"$REPO/.ollama.log" 2>&1 &
   echo "  ✓  Ollama — started  → http://localhost:11434  (log: .ollama.log)"
+  # Open a new Terminal window tailing the Ollama log so activity is visible
+  sleep 1
+  osascript -e "tell application \"Terminal\" to do script \"echo '── Ollama activity log ──'; tail -f \\\"$REPO/.ollama.log\\\"\"" >/dev/null 2>&1 || true
 fi
 
 # ── Admin — Next.js ───────────────────────────────────────────────────────────
