@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────────────────────────
-#  Positiviteiten — start all services
+#  Positron Today — start all services
 #
 #  Starts:
-#    • Ollama          local LLM (skipped if already running)
+#    • Ollama          local LLM → http://localhost:11434
 #    • Admin           Next.js   → http://localhost:3000
-#    • Public site     Eleventy  → http://localhost:8080/positiviteiten/
+#    • Public site     Eleventy  → http://localhost:8080
 #
 #  Logs are written to .ollama.log / .admin.log / .site.log
 #  Run ./stop.sh to shut everything down again.
@@ -17,17 +17,18 @@ REPO="$(cd "$(dirname "$0")" && pwd)"
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
 echo ""
-echo "🌟  Starting Positiviteiten v$(node -p "require('./package.json').version" 2>/dev/null || echo '?')..."
+echo "🌟  Starting Positron Today v$(node -p "require('./package.json').version" 2>/dev/null || echo '?')..."
 echo ""
 
 # ── Ollama (local LLM) ────────────────────────────────────────────────────────
 if pgrep -x ollama >/dev/null 2>&1; then
   echo "  ✓  Ollama — already running (will not be stopped by stop.sh)"
+  echo "             http://localhost:11434"
   touch "$REPO/.ollama-external"
 else
   rm -f "$REPO/.ollama-external"
   ollama serve >"$REPO/.ollama.log" 2>&1 &
-  echo "  ✓  Ollama — started  (log: .ollama.log)"
+  echo "  ✓  Ollama — started  → http://localhost:11434  (log: .ollama.log)"
 fi
 
 # ── Admin — Next.js ───────────────────────────────────────────────────────────
@@ -38,7 +39,7 @@ echo "  ✓  Admin  — http://localhost:3000  (log: .admin.log)"
 # ── Public site — Eleventy ────────────────────────────────────────────────────
 cd "$REPO/site"
 npm run dev >"$REPO/.site.log" 2>&1 &
-echo "  ✓  Site   — http://localhost:8080/positiviteiten/  (log: .site.log)"
+echo "  ✓  Site   — http://localhost:8080  (log: .site.log)"
 
 echo ""
 echo "🟢  All services running."
