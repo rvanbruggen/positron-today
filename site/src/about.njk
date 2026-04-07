@@ -119,6 +119,32 @@ title: About
     <p>Rien ici n'est payé, sponsorisé ou optimisé algorithmiquement. Juste un Belge avec la conviction tenace qu'il y a beaucoup à célébrer - si on sait où chercher.</p>
   </div>
 
+  <!-- ══ Why Positron? ════════════════════════════════════════════════════ -->
+
+  <h2 class="section-heading">
+    <span class="t-en">Why "Positron"?</span>
+    <span class="t-nl" style="display:none">Waarom "Positron"?</span>
+    <span class="t-fr" style="display:none">Pourquoi "Positron" ?</span>
+  </h2>
+
+  <div id="why-en" class="about-prose visible">
+    <p>A positron is the antimatter counterpart of an electron - identical in every way, except that it carries a positive charge. It is one of the most fundamental particles in the universe, described by physics, confirmed by experiment, and present all around us - in the air, in our bodies, in the cosmos. And yet most people never think about it. It is always there, doing its quiet work, largely invisible to everyday life.</p>
+    <p>That felt like exactly the right metaphor for this site. Good things are happening in the world all the time - real, verified, meaningful things. They are not rare. They are not manufactured. They are as fundamental and as real as anything else going on. They just don't get the attention they deserve. They are the positrons of the news cycle: always present, rarely seen.</p>
+    <p>So: Positron Today. Positive charge. Fundamental physics. Good news that was always there - you just needed somewhere to look for it.</p>
+  </div>
+
+  <div id="why-nl" class="about-prose">
+    <p>Een positron is het antideeltje van een elektron - in alle opzichten identiek, behalve dat het een positieve lading draagt. Het is een van de meest fundamentele deeltjes in het universum, beschreven door de natuurkunde, bevestigd door experimenten, en overal om ons heen aanwezig - in de lucht, in ons lichaam, in de kosmos. En toch staat de meeste mensen er nooit bij stil. Het is er altijd, doet zijn stille werk, grotendeels onzichtbaar in het dagelijks leven.</p>
+    <p>Dat leek me precies de juiste metafoor voor deze site. Er gebeuren voortdurend goede dingen in de wereld - echte, verificeerbare, betekenisvolle dingen. Ze zijn niet zeldzaam. Ze zijn niet verzonnen. Ze zijn net zo fundamenteel en net zo echt als al het andere dat gaande is. Ze krijgen alleen niet de aandacht die ze verdienen. Ze zijn de positronen van de nieuwscyclus: altijd aanwezig, zelden gezien.</p>
+    <p>Dus: Positron Today. Positieve lading. Fundamentele natuurkunde. Goed nieuws dat er altijd al was - je had alleen een plek nodig om het te zoeken.</p>
+  </div>
+
+  <div id="why-fr" class="about-prose">
+    <p>Un positron est la contrepartie antimatière de l'électron - identique à tous points de vue, sauf qu'il porte une charge positive. C'est l'une des particules les plus fondamentales de l'univers, décrite par la physique, confirmée par l'expérience, et présente partout autour de nous - dans l'air, dans notre corps, dans le cosmos. Et pourtant, la plupart des gens n'y pensent jamais. Il est toujours là, faisant son travail discret, largement invisible dans la vie quotidienne.</p>
+    <p>Cela m'a semblé être exactement la bonne métaphore pour ce site. De bonnes choses se produisent dans le monde en permanence - des choses réelles, vérifiées, significatives. Elles ne sont pas rares. Elles ne sont pas fabriquées. Elles sont aussi fondamentales et aussi réelles que tout le reste. Elles ne reçoivent tout simplement pas l'attention qu'elles méritent. Ce sont les positrons du cycle de l'actualité : toujours présents, rarement vus.</p>
+    <p>Alors : Positron Today. Charge positive. Physique fondamentale. De bonnes nouvelles qui ont toujours été là - il vous fallait juste un endroit où les chercher.</p>
+  </div>
+
   <!-- ══ How it works ══════════════════════════════════════════════════════ -->
 
   <h2 class="section-heading">
@@ -271,14 +297,17 @@ title: About
 
 <script>
   var ABOUT_LANGS = ['en', 'nl', 'fr'];
+  var ABOUT_BLOCKS = ['about', 'why'];
 
   // Override global setLang to also toggle about-prose block visibility
   function setLang(lang, btn) {
     document.documentElement.setAttribute('data-lang', lang);
     _updateLangUrl(lang);
     ABOUT_LANGS.forEach(function(l) {
-      var el = document.getElementById('about-' + l);
-      if (el) el.className = 'about-prose' + (l === lang ? ' visible' : '');
+      ABOUT_BLOCKS.forEach(function(block) {
+        var el = document.getElementById(block + '-' + l);
+        if (el) el.className = 'about-prose' + (l === lang ? ' visible' : '');
+      });
       document.querySelectorAll('.t-' + l).forEach(function(el) {
         el.style.display = l === lang ? '' : 'none';
       });
