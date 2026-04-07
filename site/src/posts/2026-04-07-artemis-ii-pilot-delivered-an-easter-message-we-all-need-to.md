@@ -1,0 +1,19 @@
+---
+title: "Artemis II Pilot Delivered an Easter Message We All Need to Hear"
+title_nl: "Aart van de Artemismissie: een Oostersonboodschap dat wij allemaal nodig hebben"
+title_fr: "La mission Artemis II a envoyé un message d'Éaster que nous tous avions besoin d'entendre"
+date: 2026-04-07
+source_pub_date: 2026-04-06
+fetched_date: 2026-04-07
+source_url: "https://www.upworthy.com/artemis-ii-pilot-victor-glover-easter-message/?utm_source=rss&utm_medium=rss&utm_campaign=artemis-ii-pilot-victor-glover-easter-message"
+source_name: "Upworthy"
+topic: "Environment"
+tags: ["Environment"]
+emoji: "★"
+summary: "The crew of the Artemis II NASA mission has broken a record by traveling farther into space than any human before, and their pilot Victor Glover shared an impromptu Easter message reminding us why our existence matters. On being reminded of Earth's beauty and fragility amidst the vastness of space, Glover said 'we are the same thing,' emphasizing humanity's connection to one another. His words have resonated with people across cultures and faiths, offering a unifying message that we're equally special because of our shared place in this universe. As astronauts continue to share their perspectives on seeing Earth from space, they often reflect on the profound awareness known as the 'overview effect.' This experience has led some to redefine our relationship with humanity and conflict."
+summary_nl: "De crew van de Artemis II-naziestraatbanaire NASA heeft een record verbroken door dieper in ruimte te zijn gegaan dan enige mens er ooit was geweest, en piloot Victor Glover has een impulsief Oostersonboodschap uitgesproken die herinnerde wie het belangrijkste is. Wanneer hij vroeg werd aangemoedigd om een boodschap voor Paas te delen, zei hij niet dat hij er een had opgezocht, maar gaf opgewekte gedachten, hoe betekenisvol deze optiek was voor hem. Hoewel men van hun perspectief op het ruimteschip aangemoedigd is aan de schoonheid van Aarde en voornaamelijk herleest Aarde als één ding te zijn, waarvan wij allemaal deel zijn."
+summary_fr: "L'équipage de la mission Apollo 2-étoile de l'NASA a brisé le record en voyageant plus loin dans l'espace que n'importe quel humain en avoir jamais fait. Le piloteVictor Glover envoya un message d'Éaster fortuit aux environs, rappelant pourquoi notre existence est significative. Il lui fit penser à la beauté et à la fragilité de la Terre pendant leurs longs voyages dans l'écosse cosmique. En ce qui concerne Glover’s discours est édifiant car cela montre de manière fortuite le fait que nous sommes tous une seule chose.  Ses mots ont résonné auprès des gens de diverses cultures et confessions, étant de véritable boîtier d'un message unifying sur mon histoire que nous sommes du tout monde parce que nous nous trouvons dans ce univers ensemble."
+layout: post.njk
+---
+
+The crew of the Artemis II NASA mission has broken a record by traveling farther into space than any human before, and their pilot Victor Glover shared an impromptu Easter message reminding us why our existence matters. On being reminded of Earth's beauty and fragility amidst the vastness of space, Glover said 'we are the same thing,' emphasizing humanity's connection to one another. His words have resonated with people across cultures and faiths, offering a unifying message that we're equally special because of our shared place in this universe. As astronauts continue to share their perspectives on seeing Earth from space, they often reflect on the profound awareness known as the 'overview effect.' This experience has led some to redefine our relationship with humanity and conflict.
