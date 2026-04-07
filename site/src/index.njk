@@ -189,7 +189,7 @@ title: Home
     <button class="filter-clear" id="filter-clear" onclick="clearAllFilters()" style="display:none">Clear ✕</button>
   </div>
 
-  <div class="card-grid" id="card-grid">
+  <div class="card-grid" id="card-grid" style="visibility:hidden">
     {% for post in recentPosts %}
       {# Resolve tags: use tags[] if present, fall back to topic string #}
       {% if post.data.tags and post.data.tags.length > 0 %}
@@ -353,8 +353,8 @@ title: Home
   function distributeCards() {
     var grid = document.getElementById('card-grid');
     if (!grid) return;
-    var w = window.innerWidth;
-    var numCols = w >= 700 ? 3 : w >= 480 ? 2 : 1;
+    var numCols = window.matchMedia('(min-width: 700px)').matches ? 3
+                : window.matchMedia('(min-width: 480px)').matches ? 2 : 1;
     // Collect all cards (including hidden ones so filters still work)
     var cards = Array.from(grid.querySelectorAll('.card'));
     grid.innerHTML = '';
@@ -368,6 +368,7 @@ title: Home
     cards.forEach(function(card, i) {
       cols[i % numCols].appendChild(card);
     });
+    grid.style.visibility = '';
   }
 
   // Re-distribute on resize (debounced) so column count stays correct
