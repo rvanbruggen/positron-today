@@ -56,6 +56,7 @@ function generateMarkdown(article: Record<string, unknown>, tagNames: string[]):
     `summary: ${yamlStr(String(article.summary_en ?? ""))}`,
     `summary_nl: ${yamlStr(String(article.summary_nl ?? ""))}`,
     `summary_fr: ${yamlStr(String(article.summary_fr ?? ""))}`,
+    ...(article.image_url ? [`image_url: ${yamlStr(String(article.image_url))}`] : []),
     `layout: post.njk`,
     `---`,
     ``,

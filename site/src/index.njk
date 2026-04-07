@@ -95,6 +95,16 @@ title: Home
   @media (min-width: 640px) { .card { padding: 1.25rem; gap: 0.5rem; } }
   @media (hover: hover) { .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.10); } }
 
+  /* Card thumbnail image — bleeds to card edges, rounded top corners */
+  .card-img {
+    width: calc(100% + 2.2rem); margin: -1.1rem -1.1rem 0.5rem;
+    border-radius: 0.85rem 0.85rem 0 0;
+    aspect-ratio: 16/9; object-fit: cover; display: block;
+  }
+  @media (min-width: 640px) {
+    .card-img { width: calc(100% + 2.5rem); margin: -1.25rem -1.25rem 0.5rem; }
+  }
+
   .card-emoji { font-size: 1.5rem; }
   .card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
   .card-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.7; }
@@ -207,6 +217,7 @@ title: Home
       data-date="{{ post.date | dateMonthKey }}"
       data-fulldate="{% if post.data.source_pub_date %}{{ post.data.source_pub_date }}{% else %}{{ post.date | dateIso }}{% endif %}"
     >
+      {% if post.data.image_url %}<img class="card-img" src="{{ post.data.image_url }}" alt="" loading="lazy" onerror="this.style.display='none'">{% endif %}
       <div class="card-emoji">{{ post.data.emoji }}</div>
       <div class="card-tags">
         {% for tag in cardTags %}<span class="card-tag">{{ tag }}{% if not loop.last %} · {% endif %}</span>{% endfor %}

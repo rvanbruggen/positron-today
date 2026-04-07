@@ -95,6 +95,9 @@ export async function initSchema() {
 
     // v0.10: same field on rejected_articles so rejections also carry the source date
     "ALTER TABLE rejected_articles ADD COLUMN source_pub_date TEXT",
+
+    // v1.3: og:image captured at summarise time, stored for card thumbnails on the public site
+    "ALTER TABLE articles ADD COLUMN image_url TEXT",
   ];
 
   for (const sql of migrations) {

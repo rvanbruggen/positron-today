@@ -4,13 +4,19 @@ import { getSummariseProvider } from "@/lib/llm";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
 
-async function fetchArticleText(url: string): Promise<string> {
+async function fetchArticleContent(url: string): Promise<{ text: string; imageUrl: string | null }> {
   try {
     const res = await fetch(url, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; PositronToday/1.0)" },
       signal: AbortSignal.timeout(10000),
     });
     const html = await res.text();
+
+    // Extract og:image for card thumbnails
+    const imgMatch =
+      html.match(/property="og:image"\s+content="([^"]+)"/i) ||
+      html.match(/content="([^"]+)"\s+property="og:image"/i);
+    const imageUrl = imgMatch ? imgMatch[1].trim() : null;
 
     const descMatch =
       html.match(/property="og:description"\s+content="([^"]{30,})"/i) ||
@@ -22,10 +28,13 @@ async function fetchArticleText(url: string): Promise<string> {
     const article = new Readability(dom.window.document).parse();
     const readabilityText = article?.textContent?.trim() ?? "";
 
-    if (readabilityText.length > 200) return readabilityText.slice(0, 4000);
-    return metaDesc.slice(0, 1000);
+    const text = readabilityText.length > 200
+      ? readabilityText.slice(0, 4000)
+      : metaDesc.slice(0, 1000);
+
+    return { text, imageUrl };
   } catch {
-    return "";
+    return { text: "", imageUrl: null };
   }
 }
 
@@ -186,7 +195,7 @@ export async function POST(request: NextRequest) {
       emoji: String(t.emoji),
     }));
 
-    const articleText = await fetchArticleText(String(article.source_url));
+    const { text: articleText, imageUrl } = await fetchArticleContent(String(article.source_url));
     const rawTitle = article.raw_title ? String(article.raw_title) : null;
 
     const summaries = await summariseAndTranslate(
@@ -197,18 +206,20 @@ export async function POST(request: NextRequest) {
       availableTags,
     );
 
-    // Save summaries + emoji
+    // Save summaries + emoji + og:image
     await db.execute({
       sql: `UPDATE articles SET
               title_nl = ?, title_fr = ?, title_en = ?,
               summary_nl = ?, summary_fr = ?, summary_en = ?,
               article_emoji = ?,
+              image_url = ?,
               status = 'scheduled'
             WHERE id = ?`,
       args: [
         summaries.title_nl, summaries.title_fr, summaries.title_en,
         summaries.summary_nl, summaries.summary_fr, summaries.summary_en,
         summaries.emoji,
+        imageUrl,
         id,
       ],
     });

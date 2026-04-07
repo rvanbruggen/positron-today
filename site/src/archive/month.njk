@@ -15,18 +15,26 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
   .page-header h1 { font-size: clamp(1.35rem, 5vw, 1.75rem); font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
   .page-header p { font-size: 0.875rem; color: #b45309; }
 
-  .card-grid { columns: 1; column-gap: 1rem; }
-  @media (min-width: 480px) { .card-grid { columns: 2; } }
-  @media (min-width: 700px) { .card-grid { columns: 3; column-gap: 1.25rem; } }
+  .card-grid { display: flex; align-items: start; gap: 1rem; }
+  .card-col   { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1rem; }
+  @media (min-width: 700px) { .card-grid { gap: 1.25rem; } .card-col { gap: 1.25rem; } }
 
   .card {
-    break-inside: avoid; margin-bottom: 1rem;
     border-radius: 1rem; padding: 1.1rem; border: 2px solid transparent;
     text-decoration: none; display: flex; flex-direction: column; gap: 0.4rem;
     transition: transform 0.15s, box-shadow 0.15s; -webkit-tap-highlight-color: transparent;
   }
-  @media (min-width: 640px) { .card { padding: 1.25rem; gap: 0.5rem; margin-bottom: 1.25rem; } }
+  @media (min-width: 640px) { .card { padding: 1.25rem; gap: 0.5rem; } }
   @media (hover: hover) { .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.10); } }
+
+  .card-img {
+    width: calc(100% + 2.2rem); margin: -1.1rem -1.1rem 0.5rem;
+    border-radius: 0.85rem 0.85rem 0 0;
+    aspect-ratio: 16/9; object-fit: cover; display: block;
+  }
+  @media (min-width: 640px) {
+    .card-img { width: calc(100% + 2.5rem); margin: -1.25rem -1.25rem 0.5rem; }
+  }
 
   .card-emoji { font-size: 1.5rem; }
   .card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
@@ -83,7 +91,7 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
   </p>
 </div>
 
-<div class="card-grid">
+<div class="card-grid" id="card-grid" style="visibility:hidden">
   {% for post in month.posts %}
     {% if post.data.tags and post.data.tags.length > 0 %}
       {% set cardTags = post.data.tags %}
@@ -98,6 +106,7 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
       class="card card-{{ firstTag | topicColor }}"
       data-tags="{{ cardTags | join(',') }}"
     >
+      {% if post.data.image_url %}<img class="card-img" src="{{ post.data.image_url }}" alt="" loading="lazy" onerror="this.style.display='none'">{% endif %}
       <div class="card-emoji">{{ post.data.emoji }}</div>
       <div class="card-tags">
         {% for tag in cardTags %}<span class="card-tag">{{ tag }}{% if not loop.last %} · {% endif %}</span>{% endfor %}
@@ -128,6 +137,29 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
     </a>
   {% endfor %}
 </div>
+
+<script>
+  function distributeCards() {
+    var grid = document.getElementById('card-grid');
+    if (!grid) return;
+    var numCols = window.matchMedia('(min-width: 700px)').matches ? 3
+                : window.matchMedia('(min-width: 480px)').matches ? 2 : 1;
+    var cards = Array.from(grid.querySelectorAll('.card'));
+    grid.innerHTML = '';
+    var cols = [];
+    for (var i = 0; i < numCols; i++) {
+      var col = document.createElement('div');
+      col.className = 'card-col';
+      grid.appendChild(col);
+      cols.push(col);
+    }
+    cards.forEach(function(card, i) { cols[i % numCols].appendChild(card); });
+    grid.style.visibility = '';
+  }
+  var _rt;
+  window.addEventListener('resize', function() { clearTimeout(_rt); _rt = setTimeout(distributeCards, 150); });
+  distributeCards();
+</script>
 
 <div class="archive-nav">
   {% if pagination.href.previous %}
