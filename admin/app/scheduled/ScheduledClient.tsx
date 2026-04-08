@@ -27,17 +27,21 @@ function TagPills({
   articleTags,
   allTags,
   onToggle,
+  selectedOnly = false,
 }: {
   articleId: number;
   articleTags: ArticleTag[];
   allTags: ArticleTag[];
   onToggle: (articleId: number, tag: ArticleTag, selected: boolean) => void;
+  selectedOnly?: boolean;
 }) {
   if (allTags.length === 0) return null;
   const selectedIds = new Set(articleTags.map((t) => t.id));
+  const visibleTags = selectedOnly ? allTags.filter((t) => selectedIds.has(t.id)) : allTags;
+  if (visibleTags.length === 0) return null;
   return (
     <div className="flex flex-wrap gap-1 mt-1.5">
-      {allTags.map((tag) => {
+      {visibleTags.map((tag) => {
         const sel = selectedIds.has(tag.id);
         return (
           <button
@@ -305,6 +309,7 @@ export default function ScheduledClient({
                           articleTags={a.tags}
                           allTags={tags}
                           onToggle={toggleTag}
+                          selectedOnly
                         />
                       </div>
                       <div className="flex flex-col items-end gap-2 shrink-0">
