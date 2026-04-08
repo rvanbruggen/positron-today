@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import EditArticleModal, { type EditableFields } from "@/app/components/EditArticleModal";
 
 type ArticleTag = { id: number; name: string; emoji: string };
 
@@ -69,6 +70,7 @@ export default function ScheduledClient({
   const [published, setPublished] = useState<Set<number>>(new Set());
   const [error, setError] = useState<string | null>(null);
   const [previewLang, setPreviewLang] = useState<"en" | "nl" | "fr">("en");
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   function toggleTag(articleId: number, tag: ArticleTag, wasSelected: boolean) {
     setArticles((prev) =>
@@ -314,6 +316,13 @@ export default function ScheduledClient({
                         />
                         <div className="flex gap-2">
                           <button
+                            onClick={() => setEditingId(a.id)}
+                            disabled={publishing.has(a.id)}
+                            className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2.5 py-1 rounded-lg transition-colors disabled:opacity-50 font-medium"
+                          >
+                            Edit
+                          </button>
+                          <button
                             onClick={() => publish(a.id)}
                             disabled={publishing.has(a.id) || published.has(a.id)}
                             className="bg-green-400 hover:bg-green-500 text-green-900 font-medium px-3 py-1 rounded-lg text-xs transition-colors disabled:opacity-50"
@@ -338,6 +347,32 @@ export default function ScheduledClient({
 
         </div>
       )}
+
+      {editingId !== null && (() => {
+        const a = articles.find((x) => x.id === editingId);
+        if (!a) return null;
+        return (
+          <EditArticleModal
+            articleId={a.id}
+            isPublished={false}
+            initial={{
+              title_en: a.title_en ?? "",
+              title_nl: a.title_nl ?? "",
+              title_fr: a.title_fr ?? "",
+              summary_en: a.summary_en ?? "",
+              summary_nl: a.summary_nl ?? "",
+              summary_fr: a.summary_fr ?? "",
+              article_emoji: a.article_emoji ?? "✨",
+            }}
+            onClose={() => setEditingId(null)}
+            onSaved={(fields: EditableFields) => {
+              setArticles((prev) => prev.map((x) =>
+                x.id === editingId ? { ...x, ...fields } : x
+              ));
+            }}
+          />
+        );
+      })()}
     </div>
   );
 }

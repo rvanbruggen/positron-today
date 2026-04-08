@@ -1,0 +1,26 @@
+---
+permalink: feed-fr.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Positron Today</title>
+    <link>https://positron.today/</link>
+    <description>Actualités positives, chaque jour — une sélection soignée de bonnes nouvelles dans le monde.</description>
+    <language>fr</language>
+    <atom:link href="https://positron.today/feed-fr.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>{{ collections.posts[0].date | dateRfc822 }}</lastBuildDate>
+    {% for post in collections.posts | limit(20) %}
+    <item>
+      <title>{{ (post.data.title_fr if post.data.title_fr else post.data.title) | escape }}</title>
+      <link>https://positron.today{{ post.url }}</link>
+      <guid isPermaLink="true">https://positron.today{{ post.url }}</guid>
+      <pubDate>{{ post.date | dateRfc822 }}</pubDate>
+      <dc:creator>Positron Today</dc:creator>
+      {% if post.data.tags %}<category>{{ post.data.tags[0] | escape }}</category>{% endif %}
+      <description>{{ (post.data.summary_fr if post.data.summary_fr else post.data.summary) | escape }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

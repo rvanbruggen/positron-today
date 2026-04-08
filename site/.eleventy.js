@@ -85,6 +85,12 @@ module.exports = function (eleventyConfig) {
   // (which splits into columns, not a range)
   eleventyConfig.addFilter("limit", (array, n) => array.slice(0, n));
 
+  // RFC 822 date string for RSS <pubDate> — e.g. "Mon, 06 Apr 2026 00:00:00 +0000"
+  eleventyConfig.addFilter("dateRfc822", (date) => {
+    const d = typeof date === "string" ? new Date(date + "T12:00:00Z") : new Date(date);
+    return d.toUTCString();
+  });
+
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
       return new Date(b.date) - new Date(a.date);

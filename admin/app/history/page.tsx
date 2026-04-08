@@ -14,7 +14,9 @@ function parseTagData(raw: unknown): { id: number; name: string; emoji: string }
 export default async function HistoryPage() {
   const [articlesResult, tagsResult] = await Promise.all([
     db.execute(`
-      SELECT a.id, a.title_en, a.title_nl, a.source_url, a.source_name,
+      SELECT a.id, a.title_en, a.title_nl, a.title_fr,
+             a.summary_en, a.summary_nl, a.summary_fr,
+             a.source_url, a.source_name,
              a.article_emoji, a.published_at, a.publish_date, a.published_path,
              r.source_pub_date,
              (SELECT GROUP_CONCAT(t.id || '|' || t.name || '|' || t.emoji, '~~')
@@ -33,6 +35,10 @@ export default async function HistoryPage() {
     id: Number(a.id),
     title_en: a.title_en ? String(a.title_en) : null,
     title_nl: a.title_nl ? String(a.title_nl) : null,
+    title_fr: a.title_fr ? String(a.title_fr) : null,
+    summary_en: a.summary_en ? String(a.summary_en) : null,
+    summary_nl: a.summary_nl ? String(a.summary_nl) : null,
+    summary_fr: a.summary_fr ? String(a.summary_fr) : null,
     source_url: String(a.source_url),
     source_name: String(a.source_name),
     article_emoji: a.article_emoji ? String(a.article_emoji) : null,

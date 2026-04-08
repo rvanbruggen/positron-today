@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import EditArticleModal, { type EditableFields } from "@/app/components/EditArticleModal";
 
 type ArticleTag = { id: number; name: string; emoji: string };
 
@@ -8,6 +9,10 @@ type Article = {
   id: number;
   title_en: string | null;
   title_nl: string | null;
+  title_fr: string | null;
+  summary_en: string | null;
+  summary_nl: string | null;
+  summary_fr: string | null;
   source_url: string;
   source_name: string;
   article_emoji: string | null;
@@ -72,6 +77,7 @@ export default function HistoryClient({
   const [sortKey, setSortKey]           = useState<SortKey>("date");
   const [sortDir, setSortDir]           = useState<SortDir>("desc");
   const [error, setError]               = useState<string | null>(null);
+  const [editingId, setEditingId]       = useState<number | null>(null);
 
   function handleSort(key: SortKey) {
     if (sortKey === key) {
@@ -297,6 +303,10 @@ export default function HistoryClient({
                     {/* Actions */}
                     <td className="px-4 py-2.5">
                       <div className="flex items-center gap-2 justify-end whitespace-nowrap">
+                        <button onClick={() => setEditingId(a.id)}
+                          className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2 py-1 rounded transition-colors font-medium">
+                          Edit
+                        </button>
                         <button onClick={() => republish(a.id)}
                           disabled={republishing.has(a.id) || republished.has(a.id)}
                           className="text-xs bg-green-100 hover:bg-green-200 text-green-700 px-2 py-1 rounded transition-colors disabled:opacity-50 font-medium">
@@ -322,6 +332,34 @@ export default function HistoryClient({
           </table>
         </div>
       )}
+
+      {editingId !== null && (() => {
+        const a = articles.find((x) => x.id === editingId);
+        if (!a) return null;
+        return (
+          <EditArticleModal
+            articleId={a.id}
+            isPublished={true}
+            initial={{
+              title_en: a.title_en ?? "",
+              title_nl: a.title_nl ?? "",
+              title_fr: a.title_fr ?? "",
+              summary_en: a.summary_en ?? "",
+              summary_nl: a.summary_nl ?? "",
+              summary_fr: a.summary_fr ?? "",
+              article_emoji: a.article_emoji ?? "✨",
+            }}
+            onClose={() => setEditingId(null)}
+            onSaved={(fields: EditableFields) => {
+              setArticles((prev) => prev.map((x) =>
+                x.id === editingId ? { ...x, ...fields } : x
+              ));
+              setRepublished((prev) => new Set(prev).add(editingId));
+              setTimeout(() => setRepublished((prev) => { const s = new Set(prev); s.delete(editingId!); return s; }), 2500);
+            }}
+          />
+        );
+      })()}
     </div>
   );
 }
