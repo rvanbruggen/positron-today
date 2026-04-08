@@ -1,14 +1,14 @@
-# Positiviteiten 🌟
+# Positron Today
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.1.0
+**Version:** 1.5.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
 ## Overview
 
-Positiviteiten automatically scans RSS feeds from news sources around the world, filters out negative and anxiety-inducing stories using an AI model, and publishes the remaining good-news articles to a public website. It also maintains a transparent "What We Skip" log — a public record of every rejected story, illustrating just how skewed mainstream news coverage tends to be.
+Positron Today automatically scans RSS feeds from news sources around the world, filters out negative and anxiety-inducing stories using an AI model, and publishes the remaining good-news articles to a public website. It also maintains a transparent "What We Skip" log — a public record of every rejected story, illustrating just how skewed mainstream news coverage tends to be.
 
 The project has two parts:
 
@@ -16,6 +16,10 @@ The project has two parts:
 |------|------|---------|
 | **Admin** (`/admin`) | Next.js 16, TypeScript, Tailwind v4 | Content pipeline, source management, review & publish workflow |
 | **Site** (`/site`) | Eleventy v3, Nunjucks, vanilla JS | Public-facing website served via GitHub Pages |
+
+### Why "Positron"?
+
+A positron is the antimatter counterpart of an electron — positively charged, fundamental, always present but invisible. It's a fitting metaphor: positive news exists everywhere, but it rarely surfaces through the noise of mainstream media. Positron Today makes it visible.
 
 ---
 
@@ -42,7 +46,7 @@ The project has two parts:
 │                                                         │
 │  index.njk       — card grid with tag + month filters   │
 │  negativity.njk  — "What We Skip" rejection log (EN/NL/FR) │
-│  about.njk       — project description                  │
+│  about.njk       — project description + RSS subscribe  │
 │  contact.njk     — contact page                        │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -82,8 +86,8 @@ You can mix and match freely, e.g. Ollama for filtering (high volume, low cost) 
 ### 1. Clone
 
 ```bash
-git clone https://github.com/your-org/positiviteiten.git
-cd positiviteiten
+git clone https://github.com/rvanbruggen/positron-today.git
+cd positron-today
 ```
 
 ### 2. Install dependencies
@@ -107,8 +111,8 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 # GitHub — required for publishing articles and the rejection log to the site repo
 GITHUB_TOKEN=ghp_...
-GITHUB_REPO=your-org/positiviteiten   # format: owner/repo
-GITHUB_BRANCH=main                    # branch to commit to
+GITHUB_REPO=rvanbruggen/positron-today   # format: owner/repo
+GITHUB_BRANCH=main                        # branch to commit to
 ```
 
 ### 4. (Optional) Set up Ollama for local AI
@@ -145,17 +149,21 @@ The schema is applied automatically when the admin app starts. Just run the dev 
 ### 6. Run locally
 
 ```bash
+# From the repo root — starts everything at once:
+npm start
+
+# Or manually:
 # Terminal 1 — Admin
-cd admin
-npm run dev          # http://localhost:3000
+cd admin && npm run dev          # http://localhost:3000
 
 # Terminal 2 — Ollama (if using local models)
-ollama serve         # http://localhost:11434
+ollama serve                     # http://localhost:11434
 
 # Terminal 3 — Public site (optional, for local preview)
-cd site
-npm run dev          # http://localhost:8080/positiviteiten/
+cd site && npm run dev           # http://localhost:8080/
 ```
+
+`npm start` (via `start.sh`) launches the admin, starts Ollama, and opens a live Ollama activity log in a separate Terminal window.
 
 ---
 
@@ -191,21 +199,21 @@ Progress is streamed to the browser as newline-delimited JSON (NDJSON) so you se
 ### Step 4 — Review and summarise
 
 Go to **Admin → Preview**. For each pending article you can:
-- **Summarise** — the configured summarisation model reads the full article URL, writes a 4-5 sentence summary in English, Dutch, and French, suggests topic tags, and adds an emoji
-- **Edit** — tweak the title, summary, or tags before publishing
+- **Summarise** — the configured summarisation model reads the full article URL, writes a 4-5 sentence summary in English, Dutch, and French, suggests topic tags, adds an emoji, and captures the article's `og:image` thumbnail
+- **Edit** — tweak the title, summary, emoji, or tags before publishing
 - **Discard** — remove from the queue
 
 ### Step 5 — Publish
 
 Click **Publish** on any reviewed article. The admin commits a Markdown file to `site/src/posts/YYYY-MM-DD-slug.md` via the GitHub Contents API. GitHub Actions then rebuilds and deploys the Eleventy site to GitHub Pages within ~1 minute.
 
-Re-publishing an already-published article (after re-summarising) always overwrites the same file — no duplicates are created.
+Re-publishing an already-published article (after editing) always overwrites the same file — no duplicates are created.
 
 ---
 
 ## Rejection Log ("What We Skip")
 
-Every article rejected by the AI filter is stored in `rejected_articles` and published to the public site at `/positiviteiten/negativity/`.
+Every article rejected by the AI filter is stored in `rejected_articles` and published to the public site at `/negativity/`.
 
 The rejection log is updated automatically:
 1. **After every fetch** — at the end of the fetch pipeline
@@ -228,7 +236,7 @@ The public page shows:
 | `sources` | News sources (name, url, feed_url, type, active) |
 | `topics` | Manually curated topic tags (name, slug, colour) |
 | `raw_articles` | Fetched articles awaiting review (status: pending/discarded) |
-| `articles` | Published articles (title, summary_en/nl/fr, tags, published_at, published_path) |
+| `articles` | Published articles (title_en/nl/fr, summary_en/nl/fr, emoji, tags, image_url, published_at, published_path) |
 | `article_tags` | Many-to-many join between articles and topics |
 | `rejected_articles` | Articles rejected by the AI filter (source_name, url, title, snippet, rejection_reason, fetched_at) |
 | `settings` | Key-value store for LLM provider/model configuration |
@@ -244,8 +252,8 @@ The public page shows:
 | `/tags` | Manage topic tags |
 | `/preview` | Review pending articles, summarise, publish |
 | `/rejections` | Browse rejection log, override or delete entries |
-| `/scheduled` | Scheduled fetch history |
-| `/history` | Published article history |
+| `/scheduled` | Scheduled fetch history with inline article editing |
+| `/history` | Published article history with inline editing and re-publish |
 | `/settings` | Configure LLM providers and models per task |
 
 ---
@@ -254,16 +262,24 @@ The public page shows:
 
 | Page | Purpose |
 |------|---------|
-| `/` | Home — masonry card grid with tag + month filters |
+| `/` | Home — card grid (round-robin columns, newest first) with tag + month filters |
 | `/negativity/` | "What We Skip" — the rejection log (EN/NL/FR) |
-| `/about/` | About the project |
+| `/about/` | About the project, the positron metaphor, and RSS subscription links |
 | `/contact/` | Contact page |
+| `/feed.xml` | RSS feed (English) |
+| `/feed-nl.xml` | RSS feed (Dutch) |
+| `/feed-fr.xml` | RSS feed (French) |
 
-### Filtering (homepage)
+### Card grid
 
+- Articles are distributed into columns using round-robin JS, so the newest articles always appear across the **top row** (not stacked in the leftmost column)
+- Cards show a thumbnail image sourced from the article's `og:image` where available
 - **Topic tags** — pill buttons above the grid; click to filter by topic (persisted in `localStorage`)
-- **Month** — pill buttons showing months with published articles; click to filter by month (persisted in `localStorage`)
-- Both filters work together (AND logic)
+- **Month** — pill buttons showing months with published articles; click to filter by month
+
+### RSS feeds
+
+All three language editions publish RSS 2.0 feeds. Subscribe directly or use the language-aware RSS link in the site footer. Feed autodiscovery `<link>` tags are included in every page `<head>`.
 
 ---
 
@@ -274,7 +290,7 @@ The public site is deployed automatically via GitHub Actions:
 - **Workflow:** `.github/workflows/deploy-site.yml`
 - **Trigger:** any push to `main` that touches `site/**`
 - **Build:** `cd site && npm run build` (Eleventy outputs to `site/_site/`)
-- **Deploy:** GitHub Pages from the `gh-pages` branch
+- **Deploy:** GitHub Pages from the `gh-pages` branch, served at [positron.today](https://positron.today)
 
 The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc.). Note that Ollama is only available when running the admin locally; a cloud-deployed admin must use Anthropic.
 
@@ -299,14 +315,18 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
-| **1.1.0** | Source publication dates captured from RSS, shown on cards and in admin tables; date-range filter on homepage; dual dates in History and Rejections admin tables; start.sh / stop.sh scripts to launch all services from the repo root |
-| **1.0.0** | Language switcher moved to nav bar (global, all pages); compact multi-select tag filter on homepage; 5 new rejection categories; source publication date captured from RSS and shown alongside publish date; fetch counter bug fixed; language restore fixed on negativity page |
-| **0.9.0** | Sortable rejections table; stop/reset backfill controls; backfill category fix (generate vs classify); Ollama model mismatch guard; settings empty-string fallback |
-| **0.8.1** | History page redesigned as compact table with live-post link, source, tags, date, and Republish / Re-summarise / Remove actions; Remove now deletes the file from GitHub too |
-| **0.8.0** | Configurable LLM providers — pick Anthropic or local Ollama independently for filtering and summarisation; new Settings admin page with Ollama connection test and model browser; fix duplicate posts on re-publish |
-| **0.7.0** | RSS feed support for all sources; streaming fetch progress; rejection log with auto-export; "What We Skip" public page (EN/NL/FR); editable sources; auto-export on fetch and override |
+| **1.5.0** | Instagram profile picture (Charged Luminism design philosophy); RSS links in footer and About page |
+| **1.4.0** | Article editing UI (inline edit modal on Scheduled and History pages, Save & Republish); trilingual RSS feeds (EN/NL/FR); show only selected tags in Ready-to-publish section |
+| **1.3.0** | og:image thumbnails captured during summarisation and displayed on article cards; round-robin column layout so newest articles appear at top row; mobile layout flash fix |
+| **1.2.0** | Ollama activity log in separate Terminal window on start; site renamed Positron Today; "Why Positron?" section on About page (EN/NL/FR) |
+| **1.1.0** | Source publication dates captured from RSS, shown on cards and in admin tables; date-range filter on homepage; dual dates in History and Rejections admin tables; `start.sh` / `stop.sh` scripts |
+| **1.0.0** | Language switcher in nav bar (global, all pages); compact multi-select tag filter; 5 rejection categories; fetch counter and language restore fixes |
+| **0.9.0** | Sortable rejections table; stop/reset backfill controls; Ollama model mismatch guard; settings empty-string fallback |
+| **0.8.1** | History page redesigned as compact table with live-post link, source, tags, date, Republish / Re-summarise / Remove actions; Remove deletes the GitHub file |
+| **0.8.0** | Configurable LLM providers — Anthropic or local Ollama per task; new Settings admin page with connection test and model browser |
+| **0.7.0** | RSS feed support for all sources; streaming fetch progress; rejection log with auto-export; "What We Skip" public page (EN/NL/FR) |
 | **0.6.0** | Date/month filter on homepage with localStorage persistence |
-| **0.5.2** | Masonry card layout (CSS columns); speech-bubble-star logo |
+| **0.5.2** | Card layout; atom logo |
 | **0.5.0** | Tag filtering; deterministic topic colours; many-to-many article_tags |
 | **0.4.0** | Multilingual summaries (EN/NL/FR); language switcher |
 | **0.3.0** | Claude Sonnet summarisation pipeline |
