@@ -216,12 +216,6 @@ export default function ScheduledClient({
                           {a.raw_title ?? a.source_url}
                         </a>
                         <p className="text-xs text-amber-500 mt-0.5">{a.source_name}</p>
-                        <TagPills
-                          articleId={a.id}
-                          articleTags={a.tags}
-                          allTags={tags}
-                          onToggle={toggleTag}
-                        />
                       </div>
                       <div className="flex gap-2 shrink-0 items-start">
                         <button
