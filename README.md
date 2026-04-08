@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.5.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.5.1 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -315,6 +315,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.5.1** | Bug fixes: source deletion now cascades raw_articles (FK fix); favicon switched to white background; LLM reason crash fixed when model returns object instead of string |
 | **1.5.0** | Instagram profile picture (Charged Luminism design philosophy); RSS links in footer and About page |
 | **1.4.0** | Article editing UI (inline edit modal on Scheduled and History pages, Save & Republish); trilingual RSS feeds (EN/NL/FR); show only selected tags in Ready-to-publish section |
 | **1.3.0** | og:image thumbnails captured during summarisation and displayed on article cards; round-robin column layout so newest articles appear at top row; mobile layout flash fix |
