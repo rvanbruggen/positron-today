@@ -63,6 +63,8 @@ export async function DELETE(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
+  // Remove child rows first — raw_articles has source_id NOT NULL so FK blocks the source delete
+  await db.execute({ sql: "DELETE FROM raw_articles WHERE source_id = ?", args: [id] });
   await db.execute({ sql: "DELETE FROM sources WHERE id = ?", args: [id] });
   triggerExport();
   return Response.json({ ok: true });

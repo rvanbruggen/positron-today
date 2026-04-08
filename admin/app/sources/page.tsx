@@ -171,8 +171,13 @@ export default function SourcesPage() {
   }
 
   async function remove(id: number) {
-    if (!confirm("Remove this source?")) return;
-    await fetch(`/api/sources?id=${id}`, { method: "DELETE" });
+    if (!confirm("Remove this source? Any pending (unfetched) articles from this source will also be deleted.")) return;
+    const res = await fetch(`/api/sources?id=${id}`, { method: "DELETE" });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setError(data.error ?? "Failed to delete source");
+      return;
+    }
     load();
   }
 
