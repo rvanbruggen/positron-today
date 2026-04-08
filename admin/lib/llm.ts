@@ -132,9 +132,15 @@ function parseClassifyResponse(raw: string): ClassifyResult {
   const jsonStr = jsonMatch ? jsonMatch[0] : cleaned;
   try {
     const parsed = JSON.parse(jsonStr);
+    const rawReason = parsed.reason;
+    const reason = typeof rawReason === "string" && rawReason.trim()
+      ? rawReason.trim()
+      : typeof rawReason === "object" && rawReason !== null
+        ? Object.values(rawReason).join("; ")   // flatten {"Health Scare": "desc"} → "desc"
+        : (parsed.verdict === "NO" ? "does not fit positive news criteria" : "");
     return {
       fits: parsed.verdict === "YES",
-      reason: parsed.reason || (parsed.verdict === "NO" ? "does not fit positive news criteria" : ""),
+      reason,
       category: parsed.verdict === "NO" ? (parsed.category ?? "other-negative") : undefined,
     };
   } catch {
