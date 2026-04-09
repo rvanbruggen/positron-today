@@ -1,0 +1,20 @@
+---
+title: "In the lab, not everyone can be themselves"
+title_nl: "In het lab kan lang niet iedereen zichzelf zijn"
+title_fr: "Au laboratoire, tout le monde ne peut pas être soi-même"
+date: 2026-04-09
+source_pub_date: 2026-04-09
+fetched_date: 2026-04-09
+source_url: "https://www.nrc.nl/nieuws/2026/04/09/in-het-lab-kan-lang-niet-iedereen-zichzelf-zijn-a4923902"
+source_name: "NRC"
+topic: "Science"
+tags: ["Science","Society"]
+emoji: "🔬"
+summary: "A groundbreaking study by Greek researcher Nelly Marosi reveals how invisible norms in STEM education create significant barriers for LHBTIQ+ students and professionals. Through personal stories like that of Goblin, a young queer biologist from Greece, Marosi shows how marginalized individuals often hide their identities out of fear that it will harm their careers and academic standing. The research demonstrates that many talented LGBTIQ+ people are interested in science and excel at it, yet choose not to pursue careers in these fields due to experiences of exclusion and discrimination. Marosi is working to make these barriers visible and provide teachers with practical tools to create more inclusive classrooms, ultimately aiming to diversify the scientific world."
+summary_nl: "Een baanbrekend onderzoek van de Griekse onderzoekster Nelly Marosi onthult hoe onzichtbare normen in het STEM-onderwijs aanzienlijke belemmeringen voor LHBTIQ+-studenten en professionals creëren. Door persoonlijke verhalen zoals die van Goblin, een jonge queer bioloog uit Griekenland, laat Marosi zien hoe gemarginaliseerde personen hun identiteit vaak verbergen uit angst dat dit hun carrière zal schaden. Het onderzoek toont aan dat veel getalenteerde LHBTIQ+-personen interesse in wetenschap hebben en er goed in zijn, maar toch geen carrière in deze vakgebieden nastreven vanwege ervaringen van uitsluiting en discriminatie. Marosi werkt eraan om deze barrières zichtbaar te maken en docenten praktische hulpmiddelen te geven om hun lessen inclusiever te maken, met als uiteindelijk doel de wetenschappelijke wereld diverser te maken."
+summary_fr: "Une étude révolutionnaire de la chercheuse grecque Nelly Marosi révèle comment les normes invisibles dans l'enseignement STEM créent des obstacles importants pour les étudiants et les professionnels LHBTIQ+. À travers des histoires personnelles comme celle de Goblin, un jeune biologiste queer grec, Marosi montre comment les personnes marginalisées cachent souvent leur identité de peur que cela ne nuise à leur carrière. La recherche démontre que de nombreux talents LHBTIQ+ sont intéressés par les sciences et y excellents, mais choisissent néanmoins de ne pas poursuivre des carrières dans ces domaines en raison d'expériences d'exclusion et de discrimination. Marosi s'efforce de rendre ces obstacles visibles et de fournir aux enseignants des outils pratiques pour créer des salles de classe plus inclusives, dans le but ultime de diversifier le monde scientifique."
+image_url: "https://images.nrc.nl/ALUPKlzhfSCJhvbOwO85ctZujxc=/1200x627/smart/filters:no_upscale()/s3/static.nrc.nl/wp-content/uploads/2026/04/08114155/web-090426WET_2031310826_1104WET-Jong-Geleerd-1.jpg"
+layout: post.njk
+---
+
+A groundbreaking study by Greek researcher Nelly Marosi reveals how invisible norms in STEM education create significant barriers for LHBTIQ+ students and professionals. Through personal stories like that of Goblin, a young queer biologist from Greece, Marosi shows how marginalized individuals often hide their identities out of fear that it will harm their careers and academic standing. The research demonstrates that many talented LGBTIQ+ people are interested in science and excel at it, yet choose not to pursue careers in these fields due to experiences of exclusion and discrimination. Marosi is working to make these barriers visible and provide teachers with practical tools to create more inclusive classrooms, ultimately aiming to diversify the scientific world.
