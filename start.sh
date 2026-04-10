@@ -48,3 +48,14 @@ echo ""
 echo "🟢  All services running."
 echo "    Run  ./stop.sh  to shut everything down."
 echo ""
+
+# ── Open admin in browser once it's ready ─────────────────────────────────────
+echo "  ⏳  Waiting for admin to be ready…"
+for i in $(seq 1 30); do
+  if curl -s -o /dev/null http://localhost:3000; then
+    open http://localhost:3000
+    echo "  ✓  Opened http://localhost:3000 in browser"
+    break
+  fi
+  sleep 1
+done

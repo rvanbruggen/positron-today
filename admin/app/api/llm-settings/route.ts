@@ -22,6 +22,9 @@ export async function PUT(request: NextRequest) {
       "summarise_provider",
       "summarise_model",
       "ollama_base_url",
+      "filter_threshold",
+      "filter_prompt_override",
+      "summarise_style_override",
     ];
     const patch: Partial<LLMSettings> = {};
     for (const key of allowed) {

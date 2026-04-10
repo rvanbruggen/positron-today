@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { getSummariseProvider } from "@/lib/llm";
+import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
+import { getSettings } from "@/lib/settings";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
 
@@ -52,27 +54,14 @@ async function summariseAndTranslate(
   sourceName: string,
   rawTitle: string | null,
   availableTags: TagRow[],
+  style: string,
 ): Promise<{
   title_nl: string; title_fr: string; title_en: string;
   summary_nl: string; summary_fr: string; summary_en: string;
   emoji: string;
   suggested_tags: string[];
 }> {
-  const STYLE = `You write in the voice of Rik Van Bruggen - a curious, enthusiastic Belgian who thinks out loud.
-Key rules:
-- Warm, direct, conversational. Never stiff or corporate.
-- Use "I" naturally. Show genuine enthusiasm where it fits.
-- Use casual connectives: "So:", "Now,", "Which brings me to...", "And here's the thing."
-- Use a dash "-" never an em-dash "—".
-- Titles: capitalise only the first word, everything else lowercase.
-- Each summary MUST be exactly 4-5 sentences. Never fewer than 4. No bullet lists. No sign-off.
-- Always positive tone - this is a positive news site.
-
-LANGUAGE RULES — this is mandatory, never skip any language:
-- title_en and summary_en: write in ENGLISH
-- title_nl and summary_nl: write in DUTCH (Nederlands) - fully translate, do not copy the English
-- title_fr and summary_fr: write in FRENCH (Français) - fully translate, do not copy the English
-All six text fields are required. Never leave any field empty or copy text from another language field.`;
+  const STYLE = style;
 
   const articleContext = sourceText
     ? `Article title: ${rawTitle ?? ""}\nArticle text:\n${sourceText}`
@@ -198,12 +187,16 @@ export async function POST(request: NextRequest) {
     const { text: articleText, imageUrl } = await fetchArticleContent(String(article.source_url));
     const rawTitle = article.raw_title ? String(article.raw_title) : null;
 
+    const settings = await getSettings();
+    const style = settings.summarise_style_override || DEFAULT_SUMMARISE_STYLE;
+
     const summaries = await summariseAndTranslate(
       articleText,
       String(article.source_url),
       String(article.source_name),
       rawTitle,
       availableTags,
+      style,
     );
 
     // Save summaries + emoji + og:image
