@@ -44,7 +44,7 @@ A positron is the antimatter counterpart of an electron — positively charged, 
 ┌──────────────────▼──────────────────▼───────────────────┐
 │                SITE (Eleventy → GitHub Pages)            │
 │                                                         │
-│  index.njk       — card grid with tag + month filters   │
+│  index.njk       — card grid with tag + date-range filters │
 │  negativity.njk  — "What We Skip" rejection log (EN/NL/FR) │
 │  about.njk       — project description + RSS subscribe  │
 │  contact.njk     — contact page                        │
@@ -55,18 +55,20 @@ A positron is the antimatter counterpart of an electron — positively charged, 
 
 ## AI Providers
 
-Each task in the pipeline can independently use either **Anthropic** (cloud) or **Ollama** (local, free). You configure this at runtime in **Admin → Settings** — no code changes or restarts needed.
+Each task in the pipeline can independently use **Anthropic**, **OpenAI**, or **Ollama**. You configure this at runtime in **Admin → Settings** — no code changes or restarts needed.
 
 | Task | Recommended local model | Recommended cloud model |
 |------|------------------------|------------------------|
-| Positivity filter | `llama3.2:3b` (fast, ~2 GB) | Claude Haiku 4.5 |
-| Summarisation | `gemma3:27b` (best quality, ~17 GB) | Claude Sonnet 4.6 |
+| Positivity filter | `llama3.2:3b` (fast, ~2 GB) | Claude Haiku 4.5 / GPT-4o mini |
+| Summarisation | `gemma3:27b` (best quality, ~17 GB) | Claude Sonnet 4.6 / GPT-4o |
 
 **Ollama** is the free, local option — models run entirely on your machine using Apple Metal on M-series Macs. No API key needed, no per-call cost. Highly recommended for the filter task which runs on every fetched article.
 
-**Anthropic** is the cloud option — higher quality, especially for multilingual summarisation. Requires an API key and has per-token costs.
+**Anthropic** is the cloud option — highest quality, especially for multilingual summarisation. Requires an `ANTHROPIC_API_KEY` and has per-token costs.
 
-You can mix and match freely, e.g. Ollama for filtering (high volume, low cost) and Anthropic for summarisation (low volume, higher quality).
+**OpenAI** (ChatGPT) is the second cloud option — comparable quality to Anthropic, with a different model family (GPT-4o, GPT-4o mini, o3, o3-mini). Requires an `OPENAI_API_KEY` and has per-token costs.
+
+You can mix and match freely, e.g. Ollama for filtering (high volume, low cost) and Anthropic or OpenAI for summarisation (low volume, higher quality).
 
 ---
 
@@ -77,6 +79,7 @@ You can mix and match freely, e.g. Ollama for filtering (high volume, low cost) 
 - SQLite (local development) or a [Turso](https://turso.tech/) database (production)
 - **At least one of:**
   - An [Anthropic API key](https://console.anthropic.com/) — for cloud AI (Haiku/Sonnet/Opus)
+  - An [OpenAI API key](https://platform.openai.com/) — for cloud AI (GPT-4o, o3, etc.)
   - [Ollama](https://ollama.com/) installed locally — for free local AI
 
 ---
@@ -108,6 +111,9 @@ DATABASE_AUTH_TOKEN=           # leave empty for local SQLite
 
 # Anthropic — only required if you use Anthropic as a provider in Settings
 ANTHROPIC_API_KEY=sk-ant-...
+
+# OpenAI — only required if you use OpenAI as a provider in Settings
+OPENAI_API_KEY=sk-...
 
 # GitHub — required for publishing articles and the rejection log to the site repo
 GITHUB_TOKEN=ghp_...
@@ -188,7 +194,14 @@ Go to **Admin → Sources** and add RSS feeds. Each source has:
 
 ### Step 2 — Configure AI providers (optional)
 
-Go to **Admin → Settings** to choose which AI provider and model to use for each task. The defaults are Anthropic Haiku (filter) and Anthropic Sonnet (summarise). Changes take effect immediately.
+Go to **Admin → Settings** to choose which AI provider and model to use for each task. The defaults are Anthropic Haiku (filter) and Anthropic Sonnet (summarise). Changes take effect immediately without a restart.
+
+Additional settings available in the Settings page:
+
+- **Filter threshold** (1–10 slider) — controls how strict the positivity filter is. 1–2 = very lenient (almost everything passes), 5 = balanced (default), 8–10 = very strict. A live prompt preview updates as you drag the slider.
+- **Custom filter prompt** — override the auto-generated filter instructions entirely with your own prompt.
+- **Summarisation style/voice** — override the default summarisation style with custom instructions (e.g. a specific tone, language register, or focus area).
+- **Ollama base URL** — change the Ollama server endpoint (default: `http://localhost:11434`). Useful if Ollama runs on a different machine.
 
 ### Step 3 — Fetch new articles
 
@@ -204,6 +217,10 @@ Click **Fetch New Articles** on the Preview page. The admin:
 8. After all sources are processed, auto-exports the rejection log to `site/src/_data/rejections.json` via the GitHub API, triggering a site rebuild
 
 Progress is streamed to the browser as newline-delimited JSON (NDJSON) so you see a live log as articles are processed.
+
+### Step 3b — Manual URL submission (optional)
+
+You can also submit individual article URLs manually from the **Admin → Preview** page. The admin fetches the URL, runs it through the positivity filter, and adds it to the queue if it passes — without needing an RSS feed.
 
 ### Step 4 — Review and summarise
 
@@ -271,10 +288,12 @@ The public page shows:
 
 | Page | Purpose |
 |------|---------|
-| `/` | Home — card grid (round-robin columns, newest first) with tag + month filters |
-| `/negativity/` | "What We Skip" — the rejection log (EN/NL/FR) |
-| `/about/` | About the project, the positron metaphor, and RSS subscription links |
-| `/contact/` | Contact page |
+| `/` | Home — card grid (round-robin columns, newest first) with topic tag + date-range filters |
+| `/negativity/` | "What We Skip" — the rejection log with category breakdown (EN/NL/FR) |
+| `/about/` | About the project, the positron metaphor, active sources, and RSS subscription links |
+| `/contact/` | Contact page with links to email, LinkedIn, and Instagram (@positron_today) |
+| `/archive/` | Full archive of all articles older than the 60 shown on the homepage |
+| `/<article-slug>/` | Article detail — hero image, trilingual title/summary, source link, social share buttons |
 | `/feed.xml` | RSS feed (English) |
 | `/feed-nl.xml` | RSS feed (Dutch) |
 | `/feed-fr.xml` | RSS feed (French) |
@@ -283,8 +302,9 @@ The public page shows:
 
 - Articles are distributed into columns using round-robin JS, so the newest articles always appear across the **top row** (not stacked in the leftmost column)
 - Cards show a thumbnail image sourced from the article's `og:image` where available
-- **Topic tags** — pill buttons above the grid; click to filter by topic (persisted in `localStorage`)
-- **Month** — pill buttons showing months with published articles; click to filter by month
+- **Topic tags** — multi-select dropdown above the grid; filter by one or more topics (persisted in `localStorage`)
+- **Date range** — dropdown filter: last 7 days, 30 days, 3 months, 6 months, this year, or all time (persisted in `localStorage`)
+- Both filters support a **Clear** button and are fully translated into EN, NL, and FR
 
 ### RSS feeds
 
@@ -312,11 +332,12 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 | `DATABASE_URL` | Yes | SQLite file path (`file:../local.db`) or Turso URL |
 | `DATABASE_AUTH_TOKEN` | Turso only | Auth token for Turso cloud database |
 | `ANTHROPIC_API_KEY` | If using Anthropic | Required only when Anthropic is selected as a provider in Settings |
+| `OPENAI_API_KEY` | If using OpenAI | Required only when OpenAI is selected as a provider in Settings |
 | `GITHUB_TOKEN` | Yes | PAT with `repo` scope for committing to the site |
 | `GITHUB_REPO` | Yes | `owner/repo` format |
 | `GITHUB_BRANCH` | No | Target branch (default: `main`) |
 
-> **Note:** If you use Ollama for both tasks, `ANTHROPIC_API_KEY` is not needed at all.
+> **Note:** If you use Ollama for both tasks, neither `ANTHROPIC_API_KEY` nor `OPENAI_API_KEY` is needed.
 
 ---
 
