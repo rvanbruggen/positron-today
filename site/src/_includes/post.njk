@@ -46,6 +46,15 @@ layout: base.njk
   }
   .post-source:hover { filter: brightness(0.95); }
 
+  .post-hero {
+    width: 100%; border-radius: 1rem; overflow: hidden;
+    margin-bottom: 1.25rem; border: 2px solid var(--accent-border);
+    max-height: 420px;
+  }
+  .post-hero img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+
   @media (min-width: 640px) {
     .post-header { padding: 1.5rem; }
     .post-emoji { font-size: 2.5rem; }
@@ -67,6 +76,12 @@ layout: base.njk
 <script>document.documentElement.classList.add('accent-{{ firstTag | topicColor }}');</script>
 
 <a href="/" class="post-back">← Back to all posts</a>
+
+{% if image_url %}
+<div class="post-hero">
+  <img src="{{ image_url }}" alt="{{ title }}" loading="lazy">
+</div>
+{% endif %}
 
 <div class="post-header">
   <div class="post-emoji">{{ emoji }}</div>
