@@ -1,6 +1,6 @@
 import db from "./db";
 
-export type LLMProvider = "anthropic" | "ollama";
+export type LLMProvider = "anthropic" | "ollama" | "openai";
 
 export interface LLMSettings {
   filter_provider: LLMProvider;
@@ -8,6 +8,12 @@ export interface LLMSettings {
   summarise_provider: LLMProvider;
   summarise_model: string;
   ollama_base_url: string;
+  /** 1–10 stringified; controls how strict the positivity filter prompt is */
+  filter_threshold: string;
+  /** If non-empty, overrides the auto-generated filter instructions entirely */
+  filter_prompt_override: string;
+  /** If non-empty, overrides the default summarisation voice/style block */
+  summarise_style_override: string;
 }
 
 const DEFAULTS: LLMSettings = {
@@ -16,6 +22,9 @@ const DEFAULTS: LLMSettings = {
   summarise_provider: "anthropic",
   summarise_model: "claude-sonnet-4-6",
   ollama_base_url: "http://localhost:11434",
+  filter_threshold: "5",
+  filter_prompt_override: "",
+  summarise_style_override: "",
 };
 
 export async function getSettings(): Promise<LLMSettings> {
@@ -26,11 +35,15 @@ export async function getSettings(): Promise<LLMSettings> {
       map[row.key as string] = row.value as string;
     }
     return {
-      filter_provider: ((map.filter_provider as LLMProvider) || DEFAULTS.filter_provider),
-      filter_model: map.filter_model || DEFAULTS.filter_model,
-      summarise_provider: ((map.summarise_provider as LLMProvider) || DEFAULTS.summarise_provider),
-      summarise_model: map.summarise_model || DEFAULTS.summarise_model,
-      ollama_base_url: map.ollama_base_url || DEFAULTS.ollama_base_url,
+      filter_provider:          ((map.filter_provider as LLMProvider) || DEFAULTS.filter_provider),
+      filter_model:             map.filter_model             || DEFAULTS.filter_model,
+      summarise_provider:       ((map.summarise_provider as LLMProvider) || DEFAULTS.summarise_provider),
+      summarise_model:          map.summarise_model          || DEFAULTS.summarise_model,
+      ollama_base_url:          map.ollama_base_url          || DEFAULTS.ollama_base_url,
+      filter_threshold:         map.filter_threshold         || DEFAULTS.filter_threshold,
+      // overrides: empty string is a valid "not set" value — preserve it
+      filter_prompt_override:   map.filter_prompt_override   ?? DEFAULTS.filter_prompt_override,
+      summarise_style_override: map.summarise_style_override ?? DEFAULTS.summarise_style_override,
     };
   } catch {
     // Table may not exist yet (migration pending) — return defaults

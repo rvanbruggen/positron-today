@@ -1,35 +1,20 @@
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
 import { getFilterProvider } from "@/lib/llm";
-import { CATEGORY_PROMPT_LIST, CATEGORY_SLUGS } from "@/lib/rejection-categories";
+import { buildFilterInstructions, buildFilterPrompt } from "@/lib/prompts";
+import { getSettings } from "@/lib/settings";
+import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import RSSParser from "rss-parser";
 
 const parser = new RSSParser();
 
 async function checkPositivity(
   title: string,
-  snippet: string
+  snippet: string,
+  filterInstructions: string,
 ): Promise<{ fits: boolean; reason: string; category: string }> {
   const provider = await getFilterProvider();
-
-  const prompt = `You are a filter for "Positiviteiten", a positive-news website.
-
-A good fit: genuinely good news, heartwarming stories, scientific breakthroughs, environmental wins, funny/lighthearted stories, inspiring achievements — anything that leaves the reader feeling better.
-
-NOT a good fit: crime, war, political conflict, disasters, economic doom, health scares, or predominantly negative/anxiety-inducing stories — even with a small positive angle.
-
-Article title: ${title}
-Snippet: ${snippet}
-
-Reply with JSON only — no other text.
-
-If it fits: {"verdict":"YES"}
-
-If it does NOT fit: {"verdict":"NO","reason":"1-2 sentence explanation of why this story is too negative or not uplifting","category":"<slug>"}
-
-Valid category slugs (pick the single best match):
-${CATEGORY_PROMPT_LIST}`;
-
+  const prompt = buildFilterPrompt(filterInstructions, title, snippet);
   const result = await provider.classify(prompt);
   return {
     fits: result.fits,
@@ -56,6 +41,11 @@ export async function POST() {
         const sources = sourcesResult.rows;
 
         send({ type: "start", totalSources: sources.length });
+
+        // Read prompt settings once for the entire run
+        const settings = await getSettings();
+        const filterInstructions = settings.filter_prompt_override ||
+          buildFilterInstructions(parseInt(settings.filter_threshold) || 5);
 
         let totalAdded = 0, totalFiltered = 0, totalSkipped = 0;
 
@@ -89,7 +79,7 @@ export async function POST() {
                 ? new Date(item.pubDate).toISOString().slice(0, 10)
                 : null;
 
-              const { fits, reason, category } = await checkPositivity(item.title!, snippet);
+              const { fits, reason, category } = await checkPositivity(item.title!, snippet, filterInstructions);
 
               if (!fits) {
                 filtered++;

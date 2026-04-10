@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { buildFilterInstructions, DEFAULT_SUMMARISE_STYLE, THRESHOLD_LABELS } from "@/lib/prompts";
 
-type Provider = "anthropic" | "ollama";
+type Provider = "anthropic" | "ollama" | "openai";
 
 interface LLMSettings {
   filter_provider: Provider;
@@ -10,6 +11,9 @@ interface LLMSettings {
   summarise_provider: Provider;
   summarise_model: string;
   ollama_base_url: string;
+  filter_threshold: string;
+  filter_prompt_override: string;
+  summarise_style_override: string;
 }
 
 const ANTHROPIC_MODELS = [
@@ -18,8 +22,16 @@ const ANTHROPIC_MODELS = [
   { value: "claude-opus-4-5",           label: "Claude Opus 4.5 — best quality" },
 ];
 
+const OPENAI_MODELS = [
+  { value: "gpt-4o-mini", label: "GPT-4o mini — fast & cheap" },
+  { value: "gpt-4o",      label: "GPT-4o — balanced" },
+  { value: "o3-mini",     label: "o3-mini — reasoning, fast" },
+  { value: "o3",          label: "o3 — reasoning, best quality" },
+];
+
 const PROVIDER_LABELS: Record<Provider, string> = {
   anthropic: "Anthropic (cloud)",
+  openai:    "OpenAI ChatGPT (cloud)",
   ollama:    "Ollama (local)",
 };
 
@@ -31,14 +43,14 @@ function Badge({ ok }: { ok: boolean | null }) {
 }
 
 export default function SettingsPage() {
-  const [settings, setSettings]       = useState<LLMSettings | null>(null);
-  const [loadError, setLoadError]     = useState<string | null>(null);
-  const [saving, setSaving]           = useState(false);
-  const [saveMsg, setSaveMsg]         = useState<string | null>(null);
-  const [ollamaOk, setOllamaOk]       = useState<boolean | null>(null);
+  const [settings, setSettings]         = useState<LLMSettings | null>(null);
+  const [loadError, setLoadError]       = useState<string | null>(null);
+  const [saving, setSaving]             = useState(false);
+  const [saveMsg, setSaveMsg]           = useState<string | null>(null);
+  const [ollamaOk, setOllamaOk]         = useState<boolean | null>(null);
   const [ollamaModels, setOllamaModels] = useState<string[]>([]);
-  const [ollamaError, setOllamaError] = useState<string | null>(null);
-  const [checking, setChecking]       = useState(false);
+  const [ollamaError, setOllamaError]   = useState<string | null>(null);
+  const [checking, setChecking]         = useState(false);
 
   useEffect(() => {
     fetch("/api/llm-settings")
@@ -49,13 +61,25 @@ export default function SettingsPage() {
       })
       .then(data => {
         if (data.error) throw new Error(data.error);
-        // Auto-correct mismatched provider/model pairs (e.g. Ollama provider + Claude model name)
-        if (data.filter_provider === "ollama" && data.filter_model?.startsWith("claude-")) {
+        // Auto-correct mismatched provider/model pairs
+        const isClaudeModel  = (m: string) => m?.startsWith("claude-");
+        const isOpenAIModel  = (m: string) => m?.startsWith("gpt-") || m?.startsWith("o1") || m?.startsWith("o3");
+        if (data.filter_provider === "ollama" && (isClaudeModel(data.filter_model) || isOpenAIModel(data.filter_model))) {
           data.filter_model = "";
         }
-        if (data.summarise_provider === "ollama" && data.summarise_model?.startsWith("claude-")) {
+        if (data.summarise_provider === "ollama" && (isClaudeModel(data.summarise_model) || isOpenAIModel(data.summarise_model))) {
           data.summarise_model = "";
         }
+        if (data.filter_provider === "openai" && isClaudeModel(data.filter_model)) {
+          data.filter_model = "gpt-4o-mini";
+        }
+        if (data.summarise_provider === "openai" && isClaudeModel(data.summarise_model)) {
+          data.summarise_model = "gpt-4o";
+        }
+        // Ensure new fields have defaults if not yet in DB
+        if (!data.filter_threshold)          data.filter_threshold          = "5";
+        if (data.filter_prompt_override   == null) data.filter_prompt_override   = "";
+        if (data.summarise_style_override == null) data.summarise_style_override = "";
         setSettings(data);
       })
       .catch(err => setLoadError(err.message));
@@ -66,9 +90,7 @@ export default function SettingsPage() {
     setOllamaOk(null);
     setOllamaError(null);
     setOllamaModels([]);
-    // If a new base_url was just saved, the server will use that; otherwise current setting is used
     if (baseUrl && settings) {
-      // Save the URL first so the server-side check uses the new value
       await fetch("/api/llm-settings", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -135,6 +157,20 @@ export default function SettingsPage() {
     return <p className="text-amber-600 text-sm">Loading settings…</p>;
   }
 
+  const threshold = parseInt(settings.filter_threshold) || 5;
+  const filterHasOverride = settings.filter_prompt_override !== "";
+  const summariseHasOverride = settings.summarise_style_override !== "";
+
+  // What the filter instructions textarea shows
+  const filterInstructionsPreview = filterHasOverride
+    ? settings.filter_prompt_override
+    : buildFilterInstructions(threshold);
+
+  // What the summarise style textarea shows
+  const summariseStylePreview = summariseHasOverride
+    ? settings.summarise_style_override
+    : DEFAULT_SUMMARISE_STYLE;
+
   return (
     <div className="max-w-2xl">
       <h1 className="text-2xl font-bold text-amber-900 mb-1">LLM Settings</h1>
@@ -151,6 +187,66 @@ export default function SettingsPage() {
           onProviderChange={v => patch("filter_provider", v)}
           onModelChange={v => patch("filter_model", v)}
         />
+
+        {/* Threshold slider */}
+        <div className="mt-5 pt-4 border-t border-yellow-100">
+          <div className="flex items-center justify-between mb-1">
+            <label className="text-xs font-medium text-amber-700">Positivity strictness</label>
+            {filterHasOverride && (
+              <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-medium">
+                custom override active — slider disabled
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-3 mb-1">
+            <span className="text-xs text-amber-500 w-16 shrink-0">Very lenient</span>
+            <input
+              type="range" min={1} max={10} step={1}
+              value={threshold}
+              disabled={filterHasOverride}
+              onChange={e => patch("filter_threshold", e.target.value)}
+              className="flex-1 accent-amber-600 disabled:opacity-40 disabled:cursor-not-allowed"
+            />
+            <span className="text-xs text-amber-500 w-16 shrink-0 text-right">Very strict</span>
+          </div>
+          <p className="text-xs text-amber-600 mb-4">{THRESHOLD_LABELS[threshold]}</p>
+
+          {/* Filter instructions textarea */}
+          <label className="block text-xs font-medium text-amber-700 mb-1">
+            Filter instructions
+            {filterHasOverride
+              ? " — custom (editing enabled)"
+              : " — auto-generated from slider (read-only)"}
+          </label>
+          <textarea
+            rows={6}
+            readOnly={!filterHasOverride}
+            value={filterInstructionsPreview}
+            onChange={e => patch("filter_prompt_override", e.target.value)}
+            className={`w-full border rounded-lg px-3 py-2 text-xs font-mono leading-relaxed focus:outline-none resize-y transition-colors ${
+              filterHasOverride
+                ? "border-orange-300 bg-white focus:border-orange-400"
+                : "border-yellow-200 bg-amber-50 text-amber-700 cursor-default"
+            }`}
+          />
+          <div className="flex gap-2 mt-2">
+            {!filterHasOverride ? (
+              <button
+                onClick={() => patch("filter_prompt_override", buildFilterInstructions(threshold))}
+                className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-3 py-1.5 rounded-lg transition-colors"
+              >
+                ✎ Customise instructions
+              </button>
+            ) : (
+              <button
+                onClick={() => patch("filter_prompt_override", "")}
+                className="text-xs bg-orange-100 hover:bg-orange-200 text-orange-800 font-medium px-3 py-1.5 rounded-lg transition-colors"
+              >
+                ↩ Reset to auto (slider)
+              </button>
+            )}
+          </div>
+        </div>
       </Section>
 
       {/* ── Summarisation ── */}
@@ -162,6 +258,44 @@ export default function SettingsPage() {
           onProviderChange={v => patch("summarise_provider", v)}
           onModelChange={v => patch("summarise_model", v)}
         />
+
+        {/* Summarise style textarea */}
+        <div className="mt-5 pt-4 border-t border-yellow-100">
+          <label className="block text-xs font-medium text-amber-700 mb-1">
+            Voice &amp; style
+            {summariseHasOverride
+              ? " — custom (editing enabled)"
+              : " — default (read-only)"}
+          </label>
+          <textarea
+            rows={10}
+            readOnly={!summariseHasOverride}
+            value={summariseStylePreview}
+            onChange={e => patch("summarise_style_override", e.target.value)}
+            className={`w-full border rounded-lg px-3 py-2 text-xs font-mono leading-relaxed focus:outline-none resize-y transition-colors ${
+              summariseHasOverride
+                ? "border-orange-300 bg-white focus:border-orange-400"
+                : "border-yellow-200 bg-amber-50 text-amber-700 cursor-default"
+            }`}
+          />
+          <div className="flex gap-2 mt-2">
+            {!summariseHasOverride ? (
+              <button
+                onClick={() => patch("summarise_style_override", DEFAULT_SUMMARISE_STYLE)}
+                className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-3 py-1.5 rounded-lg transition-colors"
+              >
+                ✎ Customise style
+              </button>
+            ) : (
+              <button
+                onClick={() => patch("summarise_style_override", "")}
+                className="text-xs bg-orange-100 hover:bg-orange-200 text-orange-800 font-medium px-3 py-1.5 rounded-lg transition-colors"
+              >
+                ↩ Reset to default
+              </button>
+            )}
+          </div>
+        </div>
       </Section>
 
       {/* ── Ollama connection ── */}
@@ -225,8 +359,18 @@ export default function SettingsPage() {
         <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-3">Active configuration</p>
         <table className="w-full text-sm">
           <tbody>
-            <ConfigRow label="Filter" provider={settings.filter_provider} model={settings.filter_model} />
-            <ConfigRow label="Summarise" provider={settings.summarise_provider} model={settings.summarise_model} />
+            <ConfigRow
+              label="Filter"
+              provider={settings.filter_provider}
+              model={settings.filter_model}
+              extra={filterHasOverride ? "custom prompt" : `threshold ${threshold}`}
+            />
+            <ConfigRow
+              label="Summarise"
+              provider={settings.summarise_provider}
+              model={settings.summarise_model}
+              extra={summariseHasOverride ? "custom style" : "default style"}
+            />
           </tbody>
         </table>
       </div>
@@ -268,8 +412,8 @@ function ProviderRow({ provider, model, ollamaModels, onProviderChange, onModelC
           onChange={e => {
             const p = e.target.value as Provider;
             onProviderChange(p);
-            // Reset model to a sensible default for the new provider
             if (p === "anthropic") onModelChange("claude-haiku-4-5-20251001");
+            else if (p === "openai") onModelChange("gpt-4o-mini");
             else if (ollamaModels.length > 0) onModelChange(ollamaModels[0]);
             else onModelChange("");
           }}
@@ -290,6 +434,16 @@ function ProviderRow({ provider, model, ollamaModels, onProviderChange, onModelC
             onChange={e => onModelChange(e.target.value)}
           >
             {ANTHROPIC_MODELS.map(m => (
+              <option key={m.value} value={m.value}>{m.label}</option>
+            ))}
+          </select>
+        ) : provider === "openai" ? (
+          <select
+            className="w-full border border-yellow-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:border-yellow-400"
+            value={model}
+            onChange={e => onModelChange(e.target.value)}
+          >
+            {OPENAI_MODELS.map(m => (
               <option key={m.value} value={m.value}>{m.label}</option>
             ))}
           </select>
@@ -319,7 +473,9 @@ function ProviderRow({ provider, model, ollamaModels, onProviderChange, onModelC
   );
 }
 
-function ConfigRow({ label, provider, model }: { label: string; provider: string; model: string }) {
+function ConfigRow({ label, provider, model, extra }: {
+  label: string; provider: string; model: string; extra?: string;
+}) {
   return (
     <tr className="border-b border-yellow-50 last:border-0">
       <td className="py-1.5 pr-4 text-amber-600 font-medium w-24">{label}</td>
@@ -327,12 +483,15 @@ function ConfigRow({ label, provider, model }: { label: string; provider: string
         <span className={`text-xs px-2 py-0.5 rounded font-medium ${
           provider === "ollama"
             ? "bg-green-100 text-green-700"
-            : "bg-blue-100 text-blue-700"
+            : provider === "openai"
+              ? "bg-purple-100 text-purple-700"
+              : "bg-blue-100 text-blue-700"
         }`}>
-          {provider === "ollama" ? "Ollama (local)" : "Anthropic"}
+          {provider === "ollama" ? "Ollama (local)" : provider === "openai" ? "OpenAI" : "Anthropic"}
         </span>
       </td>
-      <td className="py-1.5 font-mono text-xs text-amber-800">{model}</td>
+      <td className="py-1.5 pr-4 font-mono text-xs text-amber-800">{model}</td>
+      {extra && <td className="py-1.5 text-xs text-amber-500 italic">{extra}</td>}
     </tr>
   );
 }

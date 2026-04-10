@@ -1,9 +1,10 @@
 /**
  * LLM provider abstraction.
  *
- * Two implementations:
+ * Three implementations:
  *   - AnthropicProvider  — calls the Anthropic API (current default)
  *   - OllamaProvider     — calls a local Ollama instance via its OpenAI-compatible API
+ *   - OpenAIProvider     — calls the OpenAI ChatGPT API
  *
  * Use getFilterProvider() / getSummariseProvider() to get the right provider
  * based on the current settings (read from DB at call time, so changes apply immediately).
@@ -122,6 +123,61 @@ class OllamaProvider implements LLMProvider {
 }
 
 // ---------------------------------------------------------------------------
+// OpenAI implementation
+// ---------------------------------------------------------------------------
+
+class OpenAIProvider implements LLMProvider {
+  private readonly endpoint = "https://api.openai.com/v1/chat/completions";
+
+  constructor(private model: string) {}
+
+  async classify(prompt: string): Promise<ClassifyResult> {
+    const raw = await this.call(prompt, undefined, 200);
+    return parseClassifyResponse(raw);
+  }
+
+  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200): Promise<string> {
+    return this.call(prompt, systemPrompt, maxTokens);
+  }
+
+  private async call(
+    userPrompt: string,
+    systemPrompt: string | undefined,
+    maxTokens: number,
+  ): Promise<string> {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) throw new Error("OPENAI_API_KEY is not set in .env.local");
+
+    const messages: { role: string; content: string }[] = [];
+    if (systemPrompt) messages.push({ role: "system", content: systemPrompt });
+    messages.push({ role: "user", content: userPrompt });
+
+    const res = await fetch(this.endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: this.model,
+        messages,
+        max_tokens: maxTokens,
+        temperature: 0.3,
+      }),
+      signal: AbortSignal.timeout(120_000),
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`OpenAI error ${res.status}: ${text.slice(0, 200)}`);
+    }
+
+    const data = await res.json();
+    return (data.choices?.[0]?.message?.content ?? "").trim();
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Shared response parser
 // ---------------------------------------------------------------------------
 
@@ -168,24 +224,42 @@ const OLLAMA_DEFAULT_MODELS: Record<"filter" | "summarise", string> = {
   summarise: "gemma3:27b",
 };
 
+const OPENAI_DEFAULT_MODELS: Record<"filter" | "summarise", string> = {
+  filter: "gpt-4o-mini",
+  summarise: "gpt-4o",
+};
+
 function isAnthropicModelName(model: string): boolean {
   return model.startsWith("claude-");
+}
+
+function isOpenAIModelName(model: string): boolean {
+  return model.startsWith("gpt-") || model.startsWith("o1") || model.startsWith("o3");
 }
 
 function buildProvider(settings: LLMSettings, task: "filter" | "summarise"): LLMProvider {
   const provider = task === "filter" ? settings.filter_provider : settings.summarise_provider;
   const rawModel = task === "filter" ? settings.filter_model    : settings.summarise_model;
 
-  if (provider === "ollama") {
-    // Guard 1: empty model stored → use sensible Ollama default
-    // Guard 2: Anthropic model name stored while provider is Ollama (mismatched settings)
-    //          → swap to Ollama default instead of sending "claude-*" to Ollama
+  if (provider === "openai") {
     const model =
       !rawModel || isAnthropicModelName(rawModel)
+        ? OPENAI_DEFAULT_MODELS[task]
+        : rawModel;
+    return new OpenAIProvider(model);
+  }
+
+  if (provider === "ollama") {
+    // Guard 1: empty model stored → use sensible Ollama default
+    // Guard 2: Anthropic/OpenAI model name stored while provider is Ollama (mismatched settings)
+    //          → swap to Ollama default instead of sending "claude-*" or "gpt-*" to Ollama
+    const model =
+      !rawModel || isAnthropicModelName(rawModel) || isOpenAIModelName(rawModel)
         ? OLLAMA_DEFAULT_MODELS[task]
         : rawModel;
     return new OllamaProvider(model, settings.ollama_base_url || "http://localhost:11434");
   }
+
   // Default: anthropic
   const model = rawModel || (task === "filter" ? "claude-haiku-4-5-20251001" : "claude-sonnet-4-6");
   return new AnthropicProvider(ANTHROPIC_MODELS[model] ?? model);
@@ -199,4 +273,11 @@ export const ANTHROPIC_MODEL_OPTIONS = [
   { value: "claude-haiku-4-5-20251001", label: "Claude Haiku 4.5 (fast, cheap)" },
   { value: "claude-sonnet-4-6",         label: "Claude Sonnet 4.6 (balanced)" },
   { value: "claude-opus-4-5",           label: "Claude Opus 4.5 (best quality)" },
+];
+
+export const OPENAI_MODEL_OPTIONS = [
+  { value: "gpt-4o-mini", label: "GPT-4o mini (fast, cheap)" },
+  { value: "gpt-4o",      label: "GPT-4o (balanced)" },
+  { value: "o3-mini",     label: "o3-mini (reasoning, fast)" },
+  { value: "o3",          label: "o3 (reasoning, best quality)" },
 ];
