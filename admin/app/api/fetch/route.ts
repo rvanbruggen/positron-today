@@ -103,11 +103,10 @@ export async function POST() {
                 send({ type: "article", verdict: "added", title: item.title! });
               }
             }
+            send({ type: "source_done", name: source.name as string, added, filtered, skipped });
           } catch (err) {
             send({ type: "source_error", name: source.name as string, message: String(err) });
           }
-
-          send({ type: "source_done", name: source.name as string, added, filtered, skipped });
           totalAdded += added;
           totalFiltered += filtered;
           totalSkipped += skipped;
