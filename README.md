@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.7.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.7.2 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -315,6 +315,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.7.2** | Add social share buttons (X, Bluesky, Facebook, copy-for-Instagram) to article detail page |
 | **1.7.1** | Show hero image on article detail page when image_url is present |
 | **1.7.0** | Update Instagram handle on contact page to @positron_today |
 | **1.6.0** | OpenAI ChatGPT as a third provider option; tunable positivity threshold slider (1–10) with live prompt preview and manual override; editable summarisation voice/style; auto-open browser on `start.sh` |

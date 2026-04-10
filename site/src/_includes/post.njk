@@ -46,6 +46,26 @@ layout: base.njk
   }
   .post-source:hover { filter: brightness(0.95); }
 
+  .post-share {
+    margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  }
+  .post-share-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--accent-muted); font-weight: 600; margin-right: 0.25rem;
+  }
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.45rem 0.85rem; border-radius: 0.5rem; font-size: 0.8rem;
+    font-weight: 600; text-decoration: none; border: 2px solid transparent;
+    cursor: pointer; transition: filter 0.15s; min-height: 36px;
+    -webkit-tap-highlight-color: transparent; background: none;
+  }
+  .share-btn:hover { filter: brightness(0.88); }
+  .share-btn-x        { background:#000;    color:#fff; border-color:#000; }
+  .share-btn-bluesky  { background:#0085ff; color:#fff; border-color:#0085ff; }
+  .share-btn-facebook { background:#1877f2; color:#fff; border-color:#1877f2; }
+  .share-btn-copy     { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent-border); }
+
   .post-hero {
     width: 100%; border-radius: 1rem; overflow: hidden;
     margin-bottom: 1.25rem; border: 2px solid var(--accent-border);
@@ -115,4 +135,48 @@ layout: base.njk
 <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer" class="post-source">
   Read the original article ↗
 </a>
+
+<div class="post-share">
+  <span class="post-share-label">Share</span>
+
+  {# Twitter / X #}
+  <a class="share-btn share-btn-x"
+     href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ meta.siteUrl }}{{ page.url | urlencode }}"
+     target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.261 5.636 5.903-5.636Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    X
+  </a>
+
+  {# Bluesky #}
+  <a class="share-btn share-btn-bluesky"
+     href="https://bsky.app/intent/compose?text={{ title | urlencode }}%20{{ meta.siteUrl }}{{ page.url | urlencode }}"
+     target="_blank" rel="noopener noreferrer" aria-label="Share on Bluesky">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+    Bluesky
+  </a>
+
+  {# Facebook #}
+  <a class="share-btn share-btn-facebook"
+     href="https://www.facebook.com/sharer/sharer.php?u={{ meta.siteUrl }}{{ page.url | urlencode }}"
+     target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    Facebook
+  </a>
+
+  {# Instagram — no web share API; copy link instead #}
+  <button class="share-btn share-btn-copy" onclick="copyPostLink(this)" aria-label="Copy link for Instagram">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    Copy for Instagram
+  </button>
+</div>
+
+<script>
+function copyPostLink(btn) {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    var orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(function() { btn.innerHTML = orig; }, 2000);
+  });
+}
+</script>
 

@@ -5,4 +5,5 @@ const pkg = require("../../../package.json");
 module.exports = {
   version: pkg.version,
   siteName: "Positron Today",
+  siteUrl: "https://positron.today",
 };
