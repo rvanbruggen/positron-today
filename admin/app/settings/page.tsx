@@ -354,6 +354,22 @@ export default function SettingsPage() {
         {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
       </div>
 
+      {/* ── Analytics ── */}
+      <div className="mt-6 bg-white border border-yellow-200 rounded-xl p-5 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-0.5">Analytics</p>
+          <p className="text-xs text-amber-600">Umami — privacy-friendly, no cookies</p>
+        </div>
+        <a
+          href="https://cloud.umami.is/analytics/eu/websites"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
+        >
+          Open Umami dashboard ↗
+        </a>
+      </div>
+
       {/* ── Current config summary ── */}
       <div className="mt-10 bg-white border border-yellow-200 rounded-xl p-5">
         <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-3">Active configuration</p>
