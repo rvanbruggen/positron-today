@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.7.4 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.7.5 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -149,8 +149,17 @@ The schema is applied automatically when the admin app starts. Just run the dev 
 ### 6. Run locally
 
 ```bash
-# From the repo root — starts everything at once:
-npm start
+# From the repo root — starts Admin + Site (Ollama not started by default):
+./start.sh
+
+# To also start Ollama (only needed when using a local AI model):
+./start.sh --with-ollama
+
+# Stop Admin + Site (Ollama left alone):
+./stop.sh
+
+# Stop everything including Ollama:
+./stop.sh --with-ollama
 
 # Or manually:
 # Terminal 1 — Admin
@@ -163,7 +172,7 @@ ollama serve                     # http://localhost:11434
 cd site && npm run dev           # http://localhost:8080/
 ```
 
-`npm start` (via `start.sh`) launches the admin, starts Ollama, and opens a live Ollama activity log in a separate Terminal window.
+`start.sh` launches the admin and public site, and opens the browser automatically once the admin is ready. Pass `--with-ollama` to also start the local Ollama LLM server and open a live activity log in a separate Terminal window.
 
 ---
 
@@ -315,6 +324,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.7.5** | Make Ollama optional in start.sh/stop.sh; default is without Ollama, use --with-ollama to include it |
 | **1.7.4** | Fix fetch progress bar exceeding 100% when sources error |
 | **1.7.3** | Translate date-range dropdown, Clear button, and no-match message into NL and FR |
 | **1.7.2** | Add social share buttons (X, Bluesky, Facebook, copy-for-Instagram) to article detail page |
