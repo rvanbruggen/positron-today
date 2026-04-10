@@ -188,15 +188,19 @@ title: Home
     {% endif %}
 
     <select class="date-range-select" id="date-range-select" onchange="filterDateRange(this.value)">
-      <option value="all">All time</option>
-      <option value="7d">Last 7 days</option>
-      <option value="30d">Last 30 days</option>
-      <option value="3m">Last 3 months</option>
-      <option value="6m">Last 6 months</option>
-      <option value="year">This year</option>
+      <option value="all"  data-en="All time"      data-nl="Alle tijd"         data-fr="Toute période">All time</option>
+      <option value="7d"   data-en="Last 7 days"   data-nl="Laatste 7 dagen"   data-fr="7 derniers jours">Last 7 days</option>
+      <option value="30d"  data-en="Last 30 days"  data-nl="Laatste 30 dagen"  data-fr="30 derniers jours">Last 30 days</option>
+      <option value="3m"   data-en="Last 3 months" data-nl="Laatste 3 maanden" data-fr="3 derniers mois">Last 3 months</option>
+      <option value="6m"   data-en="Last 6 months" data-nl="Laatste 6 maanden" data-fr="6 derniers mois">Last 6 months</option>
+      <option value="year" data-en="This year"     data-nl="Dit jaar"          data-fr="Cette année">This year</option>
     </select>
 
-    <button class="filter-clear" id="filter-clear" onclick="clearAllFilters()" style="display:none">Clear ✕</button>
+    <button class="filter-clear" id="filter-clear" onclick="clearAllFilters()" style="display:none">
+      <span class="t-en">Clear ✕</span>
+      <span class="t-nl" style="display:none">Wis ✕</span>
+      <span class="t-fr" style="display:none">Effacer ✕</span>
+    </button>
   </div>
 
   <div class="card-grid" id="card-grid" style="visibility:hidden">
@@ -248,7 +252,11 @@ title: Home
     </a>
     {% endfor %}
   </div>
-  <p class="no-match" id="no-match">No articles for this tag yet.</p>
+  <p class="no-match" id="no-match">
+    <span class="t-en">No articles for this filter yet.</span>
+    <span class="t-nl" style="display:none">Geen artikelen gevonden voor dit filter.</span>
+    <span class="t-fr" style="display:none">Aucun article trouvé pour ce filtre.</span>
+  </p>
 
   {% if collections.posts.length > 60 %}
   <p style="text-align:center; margin-top:1.75rem; font-size:0.875rem; color:#b45309;">
@@ -263,6 +271,23 @@ title: Home
 {% endif %}
 
 <script>
+  // ── Translate date-range <select> options on language switch ─────────────
+  function translateDateSelect(lang) {
+    var sel = document.getElementById('date-range-select');
+    if (!sel) return;
+    Array.from(sel.options).forEach(function(opt) {
+      var label = opt.getAttribute('data-' + lang) || opt.getAttribute('data-en');
+      if (label) opt.textContent = label;
+    });
+  }
+
+  // Override setLang so language switches also retranslate the select
+  var _baseSLang = window.setLang;
+  window.setLang = function(lang, btn) {
+    _baseSLang(lang, btn);
+    translateDateSelect(lang);
+  };
+
   // ── Tag multi-select + date-range filter ─────────────────────────────────
   var activeTags = new Set(); // empty = show all
   var activeDateRange = 'all';
@@ -391,6 +416,9 @@ title: Home
       applyFilters();
     }, 150);
   });
+
+  // Translate select to whatever language is already active
+  translateDateSelect(document.documentElement.getAttribute('data-lang') || 'en');
 
   // Distribute first, then restore saved filters
   distributeCards();
