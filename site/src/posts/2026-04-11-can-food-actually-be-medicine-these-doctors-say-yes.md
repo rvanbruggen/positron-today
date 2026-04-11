@@ -2,7 +2,7 @@
 title: "Can food actually be medicine? These doctors say yes"
 title_nl: "Kan voedsel eigenlijk medicijn zijn? Deze artsen zeggen van wel"
 title_fr: "La nourriture peut-elle vraiment être un médicament? Ces médecins disent que oui"
-date: 2026-04-11
+date: 2026-04-11T05:49:43
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-11
 source_url: "https://www.nytimes.com/2026/04/10/dining/food-is-medicine-movement.html"
