@@ -2,7 +2,7 @@
 title: "Coalition pushed for cycling lanes and better buses and got them, transforming Manila in the process"
 title_nl: "Coalitie drong aan op fietspaden en betere bussen en kreeg ze, waardoor Manila veranderde"
 title_fr: "Une coalition a plaidé pour des pistes cyclables et de meilleurs bus et a réussi, transformant Manille dans le processus"
-date: 2026-04-10
+date: 2026-04-10T15:48:13
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-10
 source_url: "https://www.goodnewsnetwork.org/coalition-pushed-for-cycling-lanes-and-better-buses-and-got-them-transforming-manila-in-the-process/"
