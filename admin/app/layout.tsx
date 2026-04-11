@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geist.className} bg-amber-50 min-h-screen flex flex-col`}>
         <nav className="bg-yellow-400 shadow-sm">
-          <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-6">
+          <div className="max-w-screen-2xl mx-auto px-4 py-3 flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2 text-xl font-bold text-amber-900 tracking-tight">
               {/* Positron atom icon: three orbitals + nucleus with + */}
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
@@ -56,10 +56,10 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main className="max-w-5xl mx-auto px-4 py-8 flex-1 w-full">
+        <main className="max-w-screen-2xl mx-auto px-4 py-8 flex-1 w-full">
           {children}
         </main>
-        <footer className="max-w-5xl mx-auto w-full px-4 py-4 text-center text-xs text-amber-500">
+        <footer className="max-w-screen-2xl mx-auto w-full px-4 py-4 text-center text-xs text-amber-500">
           Positron Today admin · v{APP_VERSION}
         </footer>
       </body>
