@@ -113,8 +113,18 @@ export async function POST(req: NextRequest) {
 
   const url = postUrl(pubPath);
 
-  // Build post text — keep it punchy: emoji + title + trimmed summary
-  const summarySnippet = summary.length > 200 ? summary.slice(0, 197) + "…" : summary;
+  // Bluesky hard limit: 300 graphemes.
+  // Full text is: "{emoji} {title}\n\n{summary}\n\n{url}"
+  // Calculate how many graphemes are left for the summary after the fixed parts.
+  const BSKY_MAX  = 300;
+  const prefix    = `${emoji} ${title}\n\n`;
+  const suffix    = `\n\n${url}`;
+  const available = BSKY_MAX - [...prefix].length - [...suffix].length - 1; // -1 safety margin
+  const summarySnippet = available <= 0
+    ? ""
+    : [...summary].length > available
+      ? [...summary].slice(0, available - 1).join("") + "…"
+      : summary;
   const bodyText       = `${emoji} ${title}\n\n${summarySnippet}`;
   const { text, facets } = buildPostWithLink(bodyText, url);
 
