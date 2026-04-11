@@ -172,7 +172,8 @@ layout: base.njk
 
 <script>
 function copyPostLink(btn) {
-  navigator.clipboard.writeText(window.location.href).then(function() {
+  var text = 'Take a look at this piece of positive news: ' + window.location.href + ' ... via Positron Today!';
+  navigator.clipboard.writeText(text).then(function() {
     var orig = btn.innerHTML;
     btn.innerHTML = '✓ Copied!';
     setTimeout(function() { btn.innerHTML = orig; }, 2000);
