@@ -21,9 +21,13 @@ function yamlStr(s: string): string {
 
 function generateMarkdown(article: Record<string, unknown>, tagNames: string[]): string {
   const title = String(article.title_en ?? article.title_nl ?? "Untitled");
-  const date = article.publish_date
-    ? String(article.publish_date).slice(0, 10)
-    : new Date().toISOString().slice(0, 10);
+  // Keep full ISO datetime so Eleventy can sort multiple same-day posts correctly.
+  // Use published_at (has time component) if available, otherwise now.
+  // Eleventy accepts "YYYY-MM-DDTHH:MM:SS" in front matter date fields.
+  const rawDate = article.published_at ?? article.publish_date;
+  const date = rawDate
+    ? String(rawDate).slice(0, 19).replace(" ", "T")
+    : new Date().toISOString().slice(0, 19);
 
   // Original source publication date (from RSS isoDate/pubDate), if captured
   const sourcePubDate = article.source_pub_date
@@ -133,8 +137,10 @@ export async function POST(request: NextRequest) {
 
     const tagNames = tagsResult.rows.map((r) => String(r.name));
 
-    const date = article.publish_date
-      ? String(article.publish_date).slice(0, 10)
+    // Date portion only (YYYY-MM-DD) used for the filename
+    const rawDate = article.published_at ?? article.publish_date;
+    const date = rawDate
+      ? String(rawDate).slice(0, 10)
       : new Date().toISOString().slice(0, 10);
 
     // Reuse the path from the first publish so re-publishing always overwrites
