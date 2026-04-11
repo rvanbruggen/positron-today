@@ -2,7 +2,7 @@
 title: "Leuven seeks landlords to rent rooms or studios cheaply to vulnerable residents"
 title_nl: "Leuven zoekt verhuurders die kamers of studio's goedkoop willen verhuren aan kwetsbare inwoners"
 title_fr: "Leuven recherche des propriétaires pour louer des chambres ou des studios à bas prix à des résidents vulnérables"
-date: 2026-04-10
+date: 2026-04-10T10:56:36
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-10
 source_url: "https://vrtnws.be/p.7n6Mq3myP"
