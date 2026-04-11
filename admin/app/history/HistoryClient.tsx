@@ -76,6 +76,8 @@ export default function HistoryClient({
   const [generatingCard, setGeneratingCard]   = useState<Set<number>>(new Set());
   const [postingBluesky, setPostingBluesky]   = useState<Set<number>>(new Set());
   const [postedBluesky,  setPostedBluesky]    = useState<Set<number>>(new Set());
+  const [postingTwitter, setPostingTwitter]   = useState<Set<number>>(new Set());
+  const [postedTwitter,  setPostedTwitter]    = useState<Set<number>>(new Set());
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
@@ -202,6 +204,26 @@ export default function HistoryClient({
       setError(err instanceof Error ? err.message : "Unexpected error");
     } finally {
       setGeneratingCard((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
+    }
+  }
+
+  async function postToTwitter(a: Article) {
+    setPostingTwitter((prev) => new Set(prev).add(a.id));
+    setError(null);
+    try {
+      const res  = await fetch("/api/post-twitter", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ id: a.id }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError(data.error ?? `X post failed: ${res.status}`); return; }
+      setPostedTwitter((prev) => new Set(prev).add(a.id));
+      setTimeout(() => setPostedTwitter((prev) => { const s = new Set(prev); s.delete(a.id); return s; }), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unexpected error");
+    } finally {
+      setPostingTwitter((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
     }
   }
 
@@ -370,6 +392,15 @@ export default function HistoryClient({
                           title="Post to Bluesky"
                           className="w-7 h-7 flex items-center justify-center rounded bg-sky-100 hover:bg-sky-200 text-sky-700 transition-colors disabled:opacity-40 text-sm">
                           {postedBluesky.has(a.id) ? "✓" : postingBluesky.has(a.id) ? "⏳" : "🦋"}
+                        </button>
+
+                        {/* X / Twitter */}
+                        <button
+                          onClick={() => postToTwitter(a)}
+                          disabled={postingTwitter.has(a.id) || postedTwitter.has(a.id)}
+                          title="Post to X / Twitter"
+                          className="w-7 h-7 flex items-center justify-center rounded bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors disabled:opacity-40 text-sm font-bold">
+                          {postedTwitter.has(a.id) ? "✓" : postingTwitter.has(a.id) ? "⏳" : "𝕏"}
                         </button>
 
                         {/* Edit */}
