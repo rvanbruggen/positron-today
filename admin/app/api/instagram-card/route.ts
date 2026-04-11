@@ -201,19 +201,29 @@ export async function GET(req: NextRequest) {
 
   writeFileSync(tmpHtml, generateCardHtml({ title, emoji, source, imageUrl }), "utf-8");
 
-  // Extend PATH so child_process can find python3 (homebrew / conda / pyenv paths)
-  const extendedEnv = {
-    ...process.env,
-    PATH: [
-      process.env.PATH,
-      "/opt/homebrew/bin",
-      "/opt/homebrew/Caskroom/miniforge/base/bin",
-      "/usr/local/bin",
-    ].filter(Boolean).join(":"),
-  };
+  // Resolve python3 — prefer the interpreter that has playwright installed.
+  // We probe a few known locations; first hit wins.
+  const python3 = (() => {
+    const candidates = [
+      "/opt/homebrew/Caskroom/miniforge/base/bin/python3",
+      "/opt/homebrew/Caskroom/miniforge/base/bin/python",
+      "/usr/local/bin/python3",
+      "/opt/homebrew/bin/python3",
+      "python3",
+    ];
+    for (const p of candidates) {
+      try {
+        execSync(`"${p}" -c "import playwright"`, { stdio: "ignore" });
+        return p;
+      } catch { /* not this one */ }
+    }
+    return "python3"; // last resort
+  })();
+
+  const extendedEnv = { ...process.env };
 
   try {
-    execSync(`python3 "${scriptPath}" --input "${tmpHtml}" --output "${tmpPng}"`, {
+    execSync(`"${python3}" "${scriptPath}" --input "${tmpHtml}" --output "${tmpPng}"`, {
       timeout: 30_000,
       env: extendedEnv,
     });
@@ -231,7 +241,6 @@ export async function GET(req: NextRequest) {
     const e = err as { stderr?: Buffer; stdout?: Buffer; message?: string };
     console.error("Instagram card generation failed:", e?.message);
     if (e?.stderr) console.error("stderr:", e.stderr.toString());
-    if (e?.stdout) console.error("stdout:", e.stdout.toString());
     return NextResponse.json({ error: "Card generation failed" }, { status: 500 });
   } finally {
     try { unlinkSync(tmpHtml); } catch { /* ignore */ }
