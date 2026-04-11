@@ -201,9 +201,21 @@ export async function GET(req: NextRequest) {
 
   writeFileSync(tmpHtml, generateCardHtml({ title, emoji, source, imageUrl }), "utf-8");
 
+  // Extend PATH so child_process can find python3 (homebrew / conda / pyenv paths)
+  const extendedEnv = {
+    ...process.env,
+    PATH: [
+      process.env.PATH,
+      "/opt/homebrew/bin",
+      "/opt/homebrew/Caskroom/miniforge/base/bin",
+      "/usr/local/bin",
+    ].filter(Boolean).join(":"),
+  };
+
   try {
     execSync(`python3 "${scriptPath}" --input "${tmpHtml}" --output "${tmpPng}"`, {
       timeout: 30_000,
+      env: extendedEnv,
     });
 
     const png  = readFileSync(tmpPng);
@@ -215,8 +227,11 @@ export async function GET(req: NextRequest) {
         "Content-Disposition": `attachment; filename="positron-${slug}.png"`,
       },
     });
-  } catch (err) {
-    console.error("Instagram card generation failed:", err);
+  } catch (err: unknown) {
+    const e = err as { stderr?: Buffer; stdout?: Buffer; message?: string };
+    console.error("Instagram card generation failed:", e?.message);
+    if (e?.stderr) console.error("stderr:", e.stderr.toString());
+    if (e?.stdout) console.error("stdout:", e.stdout.toString());
     return NextResponse.json({ error: "Card generation failed" }, { status: 500 });
   } finally {
     try { unlinkSync(tmpHtml); } catch { /* ignore */ }
