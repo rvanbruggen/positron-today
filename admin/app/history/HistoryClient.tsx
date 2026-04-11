@@ -76,8 +76,6 @@ export default function HistoryClient({
   const [generatingCard, setGeneratingCard]   = useState<Set<number>>(new Set());
   const [postingBluesky, setPostingBluesky]   = useState<Set<number>>(new Set());
   const [postedBluesky,  setPostedBluesky]    = useState<Set<number>>(new Set());
-  const [postingTwitter, setPostingTwitter]   = useState<Set<number>>(new Set());
-  const [postedTwitter,  setPostedTwitter]    = useState<Set<number>>(new Set());
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
@@ -207,24 +205,29 @@ export default function HistoryClient({
     }
   }
 
-  async function postToTwitter(a: Article) {
-    setPostingTwitter((prev) => new Set(prev).add(a.id));
-    setError(null);
-    try {
-      const res  = await fetch("/api/post-twitter", {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ id: a.id }),
-      });
-      const data = await res.json();
-      if (!res.ok) { setError(data.error ?? `X post failed: ${res.status}`); return; }
-      setPostedTwitter((prev) => new Set(prev).add(a.id));
-      setTimeout(() => setPostedTwitter((prev) => { const s = new Set(prev); s.delete(a.id); return s; }), 3000);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Unexpected error");
-    } finally {
-      setPostingTwitter((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
-    }
+  function openTwitterIntent(a: Article) {
+    const SITE_BASE = "https://positron.today";
+    const slug = a.published_path
+      ? a.published_path.split("/").pop()?.replace(/\.md$/, "")
+      : null;
+    const url = slug ? `${SITE_BASE}/posts/${slug}/` : SITE_BASE;
+
+    // Build tweet text within 280 chars (URL counts as 23 via t.co)
+    const emoji   = a.article_emoji ?? "✨";
+    const title   = a.title_en ?? a.title_nl ?? "";
+    const summary = a.summary_en ?? "";
+    const prefix  = `${emoji} ${title}\n\n`;
+    const suffix  = `\n\n${url}`;
+    const budget  = 280 - 23 - 2 - prefix.length; // 23=t.co, 2=\n\n before url
+    const snippet = budget > 0
+      ? summary.length > budget ? summary.slice(0, budget - 1) + "…" : summary
+      : "";
+    const text = `${prefix}${snippet}${suffix}`;
+
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
+      "_blank"
+    );
   }
 
   async function postToBluesky(a: Article) {
@@ -394,13 +397,12 @@ export default function HistoryClient({
                           {postedBluesky.has(a.id) ? "✓" : postingBluesky.has(a.id) ? "⏳" : "🦋"}
                         </button>
 
-                        {/* X / Twitter */}
+                        {/* X / Twitter — opens pre-filled compose window */}
                         <button
-                          onClick={() => postToTwitter(a)}
-                          disabled={postingTwitter.has(a.id) || postedTwitter.has(a.id)}
+                          onClick={() => openTwitterIntent(a)}
                           title="Post to X / Twitter"
-                          className="w-7 h-7 flex items-center justify-center rounded bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors disabled:opacity-40 text-sm font-bold">
-                          {postedTwitter.has(a.id) ? "✓" : postingTwitter.has(a.id) ? "⏳" : "𝕏"}
+                          className="w-7 h-7 flex items-center justify-center rounded bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors text-sm font-bold">
+                          𝕏
                         </button>
 
                         {/* Edit */}
