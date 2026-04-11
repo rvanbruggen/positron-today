@@ -2,7 +2,7 @@
 title: "Chef creates nursing home menu sourced from the family recipes of senior residents"
 title_nl: "Chef creëert menu voor verpleeghuis op basis van familierecepten van senioren"
 title_fr: "Un chef crée un menu pour maison de retraite basé sur des recettes familiales de résidents seniors"
-date: 2026-04-11
+date: 2026-04-11T05:49:39
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-11
 source_url: "https://www.upworthy.com/chef-creates-nursing-home-menu-sourced-from-the-family-recipes-of-senior-residents/?utm_source=rss&utm_medium=rss&utm_campaign=chef-creates-nursing-home-menu-sourced-from-the-family-recipes-of-senior-residents"
