@@ -4,6 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if title %}{{ title }} - {% endif %}Positron Today</title>
+
+  {# ── SEO: description ── #}
+  {% set metaDesc = description if description else "Positron Today — positive news, curated by AI, published every day. Good things are happening; we make sure you hear about them." %}
+  <meta name="description" content="{{ metaDesc }}">
+
+  {# ── SEO: canonical URL ── #}
+  {% set canonicalUrl = meta.siteUrl + page.url %}
+  <link rel="canonical" href="{{ canonicalUrl }}">
+
+  {# ── Open Graph ── #}
+  <meta property="og:type"        content="{% if layout == 'post.njk' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name"   content="Positron Today">
+  <meta property="og:title"       content="{% if title %}{{ title }}{% else %}Positron Today{% endif %}">
+  <meta property="og:description" content="{{ metaDesc }}">
+  <meta property="og:url"         content="{{ canonicalUrl }}">
+  {% if image_url %}
+  <meta property="og:image"       content="{{ image_url }}">
+  {% else %}
+  <meta property="og:image"       content="{{ meta.siteUrl }}/assets/og-default.png">
+  {% endif %}
+
+  {# ── Twitter / X card ── #}
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@positron_today">
+  <meta name="twitter:title"       content="{% if title %}{{ title }}{% else %}Positron Today{% endif %}">
+  <meta name="twitter:description" content="{{ metaDesc }}">
+  {% if image_url %}
+  <meta name="twitter:image"       content="{{ image_url }}">
+  {% else %}
+  <meta name="twitter:image"       content="{{ meta.siteUrl }}/assets/og-default.png">
+  {% endif %}
+
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">

@@ -1,6 +1,10 @@
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/CNAME");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+
+  // URL-encode filter for use in meta tag attributes
+  eleventyConfig.addFilter("urlencode", (str) => encodeURIComponent(String(str ?? "")));
 
   eleventyConfig.addFilter("dateDisplay", (dateStr) => {
     return new Date(dateStr).toLocaleDateString("en-GB", {

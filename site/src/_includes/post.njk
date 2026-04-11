@@ -1,6 +1,8 @@
 ---
 layout: base.njk
 ---
+{# Expose article summary as the page description so base.njk picks it up for OG/meta #}
+{% set description = summary | truncate(155, true, "…") %}
 
 <style>
   .post-back {
@@ -175,6 +177,30 @@ layout: base.njk
     Copy post
   </button>
 </div>
+
+<meta name="author" content="{{ source_name }}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": {{ title | dump | safe }},
+  "description": {{ summary | truncate(155, true, "…") | dump | safe }},
+  "url": "{{ meta.siteUrl }}{{ page.url }}",
+  "datePublished": "{{ page.date | dateIso }}",
+  {% if source_pub_date %}"dateModified": "{{ source_pub_date }}",{% endif %}
+  "publisher": {
+    "@type": "Organization",
+    "name": "Positron Today",
+    "url": "{{ meta.siteUrl }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ meta.siteUrl }}/assets/favicon-32x32.png"
+    }
+  }{% if image_url %},
+  "image": "{{ image_url }}"{% endif %}
+}
+</script>
 
 <script>
 function copyLink(btn) {
