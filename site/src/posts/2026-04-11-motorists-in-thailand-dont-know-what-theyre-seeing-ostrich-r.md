@@ -2,7 +2,7 @@
 title: "Motorists in Thailand don't know what they're seeing: ostrich runs 15 kilometers on highway"
 title_nl: "Automobilisten in Thailand weten niet wat ze zien: struisvogel rent 15 kilometer over snelweg"
 title_fr: "Les automobilistes en Thaïlande ne savent pas ce qu'ils voient : un autruche court 15 kilomètres sur l'autoroute"
-date: 2026-04-11
+date: 2026-04-11T08:53:22
 source_pub_date: 2026-04-11
 fetched_date: 2026-04-11
 source_url: "https://www.hln.be/bizar/automobilisten-in-thailand-weten-niet-wat-ze-zien-struisvogel-rent-15-kilometer-over-snelweg~ad18bbabc/"
