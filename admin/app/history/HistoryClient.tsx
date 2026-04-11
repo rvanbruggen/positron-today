@@ -73,7 +73,9 @@ export default function HistoryClient({
   const [republishing, setRepublishing]   = useState<Set<number>>(new Set());
   const [republished, setRepublished]     = useState<Set<number>>(new Set());
   const [removing, setRemoving]           = useState<Set<number>>(new Set());
-  const [generatingCard, setGeneratingCard] = useState<Set<number>>(new Set());
+  const [generatingCard, setGeneratingCard]   = useState<Set<number>>(new Set());
+  const [postingBluesky, setPostingBluesky]   = useState<Set<number>>(new Set());
+  const [postedBluesky,  setPostedBluesky]    = useState<Set<number>>(new Set());
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
@@ -200,6 +202,26 @@ export default function HistoryClient({
       setError(err instanceof Error ? err.message : "Unexpected error");
     } finally {
       setGeneratingCard((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
+    }
+  }
+
+  async function postToBluesky(a: Article) {
+    setPostingBluesky((prev) => new Set(prev).add(a.id));
+    setError(null);
+    try {
+      const res  = await fetch("/api/post-bluesky", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ id: a.id }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError(data.error ?? `Bluesky post failed: ${res.status}`); return; }
+      setPostedBluesky((prev) => new Set(prev).add(a.id));
+      setTimeout(() => setPostedBluesky((prev) => { const s = new Set(prev); s.delete(a.id); return s; }), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unexpected error");
+    } finally {
+      setPostingBluesky((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
     }
   }
 
@@ -337,6 +359,13 @@ export default function HistoryClient({
                           title="Generate Instagram card"
                           className="text-xs bg-pink-100 hover:bg-pink-200 text-pink-700 px-2 py-1 rounded transition-colors disabled:opacity-50 font-medium">
                           {generatingCard.has(a.id) ? "⏳" : "📸"}
+                        </button>
+                        <button
+                          onClick={() => postToBluesky(a)}
+                          disabled={postingBluesky.has(a.id) || postedBluesky.has(a.id)}
+                          title="Post to Bluesky"
+                          className="text-xs bg-sky-100 hover:bg-sky-200 text-sky-700 px-2 py-1 rounded transition-colors disabled:opacity-50 font-medium">
+                          {postedBluesky.has(a.id) ? "✓ Posted!" : postingBluesky.has(a.id) ? "⏳" : "🦋 Bluesky"}
                         </button>
                         <button onClick={() => setEditingId(a.id)}
                           className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2 py-1 rounded transition-colors font-medium">
