@@ -2,7 +2,7 @@
 title: "Responses to silly ‘depluralize a movie’ prompt showcase how delightfully clever people can be"
 title_nl: "Reacties op de gekke 'depluraliseer een film'-uitdaging tonen hoe heerlijk slim mensen kunnen zijn"
 title_fr: "Les réponses à la drôle de demande 'dépluréaliser un film' montrent à quel point les gens peuvent être délicieusement intelligents"
-date: 2026-04-11
+date: 2026-04-11T05:49:41
 source_pub_date: 2026-04-11
 fetched_date: 2026-04-11
 source_url: "https://www.upworthy.com/depluralize-a-movie-prompt-showcases-peoples-cleverness/?utm_source=rss&utm_medium=rss&utm_campaign=depluralize-a-movie-prompt-showcases-peoples-cleverness"
