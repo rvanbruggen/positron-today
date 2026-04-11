@@ -2,7 +2,7 @@
 title: "Window drawings in Begijnendijk, Bekkevoort and Tielt-Winge aim to encourage residents to become family buddies"
 title_nl: "Raamtekeningen in Begijnendijk, Bekkevoort en Tielt-Winge moeten inwoners aansporen om gezinsbuddy te worden"
 title_fr: "Des dessins sur les fenêtres à Begijnendijk, Bekkevoort et Tielt-Winge pour inciter les habitants à devenir des amis de famille"
-date: 2026-04-10
+date: 2026-04-10T10:56:40
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-10
 source_url: "https://vrtnws.be/p.ewmvevQ7E"
