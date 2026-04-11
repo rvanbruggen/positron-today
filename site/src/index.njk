@@ -188,12 +188,13 @@ title: Home
     {% endif %}
 
     <select class="date-range-select" id="date-range-select" onchange="filterDateRange(this.value)">
-      <option value="all"  data-en="All time"      data-nl="Alle tijd"         data-fr="Toute période">All time</option>
-      <option value="7d"   data-en="Last 7 days"   data-nl="Laatste 7 dagen"   data-fr="7 derniers jours">Last 7 days</option>
-      <option value="30d"  data-en="Last 30 days"  data-nl="Laatste 30 dagen"  data-fr="30 derniers jours">Last 30 days</option>
-      <option value="3m"   data-en="Last 3 months" data-nl="Laatste 3 maanden" data-fr="3 derniers mois">Last 3 months</option>
-      <option value="6m"   data-en="Last 6 months" data-nl="Laatste 6 maanden" data-fr="6 derniers mois">Last 6 months</option>
-      <option value="year" data-en="This year"     data-nl="Dit jaar"          data-fr="Cette année">This year</option>
+      <option value="all"   data-en="All time"      data-nl="Alle tijd"         data-fr="Toute période">All time</option>
+      <option value="today" data-en="Today"          data-nl="Vandaag"           data-fr="Aujourd'hui">Today</option>
+      <option value="7d"    data-en="Last 7 days"   data-nl="Laatste 7 dagen"   data-fr="7 derniers jours">Last 7 days</option>
+      <option value="30d"   data-en="Last 30 days"  data-nl="Laatste 30 dagen"  data-fr="30 derniers jours">Last 30 days</option>
+      <option value="3m"    data-en="Last 3 months" data-nl="Laatste 3 maanden" data-fr="3 derniers mois">Last 3 months</option>
+      <option value="6m"    data-en="Last 6 months" data-nl="Laatste 6 maanden" data-fr="6 derniers mois">Last 6 months</option>
+      <option value="year"  data-en="This year"     data-nl="Dit jaar"          data-fr="Cette année">This year</option>
     </select>
 
     <button class="filter-clear" id="filter-clear" onclick="clearAllFilters()" style="display:none">
@@ -296,7 +297,8 @@ title: Home
   function dateCutoff(range) {
     if (range === 'all') return null;
     var d = new Date();
-    if (range === '7d')   { d.setDate(d.getDate() - 7);      }
+    if (range === 'today')     { d = new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+    else if (range === '7d')   { d.setDate(d.getDate() - 7);      }
     else if (range === '30d')  { d.setDate(d.getDate() - 30);     }
     else if (range === '3m')   { d.setMonth(d.getMonth() - 3);    }
     else if (range === '6m')   { d.setMonth(d.getMonth() - 6);    }
