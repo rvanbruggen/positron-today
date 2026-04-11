@@ -2,7 +2,7 @@
 title: "12-yo girl named a hero for running into burning home to save brothers"
 title_nl: "12-jarig meisje uitgeroepen tot heldin voor het rennen in brandend huis om broers te redden"
 title_fr: "Fille de 12 ans nommée héroïne pour être entrée dans une maison en feu pour sauver ses frères"
-date: 2026-04-11
+date: 2026-04-11T05:49:34
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-11
 source_url: "https://www.goodnewsnetwork.org/12-yo-girl-called-a-hero-for-running-into-burning-home-to-save-brothers/"
