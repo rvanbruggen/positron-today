@@ -2,7 +2,7 @@
 title: "Space-based solar energy is closer than you think"
 title_nl: "Zonne-energie uit de ruimte is dichterbij dan je denkt"
 title_fr: "L'énergie solaire spatiale est plus proche que vous ne le pensez"
-date: 2026-04-10
+date: 2026-04-10T15:48:14
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-10
 source_url: "https://www.nrc.nl/nieuws/2026/04/10/zonne-energie-uit-de-ruimte-is-dichterbij-dan-je-denkt-a4925054"
