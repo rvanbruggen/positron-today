@@ -220,6 +220,7 @@ title: Home
       class="card card-{{ firstTag | topicColor }}"
       data-tags="{{ cardTags | join(',') }}"
       data-date="{{ post.date | dateMonthKey }}"
+      data-sitedate="{{ post.date | dateIso }}"
       data-fulldate="{% if post.data.source_pub_date %}{{ post.data.source_pub_date }}{% else %}{{ post.date | dateIso }}{% endif %}"
     >
       {% if post.data.image_url %}<img class="card-img" src="{{ post.data.image_url }}" alt="" loading="lazy" onerror="this.style.display='none'">{% endif %}
@@ -294,11 +295,19 @@ title: Home
   var activeDateRange = 'all';
 
   // Returns a YYYY-MM-DD cutoff string, or null for "all time"
+  // Returns today's date as "YYYY-MM-DD" in local time (avoids UTC timezone shift)
+  function localToday() {
+    var d = new Date();
+    var mm = String(d.getMonth() + 1).padStart(2, '0');
+    var dd = String(d.getDate()).padStart(2, '0');
+    return d.getFullYear() + '-' + mm + '-' + dd;
+  }
+
   function dateCutoff(range) {
     if (range === 'all') return null;
+    if (range === 'today') return localToday();
     var d = new Date();
-    if (range === 'today')     { d = new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
-    else if (range === '7d')   { d.setDate(d.getDate() - 7);      }
+    if (range === '7d')        { d.setDate(d.getDate() - 7);      }
     else if (range === '30d')  { d.setDate(d.getDate() - 30);     }
     else if (range === '3m')   { d.setMonth(d.getMonth() - 3);    }
     else if (range === '6m')   { d.setMonth(d.getMonth() - 6);    }
@@ -313,7 +322,9 @@ title: Home
     cards.forEach(function(card) {
       var cardTags = (card.dataset.tags || '').split(',').map(function(t) { return t.trim(); }).filter(Boolean);
       var tagMatch  = activeTags.size === 0 || cardTags.some(function(t) { return activeTags.has(t); });
-      var dateMatch = !cutoff || (card.dataset.fulldate || '') >= cutoff;
+      // "Today" compares against when Positron published it (sitedate), not the source's original date
+      var cardDate  = activeDateRange === 'today' ? (card.dataset.sitedate || '') : (card.dataset.fulldate || '');
+      var dateMatch = !cutoff || cardDate >= cutoff;
       var show = tagMatch && dateMatch;
       card.style.display = show ? '' : 'none';
       if (show) visible++;
