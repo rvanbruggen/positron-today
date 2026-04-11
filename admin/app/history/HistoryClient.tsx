@@ -350,42 +350,71 @@ export default function HistoryClient({
                       )}
                     </td>
 
-                    {/* Actions */}
-                    <td className="px-4 py-2.5">
-                      <div className="flex items-center gap-2 justify-end whitespace-nowrap">
+                    {/* Actions — icon-only compact buttons, tooltips on hover */}
+                    <td className="px-3 py-2.5">
+                      <div className="flex items-center gap-1 justify-end">
+
+                        {/* Instagram card */}
                         <button
                           onClick={() => generateInstagramCard(a)}
                           disabled={generatingCard.has(a.id)}
                           title="Generate Instagram card"
-                          className="text-xs bg-pink-100 hover:bg-pink-200 text-pink-700 px-2 py-1 rounded transition-colors disabled:opacity-50 font-medium">
+                          className="w-7 h-7 flex items-center justify-center rounded bg-pink-100 hover:bg-pink-200 text-pink-700 transition-colors disabled:opacity-40 text-sm">
                           {generatingCard.has(a.id) ? "⏳" : "📸"}
                         </button>
+
+                        {/* Bluesky */}
                         <button
                           onClick={() => postToBluesky(a)}
                           disabled={postingBluesky.has(a.id) || postedBluesky.has(a.id)}
                           title="Post to Bluesky"
-                          className="text-xs bg-sky-100 hover:bg-sky-200 text-sky-700 px-2 py-1 rounded transition-colors disabled:opacity-50 font-medium">
-                          {postedBluesky.has(a.id) ? "✓ Posted!" : postingBluesky.has(a.id) ? "⏳" : "🦋 Bluesky"}
+                          className="w-7 h-7 flex items-center justify-center rounded bg-sky-100 hover:bg-sky-200 text-sky-700 transition-colors disabled:opacity-40 text-sm">
+                          {postedBluesky.has(a.id) ? "✓" : postingBluesky.has(a.id) ? "⏳" : "🦋"}
                         </button>
-                        <button onClick={() => setEditingId(a.id)}
-                          className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2 py-1 rounded transition-colors font-medium">
-                          Edit
+
+                        {/* Edit */}
+                        <button
+                          onClick={() => setEditingId(a.id)}
+                          title="Edit article"
+                          className="w-7 h-7 flex items-center justify-center rounded bg-amber-100 hover:bg-amber-200 text-amber-700 transition-colors text-sm">
+                          ✏️
                         </button>
-                        <button onClick={() => republish(a.id)}
+
+                        {/* Republish */}
+                        <button
+                          onClick={() => republish(a.id)}
                           disabled={republishing.has(a.id) || republished.has(a.id)}
-                          className="text-xs bg-green-100 hover:bg-green-200 text-green-700 px-2 py-1 rounded transition-colors disabled:opacity-50 font-medium">
-                          {republished.has(a.id) ? "✓" : republishing.has(a.id) ? "…" : "Republish"}
+                          title="Republish to site"
+                          className="w-7 h-7 flex items-center justify-center rounded bg-green-100 hover:bg-green-200 text-green-700 transition-colors disabled:opacity-40 text-sm font-bold">
+                          {republished.has(a.id) ? "✓" : republishing.has(a.id) ? "⏳" : (
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                            </svg>
+                          )}
                         </button>
-                        <button onClick={() => resummarise(a.id)}
+
+                        {/* Re-summarise */}
+                        <button
+                          onClick={() => resummarise(a.id)}
                           disabled={resetting.has(a.id)}
-                          className="text-xs text-blue-500 hover:text-blue-700 transition-colors disabled:opacity-50">
-                          {resetting.has(a.id) ? "…" : "Re-summarise"}
+                          title="Move back to Preview queue"
+                          className="w-7 h-7 flex items-center justify-center rounded bg-blue-50 hover:bg-blue-100 text-blue-500 transition-colors disabled:opacity-40 text-sm font-bold">
+                          {resetting.has(a.id) ? "⏳" : (
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.85"/>
+                            </svg>
+                          )}
                         </button>
-                        <button onClick={() => removeFromSite(a)}
+
+                        {/* Remove */}
+                        <button
+                          onClick={() => removeFromSite(a)}
                           disabled={removing.has(a.id)}
-                          className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50">
-                          {removing.has(a.id) ? "…" : "Remove"}
+                          title="Remove from site"
+                          className="w-7 h-7 flex items-center justify-center rounded bg-red-50 hover:bg-red-100 text-red-400 hover:text-red-600 transition-colors disabled:opacity-40 text-sm font-bold">
+                          {removing.has(a.id) ? "⏳" : "✕"}
                         </button>
+
                       </div>
                     </td>
 
