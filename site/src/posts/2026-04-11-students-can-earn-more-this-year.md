@@ -2,7 +2,7 @@
 title: "Students can earn more this year"
 title_nl: "Jobstudenten mogen dit jaar meer verdienen"
 title_fr: "Les étudiants peuvent gagner plus cette année"
-date: 2026-04-11
+date: 2026-04-11T05:49:32
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-11
 source_url: "https://www.standaard.be/economie/geld/jobstudenten-mogen-dit-jaar-meer-verdienen/145290325.html"
