@@ -2,7 +2,7 @@
 title: "In these 79 child-friendly museums in Flanders, your child won't be bored for a second"
 title_nl: "In deze 79 kindvriendelijke musea in Vlaanderen verveelt je kind zich geen seconde"
 title_fr: "Dans ces 79 musées adaptés aux enfants en Flandre, votre enfant ne s'ennuie pas une seconde"
-date: 2026-04-11
+date: 2026-04-11T05:49:49
 source_pub_date: 2026-04-11
 fetched_date: 2026-04-11
 source_url: "https://www.hln.be/populair-op-regio/in-deze-79-kindvriendelijke-musea-in-vlaanderen-verveelt-je-kind-zich-geen-seconde~a93a28aa/"
