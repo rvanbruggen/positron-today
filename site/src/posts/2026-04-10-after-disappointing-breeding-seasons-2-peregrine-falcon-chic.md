@@ -2,7 +2,7 @@
 title: "After disappointing breeding seasons: 2 peregrine falcon chicks born at Sint-Maartenskerk in Kortrijk, possibly 2 more on the way"
 title_nl: "Na tegenvallende broedseizoenen: 2 slechtvalkkuikens op Sint-Maartenskerk in Kortrijk geboren, mogelijk nog 2 op komst"
 title_fr: "Après des saisons de reproduction décevantes : 2 poussins de faucon pèlerin nés à la Sint-Maartenskerk de Kortrijk, possiblement 2 autres à venir"
-date: 2026-04-10
+date: 2026-04-10T15:48:07
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-10
 source_url: "https://vrtnws.be/p.QABVkOqAb"
