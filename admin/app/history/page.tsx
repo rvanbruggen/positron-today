@@ -16,7 +16,7 @@ export default async function HistoryPage() {
     db.execute(`
       SELECT a.id, a.title_en, a.title_nl, a.title_fr,
              a.summary_en, a.summary_nl, a.summary_fr,
-             a.source_url, a.source_name,
+             a.source_url, a.source_name, a.image_url,
              a.article_emoji, a.published_at, a.publish_date, a.published_path,
              r.source_pub_date,
              (SELECT GROUP_CONCAT(t.id || '|' || t.name || '|' || t.emoji, '~~')
@@ -47,6 +47,7 @@ export default async function HistoryPage() {
     publish_date: a.publish_date ? String(a.publish_date) : null,
     published_path: a.published_path ? String(a.published_path) : null,
     source_pub_date: a.source_pub_date ? String(a.source_pub_date) : null,
+    image_url: a.image_url ? String(a.image_url) : null,
   }));
 
   const allTags = tagsResult.rows.map((t) => ({

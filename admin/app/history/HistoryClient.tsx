@@ -21,6 +21,7 @@ type Article = {
   publish_date: string | null;
   published_path: string | null;
   source_pub_date: string | null;
+  image_url: string | null;
 };
 
 const SITE_BASE = "https://positron.today";
@@ -67,17 +68,18 @@ export default function HistoryClient({
   initialArticles: Article[];
   allTags: ArticleTag[];
 }) {
-  const [articles, setArticles]         = useState<Article[]>(initialArticles);
-  const [resetting, setResetting]       = useState<Set<number>>(new Set());
-  const [republishing, setRepublishing] = useState<Set<number>>(new Set());
-  const [republished, setRepublished]   = useState<Set<number>>(new Set());
-  const [removing, setRemoving]         = useState<Set<number>>(new Set());
-  const [filterTag, setFilterTag]       = useState("all");
-  const [filterMonth, setFilterMonth]   = useState("all");
-  const [sortKey, setSortKey]           = useState<SortKey>("date");
-  const [sortDir, setSortDir]           = useState<SortDir>("desc");
-  const [error, setError]               = useState<string | null>(null);
-  const [editingId, setEditingId]       = useState<number | null>(null);
+  const [articles, setArticles]           = useState<Article[]>(initialArticles);
+  const [resetting, setResetting]         = useState<Set<number>>(new Set());
+  const [republishing, setRepublishing]   = useState<Set<number>>(new Set());
+  const [republished, setRepublished]     = useState<Set<number>>(new Set());
+  const [removing, setRemoving]           = useState<Set<number>>(new Set());
+  const [generatingCard, setGeneratingCard] = useState<Set<number>>(new Set());
+  const [filterTag, setFilterTag]         = useState("all");
+  const [filterMonth, setFilterMonth]     = useState("all");
+  const [sortKey, setSortKey]             = useState<SortKey>("date");
+  const [sortDir, setSortDir]             = useState<SortDir>("desc");
+  const [error, setError]                 = useState<string | null>(null);
+  const [editingId, setEditingId]         = useState<number | null>(null);
 
   function handleSort(key: SortKey) {
     if (sortKey === key) {
@@ -172,6 +174,32 @@ export default function HistoryClient({
       setError(err instanceof Error ? err.message : "Unexpected error");
     } finally {
       setRemoving((prev) => { const s = new Set(prev); s.delete(article.id); return s; });
+    }
+  }
+
+  async function generateInstagramCard(a: Article) {
+    setGeneratingCard((prev) => new Set(prev).add(a.id));
+    setError(null);
+    try {
+      const res = await fetch(`/api/instagram-card?id=${a.id}`);
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error ?? `Card generation failed: ${res.status}`);
+        return;
+      }
+      // Trigger browser download
+      const blob = await res.blob();
+      const url  = URL.createObjectURL(blob);
+      const a_el = document.createElement("a");
+      a_el.href  = url;
+      const slug = (a.title_en ?? a.title_nl ?? "article").toLowerCase().replace(/[^\w]+/g, "-").slice(0, 50);
+      a_el.download = `positron-${slug}.png`;
+      a_el.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unexpected error");
+    } finally {
+      setGeneratingCard((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
     }
   }
 
@@ -303,6 +331,13 @@ export default function HistoryClient({
                     {/* Actions */}
                     <td className="px-4 py-2.5">
                       <div className="flex items-center gap-2 justify-end whitespace-nowrap">
+                        <button
+                          onClick={() => generateInstagramCard(a)}
+                          disabled={generatingCard.has(a.id)}
+                          title="Generate Instagram card"
+                          className="text-xs bg-pink-100 hover:bg-pink-200 text-pink-700 px-2 py-1 rounded transition-colors disabled:opacity-50 font-medium">
+                          {generatingCard.has(a.id) ? "⏳" : "📸"}
+                        </button>
                         <button onClick={() => setEditingId(a.id)}
                           className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2 py-1 rounded transition-colors font-medium">
                           Edit

@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.7.5 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.7.6 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -345,6 +345,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.7.6** | Instagram card generator — 📸 button on History page downloads a 1080×1080 PNG card per article |
 | **1.7.5** | Make Ollama optional in start.sh/stop.sh; default is without Ollama, use --with-ollama to include it |
 | **1.7.4** | Fix fetch progress bar exceeding 100% when sources error |
 | **1.7.3** | Translate date-range dropdown, Clear button, and no-match message into NL and FR |
