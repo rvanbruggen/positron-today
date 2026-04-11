@@ -2,7 +2,7 @@
 title: "Artemis II moon mission safely returns to earth after landing in pacific ocean"
 title_nl: "Maanmissie Artemis II veilig terug op aarde na landing in Stille Oceaan"
 title_fr: "La mission lunaire Artemis II revient sain et sauf sur Terre après un atterrissage dans l'océan Pacifique"
-date: 2026-04-11
+date: 2026-04-11T05:49:33
 source_pub_date: 2026-04-11
 fetched_date: 2026-04-11
 source_url: "https://www.nrc.nl/nieuws/2026/04/11/maanmissie-artemis-ii-veilig-terug-op-aarde-na-landing-in-stille-oceaan-a4925283"
