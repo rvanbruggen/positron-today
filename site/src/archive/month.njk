@@ -142,8 +142,9 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
   function distributeCards() {
     var grid = document.getElementById('card-grid');
     if (!grid) return;
-    var numCols = window.matchMedia('(min-width: 700px)').matches ? 3
-                : window.matchMedia('(min-width: 480px)').matches ? 2 : 1;
+    var numCols = window.matchMedia('(min-width: 1200px)').matches ? 4
+                : window.matchMedia('(min-width: 700px)').matches  ? 3
+                : window.matchMedia('(min-width: 480px)').matches  ? 2 : 1;
     var cards = Array.from(grid.querySelectorAll('.card'));
     grid.innerHTML = '';
     var cols = [];
