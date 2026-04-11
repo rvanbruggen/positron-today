@@ -2,7 +2,7 @@
 title: "On the mixed Palestinian-Israeli school, children learn that 'the other' is not bad"
 title_nl: "Op de gemengd Palestijns-Israëlische school leren kinderen dat ‘de ander’ niet slecht is"
 title_fr: "À l'école mixte palestinienne-israélienne, les enfants apprennent que 'l'autre' n'est pas mauvais"
-date: 2026-04-10
+date: 2026-04-10T15:48:09
 source_pub_date: 2026-04-10
 fetched_date: 2026-04-10
 source_url: "https://www.nrc.nl/nieuws/2026/04/10/op-de-gemengd-palestijns-israelische-school-leren-kinderen-dat-de-ander-niet-slecht-is-a4924166"
