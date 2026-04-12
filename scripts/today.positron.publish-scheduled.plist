@@ -6,21 +6,25 @@
   <key>Label</key>
   <string>today.positron.publish-scheduled</string>
 
+  <!-- Call curl directly — avoids macOS blocking bash scripts from launchd agents -->
   <key>ProgramArguments</key>
   <array>
-    <string>/bin/bash</string>
-    <string>/Users/rikvanbruggen/Documents/GitHub/positiviteiten/scripts/publish-scheduled.sh</string>
+    <string>/usr/bin/curl</string>
+    <string>-s</string>
+    <string>-X</string>
+    <string>POST</string>
+    <string>http://localhost:3000/api/publish-scheduled</string>
   </array>
 
   <!-- Run every hour -->
   <key>StartInterval</key>
   <integer>3600</integer>
 
-  <!-- Also run once when loaded (catches anything missed while Mac was off) -->
+  <!-- Run once on load too (catches anything missed while Mac was off) -->
   <key>RunAtLoad</key>
   <true/>
 
-  <!-- Keep logs -->
+  <!-- Log curl output (JSON response) -->
   <key>StandardOutPath</key>
   <string>/Users/rikvanbruggen/Library/Logs/positron-publish-scheduled.log</string>
   <key>StandardErrorPath</key>
