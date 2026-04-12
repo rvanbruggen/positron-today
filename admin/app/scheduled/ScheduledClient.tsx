@@ -115,10 +115,35 @@ export default function ScheduledClient({
    *  that datetime-local inputs expect. */
   function toDatetimeLocal(raw: string | null): string {
     if (!raw) return new Date().toISOString().slice(0, 16);
-    // Already in ISO format with T separator
     if (raw.includes("T")) return raw.slice(0, 16);
-    // SQLite format "YYYY-MM-DD HH:MM:SS" → "YYYY-MM-DDTHH:MM"
     return raw.replace(" ", "T").slice(0, 16);
+  }
+
+  /** Returns true if the article's publish_date is set and is still in the future. */
+  function isQueued(raw: string | null): boolean {
+    if (!raw) return false;
+    const d = new Date(raw.includes("T") ? raw : raw.replace(" ", "T"));
+    return d > new Date();
+  }
+
+  /** Human-readable countdown: "in 25 min", "in 2h 15m", "in 3d" */
+  function timeUntil(raw: string): string {
+    const d = new Date(raw.includes("T") ? raw : raw.replace(" ", "T"));
+    const diffMs = d.getTime() - Date.now();
+    if (diffMs <= 0) return "now";
+    const mins  = Math.floor(diffMs / 60000);
+    const hours = Math.floor(mins / 60);
+    const days  = Math.floor(hours / 24);
+    if (days >= 1)  return `in ${days}d ${hours % 24}h`;
+    if (hours >= 1) return `in ${hours}h ${mins % 60}m`;
+    return `in ${mins} min`;
+  }
+
+  /** Format a publish_date for display: "13 Apr, 08:30" */
+  function formatSlot(raw: string): string {
+    const d = new Date(raw.includes("T") ? raw : raw.replace(" ", "T"));
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) +
+      ", " + String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
   }
 
   async function suggestSchedule() {
@@ -374,29 +399,64 @@ export default function ScheduledClient({
                           onChange={(e) => setDate(a.id, e.target.value)}
                           className="border border-yellow-200 rounded px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400"
                         />
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => setEditingId(a.id)}
-                            disabled={publishing.has(a.id)}
-                            className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2.5 py-1 rounded-lg transition-colors disabled:opacity-50 font-medium"
-                          >
-                            Edit
-                          </button>
-                          <button
-                            onClick={() => publish(a.id)}
-                            disabled={publishing.has(a.id) || published.has(a.id)}
-                            className="bg-green-400 hover:bg-green-500 text-green-900 font-medium px-3 py-1 rounded-lg text-xs transition-colors disabled:opacity-50"
-                          >
-                            {published.has(a.id) ? "Published! ✓" : publishing.has(a.id) ? "Publishing..." : "Publish →"}
-                          </button>
-                          <button
-                            onClick={() => remove(a.id)}
-                            disabled={publishing.has(a.id)}
-                            className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50"
-                          >
-                            Remove
-                          </button>
-                        </div>
+
+                        {isQueued(a.publish_date ?? null) ? (
+                          /* ── Queued: waiting for cron ── */
+                          <div className="flex flex-col items-end gap-1.5">
+                            <span className="text-xs bg-sky-50 border border-sky-200 text-sky-700 rounded-lg px-2.5 py-1 font-medium whitespace-nowrap">
+                              ⏰ {formatSlot(a.publish_date!)} · {timeUntil(a.publish_date!)}
+                            </span>
+                            <div className="flex gap-2 items-center">
+                              <button
+                                onClick={() => setEditingId(a.id)}
+                                disabled={publishing.has(a.id)}
+                                className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2.5 py-1 rounded-lg transition-colors disabled:opacity-50 font-medium"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => publish(a.id)}
+                                disabled={publishing.has(a.id) || published.has(a.id)}
+                                title="Override: publish immediately without waiting for the scheduled time"
+                                className="text-xs text-amber-500 hover:text-amber-800 underline transition-colors disabled:opacity-50 whitespace-nowrap"
+                              >
+                                {published.has(a.id) ? "Published! ✓" : publishing.has(a.id) ? "Publishing…" : "publish now ↑"}
+                              </button>
+                              <button
+                                onClick={() => remove(a.id)}
+                                disabled={publishing.has(a.id)}
+                                className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          /* ── Ready: publish manually now ── */
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => setEditingId(a.id)}
+                              disabled={publishing.has(a.id)}
+                              className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2.5 py-1 rounded-lg transition-colors disabled:opacity-50 font-medium"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => publish(a.id)}
+                              disabled={publishing.has(a.id) || published.has(a.id)}
+                              className="bg-green-400 hover:bg-green-500 text-green-900 font-medium px-3 py-1 rounded-lg text-xs transition-colors disabled:opacity-50"
+                            >
+                              {published.has(a.id) ? "Published! ✓" : publishing.has(a.id) ? "Publishing..." : "Publish →"}
+                            </button>
+                            <button
+                              onClick={() => remove(a.id)}
+                              disabled={publishing.has(a.id)}
+                              className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
