@@ -99,13 +99,24 @@ export default function ScheduledClient({
     setArticles((prev) => prev.filter((a) => a.id !== id));
   }
 
-  async function setDate(id: number, date: string) {
+  async function setDate(id: number, value: string) {
+    // datetime-local returns "YYYY-MM-DDTHH:MM" — store as-is (SQLite accepts this)
     await fetch("/api/articles", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, publish_date: date }),
+      body: JSON.stringify({ id, publish_date: value }),
     });
-    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, publish_date: date } : a)));
+    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, publish_date: value } : a)));
+  }
+
+  /** Format a stored publish_date value into the "YYYY-MM-DDTHH:MM" shape
+   *  that datetime-local inputs expect. */
+  function toDatetimeLocal(raw: string | null): string {
+    if (!raw) return new Date().toISOString().slice(0, 16);
+    // Already in ISO format with T separator
+    if (raw.includes("T")) return raw.slice(0, 16);
+    // SQLite format "YYYY-MM-DD HH:MM:SS" → "YYYY-MM-DDTHH:MM"
+    return raw.replace(" ", "T").slice(0, 16);
   }
 
   async function summarise(id: number) {
@@ -308,8 +319,8 @@ export default function ScheduledClient({
                       </div>
                       <div className="flex flex-col items-end gap-2 shrink-0">
                         <input
-                          type="date"
-                          value={a.publish_date?.slice(0, 10) ?? new Date().toISOString().slice(0, 10)}
+                          type="datetime-local"
+                          value={toDatetimeLocal(a.publish_date ?? null)}
                           onChange={(e) => setDate(a.id, e.target.value)}
                           className="border border-yellow-200 rounded px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400"
                         />
