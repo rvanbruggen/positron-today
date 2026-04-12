@@ -19,12 +19,14 @@ interface Stats {
 }
 
 export default function FastTrackPage() {
-  const [running, setRunning]   = useState(false);
-  const [done, setDone]         = useState(false);
-  const [log, setLog]           = useState<LogEntry[]>([]);
-  const [stats, setStats]       = useState<Stats | null>(null);
-  const logRef                  = useRef<HTMLDivElement>(null);
-  const abortRef                = useRef<AbortController | null>(null);
+  const [running, setRunning]     = useState(false);
+  const [done, setDone]           = useState(false);
+  const [log, setLog]             = useState<LogEntry[]>([]);
+  const [stats, setStats]         = useState<Stats | null>(null);
+  const [currentMode, setCurrentMode] = useState<"publish" | "schedule">("publish");
+  const [intervalMinutes, setIntervalMinutes] = useState(30);
+  const logRef                    = useRef<HTMLDivElement>(null);
+  const abortRef                  = useRef<AbortController | null>(null);
 
   const append = (entry: LogEntry) => {
     setLog((prev) => [...prev, entry]);
@@ -34,8 +36,9 @@ export default function FastTrackPage() {
     });
   };
 
-  async function runFastTrack() {
+  async function runFastTrack(mode: "publish" | "schedule") {
     setRunning(true);
+    setCurrentMode(mode);
     setDone(false);
     setLog([]);
     setStats(null);
@@ -45,6 +48,8 @@ export default function FastTrackPage() {
     try {
       const res = await fetch("/api/fast-track", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode, interval_minutes: intervalMinutes }),
         signal: abortRef.current.signal,
       });
 
@@ -89,7 +94,7 @@ export default function FastTrackPage() {
   function handleEvent(evt: Record<string, unknown>) {
     switch (evt.type) {
       case "start":
-        append({ kind: "info", text: `⚡ Fast-track started — scanning ${evt.totalSources} sources with maximum strictness (threshold 10)` });
+        append({ kind: "info", text: `⚡ Fast-track (${evt.mode === "schedule" ? "schedule mode" : "publish now"}) — scanning ${evt.totalSources} sources with maximum strictness (threshold 10)` });
         break;
 
       case "source":
@@ -113,6 +118,9 @@ export default function FastTrackPage() {
           case "published":
             append({ kind: "publish", text: `  🚀 [published]  ${evt.title}` });
             break;
+          case "scheduled":
+            append({ kind: "publish", text: `  📅 [scheduled]  ${evt.title}  →  ${evt.publish_date}` });
+            break;
           case "error":
             append({ kind: "error", text: `  ⚠ [error @ ${evt.step}] ${evt.title}: ${evt.message}` });
             break;
@@ -130,7 +138,8 @@ export default function FastTrackPage() {
         append({ kind: "error", text: `⚠ Source error (${evt.name}): ${evt.message}` });
         break;
 
-      case "done":
+      case "done": {
+        const isSchedule = evt.mode === "schedule";
         setStats({
           passed:    Number(evt.passed),
           filtered:  Number(evt.filtered),
@@ -138,8 +147,10 @@ export default function FastTrackPage() {
           published: Number(evt.published),
           errors:    Number(evt.errors),
         });
-        append({ kind: "info", text: `\n✅ Done! ${evt.published} article(s) published · ${evt.passed} passed filter · ${evt.filtered} filtered · ${evt.skipped} already known` });
+        const action = isSchedule ? "scheduled" : "published";
+        append({ kind: "info", text: `\n✅ Done! ${evt.published} article(s) ${action} · ${evt.passed} passed filter · ${evt.filtered} filtered · ${evt.skipped} already known${isSchedule ? " — check the Scheduled page to review" : ""}` });
         break;
+      }
 
       case "exporting":
         append({ kind: "dim", text: "  ⋯ Exporting rejection log…" });
@@ -177,20 +188,40 @@ export default function FastTrackPage() {
         <p className="font-semibold mb-1">⚠️ Fully automated — no manual review</p>
         <p>
           Fast Track skips the review step entirely. Every article that passes the AI
-          positivity filter will be summarised and pushed to the public site automatically.
-          Use this when you trust the filter and want to publish quickly.
+          positivity filter will be summarised, then either published immediately or added
+          to the Scheduled queue with staggered times.
         </p>
       </div>
 
       {/* Action buttons */}
-      <div className="flex gap-3 mb-6">
+      <div className="flex flex-wrap gap-3 items-center mb-6">
         {!running ? (
-          <button
-            onClick={runFastTrack}
-            className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl shadow transition-colors"
-          >
-            ⚡ Run Fast Track
-          </button>
+          <>
+            <button
+              onClick={() => runFastTrack("publish")}
+              className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl shadow transition-colors"
+            >
+              ⚡ Publish now
+            </button>
+            <div className="flex items-center gap-2 bg-white border border-yellow-200 rounded-xl px-4 py-2.5 shadow-sm">
+              <span className="text-sm font-semibold text-amber-800">📅 Schedule every</span>
+              <select
+                value={intervalMinutes}
+                onChange={(e) => setIntervalMinutes(Number(e.target.value))}
+                className="text-sm text-amber-800 border border-yellow-200 rounded-lg px-2 py-1 bg-amber-50 focus:outline-none focus:border-yellow-400"
+              >
+                {[15, 30, 45, 60, 90, 120].map((m) => (
+                  <option key={m} value={m}>{m} min</option>
+                ))}
+              </select>
+              <button
+                onClick={() => runFastTrack("schedule")}
+                className="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg shadow-sm transition-colors text-sm"
+              >
+                Schedule →
+              </button>
+            </div>
+          </>
         ) : (
           <button
             onClick={stop}
@@ -214,7 +245,7 @@ export default function FastTrackPage() {
       {stats && (
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6">
           {[
-            { label: "Published",   value: stats.published, color: "text-green-700 bg-green-50 border-green-200" },
+            { label: currentMode === "schedule" ? "Scheduled" : "Published", value: stats.published, color: "text-green-700 bg-green-50 border-green-200" },
             { label: "Passed",      value: stats.passed,    color: "text-sky-700 bg-sky-50 border-sky-200" },
             { label: "Filtered",    value: stats.filtered,  color: "text-red-700 bg-red-50 border-red-200" },
             { label: "Already known", value: stats.skipped, color: "text-gray-600 bg-gray-50 border-gray-200" },

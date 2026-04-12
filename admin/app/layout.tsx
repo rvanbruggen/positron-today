@@ -37,8 +37,8 @@ export default function RootLayout({
             <div className="flex gap-5 ml-6 text-sm font-medium text-amber-900">
               <Link href="/sources" className="hover:text-amber-600 transition-colors">Sources</Link>
               <Link href="/tags" className="hover:text-amber-600 transition-colors">Tags</Link>
-              <Link href="/preview" className="hover:text-amber-600 transition-colors">Preview</Link>
               <Link href="/fast-track" className="hover:text-amber-600 transition-colors font-semibold">⚡ Fast Track</Link>
+              <Link href="/preview" className="hover:text-amber-600 transition-colors">Preview</Link>
               <Link href="/scheduled" className="hover:text-amber-600 transition-colors">Scheduled</Link>
               <Link href="/history" className="hover:text-amber-600 transition-colors">History</Link>
               <Link href="/rejections" className="hover:text-amber-600 transition-colors">Rejections</Link>

@@ -42,8 +42,6 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
   .card-title { font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
   .card-summary { font-size: 0.825rem; line-height: 1.55; opacity: 0.85; }
   .card-meta { font-size: 0.7rem; opacity: 0.6; margin-top: auto; padding-top: 0.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.25rem; }
-  .card-date-wrap { text-align: right; line-height: 1.3; }
-  .card-date-site { font-size: 0.6rem; opacity: 0.55; }
 
   .card-yellow  { background:#fef9c3; border-color:#fde047; color:#713f12; }
   .card-orange  { background:#ffedd5; border-color:#fb923c; color:#7c2d12; }
@@ -125,14 +123,7 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
       {% endif %}
       <div class="card-meta">
         <span>{{ post.data.source_name }}</span>
-        {% if post.data.source_pub_date %}
-          <span class="card-date-wrap">
-            <span title="Original publication date">{{ post.data.source_pub_date | dateShort }}</span><br>
-            <span class="card-date-site" title="Published on Positiviteiten">on site {{ post.date | dateShort }}</span>
-          </span>
-        {% else %}
-          <span class="card-date-site" title="Published on Positiviteiten">on site {{ post.date | dateShort }}</span>
-        {% endif %}
+        <span>{{ post.date | dateTimeShort }}</span>
       </div>
     </a>
   {% endfor %}

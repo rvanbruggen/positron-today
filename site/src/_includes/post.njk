@@ -118,13 +118,7 @@ layout: base.njk
     <span class="t-fr" style="display:none">{{ title_fr if title_fr else title }}</span>
   </h1>
   <p class="post-meta">
-    {{ source_name }}
-    {% if source_pub_date %}
-      · <span title="Date the original article was published by the source">orig. {{ source_pub_date | dateDisplay }}</span>
-      · <span title="Date we published this on Positiviteiten">on site {{ page.date | dateDisplay }}</span>
-    {% else %}
-      · <span title="Date we published this on Positiviteiten">on site {{ page.date | dateDisplay }}</span>
-    {% endif %}
+    {{ source_name }} · {{ page.date | dateTimeDisplay }}
   </p>
 </div>
 

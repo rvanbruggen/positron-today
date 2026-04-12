@@ -11,6 +11,7 @@
  * Streams NDJSON progress events so the UI can show live updates.
  */
 
+import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
 import { getFilterProvider, getSummariseProvider } from "@/lib/llm";
@@ -275,9 +276,35 @@ async function commitToGitHub(path: string, content: string, message: string) {
   if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
 }
 
+// ─── Schedule-mode helpers ────────────────────────────────────────────────────
+
+function nextSlot(after: Date, intervalMinutes: number, bufferMinutes = 2): Date {
+  const t = new Date(after.getTime() + bufferMinutes * 60 * 1000);
+  const totalMins = t.getHours() * 60 + t.getMinutes();
+  const rounded = Math.ceil(totalMins / intervalMinutes) * intervalMinutes;
+  const result = new Date(t);
+  result.setHours(Math.floor(rounded / 60), rounded % 60, 0, 0);
+  if (result <= after) result.setDate(result.getDate() + 1);
+  return result;
+}
+
+function toLocalISO(d: Date): string {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return (
+    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` +
+    `T${pad(d.getHours())}:${pad(d.getMinutes())}:00`
+  );
+}
+
 // ─── Main handler ─────────────────────────────────────────────────────────────
 
-export async function POST() {
+export async function POST(request: NextRequest) {
+  const body = await request.json().catch(() => ({}));
+  // mode: "publish" (default) → commit to GitHub immediately
+  // mode: "schedule" → assign staggered publish_date, leave in queue
+  const mode: "publish" | "schedule" = body.mode === "schedule" ? "schedule" : "publish";
+  const intervalMinutes: number = Math.max(5, Number(body.interval_minutes) || 30);
+
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
   const GITHUB_REPO  = process.env.GITHUB_REPO;
 
@@ -291,7 +318,7 @@ export async function POST() {
         } catch { /* stream already closed */ }
       };
 
-      if (!GITHUB_TOKEN || !GITHUB_REPO) {
+      if (mode === "publish" && (!GITHUB_TOKEN || !GITHUB_REPO)) {
         send({ type: "fatal", message: "GITHUB_TOKEN and GITHUB_REPO must be set in .env.local" });
         controller.close();
         return;
@@ -318,7 +345,21 @@ export async function POST() {
         }));
         const tagNameMap = new Map(availableTags.map((t) => [t.name.toLowerCase(), t]));
 
-        send({ type: "start", totalSources: sources.length });
+        // In schedule mode: find latest existing slot, chain after it
+        let scheduleCursor: Date | null = null;
+        if (mode === "schedule") {
+          const latestResult = await db.execute(`
+            SELECT MAX(publish_date) as latest FROM articles
+            WHERE status = 'scheduled' AND publish_date IS NOT NULL AND publish_date != ''
+          `);
+          const latestRaw = latestResult.rows[0]?.latest as string | null;
+          const latestExisting = latestRaw ? new Date(latestRaw) : null;
+          const now = new Date();
+          const startAfter = latestExisting && latestExisting > now ? latestExisting : now;
+          scheduleCursor = nextSlot(startAfter, intervalMinutes);
+        }
+
+        send({ type: "start", totalSources: sources.length, mode });
 
         let totalPassed = 0, totalFiltered = 0, totalSkipped = 0, totalPublished = 0, totalErrors = 0;
 
@@ -452,48 +493,62 @@ export async function POST() {
                 continue;
               }
 
-              // ── Step 5: Publish to GitHub ──
-              try {
-                send({ type: "article", verdict: "publishing", title: summaries.title_en });
+              // ── Step 5: Publish to GitHub OR schedule ──
+              if (mode === "schedule") {
+                // Assign staggered publish_date and leave in queue
+                try {
+                  const dateStr = toLocalISO(scheduleCursor!);
+                  await db.execute({
+                    sql: "UPDATE articles SET publish_date = ? WHERE id = ?",
+                    args: [dateStr, articleId],
+                  });
+                  published++; // reuse counter — means "scheduled" in this mode
+                  send({ type: "article", verdict: "scheduled", title: summaries.title_en, publish_date: dateStr });
+                  scheduleCursor = new Date(scheduleCursor!.getTime() + intervalMinutes * 60 * 1000);
+                } catch (err) {
+                  errors++;
+                  send({ type: "article", verdict: "error", title: item.title!, step: "schedule", message: String(err) });
+                }
+              } else {
+                // Publish immediately to GitHub
+                try {
+                  send({ type: "article", verdict: "publishing", title: summaries.title_en });
 
-                // Re-fetch the article row (now has title/summary/emoji)
-                const articleResult = await db.execute({
-                  sql: `SELECT a.*, r.source_pub_date, r.fetched_at
-                        FROM articles a
-                        LEFT JOIN raw_articles r ON a.raw_article_id = r.id
-                        WHERE a.id = ?`,
-                  args: [articleId],
-                });
-                const articleRow = articleResult.rows[0] as Record<string, unknown>;
+                  const articleResult = await db.execute({
+                    sql: `SELECT a.*, r.source_pub_date, r.fetched_at
+                          FROM articles a
+                          LEFT JOIN raw_articles r ON a.raw_article_id = r.id
+                          WHERE a.id = ?`,
+                    args: [articleId],
+                  });
+                  const articleRow = articleResult.rows[0] as Record<string, unknown>;
 
-                const tagsForArticle = await db.execute({
-                  sql: `SELECT t.name FROM article_tags at2
-                        JOIN topics t ON at2.tag_id = t.id
-                        WHERE at2.article_id = ?
-                        ORDER BY t.name ASC`,
-                  args: [articleId],
-                });
-                const tagNames = tagsForArticle.rows.map((r) => String(r.name));
+                  const tagsForArticle = await db.execute({
+                    sql: `SELECT t.name FROM article_tags at2
+                          JOIN topics t ON at2.tag_id = t.id
+                          WHERE at2.article_id = ?
+                          ORDER BY t.name ASC`,
+                    args: [articleId],
+                  });
+                  const tagNames = tagsForArticle.rows.map((r) => String(r.name));
 
-                const date = new Date().toISOString().slice(0, 10);
-                const path = `site/src/posts/${date}-${slugify(summaries.title_en)}.md`;
+                  const date = new Date().toISOString().slice(0, 10);
+                  const path = `site/src/posts/${date}-${slugify(summaries.title_en)}.md`;
 
-                const markdown = generateMarkdown(
-                  { ...articleRow, image_url: imageUrl },
-                  tagNames,
-                );
-                await commitToGitHub(path, markdown, `Add post: ${summaries.title_en}`);
+                  const markdown = generateMarkdown({ ...articleRow, image_url: imageUrl }, tagNames);
+                  await commitToGitHub(path, markdown, `Add post: ${summaries.title_en}`);
 
-                await db.execute({
-                  sql: "UPDATE articles SET status = 'published', published_at = datetime('now'), published_path = ? WHERE id = ?",
-                  args: [path, articleId],
-                });
+                  await db.execute({
+                    sql: "UPDATE articles SET status = 'published', published_at = datetime('now'), published_path = ? WHERE id = ?",
+                    args: [path, articleId],
+                  });
 
-                published++;
-                send({ type: "article", verdict: "published", title: summaries.title_en, path });
-              } catch (err) {
-                errors++;
-                send({ type: "article", verdict: "error", title: item.title!, step: "publish", message: String(err) });
+                  published++;
+                  send({ type: "article", verdict: "published", title: summaries.title_en, path });
+                } catch (err) {
+                  errors++;
+                  send({ type: "article", verdict: "error", title: item.title!, step: "publish", message: String(err) });
+                }
               }
             }
 
@@ -515,6 +570,7 @@ export async function POST() {
 
         send({
           type: "done",
+          mode,
           passed: totalPassed,
           filtered: totalFiltered,
           skipped: totalSkipped,

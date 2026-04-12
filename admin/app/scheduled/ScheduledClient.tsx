@@ -75,6 +75,8 @@ export default function ScheduledClient({
   const [error, setError] = useState<string | null>(null);
   const [previewLang, setPreviewLang] = useState<"en" | "nl" | "fr">("en");
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [suggesting, setSuggesting] = useState(false);
+  const [suggestInterval, setSuggestInterval] = useState(30);
 
   function toggleTag(articleId: number, tag: ArticleTag, wasSelected: boolean) {
     setArticles((prev) =>
@@ -117,6 +119,31 @@ export default function ScheduledClient({
     if (raw.includes("T")) return raw.slice(0, 16);
     // SQLite format "YYYY-MM-DD HH:MM:SS" → "YYYY-MM-DDTHH:MM"
     return raw.replace(" ", "T").slice(0, 16);
+  }
+
+  async function suggestSchedule() {
+    setSuggesting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/suggest-schedule", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ interval_minutes: suggestInterval }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError(data.error ?? `Server error ${res.status}`); return; }
+      if (data.scheduled === 0) {
+        setError("All articles already have a scheduled time.");
+        return;
+      }
+      // Apply the returned slots to local state
+      const slotMap = new Map<number, string>(data.slots.map((s: { id: number; publish_date: string }) => [s.id, s.publish_date]));
+      setArticles((prev) => prev.map((a) => slotMap.has(a.id) ? { ...a, publish_date: slotMap.get(a.id)! } : a));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unexpected error");
+    } finally {
+      setSuggesting(false);
+    }
   }
 
   async function summarise(id: number) {
@@ -254,22 +281,45 @@ export default function ScheduledClient({
           {/* ── Scheduled ── */}
           {scheduled.length > 0 && (
             <div>
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
                 <h2 className="text-sm font-semibold text-amber-700 uppercase tracking-wide">
                   Ready to publish ({scheduled.length})
                 </h2>
-                <div className="flex gap-1">
-                  {(["en", "nl", "fr"] as const).map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => setPreviewLang(lang)}
-                      className={`text-xs px-2 py-1 rounded font-medium uppercase transition-colors ${
-                        previewLang === lang ? "bg-yellow-400 text-amber-900" : "text-amber-600 hover:text-amber-900"
-                      }`}
+                <div className="flex items-center gap-2 flex-wrap">
+                  {/* Suggest Schedule */}
+                  <div className="flex items-center gap-1.5 bg-white border border-yellow-200 rounded-lg px-2 py-1">
+                    <span className="text-xs text-amber-600">Every</span>
+                    <select
+                      value={suggestInterval}
+                      onChange={(e) => setSuggestInterval(Number(e.target.value))}
+                      className="text-xs text-amber-800 border-none bg-transparent focus:outline-none font-medium"
                     >
-                      {lang}
+                      {[15, 30, 45, 60, 90, 120].map((m) => (
+                        <option key={m} value={m}>{m} min</option>
+                      ))}
+                    </select>
+                    <button
+                      onClick={suggestSchedule}
+                      disabled={suggesting}
+                      className="text-xs bg-amber-400 hover:bg-amber-500 text-amber-900 font-semibold px-2.5 py-0.5 rounded-md transition-colors disabled:opacity-50 whitespace-nowrap"
+                    >
+                      {suggesting ? "Scheduling…" : "📅 Suggest schedule"}
                     </button>
-                  ))}
+                  </div>
+                  {/* Language switcher */}
+                  <div className="flex gap-1">
+                    {(["en", "nl", "fr"] as const).map((lang) => (
+                      <button
+                        key={lang}
+                        onClick={() => setPreviewLang(lang)}
+                        className={`text-xs px-2 py-1 rounded font-medium uppercase transition-colors ${
+                          previewLang === lang ? "bg-yellow-400 text-amber-900" : "text-amber-600 hover:text-amber-900"
+                        }`}
+                      >
+                        {lang}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col gap-3">

@@ -95,6 +95,28 @@ module.exports = function (eleventyConfig) {
     return d.toUTCString();
   });
 
+  // "13 Apr 2026, at 08:30" — compact date+time for card meta.
+  // If the time component is midnight (00:00) the article predates timed publishing,
+  // so we omit the time to avoid showing a confusing "at 00:00".
+  eleventyConfig.addFilter("dateTimeShort", (date) => {
+    const d = date instanceof Date ? date : new Date(date);
+    const dateStr = d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    const h = d.getUTCHours(), m = d.getUTCMinutes();
+    if (h === 0 && m === 0) return dateStr;
+    const time = String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0");
+    return `${dateStr}, at ${time}`;
+  });
+
+  // "13 April 2026, at 08:30" — long-form date+time for the article detail page.
+  eleventyConfig.addFilter("dateTimeDisplay", (date) => {
+    const d = date instanceof Date ? date : new Date(date);
+    const dateStr = d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+    const h = d.getUTCHours(), m = d.getUTCMinutes();
+    if (h === 0 && m === 0) return dateStr;
+    const time = String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0");
+    return `${dateStr}, at ${time}`;
+  });
+
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
       return new Date(b.date) - new Date(a.date);

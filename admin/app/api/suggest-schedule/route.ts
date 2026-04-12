@@ -1,0 +1,89 @@
+/**
+ * Suggest Schedule
+ *
+ * Assigns staggered publish_date values to all articles with status='scheduled'
+ * that do not yet have a publish_date, chaining after the latest existing
+ * scheduled slot so that articles are spaced evenly.
+ *
+ * POST /api/suggest-schedule
+ *   body: { interval_minutes?: number }   — default 30
+ *   response: { scheduled: N, slots: [{ id, title, publish_date }] }
+ */
+
+import { NextRequest } from "next/server";
+import db from "@/lib/db";
+
+/** Round a Date up to the next multiple of `intervalMinutes`, at least
+ *  `bufferMinutes` in the future, then return it truncated to the minute. */
+function nextSlot(after: Date, intervalMinutes: number, bufferMinutes = 2): Date {
+  const t = new Date(after.getTime() + bufferMinutes * 60 * 1000);
+  const totalMins = t.getHours() * 60 + t.getMinutes();
+  const rounded = Math.ceil(totalMins / intervalMinutes) * intervalMinutes;
+  const result = new Date(t);
+  result.setHours(Math.floor(rounded / 60), rounded % 60, 0, 0);
+  // If rounding pushed past midnight, add a day
+  if (result <= after) result.setDate(result.getDate() + 1);
+  return result;
+}
+
+function toLocalISO(d: Date): string {
+  // "YYYY-MM-DDTHH:MM:SS" in local time — what SQLite and datetime-local both expect
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return (
+    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` +
+    `T${pad(d.getHours())}:${pad(d.getMinutes())}:00`
+  );
+}
+
+export async function POST(request: NextRequest) {
+  const body = await request.json().catch(() => ({}));
+  const intervalMinutes: number = Math.max(5, Number(body.interval_minutes) || 30);
+
+  // Find articles that need a publish_date (status='scheduled', summary present, no publish_date)
+  const unscheduled = await db.execute(`
+    SELECT id, title_en, title_nl
+    FROM articles
+    WHERE status = 'scheduled'
+      AND summary_en IS NOT NULL
+      AND (publish_date IS NULL OR publish_date = '')
+    ORDER BY id ASC
+  `);
+
+  if (unscheduled.rows.length === 0) {
+    return Response.json({ scheduled: 0, slots: [], message: "No unscheduled articles found" });
+  }
+
+  // Find the latest existing publish_date among already-scheduled articles so we chain after it
+  const latestResult = await db.execute(`
+    SELECT MAX(publish_date) as latest
+    FROM articles
+    WHERE status = 'scheduled'
+      AND publish_date IS NOT NULL
+      AND publish_date != ''
+  `);
+  const latestRaw = latestResult.rows[0]?.latest as string | null;
+  const latestExisting = latestRaw ? new Date(latestRaw) : null;
+
+  // Starting point: chain after the last existing slot, or start from now
+  const now = new Date();
+  const startAfter = latestExisting && latestExisting > now ? latestExisting : now;
+  let cursor = nextSlot(startAfter, intervalMinutes);
+
+  const slots: Array<{ id: number; title: string; publish_date: string }> = [];
+
+  for (const row of unscheduled.rows) {
+    const id = Number(row.id);
+    const title = String(row.title_en ?? row.title_nl ?? id);
+    const dateStr = toLocalISO(cursor);
+
+    await db.execute({
+      sql: "UPDATE articles SET publish_date = ? WHERE id = ?",
+      args: [dateStr, id],
+    });
+
+    slots.push({ id, title, publish_date: dateStr });
+    cursor = new Date(cursor.getTime() + intervalMinutes * 60 * 1000);
+  }
+
+  return Response.json({ scheduled: slots.length, slots });
+}
