@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.7.7 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.8.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -277,6 +277,7 @@ The public page shows:
 | `/sources` | Manage RSS sources (add, edit inline, toggle active) |
 | `/tags` | Manage topic tags |
 | `/preview` | Review pending articles, summarise, publish |
+| `/fast-track` | ⚡ Automated pipeline — fetch + filter (threshold 10) + summarise + publish in one click |
 | `/rejections` | Browse rejection log, override or delete entries |
 | `/scheduled` | Scheduled fetch history with inline article editing |
 | `/history` | Published article history with inline editing and re-publish |
@@ -345,6 +346,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.8.0** | Fast Track — one-click pipeline: fetch → filter (threshold 10, maximum strictness) → summarise → publish, with live streaming progress log |
 | **1.7.7** | Fix instagram card generator python3 PATH; split share into "Copy link" and "Copy post" buttons on article pages |
 | **1.7.6** | Instagram card generator — 📸 button on History page downloads a 1080×1080 PNG card per article |
 | **1.7.5** | Make Ollama optional in start.sh/stop.sh; default is without Ollama, use --with-ollama to include it |
