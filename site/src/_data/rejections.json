@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-04-12T07:08:30.048Z",
-  "total_rejected": 1833,
+  "exported_at": "2026-04-12T07:36:38.247Z",
+  "total_rejected": 1848,
   "sources_count": 26,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 406
+      "count": 409
     },
     {
       "category": "other-negative",
-      "count": 329
+      "count": 331
     },
     {
       "category": "crime-violence",
@@ -21,7 +21,7 @@
     },
     {
       "category": "divisive-social",
-      "count": 145
+      "count": 146
     },
     {
       "category": "soft-news-filler",
@@ -29,15 +29,15 @@
     },
     {
       "category": "sports-negative",
-      "count": 101
+      "count": 106
     },
     {
       "category": "economic-doom",
-      "count": 99
+      "count": 100
     },
     {
       "category": "disaster-accident",
-      "count": 84
+      "count": 85
     },
     {
       "category": "tech-ai-concern",
@@ -45,7 +45,7 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 64
+      "count": 66
     },
     {
       "category": "health-scare",
@@ -65,6 +65,126 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "McIlroy can't stop riding Augusta rollercoaster as final Masters round beckons",
+      "reason": "The article focuses on Rory McIlroy's struggles in a competitive context, which is inherently negative as it discusses a loss of a lead rather than a positive outcome or achievement.",
+      "category": "sports-negative",
+      "url": "https://www.bbc.com/sport/golf/articles/czre4kdrk2do?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "BBC Top Stories",
+      "title": "I'm the only medic on the island – but I wish I'd brought some trousers",
+      "reason": "The story focuses on a medic's challenges in a remote location, which may not leave readers feeling uplifted despite the adventurous intent.",
+      "category": "other-negative",
+      "url": "https://www.bbc.com/news/articles/cgld98z7nn9o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Humo",
+      "title": "‘Soms kijkt m’n vriendin naar m’n lul en zegt ze: ‘Die van onze zoon Roman lijkt wel groter’’",
+      "reason": "The snippet presents a potentially inappropriate or uncomfortable scenario that does not evoke a positive or uplifting feeling.",
+      "category": "other-negative",
+      "url": "https://www.humo.be/meningen/herman-brusselmans-soms-kijkt-m-n-vriendin-naar-m-n-lul-en-zegt-ze-die-van-onze-zoon-roman-lijkt-wel-groter~b45a0d1f/",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Humo",
+      "title": "Breaking! Organisatie Parijs-Roubaix verwijdert alle kasseistroken uit parcours",
+      "reason": "The removal of cobblestones from the Paris-Roubaix course is a significant change that may upset traditionalists and could negatively impact the race's character, making it a negative story for cycling enthusiasts.",
+      "category": "sports-negative",
+      "url": "https://www.humo.be/humor/breaking-organisatie-parijs-roubaix-verwijdert-alle-kasseistroken-uit-parcours-en-het-gat-van-de-wereld-weet-waarom~b424c519/",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Marathon de Paris : derrière l’engouement pour la course à pied, un business à plus d’un milliard d’euros",
+      "reason": "The article focuses on the business aspect of running rather than the positive human-interest stories related to the sport, which does not leave readers feeling uplifted.",
+      "category": "economic-doom",
+      "url": "https://www.lefigaro.fr/conso/chaussures-t-shirts-montres-derriere-l-engouement-pour-la-course-a-pied-un-business-a-plus-d-un-milliard-d-euros-20250412",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Marathon de Paris 2026 : «Comment je suis devenu un type insupportable qui pratique la course à pied»",
+      "reason": "The article focuses on a personal transformation that includes mockery of runners, which may not leave readers feeling uplifted. It does not present a clear positive outcome or human-interest story.",
+      "category": "sports-negative",
+      "url": "https://www.lefigaro.fr/actualite-france/marathon-de-paris-2026-comment-je-suis-devenu-un-type-insupportable-qui-pratique-la-course-a-pied-20260411",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Claire Berest : «Quand Frida Kahlo est morte, Diego Rivera a fait enfermer une grande partie de ses affaires dans une salle de bains, qu’il a fait murer»",
+      "reason": "The article discusses a historical relationship that includes themes of confinement and loss, which are not uplifting or positive.",
+      "category": "celebrity-entertainment",
+      "url": "https://madame.lefigaro.fr/style/news/claire-berest-quand-frida-kahlo-est-morte-diego-rivera-a-fait-enfermer-une-grande-partie-de-ses-affaires-dans-une-salle-de-bains-qu-il-a-fait-murer-20260412",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Biopic, spectacles, streaming : le business Michael Jackson échappe aux controverses",
+      "reason": "The article discusses the ongoing controversies surrounding Michael Jackson, which detracts from a positive narrative and focuses on negative aspects of his legacy.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.lefigaro.fr/musique/biopic-spectacles-streaming-le-business-michael-jackson-echappe-aux-controverses-20260412",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Indonésie : deux femmes piétinent un coran et sont arrêtées pour blasphème",
+      "reason": "The story involves the arrest of two women for blasphemy, which is a negative event that does not uplift or inspire positivity.",
+      "category": "divisive-social",
+      "url": "https://www.lefigaro.fr/international/indonesie-deux-femmes-pietinent-un-coran-et-sont-arretees-pour-blaspheme-20260412",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "«Nous rentrons aux États-Unis sans être parvenus à un accord» : ce que l’on sait de l’échec des négociations avec l’Iran",
+      "reason": "The article discusses the failure of negotiations regarding Iran's nuclear program, which is a negative and concerning topic rather than uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/international/nous-rentrons-aux-etats-unis-sans-etre-parvenus-a-un-accord-ce-que-l-on-sait-de-l-echec-des-negociations-entre-les-etats-unis-et-l-iran-20260412",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "KIJK. Trucker dwingt automobilist naar pechstrook op ring rond Kortrijk: “Bijna een zwaar ongeval met kinderen in mijn auto”",
+      "reason": "The story describes a dangerous traffic incident that nearly resulted in a serious accident, which is inherently negative and does not leave readers feeling uplifted.",
+      "category": "disaster-accident",
+      "url": "https://www.hln.be/kortrijk/kijk-trucker-dwingt-automobilist-naar-pechstrook-op-ring-rond-kortrijk-bijna-een-zwaar-ongeval-met-kinderen-in-mijn-auto~adb1054b/",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Van frisse wind naar orkaankracht: een blik op de grote toekomst van het Belgische damestennis",
+      "reason": "The article discusses potential and future competitions but does not provide a clear uplifting story about achievements or positive outcomes for the Belgian tennis team.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/tennis/van-frisse-wind-naar-orkaankracht-een-blik-op-de-grote-toekomst-van-het-belgische-damestennis~a5aa8676/",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Mooi weer in startplaats Compiègne, koersdirecteur Thierry Gouvenou: “Tadej Pogacar start met obsessie om te winnen”",
+      "reason": "The article discusses a competitive sports event with a focus on potential outcomes, which does not clearly convey a positive or uplifting story.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/wielrennen/mooi-weer-in-startplaats-compiegne-koersdirecteur-thierry-gouvenou-tadej-pogacar-start-met-obsessie-om-te-winnen~a20bb691/",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Bouw balzaal Witte Huis mag tijdelijk voortgezet worden",
+      "reason": "The article focuses on developments related to Donald Trump's presidency, which is a political topic that does not provide an uplifting human-interest angle.",
+      "category": "political-conflict",
+      "url": "https://www.hln.be/buitenland/bouw-balzaal-witte-huis-mag-tijdelijk-voortgezet-worden~a79c6d94/",
+      "date": "2026-04-12"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Verkiezingen Hongarije. Viktor Orbán brengt stem uit: ‘Ik ben hier om te winnen’",
+      "reason": "The article focuses on a political event and the actions of a political figure, which does not inherently provide a positive or uplifting story.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/live-verkiezingen-hongarije-viktor-orban-brengt-stem-uit-ik-ben-hier-om-te-winnen~b5230bb6/",
+      "date": "2026-04-12"
+    },
     {
       "source": "Popular Science",
       "title": "How to start metal detecting",
