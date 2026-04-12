@@ -2,7 +2,7 @@
 title: "Look. Encouragements from an 'unexpected' source: NBA legend LeBron James surprises Mathieu van der Poel with motivational video"
 title_nl: "KIJK. Aanmoedigingen uit ‘onverwachte’ hoek: NBA-legende LeBron James verrast Mathieu van der Poel met motivatievideo"
 title_fr: "REGARDEZ. Encouragements d'une source 'inattendue': la légende de la NBA LeBron James surprend Mathieu van der Poel avec une vidéo de motivation"
-date: 2026-04-12T07:11:41
+date: 2026-04-12T07:11:42
 source_pub_date: 2026-04-12
 fetched_date: 2026-04-12
 source_url: "https://www.hln.be/wielrennen/kijk-aanmoedigingen-uit-onverwachte-hoek-nba-legende-lebron-james-verrast-mathieu-van-der-poel-met-motivatievideo~afaa16cd/"
