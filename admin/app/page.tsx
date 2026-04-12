@@ -52,8 +52,11 @@ export default async function DashboardPage() {
         <div className="bg-white rounded-xl p-6 shadow-sm border border-yellow-200">
           <h2 className="font-semibold text-amber-900 mb-3">Quick actions</h2>
           <div className="flex flex-col gap-2">
+            <Link href="/fast-track" className="text-sm font-semibold text-amber-900 hover:text-amber-600 flex items-center gap-1">
+              ⚡ Fast Track — fetch, summarise &amp; publish in one click
+            </Link>
             <Link href="/preview" className="text-sm text-amber-700 hover:text-amber-900">
-              → Fetch &amp; review new articles
+              → Fetch &amp; review new articles manually
             </Link>
             <Link href="/sources" className="text-sm text-amber-700 hover:text-amber-900">
               → Add a new source
