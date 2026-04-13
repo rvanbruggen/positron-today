@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { buildFilterInstructions, DEFAULT_SUMMARISE_STYLE, THRESHOLD_LABELS } from "@/lib/prompts";
 
 type Provider = "anthropic" | "ollama" | "openai";
@@ -29,6 +30,17 @@ const OPENAI_MODELS = [
   { value: "o3",          label: "o3 — reasoning, best quality" },
 ];
 
+const PLATFORM_META: Record<string, { label: string; emoji: string; color: string }> = {
+  bluesky:   { label: "Bluesky",   emoji: "🦋", color: "bg-sky-100 text-sky-700" },
+  x:         { label: "X",         emoji: "✖",  color: "bg-gray-100 text-gray-700" },
+  threads:   { label: "Threads",   emoji: "🧵", color: "bg-gray-100 text-gray-800" },
+  facebook:  { label: "Facebook",  emoji: "👤", color: "bg-blue-100 text-blue-700" },
+  instagram: { label: "Instagram", emoji: "📸", color: "bg-pink-100 text-pink-700" },
+  tiktok:    { label: "TikTok",    emoji: "🎵", color: "bg-gray-100 text-gray-800" },
+  youtube:   { label: "YouTube",   emoji: "▶️", color: "bg-red-100 text-red-700" },
+  linkedin:  { label: "LinkedIn",  emoji: "💼", color: "bg-blue-100 text-blue-800" },
+};
+
 const PROVIDER_LABELS: Record<Provider, string> = {
   anthropic: "Anthropic (cloud)",
   openai:    "OpenAI ChatGPT (cloud)",
@@ -43,6 +55,7 @@ function Badge({ ok }: { ok: boolean | null }) {
 }
 
 export default function SettingsPage() {
+  const router = useRouter();
   const [settings, setSettings]         = useState<LLMSettings | null>(null);
   const [loadError, setLoadError]       = useState<string | null>(null);
   const [saving, setSaving]             = useState(false);
@@ -51,6 +64,35 @@ export default function SettingsPage() {
   const [ollamaModels, setOllamaModels] = useState<string[]>([]);
   const [ollamaError, setOllamaError]   = useState<string | null>(null);
   const [checking, setChecking]         = useState(false);
+
+  // Social accounts state
+  type SocialAccount = { id: string; platform: string; username: string; profile_photo_url: string | null; status: string };
+  const [socialAccounts,  setSocialAccounts]  = useState<SocialAccount[]>([]);
+  const [enabledIds,      setEnabledIds]      = useState<Set<string>>(new Set());
+  const [socialLoading,   setSocialLoading]   = useState(true);
+  const [socialSaving,    setSocialSaving]    = useState(false);
+  const [socialSaveMsg,   setSocialSaveMsg]   = useState<string | null>(null);
+
+  // Backup / restore state
+  const [backingUp,    setBackingUp]    = useState(false);
+  const [restoring,    setRestoring]    = useState(false);
+  const [restoreMsg,   setRestoreMsg]   = useState<string | null>(null);
+  const [restoreOk,    setRestoreOk]    = useState<boolean | null>(null);
+  const restoreInput                    = useRef<HTMLInputElement>(null);
+
+  // Auth state
+  const [loggingOut,   setLoggingOut]   = useState(false);
+
+  useEffect(() => {
+    // Load social accounts and enabled IDs in parallel
+    Promise.all([
+      fetch("/api/social-accounts").then(r => r.json()),
+      fetch("/api/social-accounts/enabled").then(r => r.json()),
+    ]).then(([accountsData, enabledData]) => {
+      setSocialAccounts(accountsData.accounts ?? []);
+      setEnabledIds(new Set(enabledData.enabled ?? []));
+    }).catch(console.error).finally(() => setSocialLoading(false));
+  }, []);
 
   useEffect(() => {
     fetch("/api/llm-settings")
@@ -108,6 +150,94 @@ export default function SettingsPage() {
       setOllamaError(data.error ?? "Unknown error");
     }
   }, [settings]);
+
+  function toggleSocialAccount(id: string) {
+    setEnabledIds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  }
+
+  async function saveSocialAccounts() {
+    setSocialSaving(true);
+    setSocialSaveMsg(null);
+    try {
+      const res = await fetch("/api/social-accounts/enabled", {
+        method:  "PUT",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ enabled: [...enabledIds] }),
+      });
+      if (res.ok) {
+        setSocialSaveMsg("Saved.");
+        setTimeout(() => setSocialSaveMsg(null), 3000);
+      } else {
+        setSocialSaveMsg("Save failed.");
+      }
+    } finally {
+      setSocialSaving(false);
+    }
+  }
+
+  async function downloadBackup() {
+    setBackingUp(true);
+    try {
+      const res = await fetch("/api/backup");
+      if (!res.ok) throw new Error(`Backup failed: ${res.status}`);
+      const blob = await res.blob();
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement("a");
+      a.href     = url;
+      const date = new Date().toISOString().slice(0, 10);
+      a.download = `positron-backup-${date}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Backup failed");
+    } finally {
+      setBackingUp(false);
+    }
+  }
+
+  async function restoreBackup(file: File) {
+    if (!confirm(`⚠ This will REPLACE all current data with the contents of "${file.name}". Continue?`)) return;
+    setRestoring(true);
+    setRestoreMsg(null);
+    setRestoreOk(null);
+    try {
+      const text   = await file.text();
+      const backup = JSON.parse(text);
+      const res    = await fetch("/api/restore", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify(backup),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        const s = data.stats as Record<string, number>;
+        setRestoreOk(true);
+        setRestoreMsg(
+          `Restored successfully from ${data.restored_from?.slice(0, 10) ?? "backup"}: ` +
+          Object.entries(s).map(([k, v]) => `${v} ${k}`).join(", ") + "."
+        );
+      } else {
+        setRestoreOk(false);
+        setRestoreMsg(data.error ?? "Restore failed.");
+      }
+    } catch (err) {
+      setRestoreOk(false);
+      setRestoreMsg(err instanceof Error ? err.message : "Restore failed.");
+    } finally {
+      setRestoring(false);
+      if (restoreInput.current) restoreInput.current.value = "";
+    }
+  }
+
+  async function logout() {
+    setLoggingOut(true);
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+  }
 
   async function save() {
     if (!settings) return;
@@ -389,6 +519,158 @@ export default function SettingsPage() {
             />
           </tbody>
         </table>
+      </div>
+
+      {/* ── Social publishing ── */}
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">Social publishing</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          Choose which connected accounts the 📣 button posts to. Connect new accounts in the{" "}
+          <a href="https://app.postforme.dev" target="_blank" rel="noopener noreferrer"
+            className="underline hover:text-amber-800">Post for Me dashboard ↗</a>.
+        </p>
+        <div className="bg-white border border-yellow-200 rounded-xl p-5">
+          {socialLoading ? (
+            <p className="text-sm text-amber-500">Loading accounts…</p>
+          ) : socialAccounts.length === 0 ? (
+            <p className="text-sm text-amber-500">
+              No accounts found. Connect them in the{" "}
+              <a href="https://app.postforme.dev" target="_blank" rel="noopener noreferrer"
+                className="underline">Post for Me dashboard</a>.
+            </p>
+          ) : (
+            <div className="space-y-2">
+              {socialAccounts.map((acct) => {
+                const meta = PLATFORM_META[acct.platform] ?? { label: acct.platform, emoji: "🌐", color: "bg-gray-100 text-gray-700" };
+                const enabled = enabledIds.has(acct.id);
+                return (
+                  <label key={acct.id}
+                    className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${
+                      enabled ? "border-yellow-300 bg-yellow-50" : "border-yellow-100 hover:bg-amber-50/50"
+                    }`}>
+                    <input
+                      type="checkbox"
+                      checked={enabled}
+                      onChange={() => toggleSocialAccount(acct.id)}
+                      className="accent-amber-600 w-4 h-4 shrink-0"
+                    />
+                    {acct.profile_photo_url ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img src={acct.profile_photo_url} alt="" className="w-8 h-8 rounded-full shrink-0 object-cover" />
+                    ) : (
+                      <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-base shrink-0">
+                        {meta.emoji}
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${meta.color}`}>
+                          {meta.emoji} {meta.label}
+                        </span>
+                        {acct.status !== "connected" && (
+                          <span className="text-xs text-red-500">● {acct.status}</span>
+                        )}
+                        {acct.platform === "instagram" && enabled && (
+                          <span className="text-xs text-pink-500 italic">uses generated card image</span>
+                        )}
+                      </div>
+                      <p className="text-xs text-amber-600 mt-0.5 truncate">@{acct.username}</p>
+                    </div>
+                  </label>
+                );
+              })}
+              <div className="flex items-center gap-4 pt-2">
+                <button
+                  onClick={saveSocialAccounts}
+                  disabled={socialSaving}
+                  className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+                >
+                  {socialSaving ? "Saving…" : "Save"}
+                </button>
+                {socialSaveMsg && <p className="text-sm text-amber-600">{socialSaveMsg}</p>}
+                <p className="text-xs text-amber-400 ml-auto">
+                  {enabledIds.size} of {socialAccounts.length} enabled
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ── Data & Migration ── */}
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">Data &amp; migration</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          Download a full backup of your database or restore from a previous backup.
+          Use this to migrate between local and cloud environments.
+        </p>
+        <div className="bg-white border border-yellow-200 rounded-xl p-5 space-y-5">
+
+          {/* Backup */}
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <div>
+              <p className="text-sm font-medium text-amber-900">Download backup</p>
+              <p className="text-xs text-amber-500 mt-0.5">
+                Exports sources, topics, articles, tags, rejections, and settings as a JSON file.
+              </p>
+            </div>
+            <button
+              onClick={downloadBackup}
+              disabled={backingUp}
+              className="text-sm bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50 whitespace-nowrap"
+            >
+              {backingUp ? "Preparing…" : "⬇ Download backup"}
+            </button>
+          </div>
+
+          <hr className="border-yellow-100" />
+
+          {/* Restore */}
+          <div>
+            <p className="text-sm font-medium text-amber-900 mb-0.5">Restore from backup</p>
+            <p className="text-xs text-amber-500 mb-3">
+              ⚠ Replaces <strong>all</strong> current data. Choose a <code className="font-mono bg-amber-50 px-1 rounded">.json</code> backup file exported from this admin.
+            </p>
+            <div className="flex items-center gap-3 flex-wrap">
+              <input
+                ref={restoreInput}
+                type="file"
+                accept=".json,application/json"
+                disabled={restoring}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) restoreBackup(file);
+                }}
+                className="text-sm text-amber-700 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border file:border-yellow-200 file:text-xs file:font-medium file:text-amber-800 file:bg-amber-50 hover:file:bg-amber-100 file:cursor-pointer disabled:opacity-50"
+              />
+              {restoring && <span className="text-xs text-amber-500">Restoring…</span>}
+            </div>
+            {restoreMsg && (
+              <div className={`mt-3 text-xs rounded-lg px-3 py-2 border ${
+                restoreOk
+                  ? "bg-green-50 border-green-200 text-green-700"
+                  : "bg-red-50 border-red-200 text-red-700"
+              }`}>
+                {restoreMsg}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Account ── */}
+      <div className="mt-8 bg-white border border-yellow-200 rounded-xl p-5 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-0.5">Session</p>
+          <p className="text-xs text-amber-500">Sign out of the admin panel</p>
+        </div>
+        <button
+          onClick={logout}
+          disabled={loggingOut}
+          className="text-sm bg-red-50 hover:bg-red-100 text-red-600 font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50 whitespace-nowrap"
+        >
+          {loggingOut ? "Signing out…" : "Sign out"}
+        </button>
       </div>
     </div>
   );

@@ -105,25 +105,34 @@ async function commitToGitHub(path: string, content: string, message: string) {
 // ─── GET — dry-run ────────────────────────────────────────────────────────────
 
 export async function GET() {
+  // Fetch all scheduled articles with a publish_date and filter in JS
+  // to avoid SQLite treating stored local times as UTC (timezone bug).
   const result = await db.execute(`
     SELECT a.id, a.title_en, a.title_nl, a.publish_date, a.source_url, a.source_name
     FROM articles a
     WHERE a.status = 'scheduled'
       AND a.summary_en IS NOT NULL
       AND a.publish_date IS NOT NULL
-      AND datetime(a.publish_date) <= datetime('now')
     ORDER BY a.publish_date ASC
   `);
 
+  const now = new Date();
+  const due = result.rows.filter((r) => {
+    const pd = String(r.publish_date);
+    // Stored as local ISO (YYYY-MM-DDTHH:MM:SS) — parse as local time
+    const publishAt = new Date(pd.includes("T") ? pd : pd.replace(" ", "T"));
+    return publishAt <= now;
+  });
+
   return Response.json({
-    due: result.rows.length,
-    articles: result.rows.map((r) => ({
+    due: due.length,
+    articles: due.map((r) => ({
       id: r.id,
       title: r.title_en ?? r.title_nl,
       publish_date: r.publish_date,
       source_name: r.source_name,
     })),
-    now: new Date().toISOString(),
+    now: now.toISOString(),
   });
 }
 
@@ -137,19 +146,25 @@ export async function POST() {
     );
   }
 
-  // Find all scheduled articles whose publish_date has arrived
-  const dueResult = await db.execute(`
+  // Find all scheduled articles with a publish_date, then filter in JS
+  // to avoid SQLite treating stored local times as UTC (timezone bug).
+  const allScheduled = await db.execute(`
     SELECT a.*, r.source_pub_date, r.fetched_at
     FROM articles a
     LEFT JOIN raw_articles r ON a.raw_article_id = r.id
     WHERE a.status = 'scheduled'
       AND a.summary_en IS NOT NULL
       AND a.publish_date IS NOT NULL
-      AND datetime(a.publish_date) <= datetime('now')
     ORDER BY a.publish_date ASC
   `);
 
-  const due = dueResult.rows;
+  const now = new Date();
+  const due = allScheduled.rows.filter((r) => {
+    const pd = String(r.publish_date);
+    // Stored as local ISO (YYYY-MM-DDTHH:MM:SS) — parse as local time
+    const publishAt = new Date(pd.includes("T") ? pd : pd.replace(" ", "T"));
+    return publishAt <= now;
+  });
 
   if (due.length === 0) {
     return Response.json({ published: 0, message: "No articles due for publishing" });

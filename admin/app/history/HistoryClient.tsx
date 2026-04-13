@@ -76,6 +76,9 @@ export default function HistoryClient({
   const [generatingCard, setGeneratingCard]   = useState<Set<number>>(new Set());
   const [postingBluesky, setPostingBluesky]   = useState<Set<number>>(new Set());
   const [postedBluesky,  setPostedBluesky]    = useState<Set<number>>(new Set());
+  const [twitterOpened,  setTwitterOpened]    = useState<Set<number>>(new Set());
+  const [postingSocial,  setPostingSocial]    = useState<Set<number>>(new Set());
+  const [postedSocial,   setPostedSocial]     = useState<Set<number>>(new Set());
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
@@ -206,6 +209,11 @@ export default function HistoryClient({
   }
 
   function openTwitterIntent(a: Article) {
+    // Prevent double-firing (double-click, etc.)
+    if (twitterOpened.has(a.id)) return;
+    setTwitterOpened((prev) => new Set(prev).add(a.id));
+    setTimeout(() => setTwitterOpened((prev) => { const s = new Set(prev); s.delete(a.id); return s; }), 4000);
+
     const SITE_BASE = "https://positron.today";
     const slug = a.published_path
       ? a.published_path.split("/").pop()?.replace(/\.md$/, "")
@@ -228,6 +236,26 @@ export default function HistoryClient({
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
       "_blank"
     );
+  }
+
+  async function postToAllSocials(a: Article) {
+    setPostingSocial((prev) => new Set(prev).add(a.id));
+    setError(null);
+    try {
+      const res  = await fetch("/api/post-social", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ id: a.id }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError(data.error ?? `Social post failed: ${res.status}`); return; }
+      setPostedSocial((prev) => new Set(prev).add(a.id));
+      setTimeout(() => setPostedSocial((prev) => { const s = new Set(prev); s.delete(a.id); return s; }), 4000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unexpected error");
+    } finally {
+      setPostingSocial((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
+    }
   }
 
   async function postToBluesky(a: Article) {
@@ -388,21 +416,13 @@ export default function HistoryClient({
                           {generatingCard.has(a.id) ? "⏳" : "📸"}
                         </button>
 
-                        {/* Bluesky */}
+                        {/* Post to all socials via Post for Me */}
                         <button
-                          onClick={() => postToBluesky(a)}
-                          disabled={postingBluesky.has(a.id) || postedBluesky.has(a.id)}
-                          title="Post to Bluesky"
-                          className="w-7 h-7 flex items-center justify-center rounded bg-sky-100 hover:bg-sky-200 text-sky-700 transition-colors disabled:opacity-40 text-sm">
-                          {postedBluesky.has(a.id) ? "✓" : postingBluesky.has(a.id) ? "⏳" : "🦋"}
-                        </button>
-
-                        {/* X / Twitter — opens pre-filled compose window */}
-                        <button
-                          onClick={() => openTwitterIntent(a)}
-                          title="Post to X / Twitter"
-                          className="w-7 h-7 flex items-center justify-center rounded bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors text-sm font-bold">
-                          𝕏
+                          onClick={() => postToAllSocials(a)}
+                          disabled={postingSocial.has(a.id) || postedSocial.has(a.id)}
+                          title={`Post to Bluesky, X, Threads, Facebook${a.image_url ? " & Instagram" : ""}`}
+                          className="w-7 h-7 flex items-center justify-center rounded bg-violet-100 hover:bg-violet-200 text-violet-700 transition-colors disabled:opacity-40 text-sm">
+                          {postedSocial.has(a.id) ? "✓" : postingSocial.has(a.id) ? "⏳" : "📣"}
                         </button>
 
                         {/* Edit */}
