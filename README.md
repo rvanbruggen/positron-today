@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.8.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.9.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -346,6 +346,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.9.0** | Admin authentication (login page + session cookie middleware); database backup/restore; unified social publishing via Post for Me (Bluesky, X, Threads, Facebook, Instagram with auto-generated card); social account settings UI; scheduling timezone fix; Twitter double-post fix |
 | **1.8.0** | Fast Track — one-click pipeline: fetch → filter (threshold 10, maximum strictness) → summarise → publish, with live streaming progress log |
 | **1.7.7** | Fix instagram card generator python3 PATH; split share into "Copy link" and "Copy post" buttons on article pages |
 | **1.7.6** | Instagram card generator — 📸 button on History page downloads a 1080×1080 PNG card per article |
