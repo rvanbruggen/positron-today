@@ -184,7 +184,24 @@ cd site && npm run dev           # http://localhost:8080/
 
 ## Article Pipeline
 
-### Step 1 — Manage sources
+There are two ways to run the pipeline: **manual** (step by step) or **Fast Track** (one click).
+
+---
+
+### ⚡ Fast Track (recommended)
+
+Go to **Admin → Fast Track** and choose a mode:
+
+- **Publish now** — runs the full pipeline immediately: fetch all sources → filter at maximum strictness (threshold 10) → summarise each passing article → commit to GitHub. Live progress streams to the browser as each article is processed.
+- **Schedule → every N min** — same pipeline, but instead of publishing immediately, assigns staggered `publish_date` values to each article (one every N minutes, default 30), queuing them for the scheduled publisher to release automatically.
+
+Fast Track is designed for daily use. One click processes everything from RSS to live site.
+
+---
+
+### Manual pipeline
+
+#### Step 1 — Manage sources
 
 Go to **Admin → Sources** and add RSS feeds. Each source has:
 - **Name** — display name
@@ -192,7 +209,7 @@ Go to **Admin → Sources** and add RSS feeds. Each source has:
 - **Feed URL** — RSS/Atom feed URL (required for auto-fetching)
 - **Active** toggle
 
-### Step 2 — Configure AI providers (optional)
+#### Step 2 — Configure AI providers (optional)
 
 Go to **Admin → Settings** to choose which AI provider and model to use for each task. The defaults are Anthropic Haiku (filter) and Anthropic Sonnet (summarise). Changes take effect immediately without a restart.
 
@@ -200,10 +217,10 @@ Additional settings available in the Settings page:
 
 - **Filter threshold** (1–10 slider) — controls how strict the positivity filter is. 1–2 = very lenient (almost everything passes), 5 = balanced (default), 8–10 = very strict. A live prompt preview updates as you drag the slider.
 - **Custom filter prompt** — override the auto-generated filter instructions entirely with your own prompt.
-- **Summarisation style/voice** — override the default summarisation style with custom instructions (e.g. a specific tone, language register, or focus area).
-- **Ollama base URL** — change the Ollama server endpoint (default: `http://localhost:11434`). Useful if Ollama runs on a different machine.
+- **Summarisation style/voice** — override the default summarisation style with custom instructions.
+- **Ollama base URL** — change the Ollama server endpoint (default: `http://localhost:11434`).
 
-### Step 3 — Fetch new articles
+#### Step 3 — Fetch new articles
 
 Click **Fetch New Articles** on the Preview page. The admin:
 
@@ -218,22 +235,38 @@ Click **Fetch New Articles** on the Preview page. The admin:
 
 Progress is streamed to the browser as newline-delimited JSON (NDJSON) so you see a live log as articles are processed.
 
-### Step 3b — Manual URL submission (optional)
+#### Step 3b — Manual URL submission (optional)
 
 You can also submit individual article URLs manually from the **Admin → Preview** page. The admin fetches the URL, runs it through the positivity filter, and adds it to the queue if it passes — without needing an RSS feed.
 
-### Step 4 — Review and summarise
+#### Step 4 — Review and summarise
 
 Go to **Admin → Preview**. For each pending article you can:
 - **Summarise** — the configured summarisation model reads the full article URL, writes a 4-5 sentence summary in English, Dutch, and French, suggests topic tags, adds an emoji, and captures the article's `og:image` thumbnail
 - **Edit** — tweak the title, summary, emoji, or tags before publishing
 - **Discard** — remove from the queue
 
-### Step 5 — Publish
+#### Step 5 — Publish
 
 Click **Publish** on any reviewed article. The admin commits a Markdown file to `site/src/posts/YYYY-MM-DD-slug.md` via the GitHub Contents API. GitHub Actions then rebuilds and deploys the Eleventy site to GitHub Pages within ~1 minute.
 
 Re-publishing an already-published article (after editing) always overwrites the same file — no duplicates are created.
+
+---
+
+### Scheduled publishing
+
+Articles assigned a `publish_date` (via Fast Track schedule mode or the Scheduled page) are held in a queue and published automatically when their time arrives.
+
+**How it works:**
+
+- A macOS launchd agent (`~/Library/LaunchAgents/today.positron.publish-scheduled.plist`) calls `POST /api/publish-scheduled` every 5 minutes
+- The endpoint finds all scheduled articles whose `publish_date ≤ now` (compared in local time) and commits them to GitHub
+- On Vercel, use [cron-job.org](https://cron-job.org) (free) to call `POST /api/publish-scheduled` on the same schedule
+
+**Managing the queue:**
+
+Go to **Admin → Scheduled** to see queued articles, edit their publish times, trigger immediate publish, or remove them from the queue. The **Suggest schedule** button auto-assigns evenly spaced times starting from the next available slot.
 
 ---
 
@@ -252,6 +285,65 @@ The public page shows:
 - Number of sources scanned
 - Each rejected article's title, source, date, and the AI's one-line rejection reason
 - Full EN / NL / FR language support
+
+---
+
+## Social Publishing
+
+From **Admin → History**, the 📣 button posts a published article to all enabled social platforms in one click via [Post for Me](https://www.postforme.dev/).
+
+**Platforms supported:** Bluesky, X (Twitter), Threads, Facebook, Instagram
+
+**How it works:**
+
+1. Generates a branded 1080×1080 PNG card for the article (same image as the 📸 download button)
+2. Uploads the card to Post for Me's media hosting
+3. Posts **text + URL** to Bluesky, X, Threads, and Facebook
+4. Posts the **card image + caption** to Instagram
+5. Caption is capped to fit both X's 280-char limit (URLs via t.co = 23 chars) and Bluesky's 300-char limit (full URL length)
+
+**Configuration:**
+
+Go to **Admin → Settings → Social publishing** to toggle which accounts the 📣 button posts to. The list is fetched live from Post for Me — any account connected in the Post for Me dashboard appears here immediately. Changes take effect without a restart.
+
+To add a new platform, connect it via OAuth in the [Post for Me dashboard](https://app.postforme.dev), then enable it in Settings.
+
+**Required environment variables:**
+
+```env
+POSTFORME_API_KEY=pfm_live_...
+```
+
+Account IDs (`POSTFORME_ACCOUNT_*`) are no longer needed in `.env.local` — they are managed through the Settings UI and stored in the database.
+
+---
+
+## Admin Authentication
+
+The admin panel is protected by a session cookie. Set `ADMIN_SECRET` in `.env.local` to enable authentication. The login page at `/login` prompts for the secret; on success a signed `httpOnly` cookie is set for 30 days.
+
+If `ADMIN_SECRET` is not set, authentication is disabled (useful for local development).
+
+```env
+ADMIN_SECRET=your-long-random-secret
+```
+
+Generate a strong secret with: `openssl rand -hex 24`
+
+---
+
+## Backup and Restore
+
+Go to **Admin → Settings → Data & migration** to:
+
+- **Download backup** — exports all database tables (sources, topics, articles, tags, rejections, settings) as a dated JSON file
+- **Restore from backup** — upload a backup JSON to wipe and repopulate the database
+
+This is the migration path between environments (e.g. local SQLite → Turso cloud):
+
+1. Download backup from local admin
+2. Point `DATABASE_URL` at the new database and restart
+3. Upload the backup in the new environment's admin
 
 ---
 
@@ -276,12 +368,12 @@ The public page shows:
 | `/` | Dashboard — quick stats |
 | `/sources` | Manage RSS sources (add, edit inline, toggle active) |
 | `/tags` | Manage topic tags |
-| `/preview` | Review pending articles, summarise, publish |
-| `/fast-track` | ⚡ Automated pipeline — fetch + filter (threshold 10) + summarise + publish in one click |
+| `/fast-track` | ⚡ One-click pipeline: fetch → filter → summarise → publish now or schedule |
+| `/preview` | Review pending articles, summarise, edit, publish |
+| `/scheduled` | Scheduled publish queue — set publish times, suggest schedule, publish on demand |
+| `/history` | Published article history — edit, re-publish, generate Instagram card, post to socials |
 | `/rejections` | Browse rejection log, override or delete entries |
-| `/scheduled` | Scheduled fetch history with inline article editing |
-| `/history` | Published article history with inline editing and re-publish |
-| `/settings` | Configure LLM providers and models per task |
+| `/settings` | LLM providers, social publishing accounts, backup/restore, sign out |
 
 ---
 
@@ -337,8 +429,12 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 | `GITHUB_TOKEN` | Yes | PAT with `repo` scope for committing to the site |
 | `GITHUB_REPO` | Yes | `owner/repo` format |
 | `GITHUB_BRANCH` | No | Target branch (default: `main`) |
+| `ADMIN_SECRET` | Recommended | Password for the admin login page. If unset, auth is disabled. Generate with `openssl rand -hex 24` |
+| `POSTFORME_API_KEY` | If using social publishing | API key from [postforme.dev](https://www.postforme.dev/) |
+| `BLUESKY_HANDLE` | If using direct Bluesky | Handle for the legacy direct Bluesky posting route |
+| `BLUESKY_APP_PASSWORD` | If using direct Bluesky | App password for the legacy direct Bluesky posting route |
 
-> **Note:** If you use Ollama for both tasks, neither `ANTHROPIC_API_KEY` nor `OPENAI_API_KEY` is needed.
+> **Note:** If you use Ollama for both tasks, neither `ANTHROPIC_API_KEY` nor `OPENAI_API_KEY` is needed. Social account IDs for Post for Me are managed through the Settings UI and stored in the database — no env vars needed.
 
 ---
 
