@@ -66,7 +66,14 @@ function buildCaption(article: Record<string, unknown>): string {
 
   const prefix = `${emoji} ${title}\n\n`;
   const suffix = `\n\n${url}`;
-  const budget = 280 - 23 - 2 - prefix.length;
+
+  // X shortens URLs to 23 chars via t.co (280 char limit).
+  // Bluesky counts the full URL length (300 char limit).
+  // Use the most restrictive budget so the URL is never truncated on any platform.
+  const xBudget       = 280 - 23          - 2 - prefix.length; // 23 = t.co, 2 = \n\n
+  const blueskyBudget = 300 - url.length  - 2 - prefix.length; // full URL, 2 = \n\n
+  const budget = Math.max(0, Math.min(xBudget, blueskyBudget));
+
   const snippet = budget > 0
     ? summary.length > budget ? summary.slice(0, budget - 1) + "…" : summary
     : "";
