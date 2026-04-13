@@ -102,9 +102,20 @@ async function commitToGitHub(path: string, content: string, message: string) {
   if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
 }
 
+// ─── Auth helper ─────────────────────────────────────────────────────────────
+
+function isAuthorized(request: Request): boolean {
+  const secret = process.env.ADMIN_SECRET;
+  if (!secret) return true; // no secret configured — allow (local dev)
+  return request.headers.get("x-publish-secret") === secret;
+}
+
 // ─── GET — dry-run ────────────────────────────────────────────────────────────
 
-export async function GET() {
+export async function GET(request: Request) {
+  if (!isAuthorized(request)) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
   // Fetch all scheduled articles with a publish_date and filter in JS
   // to avoid SQLite treating stored local times as UTC (timezone bug).
   const result = await db.execute(`
@@ -138,7 +149,11 @@ export async function GET() {
 
 // ─── POST — publish all due ───────────────────────────────────────────────────
 
-export async function POST() {
+export async function POST(request: Request) {
+  if (!isAuthorized(request)) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   if (!GITHUB_TOKEN || !GITHUB_REPO) {
     return Response.json(
       { error: "GITHUB_TOKEN and GITHUB_REPO must be set in .env.local" },

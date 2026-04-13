@@ -28,8 +28,12 @@ async function makeToken(secret: string): Promise<string> {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Always allow the login page and auth API through
-  if (pathname.startsWith("/login") || pathname.startsWith("/api/auth")) {
+  // Always allow the login page, auth API, and machine-to-machine endpoints through
+  if (
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/api/auth") ||
+    pathname.startsWith("/api/publish-scheduled")
+  ) {
     return NextResponse.next();
   }
 
