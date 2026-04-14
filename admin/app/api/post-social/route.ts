@@ -54,6 +54,28 @@ function pfmHeaders() {
   return { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" };
 }
 
+/**
+ * Twitter's weighted character count treats most emoji as 2 chars even though
+ * JS .length returns 1 for BMP emoji (e.g. ✨). Post for Me also enforces a
+ * raw character limit before Twitter applies t.co shortening, so we must
+ * budget against the actual URL length, not the 23-char t.co estimate.
+ * We add a 5-char safety buffer on top for any other Unicode width surprises.
+ */
+function twitterLen(s: string): number {
+  // Count each non-BMP character (surrogate pair in JS) as 2, same as Twitter.
+  // BMP emoji (single code unit, length=1) are also counted as 2 by Twitter —
+  // detect them via the emoji regex.
+  let count = 0;
+  for (const char of s) {
+    const cp = char.codePointAt(0) ?? 0;
+    // Emoji: Twitter counts as 2. Surrogate pairs (non-BMP) already iterate as
+    // one character via for..of, so codePointAt > 0xFFFF means non-BMP.
+    const isEmoji = cp > 0x2100 && cp <= 0x1FAFF; // broad emoji block range
+    count += (cp > 0xFFFF || isEmoji) ? 2 : 1;
+  }
+  return count;
+}
+
 function buildCaption(article: Record<string, unknown>): string {
   const emoji   = String(article.article_emoji ?? "✨");
   const title   = String(article.title_en ?? article.title_nl ?? "");
@@ -67,11 +89,12 @@ function buildCaption(article: Record<string, unknown>): string {
   const prefix = `${emoji} ${title}\n\n`;
   const suffix = `\n\n${url}`;
 
-  // X shortens URLs to 23 chars via t.co (280 char limit).
-  // Bluesky counts the full URL length (300 char limit).
-  // Use the most restrictive budget so the URL is never truncated on any platform.
-  const xBudget       = 280 - 23          - 2 - prefix.length; // 23 = t.co, 2 = \n\n
-  const blueskyBudget = 300 - url.length  - 2 - prefix.length; // full URL, 2 = \n\n
+  // Budget against actual URL length (not t.co's 23) because Post for Me
+  // enforces a raw character limit. Use twitterLen for the prefix to account
+  // for emoji being counted as 2 chars. Safety buffer of 5 chars.
+  const SAFETY = 5;
+  const xBudget       = 280 - url.length       - 2 - twitterLen(prefix) - SAFETY;
+  const blueskyBudget = 300 - url.length        - 2 - prefix.length;
   const budget = Math.max(0, Math.min(xBudget, blueskyBudget));
 
   const snippet = budget > 0
@@ -105,6 +128,16 @@ async function uploadCardToPostForMe(png: Buffer): Promise<string> {
   }
 
   return media_url as string;
+}
+
+/** Returns true if the URL responds with 2xx, false otherwise (including 404). */
+async function isUrlLive(url: string): Promise<boolean> {
+  try {
+    const res = await fetch(url, { method: "HEAD", redirect: "follow" });
+    return res.ok;
+  } catch {
+    return false;
+  }
 }
 
 async function postToPlatforms(
@@ -153,7 +186,18 @@ export async function POST(request: Request) {
   const instagramAccounts = enabledAccounts.filter((a) => a.platform === "instagram");
   const textAccounts      = enabledAccounts.filter((a) => a.platform !== "instagram");
 
-  const caption  = buildCaption(article as Record<string, unknown>);
+  // Check whether the article's live URL is reachable before posting.
+  // GitHub Pages takes 2–3 minutes to rebuild after a publish commit, so posting
+  // immediately after publishing will produce a 404 link in the social post.
+  const caption = buildCaption(article as Record<string, unknown>);
+  const slug = article.published_path
+    ? String(article.published_path).split("/").pop()?.replace(/\.md$/, "")
+    : null;
+  const articleUrl = slug ? `${SITE_BASE}/posts/${slug}/` : null;
+  const urlWarning = articleUrl && !(await isUrlLive(articleUrl))
+    ? `Article URL is not yet live (GitHub Pages is still rebuilding). The link in the post will return a 404 until the site rebuilds (~2–3 min). URL: ${articleUrl}`
+    : undefined;
+
   const title    = String(article.title_en ?? article.title_nl ?? "");
   const emoji    = String(article.article_emoji ?? "✨");
   const source   = String(article.source_name ?? "");
@@ -217,5 +261,6 @@ export async function POST(request: Request) {
     platforms:     enabledAccounts.map((a) => a.platform),
     card_uploaded: !!cardMediaUrl,
     errors:        errors.length > 0 ? errors : undefined,
+    warning:       urlWarning,
   }, { status: anySuccess ? 200 : 500 });
 }

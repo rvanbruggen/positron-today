@@ -252,6 +252,7 @@ export default function HistoryClient({
       });
       const data = await res.json();
       if (!res.ok) { setError(data.error ?? `Social post failed: ${res.status}`); return; }
+      if (data.warning) setError(`Posted, but: ${data.warning}`);
       setPostedSocial((prev) => new Set(prev).add(a.id));
       setArticles((prev) => prev.map((x) =>
         x.id === a.id ? { ...x, social_posted_at: new Date().toISOString() } : x
