@@ -34,12 +34,14 @@ export async function exportRejections(): Promise<{ exported: number }> {
     throw new Error("GITHUB_TOKEN and GITHUB_REPO must be set");
   }
 
+  // Cap at 1,000 most recent articles for the browsable list.
+  // Stats (total count, category breakdown) are always computed across the full dataset.
   const [articles, stats] = await Promise.all([
     db.execute(`
       SELECT source_name, url, title, rejection_reason, rejection_category, fetched_at
       FROM rejected_articles
-      WHERE fetched_at >= date('now', '-90 days')
       ORDER BY fetched_at DESC
+      LIMIT 1000
     `),
     db.execute(`
       SELECT

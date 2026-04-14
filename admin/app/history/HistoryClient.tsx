@@ -22,6 +22,7 @@ type Article = {
   published_path: string | null;
   source_pub_date: string | null;
   image_url: string | null;
+  social_posted_at: string | null;
 };
 
 const SITE_BASE = "https://positron.today";
@@ -78,7 +79,9 @@ export default function HistoryClient({
   const [postedBluesky,  setPostedBluesky]    = useState<Set<number>>(new Set());
   const [twitterOpened,  setTwitterOpened]    = useState<Set<number>>(new Set());
   const [postingSocial,  setPostingSocial]    = useState<Set<number>>(new Set());
-  const [postedSocial,   setPostedSocial]     = useState<Set<number>>(new Set());
+  const [postedSocial,   setPostedSocial]     = useState<Set<number>>(
+    () => new Set(initialArticles.filter((a) => a.social_posted_at).map((a) => a.id))
+  );
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
@@ -250,7 +253,9 @@ export default function HistoryClient({
       const data = await res.json();
       if (!res.ok) { setError(data.error ?? `Social post failed: ${res.status}`); return; }
       setPostedSocial((prev) => new Set(prev).add(a.id));
-      setTimeout(() => setPostedSocial((prev) => { const s = new Set(prev); s.delete(a.id); return s; }), 4000);
+      setArticles((prev) => prev.map((x) =>
+        x.id === a.id ? { ...x, social_posted_at: new Date().toISOString() } : x
+      ));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unexpected error");
     } finally {
@@ -418,10 +423,18 @@ export default function HistoryClient({
 
                         {/* Post to all socials via Post for Me */}
                         <button
-                          onClick={() => postToAllSocials(a)}
+                          onClick={() => !postedSocial.has(a.id) && postToAllSocials(a)}
                           disabled={postingSocial.has(a.id) || postedSocial.has(a.id)}
-                          title={`Post to Bluesky, X, Threads, Facebook${a.image_url ? " & Instagram" : ""}`}
-                          className="w-7 h-7 flex items-center justify-center rounded bg-violet-100 hover:bg-violet-200 text-violet-700 transition-colors disabled:opacity-40 text-sm">
+                          title={
+                            a.social_posted_at
+                              ? `Posted to socials on ${formatDate(a.social_posted_at)}`
+                              : `Post to Bluesky, X, Threads, Facebook${a.image_url ? " & Instagram" : ""}`
+                          }
+                          className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors ${
+                            postedSocial.has(a.id)
+                              ? "bg-violet-200 text-violet-700 cursor-default"
+                              : "bg-violet-100 hover:bg-violet-200 text-violet-700 disabled:opacity-40"
+                          }`}>
                           {postedSocial.has(a.id) ? "✓" : postingSocial.has(a.id) ? "⏳" : "📣"}
                         </button>
 

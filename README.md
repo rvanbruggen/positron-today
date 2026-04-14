@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.9.2 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.9.3 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -442,6 +442,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.9.3** | Negativity page: cap browsable list to 1,000 most recent rejections; add EN/NL/FR section headings; client-side pagination (50/100/250); fix intro paragraph width |
 | **1.9.2** | Secure `/api/publish-scheduled` with `ADMIN_SECRET` header check; launchd agent passes secret via `x-publish-secret` header |
 | **1.9.1** | Fix Bluesky URL truncation: caption budget now accounts for full URL length (300-char Bluesky limit) instead of X's t.co 23-char shortening |
 | **1.9.0** | Admin authentication (login page + session cookie middleware); database backup/restore; unified social publishing via Post for Me (Bluesky, X, Threads, Facebook, Instagram with auto-generated card); social account settings UI; scheduling timezone fix; Twitter double-post fix |

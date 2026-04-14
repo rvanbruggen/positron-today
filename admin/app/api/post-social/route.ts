@@ -203,6 +203,14 @@ export async function POST(request: Request) {
 
   const anySuccess = Object.keys(results).length > 0;
 
+  // Persist posting timestamp so the History UI can show a permanent "posted" state
+  if (anySuccess) {
+    await db.execute({
+      sql:  "UPDATE articles SET social_posted_at = datetime('now') WHERE id = ?",
+      args: [id],
+    });
+  }
+
   return Response.json({
     ok:            anySuccess,
     results,

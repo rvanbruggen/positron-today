@@ -6,7 +6,7 @@ title: The News We Skip
 <style>
   .page-header { margin-bottom: 1.5rem; }
   .page-header h1 { font-size: clamp(1.35rem,5vw,1.75rem); font-weight:700; color:#78350f; margin-bottom:0.5rem; }
-  .page-header p  { font-size:0.9rem; color:#b45309; max-width:640px; line-height:1.6; }
+  .page-header p  { font-size:0.9rem; color:#b45309; line-height:1.6; }
 
   /* ── Summary stats ── */
   .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1rem; margin-bottom:2rem; }
@@ -51,6 +51,35 @@ title: The News We Skip
 
   .empty { color:#b45309; font-size:0.9rem; }
   .updated { font-size:0.75rem; color:#d97706; margin-bottom:1.5rem; }
+
+  /* ── Section headings ── */
+  .section-heading {
+    font-size:0.7rem; font-weight:700; color:#b45309;
+    text-transform:uppercase; letter-spacing:0.08em;
+    margin:2rem 0 0.75rem; padding-bottom:0.4rem;
+    border-bottom:1.5px solid #fde68a;
+  }
+
+  /* ── Pagination controls ── */
+  .pagination-bar {
+    display:flex; align-items:center; gap:0.5rem;
+    flex-wrap:wrap; margin-bottom:1.25rem;
+  }
+  .page-size-label { font-size:0.75rem; color:#b45309; white-space:nowrap; }
+  .page-size-select {
+    padding:0.3rem 0.6rem; border-radius:0.5rem; font-size:0.78rem;
+    border:1.5px solid #fde68a; background:#fff; color:#78350f;
+    font-family:inherit; cursor:pointer;
+  }
+  .page-size-select:focus { outline:none; border-color:#f59e0b; }
+  .page-info { font-size:0.75rem; color:#b45309; margin-left:auto; white-space:nowrap; }
+  .page-btn {
+    padding:0.3rem 0.75rem; border-radius:0.5rem; font-size:0.78rem; font-weight:600;
+    border:1.5px solid #fde68a; background:#fff; color:#78350f;
+    cursor:pointer; transition:background 0.15s;
+  }
+  .page-btn:hover:not(:disabled) { background:#fef3c7; }
+  .page-btn:disabled { opacity:0.35; cursor:default; }
 </style>
 
 {% set catMeta = {
@@ -78,9 +107,9 @@ title: The News We Skip
     <span class="t-fr" style="display:none">Les nouvelles que nous ignorons 🚫</span>
   </h1>
   <p>
-    <span class="t-en">Every time we scan news sources, our AI reads the headline and filters out stories that are negative, anxiety-inducing, or just plain gloomy. This page shows what gets left behind — a transparent illustration of how skewed towards the negative most news coverage tends to be.</span>
-    <span class="t-nl" style="display:none">Elke keer dat we nieuwsbronnen scannen, leest onze AI de kop en filtert verhalen die negatief, angstaanjagend of gewoon somber zijn. Deze pagina toont wat er overblijft — een transparante illustratie van hoe sterk het nieuws naar het negatieve neigt.</span>
-    <span class="t-fr" style="display:none">Chaque fois que nous analysons des sources d'actualité, notre IA lit le titre et filtre les articles négatifs, anxiogènes ou simplement moroses. Cette page montre ce qui reste — une illustration transparente du biais négatif dominant dans les médias.</span>
+    <span class="t-en">Every time we scan news sources, our AI reads the headline and filters out stories that are negative, anxiety-inducing, or just plain gloomy. This page shows what gets left behind — a transparent illustration of how skewed towards the negative most news coverage tends to be. The statistics below cover every article we have ever filtered out. The browsable list at the bottom shows the 1,000 most recent rejections.</span>
+    <span class="t-nl" style="display:none">Elke keer dat we nieuwsbronnen scannen, leest onze AI de kop en filtert verhalen die negatief, angstaanjagend of gewoon somber zijn. Deze pagina toont wat er overblijft — een transparante illustratie van hoe sterk het nieuws naar het negatieve neigt. De statistieken hieronder omvatten elk artikel dat we ooit hebben gefilterd. De doorzoekbare lijst onderaan toont de 1.000 meest recente afwijzingen.</span>
+    <span class="t-fr" style="display:none">Chaque fois que nous analysons des sources d'actualité, notre IA lit le titre et filtre les articles négatifs, anxiogènes ou simplement moroses. Cette page montre ce qui reste — une illustration transparente du biais négatif dominant dans les médias. Les statistiques ci-dessous couvrent chaque article que nous avons jamais filtré. La liste consultable en bas affiche les 1 000 rejets les plus récents.</span>
   </p>
 </div>
 
@@ -100,6 +129,13 @@ title: The News We Skip
     <span class="t-fr" style="display:none">Dernière mise à jour : {{ rejections.exported_at | truncate(10, true, "") }}</span>
   </p>
   {% endif %}
+
+  <!-- Stats heading -->
+  <h2 class="section-heading">
+    <span class="t-en">All-time statistics — {{ rejections.total_rejected }} articles filtered</span>
+    <span class="t-nl" style="display:none">Statistieken over alle tijd — {{ rejections.total_rejected }} artikelen gefilterd</span>
+    <span class="t-fr" style="display:none">Statistiques globales — {{ rejections.total_rejected }} articles filtrés</span>
+  </h2>
 
   <!-- Summary stats -->
   <div class="stat-grid">
@@ -158,6 +194,13 @@ title: The News We Skip
   </div>
   {% endif %}
 
+  <!-- List heading -->
+  <h2 class="section-heading">
+    <span class="t-en">Most recent 1,000 skipped articles</span>
+    <span class="t-nl" style="display:none">Meest recente 1.000 overgeslagen artikelen</span>
+    <span class="t-fr" style="display:none">Les 1 000 articles ignorés les plus récents</span>
+  </h2>
+
   <!-- Category filter pills -->
   {% if rejections.category_breakdown and rejections.category_breakdown.length > 0 %}
   <div class="filter-bar" id="cat-filter-bar">
@@ -181,59 +224,128 @@ title: The News We Skip
   </div>
   {% endif %}
 
-  <!-- Article list -->
-  <div class="rejection-list" id="rejection-list">
-    {% for item in rejections.articles %}
-    {% set meta = catMeta[item.category] if item.category else null %}
-    <div class="rejection-card" data-cat="{{ item.category }}"
-      {% if meta %}style="border-left-color:{{ meta.border }};"{% endif %}>
-      <p class="rejection-title">
-        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer"
-           style="color:inherit;text-decoration:none;">{{ item.title }}</a>
-      </p>
-      <div class="rejection-meta">
-        <span>{{ item.source }}</span>
-        <span>{{ item.date }}</span>
-        {% if meta %}
-        <span class="cat-badge" style="color:{{ meta.border }}; border-color:{{ meta.border }}; background:{{ meta.color }}20;">
-          {{ meta.emoji }}&nbsp;
-          <span class="t-en">{{ meta.label_en }}</span>
-          <span class="t-nl" style="display:none">{{ meta.label_nl }}</span>
-          <span class="t-fr" style="display:none">{{ meta.label_fr }}</span>
-        </span>
-        {% endif %}
-      </div>
-      {% if item.reason %}
-      <p class="rejection-reason">{{ item.reason }}</p>
-      {% else %}
-      <p class="rejection-reason">
-        <span class="t-en">does not fit positive news criteria</span>
-        <span class="t-nl" style="display:none">past niet bij positief nieuws</span>
-        <span class="t-fr" style="display:none">ne correspond pas aux critères de l'actualité positive</span>
-      </p>
-      {% endif %}
-    </div>
-    {% endfor %}
+  <!-- Pagination bar (top) -->
+  <div class="pagination-bar" id="pagination-bar-top">
+    <span class="page-size-label">
+      <span class="t-en">Show</span>
+      <span class="t-nl" style="display:none">Toon</span>
+      <span class="t-fr" style="display:none">Afficher</span>
+    </span>
+    <select class="page-size-select" id="page-size-select" onchange="setPageSize(+this.value)">
+      <option value="50">50</option>
+      <option value="100" selected>100</option>
+      <option value="250">250</option>
+    </select>
+    <button class="page-btn" id="prev-btn-top" onclick="changePage(-1)">&#8592;</button>
+    <button class="page-btn" id="next-btn-top" onclick="changePage(+1)">&#8594;</button>
+    <span class="page-info" id="page-info-top"></span>
+  </div>
+
+  <!-- Article list (JS-rendered) -->
+  <div class="rejection-list" id="rejection-list"></div>
+
+  <!-- Pagination bar (bottom) -->
+  <div class="pagination-bar" id="pagination-bar-bottom" style="margin-top:1.25rem; margin-bottom:0;">
+    <button class="page-btn" id="prev-btn-bottom" onclick="changePage(-1)">&#8592;</button>
+    <button class="page-btn" id="next-btn-bottom" onclick="changePage(+1)">&#8594;</button>
+    <span class="page-info" id="page-info-bottom"></span>
   </div>
 
 {% endif %}
 
 <script>
-  var LANGS = ['en','nl','fr'];
-  var activeCat = 'all';
+  var REJECTIONS = {{ rejections.articles | dump | safe }};
+  var CAT_META   = {{ catMeta | dump | safe }};
 
-  function filterCat(cat, btn) {
-    activeCat = cat;
-    document.querySelectorAll('.cat-pill').forEach(function(b) { b.classList.remove('active'); });
-    if (btn) btn.classList.add('active');
-    document.querySelectorAll('.rejection-card').forEach(function(card) {
-      var cardCat = card.getAttribute('data-cat') || '';
-      card.style.display = (cat === 'all' || cardCat === cat) ? '' : 'none';
+  var activeCat   = 'all';
+  var pageSize    = 100;
+  var currentPage = 1;
+
+  function escHtml(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function getFiltered() {
+    if (activeCat === 'all') return REJECTIONS;
+    return REJECTIONS.filter(function(r) { return r.category === activeCat; });
+  }
+
+  function renderPage() {
+    var filtered   = getFiltered();
+    var total      = filtered.length;
+    var totalPages = Math.max(1, Math.ceil(total / pageSize));
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    var start = (currentPage - 1) * pageSize;
+    var items = filtered.slice(start, start + pageSize);
+
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+
+    var html = items.map(function(item) {
+      var meta = CAT_META[item.category] || null;
+      var borderStyle = meta ? 'border-left-color:' + meta.border + ';' : '';
+
+      var badge = meta
+        ? '<span class="cat-badge" style="color:' + meta.border + ';border-color:' + meta.border + ';background:' + meta.color + '20;">'
+          + meta.emoji + '&nbsp;'
+          + '<span class="t-en"' + (lang!=='en'?' style="display:none"':'') + '>' + meta.label_en + '</span>'
+          + '<span class="t-nl"' + (lang!=='nl'?' style="display:none"':'') + '>' + meta.label_nl + '</span>'
+          + '<span class="t-fr"' + (lang!=='fr'?' style="display:none"':'') + '>' + meta.label_fr + '</span>'
+          + '</span>'
+        : '';
+
+      var fallbackReason = '<span class="t-en"' + (lang!=='en'?' style="display:none"':'') + '>does not fit positive news criteria</span>'
+        + '<span class="t-nl"' + (lang!=='nl'?' style="display:none"':'') + '>past niet bij positief nieuws</span>'
+        + '<span class="t-fr"' + (lang!=='fr'?' style="display:none"':'') + '>ne correspond pas aux critères de l\'actualité positive</span>';
+
+      return '<div class="rejection-card" data-cat="' + escHtml(item.category) + '" style="' + borderStyle + '">'
+        + '<p class="rejection-title"><a href="' + escHtml(item.url) + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">' + escHtml(item.title) + '</a></p>'
+        + '<div class="rejection-meta"><span>' + escHtml(item.source) + '</span><span>' + escHtml(item.date) + '</span>' + badge + '</div>'
+        + '<p class="rejection-reason">' + (item.reason ? escHtml(item.reason) : fallbackReason) + '</p>'
+        + '</div>';
+    }).join('');
+
+    document.getElementById('rejection-list').innerHTML = html;
+
+    // Update both pagination bars
+    var infoText = currentPage + ' / ' + totalPages;
+    var isFirst = currentPage === 1;
+    var isLast  = currentPage === totalPages;
+    ['top','bottom'].forEach(function(side) {
+      var infoEl = document.getElementById('page-info-' + side);
+      var prevEl = document.getElementById('prev-btn-' + side);
+      var nextEl = document.getElementById('next-btn-' + side);
+      if (infoEl) infoEl.textContent = infoText;
+      if (prevEl) prevEl.disabled = isFirst;
+      if (nextEl) nextEl.disabled = isLast;
     });
   }
 
-  // Restore saved language. setLang is defined in base.njk <head>, so it is
-  // already available when this script runs (page content is inside <main>).
+  function changePage(delta) {
+    currentPage += delta;
+    renderPage();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function setPageSize(n) {
+    pageSize    = n;
+    currentPage = 1;
+    renderPage();
+  }
+
+  function filterCat(cat, btn) {
+    activeCat   = cat;
+    currentPage = 1;
+    document.querySelectorAll('.cat-pill').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    renderPage();
+  }
+
+  // Initial render
+  renderPage();
+
+  // Restore saved language
   (function() {
     var lang = localStorage.getItem('positron-today-lang') || 'en';
     if (lang !== 'en') {
@@ -241,5 +353,4 @@ title: The News We Skip
       setLang(lang, btn);
     }
   })();
-
 </script>
