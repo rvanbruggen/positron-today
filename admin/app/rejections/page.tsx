@@ -39,8 +39,20 @@ function CategoryBadge({ slug }: { slug: string | null }) {
   );
 }
 
+type RejectionsResponse = {
+  items: Rejection[];
+  total: number;
+  topSources: { source: string; count: number }[];
+  byCategory: Record<string, number>;
+  uncategorisedCount: number;
+};
+
 export default function RejectionsPage() {
   const [items, setItems] = useState<Rejection[]>([]);
+  const [total, setTotal] = useState(0);
+  const [topSources, setTopSources] = useState<{ source: string; count: number }[]>([]);
+  const [byCat, setByCat] = useState<Record<string, number>>({});
+  const [uncategorisedCount, setUncategorisedCount] = useState(0);
   const [filter, setFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [exporting, setExporting] = useState(false);
@@ -61,7 +73,12 @@ export default function RejectionsPage() {
 
   async function load() {
     const res = await fetch("/api/rejected");
-    setItems(await res.json());
+    const data: RejectionsResponse = await res.json();
+    setItems(data.items);
+    setTotal(data.total);
+    setTopSources(data.topSources);
+    setByCat(data.byCategory);
+    setUncategorisedCount(data.uncategorisedCount);
   }
   useEffect(() => { load(); }, []);
 
@@ -181,15 +198,7 @@ export default function RejectionsPage() {
     setBackfilling(false);
   }
 
-  // Stats
-  const bySrc: Record<string, number> = {};
-  items.forEach(i => { bySrc[i.source_name] = (bySrc[i.source_name] ?? 0) + 1; });
-  const topSources = Object.entries(bySrc).sort((a, b) => b[1] - a[1]).slice(0, 5);
-
-  const byCat: Record<string, number> = {};
-  items.forEach(i => { const k = i.rejection_category ?? "uncategorised"; byCat[k] = (byCat[k] ?? 0) + 1; });
-
-  const uncategorisedCount = items.filter(i => !i.rejection_category).length;
+  // Stats come from the API (full-table COUNTs, not derived from the capped list).
 
   function handleSort(key: SortKey) {
     if (sortKey === key) setSortDir(d => d === "asc" ? "desc" : "asc");
@@ -248,11 +257,11 @@ export default function RejectionsPage() {
       </p>
 
       {/* Stats */}
-      {items.length > 0 && (
+      {total > 0 && (
         <div className="flex gap-4 mb-6 flex-wrap items-start">
           {/* Total */}
           <div className="bg-white rounded-xl p-4 border border-yellow-200 text-center min-w-[110px]">
-            <p className="text-3xl font-bold text-amber-900">{items.length}</p>
+            <p className="text-3xl font-bold text-amber-900">{total}</p>
             <p className="text-xs text-amber-600 mt-0.5">articles rejected</p>
           </div>
 
@@ -260,8 +269,8 @@ export default function RejectionsPage() {
           <div className="bg-white rounded-xl p-4 border border-yellow-200 flex-1 min-w-[200px]">
             <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-3">Top sources</p>
             <div className="flex flex-col gap-1.5">
-              {topSources.map(([src, count]) => {
-                const pct = Math.round((count / items.length) * 100);
+              {topSources.map(({ source: src, count }) => {
+                const pct = total > 0 ? Math.round((count / total) * 100) : 0;
                 return (
                   <div key={src} className="flex items-center gap-2">
                     <span className="text-xs text-amber-800 w-32 truncate shrink-0">{src}</span>
@@ -282,7 +291,7 @@ export default function RejectionsPage() {
               <div className="flex flex-col gap-1.5">
                 {REJECTION_CATEGORIES.filter(c => byCat[c.slug]).map(cat => {
                   const count = byCat[cat.slug] ?? 0;
-                  const pct = Math.round((count / items.length) * 100);
+                  const pct = total > 0 ? Math.round((count / total) * 100) : 0;
                   return (
                     <div key={cat.slug} className="flex items-center gap-2">
                       <span className="text-xs w-36 truncate shrink-0">{cat.emoji} {cat.label}</span>
@@ -369,7 +378,10 @@ export default function RejectionsPage() {
             Clear ✕
           </button>
         )}
-        <span className="text-sm text-amber-500 ml-auto">{shown.length} of {items.length}</span>
+        <span className="text-sm text-amber-500 ml-auto">
+          {shown.length} of {items.length}
+          {total > items.length && <span className="ml-1 text-amber-400">(most recent {items.length} of {total})</span>}
+        </span>
       </div>
 
       {/* Table */}
