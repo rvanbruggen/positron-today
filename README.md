@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.10.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.10.2 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -241,8 +241,9 @@ You can also submit individual article URLs manually from the **Admin → Previe
 
 #### Step 4 — Review and summarise
 
-Go to **Admin → Preview**. For each pending article you can:
+Go to **Admin → Preview** to approve or discard each pending article. Approved articles move to **Admin → Scheduled** as drafts, where you can:
 - **Summarise** — the configured summarisation model reads the full article URL, writes a 4-5 sentence summary in English, Dutch, and French, suggests topic tags, adds an emoji, and captures the article's `og:image` thumbnail
+- **Summarise all** — when there are 2+ drafts, a bulk button iterates every draft sequentially through the same endpoint, so you don't have to click each one
 - **Edit** — tweak the title, summary, emoji, or tags before publishing
 - **Discard** — remove from the queue
 
@@ -370,7 +371,7 @@ This is the migration path between environments (e.g. local SQLite → Turso clo
 | `/tags` | Manage topic tags |
 | `/fast-track` | ⚡ One-click pipeline: fetch → filter → summarise → publish now or schedule |
 | `/preview` | Review pending articles, summarise, edit, publish |
-| `/scheduled` | Scheduled publish queue — set publish times, suggest schedule, publish on demand |
+| `/scheduled` | Drafts awaiting summarisation (single + bulk "Summarise all") and scheduled publish queue — set publish times, suggest schedule, publish on demand |
 | `/history` | Published article history — edit, re-publish, generate Instagram card, post to socials |
 | `/rejections` | Browse rejection log, override or delete entries |
 | `/settings` | LLM providers, social publishing accounts, backup/restore, sign out |
@@ -442,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.10.2** | "Summarise all" bulk action on the Scheduled page — one click iterates every draft sequentially through the existing summarise endpoint, with per-row progress |
 | **1.10.1** | Extend Mono and Mondrian theming to the About, Contact, What-We-Skip (negativity) and Archive pages so pills, cards, stats and pipeline boxes match the selected theme across EN/NL/FR |
 | **1.10.0** | Optional site themes: "Mono" (modern black & white) and "Mondrian" (white bg with bold primary-color borders) selectable via a new "Colours" dropdown in the nav; language selector also converted to a labelled "Language" dropdown; each theme ships its own positron logo variant |
 | **1.9.4** | Fix Twitter URL truncation: budget caption against actual URL length; count emoji as 2 chars (Twitter weighted); add URL liveness check with UI warning |
