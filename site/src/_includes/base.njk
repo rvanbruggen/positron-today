@@ -43,6 +43,7 @@
   <link rel="alternate" type="application/rss+xml" title="Positron Today (English)" href="https://positron.today/feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Positron Today (Nederlands)" href="https://positron.today/feed-nl.xml">
   <link rel="alternate" type="application/rss+xml" title="Positron Today (Français)" href="https://positron.today/feed-fr.xml">
+  <link rel="stylesheet" href="/assets/themes.css">
   <script>
     // Resolve language: URL ?lang= param takes priority, then localStorage, then 'en'.
     // URL param wins so that a shared link always overrides whatever the visitor
@@ -58,7 +59,23 @@
       }
       // Apply immediately so CSS hides the wrong-language spans before first paint.
       document.documentElement.setAttribute('data-lang', lang);
+
+      // Resolve theme: localStorage, default 'classic'. No FOUC — set on <html>
+      // before the body renders so themes.css overrides apply on first paint.
+      var VALID_THEMES = ['classic', 'mono', 'mondrian'];
+      var theme = localStorage.getItem('positron-today-theme') || 'classic';
+      if (VALID_THEMES.indexOf(theme) === -1) theme = 'classic';
+      document.documentElement.setAttribute('data-theme', theme);
     })();
+
+    // Set the active theme. Persists to localStorage. Page content does not
+    // need JS re-rendering: CSS in themes.css keys off html[data-theme="..."].
+    function setTheme(theme) {
+      var VALID_THEMES = ['classic', 'mono', 'mondrian'];
+      if (VALID_THEMES.indexOf(theme) === -1) theme = 'classic';
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('positron-today-theme', theme);
+    }
 
     // Updates the page URL to reflect the active language without a reload.
     // English is the default so it gets no param (cleaner URLs).
@@ -85,8 +102,8 @@
           el.style.display = l === lang ? '' : 'none';
         });
       });
-      document.querySelectorAll('.nav-lang-btn').forEach(function(b) { b.classList.remove('active'); });
-      if (btn) btn.classList.add('active');
+      // btn arg kept for backwards compat with page-specific overrides
+      // (about, contact, negativity) that call setLang(saved, btn).
       localStorage.setItem('positron-today-lang', lang);
     }
   </script>
@@ -138,17 +155,7 @@
     }
     nav a { color: #78350f; text-decoration: none; font-size: 0.875rem; font-weight: 500; }
     nav a:hover { color: #d97706; }
-    nav .nav-lang { display: flex; align-items: center; gap: 0.25rem; margin-left: auto; }
-    .nav-lang-btn {
-      background: transparent;
-      border: 1.5px solid rgba(120,53,15,0.3);
-      color: #78350f; font-size: 0.72rem; font-weight: 700;
-      padding: 0.2rem 0.55rem; border-radius: 99px; cursor: pointer;
-      transition: background 0.12s, color 0.12s;
-      -webkit-tap-highlight-color: transparent; line-height: 1.4;
-    }
-    .nav-lang-btn:hover:not(.active) { background: rgba(120,53,15,0.1); }
-    .nav-lang-btn.active { background: #78350f; color: #facc15; border-color: #78350f; }
+    nav .nav-lang { display: flex; align-items: center; gap: 0.4rem; margin-left: auto; flex-wrap: wrap; }
 
     /* ── Main content ── */
     main {
@@ -210,14 +217,33 @@
 
   <nav>
     <a href="/" class="brand">
-      <!-- Positron atom icon: three orbitals + nucleus with + -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
+      <!-- Classic: amber atom with + nucleus -->
+      <svg class="brand-logo-classic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
         <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" stroke-width="5"/>
         <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" stroke-width="5" transform="rotate(60 50 50)"/>
         <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" stroke-width="5" transform="rotate(120 50 50)"/>
         <circle cx="50" cy="50" r="13" fill="#f59e0b"/>
         <rect x="43.5" y="47" width="13" height="6" rx="2" fill="white" opacity="0.95"/>
         <rect x="47" y="43.5" width="6" height="13" rx="2" fill="white" opacity="0.95"/>
+      </svg>
+      <!-- Mono: black atom, no plus (clean modern mark) -->
+      <svg class="brand-logo-mono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
+        <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#111" stroke-width="5"/>
+        <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#111" stroke-width="5" transform="rotate(60 50 50)"/>
+        <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#111" stroke-width="5" transform="rotate(120 50 50)"/>
+        <circle cx="50" cy="50" r="10" fill="#111"/>
+      </svg>
+      <!-- Mondrian: positron atom rendered in De Stijl palette.
+           Three orbitals in red / blue / black (primary + neutral), yellow
+           nucleus with a bold black plus — same atomic structure as the
+           classic logo, restyled with thick strokes and primary colors. -->
+      <svg class="brand-logo-mondrian" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
+        <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#e63946" stroke-width="7"/>
+        <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#1d4ed8" stroke-width="7" transform="rotate(60 50 50)"/>
+        <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#111111" stroke-width="7" transform="rotate(120 50 50)"/>
+        <circle cx="50" cy="50" r="15" fill="#facc15" stroke="#111111" stroke-width="5"/>
+        <rect x="42.5" y="46.5" width="15" height="7" fill="#111111"/>
+        <rect x="46.5" y="42.5" width="7" height="15" fill="#111111"/>
       </svg>
       Positron Today
     </a>
@@ -240,9 +266,20 @@
       <a href="/contact/">Contact</a>
     </div>
     <div class="nav-lang">
-      <button class="nav-lang-btn active" onclick="setLang('en',this)">EN</button>
-      <button class="nav-lang-btn" onclick="setLang('nl',this)">NL</button>
-      <button class="nav-lang-btn" onclick="setLang('fr',this)">FR</button>
+      <select class="nav-select" id="nav-lang-select" aria-label="Language"
+              onchange="if(this.value){setLang(this.value);}this.selectedIndex=0;">
+        <option value="" selected>Language</option>
+        <option value="en">English</option>
+        <option value="nl">Nederlands</option>
+        <option value="fr">Français</option>
+      </select>
+      <select class="nav-select" id="nav-theme-select" aria-label="Colours"
+              onchange="if(this.value){setTheme(this.value);}this.selectedIndex=0;">
+        <option value="" selected>Colours</option>
+        <option value="classic">Classic</option>
+        <option value="mono">Mono</option>
+        <option value="mondrian">Mondrian</option>
+      </select>
     </div>
   </nav>
   <main>
@@ -263,12 +300,12 @@
     // Restore saved language on every page load.
     // setLang is already defined in <head> (or overridden by a page-specific
     // script for about/contact), so it is always available here.
+    // Theme is already applied in <head> before first paint; no restore needed.
+    // The dropdowns always show their placeholder label ("Language" / "Colours")
+    // so we deliberately do NOT sync them to the active value.
     (function() {
       var lang = localStorage.getItem('positron-today-lang') || 'en';
-      if (lang !== 'en') {
-        var btn = document.querySelector('.nav-lang-btn[onclick*="' + lang + '"]');
-        setLang(lang, btn);
-      }
+      if (lang !== 'en') setLang(lang);
     })();
   </script>
 </body>

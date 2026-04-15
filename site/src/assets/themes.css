@@ -1,0 +1,374 @@
+/* ============================================================================
+   Positron Today — optional themes
+   ----------------------------------------------------------------------------
+   Classic (default, no data-theme attribute or data-theme="classic") is NOT
+   styled here — it continues to use the inline styles in base.njk and each
+   page template unchanged.
+
+   These overrides only apply when the user picks "mono" or "mondrian" from
+   the theme dropdown, which sets html[data-theme="..."] and persists to
+   localStorage (see base.njk).
+
+   Specificity strategy: we prefix every rule with html[data-theme="..."] so
+   our selectors beat the page-level inline <style> blocks without !important
+   wherever possible. For per-card background utility classes (card-yellow,
+   card-orange, ...) we do use !important because those classes set background
+   on .card directly and we want to collapse them to a single neutral look.
+   ============================================================================ */
+
+
+/* ============================================================================
+   THEME: MONO — modern black & white
+   ============================================================================ */
+
+html[data-theme="mono"] {
+  --mono-bg: #ffffff;
+  --mono-fg: #111111;
+  --mono-muted: #555555;
+  --mono-hairline: #e5e5e5;
+  --mono-hairline-strong: #111111;
+}
+
+html[data-theme="mono"] body {
+  background: var(--mono-bg);
+  color: var(--mono-fg);
+  font-family: ui-sans-serif, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Hide the amber watermark entirely in modern themes */
+html[data-theme="mono"] .page-watermark,
+html[data-theme="mondrian"] .page-watermark { display: none !important; }
+
+/* Show only the matching logo; hide the others */
+html[data-theme="mono"]     .brand-logo-classic,
+html[data-theme="mono"]     .brand-logo-mondrian,
+html[data-theme="mondrian"] .brand-logo-classic,
+html[data-theme="mondrian"] .brand-logo-mono,
+html[data-theme="classic"]  .brand-logo-mono,
+html[data-theme="classic"]  .brand-logo-mondrian,
+html:not([data-theme])      .brand-logo-mono,
+html:not([data-theme])      .brand-logo-mondrian { display: none !important; }
+
+/* Nav */
+html[data-theme="mono"] nav {
+  background: #ffffff;
+  border-bottom: 1px solid var(--mono-hairline-strong);
+}
+html[data-theme="mono"] nav .brand,
+html[data-theme="mono"] nav a { color: var(--mono-fg); font-weight: 600; letter-spacing: 0.01em; }
+html[data-theme="mono"] nav a:hover { color: var(--mono-muted); }
+
+html[data-theme="mono"] .nav-select {
+  background: #ffffff;
+  color: var(--mono-fg);
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+}
+html[data-theme="mono"] .nav-select:focus { outline: 2px solid var(--mono-fg); outline-offset: 1px; }
+
+/* Footer */
+html[data-theme="mono"] footer { color: var(--mono-muted); border-top: 1px solid var(--mono-hairline); }
+
+/* --- index.njk: page header, filter bar, cards --- */
+html[data-theme="mono"] .page-header h1 { color: var(--mono-fg); font-weight: 800; letter-spacing: -0.01em; }
+html[data-theme="mono"] .page-header p  { color: var(--mono-muted); }
+
+html[data-theme="mono"] .tag-picker-btn,
+html[data-theme="mono"] .date-range-select {
+  background: #ffffff;
+  color: var(--mono-fg);
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+  font-weight: 600;
+}
+html[data-theme="mono"] .tag-picker-btn.has-selection,
+html[data-theme="mono"] .date-range-select.has-selection {
+  background: var(--mono-fg);
+  color: #ffffff;
+}
+html[data-theme="mono"] .tag-picker-panel {
+  background: #ffffff;
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 0 var(--mono-fg);
+}
+html[data-theme="mono"] .tag-chip {
+  background: #ffffff !important;
+  color: var(--mono-fg) !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .tag-chip.selected {
+  background: var(--mono-fg) !important;
+  color: #ffffff !important;
+  box-shadow: none;
+}
+html[data-theme="mono"] .filter-clear { color: var(--mono-fg); }
+
+/* Cards — neutralize all card-<color> classes into one flat look */
+html[data-theme="mono"] .card,
+html[data-theme="mono"] .card.card-yellow,
+html[data-theme="mono"] .card.card-orange,
+html[data-theme="mono"] .card.card-rose,
+html[data-theme="mono"] .card.card-purple,
+html[data-theme="mono"] .card.card-blue,
+html[data-theme="mono"] .card.card-cyan,
+html[data-theme="mono"] .card.card-teal,
+html[data-theme="mono"] .card.card-green,
+html[data-theme="mono"] .card.card-lime,
+html[data-theme="mono"] .card.card-pink {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  color: var(--mono-fg) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .card-title   { color: var(--mono-fg); font-weight: 700; }
+html[data-theme="mono"] .card-summary { color: var(--mono-fg); opacity: 0.85; }
+html[data-theme="mono"] .card-tag,
+html[data-theme="mono"] .card-meta    { color: var(--mono-muted); opacity: 1; }
+html[data-theme="mono"] .card-img     { border-radius: 0; filter: grayscale(1) contrast(1.05); }
+@media (hover: hover) {
+  html[data-theme="mono"] .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 0 var(--mono-fg);
+  }
+}
+html[data-theme="mono"] .empty,
+html[data-theme="mono"] .no-match { color: var(--mono-muted); }
+
+/* --- post.njk --- */
+html[data-theme="mono"] .post-back { color: var(--mono-fg); }
+html[data-theme="mono"] .post-back:hover { color: var(--mono-muted); }
+html[data-theme="mono"] .post-header,
+html[data-theme="mono"] .post-body,
+html[data-theme="mono"] .post-hero,
+html[data-theme="mono"] .post-source {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+  color: var(--mono-fg) !important;
+}
+html[data-theme="mono"] .post-title { color: var(--mono-fg); }
+html[data-theme="mono"] .post-meta,
+html[data-theme="mono"] .post-tag,
+html[data-theme="mono"] .post-share-label { color: var(--mono-muted); }
+html[data-theme="mono"] .post-hero img { filter: grayscale(1) contrast(1.05); }
+html[data-theme="mono"] .share-btn-copy {
+  background: #ffffff !important;
+  color: var(--mono-fg) !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+
+/* Generic headings/content on other pages (about, contact, negativity, archive) */
+html[data-theme="mono"] main h1,
+html[data-theme="mono"] main h2,
+html[data-theme="mono"] main h3 { color: var(--mono-fg); }
+html[data-theme="mono"] main    { color: var(--mono-fg); }
+
+
+/* ============================================================================
+   THEME: MONDRIAN — white bg, bold primary borders
+   ============================================================================ */
+
+html[data-theme="mondrian"] {
+  --md-bg: #ffffff;
+  --md-fg: #111111;
+  --md-muted: #555555;
+  --md-red: #e63946;
+  --md-blue: #1d4ed8;
+  --md-yellow: #facc15;
+  --md-black: #111111;
+}
+
+html[data-theme="mondrian"] body {
+  background: var(--md-bg);
+  color: var(--md-fg);
+  font-family: ui-sans-serif, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Nav: white with a bold black bottom border */
+html[data-theme="mondrian"] nav {
+  background: #ffffff;
+  border-bottom: 6px solid var(--md-black);
+}
+html[data-theme="mondrian"] nav .brand,
+html[data-theme="mondrian"] nav a { color: var(--md-black); font-weight: 700; }
+html[data-theme="mondrian"] nav a:hover { color: var(--md-blue); }
+
+html[data-theme="mondrian"] .nav-select {
+  background: #ffffff;
+  color: var(--md-black);
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .nav-select:focus { outline: 3px solid var(--md-blue); outline-offset: 1px; }
+
+/* Footer */
+html[data-theme="mondrian"] footer {
+  color: var(--md-muted);
+  border-top: 6px solid var(--md-black);
+}
+
+/* Page header */
+html[data-theme="mondrian"] .page-header h1 {
+  color: var(--md-black);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+html[data-theme="mondrian"] .page-header p { color: var(--md-muted); }
+
+/* Filter bar */
+html[data-theme="mondrian"] .tag-picker-btn,
+html[data-theme="mondrian"] .date-range-select {
+  background: #ffffff;
+  color: var(--md-black);
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .tag-picker-btn.has-selection { background: var(--md-yellow); }
+html[data-theme="mondrian"] .date-range-select.has-selection { background: var(--md-yellow); }
+
+html[data-theme="mondrian"] .tag-picker-panel {
+  background: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 0 var(--md-black);
+}
+html[data-theme="mondrian"] .tag-chip {
+  background: #ffffff !important;
+  color: var(--md-black) !important;
+  border: 2px solid var(--md-black) !important;
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .tag-chip.selected {
+  background: var(--md-yellow) !important;
+  color: var(--md-black) !important;
+  box-shadow: none;
+}
+html[data-theme="mondrian"] .filter-clear { color: var(--md-red); font-weight: 700; }
+
+/* Cards: white background, thick colored borders — rotate through the Mondrian
+   palette based on the card-<color> class so neighbors differ */
+html[data-theme="mondrian"] .card,
+html[data-theme="mondrian"] .card.card-yellow,
+html[data-theme="mondrian"] .card.card-orange,
+html[data-theme="mondrian"] .card.card-rose,
+html[data-theme="mondrian"] .card.card-purple,
+html[data-theme="mondrian"] .card.card-blue,
+html[data-theme="mondrian"] .card.card-cyan,
+html[data-theme="mondrian"] .card.card-teal,
+html[data-theme="mondrian"] .card.card-green,
+html[data-theme="mondrian"] .card.card-lime,
+html[data-theme="mondrian"] .card.card-pink {
+  background: #ffffff !important;
+  color: var(--md-black) !important;
+  border-radius: 0;
+  border: 5px solid var(--md-black) !important;
+}
+html[data-theme="mondrian"] .card.card-yellow,
+html[data-theme="mondrian"] .card.card-orange,
+html[data-theme="mondrian"] .card.card-lime { border-color: var(--md-yellow) !important; }
+html[data-theme="mondrian"] .card.card-blue,
+html[data-theme="mondrian"] .card.card-cyan,
+html[data-theme="mondrian"] .card.card-teal,
+html[data-theme="mondrian"] .card.card-purple { border-color: var(--md-blue) !important; }
+html[data-theme="mondrian"] .card.card-rose,
+html[data-theme="mondrian"] .card.card-pink,
+html[data-theme="mondrian"] .card.card-green { border-color: var(--md-red) !important; }
+
+html[data-theme="mondrian"] .card-title   { color: var(--md-black); font-weight: 800; }
+html[data-theme="mondrian"] .card-summary { color: var(--md-black); opacity: 0.85; }
+html[data-theme="mondrian"] .card-tag,
+html[data-theme="mondrian"] .card-meta    { color: var(--md-muted); opacity: 1; }
+html[data-theme="mondrian"] .card-img     { border-radius: 0; }
+@media (hover: hover) {
+  html[data-theme="mondrian"] .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0 0 var(--md-black);
+  }
+}
+html[data-theme="mondrian"] .empty,
+html[data-theme="mondrian"] .no-match { color: var(--md-muted); }
+
+/* Post page: white cards with primary borders */
+html[data-theme="mondrian"] .post-back { color: var(--md-blue); font-weight: 700; }
+html[data-theme="mondrian"] .post-back:hover { color: var(--md-red); }
+html[data-theme="mondrian"] .post-header {
+  background: #ffffff !important;
+  border: 5px solid var(--md-red) !important;
+  border-radius: 0;
+  color: var(--md-black) !important;
+}
+html[data-theme="mondrian"] .post-body {
+  background: #ffffff !important;
+  border: 5px solid var(--md-blue) !important;
+  border-radius: 0;
+  color: var(--md-black) !important;
+}
+html[data-theme="mondrian"] .post-hero {
+  border: 5px solid var(--md-black) !important;
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .post-source {
+  background: var(--md-yellow) !important;
+  border: 3px solid var(--md-black) !important;
+  border-radius: 0;
+  color: var(--md-black) !important;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .post-title { color: var(--md-black); font-weight: 900; }
+html[data-theme="mondrian"] .post-meta,
+html[data-theme="mondrian"] .post-tag,
+html[data-theme="mondrian"] .post-share-label { color: var(--md-muted); }
+html[data-theme="mondrian"] .share-btn-copy {
+  background: #ffffff !important;
+  color: var(--md-black) !important;
+  border: 3px solid var(--md-black) !important;
+  border-radius: 0;
+}
+
+/* Generic headings on other pages */
+html[data-theme="mondrian"] main h1,
+html[data-theme="mondrian"] main h2,
+html[data-theme="mondrian"] main h3 { color: var(--md-black); }
+html[data-theme="mondrian"] main    { color: var(--md-black); }
+
+
+/* ============================================================================
+   Shared: theme/language dropdowns (applies to all themes, including classic)
+   ============================================================================ */
+.nav-select {
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 1.6rem 0.25rem 0.6rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.4;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 12px) 50%,
+    calc(100% - 7px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+/* Classic theme dropdown styling — matches the existing amber pill look */
+html:not([data-theme]) .nav-select,
+html[data-theme="classic"] .nav-select {
+  background-color: transparent;
+  border: 1.5px solid rgba(120,53,15,0.3);
+  color: #78350f;
+  border-radius: 99px;
+}
+html:not([data-theme]) .nav-select:hover,
+html[data-theme="classic"] .nav-select:hover { background-color: rgba(120,53,15,0.1); }
