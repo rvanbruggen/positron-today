@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.10.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.10.1 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -442,6 +442,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.10.1** | Extend Mono and Mondrian theming to the About, Contact, What-We-Skip (negativity) and Archive pages so pills, cards, stats and pipeline boxes match the selected theme across EN/NL/FR |
 | **1.10.0** | Optional site themes: "Mono" (modern black & white) and "Mondrian" (white bg with bold primary-color borders) selectable via a new "Colours" dropdown in the nav; language selector also converted to a labelled "Language" dropdown; each theme ships its own positron logo variant |
 | **1.9.4** | Fix Twitter URL truncation: budget caption against actual URL length; count emoji as 2 chars (Twitter weighted); add URL liveness check with UI warning |
 | **1.9.3** | Negativity page: cap browsable list to 1,000 most recent rejections; add EN/NL/FR section headings; client-side pagination (50/100/250); fix intro paragraph width |
