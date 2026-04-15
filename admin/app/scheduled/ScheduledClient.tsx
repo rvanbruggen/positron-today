@@ -70,6 +70,7 @@ export default function ScheduledClient({
 }) {
   const [articles, setArticles] = useState<Article[]>(initialArticles);
   const [summarising, setSummarising] = useState<Set<number>>(new Set());
+  const [summarisingAll, setSummarisingAll] = useState(false);
   const [publishing, setPublishing] = useState<Set<number>>(new Set());
   const [published, setPublished] = useState<Set<number>>(new Set());
   const [error, setError] = useState<string | null>(null);
@@ -171,6 +172,19 @@ export default function ScheduledClient({
     }
   }
 
+  async function summariseAll() {
+    // Snapshot IDs up front: summarise() mutates article status to "scheduled"
+    // so the draft filter shrinks mid-loop otherwise.
+    const pending = articles.filter((a) => a.status === "draft").map((a) => a.id);
+    if (pending.length === 0) return;
+    setSummarisingAll(true);
+    setError(null);
+    for (const id of pending) {
+      await summarise(id);
+    }
+    setSummarisingAll(false);
+  }
+
   async function summarise(id: number) {
     setSummarising((prev) => new Set(prev).add(id));
     setError(null);
@@ -262,9 +276,20 @@ export default function ScheduledClient({
           {/* ── Drafts ── */}
           {drafts.length > 0 && (
             <div>
-              <h2 className="text-sm font-semibold text-amber-700 uppercase tracking-wide mb-3">
-                Drafts — needs summarisation ({drafts.length})
-              </h2>
+              <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
+                <h2 className="text-sm font-semibold text-amber-700 uppercase tracking-wide">
+                  Drafts — needs summarisation ({drafts.length})
+                </h2>
+                {drafts.length > 1 && (
+                  <button
+                    onClick={summariseAll}
+                    disabled={summarisingAll || summarising.size > 0}
+                    className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-semibold px-3 py-1.5 rounded-lg text-xs transition-colors disabled:opacity-50 whitespace-nowrap"
+                  >
+                    {summarisingAll ? `Summarising… (${drafts.length} left)` : `✨ Summarise all (${drafts.length})`}
+                  </button>
+                )}
+              </div>
               <div className="flex flex-col gap-3">
                 {drafts.map((a) => (
                   <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200">
@@ -283,14 +308,14 @@ export default function ScheduledClient({
                       <div className="flex gap-2 shrink-0 items-start">
                         <button
                           onClick={() => summarise(a.id)}
-                          disabled={summarising.has(a.id)}
+                          disabled={summarising.has(a.id) || summarisingAll}
                           className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50 whitespace-nowrap"
                         >
                           {summarising.has(a.id) ? "Summarising..." : "Summarise ✨"}
                         </button>
                         <button
                           onClick={() => remove(a.id)}
-                          disabled={summarising.has(a.id)}
+                          disabled={summarising.has(a.id) || summarisingAll}
                           className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50 mt-1.5"
                         >
                           Remove
