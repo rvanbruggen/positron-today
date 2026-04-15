@@ -166,6 +166,165 @@ html[data-theme="mono"] main h2,
 html[data-theme="mono"] main h3 { color: var(--mono-fg); }
 html[data-theme="mono"] main    { color: var(--mono-fg); }
 
+/* --- about.njk (mono) --- */
+html[data-theme="mono"] .about-prose h1 { color: var(--mono-fg); }
+html[data-theme="mono"] .about-prose p  { color: var(--mono-fg); }
+html[data-theme="mono"] .section-heading {
+  color: var(--mono-fg);
+  border-bottom: 1px solid var(--mono-hairline-strong);
+}
+html[data-theme="mono"] .pipeline-step {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .pipeline-step.highlight {
+  background: var(--mono-fg) !important;
+  border-color: var(--mono-fg) !important;
+}
+html[data-theme="mono"] .pipeline-step.highlight .pipeline-label,
+html[data-theme="mono"] .pipeline-step.highlight .pipeline-desc { color: #ffffff; }
+html[data-theme="mono"] .pipeline-arrow { color: var(--mono-muted); }
+html[data-theme="mono"] .pipeline-label { color: var(--mono-fg); }
+html[data-theme="mono"] .pipeline-desc  { color: var(--mono-muted); }
+html[data-theme="mono"] .sources-lang-label { color: var(--mono-muted); }
+html[data-theme="mono"] .source-pill {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  color: var(--mono-fg) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .source-pill:hover {
+  background: var(--mono-fg) !important;
+  color: #ffffff !important;
+}
+html[data-theme="mono"] .source-pill .feed-dot { background: var(--mono-fg); }
+/* Loose paragraphs in about.njk have inline color — override with !important */
+html[data-theme="mono"] .about-wrap p          { color: var(--mono-fg) !important; }
+html[data-theme="mono"] .about-wrap p a        { color: var(--mono-fg) !important; }
+html[data-theme="mono"] .about-wrap p span[style*="background"] { background: var(--mono-fg) !important; }
+
+/* --- contact.njk (mono) --- */
+html[data-theme="mono"] .contact-block h1    { color: var(--mono-fg); }
+html[data-theme="mono"] .contact-block .intro { color: var(--mono-fg); }
+html[data-theme="mono"] .contact-link {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  color: var(--mono-fg) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .contact-link:hover {
+  border-color: var(--mono-fg) !important;
+  box-shadow: 4px 4px 0 0 var(--mono-fg);
+}
+html[data-theme="mono"] .contact-link-label { color: var(--mono-muted); }
+html[data-theme="mono"] .contact-link-value { color: var(--mono-fg); }
+html[data-theme="mono"] .contact-link-note  { color: var(--mono-muted); }
+
+/* --- negativity.njk (mono) --- */
+html[data-theme="mono"] .stat-card {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .stat-num { color: var(--mono-fg); }
+html[data-theme="mono"] .stat-lbl { color: var(--mono-muted); }
+html[data-theme="mono"] .breakdown-section {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .breakdown-title { color: var(--mono-muted); }
+html[data-theme="mono"] .breakdown-label { color: var(--mono-fg); }
+html[data-theme="mono"] .breakdown-bar-wrap {
+  background: var(--mono-hairline) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .breakdown-bar {
+  filter: grayscale(1) brightness(0.4);
+  border-radius: 0;
+}
+html[data-theme="mono"] .breakdown-count { color: var(--mono-muted); }
+html[data-theme="mono"] .cat-pill {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  color: var(--mono-fg) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .cat-pill.active {
+  background: var(--mono-fg) !important;
+  color: #ffffff !important;
+}
+html[data-theme="mono"] .rejection-card {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .rejection-card[data-cat] {
+  border-left: 4px solid var(--mono-fg) !important;
+}
+html[data-theme="mono"] .rejection-title  { color: var(--mono-fg); }
+html[data-theme="mono"] .rejection-meta   { color: var(--mono-muted); }
+html[data-theme="mono"] .rejection-reason { color: var(--mono-muted); }
+html[data-theme="mono"] .rejection-reason::before { color: var(--mono-fg); }
+html[data-theme="mono"] .cat-badge {
+  color: var(--mono-fg) !important;
+  border: 1px solid var(--mono-fg) !important;
+  background: #ffffff !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .updated      { color: var(--mono-muted); }
+html[data-theme="mono"] .page-size-label,
+html[data-theme="mono"] .page-info    { color: var(--mono-muted); }
+html[data-theme="mono"] .page-size-select,
+html[data-theme="mono"] .page-btn {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  color: var(--mono-fg) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .page-btn:hover:not(:disabled) {
+  background: var(--mono-fg) !important;
+  color: #ffffff !important;
+}
+
+/* --- archive/index.njk (mono) --- */
+html[data-theme="mono"] .archive-header h1 { color: var(--mono-fg); }
+html[data-theme="mono"] .archive-header p  { color: var(--mono-muted); }
+html[data-theme="mono"] .archive-back a {
+  color: var(--mono-fg);
+  border-bottom: 1px solid var(--mono-hairline-strong);
+}
+html[data-theme="mono"] .archive-back a:hover { border-color: var(--mono-muted); }
+html[data-theme="mono"] .month-link {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  color: var(--mono-fg) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .month-link:hover {
+  box-shadow: 4px 4px 0 0 var(--mono-fg);
+  border-color: var(--mono-fg) !important;
+}
+html[data-theme="mono"] .month-name  { color: var(--mono-fg); }
+html[data-theme="mono"] .month-count {
+  background: var(--mono-fg) !important;
+  color: #ffffff !important;
+  border-radius: 0;
+}
+
+/* --- archive/month.njk (mono) --- */
+html[data-theme="mono"] .archive-nav a {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  color: var(--mono-fg) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .archive-nav a:hover {
+  background: var(--mono-fg) !important;
+  color: #ffffff !important;
+}
+
 
 /* ============================================================================
    THEME: MONDRIAN — white bg, bold primary borders
@@ -336,6 +495,180 @@ html[data-theme="mondrian"] main h1,
 html[data-theme="mondrian"] main h2,
 html[data-theme="mondrian"] main h3 { color: var(--md-black); }
 html[data-theme="mondrian"] main    { color: var(--md-black); }
+
+/* --- about.njk (mondrian) --- */
+html[data-theme="mondrian"] .about-prose h1 { color: var(--md-black); font-weight: 900; }
+html[data-theme="mondrian"] .about-prose p  { color: var(--md-black); }
+html[data-theme="mondrian"] .section-heading {
+  color: var(--md-black);
+  border-bottom: 5px solid var(--md-black);
+  font-weight: 900;
+}
+html[data-theme="mondrian"] .pipeline-step {
+  background: #ffffff !important;
+  border: 4px solid var(--md-black) !important;
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .pipeline-step.highlight {
+  background: var(--md-yellow) !important;
+  border-color: var(--md-black) !important;
+}
+html[data-theme="mondrian"] .pipeline-arrow { color: var(--md-red); font-weight: 900; }
+html[data-theme="mondrian"] .pipeline-label { color: var(--md-black); }
+html[data-theme="mondrian"] .pipeline-desc  { color: var(--md-muted); }
+html[data-theme="mondrian"] .sources-lang-label { color: var(--md-blue); font-weight: 800; }
+html[data-theme="mondrian"] .source-pill {
+  background: #ffffff !important;
+  border: 3px solid var(--md-black) !important;
+  color: var(--md-black) !important;
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .source-pill:hover {
+  background: var(--md-yellow) !important;
+}
+html[data-theme="mondrian"] .source-pill .feed-dot { background: var(--md-red); }
+/* Loose paragraphs in about.njk have inline color — override with !important */
+html[data-theme="mondrian"] .about-wrap p          { color: var(--md-black) !important; }
+html[data-theme="mondrian"] .about-wrap p a        { color: var(--md-blue) !important; border-bottom: 2px solid var(--md-blue); }
+html[data-theme="mondrian"] .about-wrap p span[style*="background"] { background: var(--md-red) !important; }
+
+/* --- contact.njk (mondrian) --- */
+html[data-theme="mondrian"] .contact-block h1    { color: var(--md-black); font-weight: 900; }
+html[data-theme="mondrian"] .contact-block .intro { color: var(--md-black); }
+html[data-theme="mondrian"] .contact-link {
+  background: #ffffff !important;
+  border: 4px solid var(--md-black) !important;
+  color: var(--md-black) !important;
+  border-radius: 0;
+}
+/* Rotate through the Mondrian palette so the contact links form a grid-like
+   strip of primary-edged blocks. Applies to the 5 <a> children of .contact-links. */
+html[data-theme="mondrian"] .contact-links > a:nth-child(5n+1) { border-color: var(--md-red) !important; }
+html[data-theme="mondrian"] .contact-links > a:nth-child(5n+2) { border-color: var(--md-blue) !important; }
+html[data-theme="mondrian"] .contact-links > a:nth-child(5n+3) { border-color: var(--md-yellow) !important; }
+html[data-theme="mondrian"] .contact-links > a:nth-child(5n+4) { border-color: var(--md-black) !important; }
+html[data-theme="mondrian"] .contact-links > a:nth-child(5n+5) { border-color: var(--md-red) !important; }
+html[data-theme="mondrian"] .contact-link:hover {
+  box-shadow: 6px 6px 0 0 var(--md-black);
+}
+html[data-theme="mondrian"] .contact-link-label { color: var(--md-muted); font-weight: 800; }
+html[data-theme="mondrian"] .contact-link-value { color: var(--md-black); font-weight: 800; }
+html[data-theme="mondrian"] .contact-link-note  { color: var(--md-muted); }
+
+/* --- negativity.njk (mondrian) --- */
+html[data-theme="mondrian"] .stat-card {
+  background: #ffffff !important;
+  border: 5px solid var(--md-black) !important;
+  border-radius: 0;
+}
+/* Rotate stat cards through primaries for a Mondrian grid feel */
+html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+1) { border-color: var(--md-red) !important; }
+html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+2) { border-color: var(--md-blue) !important; }
+html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
+html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+4) { border-color: var(--md-black) !important; }
+html[data-theme="mondrian"] .stat-num { color: var(--md-black); font-weight: 900; }
+html[data-theme="mondrian"] .stat-lbl { color: var(--md-muted); }
+html[data-theme="mondrian"] .breakdown-section {
+  background: #ffffff !important;
+  border: 5px solid var(--md-blue) !important;
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .breakdown-title { color: var(--md-muted); }
+html[data-theme="mondrian"] .breakdown-label { color: var(--md-black); }
+html[data-theme="mondrian"] .breakdown-bar-wrap {
+  background: #f3f4f6 !important;
+  border: 1px solid var(--md-black);
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .breakdown-bar { border-radius: 0; }
+html[data-theme="mondrian"] .breakdown-count { color: var(--md-muted); }
+html[data-theme="mondrian"] .cat-pill {
+  background: #ffffff !important;
+  border: 3px solid var(--md-black) !important;
+  color: var(--md-black) !important;
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .cat-pill.active {
+  background: var(--md-yellow) !important;
+}
+html[data-theme="mondrian"] .rejection-card {
+  background: #ffffff !important;
+  border: 3px solid var(--md-black) !important;
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .rejection-card[data-cat] {
+  border-left: 8px solid var(--md-red) !important;
+}
+html[data-theme="mondrian"] .rejection-title  { color: var(--md-black); font-weight: 800; }
+html[data-theme="mondrian"] .rejection-meta   { color: var(--md-muted); }
+html[data-theme="mondrian"] .rejection-reason { color: var(--md-muted); }
+html[data-theme="mondrian"] .rejection-reason::before { color: var(--md-red); }
+html[data-theme="mondrian"] .cat-badge {
+  color: var(--md-black) !important;
+  border: 2px solid var(--md-black) !important;
+  background: #ffffff !important;
+  border-radius: 0;
+  font-weight: 800;
+}
+html[data-theme="mondrian"] .updated      { color: var(--md-muted); }
+html[data-theme="mondrian"] .page-size-label,
+html[data-theme="mondrian"] .page-info    { color: var(--md-muted); }
+html[data-theme="mondrian"] .page-size-select,
+html[data-theme="mondrian"] .page-btn {
+  background: #ffffff !important;
+  border: 3px solid var(--md-black) !important;
+  color: var(--md-black) !important;
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .page-btn:hover:not(:disabled) {
+  background: var(--md-yellow) !important;
+}
+
+/* --- archive/index.njk (mondrian) --- */
+html[data-theme="mondrian"] .archive-header h1 { color: var(--md-black); font-weight: 900; }
+html[data-theme="mondrian"] .archive-header p  { color: var(--md-muted); }
+html[data-theme="mondrian"] .archive-back a {
+  color: var(--md-blue);
+  border-bottom: 3px solid var(--md-blue);
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .archive-back a:hover { color: var(--md-red); border-color: var(--md-red); }
+html[data-theme="mondrian"] .month-link {
+  background: #ffffff !important;
+  border: 4px solid var(--md-black) !important;
+  color: var(--md-black) !important;
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .month-list > .month-link:nth-child(4n+1) { border-color: var(--md-red) !important; }
+html[data-theme="mondrian"] .month-list > .month-link:nth-child(4n+2) { border-color: var(--md-blue) !important; }
+html[data-theme="mondrian"] .month-list > .month-link:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
+html[data-theme="mondrian"] .month-list > .month-link:nth-child(4n+4) { border-color: var(--md-black) !important; }
+html[data-theme="mondrian"] .month-link:hover {
+  box-shadow: 6px 6px 0 0 var(--md-black);
+}
+html[data-theme="mondrian"] .month-name  { color: var(--md-black); font-weight: 800; }
+html[data-theme="mondrian"] .month-count {
+  background: var(--md-yellow) !important;
+  color: var(--md-black) !important;
+  border: 2px solid var(--md-black);
+  border-radius: 0;
+  font-weight: 800;
+}
+
+/* --- archive/month.njk (mondrian) --- */
+html[data-theme="mondrian"] .archive-nav a {
+  background: #ffffff !important;
+  border: 3px solid var(--md-black) !important;
+  color: var(--md-black) !important;
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .archive-nav a:hover {
+  background: var(--md-yellow) !important;
+}
 
 
 /* ============================================================================
