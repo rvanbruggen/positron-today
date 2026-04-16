@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import EditArticleModal, { type EditableFields } from "@/app/components/EditArticleModal";
 
 type ArticleTag = { id: number; name: string; emoji: string };
@@ -84,12 +84,22 @@ export default function HistoryClient({
   const [postedSocial,   setPostedSocial]     = useState<Set<number>>(
     () => new Set(initialArticles.filter((a) => a.social_posted_at).map((a) => a.id))
   );
+  const [socialMenuOpen, setSocialMenuOpen]   = useState<number | null>(null);
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
   const [sortDir, setSortDir]             = useState<SortDir>("desc");
   const [error, setError]                 = useState<string | null>(null);
   const [editingId, setEditingId]         = useState<number | null>(null);
+
+  // Close social dropdown when clicking outside
+  const closeSocialMenu = useCallback(() => setSocialMenuOpen(null), []);
+  useEffect(() => {
+    if (socialMenuOpen !== null) {
+      document.addEventListener("click", closeSocialMenu);
+      return () => document.removeEventListener("click", closeSocialMenu);
+    }
+  }, [socialMenuOpen, closeSocialMenu]);
 
   function handleSort(key: SortKey) {
     if (sortKey === key) {
@@ -243,14 +253,17 @@ export default function HistoryClient({
     );
   }
 
-  async function postToAllSocials(a: Article) {
+  async function postToSocials(a: Article, platforms?: string[]) {
+    setSocialMenuOpen(null);
     setPostingSocial((prev) => new Set(prev).add(a.id));
     setError(null);
     try {
+      const body: Record<string, unknown> = { id: a.id };
+      if (platforms) body.platforms = platforms;
       const res  = await fetch("/api/post-social", {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ id: a.id }),
+        body:    JSON.stringify(body),
       });
       const data = await res.json();
       if (!res.ok) { setError(data.error ?? `Social post failed: ${res.status}`); return; }
@@ -438,22 +451,55 @@ export default function HistoryClient({
                           {generatingCard.has(a.id) ? "⏳" : "📸"}
                         </button>
 
-                        {/* Post to all socials via Post for Me */}
-                        <button
-                          onClick={() => !postedSocial.has(a.id) && postToAllSocials(a)}
-                          disabled={postingSocial.has(a.id) || postedSocial.has(a.id)}
-                          title={
-                            a.social_posted_at
-                              ? `Posted to socials on ${formatDate(a.social_posted_at)}`
-                              : `Post to Bluesky, X, Threads, Facebook${a.image_url ? " & Instagram" : ""}`
-                          }
-                          className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors ${
-                            postedSocial.has(a.id)
-                              ? "bg-violet-200 text-violet-700 cursor-default"
-                              : "bg-violet-100 hover:bg-violet-200 text-violet-700 disabled:opacity-40"
-                          }`}>
-                          {postedSocial.has(a.id) ? "✓" : postingSocial.has(a.id) ? "⏳" : "📣"}
-                        </button>
+                        {/* Post to socials via Post for Me — dropdown */}
+                        <div className="relative">
+                          <button
+                            onClick={(e) => { e.stopPropagation(); setSocialMenuOpen(socialMenuOpen === a.id ? null : a.id); }}
+                            disabled={postingSocial.has(a.id)}
+                            title={
+                              a.social_posted_at
+                                ? `Posted on ${formatDate(a.social_posted_at)} — click to repost`
+                                : "Post to social media"
+                            }
+                            className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors ${
+                              postingSocial.has(a.id)
+                                ? "bg-violet-200 text-violet-700"
+                                : postedSocial.has(a.id)
+                                ? "bg-violet-200 hover:bg-violet-300 text-violet-700"
+                                : "bg-violet-100 hover:bg-violet-200 text-violet-700"
+                            }`}>
+                            {postingSocial.has(a.id) ? "⏳" : postedSocial.has(a.id) ? "📣✓" : "📣"}
+                          </button>
+                          {socialMenuOpen === a.id && (
+                            <div className="absolute right-0 top-8 z-50 bg-white border border-violet-200 rounded-lg shadow-lg py-1 min-w-[160px]">
+                              <button onClick={() => postToSocials(a)}
+                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
+                                📣 All platforms
+                              </button>
+                              <hr className="border-violet-100 my-1" />
+                              <button onClick={() => postToSocials(a, ["instagram"])}
+                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
+                                📷 Instagram only
+                              </button>
+                              <button onClick={() => postToSocials(a, ["bluesky"])}
+                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
+                                🦋 Bluesky only
+                              </button>
+                              <button onClick={() => postToSocials(a, ["x"])}
+                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
+                                𝕏 X only
+                              </button>
+                              <button onClick={() => postToSocials(a, ["threads"])}
+                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
+                                🧵 Threads only
+                              </button>
+                              <button onClick={() => postToSocials(a, ["facebook"])}
+                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
+                                👤 Facebook only
+                              </button>
+                            </div>
+                          )}
+                        </div>
 
                         {/* Edit */}
                         <button

@@ -174,7 +174,12 @@ export type PostArticleResult = {
  * publish-scheduled) so they don't have to make an HTTP call that the admin
  * auth middleware would 401.
  */
-export async function postArticleToSocial(id: number): Promise<PostArticleResult> {
+/**
+ * @param id          Article ID
+ * @param platforms   Optional array of platform names to post to (e.g. ["instagram"]).
+ *                    When omitted, posts to all enabled accounts.
+ */
+export async function postArticleToSocial(id: number, platforms?: string[]): Promise<PostArticleResult> {
   if (!API_KEY) {
     return { ok: false, status: 500, error: "POSTFORME_API_KEY is not set." };
   }
@@ -186,9 +191,17 @@ export async function postArticleToSocial(id: number): Promise<PostArticleResult
   const article = result.rows[0];
   if (!article) return { ok: false, status: 404, error: `Article ${id} not found.` };
 
-  const enabledAccounts = await getEnabledAccounts();
+  let enabledAccounts = await getEnabledAccounts();
   if (enabledAccounts.length === 0) {
     return { ok: false, status: 400, error: "No social accounts enabled. Configure them in Settings → Social publishing." };
+  }
+
+  // When specific platforms are requested, filter to just those
+  if (platforms && platforms.length > 0) {
+    enabledAccounts = enabledAccounts.filter((a) => platforms.includes(a.platform));
+    if (enabledAccounts.length === 0) {
+      return { ok: false, status: 400, error: `No enabled accounts for platform(s): ${platforms.join(", ")}` };
+    }
   }
 
   const instagramAccounts = enabledAccounts.filter((a) => a.platform === "instagram");
@@ -268,10 +281,10 @@ export async function postArticleToSocial(id: number): Promise<PostArticleResult
 }
 
 export async function POST(request: Request) {
-  const { id } = await request.json().catch(() => ({}));
+  const { id, platforms } = await request.json().catch(() => ({}));
   if (!id) return Response.json({ error: "Missing article id." }, { status: 400 });
 
-  const r = await postArticleToSocial(Number(id));
+  const r = await postArticleToSocial(Number(id), platforms);
   const { status, ...body } = r;
   return Response.json(body, { status });
 }
