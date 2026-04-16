@@ -342,7 +342,7 @@ export default function HistoryClient({
       {displayed.length === 0 ? (
         <p className="text-amber-600 text-sm">{articles.length === 0 ? "Nothing published yet." : "No articles match these filters."}</p>
       ) : (
-        <div className="bg-white rounded-xl shadow-sm border border-yellow-200 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm border border-yellow-200 overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-yellow-100 bg-amber-50">

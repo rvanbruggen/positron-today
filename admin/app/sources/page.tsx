@@ -63,7 +63,7 @@ function SourceRow({
           </div>
         </div>
       ) : (
-        <div className="px-5 py-3 flex items-center justify-between gap-4">
+        <div className="px-5 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
           <div className="flex items-start gap-3 min-w-0">
             <span className="text-lg mt-0.5">{source.feed_url || source.type === "rss" ? "📡" : "🌐"}</span>
             <div className="min-w-0">
@@ -80,7 +80,7 @@ function SourceRow({
               )}
             </div>
           </div>
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 sm:shrink-0 flex-wrap">
             <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full uppercase">
               {source.language}
             </span>

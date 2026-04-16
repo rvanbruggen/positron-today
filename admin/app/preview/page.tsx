@@ -158,7 +158,7 @@ export default function PreviewPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-1">
+      <div className="flex items-center justify-between mb-1 gap-3 flex-wrap">
         <h1 className="text-2xl font-bold text-amber-900">Preview</h1>
         <button
           onClick={fetchNew}
@@ -274,7 +274,7 @@ export default function PreviewPage() {
         )}
         {articles.map(article => (
           <div key={article.id} className="bg-white rounded-xl p-5 shadow-sm border border-yellow-200">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
               <div className="min-w-0">
                 <p className="text-xs text-amber-500 mb-1">{article.source_name}</p>
                 <a href={article.url} target="_blank" rel="noopener noreferrer"
@@ -288,7 +288,7 @@ export default function PreviewPage() {
                   {new Date(article.fetched_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                 </p>
               </div>
-              <div className="flex gap-2 shrink-0">
+              <div className="flex gap-2 sm:shrink-0 flex-wrap">
                 <button onClick={() => updateStatus(article.id, "approved")}
                   className="bg-green-100 hover:bg-green-200 text-green-700 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
                   ✓ Approve

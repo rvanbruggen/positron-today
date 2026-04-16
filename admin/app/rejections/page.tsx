@@ -242,7 +242,7 @@ export default function RejectionsPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex items-start justify-between gap-4 mb-1">
+      <div className="flex items-start justify-between gap-4 mb-1 flex-wrap">
         <h1 className="text-2xl font-bold text-amber-900">Rejection Log</h1>
         <div className="flex flex-col items-end gap-1">
           <button onClick={exportToSite} disabled={exporting || items.length === 0}
@@ -394,7 +394,7 @@ export default function RejectionsPage() {
         </p>
       ) : (
         <>
-        <div className="bg-white rounded-xl shadow-sm border border-yellow-200 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm border border-yellow-200 overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-yellow-100 bg-amber-50">

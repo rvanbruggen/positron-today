@@ -319,7 +319,7 @@ export default function ScheduledClient({
               <div className="flex flex-col gap-3">
                 {drafts.map((a) => (
                   <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200">
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                       <div className="min-w-0 flex-1">
                         <a
                           href={a.source_url}
@@ -331,7 +331,7 @@ export default function ScheduledClient({
                         </a>
                         <p className="text-xs text-amber-500 mt-0.5">{a.source_name}</p>
                       </div>
-                      <div className="flex gap-2 shrink-0 items-start">
+                      <div className="flex gap-2 sm:shrink-0 items-start flex-wrap">
                         <button
                           onClick={() => summarise(a.id)}
                           disabled={summarising.has(a.id) || summarisingAll}
@@ -414,7 +414,7 @@ export default function ScheduledClient({
                         </button>
                       </div>
                     )}
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                       <div className="min-w-0 flex-1">
                         <div className="flex items-start gap-2">
                           {a.article_emoji && (
@@ -459,7 +459,7 @@ export default function ScheduledClient({
                           selectedOnly
                         />
                       </div>
-                      <div className="flex flex-col items-end gap-2 shrink-0">
+                      <div className="flex flex-col sm:items-end gap-2 w-full sm:w-auto sm:shrink-0">
                         <input
                           type="datetime-local"
                           value={toDatetimeLocal(a.publish_date ?? null)}
