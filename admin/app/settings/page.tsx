@@ -271,6 +271,8 @@ export default function SettingsPage() {
         setSaveMsg("Settings saved.");
         // Regenerate launchd schedule from saved run times
         try { await fetch("/api/positronitron-schedule", { method: "POST" }); } catch {}
+        // Refresh layout so the ⚡ AUTO banner updates immediately
+        router.refresh();
         setTimeout(() => setSaveMsg(null), 3000);
       } else {
         setSaveMsg(`Error: ${data.error ?? res.statusText ?? "Unknown error"}`);
