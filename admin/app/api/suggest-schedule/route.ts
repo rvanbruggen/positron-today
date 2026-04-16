@@ -39,35 +39,20 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => ({}));
   const intervalMinutes: number = Math.max(5, Number(body.interval_minutes) || 30);
 
-  // Find articles that need a publish_date (status='scheduled', summary present, no publish_date)
+  // Find all scheduled articles ready for publishing — always recalculate from now
   const unscheduled = await db.execute(`
     SELECT id, title_en, title_nl
     FROM articles
     WHERE status = 'scheduled'
       AND summary_en IS NOT NULL
-      AND (publish_date IS NULL OR publish_date = '')
     ORDER BY id ASC
   `);
 
   if (unscheduled.rows.length === 0) {
-    return Response.json({ scheduled: 0, slots: [], message: "No unscheduled articles found" });
+    return Response.json({ scheduled: 0, slots: [], message: "No scheduled articles found" });
   }
 
-  // Find the latest existing publish_date among already-scheduled articles so we chain after it
-  const latestResult = await db.execute(`
-    SELECT MAX(publish_date) as latest
-    FROM articles
-    WHERE status = 'scheduled'
-      AND publish_date IS NOT NULL
-      AND publish_date != ''
-  `);
-  const latestRaw = latestResult.rows[0]?.latest as string | null;
-  const latestExisting = latestRaw ? new Date(latestRaw) : null;
-
-  // Starting point: chain after the last existing slot, or start from now
-  const now = new Date();
-  const startAfter = latestExisting && latestExisting > now ? latestExisting : now;
-  let cursor = nextSlot(startAfter, intervalMinutes);
+  let cursor = nextSlot(new Date(), intervalMinutes);
 
   const slots: Array<{ id: number; title: string; publish_date: string }> = [];
 
