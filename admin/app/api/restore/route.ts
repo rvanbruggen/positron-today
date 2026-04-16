@@ -52,6 +52,9 @@ export async function POST(request: Request) {
   const stats: Record<string, number> = {};
 
   try {
+    // ── 0. Disable FK checks during restore ───────────────────────────────────
+    await db.execute("PRAGMA foreign_keys = OFF");
+
     // ── 1. Wipe in dependency order ──────────────────────────────────────────
     await db.execute("DELETE FROM article_tags");
     await db.execute("DELETE FROM articles");
@@ -137,7 +140,12 @@ export async function POST(request: Request) {
       }
     }
 
+    // ── 4. Re-enable FK checks ─────────────────────────────────────────────
+    await db.execute("PRAGMA foreign_keys = ON");
+
   } catch (err) {
+    // Re-enable FK checks even on error
+    try { await db.execute("PRAGMA foreign_keys = ON"); } catch { /* ok */ }
     const message = err instanceof Error ? err.message : String(err);
     return Response.json({ error: `Restore failed: ${message}` }, { status: 500 });
   }

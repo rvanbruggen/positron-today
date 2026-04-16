@@ -1,11 +1,19 @@
-import { createHmac }  from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 
-const COOKIE    = "admin_session";
+const COOKIE     = "admin_session";
 const COOKIE_MSG = "positron-admin-v1";
 
-function makeToken(secret: string): string {
-  return createHmac("sha256", secret).update(COOKIE_MSG).digest("hex");
+async function makeToken(secret: string): Promise<string> {
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw",
+    enc.encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(COOKIE_MSG));
+  return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 export async function POST(request: NextRequest) {
@@ -18,11 +26,10 @@ export async function POST(request: NextRequest) {
   const { password } = body as { password?: string };
 
   if (!password || password !== secret) {
-    // Constant-time check to prevent timing attacks
     return NextResponse.json({ error: "Incorrect password." }, { status: 401 });
   }
 
-  const token    = makeToken(secret);
+  const token    = await makeToken(secret);
   const response = NextResponse.json({ ok: true });
 
   response.cookies.set(COOKIE, token, {
