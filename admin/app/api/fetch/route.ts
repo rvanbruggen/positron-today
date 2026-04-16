@@ -66,12 +66,13 @@ export async function POST(request: Request) {
             const items = feed.items.slice(0, 20).filter(i => i.link && i.title);
 
             for (const item of items) {
-              const [existingRaw, existingRejected] = await Promise.all([
+              const [existingRaw, existingRejected, existingArticle] = await Promise.all([
                 db.execute({ sql: "SELECT id FROM raw_articles WHERE url = ?", args: [item.link!] }),
                 db.execute({ sql: "SELECT id FROM rejected_articles WHERE url = ?", args: [item.link!] }),
+                db.execute({ sql: "SELECT id FROM articles WHERE source_url = ?", args: [item.link!] }),
               ]);
 
-              if (existingRaw.rows.length > 0 || existingRejected.rows.length > 0) {
+              if (existingRaw.rows.length > 0 || existingRejected.rows.length > 0 || existingArticle.rows.length > 0) {
                 skipped++;
                 continue;
               }

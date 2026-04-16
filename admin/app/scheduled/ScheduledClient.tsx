@@ -216,6 +216,11 @@ export default function ScheduledClient({
         body: JSON.stringify({ id }),
       });
       const text = await res.text();
+      // Vercel may return HTML on timeout — detect and show friendly error
+      if (text.startsWith("<!DOCTYPE") || text.startsWith("<html")) {
+        setError(`Summarise timed out for article ${id}. Try again — it may work on retry.`);
+        return;
+      }
       const data = text ? JSON.parse(text) : {};
       if (!res.ok) { setError(data.error ?? `Server error ${res.status}`); return; }
       setArticles((prev) =>
