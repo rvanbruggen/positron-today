@@ -18,19 +18,19 @@ export async function GET(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   const body = await request.json();
-  const { id, status, publish_date, topic_id, tags, reset_to_draft, content } = body;
+  const { id, status, publish_date, topic_id, tags, reset_to_draft, content, post_to_social_on_publish, featured } = body;
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
 
   // Content edit: update title/summary/emoji fields directly
   if (content !== undefined) {
-    const { title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji } = content;
+    const { title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji, featured: featuredFlag } = content;
     await db.execute({
       sql: `UPDATE articles SET
               title_en = ?, title_nl = ?, title_fr = ?,
               summary_en = ?, summary_nl = ?, summary_fr = ?,
-              article_emoji = ?
+              article_emoji = ?, featured = ?
             WHERE id = ?`,
-      args: [title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji, id],
+      args: [title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji, featuredFlag ? 1 : 0, id],
     });
     return Response.json({ ok: true });
   }
@@ -44,6 +44,22 @@ export async function PATCH(request: NextRequest) {
               article_emoji = NULL, published_at = NULL
             WHERE id = ?`,
       args: [id],
+    });
+    return Response.json({ ok: true });
+  }
+
+  if (post_to_social_on_publish !== undefined) {
+    await db.execute({
+      sql: "UPDATE articles SET post_to_social_on_publish = ? WHERE id = ?",
+      args: [post_to_social_on_publish ? 1 : 0, id],
+    });
+    return Response.json({ ok: true });
+  }
+
+  if (featured !== undefined) {
+    await db.execute({
+      sql: "UPDATE articles SET featured = ? WHERE id = ?",
+      args: [featured ? 1 : 0, id],
     });
     return Response.json({ ok: true });
   }

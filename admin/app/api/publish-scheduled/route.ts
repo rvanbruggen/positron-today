@@ -12,6 +12,7 @@
  */
 
 import db from "@/lib/db";
+import { postArticleToSocial } from "@/app/api/post-social/route";
 
 const GITHUB_TOKEN  = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO   = process.env.GITHUB_REPO!;
@@ -69,6 +70,7 @@ function generateMarkdown(article: Record<string, unknown>, tagNames: string[]):
     `summary_nl: ${yamlStr(String(article.summary_nl ?? ""))}`,
     `summary_fr: ${yamlStr(String(article.summary_fr ?? ""))}`,
     ...(article.image_url ? [`image_url: ${yamlStr(String(article.image_url))}`] : []),
+    ...(Number(article.featured ?? 0) === 1 ? [`featured: true`] : []),
     `layout: post.njk`,
     `---`,
     ``,
@@ -185,7 +187,7 @@ export async function POST(request: Request) {
     return Response.json({ published: 0, message: "No articles due for publishing" });
   }
 
-  const results: Array<{ id: number; title: string; ok: boolean; path?: string; error?: string }> = [];
+  const results: Array<{ id: number; title: string; ok: boolean; path?: string; error?: string; social?: unknown }> = [];
 
   for (const article of due) {
     const id = Number(article.id);
@@ -221,7 +223,18 @@ export async function POST(request: Request) {
         args: [path, id],
       });
 
-      results.push({ id, title, ok: true, path });
+      // Opt-in social announcement — only if the admin ticked the checkbox on this article.
+      let social: unknown = undefined;
+      if (Number(article.post_to_social_on_publish ?? 0) === 1) {
+        try {
+          social = await postArticleToSocial(id);
+        } catch (err) {
+          social = { ok: false, error: err instanceof Error ? err.message : String(err) };
+          console.error(`[publish-scheduled] id=${id} social error:`, err);
+        }
+      }
+
+      results.push({ id, title, ok: true, path, social });
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       console.error(`[publish-scheduled] Failed to publish article ${id}:`, message);

@@ -10,6 +10,7 @@ export type EditableFields = {
   summary_nl: string;
   summary_fr: string;
   article_emoji: string;
+  featured: boolean;
 };
 
 type Props = {
@@ -102,6 +103,19 @@ export default function EditArticleModal({ articleId, initial, isPublished, onCl
               maxLength={4}
             />
           </div>
+
+          {/* Featured toggle */}
+          <label className="flex items-center gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={!!fields.featured}
+              onChange={(e) => setFields((f) => ({ ...f, featured: e.target.checked }))}
+              className="accent-yellow-500"
+            />
+            <span className="text-xs font-semibold text-amber-700 uppercase tracking-wide">
+              ⭐ Featured (wide card on public site)
+            </span>
+          </label>
 
           {/* Language tabs */}
           <div className="flex gap-1 border-b border-yellow-100">

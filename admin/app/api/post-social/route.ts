@@ -158,37 +158,42 @@ async function postToPlatforms(
   return { id: data.id, status: data.status };
 }
 
-export async function POST(request: Request) {
+export type PostArticleResult = {
+  ok:            boolean;
+  status:        number;
+  results?:      Record<string, unknown>;
+  platforms?:    string[];
+  card_uploaded?: boolean;
+  errors?:       string[];
+  warning?:      string;
+  error?:        string;
+};
+
+/**
+ * In-process social posting — callable from other server routes (publish,
+ * publish-scheduled) so they don't have to make an HTTP call that the admin
+ * auth middleware would 401.
+ */
+export async function postArticleToSocial(id: number): Promise<PostArticleResult> {
   if (!API_KEY) {
-    return Response.json({ error: "POSTFORME_API_KEY is not set." }, { status: 500 });
+    return { ok: false, status: 500, error: "POSTFORME_API_KEY is not set." };
   }
 
-  const { id } = await request.json().catch(() => ({}));
-  if (!id) return Response.json({ error: "Missing article id." }, { status: 400 });
-
-  // Fetch article
   const result = await db.execute({
     sql: "SELECT * FROM articles WHERE id = ?",
     args: [id],
   });
   const article = result.rows[0];
-  if (!article) return Response.json({ error: `Article ${id} not found.` }, { status: 404 });
+  if (!article) return { ok: false, status: 404, error: `Article ${id} not found.` };
 
-  // Fetch enabled accounts from DB + Post for Me
   const enabledAccounts = await getEnabledAccounts();
   if (enabledAccounts.length === 0) {
-    return Response.json(
-      { error: "No social accounts enabled. Configure them in Settings → Social publishing." },
-      { status: 400 },
-    );
+    return { ok: false, status: 400, error: "No social accounts enabled. Configure them in Settings → Social publishing." };
   }
 
   const instagramAccounts = enabledAccounts.filter((a) => a.platform === "instagram");
   const textAccounts      = enabledAccounts.filter((a) => a.platform !== "instagram");
 
-  // Check whether the article's live URL is reachable before posting.
-  // GitHub Pages takes 2–3 minutes to rebuild after a publish commit, so posting
-  // immediately after publishing will produce a 404 link in the social post.
   const caption = buildCaption(article as Record<string, unknown>);
   const slug = article.published_path
     ? String(article.published_path).split("/").pop()?.replace(/\.md$/, "")
@@ -206,7 +211,6 @@ export async function POST(request: Request) {
   const results: Record<string, unknown> = {};
   const errors:  string[]                = [];
 
-  // ── 1. Generate & upload Instagram card (only if Instagram is enabled) ─────
   let cardMediaUrl: string | null = null;
   if (instagramAccounts.length > 0) {
     try {
@@ -219,7 +223,6 @@ export async function POST(request: Request) {
     }
   }
 
-  // ── 2. Post text-only to non-Instagram platforms ──────────────────────────
   if (textAccounts.length > 0) {
     try {
       results.text = await postToPlatforms(textAccounts.map((a) => a.id), caption);
@@ -230,7 +233,6 @@ export async function POST(request: Request) {
     }
   }
 
-  // ── 3. Post with card image to Instagram ──────────────────────────────────
   if (cardMediaUrl && instagramAccounts.length > 0) {
     try {
       results.instagram = await postToPlatforms(
@@ -247,7 +249,6 @@ export async function POST(request: Request) {
 
   const anySuccess = Object.keys(results).length > 0;
 
-  // Persist posting timestamp so the History UI can show a permanent "posted" state
   if (anySuccess) {
     await db.execute({
       sql:  "UPDATE articles SET social_posted_at = datetime('now') WHERE id = ?",
@@ -255,12 +256,23 @@ export async function POST(request: Request) {
     });
   }
 
-  return Response.json({
+  return {
     ok:            anySuccess,
+    status:        anySuccess ? 200 : 500,
     results,
     platforms:     enabledAccounts.map((a) => a.platform),
     card_uploaded: !!cardMediaUrl,
     errors:        errors.length > 0 ? errors : undefined,
     warning:       urlWarning,
-  }, { status: anySuccess ? 200 : 500 });
+  };
 }
+
+export async function POST(request: Request) {
+  const { id } = await request.json().catch(() => ({}));
+  if (!id) return Response.json({ error: "Missing article id." }, { status: 400 });
+
+  const r = await postArticleToSocial(Number(id));
+  const { status, ...body } = r;
+  return Response.json(body, { status });
+}
+

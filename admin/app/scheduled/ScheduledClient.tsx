@@ -20,6 +20,8 @@ type Article = {
   summary_nl: string | null;
   summary_fr: string | null;
   publish_date: string | null;
+  post_to_social_on_publish: boolean;
+  featured: boolean;
 };
 
 function TagPills({
@@ -100,6 +102,24 @@ export default function ScheduledClient({
   async function remove(id: number) {
     await fetch(`/api/articles?id=${id}`, { method: "DELETE" });
     setArticles((prev) => prev.filter((a) => a.id !== id));
+  }
+
+  async function setSocialFlag(id: number, value: boolean) {
+    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, post_to_social_on_publish: value } : a)));
+    await fetch("/api/articles", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, post_to_social_on_publish: value }),
+    });
+  }
+
+  async function setFeatured(id: number, value: boolean) {
+    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, featured: value } : a)));
+    await fetch("/api/articles", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, featured: value }),
+    });
   }
 
   async function setDate(id: number, value: string) {
@@ -424,6 +444,32 @@ export default function ScheduledClient({
                           onChange={(e) => setDate(a.id, e.target.value)}
                           className="border border-yellow-200 rounded px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400"
                         />
+                        <div className="flex flex-col gap-1">
+                          <label
+                            title="When this article publishes, also announce it on social media"
+                            className="flex items-center gap-1.5 text-xs text-amber-700 cursor-pointer select-none"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={!!a.post_to_social_on_publish}
+                              onChange={(e) => setSocialFlag(a.id, e.target.checked)}
+                              className="accent-yellow-500"
+                            />
+                            📣 Announce on social
+                          </label>
+                          <label
+                            title="Display this article spanning two columns on the public site"
+                            className="flex items-center gap-1.5 text-xs text-amber-700 cursor-pointer select-none"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={!!a.featured}
+                              onChange={(e) => setFeatured(a.id, e.target.checked)}
+                              className="accent-yellow-500"
+                            />
+                            ⭐ Featured (wide card)
+                          </label>
+                        </div>
 
                         {isQueued(a.publish_date ?? null) ? (
                           /* ── Queued: waiting for cron ── */
@@ -508,6 +554,7 @@ export default function ScheduledClient({
               summary_nl: a.summary_nl ?? "",
               summary_fr: a.summary_fr ?? "",
               article_emoji: a.article_emoji ?? "✨",
+              featured: !!a.featured,
             }}
             onClose={() => setEditingId(null)}
             onSaved={(fields: EditableFields) => {

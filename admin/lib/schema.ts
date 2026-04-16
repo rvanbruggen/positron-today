@@ -98,6 +98,15 @@ export async function initSchema() {
 
     // v1.3: og:image captured at summarise time, stored for card thumbnails on the public site
     "ALTER TABLE articles ADD COLUMN image_url TEXT",
+
+    // v1.11: timestamp of social media posting (previously referenced but never migrated)
+    "ALTER TABLE articles ADD COLUMN social_posted_at TEXT",
+
+    // v1.11: opt-in flag — when set, publish-scheduled also triggers a social media announcement
+    "ALTER TABLE articles ADD COLUMN post_to_social_on_publish INTEGER NOT NULL DEFAULT 0",
+
+    // v1.12: featured flag — card spans two columns on the public site
+    "ALTER TABLE articles ADD COLUMN featured INTEGER NOT NULL DEFAULT 0",
   ];
 
   for (const sql of migrations) {

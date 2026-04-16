@@ -43,6 +43,8 @@ export default async function ScheduledPage() {
     summary_nl: a.summary_nl ? String(a.summary_nl) : null,
     summary_fr: a.summary_fr ? String(a.summary_fr) : null,
     publish_date: a.publish_date ? String(a.publish_date) : null,
+    post_to_social_on_publish: Number(a.post_to_social_on_publish ?? 0) === 1,
+    featured: Number(a.featured ?? 0) === 1,
   }));
 
   const tags = tagsResult.rows.map((t) => ({

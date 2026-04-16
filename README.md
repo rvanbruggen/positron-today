@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.10.3 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.12.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,8 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.12.0** | Featured posts: "⭐ Featured (wide card)" toggle on Scheduled and History pages. Featured cards span two columns on the public site grid. Layout switched from flex-column round-robin to CSS grid for native responsive columns and `grid-column: span 2` support. Collapses to single column on mobile |
+| **1.11.0** | Per-article "📣 Announce on social" checkbox on the Scheduled → Ready-to-publish list: when ticked, publishing the article (either manually or via the hourly `publish-scheduled` cron) also triggers a social media announcement through the existing Post-for-Me pipeline. Default is off, so social posting remains fully opt-in |
 | **1.10.3** | Fix admin rejection-log totals: `/api/rejected` now returns full-table stats (total, top sources, by-category, uncategorised) alongside a 1,000-row browsable list, so the admin's numbers match the public site's "News We Skip" page instead of silently reflecting a capped sample |
 | **1.10.2** | "Summarise all" bulk action on the Scheduled page — one click iterates every draft sequentially through the existing summarise endpoint, with per-row progress |
 | **1.10.1** | Extend Mono and Mondrian theming to the About, Contact, What-We-Skip (negativity) and Archive pages so pills, cards, stats and pipeline boxes match the selected theme across EN/NL/FR |

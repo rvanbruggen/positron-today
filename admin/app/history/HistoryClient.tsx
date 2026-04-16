@@ -23,6 +23,7 @@ type Article = {
   source_pub_date: string | null;
   image_url: string | null;
   social_posted_at: string | null;
+  featured: boolean;
 };
 
 const SITE_BASE = "https://positron.today";
@@ -508,6 +509,7 @@ export default function HistoryClient({
               summary_nl: a.summary_nl ?? "",
               summary_fr: a.summary_fr ?? "",
               article_emoji: a.article_emoji ?? "✨",
+              featured: !!a.featured,
             }}
             onClose={() => setEditingId(null)}
             onSaved={(fields: EditableFields) => {
