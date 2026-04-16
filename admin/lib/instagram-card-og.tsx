@@ -4,6 +4,10 @@
  * Uses satori to render JSX → SVG, then sharp to convert SVG → PNG.
  * Both work reliably in Vercel's Node.js serverless runtime, unlike
  * @vercel/og and next/og which require the Edge runtime.
+ *
+ * Fonts are cached at module level so warm invocations skip the
+ * Google Fonts round-trips entirely. Hero images are pre-fetched
+ * with a timeout and graceful fallback to emoji-only.
  */
 
 import satori from "satori";
@@ -20,27 +24,79 @@ interface CardProps {
 type Weight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 type FontEntry = { name: string; data: ArrayBuffer; weight: Weight; style: "normal" };
 
+// ─── Font cache (survives warm Vercel invocations) ───────────────────────────
+
+let cachedFonts: FontEntry[] | null = null;
+
 async function loadGoogleFont(family: string, weights: Weight[]): Promise<FontEntry[]> {
   const results: FontEntry[] = [];
   for (const weight of weights) {
     const url = `https://fonts.googleapis.com/css2?family=${family.replace(/ /g, "+")}:wght@${weight}&display=swap`;
-    const css = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" } }).then(r => r.text());
+    const css = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" },
+      signal: AbortSignal.timeout(8000),
+    }).then(r => r.text());
     const match = css.match(/src:\s*url\(([^)]+)\)/);
     if (match?.[1]) {
-      const fontData = await fetch(match[1]).then(r => r.arrayBuffer());
+      const fontData = await fetch(match[1], {
+        signal: AbortSignal.timeout(8000),
+      }).then(r => r.arrayBuffer());
       results.push({ name: family, data: fontData, weight, style: "normal" });
     }
   }
   return results;
 }
 
-export async function generateInstagramCardOg(opts: CardProps): Promise<Buffer> {
-  const { title, emoji, source, imageUrl } = opts;
+async function getFonts(): Promise<FontEntry[]> {
+  if (cachedFonts) return cachedFonts;
 
   const [playfairFonts, interFonts] = await Promise.all([
     loadGoogleFont("Playfair Display", [900]),
     loadGoogleFont("Inter", [500, 700]),
   ]);
+  cachedFonts = [...playfairFonts, ...interFonts];
+  return cachedFonts;
+}
+
+// ─── Hero image pre-fetch ────────────────────────────────────────────────────
+
+/**
+ * Pre-fetch a hero image and convert to a data URI so satori doesn't
+ * need to do its own fetch (which can fail silently).
+ * Returns null if the image can't be fetched within the timeout.
+ */
+async function prefetchImageAsDataUri(url: string): Promise<string | null> {
+  try {
+    const res = await fetch(url, {
+      signal: AbortSignal.timeout(6000),
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; PositronToday/1.0)" },
+    });
+    if (!res.ok) return null;
+
+    const contentType = res.headers.get("content-type") ?? "image/jpeg";
+    const buffer = await res.arrayBuffer();
+    if (buffer.byteLength < 100) return null; // too small to be a real image
+
+    const base64 = Buffer.from(buffer).toString("base64");
+    return `data:${contentType};base64,${base64}`;
+  } catch (err) {
+    console.warn(`[instagram-card] Failed to prefetch hero image: ${err}`);
+    return null;
+  }
+}
+
+// ─── Card generation ─────────────────────────────────────────────────────────
+
+export async function generateInstagramCardOg(opts: CardProps): Promise<Buffer> {
+  const { title, emoji, source, imageUrl } = opts;
+
+  // Load fonts (cached after first call) and pre-fetch hero image in parallel
+  const [fonts, heroDataUri] = await Promise.all([
+    getFonts(),
+    imageUrl ? prefetchImageAsDataUri(imageUrl) : Promise.resolve(null),
+  ]);
+
+  console.log(`[instagram-card] Generating card: fonts=${fonts.length}, heroImage=${heroDataUri ? "yes" : "no (fallback to emoji)"}`);
 
   const element = React.createElement(
     "div",
@@ -90,9 +146,9 @@ export async function generateInstagramCardOg(opts: CardProps): Promise<Buffer> 
           background: "linear-gradient(135deg, #78350f 0%, #1a0800 100%)",
         },
       },
-      imageUrl
+      heroDataUri
         ? React.createElement("img", {
-            src: imageUrl,
+            src: heroDataUri,
             alt: "",
             width: 1080,
             height: 670,
@@ -194,9 +250,10 @@ export async function generateInstagramCardOg(opts: CardProps): Promise<Buffer> 
   const svg = await satori(element, {
     width: 1080,
     height: 1080,
-    fonts: [...playfairFonts, ...interFonts],
+    fonts,
   });
 
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
+  console.log(`[instagram-card] Card generated: ${(png.byteLength / 1024).toFixed(0)} KB`);
   return png;
 }

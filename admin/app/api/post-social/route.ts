@@ -227,12 +227,15 @@ export async function postArticleToSocial(id: number, platforms?: string[]): Pro
   let cardMediaUrl: string | null = null;
   if (instagramAccounts.length > 0) {
     try {
+      console.log(`[post-social] Generating Instagram card for article ${id}: title="${title}", imageUrl=${imageUrl ?? "none"}`);
       const png = await generateInstagramCardOg({ title, emoji, source, imageUrl });
+      console.log(`[post-social] Card PNG generated: ${(png.byteLength / 1024).toFixed(0)} KB, uploading to Post for Me…`);
       cardMediaUrl = await uploadCardToPostForMe(png);
+      console.log(`[post-social] Card uploaded: ${cardMediaUrl}`);
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
+      const msg = err instanceof Error ? `${err.message}\n${err.stack}` : String(err);
       console.error("[post-social] Card generation/upload failed:", msg);
-      errors.push(`Instagram card: ${msg}`);
+      errors.push(`Instagram card: ${err instanceof Error ? err.message : String(err)}`);
     }
   }
 
