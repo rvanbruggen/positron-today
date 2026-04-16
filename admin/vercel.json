@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/publish-scheduled",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/positronitron",
+      "schedule": "0 6,13 * * *"
+    }
+  ]
+}
