@@ -21,7 +21,7 @@ type LogLine =
   | { type: "exporting" }
   | { type: "exported"; count: number }
   | { type: "export_error"; message: string }
-  | { type: "done"; added: number; filtered: number; skipped: number }
+  | { type: "done"; added: number; filtered: number; skipped: number; hasMore?: boolean; nextOffset?: number }
   | { type: "fatal"; message: string };
 
 export default function PreviewPage() {
@@ -54,52 +54,69 @@ export default function PreviewPage() {
     setTotalSources(0);
     setSourcesDone(0);
 
+    const CHUNK = 10;
+    let currentOffset = 0;
+    let total = 0;
+    let cumulativeDone = 0;
+
     try {
-      const res = await fetch("/api/fetch", { method: "POST" });
-      if (!res.body) throw new Error("No response body");
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-      let total = 0;
-      let done_ = 0;
-
       while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() ?? "";
+        const res = await fetch(`/api/fetch?offset=${currentOffset}&limit=${CHUNK}`, { method: "POST" });
+        if (!res.body) throw new Error("No response body");
 
-        for (const line of lines) {
-          if (!line.trim()) continue;
-          try {
-            const event = JSON.parse(line) as LogLine;
-            setLogs(prev => [...prev, event]);
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let chunkHasMore = false;
+        let nextOffset = currentOffset + CHUNK;
 
-            if (event.type === "start") {
-              total = event.totalSources;
-              setTotalSources(total);
-            }
-            if (event.type === "source_done" || event.type === "source_error") {
-              done_++;
-              setSourcesDone(done_);
-              setProgress(total > 0 ? Math.round((done_ / total) * 100) : 0);
-            }
-            if (event.type === "done") {
-              setProgress(100);
-              load();
-            }
-            if (event.type === "exported" || event.type === "export_error" || event.type === "fatal") {
-              setFetching(false);
-            }
-          } catch { /* malformed line */ }
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() ?? "";
+
+          for (const line of lines) {
+            if (!line.trim()) continue;
+            try {
+              const event = JSON.parse(line) as LogLine;
+              setLogs(prev => [...prev, event]);
+
+              if (event.type === "start") {
+                if (total === 0) {
+                  total = event.totalSources;
+                  setTotalSources(total);
+                }
+              }
+              if (event.type === "source_done" || event.type === "source_error") {
+                cumulativeDone++;
+                setSourcesDone(cumulativeDone);
+                setProgress(total > 0 ? Math.round((cumulativeDone / total) * 100) : 0);
+              }
+              if (event.type === "done") {
+                chunkHasMore = !!event.hasMore;
+                nextOffset = event.nextOffset ?? nextOffset;
+                if (!chunkHasMore) {
+                  setProgress(100);
+                  load();
+                }
+              }
+              if (event.type === "exported" || event.type === "export_error" || event.type === "fatal") {
+                if (!chunkHasMore) setFetching(false);
+              }
+            } catch { /* malformed line */ }
+          }
         }
+
+        if (!chunkHasMore) break;
+        currentOffset = nextOffset;
+        setLogs(prev => [...prev, { type: "source" as const, name: `── Chunk ${Math.floor(currentOffset / CHUNK) + 1} ──`, url: "" }]);
       }
     } catch (err) {
       setLogs(prev => [...prev, { type: "fatal", message: String(err) }]);
-      setFetching(false);
     }
+    setFetching(false);
   }
 
   async function addManualUrl(e: React.FormEvent) {

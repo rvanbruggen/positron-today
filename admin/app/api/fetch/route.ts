@@ -24,7 +24,11 @@ async function checkPositivity(
   };
 }
 
-export async function POST() {
+export async function POST(request: Request) {
+  const url = new URL(request.url);
+  const offset = Math.max(0, parseInt(url.searchParams.get("offset") ?? "0"));
+  const limit  = Math.max(1, parseInt(url.searchParams.get("limit")  ?? "10"));
+
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream({
@@ -36,12 +40,13 @@ export async function POST() {
       };
 
       try {
-        const sourcesResult = await db.execute(
-          "SELECT * FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss')"
+        const allSourcesResult = await db.execute(
+          "SELECT * FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss') ORDER BY id ASC"
         );
-        const sources = sourcesResult.rows;
+        const totalSources = allSourcesResult.rows.length;
+        const sources = allSourcesResult.rows.slice(offset, offset + limit);
 
-        send({ type: "start", totalSources: sources.length });
+        send({ type: "start", totalSources, chunkSize: sources.length, offset, hasMore: offset + limit < totalSources });
 
         // Read prompt settings once for the entire run
         const settings = await getSettings();
@@ -113,15 +118,18 @@ export async function POST() {
           totalSkipped += skipped;
         }
 
-        send({ type: "done", added: totalAdded, filtered: totalFiltered, skipped: totalSkipped });
+        const hasMore = offset + limit < totalSources;
+        send({ type: "done", added: totalAdded, filtered: totalFiltered, skipped: totalSkipped, hasMore, nextOffset: offset + limit });
 
-        // Auto-publish rejection log to the public site
-        try {
-          send({ type: "exporting" });
-          const { exported } = await exportRejections();
-          send({ type: "exported", count: exported });
-        } catch (err) {
-          send({ type: "export_error", message: String(err) });
+        // Auto-publish rejection log only on the last chunk
+        if (!hasMore) {
+          try {
+            send({ type: "exporting" });
+            const { exported } = await exportRejections();
+            send({ type: "exported", count: exported });
+          } catch (err) {
+            send({ type: "export_error", message: String(err) });
+          }
         }
       } catch (err) {
         send({ type: "fatal", message: String(err) });
