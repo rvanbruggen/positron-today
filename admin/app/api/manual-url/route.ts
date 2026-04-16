@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
-import { JSDOM } from "jsdom";
-import { Readability } from "@mozilla/readability";
+import { parseArticle } from "@/lib/parse-html";
 
 async function getManualSourceId(): Promise<number> {
   const existing = await db.execute(
@@ -30,8 +29,7 @@ async function fetchPageInfo(url: string): Promise<{ title: string; content: str
       html.match(/content="([^"]+)"\s+property="og:title"/i) ||
       html.match(/<title[^>]*>([^<]+)<\/title>/i);
 
-    const dom = new JSDOM(html, { url });
-    const article = new Readability(dom.window.document).parse();
+    const article = parseArticle(html, url);
 
     const title =
       article?.title ||

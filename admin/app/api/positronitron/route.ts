@@ -22,8 +22,7 @@ import { getFilterProvider, getSummariseProvider } from "@/lib/llm";
 import { buildFilterInstructions, buildFilterPrompt, DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import { getSettings } from "@/lib/settings";
-import { JSDOM } from "jsdom";
-import { Readability } from "@mozilla/readability";
+import { parseArticle } from "@/lib/parse-html";
 import RSSParser from "rss-parser";
 
 const parser = new RSSParser();
@@ -67,8 +66,7 @@ async function fetchArticleContent(url: string): Promise<{ text: string; imageUr
       html.match(/name="description"\s+content="([^"]{30,})"/i);
     const metaDesc = descMatch ? descMatch[1].trim() : "";
 
-    const dom = new JSDOM(html, { url });
-    const article = new Readability(dom.window.document).parse();
+    const article = parseArticle(html, url);
     const readabilityText = article?.textContent?.trim() ?? "";
 
     const text = readabilityText.length > 200

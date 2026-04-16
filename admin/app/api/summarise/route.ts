@@ -3,8 +3,7 @@ import db from "@/lib/db";
 import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
-import { JSDOM } from "jsdom";
-import { Readability } from "@mozilla/readability";
+import { parseArticle } from "@/lib/parse-html";
 
 async function fetchArticleContent(url: string): Promise<{ text: string; imageUrl: string | null }> {
   try {
@@ -26,8 +25,7 @@ async function fetchArticleContent(url: string): Promise<{ text: string; imageUr
       html.match(/name="description"\s+content="([^"]{30,})"/i);
     const metaDesc = descMatch ? descMatch[1].trim() : "";
 
-    const dom = new JSDOM(html, { url });
-    const article = new Readability(dom.window.document).parse();
+    const article = parseArticle(html, url);
     const readabilityText = article?.textContent?.trim() ?? "";
 
     const text = readabilityText.length > 200
