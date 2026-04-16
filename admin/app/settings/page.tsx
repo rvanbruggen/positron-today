@@ -622,7 +622,7 @@ export default function SettingsPage() {
                 setPtronRunning(true);
                 setPtronResult(null);
                 try {
-                  const res = await fetch("/api/positronitron", { method: "POST" });
+                  const res = await fetch("/api/positronitron?manual=1", { method: "POST" });
                   const data = await res.json();
                   setPtronResult(res.ok ? `Done — ${data.scheduled ?? 0} article(s) scheduled.` : `Error: ${data.error ?? res.statusText}`);
                 } catch (err) {

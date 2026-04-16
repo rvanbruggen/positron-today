@@ -225,15 +225,43 @@ export async function GET() {
   });
 }
 
+// ─── Schedule check ─────────────────────────────────────────────────────────
+
+/** Returns true if the current time is within `windowMins` of any configured run time. */
+function isScheduledNow(runTimesJson: string, windowMins = 15): boolean {
+  let times: string[];
+  try { times = JSON.parse(runTimesJson); } catch { times = ["08:00", "15:00"]; }
+
+  const now = new Date();
+  const nowMins = now.getHours() * 60 + now.getMinutes();
+
+  return times.some((t) => {
+    const [h, m] = t.split(":").map(Number);
+    const targetMins = h * 60 + m;
+    const diff = Math.abs(nowMins - targetMins);
+    return diff <= windowMins || diff >= (1440 - windowMins); // handle midnight wrap
+  });
+}
+
 // ─── POST — run the pipeline ─────────────────────────────────────────────────
 
-export async function POST() {
+export async function POST(request: Request) {
   const settings = await getSettings();
+  const url = new URL(request.url);
+  const isManual = url.searchParams.get("manual") === "1";
 
   if (settings.positronitron_enabled !== "true") {
     return Response.json({
       ok: false,
       message: "Positronitron is disabled. Enable it in Settings.",
+    });
+  }
+
+  // When called by cron (not manual), only run if current time matches a configured slot
+  if (!isManual && !isScheduledNow(settings.positronitron_run_times ?? '["08:00","15:00"]')) {
+    return Response.json({
+      ok: false,
+      message: "Not a scheduled run time. Skipping.",
     });
   }
 

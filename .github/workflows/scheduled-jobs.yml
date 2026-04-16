@@ -2,17 +2,14 @@ name: Scheduled jobs
 
 on:
   schedule:
-    # Publish scheduled articles — every hour
-    - cron: "0 * * * *"
-    # Positronitron autonomous run — 06:00 and 13:00 UTC (08:00 / 15:00 CET)
-    - cron: "0 6 * * *"
-    - cron: "0 13 * * *"
+    # Every 30 minutes — both jobs run; Positronitron self-checks
+    # against its configured run times and skips if not due.
+    - cron: "*/30 * * * *"
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
   publish-scheduled:
     runs-on: ubuntu-latest
-    # Run on every hourly trigger
     steps:
       - name: Trigger publish-scheduled
         run: |
@@ -22,8 +19,6 @@ jobs:
 
   positronitron:
     runs-on: ubuntu-latest
-    # Only run at the Positronitron times (06:00 and 13:00 UTC)
-    if: github.event.schedule == '0 6 * * *' || github.event.schedule == '0 13 * * *' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Trigger positronitron
         run: |
