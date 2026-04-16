@@ -20,8 +20,9 @@ export default function LoginPage() {
         body:    JSON.stringify({ password }),
       });
       if (res.ok) {
-        router.push("/");
-        router.refresh();
+        // Hard navigation ensures the cookie is sent on the next request
+        window.location.href = "/";
+        return;
       } else {
         const data = await res.json().catch(() => ({}));
         setError(data.error ?? "Incorrect password.");
