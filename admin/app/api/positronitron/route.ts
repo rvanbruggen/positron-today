@@ -200,8 +200,9 @@ function nextSlot(after: Date, intervalMinutes: number, bufferMinutes = 2): Date
   const t = new Date(after.getTime() + bufferMinutes * 60 * 1000);
   const totalMins = t.getHours() * 60 + t.getMinutes();
   const rounded = Math.ceil(totalMins / intervalMinutes) * intervalMinutes;
+  const jitter = 1 + Math.floor(Math.random() * 9);
   const result = new Date(t);
-  result.setHours(Math.floor(rounded / 60), rounded % 60, 0, 0);
+  result.setHours(Math.floor((rounded + jitter) / 60), (rounded + jitter) % 60, 0, 0);
   if (result <= after) result.setDate(result.getDate() + 1);
   return result;
 }
@@ -443,7 +444,7 @@ export async function POST() {
         });
 
         L(`Scheduled: "${summaries.title_en}" at ${dateStr}${isFeatured ? " ⭐ FEATURED" : ""} (score: ${c.score})`);
-        scheduleCursor = new Date(scheduleCursor.getTime() + intervalMinutes * 60 * 1000);
+        scheduleCursor = nextSlot(scheduleCursor, intervalMinutes);
       } catch (err) {
         L(`Error processing "${c.title}": ${err}`);
       }

@@ -13,15 +13,16 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
 
-/** Round a Date up to the next multiple of `intervalMinutes`, at least
- *  `bufferMinutes` in the future, then return it truncated to the minute. */
+/** Return a publish time at least `bufferMinutes` after `after`, snapped to
+ *  the next interval boundary, then jittered by 1–9 minutes so times look
+ *  human-picked rather than landing exactly on :00 or :30. */
 function nextSlot(after: Date, intervalMinutes: number, bufferMinutes = 2): Date {
   const t = new Date(after.getTime() + bufferMinutes * 60 * 1000);
   const totalMins = t.getHours() * 60 + t.getMinutes();
   const rounded = Math.ceil(totalMins / intervalMinutes) * intervalMinutes;
+  const jitter = 1 + Math.floor(Math.random() * 9);
   const result = new Date(t);
-  result.setHours(Math.floor(rounded / 60), rounded % 60, 0, 0);
-  // If rounding pushed past midnight, add a day
+  result.setHours(Math.floor((rounded + jitter) / 60), (rounded + jitter) % 60, 0, 0);
   if (result <= after) result.setDate(result.getDate() + 1);
   return result;
 }
@@ -67,7 +68,7 @@ export async function POST(request: NextRequest) {
     });
 
     slots.push({ id, title, publish_date: dateStr });
-    cursor = new Date(cursor.getTime() + intervalMinutes * 60 * 1000);
+    cursor = nextSlot(cursor, intervalMinutes);
   }
 
   return Response.json({ scheduled: slots.length, slots });

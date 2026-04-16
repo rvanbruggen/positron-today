@@ -82,6 +82,10 @@ export default function SettingsPage() {
   const [restoreOk,    setRestoreOk]    = useState<boolean | null>(null);
   const restoreInput                    = useRef<HTMLInputElement>(null);
 
+  // Positronitron run state
+  const [ptronRunning,  setPtronRunning]  = useState(false);
+  const [ptronResult,   setPtronResult]   = useState<string | null>(null);
+
   // Auth state
   const [loggingOut,   setLoggingOut]   = useState(false);
 
@@ -380,6 +384,12 @@ export default function SettingsPage() {
               </button>
             )}
           </div>
+          <div className="flex items-center gap-4 mt-4 pt-3 border-t border-yellow-100">
+            <button onClick={save} disabled={saving} className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+              {saving ? "Saving…" : "Save"}
+            </button>
+            {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
+          </div>
         </div>
       </Section>
 
@@ -429,6 +439,12 @@ export default function SettingsPage() {
               </button>
             )}
           </div>
+          <div className="flex items-center gap-4 mt-4 pt-3 border-t border-yellow-100">
+            <button onClick={save} disabled={saving} className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+              {saving ? "Saving…" : "Save"}
+            </button>
+            {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
+          </div>
         </div>
       </Section>
 
@@ -474,19 +490,13 @@ export default function SettingsPage() {
             <p className="mt-1">Pull a model with: <code className="font-mono bg-red-100 px-1 rounded">ollama pull llama3.2:3b</code></p>
           </div>
         )}
+        <div className="flex items-center gap-4 mt-4 pt-3 border-t border-yellow-100">
+          <button onClick={save} disabled={saving} className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+            {saving ? "Saving…" : "Save"}
+          </button>
+          {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
+        </div>
       </Section>
-
-      {/* ── Save button ── */}
-      <div className="flex items-center gap-4 mt-2">
-        <button
-          onClick={save}
-          disabled={saving}
-          className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-6 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
-        >
-          {saving ? "Saving…" : "Save settings"}
-        </button>
-        {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
-      </div>
 
       {/* ── Analytics ── */}
       <div className="mt-6 bg-white border border-yellow-200 rounded-xl p-5 flex items-center justify-between">
@@ -558,9 +568,38 @@ export default function SettingsPage() {
             />
             <span className="text-xs text-amber-500">most positive articles selected per run</span>
           </div>
+          <div className="flex items-center gap-3 mt-4 pt-3 border-t border-yellow-100">
+            <button
+              onClick={save}
+              disabled={saving}
+              className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            >
+              {saving ? "Saving…" : "Save"}
+            </button>
+            <button
+              onClick={async () => {
+                setPtronRunning(true);
+                setPtronResult(null);
+                try {
+                  const res = await fetch("/api/positronitron", { method: "POST" });
+                  const data = await res.json();
+                  setPtronResult(res.ok ? `Done — ${data.scheduled ?? 0} article(s) scheduled.` : `Error: ${data.error ?? res.statusText}`);
+                } catch (err) {
+                  setPtronResult(`Error: ${err instanceof Error ? err.message : String(err)}`);
+                } finally {
+                  setPtronRunning(false);
+                }
+              }}
+              disabled={ptronRunning}
+              className="bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            >
+              {ptronRunning ? "Running…" : "▶ Run now"}
+            </button>
+            {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
+            {ptronResult && <p className="text-sm text-amber-600">{ptronResult}</p>}
+          </div>
           <p className="text-[11px] text-amber-400 mt-3">
             Schedule: 08:00 and 15:00 daily via launchd. The hourly publish job handles the actual publishing.
-            Remember to click &quot;Save settings&quot; after toggling.
           </p>
         </div>
       </div>

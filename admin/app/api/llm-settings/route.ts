@@ -25,6 +25,8 @@ export async function PUT(request: NextRequest) {
       "filter_threshold",
       "filter_prompt_override",
       "summarise_style_override",
+      "positronitron_enabled",
+      "positronitron_count",
     ];
     const patch: Partial<LLMSettings> = {};
     for (const key of allowed) {
