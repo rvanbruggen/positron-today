@@ -13,8 +13,11 @@ interface CardProps {
   imageUrl: string | null;
 }
 
-async function loadGoogleFont(family: string, weights: number[]): Promise<{ name: string; data: ArrayBuffer; weight: number; style: "normal" }[]> {
-  const results: { name: string; data: ArrayBuffer; weight: number; style: "normal" }[] = [];
+type Weight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type FontEntry = { name: string; data: ArrayBuffer; weight: Weight; style: "normal" };
+
+async function loadGoogleFont(family: string, weights: Weight[]): Promise<FontEntry[]> {
+  const results: FontEntry[] = [];
   for (const weight of weights) {
     const url = `https://fonts.googleapis.com/css2?family=${family.replace(/ /g, "+")}:wght@${weight}&display=swap`;
     const css = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" } }).then(r => r.text());
