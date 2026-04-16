@@ -52,12 +52,10 @@ export async function POST(request: Request) {
   const stats: Record<string, number> = {};
 
   try {
-    // ── 0. Disable FK checks during restore ───────────────────────────────────
-    await db.execute("PRAGMA foreign_keys = OFF");
-
     // ── 1. Wipe in dependency order ──────────────────────────────────────────
     await db.execute("DELETE FROM article_tags");
     await db.execute("DELETE FROM articles");
+    await db.execute("DELETE FROM raw_articles");
     await db.execute("DELETE FROM rejected_articles");
     await db.execute("DELETE FROM topics");
     await db.execute("DELETE FROM sources");
@@ -87,13 +85,14 @@ export async function POST(request: Request) {
     }
     stats.topics = (tables.topics ?? []).length;
 
-    // articles
+    // articles (null out raw_article_id — raw_articles aren't in the backup)
     for (const row of tables.articles ?? []) {
-      const keys = Object.keys(row);
+      const cleaned = { ...row, raw_article_id: null };
+      const keys = Object.keys(cleaned);
       const placeholders = keys.map(() => "?").join(", ");
       await db.execute({
         sql:  `INSERT OR REPLACE INTO articles (${keys.join(", ")}) VALUES (${placeholders})`,
-        args: toArgs(Object.values(row)),
+        args: toArgs(Object.values(cleaned)),
       });
     }
     stats.articles = (tables.articles ?? []).length;
@@ -140,12 +139,7 @@ export async function POST(request: Request) {
       }
     }
 
-    // ── 4. Re-enable FK checks ─────────────────────────────────────────────
-    await db.execute("PRAGMA foreign_keys = ON");
-
   } catch (err) {
-    // Re-enable FK checks even on error
-    try { await db.execute("PRAGMA foreign_keys = ON"); } catch { /* ok */ }
     const message = err instanceof Error ? err.message : String(err);
     return Response.json({ error: `Restore failed: ${message}` }, { status: 500 });
   }
