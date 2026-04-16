@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.12.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.12.2 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.12.2** | Fix publish timestamp: articles now use the actual publish time in front matter and filenames, not the scheduled time. Fixes incorrect timeline ordering when using "publish now" to override a scheduled slot. Skip SSR for Scheduled admin page to eliminate hydration mismatches |
 | **1.12.1** | Fix scheduled-page hydration error (server/client mismatch from `Date.now()`). Dense grid layout (`grid-auto-flow: dense`) fills gaps around featured wide cards. Two-phase scheduled publish waits for GitHub Pages rebuild before posting to social (fixes 404 preview links) |
 | **1.12.0** | Featured posts: "⭐ Featured (wide card)" toggle on Scheduled and History pages. Featured cards span two columns on the public site grid. Layout switched from flex-column round-robin to CSS grid for native responsive columns and `grid-column: span 2` support. Collapses to single column on mobile |
 | **1.11.0** | Per-article "📣 Announce on social" checkbox on the Scheduled → Ready-to-publish list: when ticked, publishing the article (either manually or via the hourly `publish-scheduled` cron) also triggers a social media announcement through the existing Post-for-Me pipeline. Default is off, so social posting remains fully opt-in |
