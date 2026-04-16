@@ -1,10 +1,10 @@
 /**
- * Admin authentication middleware.
+ * Admin authentication proxy (Next.js 16 convention, replaces middleware.ts).
  *
  * Every request (except /login and /api/auth/*) requires a valid session cookie.
  * The cookie value is HMAC-SHA256(ADMIN_SECRET, "positron-admin-v1").
  *
- * If ADMIN_SECRET is not set the middleware is a no-op (dev without auth).
+ * If ADMIN_SECRET is not set the proxy is a no-op (dev without auth).
  */
 
 import { NextResponse } from "next/server";
@@ -25,7 +25,7 @@ async function makeToken(secret: string): Promise<string> {
   return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Always allow the login page, auth API, and machine-to-machine endpoints through
