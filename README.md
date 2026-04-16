@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 1.13.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 1.14.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **1.14.0** | Positronitron autonomous publishing mode: fully automated pipeline that fetches RSS, filters with max strictness, selects the top N most positive articles by score, summarises, schedules with social announcements, and marks the highest-scored as featured. Toggle on/off in Settings with configurable article count. Green "AUTO" badge in nav when active. launchd plist runs at 08:00 and 15:00 daily |
 | **1.13.0** | Positivity scoring: LLM now assigns a 1-10 positivity score to every article during filtering. Scores are stored, displayed as colour-coded badges in the Scheduled and History admin pages, and will serve as the foundation for the upcoming Positronitron autonomous publishing mode |
 | **1.12.2** | Fix publish timestamp: articles now use the actual publish time in front matter and filenames, not the scheduled time. Fixes incorrect timeline ordering when using "publish now" to override a scheduled slot. Skip SSR for Scheduled admin page to eliminate hydration mismatches |
 | **1.12.1** | Fix scheduled-page hydration error (server/client mismatch from `Date.now()`). Dense grid layout (`grid-auto-flow: dense`) fills gaps around featured wide cards. Two-phase scheduled publish waits for GitHub Pages rebuild before posting to social (fixes 404 preview links) |
