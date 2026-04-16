@@ -17,6 +17,19 @@ import { postArticleToSocial } from "@/app/api/post-social/route";
 const GITHUB_TOKEN  = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO   = process.env.GITHUB_REPO!;
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH ?? "main";
+const SITE_BASE     = "https://positron.today";
+
+async function waitForUrlLive(url: string, maxWaitMs = 180_000, intervalMs = 15_000): Promise<boolean> {
+  const deadline = Date.now() + maxWaitMs;
+  while (Date.now() < deadline) {
+    try {
+      const res = await fetch(url, { method: "HEAD", redirect: "follow" });
+      if (res.ok) return true;
+    } catch { /* not live yet */ }
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
+  return false;
+}
 
 // ─── Shared publish helpers (duplicated from publish/route.ts) ────────────────
 
@@ -189,12 +202,14 @@ export async function POST(request: Request) {
 
   const results: Array<{ id: number; title: string; ok: boolean; path?: string; error?: string; social?: unknown }> = [];
 
+  // ── Phase 1: publish all due articles to GitHub ───────────────────────────
+  const needsSocial: Array<{ id: number; path: string }> = [];
+
   for (const article of due) {
     const id = Number(article.id);
     const title = String(article.title_en ?? article.title_nl ?? article.id);
 
     try {
-      // Fetch tags for this article
       const tagsResult = await db.execute({
         sql: `SELECT t.name FROM article_tags at2
               JOIN topics t ON at2.tag_id = t.id
@@ -204,7 +219,6 @@ export async function POST(request: Request) {
       });
       const tagNames = tagsResult.rows.map((r) => String(r.name));
 
-      // Use publish_date for the filename date
       const dateStr = String(article.publish_date).slice(0, 10);
       const path: string = article.published_path
         ? String(article.published_path)
@@ -223,22 +237,34 @@ export async function POST(request: Request) {
         args: [path, id],
       });
 
-      // Opt-in social announcement — only if the admin ticked the checkbox on this article.
-      let social: unknown = undefined;
-      if (Number(article.post_to_social_on_publish ?? 0) === 1) {
-        try {
-          social = await postArticleToSocial(id);
-        } catch (err) {
-          social = { ok: false, error: err instanceof Error ? err.message : String(err) };
-          console.error(`[publish-scheduled] id=${id} social error:`, err);
-        }
-      }
+      results.push({ id, title, ok: true, path });
 
-      results.push({ id, title, ok: true, path, social });
+      if (Number(article.post_to_social_on_publish ?? 0) === 1) {
+        needsSocial.push({ id, path });
+      }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       console.error(`[publish-scheduled] Failed to publish article ${id}:`, message);
       results.push({ id, title, ok: false, error: message });
+    }
+  }
+
+  // ── Phase 2: wait for GitHub Pages rebuild, then post to social ───────────
+  if (needsSocial.length > 0) {
+    const firstUrl = `${SITE_BASE}/posts/${needsSocial[0].path.split("/").pop()?.replace(/\.md$/, "")}/`;
+    console.log(`[publish-scheduled] Waiting for GitHub Pages rebuild… checking ${firstUrl}`);
+    await waitForUrlLive(firstUrl);
+
+    for (const { id } of needsSocial) {
+      const r = results.find((x) => x.id === id);
+      try {
+        const social = await postArticleToSocial(id);
+        if (r) r.social = social;
+      } catch (err) {
+        const socialErr = { ok: false, error: err instanceof Error ? err.message : String(err) };
+        if (r) r.social = socialErr;
+        console.error(`[publish-scheduled] id=${id} social error:`, err);
+      }
     }
   }
 
