@@ -2,7 +2,7 @@
 title: "How South Korea plans to use the Iran crisis to spur a renewables revolution"
 title_nl: "Hoe Zuid-Korea de Iran-crisis wil gebruiken om een revolutie in hernieuwbare energie te stimuleren"
 title_fr: "Comment la Corée du Sud prévoit d'utiliser la crise iranienne pour stimuler une révolution des énergies renouvelables"
-date: 2026-04-16T10:00:00
+date: 2026-04-16T07:08:21
 source_pub_date: 2026-04-16
 fetched_date: 2026-04-16
 source_url: "https://www.theguardian.com/world/2026/apr/16/south-korea-solar-power-renewables-revolution"
