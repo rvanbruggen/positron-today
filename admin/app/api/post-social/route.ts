@@ -13,7 +13,7 @@
  */
 
 import db from "@/lib/db";
-import { generateInstagramCardPng } from "@/lib/instagram-card";
+import { generateInstagramCardOg } from "@/lib/instagram-card-og";
 
 const PFM_BASE  = "https://api.postforme.dev/v1";
 const API_KEY   = process.env.POSTFORME_API_KEY!;
@@ -214,7 +214,7 @@ export async function postArticleToSocial(id: number): Promise<PostArticleResult
   let cardMediaUrl: string | null = null;
   if (instagramAccounts.length > 0) {
     try {
-      const png = await generateInstagramCardPng({ title, emoji, source, imageUrl });
+      const png = await generateInstagramCardOg({ title, emoji, source, imageUrl });
       cardMediaUrl = await uploadCardToPostForMe(png);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);

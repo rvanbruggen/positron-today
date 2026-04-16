@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.0.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.1.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.1.0** | Replace Python/Playwright Instagram card generator with @vercel/og (Satori) — portable to Vercel serverless, no external dependencies |
 | **2.0.0** | Positron can now run fully autonomously. Per-section save buttons on Settings page, manual "Run now" trigger for Positronitron, and randomised publish scheduling for more natural-looking post times |
 | **1.14.0** | Positronitron autonomous publishing mode: fully automated pipeline that fetches RSS, filters with max strictness, selects the top N most positive articles by score, summarises, schedules with social announcements, and marks the highest-scored as featured. Toggle on/off in Settings with configurable article count. Green "AUTO" badge in nav when active. launchd plist runs at 08:00 and 15:00 daily |
 | **1.13.0** | Positivity scoring: LLM now assigns a 1-10 positivity score to every article during filtering. Scores are stored, displayed as colour-coded badges in the Scheduled and History admin pages, and will serve as the foundation for the upcoming Positronitron autonomous publishing mode |

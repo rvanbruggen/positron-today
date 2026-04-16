@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """
+DEPRECATED — replaced by admin/lib/instagram-card-og.tsx (@vercel/og / Satori).
+Safe to delete once the comparison route (/api/instagram-card-preview) is removed.
+
 gen-instagram-card.py
 Reads an HTML file and screenshots it at 1080x1080px using Playwright.
 Usage: python3 scripts/gen-instagram-card.py --input /tmp/card.html --output /tmp/card.png

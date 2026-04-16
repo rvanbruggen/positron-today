@@ -33,7 +33,8 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/login") ||
     pathname.startsWith("/api/auth") ||
     pathname.startsWith("/api/publish-scheduled") ||
-    pathname.startsWith("/api/positronitron")
+    pathname.startsWith("/api/positronitron") ||
+    pathname.startsWith("/api/instagram-card-preview")
   ) {
     return NextResponse.next();
   }

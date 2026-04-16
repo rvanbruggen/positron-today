@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import db from "@/lib/db";
-import { generateInstagramCardPng } from "@/lib/instagram-card";
+import { generateInstagramCardOg } from "@/lib/instagram-card-og";
 
 export async function GET(req: NextRequest) {
   const id = req.nextUrl.searchParams.get("id");
@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
   const imageUrl = row.image_url ? String(row.image_url) : null;
 
   try {
-    const png  = await generateInstagramCardPng({ title, emoji, source, imageUrl });
+    const png  = await generateInstagramCardOg({ title, emoji, source, imageUrl });
     const slug = title.toLowerCase().replace(/[^\w]+/g, "-").slice(0, 50).replace(/-$/, "");
 
     return new NextResponse(new Uint8Array(png), {

@@ -1,6 +1,8 @@
 /**
- * Shared Instagram card generation logic.
- * Used by both /api/instagram-card (download) and /api/post-social (upload).
+ * DEPRECATED — replaced by instagram-card-og.tsx (@vercel/og / Satori).
+ * This file used Python + Playwright to screenshot an HTML template.
+ * Kept only for the side-by-side comparison route (/api/instagram-card-preview).
+ * Safe to delete once the comparison is no longer needed.
  */
 
 import { execSync }                       from "child_process";
