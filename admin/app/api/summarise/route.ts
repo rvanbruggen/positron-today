@@ -10,7 +10,7 @@ async function fetchArticleContent(url: string): Promise<{ text: string; imageUr
   try {
     const res = await fetch(url, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; PositronToday/1.0)" },
-      signal: AbortSignal.timeout(10000),
+      signal: AbortSignal.timeout(5000),
     });
     const html = await res.text();
 
@@ -99,7 +99,7 @@ Output ONLY this exact JSON object and nothing else. All fields are required:
   const systemPrompt = "You output only raw JSON. No prose, no markdown, no code fences, no explanation. Every response must be a single complete JSON object with all 8 fields filled in.";
 
   const str = (v: unknown, fallback = "") => (typeof v === "string" && v.trim() ? v.trim() : fallback);
-  const MAX_ATTEMPTS = 3;
+  const MAX_ATTEMPTS = 2;
   const provider = await getSummariseProvider();
   let missingFields: string[] = [];
 
