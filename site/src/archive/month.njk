@@ -16,7 +16,7 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
   .page-header p { font-size: 0.875rem; color: #b45309; }
 
   .card-grid {
-    display: grid; grid-template-columns: 1fr; gap: 1rem;
+    display: grid; grid-template-columns: 1fr; gap: 1rem; grid-auto-flow: dense;
   }
   @media (min-width: 480px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 700px)  { .card-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
