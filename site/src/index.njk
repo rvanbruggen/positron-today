@@ -78,15 +78,18 @@ title: Home
   .tbtn-lime   { background:#ecfccb; color:#365314; }
   .tbtn-pink   { background:#fce7f3; color:#831843; }
 
-  /* Grid layout — featured cards span two columns */
-  .card-grid {
-    display: grid; grid-template-columns: 1fr; gap: 1rem; grid-auto-flow: dense;
-  }
-  @media (min-width: 480px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 700px)  { .card-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
-  @media (min-width: 1200px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
-  .card-featured { grid-column: span 2; }
-  @media (max-width: 479px) { .card-featured { grid-column: span 1; } }
+  /* Masonry layout — card widths set by CSS, vertical positioning by Masonry.js */
+  .card-grid { margin: 0 -0.5rem; }
+  .grid-sizer, .card-grid .card { width: calc(100% - 1rem); margin: 0.5rem; box-sizing: border-box; }
+  .grid-sizer { height: 0; padding: 0; margin: 0.5rem; visibility: hidden; }
+  @media (min-width: 480px) { .grid-sizer, .card-grid .card { width: calc(50% - 1rem); } }
+  @media (min-width: 700px)  { .grid-sizer, .card-grid .card { width: calc(33.333% - 1rem); } }
+  @media (min-width: 1200px) { .grid-sizer, .card-grid .card { width: calc(25% - 1rem); } }
+  /* Featured cards span double width */
+  .card-featured { width: calc(100% - 1rem) !important; }
+  @media (min-width: 480px) { .card-featured { width: calc(100% - 1rem) !important; } }
+  @media (min-width: 700px)  { .card-featured { width: calc(66.666% - 1rem) !important; } }
+  @media (min-width: 1200px) { .card-featured { width: calc(50% - 1rem) !important; } }
 
   .card {
     border-radius: 1rem; padding: 1.1rem; border: 2px solid transparent;
@@ -206,6 +209,7 @@ title: Home
   </div>
 
   <div class="card-grid" id="card-grid">
+    <div class="grid-sizer"></div>
     {% for post in recentPosts %}
       {# Resolve tags: use tags[] if present, fall back to topic string #}
       {% if post.data.tags and post.data.tags.length > 0 %}
@@ -411,4 +415,29 @@ title: Home
     if (activeTags.size > 0 || activeDateRange !== 'all') applyFilters();
     else updateFilterUI();
   })();
+</script>
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script>
+  // Initialize Masonry after images load so heights are correct
+  var grid = document.querySelector('.card-grid');
+  if (grid) {
+    var msnry = new Masonry(grid, {
+      itemSelector: '.card',
+      columnWidth: '.grid-sizer',
+      percentPosition: true,
+      transitionDuration: '0.2s'
+    });
+    // Re-layout after all images load
+    imagesLoaded(grid, function() { msnry.layout(); });
+    // Re-layout after filters hide/show cards
+    var _baseApply = window.applyFilters;
+    window.applyFilters = function() {
+      _baseApply();
+      setTimeout(function() { msnry.layout(); }, 50);
+    };
+    // Expose for manual re-layout if needed
+    window.msnry = msnry;
+  }
 </script>
