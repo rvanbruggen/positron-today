@@ -122,9 +122,9 @@ export async function PATCH(request: NextRequest) {
     const raw = rawResult.rows[0];
     if (raw) {
       await db.execute({
-        sql: `INSERT OR IGNORE INTO articles (raw_article_id, source_url, source_name, status)
-              VALUES (?, ?, ?, 'draft')`,
-        args: [raw.id, raw.url, raw.source_name],
+        sql: `INSERT OR IGNORE INTO articles (raw_article_id, source_url, source_name, status, positivity_score)
+              VALUES (?, ?, ?, 'draft', ?)`,
+        args: [raw.id, raw.url, raw.source_name, raw.positivity_score ?? null],
       });
     }
   }

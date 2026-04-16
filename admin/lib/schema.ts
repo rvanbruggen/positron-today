@@ -107,6 +107,10 @@ export async function initSchema() {
 
     // v1.12: featured flag — card spans two columns on the public site
     "ALTER TABLE articles ADD COLUMN featured INTEGER NOT NULL DEFAULT 0",
+
+    // v1.13: positivity score (1-10) assigned by the LLM during filtering
+    "ALTER TABLE articles ADD COLUMN positivity_score REAL",
+    "ALTER TABLE raw_articles ADD COLUMN positivity_score REAL",
   ];
 
   for (const sql of migrations) {

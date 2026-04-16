@@ -21,6 +21,7 @@ type Article = {
   publish_date: string | null;
   post_to_social_on_publish: boolean;
   featured: boolean;
+  positivity_score: number | null;
 };
 
 const ScheduledClient = dynamic(() => import("./ScheduledClient"), {

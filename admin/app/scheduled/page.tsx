@@ -45,6 +45,7 @@ export default async function ScheduledPage() {
     publish_date: a.publish_date ? String(a.publish_date) : null,
     post_to_social_on_publish: Number(a.post_to_social_on_publish ?? 0) === 1,
     featured: Number(a.featured ?? 0) === 1,
+    positivity_score: a.positivity_score != null ? Number(a.positivity_score) : null,
   }));
 
   const tags = tagsResult.rows.map((t) => ({

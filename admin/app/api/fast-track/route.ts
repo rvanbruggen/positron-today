@@ -30,7 +30,7 @@ async function checkPositivity(
   title: string,
   snippet: string,
   filterInstructions: string,
-): Promise<{ fits: boolean; reason: string; category: string }> {
+): Promise<{ fits: boolean; reason: string; category: string; score?: number }> {
   const provider = await getFilterProvider();
   const prompt = buildFilterPrompt(filterInstructions, title, snippet);
   const result = await provider.classify(prompt);
@@ -38,6 +38,7 @@ async function checkPositivity(
     fits: result.fits,
     reason: result.reason,
     category: result.category ?? "other-negative",
+    score: result.score,
   };
 }
 
@@ -392,7 +393,7 @@ export async function POST(request: NextRequest) {
                 : null;
 
               // ── Step 1: Positivity filter (threshold 10) ──
-              const { fits, reason, category } = await checkPositivity(
+              const { fits, reason, category, score } = await checkPositivity(
                 item.title!,
                 snippet,
                 filterInstructions,
@@ -400,7 +401,7 @@ export async function POST(request: NextRequest) {
 
               if (!fits) {
                 filtered++;
-                send({ type: "article", verdict: "filtered", title: item.title!, reason, category });
+                send({ type: "article", verdict: "filtered", title: item.title!, reason, category, score });
                 const safeCategory = CATEGORY_SLUGS.includes(category) ? category : "other-negative";
                 try {
                   await db.execute({
@@ -415,7 +416,7 @@ export async function POST(request: NextRequest) {
 
               // ── Step 2: Insert into raw_articles ──
               passed++;
-              send({ type: "article", verdict: "passed", title: item.title! });
+              send({ type: "article", verdict: "passed", title: item.title!, score });
 
               let rawId: number;
               try {
@@ -434,9 +435,9 @@ export async function POST(request: NextRequest) {
               let articleId: number;
               try {
                 const approveInsert = await db.execute({
-                  sql: `INSERT OR IGNORE INTO articles (raw_article_id, source_url, source_name, status)
-                        VALUES (?, ?, ?, 'draft')`,
-                  args: [rawId, item.link!, source.name as string],
+                  sql: `INSERT OR IGNORE INTO articles (raw_article_id, source_url, source_name, status, positivity_score)
+                        VALUES (?, ?, ?, 'draft', ?)`,
+                  args: [rawId, item.link!, source.name as string, score ?? null],
                 });
                 articleId = Number(approveInsert.lastInsertRowid);
                 await db.execute({ sql: "UPDATE raw_articles SET status = 'approved' WHERE id = ?", args: [rawId] });

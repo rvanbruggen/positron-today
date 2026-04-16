@@ -22,6 +22,7 @@ type Article = {
   publish_date: string | null;
   post_to_social_on_publish: boolean;
   featured: boolean;
+  positivity_score: number | null;
 };
 
 function TagPills({
@@ -426,7 +427,23 @@ export default function ScheduledClient({
                             <p className="text-xs text-amber-600 leading-relaxed mt-1">
                               {String(a[summaryKey] ?? "")}
                             </p>
-                            <p className="text-xs text-amber-400 mt-1">{a.source_name}</p>
+                            <p className="text-xs text-amber-400 mt-1">
+                              {a.source_name}
+                              {a.positivity_score != null && (
+                                <span
+                                  className={`ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold ${
+                                    a.positivity_score >= 8
+                                      ? "bg-green-100 text-green-700"
+                                      : a.positivity_score >= 6
+                                      ? "bg-yellow-100 text-yellow-700"
+                                      : "bg-orange-100 text-orange-700"
+                                  }`}
+                                  title={`Positivity score: ${a.positivity_score}/10`}
+                                >
+                                  ☀️ {a.positivity_score}/10
+                                </span>
+                              )}
+                            </p>
                           </div>
                         </div>
                         <TagPills

@@ -12,7 +12,7 @@ async function checkPositivity(
   title: string,
   snippet: string,
   filterInstructions: string,
-): Promise<{ fits: boolean; reason: string; category: string }> {
+): Promise<{ fits: boolean; reason: string; category: string; score?: number }> {
   const provider = await getFilterProvider();
   const prompt = buildFilterPrompt(filterInstructions, title, snippet);
   const result = await provider.classify(prompt);
@@ -20,6 +20,7 @@ async function checkPositivity(
     fits: result.fits,
     reason: result.reason,
     category: result.category ?? "other-negative",
+    score: result.score,
   };
 }
 
@@ -79,11 +80,11 @@ export async function POST() {
                 ? new Date(item.pubDate).toISOString().slice(0, 10)
                 : null;
 
-              const { fits, reason, category } = await checkPositivity(item.title!, snippet, filterInstructions);
+              const { fits, reason, category, score } = await checkPositivity(item.title!, snippet, filterInstructions);
 
               if (!fits) {
                 filtered++;
-                send({ type: "article", verdict: "filtered", title: item.title!, reason, category });
+                send({ type: "article", verdict: "filtered", title: item.title!, reason, category, score });
                 // Validate category slug
                 const safeCategory = CATEGORY_SLUGS.includes(category) ? category : "other-negative";
                 try {
@@ -96,11 +97,11 @@ export async function POST() {
                 } catch { /* duplicate */ }
               } else {
                 await db.execute({
-                  sql: "INSERT INTO raw_articles (source_id, url, title, content, source_pub_date) VALUES (?, ?, ?, ?, ?)",
-                  args: [source.id, item.link!, item.title!, snippet, sourcePubDate],
+                  sql: "INSERT INTO raw_articles (source_id, url, title, content, source_pub_date, positivity_score) VALUES (?, ?, ?, ?, ?, ?)",
+                  args: [source.id, item.link!, item.title!, snippet, sourcePubDate, score ?? null],
                 });
                 added++;
-                send({ type: "article", verdict: "added", title: item.title! });
+                send({ type: "article", verdict: "added", title: item.title!, score });
               }
             }
             send({ type: "source_done", name: source.name as string, added, filtered, skipped });

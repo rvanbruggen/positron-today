@@ -21,6 +21,7 @@ export interface ClassifyResult {
   fits: boolean;
   reason: string;
   category?: string;   // rejection category slug, present only when fits === false
+  score?: number;      // positivity score 1-10, present when the LLM returns one
 }
 
 export interface LLMProvider {
@@ -194,10 +195,13 @@ function parseClassifyResponse(raw: string): ClassifyResult {
       : typeof rawReason === "object" && rawReason !== null
         ? Object.values(rawReason).join("; ")   // flatten {"Health Scare": "desc"} → "desc"
         : (parsed.verdict === "NO" ? "does not fit positive news criteria" : "");
+    const rawScore = Number(parsed.score);
+    const score = rawScore >= 1 && rawScore <= 10 ? rawScore : undefined;
     return {
       fits: parsed.verdict === "YES",
       reason,
       category: parsed.verdict === "NO" ? (parsed.category ?? "other-negative") : undefined,
+      score,
     };
   } catch {
     const fits = raw.toUpperCase().includes('"YES"') || raw.toUpperCase().startsWith("YES");

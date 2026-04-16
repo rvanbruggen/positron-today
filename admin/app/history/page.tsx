@@ -18,7 +18,7 @@ export default async function HistoryPage() {
              a.summary_en, a.summary_nl, a.summary_fr,
              a.source_url, a.source_name, a.image_url,
              a.article_emoji, a.published_at, a.publish_date, a.published_path,
-             a.social_posted_at, a.featured,
+             a.social_posted_at, a.featured, a.positivity_score,
              r.source_pub_date,
              (SELECT GROUP_CONCAT(t.id || '|' || t.name || '|' || t.emoji, '~~')
               FROM article_tags at2
@@ -51,6 +51,7 @@ export default async function HistoryPage() {
     image_url: a.image_url ? String(a.image_url) : null,
     social_posted_at: a.social_posted_at ? String(a.social_posted_at) : null,
     featured: Number(a.featured ?? 0) === 1,
+    positivity_score: a.positivity_score != null ? Number(a.positivity_score) : null,
   }));
 
   const allTags = tagsResult.rows.map((t) => ({

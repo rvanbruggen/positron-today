@@ -66,10 +66,11 @@ Article title: ${title}
 Snippet: ${snippet}
 
 Reply with JSON only — no other text.
+Always include a "score" field: an integer from 1 (not positive at all) to 10 (exceptionally uplifting).
 
-If it fits: {"verdict":"YES"}
+If it fits: {"verdict":"YES","score":7}
 
-If it does NOT fit: {"verdict":"NO","reason":"1-2 sentence explanation of why this story is too negative or not uplifting","category":"<slug>"}
+If it does NOT fit: {"verdict":"NO","score":3,"reason":"1-2 sentence explanation of why this story is too negative or not uplifting","category":"<slug>"}
 
 Valid category slugs (pick the single best match):
 ${CATEGORY_PROMPT_LIST}`;

@@ -24,6 +24,7 @@ type Article = {
   image_url: string | null;
   social_posted_at: string | null;
   featured: boolean;
+  positivity_score: number | null;
 };
 
 const SITE_BASE = "https://positron.today";
@@ -382,6 +383,20 @@ export default function HistoryClient({
                         className="text-xs text-amber-500 hover:text-amber-700 transition-colors whitespace-nowrap">
                         {a.source_name}
                       </a>
+                      {a.positivity_score != null && (
+                        <span
+                          className={`ml-1 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold ${
+                            a.positivity_score >= 8
+                              ? "bg-green-100 text-green-700"
+                              : a.positivity_score >= 6
+                              ? "bg-yellow-100 text-yellow-700"
+                              : "bg-orange-100 text-orange-700"
+                          }`}
+                          title={`Positivity score: ${a.positivity_score}/10`}
+                        >
+                          ☀️ {a.positivity_score}/10
+                        </span>
+                      )}
                     </td>
 
                     {/* Tags */}
