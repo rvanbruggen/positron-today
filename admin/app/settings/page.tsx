@@ -17,6 +17,7 @@ interface LLMSettings {
   summarise_style_override: string;
   positronitron_enabled: string;
   positronitron_count: string;
+  positronitron_run_times: string;
 }
 
 const ANTHROPIC_MODELS = [
@@ -85,6 +86,7 @@ export default function SettingsPage() {
   // Positronitron run state
   const [ptronRunning,  setPtronRunning]  = useState(false);
   const [ptronResult,   setPtronResult]   = useState<string | null>(null);
+  const [runTimes,      setRunTimes]      = useState<string[]>(["08:00", "15:00"]);
 
   // Auth state
   const [loggingOut,   setLoggingOut]   = useState(false);
@@ -130,6 +132,8 @@ export default function SettingsPage() {
         if (data.summarise_style_override == null) data.summarise_style_override = "";
         if (!data.positronitron_enabled)   data.positronitron_enabled   = "false";
         if (!data.positronitron_count)     data.positronitron_count     = "3";
+        if (!data.positronitron_run_times) data.positronitron_run_times = '["08:00","15:00"]';
+        try { setRunTimes(JSON.parse(data.positronitron_run_times)); } catch {}
         setSettings(data);
       })
       .catch(err => setLoadError(err.message));
@@ -252,10 +256,12 @@ export default function SettingsPage() {
     setSaving(true);
     setSaveMsg(null);
     try {
+      // Sync run times into settings before saving
+      const toSave = { ...settings, positronitron_run_times: JSON.stringify(runTimes) };
       const res = await fetch("/api/llm-settings", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(settings),
+        body: JSON.stringify(toSave),
       });
       const text = await res.text();
       const data = text ? JSON.parse(text) : {};
@@ -263,6 +269,8 @@ export default function SettingsPage() {
       if (res.ok) {
         setSettings(data);
         setSaveMsg("Settings saved.");
+        // Regenerate launchd schedule from saved run times
+        try { await fetch("/api/positronitron-schedule", { method: "POST" }); } catch {}
         setTimeout(() => setSaveMsg(null), 3000);
       } else {
         setSaveMsg(`Error: ${data.error ?? res.statusText ?? "Unknown error"}`);
@@ -568,6 +576,39 @@ export default function SettingsPage() {
             />
             <span className="text-xs text-amber-500">most positive articles selected per run</span>
           </div>
+          <div className="mt-4">
+            <label className="text-xs text-amber-700 font-medium">Run schedule:</label>
+            <div className="flex flex-wrap items-center gap-2 mt-1.5">
+              {runTimes.map((time, i) => (
+                <div key={i} className="flex items-center gap-1">
+                  <input
+                    type="time"
+                    value={time}
+                    onChange={(e) => {
+                      const updated = [...runTimes];
+                      updated[i] = e.target.value;
+                      setRunTimes(updated);
+                    }}
+                    className="border border-yellow-200 rounded px-2 py-1 text-sm text-amber-800 focus:outline-none focus:border-yellow-400"
+                  />
+                  {runTimes.length > 1 && (
+                    <button
+                      onClick={() => setRunTimes(runTimes.filter((_, j) => j !== i))}
+                      className="text-red-400 hover:text-red-600 text-sm px-1"
+                      title="Remove this time"
+                    >✕</button>
+                  )}
+                </div>
+              ))}
+              {runTimes.length < 4 && (
+                <button
+                  onClick={() => setRunTimes([...runTimes, "12:00"])}
+                  className="text-xs text-amber-600 hover:text-amber-800 border border-dashed border-yellow-300 rounded px-2 py-1"
+                >+ Add time</button>
+              )}
+            </div>
+            <p className="text-[11px] text-amber-400 mt-1">1–4 daily run times. Changes take effect after saving.</p>
+          </div>
           <div className="flex items-center gap-3 mt-4 pt-3 border-t border-yellow-100">
             <button
               onClick={save}
@@ -599,7 +640,7 @@ export default function SettingsPage() {
             {ptronResult && <p className="text-sm text-amber-600">{ptronResult}</p>}
           </div>
           <p className="text-[11px] text-amber-400 mt-3">
-            Schedule: 08:00 and 15:00 daily via launchd. The hourly publish job handles the actual publishing.
+            Schedule: {runTimes.join(", ")} daily via launchd. The hourly publish job handles the actual publishing.
           </p>
         </div>
       </div>

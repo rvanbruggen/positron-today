@@ -27,6 +27,7 @@ export async function PUT(request: NextRequest) {
       "summarise_style_override",
       "positronitron_enabled",
       "positronitron_count",
+      "positronitron_run_times",
     ];
     const patch: Partial<LLMSettings> = {};
     for (const key of allowed) {
