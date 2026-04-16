@@ -32,7 +32,8 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/login") ||
     pathname.startsWith("/api/auth") ||
-    pathname.startsWith("/api/publish-scheduled")
+    pathname.startsWith("/api/publish-scheduled") ||
+    pathname.startsWith("/api/positronitron")
   ) {
     return NextResponse.next();
   }

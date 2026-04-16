@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Link from "next/link";
 import { APP_VERSION } from "@/lib/version";
+import { getSettings } from "@/lib/settings";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
@@ -11,11 +12,16 @@ export const metadata: Metadata = {
   description: "Admin panel for the Positron Today positive news site",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  let positronitronActive = false;
+  try {
+    const settings = await getSettings();
+    positronitronActive = settings.positronitron_enabled === "true";
+  } catch { /* settings table may not exist yet */ }
   return (
     <html lang="en">
       <body className={`${geist.className} bg-amber-50 min-h-screen flex flex-col`}>
@@ -45,6 +51,11 @@ export default function RootLayout({
               <Link href="/settings" className="hover:text-amber-600 transition-colors">Settings</Link>
             </div>
             <div className="ml-auto flex items-center gap-3">
+              {positronitronActive && (
+                <Link href="/settings" className="text-xs bg-green-500 text-white px-2.5 py-1 rounded-full font-bold animate-pulse" title="Positronitron is active — click to manage">
+                  ⚡ AUTO
+                </Link>
+              )}
               <span className="text-xs text-amber-700 font-mono">v{APP_VERSION}</span>
               <a
                 href="https://positron.today/"

@@ -15,6 +15,8 @@ interface LLMSettings {
   filter_threshold: string;
   filter_prompt_override: string;
   summarise_style_override: string;
+  positronitron_enabled: string;
+  positronitron_count: string;
 }
 
 const ANTHROPIC_MODELS = [
@@ -122,6 +124,8 @@ export default function SettingsPage() {
         if (!data.filter_threshold)          data.filter_threshold          = "5";
         if (data.filter_prompt_override   == null) data.filter_prompt_override   = "";
         if (data.summarise_style_override == null) data.summarise_style_override = "";
+        if (!data.positronitron_enabled)   data.positronitron_enabled   = "false";
+        if (!data.positronitron_count)     data.positronitron_count     = "3";
         setSettings(data);
       })
       .catch(err => setLoadError(err.message));
@@ -519,6 +523,46 @@ export default function SettingsPage() {
             />
           </tbody>
         </table>
+      </div>
+
+      {/* ── Positronitron ── */}
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">⚡ Positronitron</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          Autonomous publishing mode. When enabled, a scheduled job fetches RSS feeds twice daily,
+          selects the most positive articles, summarises them, and schedules them for publishing with social announcements.
+        </p>
+        <div className={`border rounded-xl p-5 transition-colors ${settings?.positronitron_enabled === "true" ? "bg-green-50 border-green-300" : "bg-white border-yellow-200"}`}>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setSettings((s) => s ? { ...s, positronitron_enabled: s.positronitron_enabled === "true" ? "false" : "true" } : s)}
+                className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${settings?.positronitron_enabled === "true" ? "bg-green-500" : "bg-gray-300"}`}
+              >
+                <span className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${settings?.positronitron_enabled === "true" ? "translate-x-6" : "translate-x-1"}`} />
+              </button>
+              <span className={`text-sm font-semibold ${settings?.positronitron_enabled === "true" ? "text-green-700" : "text-gray-500"}`}>
+                {settings?.positronitron_enabled === "true" ? "Active — running autonomously" : "Off — manual mode"}
+              </span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <label className="text-xs text-amber-700 font-medium whitespace-nowrap">Articles per batch:</label>
+            <input
+              type="number"
+              min={1}
+              max={10}
+              value={settings?.positronitron_count ?? "3"}
+              onChange={(e) => setSettings((s) => s ? { ...s, positronitron_count: e.target.value } : s)}
+              className="border border-yellow-200 rounded px-2 py-1 text-sm w-16 text-amber-800 focus:outline-none focus:border-yellow-400"
+            />
+            <span className="text-xs text-amber-500">most positive articles selected per run</span>
+          </div>
+          <p className="text-[11px] text-amber-400 mt-3">
+            Schedule: 08:00 and 15:00 daily via launchd. The hourly publish job handles the actual publishing.
+            Remember to click &quot;Save settings&quot; after toggling.
+          </p>
+        </div>
       </div>
 
       {/* ── Social publishing ── */}

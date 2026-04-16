@@ -14,6 +14,10 @@ export interface LLMSettings {
   filter_prompt_override: string;
   /** If non-empty, overrides the default summarisation voice/style block */
   summarise_style_override: string;
+  /** "true" or "false" — master switch for autonomous publishing */
+  positronitron_enabled: string;
+  /** Number of articles to select per Positronitron run (stringified integer) */
+  positronitron_count: string;
 }
 
 const DEFAULTS: LLMSettings = {
@@ -25,6 +29,8 @@ const DEFAULTS: LLMSettings = {
   filter_threshold: "5",
   filter_prompt_override: "",
   summarise_style_override: "",
+  positronitron_enabled: "false",
+  positronitron_count: "3",
 };
 
 export async function getSettings(): Promise<LLMSettings> {
@@ -44,6 +50,8 @@ export async function getSettings(): Promise<LLMSettings> {
       // overrides: empty string is a valid "not set" value — preserve it
       filter_prompt_override:   map.filter_prompt_override   ?? DEFAULTS.filter_prompt_override,
       summarise_style_override: map.summarise_style_override ?? DEFAULTS.summarise_style_override,
+      positronitron_enabled:    map.positronitron_enabled     || DEFAULTS.positronitron_enabled,
+      positronitron_count:      map.positronitron_count       || DEFAULTS.positronitron_count,
     };
   } catch {
     // Table may not exist yet (migration pending) — return defaults

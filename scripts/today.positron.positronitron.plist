@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>today.positron.positronitron</string>
+
+  <!-- Call curl directly — avoids macOS blocking bash scripts from launchd agents -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/curl</string>
+    <string>-s</string>
+    <string>-X</string>
+    <string>POST</string>
+    <string>http://localhost:3000/api/positronitron</string>
+  </array>
+
+  <!-- Run at 08:00 and 15:00 daily -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict>
+      <key>Hour</key>
+      <integer>8</integer>
+      <key>Minute</key>
+      <integer>0</integer>
+    </dict>
+    <dict>
+      <key>Hour</key>
+      <integer>15</integer>
+      <key>Minute</key>
+      <integer>0</integer>
+    </dict>
+  </array>
+
+  <!-- Log curl output (JSON response) -->
+  <key>StandardOutPath</key>
+  <string>/Users/rikvanbruggen/Library/Logs/positron-positronitron.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/rikvanbruggen/Library/Logs/positron-positronitron.log</string>
+</dict>
+</plist>
