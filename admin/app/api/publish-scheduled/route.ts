@@ -49,12 +49,7 @@ function yamlStr(s: string): string {
 
 function generateMarkdown(article: Record<string, unknown>, tagNames: string[]): string {
   const title = String(article.title_en ?? article.title_nl ?? "Untitled");
-  // For scheduled articles, use the scheduled publish_date (not the actual publish time)
-  // so the article appears at the right position in the timeline.
-  const rawDate = article.publish_date ?? article.published_at;
-  const date = rawDate
-    ? String(rawDate).slice(0, 19).replace(" ", "T")
-    : new Date().toISOString().slice(0, 19);
+  const date = new Date().toISOString().slice(0, 19);
 
   const sourcePubDate = article.source_pub_date
     ? String(article.source_pub_date).slice(0, 10)
@@ -219,7 +214,7 @@ export async function POST(request: Request) {
       });
       const tagNames = tagsResult.rows.map((r) => String(r.name));
 
-      const dateStr = String(article.publish_date).slice(0, 10);
+      const dateStr = new Date().toISOString().slice(0, 10);
       const path: string = article.published_path
         ? String(article.published_path)
         : `site/src/posts/${dateStr}-${slugify(title)}.md`;

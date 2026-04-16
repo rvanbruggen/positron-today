@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import db from "@/lib/db";
-import ScheduledClient from "./ScheduledClient";
+import ScheduledWrapper from "./ScheduledWrapper";
 
 function parseTagData(raw: unknown): { id: number; name: string; emoji: string }[] {
   if (!raw) return [];
@@ -53,5 +53,5 @@ export default async function ScheduledPage() {
     emoji: String(t.emoji),
   }));
 
-  return <ScheduledClient initialArticles={articles} tags={tags} />;
+  return <ScheduledWrapper initialArticles={articles} tags={tags} />;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import EditArticleModal, { type EditableFields } from "@/app/components/EditArticleModal";
 
 type ArticleTag = { id: number; name: string; emoji: string };
@@ -77,13 +77,6 @@ export default function ScheduledClient({
   const [published, setPublished] = useState<Set<number>>(new Set());
   const [error, setError] = useState<string | null>(null);
   const [previewLang, setPreviewLang] = useState<"en" | "nl" | "fr">("en");
-  const [now, setNow] = useState<Date | null>(null);
-
-  useEffect(() => {
-    setNow(new Date());
-    const id = setInterval(() => setNow(new Date()), 60_000);
-    return () => clearInterval(id);
-  }, []);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [suggesting, setSuggesting] = useState(false);
   const [suggestInterval, setSuggestInterval] = useState(30);
@@ -142,23 +135,22 @@ export default function ScheduledClient({
   /** Format a stored publish_date value into the "YYYY-MM-DDTHH:MM" shape
    *  that datetime-local inputs expect. */
   function toDatetimeLocal(raw: string | null): string {
-    if (!raw) return "";
+    if (!raw) return new Date().toISOString().slice(0, 16);
     if (raw.includes("T")) return raw.slice(0, 16);
     return raw.replace(" ", "T").slice(0, 16);
   }
 
   /** Returns true if the article's publish_date is set and is still in the future. */
   function isQueued(raw: string | null): boolean {
-    if (!raw || !now) return false;
+    if (!raw) return false;
     const d = new Date(raw.includes("T") ? raw : raw.replace(" ", "T"));
-    return d > now;
+    return d > new Date();
   }
 
   /** Human-readable countdown: "in 25 min", "in 2h 15m", "in 3d" */
   function timeUntil(raw: string): string {
-    if (!now) return "";
     const d = new Date(raw.includes("T") ? raw : raw.replace(" ", "T"));
-    const diffMs = d.getTime() - now.getTime();
+    const diffMs = d.getTime() - Date.now();
     if (diffMs <= 0) return "now";
     const mins  = Math.floor(diffMs / 60000);
     const hours = Math.floor(mins / 60);
