@@ -11,6 +11,19 @@ const geist = Geist({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Positron Today - Admin",
   description: "Admin panel for the Positron Today positive news site",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Positron",
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
+  },
 };
 
 export default async function RootLayout({
@@ -25,6 +38,10 @@ export default async function RootLayout({
   } catch { /* settings table may not exist yet */ }
   return (
     <html lang="en">
+      <head>
+        <meta name="theme-color" content="#facc15" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      </head>
       <body className={`${geist.className} bg-amber-50 min-h-screen flex flex-col`}>
         <nav className="bg-yellow-400 shadow-sm relative">
           <div className="max-w-screen-2xl mx-auto px-4 py-3 flex items-center gap-4 md:gap-6">
