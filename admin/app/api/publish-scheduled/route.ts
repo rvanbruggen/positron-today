@@ -112,11 +112,35 @@ async function commitToGitHub(path: string, content: string, message: string) {
   if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
 }
 
+// ─── Timezone helper ─────────────────────────────────────────────────────────
+
+/**
+ * Parse a stored publish_date (Brussels local time, no TZ suffix) into a
+ * proper Date object.  Vercel runs in UTC, so we need to figure out the
+ * Brussels UTC offset for the given date (CET = +01:00, CEST = +02:00)
+ * and append it before parsing.
+ */
+function parseBrusselsDate(raw: string): Date {
+  const iso = raw.includes("T") ? raw : raw.replace(" ", "T");
+
+  // Build a date assuming UTC first, just to determine DST status
+  const probe = new Date(iso + "Z");
+  // Get the Brussels offset for that moment
+  const brusselsFmt = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Brussels",
+    timeZoneName: "shortOffset",
+  }).format(probe);
+  // Extracts "+2" or "+1" from "18/04/2025, GMT+2"
+  const offsetMatch = brusselsFmt.match(/GMT([+-]\d+)/);
+  const offsetHours = offsetMatch ? parseInt(offsetMatch[1], 10) : 1;
+  const offsetStr = `${offsetHours >= 0 ? "+" : "-"}${String(Math.abs(offsetHours)).padStart(2, "0")}:00`;
+
+  return new Date(iso + offsetStr);
+}
+
 // ─── GET — dry-run ────────────────────────────────────────────────────────────
 
 export async function GET() {
-  // Fetch all scheduled articles with a publish_date and filter in JS
-  // to avoid SQLite treating stored local times as UTC (timezone bug).
   const result = await db.execute(`
     SELECT a.id, a.title_en, a.title_nl, a.publish_date, a.source_url, a.source_name
     FROM articles a
@@ -128,9 +152,7 @@ export async function GET() {
 
   const now = new Date();
   const due = result.rows.filter((r) => {
-    const pd = String(r.publish_date);
-    // Stored as local ISO (YYYY-MM-DDTHH:MM:SS) — parse as local time
-    const publishAt = new Date(pd.includes("T") ? pd : pd.replace(" ", "T"));
+    const publishAt = parseBrusselsDate(String(r.publish_date));
     return publishAt <= now;
   });
 
@@ -156,8 +178,6 @@ export async function POST() {
     );
   }
 
-  // Find all scheduled articles with a publish_date, then filter in JS
-  // to avoid SQLite treating stored local times as UTC (timezone bug).
   const allScheduled = await db.execute(`
     SELECT a.*, r.source_pub_date, r.fetched_at
     FROM articles a
@@ -170,9 +190,7 @@ export async function POST() {
 
   const now = new Date();
   const due = allScheduled.rows.filter((r) => {
-    const pd = String(r.publish_date);
-    // Stored as local ISO (YYYY-MM-DDTHH:MM:SS) — parse as local time
-    const publishAt = new Date(pd.includes("T") ? pd : pd.replace(" ", "T"));
+    const publishAt = parseBrusselsDate(String(r.publish_date));
     return publishAt <= now;
   });
 
