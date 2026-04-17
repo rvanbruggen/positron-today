@@ -225,13 +225,24 @@ export async function GET() {
 
 // ─── Schedule check ─────────────────────────────────────────────────────────
 
-/** Returns true if the current time is within `windowMins` of any configured run time. */
+/** Returns true if the current time (in Europe/Brussels) is within `windowMins` of any configured run time. */
 function isScheduledNow(runTimesJson: string, windowMins = 15): boolean {
   let times: string[];
   try { times = JSON.parse(runTimesJson); } catch { times = ["08:00", "15:00"]; }
 
+  // Vercel runs in UTC — convert to Brussels local time so the configured
+  // run times (which the user sets in their local timezone) match correctly.
   const now = new Date();
-  const nowMins = now.getHours() * 60 + now.getMinutes();
+  const brusselsTime = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Brussels",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(now);
+  const [localH, localM] = brusselsTime.split(":").map(Number);
+  const nowMins = localH * 60 + localM;
+
+  console.log(`[positronitron] Schedule check: Brussels time ${brusselsTime}, configured slots: ${times.join(", ")}, window: ±${windowMins}min`);
 
   return times.some((t) => {
     const [h, m] = t.split(":").map(Number);
