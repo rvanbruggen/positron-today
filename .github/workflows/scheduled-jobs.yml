@@ -1,11 +1,16 @@
-name: Scheduled jobs
+# DISABLED — replaced by Synology NAS Task Scheduler which provides
+# reliable cron timing. GitHub Actions free tier was too unpredictable.
+#
+# Synology tasks to set up:
+#   1. Every 30 min:  curl -sf -X POST https://admin.positron.today/api/publish-scheduled
+#   2. At run times:  curl -sf -X POST https://admin.positron.today/api/positronitron
+#
+# Keep workflow_dispatch so it can still be triggered manually from GitHub UI if needed.
+
+name: Scheduled jobs (disabled)
 
 on:
-  schedule:
-    # Every 30 minutes — both jobs run; Positronitron self-checks
-    # against its configured run times and skips if not due.
-    - cron: "*/30 * * * *"
-  workflow_dispatch: # Allow manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   publish-scheduled:
