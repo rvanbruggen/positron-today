@@ -1,16 +1,23 @@
 /**
  * Positronitron — Autonomous Publishing Pipeline
  *
- * Runs the full article lifecycle unattended:
- *   1. Fetch all active RSS sources
- *   2. Filter with maximum positivity strictness (threshold 10)
- *   3. Keep only the top N articles by positivity score
- *   4. Summarise each (EN / NL / FR titles + summaries, emoji, tags)
- *   5. Schedule with staggered publish times + social posting enabled
- *   6. Mark the highest-scored article as featured
+ * Picks the top N positive articles from the raw_articles queue (populated
+ * by /api/fetch), summarises them, and schedules them for publishing.
  *
- * Designed to be called by launchd at 08:00 and 15:00.
- * Respects the positronitron_enabled setting — returns early when off.
+ * This route no longer fetches RSS sources itself — that's handled by
+ * /api/fetch (called separately by the Synology cron with ?auto=1).
+ * This keeps each call well within Vercel's 60-second timeout.
+ *
+ * Flow:
+ *   1. Pick top N articles from raw_articles by positivity score
+ *   2. Auto-approve each
+ *   3. Summarise (EN / NL / FR titles + summaries, emoji, tags)
+ *   4. Schedule with staggered publish times + social posting enabled
+ *   5. Mark the highest-scored article as featured
+ *
+ * Schedule gating: tracks completed slots per day in the database.
+ * Each cron hit checks if any configured slot has passed and hasn't
+ * been served yet. Resilient to irregular cron timing.
  *
  * GET  /api/positronitron — status check (enabled? last run?)
  * POST /api/positronitron — run the pipeline
@@ -18,32 +25,10 @@
 
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
-import { getFilterProvider, getSummariseProvider } from "@/lib/llm";
-import { buildFilterInstructions, buildFilterPrompt, DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
-import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
+import { getSummariseProvider } from "@/lib/llm";
+import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
 import { parseArticle } from "@/lib/parse-html";
-import RSSParser from "rss-parser";
-
-const parser = new RSSParser();
-
-// ─── Positivity filter ────────────────────────────────────────────────────────
-
-async function checkPositivity(
-  title: string,
-  snippet: string,
-  filterInstructions: string,
-): Promise<{ fits: boolean; reason: string; category: string; score?: number }> {
-  const provider = await getFilterProvider();
-  const prompt = buildFilterPrompt(filterInstructions, title, snippet);
-  const result = await provider.classify(prompt);
-  return {
-    fits: result.fits,
-    reason: result.reason,
-    category: result.category ?? "other-negative",
-    score: result.score,
-  };
-}
 
 // ─── Article content fetcher ──────────────────────────────────────────────────
 
@@ -51,7 +36,7 @@ async function fetchArticleContent(url: string): Promise<{ text: string; imageUr
   try {
     const res = await fetch(url, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; PositronToday/1.0)" },
-      signal: AbortSignal.timeout(10000),
+      signal: AbortSignal.timeout(5000),
     });
     const html = await res.text();
 
@@ -141,7 +126,7 @@ Output ONLY this exact JSON object and nothing else. All fields are required:
   const str = (v: unknown, fallback = "") =>
     typeof v === "string" && v.trim() ? v.trim() : fallback;
 
-  const MAX_ATTEMPTS = 3;
+  const MAX_ATTEMPTS = 2;
   const provider = await getSummariseProvider();
   let missingFields: string[] = [];
 
@@ -213,19 +198,8 @@ function toLocalISO(d: Date): string {
   );
 }
 
-// ─── GET — status check ──────────────────────────────────────────────────────
+// ─── Timezone helper ─────────────────────────────────────────────────────────
 
-export async function GET() {
-  const settings = await getSettings();
-  return Response.json({
-    enabled: settings.positronitron_enabled === "true",
-    count: parseInt(settings.positronitron_count) || 3,
-  });
-}
-
-// ─── Schedule check ─────────────────────────────────────────────────────────
-
-/** Get current date and time in Europe/Brussels. */
 function brusselsNow(): { date: string; hours: number; minutes: number; totalMins: number } {
   const now = new Date();
   const parts = new Intl.DateTimeFormat("en-GB", {
@@ -245,14 +219,8 @@ function brusselsNow(): { date: string; hours: number; minutes: number; totalMin
   };
 }
 
-/**
- * Determines if any configured run slot is "due" — meaning:
- *   1. The current Brussels time is at or past the slot time, AND
- *   2. We haven't already run for that slot today (checked via DB).
- *
- * This approach is resilient to irregular cron timing: even if the cron
- * fires hours late, it still catches up on missed slots.
- */
+// ─── Schedule gating ─────────────────────────────────────────────────────────
+
 async function findDueSlot(runTimesJson: string): Promise<{ due: boolean; slot: string; reason: string }> {
   let times: string[];
   try { times = JSON.parse(runTimesJson); } catch { times = ["08:00", "15:00"]; }
@@ -261,7 +229,6 @@ async function findDueSlot(runTimesJson: string): Promise<{ due: boolean; slot: 
 
   console.log(`[positronitron] Schedule check: Brussels date=${date}, time=${Math.floor(totalMins / 60)}:${String(totalMins % 60).padStart(2, "0")}, slots=${times.join(", ")}`);
 
-  // Get today's completed runs from settings (stored as JSON array of slot strings)
   const completedResult = await db.execute({
     sql: "SELECT value FROM settings WHERE key = 'positronitron_last_runs'",
     args: [],
@@ -272,7 +239,6 @@ async function findDueSlot(runTimesJson: string): Promise<{ due: boolean; slot: 
   } catch { /* empty */ }
   const todaysRuns: string[] = lastRuns[date] ?? [];
 
-  // Check each slot: is it past the slot time AND not yet run today?
   for (const slot of times) {
     const [h, m] = slot.split(":").map(Number);
     const slotMins = h * 60 + m;
@@ -285,7 +251,6 @@ async function findDueSlot(runTimesJson: string): Promise<{ due: boolean; slot: 
   return { due: false, slot: "", reason: `No slots due. Today's completed: [${todaysRuns.join(", ")}]` };
 }
 
-/** Mark a slot as completed for today so it won't fire again. */
 async function markSlotCompleted(slot: string): Promise<void> {
   const { date } = brusselsNow();
 
@@ -298,7 +263,6 @@ async function markSlotCompleted(slot: string): Promise<void> {
     lastRuns = JSON.parse(String(result.rows[0]?.value ?? "{}"));
   } catch { /* empty */ }
 
-  // Keep only today's entries (auto-cleanup old dates)
   const todaysRuns = lastRuns[date] ?? [];
   todaysRuns.push(slot);
   const cleaned: Record<string, string[]> = { [date]: todaysRuns };
@@ -307,6 +271,16 @@ async function markSlotCompleted(slot: string): Promise<void> {
     sql: `INSERT INTO settings (key, value) VALUES ('positronitron_last_runs', ?)
           ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
     args: [JSON.stringify(cleaned)],
+  });
+}
+
+// ─── GET — status check ──────────────────────────────────────────────────────
+
+export async function GET() {
+  const settings = await getSettings();
+  return Response.json({
+    enabled: settings.positronitron_enabled === "true",
+    count: parseInt(settings.positronitron_count) || 3,
   });
 }
 
@@ -340,7 +314,6 @@ export async function POST(request: Request) {
 
   const targetCount = parseInt(settings.positronitron_count) || 3;
   const intervalMinutes = 30;
-  const filterInstructions = buildFilterInstructions(10);
   const style = settings.summarise_style_override || DEFAULT_SUMMARISE_STYLE;
 
   const log: string[] = [];
@@ -349,106 +322,36 @@ export async function POST(request: Request) {
     log.push(msg);
   };
 
-  L(`Starting run — selecting top ${targetCount} articles`);
+  L(`Starting run — selecting top ${targetCount} articles from queue`);
 
   try {
-    // ── Phase 1: Fetch and filter all RSS sources ──────────────────────────
+    // ── Phase 1: Pick top N from raw_articles queue ─────────────────────────
+    // Articles are already fetched and positivity-filtered by /api/fetch.
+    // We just pick the highest-scored ones that haven't been approved yet.
 
-    const sourcesResult = await db.execute(
-      "SELECT * FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss')"
-    );
-    const sources = sourcesResult.rows;
-    L(`Found ${sources.length} active sources`);
+    const queueResult = await db.execute(`
+      SELECT r.id, r.source_id, r.url, r.title, r.content, r.source_pub_date,
+             r.positivity_score, s.name as source_name
+      FROM raw_articles r
+      JOIN sources s ON r.source_id = s.id
+      WHERE r.status = 'pending'
+        AND r.positivity_score IS NOT NULL
+      ORDER BY r.positivity_score DESC
+      LIMIT ?
+    `, [targetCount]);
 
-    type Candidate = {
-      title: string;
-      link: string;
-      snippet: string;
-      sourceName: string;
-      sourceId: number;
-      score: number;
-      sourcePubDate: string | null;
-    };
-
-    const candidates: Candidate[] = [];
-    let totalFiltered = 0;
-    let totalSkipped = 0;
-
-    for (const source of sources) {
-      const feedUrl = (source.feed_url ?? source.url) as string;
-
-      try {
-        const feed = await parser.parseURL(feedUrl);
-        const items = feed.items.slice(0, 20).filter((i) => i.link && i.title);
-
-        for (const item of items) {
-          const [existingRaw, existingRejected] = await Promise.all([
-            db.execute({ sql: "SELECT id FROM raw_articles WHERE url = ?", args: [item.link!] }),
-            db.execute({ sql: "SELECT id FROM rejected_articles WHERE url = ?", args: [item.link!] }),
-          ]);
-
-          if (existingRaw.rows.length > 0 || existingRejected.rows.length > 0) {
-            totalSkipped++;
-            continue;
-          }
-
-          const snippet = item.contentSnippet ?? item.content ?? "";
-          const sourcePubDate = item.isoDate
-            ? item.isoDate.slice(0, 10)
-            : item.pubDate
-            ? new Date(item.pubDate).toISOString().slice(0, 10)
-            : null;
-
-          const { fits, reason, category, score } = await checkPositivity(
-            item.title!,
-            snippet,
-            filterInstructions,
-          );
-
-          if (!fits) {
-            totalFiltered++;
-            const safeCategory = CATEGORY_SLUGS.includes(category) ? category : "other-negative";
-            try {
-              await db.execute({
-                sql: `INSERT OR IGNORE INTO rejected_articles
-                      (source_id, source_name, url, title, snippet, rejection_reason, rejection_category, source_pub_date)
-                      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-                args: [source.id, source.name as string, item.link!, item.title!, snippet.slice(0, 500), reason, safeCategory, sourcePubDate],
-              });
-            } catch { /* duplicate */ }
-            continue;
-          }
-
-          candidates.push({
-            title: item.title!,
-            link: item.link!,
-            snippet,
-            sourceName: source.name as string,
-            sourceId: Number(source.id),
-            score: score ?? 7,
-            sourcePubDate,
-          });
-        }
-      } catch (err) {
-        L(`Source error (${source.name}): ${err}`);
-      }
-    }
-
-    L(`Filter done: ${candidates.length} passed, ${totalFiltered} rejected, ${totalSkipped} skipped`);
+    const candidates = queueResult.rows;
+    L(`Found ${candidates.length} candidates in queue (wanted ${targetCount})`);
 
     if (candidates.length === 0) {
-      // Export rejection log even when no articles pass
-      try { await exportRejections(); } catch { /* ok */ }
-      return Response.json({ ok: true, selected: 0, log, message: "No positive articles found" });
+      if (dueSlot) {
+        await markSlotCompleted(dueSlot);
+        L(`Marked slot ${dueSlot} as completed (no candidates available)`);
+      }
+      return Response.json({ ok: true, selected: 0, log, message: "No articles in queue. Make sure /api/fetch has run first." });
     }
 
-    // ── Phase 2: Select top N by score ──────────────────────────────────────
-
-    candidates.sort((a, b) => b.score - a.score);
-    const selected = candidates.slice(0, targetCount);
-    L(`Selected top ${selected.length}: ${selected.map((c) => `"${c.title}" (${c.score})`).join(", ")}`);
-
-    // ── Phase 3: Insert, summarise, and schedule each ───────────────────────
+    // ── Phase 2: Summarise and schedule each ────────────────────────────────
 
     const tagsResult = await db.execute("SELECT id, name, emoji FROM topics ORDER BY name ASC");
     const availableTags: TagRow[] = tagsResult.rows.map((t) => ({
@@ -469,42 +372,36 @@ export async function POST(request: Request) {
     let scheduleCursor = nextSlot(startAfter, intervalMinutes);
 
     const results: Array<{ id: number; title: string; score: number; publish_date: string; featured: boolean }> = [];
-    const highestScoreIndex = 0; // already sorted descending
 
-    for (let i = 0; i < selected.length; i++) {
-      const c = selected[i];
-      const isFeatured = i === highestScoreIndex;
+    for (let i = 0; i < candidates.length; i++) {
+      const c = candidates[i];
+      const rawId = Number(c.id);
+      const isFeatured = i === 0; // highest score = featured
+      const score = Number(c.positivity_score ?? 7);
 
       try {
-        // Insert raw article
-        const rawInsert = await db.execute({
-          sql: "INSERT INTO raw_articles (source_id, url, title, content, source_pub_date, positivity_score) VALUES (?, ?, ?, ?, ?, ?)",
-          args: [c.sourceId, c.link, c.title, c.snippet, c.sourcePubDate, c.score],
-        });
-        const rawId = Number(rawInsert.lastInsertRowid);
-
-        // Create article record
+        // Auto-approve: create article record
         const articleInsert = await db.execute({
           sql: `INSERT OR IGNORE INTO articles (raw_article_id, source_url, source_name, status, positivity_score)
                 VALUES (?, ?, ?, 'draft', ?)`,
-          args: [rawId, c.link, c.sourceName, c.score],
+          args: [rawId, c.url, c.source_name, score],
         });
         const articleId = Number(articleInsert.lastInsertRowid);
         await db.execute({ sql: "UPDATE raw_articles SET status = 'approved' WHERE id = ?", args: [rawId] });
 
         // Fetch full content + summarise
         L(`Summarising: "${c.title}"`);
-        const { text: articleText, imageUrl } = await fetchArticleContent(c.link);
+        const { text: articleText, imageUrl } = await fetchArticleContent(String(c.url));
         const summaries = await summariseAndTranslate(
           articleText,
-          c.link,
-          c.sourceName,
-          c.title,
+          String(c.url),
+          String(c.source_name),
+          String(c.title),
           availableTags,
           style,
         );
 
-        // Update article with summaries
+        // Update article with summaries and schedule
         const dateStr = toLocalISO(scheduleCursor);
         await db.execute({
           sql: `UPDATE articles SET
@@ -539,12 +436,12 @@ export async function POST(request: Request) {
         results.push({
           id: articleId,
           title: summaries.title_en,
-          score: c.score,
+          score,
           publish_date: dateStr,
           featured: isFeatured,
         });
 
-        L(`Scheduled: "${summaries.title_en}" at ${dateStr}${isFeatured ? " ⭐ FEATURED" : ""} (score: ${c.score})`);
+        L(`Scheduled: "${summaries.title_en}" at ${dateStr}${isFeatured ? " ⭐ FEATURED" : ""} (score: ${score})`);
         scheduleCursor = nextSlot(scheduleCursor, intervalMinutes);
       } catch (err) {
         L(`Error processing "${c.title}": ${err}`);
@@ -565,8 +462,6 @@ export async function POST(request: Request) {
     return Response.json({
       ok: true,
       selected: results.length,
-      filtered: totalFiltered,
-      skipped: totalSkipped,
       candidates: candidates.length,
       results,
       log,

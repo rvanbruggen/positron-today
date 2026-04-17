@@ -26,8 +26,31 @@ async function checkPositivity(
 
 export async function POST(request: Request) {
   const url = new URL(request.url);
-  const offset = Math.max(0, parseInt(url.searchParams.get("offset") ?? "0"));
-  const limit  = Math.max(1, parseInt(url.searchParams.get("limit")  ?? "10"));
+
+  const isAuto = url.searchParams.get("auto") === "1";
+
+  // When called with ?auto=1 (from Synology cron), only run if Positronitron is enabled
+  if (isAuto) {
+    const settings = await getSettings();
+    if (settings.positronitron_enabled !== "true") {
+      return Response.json({ skipped: true, message: "Positronitron is disabled. Skipping auto-fetch." });
+    }
+  }
+
+  // In auto mode, rotate through source chunks automatically.
+  // Each call processes 10 sources, then saves the next offset for the next call.
+  let offset: number;
+  const limit = Math.max(1, parseInt(url.searchParams.get("limit") ?? "10"));
+
+  if (isAuto) {
+    const offsetResult = await db.execute({
+      sql: "SELECT value FROM settings WHERE key = 'auto_fetch_offset'",
+      args: [],
+    });
+    offset = parseInt(String(offsetResult.rows[0]?.value ?? "0"), 10) || 0;
+  } else {
+    offset = Math.max(0, parseInt(url.searchParams.get("offset") ?? "0"));
+  }
 
   const encoder = new TextEncoder();
 
@@ -120,7 +143,17 @@ export async function POST(request: Request) {
         }
 
         const hasMore = offset + limit < totalSources;
-        send({ type: "done", added: totalAdded, filtered: totalFiltered, skipped: totalSkipped, hasMore, nextOffset: offset + limit });
+        const nextOffset = hasMore ? offset + limit : 0; // wrap around to 0 when done
+        send({ type: "done", added: totalAdded, filtered: totalFiltered, skipped: totalSkipped, hasMore, nextOffset });
+
+        // In auto mode, save the next offset for the next cron call
+        if (isAuto) {
+          await db.execute({
+            sql: `INSERT INTO settings (key, value) VALUES ('auto_fetch_offset', ?)
+                  ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
+            args: [String(nextOffset)],
+          });
+        }
 
         // Auto-publish rejection log only on the last chunk
         if (!hasMore) {
