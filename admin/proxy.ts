@@ -29,14 +29,20 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Always allow the login page, auth API, and machine-to-machine endpoints through
-  if (
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/api/auth") ||
-    pathname.startsWith("/api/publish-scheduled") ||
-    pathname.startsWith("/api/positronitron") ||
-    pathname.startsWith("/api/instagram-card-preview")
-  ) {
+  const publicPaths = [
+    "/login",
+    "/api/auth",
+    "/api/publish-scheduled",
+    "/api/positronitron",
+    "/api/instagram-card-preview",
+  ];
+  if (publicPaths.some((p) => pathname.startsWith(p))) {
     return NextResponse.next();
+  }
+
+  // Log blocked API calls so we can diagnose 401s in Vercel logs
+  if (pathname.startsWith("/api/")) {
+    console.log(`[proxy] Checking auth for: ${pathname}`);
   }
 
   const secret = process.env.ADMIN_SECRET ?? "";
