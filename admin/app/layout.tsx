@@ -4,6 +4,7 @@ import Link from "next/link";
 import { APP_VERSION } from "@/lib/version";
 import { getSettings } from "@/lib/settings";
 import MobileNav from "@/app/components/MobileNav";
+import ServiceWorkerRegistration from "@/app/components/ServiceWorkerRegistration";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
@@ -43,6 +44,7 @@ export default async function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
       <body className={`${geist.className} bg-amber-50 min-h-screen flex flex-col`}>
+        <ServiceWorkerRegistration />
         <nav className="bg-yellow-400 shadow-sm relative">
           <div className="max-w-screen-2xl mx-auto px-4 py-3 flex items-center gap-4 md:gap-6">
             <Link href="/" className="flex items-center gap-2 text-xl font-bold text-amber-900 tracking-tight shrink-0">
