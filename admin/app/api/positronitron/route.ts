@@ -225,30 +225,88 @@ export async function GET() {
 
 // ─── Schedule check ─────────────────────────────────────────────────────────
 
-/** Returns true if the current time (in Europe/Brussels) is within `windowMins` of any configured run time. */
-function isScheduledNow(runTimesJson: string, windowMins = 15): boolean {
+/** Get current date and time in Europe/Brussels. */
+function brusselsNow(): { date: string; hours: number; minutes: number; totalMins: number } {
+  const now = new Date();
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Brussels",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit",
+    hour12: false,
+  }).formatToParts(now);
+  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "0";
+  const hours = parseInt(get("hour"), 10);
+  const minutes = parseInt(get("minute"), 10);
+  return {
+    date: `${get("year")}-${get("month")}-${get("day")}`,
+    hours,
+    minutes,
+    totalMins: hours * 60 + minutes,
+  };
+}
+
+/**
+ * Determines if any configured run slot is "due" — meaning:
+ *   1. The current Brussels time is at or past the slot time, AND
+ *   2. We haven't already run for that slot today (checked via DB).
+ *
+ * This approach is resilient to irregular cron timing: even if the cron
+ * fires hours late, it still catches up on missed slots.
+ */
+async function findDueSlot(runTimesJson: string): Promise<{ due: boolean; slot: string; reason: string }> {
   let times: string[];
   try { times = JSON.parse(runTimesJson); } catch { times = ["08:00", "15:00"]; }
 
-  // Vercel runs in UTC — convert to Brussels local time so the configured
-  // run times (which the user sets in their local timezone) match correctly.
-  const now = new Date();
-  const brusselsTime = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Brussels",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).format(now);
-  const [localH, localM] = brusselsTime.split(":").map(Number);
-  const nowMins = localH * 60 + localM;
+  const { date, totalMins } = brusselsNow();
 
-  console.log(`[positronitron] Schedule check: Brussels time ${brusselsTime}, configured slots: ${times.join(", ")}, window: ±${windowMins}min`);
+  console.log(`[positronitron] Schedule check: Brussels date=${date}, time=${Math.floor(totalMins / 60)}:${String(totalMins % 60).padStart(2, "0")}, slots=${times.join(", ")}`);
 
-  return times.some((t) => {
-    const [h, m] = t.split(":").map(Number);
-    const targetMins = h * 60 + m;
-    const diff = Math.abs(nowMins - targetMins);
-    return diff <= windowMins || diff >= (1440 - windowMins); // handle midnight wrap
+  // Get today's completed runs from settings (stored as JSON array of slot strings)
+  const completedResult = await db.execute({
+    sql: "SELECT value FROM settings WHERE key = 'positronitron_last_runs'",
+    args: [],
+  });
+  let lastRuns: Record<string, string[]> = {};
+  try {
+    lastRuns = JSON.parse(String(completedResult.rows[0]?.value ?? "{}"));
+  } catch { /* empty */ }
+  const todaysRuns: string[] = lastRuns[date] ?? [];
+
+  // Check each slot: is it past the slot time AND not yet run today?
+  for (const slot of times) {
+    const [h, m] = slot.split(":").map(Number);
+    const slotMins = h * 60 + m;
+
+    if (totalMins >= slotMins && !todaysRuns.includes(slot)) {
+      return { due: true, slot, reason: `Slot ${slot} is due (Brussels time ${Math.floor(totalMins / 60)}:${String(totalMins % 60).padStart(2, "0")})` };
+    }
+  }
+
+  return { due: false, slot: "", reason: `No slots due. Today's completed: [${todaysRuns.join(", ")}]` };
+}
+
+/** Mark a slot as completed for today so it won't fire again. */
+async function markSlotCompleted(slot: string): Promise<void> {
+  const { date } = brusselsNow();
+
+  const result = await db.execute({
+    sql: "SELECT value FROM settings WHERE key = 'positronitron_last_runs'",
+    args: [],
+  });
+  let lastRuns: Record<string, string[]> = {};
+  try {
+    lastRuns = JSON.parse(String(result.rows[0]?.value ?? "{}"));
+  } catch { /* empty */ }
+
+  // Keep only today's entries (auto-cleanup old dates)
+  const todaysRuns = lastRuns[date] ?? [];
+  todaysRuns.push(slot);
+  const cleaned: Record<string, string[]> = { [date]: todaysRuns };
+
+  await db.execute({
+    sql: `INSERT INTO settings (key, value) VALUES ('positronitron_last_runs', ?)
+          ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
+    args: [JSON.stringify(cleaned)],
   });
 }
 
@@ -266,12 +324,18 @@ export async function POST(request: Request) {
     });
   }
 
-  // When called by cron (not manual), only run if current time matches a configured slot
-  if (!isManual && !isScheduledNow(settings.positronitron_run_times ?? '["08:00","15:00"]')) {
-    return Response.json({
-      ok: false,
-      message: "Not a scheduled run time. Skipping.",
-    });
+  // When called by cron (not manual), check if any slot is due
+  let dueSlot = "";
+  if (!isManual) {
+    const schedule = await findDueSlot(settings.positronitron_run_times ?? '["08:00","15:00"]');
+    console.log(`[positronitron] ${schedule.reason}`);
+    if (!schedule.due) {
+      return Response.json({
+        ok: false,
+        message: schedule.reason,
+      });
+    }
+    dueSlot = schedule.slot;
   }
 
   const targetCount = parseInt(settings.positronitron_count) || 3;
@@ -489,6 +553,12 @@ export async function POST(request: Request) {
 
     // Export rejection log
     try { await exportRejections(); } catch { /* ok */ }
+
+    // Mark the slot as completed so it won't fire again today
+    if (dueSlot) {
+      await markSlotCompleted(dueSlot);
+      L(`Marked slot ${dueSlot} as completed for today`);
+    }
 
     L(`Done — ${results.length} articles scheduled`);
 
