@@ -5,6 +5,32 @@ import { useRouter } from "next/navigation";
 import { buildFilterInstructions, DEFAULT_SUMMARISE_STYLE, THRESHOLD_LABELS } from "@/lib/prompts";
 
 type Provider = "anthropic" | "ollama" | "openai";
+type PositronitronMode = "off" | "fetch" | "summarise" | "full";
+
+const POSITRONITRON_MODES: PositronitronMode[] = ["off", "fetch", "summarise", "full"];
+
+const MODE_META: Record<PositronitronMode, { label: string; tagline: string; description: string }> = {
+  off: {
+    label: "Off",
+    tagline: "Manual mode",
+    description: "Nothing is automated. Fetch, summarise and publish all happen from the admin UI only.",
+  },
+  fetch: {
+    label: "Fetch only",
+    tagline: "Auto-fetch + positivity filter",
+    description: "Scheduled job pulls RSS feeds and scores articles. You review and summarise them yourself from the Preview page.",
+  },
+  summarise: {
+    label: "Fetch + summarise",
+    tagline: "Auto-fetch + summarise as drafts",
+    description: "Scheduled job fetches, scores, and summarises the top articles. They appear on the Scheduled page as drafts — you schedule them for publishing yourself.",
+  },
+  full: {
+    label: "Full automation",
+    tagline: "End-to-end autonomous",
+    description: "Scheduled job fetches, summarises, schedules and auto-publishes the top articles, with social posts.",
+  },
+};
 
 interface LLMSettings {
   filter_provider: Provider;
@@ -15,7 +41,7 @@ interface LLMSettings {
   filter_threshold: string;
   filter_prompt_override: string;
   summarise_style_override: string;
-  positronitron_enabled: string;
+  positronitron_mode: PositronitronMode;
   positronitron_count: string;
   positronitron_run_times: string;
 }
@@ -130,7 +156,7 @@ export default function SettingsPage() {
         if (!data.filter_threshold)          data.filter_threshold          = "5";
         if (data.filter_prompt_override   == null) data.filter_prompt_override   = "";
         if (data.summarise_style_override == null) data.summarise_style_override = "";
-        if (!data.positronitron_enabled)   data.positronitron_enabled   = "false";
+        if (!data.positronitron_mode || !POSITRONITRON_MODES.includes(data.positronitron_mode)) data.positronitron_mode = "off";
         if (!data.positronitron_count)     data.positronitron_count     = "3";
         if (!data.positronitron_run_times) data.positronitron_run_times = '["08:00","15:00"]';
         try { setRunTimes(JSON.parse(data.positronitron_run_times)); } catch {}
@@ -549,24 +575,35 @@ export default function SettingsPage() {
       <div className="mt-8">
         <h2 className="text-base font-semibold text-amber-900 mb-0.5">⚡ Positronitron</h2>
         <p className="text-xs text-amber-600 mb-3">
-          Autonomous publishing mode. When enabled, a scheduled job fetches RSS feeds twice daily,
-          selects the most positive articles, summarises them, and schedules them for publishing with social announcements.
+          Autonomous publishing mode. A scheduled job can handle any combination of fetching,
+          filtering, summarising and publishing — pick how far the pipeline runs on its own.
         </p>
-        <div className={`border rounded-xl p-5 transition-colors ${settings?.positronitron_enabled === "true" ? "bg-green-50 border-green-300" : "bg-white border-yellow-200"}`}>
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setSettings((s) => s ? { ...s, positronitron_enabled: s.positronitron_enabled === "true" ? "false" : "true" } : s)}
-                className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${settings?.positronitron_enabled === "true" ? "bg-green-500" : "bg-gray-300"}`}
-              >
-                <span className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${settings?.positronitron_enabled === "true" ? "translate-x-6" : "translate-x-1"}`} />
-              </button>
-              <span className={`text-sm font-semibold ${settings?.positronitron_enabled === "true" ? "text-green-700" : "text-gray-500"}`}>
-                {settings?.positronitron_enabled === "true" ? "Active — running autonomously" : "Off — manual mode"}
-              </span>
+        <div className={`border rounded-xl p-5 transition-colors ${settings?.positronitron_mode && settings.positronitron_mode !== "off" ? "bg-green-50 border-green-300" : "bg-white border-yellow-200"}`}>
+          <div className="mb-4">
+            <label className="text-xs text-amber-700 font-medium block mb-2">Automation mode</label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {POSITRONITRON_MODES.map((m) => {
+                const selected = settings?.positronitron_mode === m;
+                const meta = MODE_META[m];
+                return (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => setSettings((s) => s ? { ...s, positronitron_mode: m } : s)}
+                    className={`text-left border rounded-lg px-3 py-2 transition-colors ${selected ? "bg-green-500 border-green-600 text-white" : "bg-white border-yellow-200 text-amber-800 hover:border-yellow-400"}`}
+                    aria-pressed={selected}
+                  >
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-sm font-semibold">{meta.label}</span>
+                      <span className={`text-[11px] ${selected ? "text-green-100" : "text-amber-500"}`}>{meta.tagline}</span>
+                    </div>
+                    <p className={`text-[11px] mt-1 leading-snug ${selected ? "text-green-50" : "text-amber-600"}`}>{meta.description}</p>
+                  </button>
+                );
+              })}
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className={`flex items-center gap-3 ${settings?.positronitron_mode === "off" ? "opacity-50" : ""}`}>
             <label className="text-xs text-amber-700 font-medium whitespace-nowrap">Articles per batch:</label>
             <input
               type="number"
@@ -578,7 +615,7 @@ export default function SettingsPage() {
             />
             <span className="text-xs text-amber-500">most positive articles selected per run</span>
           </div>
-          <div className="mt-4">
+          <div className={`mt-4 ${settings?.positronitron_mode === "off" ? "opacity-50" : ""}`}>
             <label className="text-xs text-amber-700 font-medium">Run schedule:</label>
             <div className="flex flex-wrap items-center gap-2 mt-1.5">
               {runTimes.map((time, i) => (

@@ -29,11 +29,12 @@ export async function POST(request: Request) {
 
   const isAuto = url.searchParams.get("auto") === "1";
 
-  // When called with ?auto=1 (from Synology cron), only run if Positronitron is enabled
+  // When called with ?auto=1 (from Synology cron), only run if Positronitron
+  // is in a mode that fetches (fetch, summarise, full).
   if (isAuto) {
     const settings = await getSettings();
-    if (settings.positronitron_enabled !== "true") {
-      return Response.json({ skipped: true, message: "Positronitron is disabled. Skipping auto-fetch." });
+    if (settings.positronitron_mode === "off") {
+      return Response.json({ skipped: true, message: "Positronitron is off. Skipping auto-fetch." });
     }
   }
 

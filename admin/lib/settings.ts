@@ -2,6 +2,17 @@ import db from "./db";
 
 export type LLMProvider = "anthropic" | "ollama" | "openai";
 
+/**
+ * Positronitron automation mode.
+ * - off       — nothing automated
+ * - fetch     — only /api/fetch runs (RSS pull + positivity scoring into raw_articles)
+ * - summarise — fetch runs, then /api/positronitron picks + summarises top N as drafts (no publish_date)
+ * - full      — fetch runs, then /api/positronitron picks + summarises + schedules for auto-publish
+ */
+export type PositronitronMode = "off" | "fetch" | "summarise" | "full";
+
+const POSITRONITRON_MODES: PositronitronMode[] = ["off", "fetch", "summarise", "full"];
+
 export interface LLMSettings {
   filter_provider: LLMProvider;
   filter_model: string;
@@ -14,8 +25,8 @@ export interface LLMSettings {
   filter_prompt_override: string;
   /** If non-empty, overrides the default summarisation voice/style block */
   summarise_style_override: string;
-  /** "true" or "false" — master switch for autonomous publishing */
-  positronitron_enabled: string;
+  /** Positronitron automation mode — see PositronitronMode */
+  positronitron_mode: PositronitronMode;
   /** Number of articles to select per Positronitron run (stringified integer) */
   positronitron_count: string;
   /** JSON array of "HH:MM" strings — daily run times for Positronitron */
@@ -31,7 +42,7 @@ const DEFAULTS: LLMSettings = {
   filter_threshold: "5",
   filter_prompt_override: "",
   summarise_style_override: "",
-  positronitron_enabled: "false",
+  positronitron_mode: "off",
   positronitron_count: "3",
   positronitron_run_times: '["08:00","15:00"]',
 };
@@ -43,6 +54,16 @@ export async function getSettings(): Promise<LLMSettings> {
     for (const row of result.rows) {
       map[row.key as string] = row.value as string;
     }
+
+    // Resolve mode: prefer new key; fall back to legacy positronitron_enabled flag
+    // so existing deployments migrate transparently on first read.
+    let mode: PositronitronMode = DEFAULTS.positronitron_mode;
+    if (map.positronitron_mode && POSITRONITRON_MODES.includes(map.positronitron_mode as PositronitronMode)) {
+      mode = map.positronitron_mode as PositronitronMode;
+    } else if (map.positronitron_enabled === "true") {
+      mode = "full";
+    }
+
     return {
       filter_provider:          ((map.filter_provider as LLMProvider) || DEFAULTS.filter_provider),
       filter_model:             map.filter_model             || DEFAULTS.filter_model,
@@ -53,7 +74,7 @@ export async function getSettings(): Promise<LLMSettings> {
       // overrides: empty string is a valid "not set" value — preserve it
       filter_prompt_override:   map.filter_prompt_override   ?? DEFAULTS.filter_prompt_override,
       summarise_style_override: map.summarise_style_override ?? DEFAULTS.summarise_style_override,
-      positronitron_enabled:    map.positronitron_enabled     || DEFAULTS.positronitron_enabled,
+      positronitron_mode:       mode,
       positronitron_count:      map.positronitron_count       || DEFAULTS.positronitron_count,
       positronitron_run_times:  map.positronitron_run_times   || DEFAULTS.positronitron_run_times,
     };

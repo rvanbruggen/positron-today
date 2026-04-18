@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.3.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.4.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.4.0** | Positronitron automation modes: the single on/off toggle becomes a 4-way mode selector — `off`, `fetch only` (auto-fetch + filter), `fetch + summarise` (auto-drafts for human review), or `full` (end-to-end autonomous). In summarise mode, top articles land as drafts on the Scheduled page instead of auto-publishing. AUTO badge in nav adapts per mode |
 | **2.3.0** | Cloud deployment: admin runs on Vercel + Turso, scheduled jobs via GitHub Actions every 30 min, configurable Positronitron run times from Settings, batch restore for fast data migration |
 | **2.2.0** | Masonry card layout: replace CSS Grid equal-height rows with Masonry.js for a dynamic, variable-height card layout that eliminates white space. Featured cards still span double width. Reading order preserved left-to-right |
 | **2.1.0** | Replace Python/Playwright Instagram card generator with @vercel/og (Satori) — portable to Vercel serverless, no external dependencies |

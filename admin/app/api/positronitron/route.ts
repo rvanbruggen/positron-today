@@ -279,7 +279,9 @@ async function markSlotCompleted(slot: string): Promise<void> {
 export async function GET() {
   const settings = await getSettings();
   return Response.json({
-    enabled: settings.positronitron_enabled === "true",
+    mode: settings.positronitron_mode,
+    // Legacy flag — true only when articles auto-schedule for publish
+    enabled: settings.positronitron_mode === "full",
     count: parseInt(settings.positronitron_count) || 3,
   });
 }
@@ -290,13 +292,20 @@ export async function POST(request: Request) {
   const settings = await getSettings();
   const url = new URL(request.url);
   const isManual = url.searchParams.get("manual") === "1";
+  const mode = settings.positronitron_mode;
 
-  if (settings.positronitron_enabled !== "true") {
+  // Positronitron summarises in "summarise" and "full" modes.
+  // In "summarise" mode, articles remain as drafts with no publish_date;
+  // in "full" mode, they're scheduled for auto-publishing.
+  // Manual runs always execute in "full" semantics (schedule for publish).
+  if (!isManual && mode !== "summarise" && mode !== "full") {
     return Response.json({
       ok: false,
-      message: "Positronitron is disabled. Enable it in Settings.",
+      message: `Positronitron mode is "${mode}" — summarise step is disabled. Enable summarise or full mode in Settings.`,
     });
   }
+
+  const schedulePublish = isManual || mode === "full";
 
   // When called by cron (not manual), check if any slot is due
   let dueSlot = "";
@@ -322,7 +331,7 @@ export async function POST(request: Request) {
     log.push(msg);
   };
 
-  L(`Starting run — selecting top ${targetCount} articles from queue`);
+  L(`Starting run (mode=${mode}${isManual ? ", manual" : ""}) — selecting top ${targetCount} articles from queue`);
 
   try {
     // ── Phase 1: Pick top N from raw_articles queue ─────────────────────────
@@ -401,21 +410,24 @@ export async function POST(request: Request) {
           style,
         );
 
-        // Update article with summaries and schedule
-        const dateStr = toLocalISO(scheduleCursor);
+        // Update article with summaries. In "full" mode (or manual run) we schedule
+        // for auto-publishing; in "summarise" mode we leave as a draft for human review.
+        const dateStr = schedulePublish ? toLocalISO(scheduleCursor) : null;
         await db.execute({
           sql: `UPDATE articles SET
                   title_nl = ?, title_fr = ?, title_en = ?,
                   summary_nl = ?, summary_fr = ?, summary_en = ?,
                   article_emoji = ?, image_url = ?,
-                  status = 'scheduled', publish_date = ?,
+                  status = ?, publish_date = ?,
                   post_to_social_on_publish = 1,
                   featured = ?
                 WHERE id = ?`,
           args: [
             summaries.title_nl, summaries.title_fr, summaries.title_en,
             summaries.summary_nl, summaries.summary_fr, summaries.summary_en,
-            summaries.emoji, imageUrl, dateStr,
+            summaries.emoji, imageUrl,
+            schedulePublish ? "scheduled" : "draft",
+            dateStr,
             isFeatured ? 1 : 0,
             articleId,
           ],
@@ -437,12 +449,16 @@ export async function POST(request: Request) {
           id: articleId,
           title: summaries.title_en,
           score,
-          publish_date: dateStr,
+          publish_date: dateStr ?? "",
           featured: isFeatured,
         });
 
-        L(`Scheduled: "${summaries.title_en}" at ${dateStr}${isFeatured ? " ⭐ FEATURED" : ""} (score: ${score})`);
-        scheduleCursor = nextSlot(scheduleCursor, intervalMinutes);
+        if (schedulePublish) {
+          L(`Scheduled: "${summaries.title_en}" at ${dateStr}${isFeatured ? " ⭐ FEATURED" : ""} (score: ${score})`);
+          scheduleCursor = nextSlot(scheduleCursor, intervalMinutes);
+        } else {
+          L(`Drafted: "${summaries.title_en}"${isFeatured ? " ⭐ FEATURED" : ""} (score: ${score}) — awaiting review`);
+        }
       } catch (err) {
         L(`Error processing "${c.title}": ${err}`);
       }
@@ -457,7 +473,7 @@ export async function POST(request: Request) {
       L(`Marked slot ${dueSlot} as completed for today`);
     }
 
-    L(`Done — ${results.length} articles scheduled`);
+    L(`Done — ${results.length} articles ${schedulePublish ? "scheduled" : "drafted"}`);
 
     return Response.json({
       ok: true,

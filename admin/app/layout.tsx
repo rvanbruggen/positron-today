@@ -32,11 +32,18 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let positronitronActive = false;
+  let positronitronMode: "off" | "fetch" | "summarise" | "full" = "off";
   try {
     const settings = await getSettings();
-    positronitronActive = settings.positronitron_enabled === "true";
+    positronitronMode = settings.positronitron_mode;
   } catch { /* settings table may not exist yet */ }
+  const positronitronActive = positronitronMode !== "off";
+  const modeBadge: Record<typeof positronitronMode, { label: string; title: string }> = {
+    off:       { label: "",                 title: "" },
+    fetch:     { label: "⚡ AUTO · fetch",   title: "Positronitron is fetching only — click to manage" },
+    summarise: { label: "⚡ AUTO · drafts",  title: "Positronitron fetches + drafts summaries — click to manage" },
+    full:      { label: "⚡ AUTO",           title: "Positronitron is fully autonomous — click to manage" },
+  };
   return (
     <html lang="en">
       <head>
@@ -76,8 +83,8 @@ export default async function RootLayout({
             {/* Right cluster — always visible */}
             <div className="ml-auto flex items-center gap-2 md:gap-3">
               {positronitronActive && (
-                <Link href="/settings" className="text-xs bg-green-500 text-white px-2.5 py-1 rounded-full font-bold animate-pulse" title="Positronitron is active — click to manage">
-                  ⚡ AUTO
+                <Link href="/settings" className="text-xs bg-green-500 text-white px-2.5 py-1 rounded-full font-bold animate-pulse" title={modeBadge[positronitronMode].title}>
+                  {modeBadge[positronitronMode].label}
                 </Link>
               )}
               <span className="text-xs text-amber-700 font-mono hidden sm:inline">v{APP_VERSION}</span>
