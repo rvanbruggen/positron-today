@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Source = {
   id: number;
@@ -114,11 +114,58 @@ export default function SourcesPage() {
   const [loading, setLoading] = useState(false);
   const [exportStatus, setExportStatus] = useState<"idle"|"exporting"|"ok"|"error">("idle");
 
+  type OpmlDuplicate = { name: string; url: string; feed_url: string | null; existingName: string; matchedOn: "url" | "feed_url" };
+  type OpmlInvalid   = { name: string; reason: string };
+  type OpmlImportResult = {
+    importedCount: number;
+    skippedDuplicateCount: number;
+    skippedInvalidCount: number;
+    skippedDuplicates: OpmlDuplicate[];
+    skippedInvalid: OpmlInvalid[];
+  };
+  const [importing,     setImporting]     = useState(false);
+  const [importResult,  setImportResult]  = useState<OpmlImportResult | null>(null);
+  const [importError,   setImportError]   = useState<string | null>(null);
+  const opmlFileInput                     = useRef<HTMLInputElement>(null);
+
   async function load() {
     const res = await fetch("/api/sources");
     setSources(await res.json());
   }
   useEffect(() => { load(); }, []);
+
+  function downloadOpml() {
+    // Use a link click so the browser honours Content-Disposition.
+    const a = document.createElement("a");
+    a.href = "/api/sources/opml";
+    a.click();
+  }
+
+  async function importOpml(file: File) {
+    setImporting(true);
+    setImportResult(null);
+    setImportError(null);
+    try {
+      const text = await file.text();
+      const res = await fetch("/api/sources/opml", {
+        method:  "POST",
+        headers: { "Content-Type": "text/xml" },
+        body:    text,
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setImportError(data.error ?? `Import failed (${res.status})`);
+      } else {
+        setImportResult(data as OpmlImportResult);
+        load();
+      }
+    } catch (err) {
+      setImportError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setImporting(false);
+      if (opmlFileInput.current) opmlFileInput.current.value = "";
+    }
+  }
 
   async function publishToSite() {
     setExportStatus("exporting");
@@ -188,21 +235,116 @@ export default function SourcesPage() {
     <div>
       <div className="flex items-start justify-between gap-4 mb-1">
         <h1 className="text-2xl font-bold text-amber-900">Sources</h1>
-        <button
-          onClick={publishToSite}
-          disabled={exportStatus === "exporting"}
-          className="shrink-0 bg-amber-400 hover:bg-amber-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50"
-        >
-          {exportStatus === "exporting" ? "Publishing…" :
-           exportStatus === "ok"        ? "✓ Published!" :
-           exportStatus === "error"     ? "✗ Error" :
-                                          "Publish to site"}
-        </button>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
+          <button
+            onClick={downloadOpml}
+            className="bg-white hover:bg-yellow-50 text-amber-900 border border-yellow-300 font-medium px-3 py-1.5 rounded-lg text-sm transition-colors"
+            title="Download all sources as an OPML 2.0 file"
+          >
+            📤 Export OPML
+          </button>
+          <button
+            onClick={() => opmlFileInput.current?.click()}
+            disabled={importing}
+            className="bg-white hover:bg-yellow-50 text-amber-900 border border-yellow-300 font-medium px-3 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50"
+            title="Import sources from an OPML file (duplicates are skipped)"
+          >
+            {importing ? "Importing…" : "📥 Import OPML"}
+          </button>
+          <input
+            ref={opmlFileInput}
+            type="file"
+            accept=".opml,.xml,text/xml,application/xml,text/x-opml"
+            className="hidden"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) importOpml(file);
+            }}
+          />
+          <button
+            onClick={publishToSite}
+            disabled={exportStatus === "exporting"}
+            className="bg-amber-400 hover:bg-amber-500 text-amber-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50"
+          >
+            {exportStatus === "exporting" ? "Publishing…" :
+             exportStatus === "ok"        ? "✓ Published!" :
+             exportStatus === "error"     ? "✗ Error" :
+                                            "Publish to site"}
+          </button>
+        </div>
       </div>
-      <p className="text-amber-700 text-sm mb-8">
+      <p className="text-amber-700 text-sm mb-4">
         Sources with an RSS feed URL are fetched automatically. Website-only sources can be browsed manually via the Preview tab.
         Changes are published to the About page automatically; use the button to force a manual sync.
       </p>
+
+      {importError && (
+        <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+          <p className="text-sm font-semibold text-red-700">OPML import failed</p>
+          <p className="text-sm text-red-600 mt-1">{importError}</p>
+          <button
+            onClick={() => setImportError(null)}
+            className="text-xs text-red-500 hover:text-red-700 mt-2"
+          >Dismiss</button>
+        </div>
+      )}
+
+      {importResult && (
+        <div className="mb-6 bg-white border border-yellow-200 rounded-xl p-4">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-sm font-semibold text-amber-900">
+                OPML import complete · {importResult.importedCount} added
+                {importResult.skippedDuplicateCount > 0 && (
+                  <span className="text-amber-700 font-medium"> · {importResult.skippedDuplicateCount} skipped (duplicate)</span>
+                )}
+                {importResult.skippedInvalidCount > 0 && (
+                  <span className="text-red-500 font-medium"> · {importResult.skippedInvalidCount} invalid</span>
+                )}
+              </p>
+              {importResult.skippedDuplicateCount > 0 && (
+                <p className="text-xs text-amber-700 mt-1">
+                  ⚠ These feeds were already in your sources list. Please verify the existing entries are still correct —
+                  a duplicate in the OPML file might signal an updated URL or a renamed feed.
+                </p>
+              )}
+            </div>
+            <button
+              onClick={() => setImportResult(null)}
+              className="text-xs text-amber-500 hover:text-amber-700 shrink-0"
+            >Dismiss</button>
+          </div>
+          {importResult.skippedDuplicates.length > 0 && (
+            <div className="mt-3">
+              <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-1.5">Skipped duplicates</p>
+              <ul className="text-xs text-amber-700 space-y-1">
+                {importResult.skippedDuplicates.map((d, i) => (
+                  <li key={i} className="flex flex-col sm:flex-row sm:gap-2 sm:items-baseline">
+                    <span className="font-medium text-amber-900">{d.name}</span>
+                    <span className="text-amber-500 truncate">{d.feed_url ?? d.url}</span>
+                    <span className="text-amber-400 text-[11px]">
+                      matched existing &quot;{d.existingName}&quot; on {d.matchedOn === "feed_url" ? "feed URL" : "website URL"}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {importResult.skippedInvalid.length > 0 && (
+            <div className="mt-3">
+              <p className="text-xs font-semibold text-red-600 uppercase tracking-wide mb-1.5">Skipped (invalid)</p>
+              <ul className="text-xs text-red-600 space-y-1">
+                {importResult.skippedInvalid.map((d, i) => (
+                  <li key={i}>
+                    <span className="font-medium">{d.name || "(no name)"}</span>
+                    <span className="text-red-400"> — {d.reason}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="bg-white rounded-xl p-6 shadow-sm border border-yellow-200 mb-8">
         <h2 className="font-semibold text-amber-900 mb-4">Add a source</h2>
