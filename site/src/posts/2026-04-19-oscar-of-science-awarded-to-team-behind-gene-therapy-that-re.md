@@ -1,8 +1,8 @@
 ---
-title: "Oscar of science awarded to team behind gene therapy that restores lost vision"
-title_nl: "Oscar van de wetenschap toegekend aan team achter gentherapie die verloren zicht herstelt"
-title_fr: "Oscar de la science décerné à l'équipe derrière la thérapie génique qui restaure la vue perdue"
-date: 2026-04-19T12:30:05
+title: "(Another) Oscar of science awarded to team behind gene therapy that restores lost vision"
+title_nl: "(Nog een) Oscar van de wetenschap toegekend aan team achter gentherapie die verloren zicht herstelt"
+title_fr: "(Encore un) Oscar de la science décerné à l'équipe derrière la thérapie génique qui restaure la vue perdue"
+date: 2026-04-19T12:37:30
 source_pub_date: 2026-04-19
 fetched_date: 2026-04-19
 source_url: "https://www.theguardian.com/science/2026/apr/19/the-oscar-of-science-awarded-to-scientists-behind-genetic-treatment-that-restores-lost-vision-win"
