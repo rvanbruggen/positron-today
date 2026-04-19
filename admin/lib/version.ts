@@ -1,3 +1,3 @@
 // Single source of version truth for the admin UI.
 // This file is updated automatically by the /bump command.
-export const APP_VERSION = "2.5.3";
+export const APP_VERSION = "2.6.0";

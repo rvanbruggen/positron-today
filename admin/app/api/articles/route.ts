@@ -1,6 +1,11 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
+import {
+  findDuplicateHint,
+  normaliseTitleTokens,
+  type DuplicateCandidate,
+} from "@/lib/title-similarity";
 
 // Delete the published markdown file from the GitHub Pages site.
 // Best-effort: logs and swallows errors so the caller's DB update still lands.
@@ -38,14 +43,109 @@ export async function GET(request: NextRequest) {
   const status = searchParams.get("status") ?? "pending";
 
   const result = await db.execute({
-    sql: `SELECT r.*, s.name as source_name
+    sql: `SELECT r.*, s.name as source_name, s.language as source_language
           FROM raw_articles r
           JOIN sources s ON r.source_id = s.id
           WHERE r.status = ?
           ORDER BY r.fetched_at DESC`,
     args: [status],
   });
-  return Response.json(result.rows);
+
+  // For the Preview queue (status=pending), flag articles whose titles look
+  // similar to something else already in the pipeline. Comparison is
+  // same-language-only and uses a cheap Jaccard token overlap — see
+  // lib/title-similarity.ts for the tuning.
+  if (status !== "pending" || result.rows.length === 0) {
+    return Response.json(result.rows);
+  }
+
+  // Pool: other pending raws + recent articles table entries (14-day window).
+  // Recent-enough that a user still has them in working memory, old enough to
+  // catch same-topic reposts a week later.
+  const recentArticles = await db.execute(`
+    SELECT a.id, a.title_en, a.title_nl, a.title_fr,
+           a.status, a.published_at, a.source_name,
+           s.language as source_language
+    FROM articles a
+    LEFT JOIN raw_articles r ON a.raw_article_id = r.id
+    LEFT JOIN sources      s ON r.source_id      = s.id
+    WHERE a.status IN ('draft', 'scheduled', 'published')
+      AND (a.created_at   >= datetime('now', '-14 days')
+        OR a.published_at >= datetime('now', '-14 days')
+        OR a.publish_date >= datetime('now', '-14 days'))
+  `);
+
+  type Candidate = {
+    id:           number;
+    title:        string;
+    source_name:  string;
+    language:     string;
+    origin:       "pending" | "draft" | "scheduled" | "published";
+    published_at: string | null;
+  };
+
+  const pool: DuplicateCandidate<Candidate>[] = [];
+
+  for (const r of result.rows) {
+    const title = String(r.title ?? "").trim();
+    if (!title) continue;
+    pool.push({
+      item: {
+        id:           Number(r.id),
+        title,
+        source_name:  String(r.source_name ?? ""),
+        language:     String(r.source_language ?? "en"),
+        origin:       "pending",
+        published_at: null,
+      },
+      tokens: normaliseTitleTokens(title),
+    });
+  }
+
+  for (const a of recentArticles.rows) {
+    const lang = String(a.source_language ?? "en");
+    const title =
+      lang === "nl" ? String(a.title_nl ?? a.title_en ?? a.title_fr ?? "") :
+      lang === "fr" ? String(a.title_fr ?? a.title_en ?? a.title_nl ?? "") :
+                      String(a.title_en ?? a.title_nl ?? a.title_fr ?? "");
+    if (!title.trim()) continue;
+    pool.push({
+      item: {
+        id:           Number(a.id),
+        title,
+        source_name:  String(a.source_name ?? ""),
+        language:     lang,
+        origin:       String(a.status) as Candidate["origin"],
+        published_at: a.published_at ? String(a.published_at) : null,
+      },
+      tokens: normaliseTitleTokens(title),
+    });
+  }
+
+  const annotated = result.rows.map((r) => {
+    const id       = Number(r.id);
+    const title    = String(r.title ?? "");
+    const language = String(r.source_language ?? "en");
+    const tokens   = normaliseTitleTokens(title);
+    const hint = findDuplicateHint(tokens, pool, (c) => c.origin === "pending" && c.id === id
+                                                    || c.language !== language);
+    return {
+      ...r,
+      duplicate_of: hint
+        ? {
+            id:           hint.match.id,
+            title:        hint.match.title,
+            source_name:  hint.match.source_name,
+            origin:       hint.match.origin,
+            similarity:   Math.round(hint.similarity * 100) / 100,
+            shared_tokens: hint.sharedTokens,
+            published_at: hint.match.published_at,
+          }
+        : null,
+    };
+  });
+
+  return Response.json(annotated);
 }
 
 export async function PATCH(request: NextRequest) {

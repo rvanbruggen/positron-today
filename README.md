@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.5.3 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.6.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.6.0** | Duplicate-topic detection on the Preview page: each pending article's title is compared (same-language, Jaccard on normalised tokens) against other pending items and against draft / scheduled / published articles from the last 14 days. Likely duplicates get a prominent orange warning with the matching title, source and similarity score, and the Discard button turns orange to nudge the action — keeps the same story from reaching the site twice when multiple feeds cover it |
 | **2.5.3** | Human discards on the Preview page are now appended to the rejection log, under a dedicated "Discarded on Review" (`human-discarded`) category so they can be distinguished from AI-filter rejections. Keeps the "What We Skip" log complete and makes it possible to audit what a human chose to drop |
 | **2.5.2** | Unify scheduling timezone across the codebase. `/api/suggest-schedule`, `/api/positronitron` and `/api/publish-scheduled` now share a single `admin/lib/schedule-time.ts` helper; `publish_date` is unambiguously wall-clock time in `SCHEDULE_TZ` (env-configurable, defaults to `Europe/Brussels`). Fixes the iPad bug where the suggested schedule returned times already in the past because the server produced UTC wall-strings while the client interpreted them as Brussels wall-strings |
 | **2.5.1** | Reverting a published article from History back to the publishing queue now also deletes the corresponding markdown file from the live site's GitHub repo, so the article actually disappears from the public site instead of lingering while showing as a draft in admin. Factored the GitHub-file-delete logic into a shared helper reused by both revert and full-remove |

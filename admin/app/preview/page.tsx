@@ -2,6 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type DuplicateHint = {
+  id:           number;
+  title:        string;
+  source_name:  string;
+  origin:       "pending" | "draft" | "scheduled" | "published";
+  similarity:   number;      // 0–1
+  shared_tokens: number;
+  published_at: string | null;
+};
+
 type RawArticle = {
   id: number;
   source_name: string;
@@ -10,6 +20,14 @@ type RawArticle = {
   content: string;
   fetched_at: string;
   status: string;
+  duplicate_of: DuplicateHint | null;
+};
+
+const ORIGIN_LABELS: Record<DuplicateHint["origin"], string> = {
+  pending:   "another article in this queue",
+  draft:     "a draft article",
+  scheduled: "a scheduled article",
+  published: "a published article",
 };
 
 type LogLine =
@@ -273,7 +291,29 @@ export default function PreviewPage() {
           </p>
         )}
         {articles.map(article => (
-          <div key={article.id} className="bg-white rounded-xl p-5 shadow-sm border border-yellow-200">
+          <div key={article.id}
+            className={`bg-white rounded-xl p-5 shadow-sm border ${article.duplicate_of ? "border-orange-300 ring-1 ring-orange-100" : "border-yellow-200"}`}>
+            {article.duplicate_of && (
+              <div className="mb-3 flex items-start gap-2 bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-xs text-orange-800">
+                <span className="shrink-0">⚠</span>
+                <div className="min-w-0">
+                  <p className="font-semibold">
+                    Possible duplicate of {ORIGIN_LABELS[article.duplicate_of.origin]}
+                    {" · "}
+                    <span className="font-normal">{Math.round(article.duplicate_of.similarity * 100)}% similarity ({article.duplicate_of.shared_tokens} words shared)</span>
+                  </p>
+                  <p className="mt-0.5 text-orange-700 truncate">
+                    <span className="italic">&ldquo;{article.duplicate_of.title}&rdquo;</span>
+                    <span className="text-orange-500"> — {article.duplicate_of.source_name}</span>
+                    {article.duplicate_of.published_at && (
+                      <span className="text-orange-400">
+                        {" "}· published {new Date(article.duplicate_of.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+                      </span>
+                    )}
+                  </p>
+                </div>
+              </div>
+            )}
             <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
               <div className="min-w-0">
                 <p className="text-xs text-amber-500 mb-1">{article.source_name}</p>
@@ -294,7 +334,7 @@ export default function PreviewPage() {
                   ✓ Approve
                 </button>
                 <button onClick={() => updateStatus(article.id, "discarded")}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-500 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
+                  className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${article.duplicate_of ? "bg-orange-200 hover:bg-orange-300 text-orange-800" : "bg-gray-100 hover:bg-gray-200 text-gray-500"}`}>
                   ✕ Discard
                 </button>
               </div>
