@@ -22,6 +22,7 @@ export const REJECTION_CATEGORIES: RejectionCategory[] = [
   { slug: "climate-environment",   label: "Climate & Environment",      emoji: "🌍",  color: "bg-teal-100 text-teal-700 border-teal-200",       colorHex: "#5eead4" },
   { slug: "soft-news-filler",      label: "Soft News & Filler",         emoji: "📰",  color: "bg-slate-100 text-slate-600 border-slate-200",    colorHex: "#cbd5e1" },
   { slug: "other-negative",        label: "Other Negative",             emoji: "😔",  color: "bg-gray-100 text-gray-600 border-gray-200",       colorHex: "#d1d5db" },
+  { slug: "human-discarded",       label: "Discarded on Review",        emoji: "🙅",  color: "bg-zinc-100 text-zinc-600 border-zinc-200",       colorHex: "#d4d4d8" },
 ];
 
 export const CATEGORY_MAP = new Map(REJECTION_CATEGORIES.map(c => [c.slug, c]));

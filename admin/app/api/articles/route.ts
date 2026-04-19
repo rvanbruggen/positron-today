@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
+import { exportRejections } from "@/lib/export-rejections";
 
 // Delete the published markdown file from the GitHub Pages site.
 // Best-effort: logs and swallows errors so the caller's DB update still lands.
@@ -155,8 +156,11 @@ export async function PATCH(request: NextRequest) {
     args: [status, id],
   });
 
-  // When approved, create a draft article record ready for summarisation
-  if (status === "approved") {
+  // When approved, create a draft article record ready for summarisation.
+  // When discarded by a human on the Preview page, also append to the rejection
+  // log (with a dedicated "human-discarded" category) so the discard shows up
+  // in the admin rejections view and public "What We Skip" export.
+  if (status === "approved" || status === "discarded") {
     const rawResult = await db.execute({
       sql: `SELECT r.*, s.name as source_name
             FROM raw_articles r
@@ -165,12 +169,35 @@ export async function PATCH(request: NextRequest) {
       args: [id],
     });
     const raw = rawResult.rows[0];
-    if (raw) {
+    if (raw && status === "approved") {
       await db.execute({
         sql: `INSERT OR IGNORE INTO articles (raw_article_id, source_url, source_name, status, positivity_score)
               VALUES (?, ?, ?, 'draft', ?)`,
         args: [raw.id, raw.url, raw.source_name, raw.positivity_score ?? null],
       });
+    }
+    if (raw && status === "discarded") {
+      const snippet = raw.content
+        ? String(raw.content).replace(/\s+/g, " ").trim().slice(0, 500)
+        : null;
+      await db.execute({
+        sql: `INSERT OR IGNORE INTO rejected_articles
+                (source_id, source_name, url, title, snippet,
+                 rejection_reason, rejection_category, source_pub_date)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        args: [
+          raw.source_id ?? null,
+          raw.source_name ?? "",
+          raw.url ?? "",
+          raw.title ?? "",
+          snippet,
+          "Discarded on human review",
+          "human-discarded",
+          raw.source_pub_date ?? null,
+        ],
+      });
+      // Keep the public rejection log in sync — fire and forget.
+      exportRejections().catch((err) => console.error("[export-rejections]", err));
     }
   }
 

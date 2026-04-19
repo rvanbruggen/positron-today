@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.5.2 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.5.3 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.5.3** | Human discards on the Preview page are now appended to the rejection log, under a dedicated "Discarded on Review" (`human-discarded`) category so they can be distinguished from AI-filter rejections. Keeps the "What We Skip" log complete and makes it possible to audit what a human chose to drop |
 | **2.5.2** | Unify scheduling timezone across the codebase. `/api/suggest-schedule`, `/api/positronitron` and `/api/publish-scheduled` now share a single `admin/lib/schedule-time.ts` helper; `publish_date` is unambiguously wall-clock time in `SCHEDULE_TZ` (env-configurable, defaults to `Europe/Brussels`). Fixes the iPad bug where the suggested schedule returned times already in the past because the server produced UTC wall-strings while the client interpreted them as Brussels wall-strings |
 | **2.5.1** | Reverting a published article from History back to the publishing queue now also deletes the corresponding markdown file from the live site's GitHub repo, so the article actually disappears from the public site instead of lingering while showing as a draft in admin. Factored the GitHub-file-delete logic into a shared helper reused by both revert and full-remove |
 | **2.5.0** | OPML import / export on the Sources admin page: download all sources as a standard OPML 2.0 file (grouped by language) or bulk-import feeds from one. Duplicates are skipped — never overwritten — and flagged in the result panel with the matching existing source, so the user can verify whether an OPML entry reflects a rename or URL change |
