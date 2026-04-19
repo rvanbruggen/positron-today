@@ -29,6 +29,7 @@ import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
 import { parseArticle } from "@/lib/parse-html";
+import { nextSlot, parseScheduleWallString, scheduleNow, toScheduleWallString } from "@/lib/schedule-time";
 
 // ─── Article content fetcher ──────────────────────────────────────────────────
 
@@ -177,57 +178,15 @@ Output ONLY this exact JSON object and nothing else. All fields are required:
   throw new Error("Unreachable");
 }
 
-// ─── Schedule helpers ────────────────────────────────────────────────────────
-
-function nextSlot(after: Date, intervalMinutes: number, bufferMinutes = 2): Date {
-  const t = new Date(after.getTime() + bufferMinutes * 60 * 1000);
-  const totalMins = t.getHours() * 60 + t.getMinutes();
-  const rounded = Math.ceil(totalMins / intervalMinutes) * intervalMinutes;
-  const jitter = 1 + Math.floor(Math.random() * 9);
-  const result = new Date(t);
-  result.setHours(Math.floor((rounded + jitter) / 60), (rounded + jitter) % 60, 0, 0);
-  if (result <= after) result.setDate(result.getDate() + 1);
-  return result;
-}
-
-function toLocalISO(d: Date): string {
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return (
-    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` +
-    `T${pad(d.getHours())}:${pad(d.getMinutes())}:00`
-  );
-}
-
-// ─── Timezone helper ─────────────────────────────────────────────────────────
-
-function brusselsNow(): { date: string; hours: number; minutes: number; totalMins: number } {
-  const now = new Date();
-  const parts = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Brussels",
-    year: "numeric", month: "2-digit", day: "2-digit",
-    hour: "2-digit", minute: "2-digit",
-    hour12: false,
-  }).formatToParts(now);
-  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "0";
-  const hours = parseInt(get("hour"), 10);
-  const minutes = parseInt(get("minute"), 10);
-  return {
-    date: `${get("year")}-${get("month")}-${get("day")}`,
-    hours,
-    minutes,
-    totalMins: hours * 60 + minutes,
-  };
-}
-
 // ─── Schedule gating ─────────────────────────────────────────────────────────
 
 async function findDueSlot(runTimesJson: string): Promise<{ due: boolean; slot: string; reason: string }> {
   let times: string[];
   try { times = JSON.parse(runTimesJson); } catch { times = ["08:00", "15:00"]; }
 
-  const { date, totalMins } = brusselsNow();
+  const { date, totalMins } = scheduleNow();
 
-  console.log(`[positronitron] Schedule check: Brussels date=${date}, time=${Math.floor(totalMins / 60)}:${String(totalMins % 60).padStart(2, "0")}, slots=${times.join(", ")}`);
+  console.log(`[positronitron] Schedule check: date=${date}, time=${Math.floor(totalMins / 60)}:${String(totalMins % 60).padStart(2, "0")}, slots=${times.join(", ")}`);
 
   const completedResult = await db.execute({
     sql: "SELECT value FROM settings WHERE key = 'positronitron_last_runs'",
@@ -252,7 +211,7 @@ async function findDueSlot(runTimesJson: string): Promise<{ due: boolean; slot: 
 }
 
 async function markSlotCompleted(slot: string): Promise<void> {
-  const { date } = brusselsNow();
+  const { date } = scheduleNow();
 
   const result = await db.execute({
     sql: "SELECT value FROM settings WHERE key = 'positronitron_last_runs'",
@@ -375,7 +334,9 @@ export async function POST(request: Request) {
       WHERE status = 'scheduled' AND publish_date IS NOT NULL AND publish_date != ''
     `);
     const latestRaw = latestResult.rows[0]?.latest as string | null;
-    const latestExisting = latestRaw ? new Date(latestRaw) : null;
+    // publish_date is stored as wall-clock time in SCHEDULE_TZ — parse it back
+    // to an absolute instant before comparing against `now` (also an absolute instant).
+    const latestExisting = latestRaw ? parseScheduleWallString(latestRaw) : null;
     const now = new Date();
     const startAfter = latestExisting && latestExisting > now ? latestExisting : now;
     let scheduleCursor = nextSlot(startAfter, intervalMinutes);
@@ -412,7 +373,7 @@ export async function POST(request: Request) {
 
         // Update article with summaries. In "full" mode (or manual run) we schedule
         // for auto-publishing; in "summarise" mode we leave as a draft for human review.
-        const dateStr = schedulePublish ? toLocalISO(scheduleCursor) : null;
+        const dateStr = schedulePublish ? toScheduleWallString(scheduleCursor) : null;
         await db.execute({
           sql: `UPDATE articles SET
                   title_nl = ?, title_fr = ?, title_en = ?,

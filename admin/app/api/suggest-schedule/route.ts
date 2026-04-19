@@ -5,6 +5,9 @@
  * that do not yet have a publish_date, chaining after the latest existing
  * scheduled slot so that articles are spaced evenly.
  *
+ * All times are computed in SCHEDULE_TZ (see lib/schedule-time.ts) — stored
+ * strings represent wall-clock time in that zone.
+ *
  * POST /api/suggest-schedule
  *   body: { interval_minutes?: number }   — default 30
  *   response: { scheduled: N, slots: [{ id, title, publish_date }] }
@@ -12,29 +15,7 @@
 
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
-
-/** Return a publish time at least `bufferMinutes` after `after`, snapped to
- *  the next interval boundary, then jittered by 1–9 minutes so times look
- *  human-picked rather than landing exactly on :00 or :30. */
-function nextSlot(after: Date, intervalMinutes: number, bufferMinutes = 2): Date {
-  const t = new Date(after.getTime() + bufferMinutes * 60 * 1000);
-  const totalMins = t.getHours() * 60 + t.getMinutes();
-  const rounded = Math.ceil(totalMins / intervalMinutes) * intervalMinutes;
-  const jitter = 1 + Math.floor(Math.random() * 9);
-  const result = new Date(t);
-  result.setHours(Math.floor((rounded + jitter) / 60), (rounded + jitter) % 60, 0, 0);
-  if (result <= after) result.setDate(result.getDate() + 1);
-  return result;
-}
-
-function toLocalISO(d: Date): string {
-  // "YYYY-MM-DDTHH:MM:SS" in local time — what SQLite and datetime-local both expect
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return (
-    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` +
-    `T${pad(d.getHours())}:${pad(d.getMinutes())}:00`
-  );
-}
+import { nextSlot, toScheduleWallString } from "@/lib/schedule-time";
 
 export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => ({}));
@@ -60,7 +41,7 @@ export async function POST(request: NextRequest) {
   for (const row of unscheduled.rows) {
     const id = Number(row.id);
     const title = String(row.title_en ?? row.title_nl ?? id);
-    const dateStr = toLocalISO(cursor);
+    const dateStr = toScheduleWallString(cursor);
 
     await db.execute({
       sql: "UPDATE articles SET publish_date = ? WHERE id = ?",
