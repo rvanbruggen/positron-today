@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.5.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.5.1 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.5.1** | Reverting a published article from History back to the publishing queue now also deletes the corresponding markdown file from the live site's GitHub repo, so the article actually disappears from the public site instead of lingering while showing as a draft in admin. Factored the GitHub-file-delete logic into a shared helper reused by both revert and full-remove |
 | **2.5.0** | OPML import / export on the Sources admin page: download all sources as a standard OPML 2.0 file (grouped by language) or bulk-import feeds from one. Duplicates are skipped — never overwritten — and flagged in the result panel with the matching existing source, so the user can verify whether an OPML entry reflects a rename or URL change |
 | **2.4.0** | Positronitron automation modes: the single on/off toggle becomes a 4-way mode selector — `off`, `fetch only` (auto-fetch + filter), `fetch + summarise` (auto-drafts for human review), or `full` (end-to-end autonomous). In summarise mode, top articles land as drafts on the Scheduled page instead of auto-publishing. AUTO badge in nav adapts per mode |
 | **2.3.0** | Cloud deployment: admin runs on Vercel + Turso, scheduled jobs via GitHub Actions every 30 min, configurable Positronitron run times from Settings, batch restore for fast data migration |
