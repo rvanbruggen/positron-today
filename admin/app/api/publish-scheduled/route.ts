@@ -2,35 +2,29 @@
  * Publish Scheduled Articles
  *
  * Finds all articles with status='scheduled' whose publish_date has arrived
- * (i.e. publish_date <= now) and publishes each one to GitHub.
+ * (i.e. publish_date <= now) and commits each one to GitHub. That commit
+ * triggers the deploy-site GitHub Action, which after Pages finishes
+ * deploying calls /api/post-pending-social — that's where social posts
+ * actually fire, with a guaranteed-live URL.
  *
- * Designed to be called by an external scheduler (launchd, cron, Vercel Cron, etc.)
- * on a regular interval (e.g. every hour).
+ * Why social isn't done here: GitHub Pages typically takes 30-90 seconds
+ * to deploy a fresh commit. Posting to social before that means broken
+ * link previews. We used to wait inline, but Vercel kills the function at
+ * 60s, and even when the wait timed out we'd post to a dead URL anyway.
+ *
+ * Designed to be called by an external scheduler (NAS cron, GitHub
+ * Actions, Vercel Cron, etc.) on a regular interval (e.g. every 30 min).
  *
  * GET  /api/publish-scheduled          — dry-run: returns articles due for publishing
  * POST /api/publish-scheduled          — actually publishes them
  */
 
 import db from "@/lib/db";
-import { postArticleToSocial } from "@/app/api/post-social/route";
 import { parseScheduleWallString } from "@/lib/schedule-time";
 
 const GITHUB_TOKEN  = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO   = process.env.GITHUB_REPO!;
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH ?? "main";
-const SITE_BASE     = "https://positron.today";
-
-async function waitForUrlLive(url: string, maxWaitMs = 180_000, intervalMs = 15_000): Promise<boolean> {
-  const deadline = Date.now() + maxWaitMs;
-  while (Date.now() < deadline) {
-    try {
-      const res = await fetch(url, { method: "HEAD", redirect: "follow" });
-      if (res.ok) return true;
-    } catch { /* not live yet */ }
-    await new Promise((r) => setTimeout(r, intervalMs));
-  }
-  return false;
-}
 
 // ─── Shared publish helpers (duplicated from publish/route.ts) ────────────────
 
@@ -173,11 +167,16 @@ export async function POST() {
     return Response.json({ published: 0, message: "No articles due for publishing" });
   }
 
-  const results: Array<{ id: number; title: string; ok: boolean; path?: string; error?: string; social?: unknown }> = [];
+  const results: Array<{ id: number; title: string; ok: boolean; path?: string; error?: string }> = [];
 
-  // ── Phase 1: publish all due articles to GitHub ───────────────────────────
-  const needsSocial: Array<{ id: number; path: string }> = [];
-
+  // ── Commit all due articles to GitHub. ────────────────────────────────────
+  // Social posting is intentionally NOT done here — articles with
+  // post_to_social_on_publish=1 stay in pending state (status='published',
+  // social_posted_at IS NULL) until /api/post-pending-social fires, which
+  // is triggered by the GitHub Pages deploy workflow once the URL is
+  // actually live. Trying to post here always 404'd because GitHub Pages
+  // hadn't deployed yet, and the in-process wait blew through Vercel's
+  // 60s function timeout.
   for (const article of due) {
     const id = Number(article.id);
     const title = String(article.title_en ?? article.title_nl ?? article.id);
@@ -211,33 +210,10 @@ export async function POST() {
       });
 
       results.push({ id, title, ok: true, path });
-
-      if (Number(article.post_to_social_on_publish ?? 0) === 1) {
-        needsSocial.push({ id, path });
-      }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       console.error(`[publish-scheduled] Failed to publish article ${id}:`, message);
       results.push({ id, title, ok: false, error: message });
-    }
-  }
-
-  // ── Phase 2: wait for GitHub Pages rebuild, then post to social ───────────
-  if (needsSocial.length > 0) {
-    const firstUrl = `${SITE_BASE}/posts/${needsSocial[0].path.split("/").pop()?.replace(/\.md$/, "")}/`;
-    console.log(`[publish-scheduled] Waiting for GitHub Pages rebuild… checking ${firstUrl}`);
-    await waitForUrlLive(firstUrl);
-
-    for (const { id } of needsSocial) {
-      const r = results.find((x) => x.id === id);
-      try {
-        const social = await postArticleToSocial(id);
-        if (r) r.social = social;
-      } catch (err) {
-        const socialErr = { ok: false, error: err instanceof Error ? err.message : String(err) };
-        if (r) r.social = socialErr;
-        console.error(`[publish-scheduled] id=${id} social error:`, err);
-      }
     }
   }
 

@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.8.3 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.9.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.9.0** | Fix social posts that landed against not-yet-deployed URLs (the cause of 404 link previews on Bluesky / X / etc.). Decoupled commit from social: `/api/publish-scheduled` now only commits to GitHub and returns fast; new `/api/post-pending-social` endpoint is called by the GitHub Pages deploy workflow once the URL is actually live, then posts to social with a guaranteed-200 link. Bearer-token auth (`SOCIAL_POST_TOKEN` env var on Vercel + matching repo secret on GitHub) so only the deploy workflow can trigger it |
 | **2.8.3** | Refine featured-article highlight on History: drop the ⭐ prefix; render the title in bold red (`text-red-700`, hover `text-red-500`) instead. Cleaner scan, no emoji clutter |
 | **2.8.2** | Visually flag featured articles on the admin History page — titles render in bold with a ⭐ prefix so the reviewer can see at a glance which posts are featured on the public site (wide cards) versus regular |
 | **2.8.1** | Wire the `/install` page into the main nav (after Contact) in EN / NL / FR; add theme overrides so the page renders correctly under the Mono and Mondrian colour schemes (Classic was already correct). Fix stale site footer version: the Eleventy meta data was pulling from the rarely-updated root `package.json` — now reads from `admin/package.json`, the real source of truth, so future bumps propagate automatically |

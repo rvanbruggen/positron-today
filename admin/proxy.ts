@@ -33,6 +33,7 @@ export async function proxy(request: NextRequest) {
     "/login",
     "/api/auth",
     "/api/publish-scheduled",
+    "/api/post-pending-social",
     "/api/positronitron",
     "/api/fetch",
     "/api/instagram-card-preview",
