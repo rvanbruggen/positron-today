@@ -1,8 +1,8 @@
 ---
-title: "Herman De Ridder (88) is zondag oldest participant at Antwerp 10 Miles: “Since my retirement, I exercise every day”"
+title: "Herman De Ridder (88) is the oldest participant at Antwerp 10 Miles on Sunday: “Since my retirement, I exercise every day”"
 title_nl: "Herman De Ridder (88) is zondag oudste deelnemer aan Antwerp 10 Miles: “Sinds mijn pensioen sport ik elke dag”"
-title_fr: "Herman De Ridder (88) est dimanche le plus ancien participant au Antwerp 10 Miles : “Depuis ma retraite, je fais du sport tous les jours”"
-date: 2026-04-20T17:30:05
+title_fr: "Herman De Ridder (88) est le plus ancien participant au Antwerp 10 Miles ce dimanche prochain : “Depuis ma retraite, je fais du sport tous les jours”"
+date: 2026-04-20T20:06:38
 source_pub_date: 2026-04-20
 fetched_date: 2026-04-20
 source_url: "https://www.gva.be/regio/antwerpen/regio-antwerpen/kalmthout/herman-de-ridder-88-is-zondag-oudste-deelnemer-aan-antwerp-10-miles-sinds-mijn-pensioen-sport-ik-elke-dag/146720199.html"
