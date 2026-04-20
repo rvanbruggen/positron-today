@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.9.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.9.2 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.9.2** | Correct the `/install` page instructions (and the iOS fallback modal): drop the "Share button at the bottom" claim — the Share button is at the top on iPad, iPhone in landscape, and iPhone with Single Tab layout. Describe it visually ("square with an arrow pointing up") instead. Add "Scroll down" to the iOS steps so users don't miss the Add-to-Home-Screen entry. Change "Tap" → "Click" on desktop; drop the poorly-rendered 🖳 emoji in favour of a clearer "install icon" description. Note the Android "Install app" / "Add to Home screen" label variance |
 | **2.9.1** | Fix flaky typing in the Scheduled page's "Ready to publish" datetime input. The input was controlled + fetch-on-every-keystroke, so partial/empty intermediate values (e.g. while clearing a segment) got PATCH'd to the server, the async round-trip snapped the value back mid-edit, and the `toDatetimeLocal` fallback teleported empty states to "today". Switched to uncontrolled (`defaultValue` + `key`), commit only on blur with regex validation, revert on incomplete — typing now flows naturally |
 | **2.9.0** | Fix social posts that landed against not-yet-deployed URLs (the cause of 404 link previews on Bluesky / X / etc.). Decoupled commit from social: `/api/publish-scheduled` now only commits to GitHub and returns fast; new `/api/post-pending-social` endpoint is called by the GitHub Pages deploy workflow once the URL is actually live, then posts to social with a guaranteed-200 link. Bearer-token auth (`SOCIAL_POST_TOKEN` env var on Vercel + matching repo secret on GitHub) so only the deploy workflow can trigger it |
 | **2.8.3** | Refine featured-article highlight on History: drop the ⭐ prefix; render the title in bold red (`text-red-700`, hover `text-red-500`) instead. Cleaner scan, no emoji clutter |

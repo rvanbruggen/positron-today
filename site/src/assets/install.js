@@ -148,7 +148,7 @@
         "<ol style=\"margin:0 0 20px;padding-left:20px;color:#78350f;font-size:15px;line-height:1.6;\">" +
           "<li>Tap the <strong>Share</strong> button " +
             "<span style=\"display:inline-block;vertical-align:middle;color:#2563eb;\">⬆️</span> " +
-            "at the bottom of the screen." +
+            "(a square with an arrow pointing up)." +
           "</li>" +
           "<li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>" +
           "<li>Tap <strong>Add</strong> in the top-right corner.</li>" +
