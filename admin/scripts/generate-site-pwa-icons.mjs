@@ -1,13 +1,14 @@
 /**
  * Generate PWA icons for the PUBLIC positron.today site.
  *
- * Uses the bright speech-bubble logo (gold/orange on white) — the public-
- * facing variant. The admin app uses a separate dark atom mark; don't
- * confuse the two.
+ * Uses the Positron atom mark — three orbital ellipses + gold nucleus with
+ * a white plus. Same geometry as the admin nav bar's inline SVG, rendered
+ * on a cream background for the bright / public-facing variant. The admin
+ * PWA uses a separate dark-background version; don't confuse the two.
  *
- * The icon is rendered at 512×512 with maskable-safe padding (content fits
- * inside the centre ~80% of the canvas so Android's adaptive-icon mask can
- * crop without clipping the speech bubble), then downscaled to each target.
+ * The mark is rendered inside a safe-zone of 76-436 on a 512×512 canvas
+ * (~15% padding on every side) so Android's adaptive-icon mask can crop
+ * to a circle without clipping the outer orbitals.
  *
  * Lives in admin/scripts/ because that's where sharp is already installed;
  * writes into ../../site/src/assets/ where Eleventy passthrough picks the
@@ -24,26 +25,24 @@ import { dirname, join } from "path";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = join(__dirname, "..", "..", "site", "src", "assets");
 
-// Bright-variant mark. The 100×100 content is inset to 10-90 so there's a
-// 10% safe-zone margin on every side when the OS crops to a circle.
+// Bright-atom mark. 100×100 viewBox from the admin nav, scaled + centred
+// into a 360×360 safe zone on the 512 canvas. The nucleus has a subtle
+// halo via opacity — matches how the mark reads at larger sizes.
 const svgTemplate = (size) => `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="${size}" height="${size}">
-  <!-- Solid cream background so the icon reads on any home-screen wallpaper -->
   <rect width="512" height="512" fill="#fffbeb"/>
-  <!-- Translate + scale: map the source 100×100 logo into a safe zone that
-       leaves ~12% padding on each side (content inside 64-448 of 512). -->
-  <g transform="translate(64 64) scale(3.84)">
-    <!-- Speech bubble body with tail at bottom-centre -->
-    <path fill="#f59e0b"
-      d="M15,10 L85,10 Q92,10 92,17 L92,62 Q92,70 85,70 L58,70 L50,84 L42,70 L15,70 Q8,70 8,62 L8,17 Q8,10 15,10 Z"/>
-    <!-- 5-pointed star centred at 50,37 -->
-    <polygon fill="white" opacity="0.92"
-      points="50,20 54,31 66,32 57,39 60,51 50,44 40,51 43,39 34,32 46,31"/>
-    <!-- Corner sparkle dots -->
-    <circle fill="white" opacity="0.55" cx="22" cy="22" r="2.5"/>
-    <circle fill="white" opacity="0.55" cx="78" cy="22" r="2.5"/>
-    <circle fill="white" opacity="0.40" cx="80" cy="57" r="1.8"/>
-    <circle fill="white" opacity="0.40" cx="20" cy="57" r="1.8"/>
+  <g transform="translate(76 76) scale(3.6)">
+    <!-- Three orbital ellipses, rotated 0° / 60° / 120° -->
+    <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" stroke-width="5"/>
+    <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" stroke-width="5" transform="rotate(60 50 50)"/>
+    <ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="#f59e0b" stroke-width="5" transform="rotate(120 50 50)"/>
+    <!-- Subtle nucleus halo so the core reads at small sizes -->
+    <circle cx="50" cy="50" r="18" fill="#f59e0b" opacity="0.18"/>
+    <!-- Solid nucleus -->
+    <circle cx="50" cy="50" r="13" fill="#f59e0b"/>
+    <!-- White plus sign -->
+    <rect x="43.5" y="47" width="13" height="6" rx="2" fill="white" opacity="0.95"/>
+    <rect x="47" y="43.5" width="6" height="13" rx="2" fill="white" opacity="0.95"/>
   </g>
 </svg>`;
 
