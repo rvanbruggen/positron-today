@@ -1,0 +1,227 @@
+---
+layout: base.njk
+title: Install Positron Today
+description: Install Positron Today as an app on your phone or desktop — positive news right on your home screen.
+permalink: /install/
+---
+
+<style>
+  .install-wrap { max-width: 720px; margin: 0 auto; }
+
+  .install-hero {
+    text-align: center;
+    padding: 1rem 0 2rem;
+  }
+  .install-hero h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #78350f;
+    margin: 0 0 0.5rem;
+    line-height: 1.15;
+  }
+  .install-hero p {
+    font-size: 1.05rem;
+    color: #92400e;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .install-cta {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0 2.5rem;
+  }
+  .install-cta button {
+    background: #f59e0b;
+    color: white;
+    border: 0;
+    border-radius: 999px;
+    padding: 1rem 2.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+    transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+  }
+  .install-cta button:hover  { background: #d97706; transform: translateY(-1px); box-shadow: 0 10px 28px rgba(245, 158, 11, 0.45); }
+  .install-cta button:active { transform: translateY(0); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
+  .install-cta button:disabled { background: #d6d3d1; color: #78716c; cursor: not-allowed; box-shadow: none; }
+
+  .install-status {
+    font-size: 0.9rem;
+    color: #92400e;
+    text-align: center;
+    margin-top: -1.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Per-platform cards */
+  .install-steps {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 720px) {
+    .install-steps { grid-template-columns: repeat(3, 1fr); }
+  }
+  .install-step {
+    background: #fff;
+    border: 2px solid #fde68a;
+    border-radius: 1rem;
+    padding: 1.25rem;
+  }
+  .install-step h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #78350f;
+    margin: 0 0 0.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .install-step ol {
+    margin: 0; padding-left: 1.1rem;
+    color: #451a03;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .install-step li + li { margin-top: 0.25rem; }
+
+  /* QR section */
+  .install-qr {
+    background: #fffbeb;
+    border: 2px dashed #fde68a;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .install-qr h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #78350f;
+    margin: 0 0 0.5rem;
+  }
+  .install-qr p {
+    font-size: 0.9rem;
+    color: #92400e;
+    margin: 0 0 1rem;
+  }
+  .install-qr img {
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    background: white;
+    padding: 0.75rem;
+    box-shadow: 0 4px 16px rgba(120, 53, 15, 0.1);
+  }
+
+  /* When already installed, replace the CTA with a celebratory message */
+  .install-already {
+    background: #ecfdf5;
+    border: 2px solid #6ee7b7;
+    color: #065f46;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+  }
+
+  /* install-helper.js toggles these via [data-install-mode] on <html> */
+  html[data-install-mode="installed"]        .install-cta-primary,
+  html[data-install-mode="installed"]        .install-status,
+  html[data-install-mode="installed"]        .install-steps { display: none; }
+  html[data-install-mode="installed"]        .install-already { display: block; }
+
+  html:not([data-install-mode="installed"])  .install-already { display: none; }
+</style>
+
+<div class="install-wrap">
+
+  <div class="install-hero">
+    <h1>Get Positron Today on your home screen</h1>
+    <p>A free one-tap install. Launches full-screen like a native app, reads offline, and keeps the positive news a single tap away.</p>
+  </div>
+
+  <div class="install-already">
+    ✓ You've already installed Positron Today. Look for the atom icon on your home screen.
+  </div>
+
+  <div class="install-cta install-cta-primary">
+    <button id="install-button" type="button" onclick="window.PositronInstall.showPrompt()">
+      📥 Install Positron Today
+    </button>
+  </div>
+  <p class="install-status" id="install-status"></p>
+
+  <div class="install-steps">
+    <div class="install-step">
+      <h3>📱 iPhone / iPad</h3>
+      <ol>
+        <li>Open this page in <strong>Safari</strong>.</li>
+        <li>Tap the <strong>Share</strong> button at the bottom.</li>
+        <li>Tap <strong>Add to Home Screen</strong>.</li>
+        <li>Tap <strong>Add</strong> in the top-right.</li>
+      </ol>
+    </div>
+    <div class="install-step">
+      <h3>🤖 Android</h3>
+      <ol>
+        <li>Open this page in <strong>Chrome</strong>.</li>
+        <li>Tap the install button above, or the ⋮ menu.</li>
+        <li>Choose <strong>Install app</strong>.</li>
+      </ol>
+    </div>
+    <div class="install-step">
+      <h3>💻 Desktop</h3>
+      <ol>
+        <li>Open this page in <strong>Chrome</strong> or <strong>Edge</strong>.</li>
+        <li>Tap the install button above, or the 🖳 install icon in the address bar.</li>
+        <li>Click <strong>Install</strong>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="install-qr">
+    <h2>On a different device?</h2>
+    <p>Scan this QR code with your phone's camera — it opens this install page so you can add the app.</p>
+    <img src="/assets/qr-install.png" alt="QR code to positron.today/install">
+  </div>
+
+</div>
+
+<script>
+  // Adjust the button label + status copy based on the detected install mode.
+  // Wait for DOMContentLoaded so the deferred install.js has already set up
+  // window.PositronInstall — inline scripts can't use `defer` themselves.
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("install-button");
+    var status = document.getElementById("install-status");
+    if (!btn || !window.PositronInstall) return;
+
+    function apply(mode) {
+      switch (mode) {
+        case "deferred-prompt":
+          btn.disabled = false;
+          btn.textContent = "📥 Install Positron Today";
+          status.textContent = "";
+          break;
+        case "ios":
+          btn.disabled = false;
+          btn.textContent = "📱 Show iOS install steps";
+          status.textContent = "iOS Safari can't install automatically — tap the button for the three-tap shortcut.";
+          break;
+        case "installed":
+          btn.disabled = true;
+          btn.textContent = "✓ Already installed";
+          status.textContent = "";
+          break;
+        default: // "unsupported"
+          btn.disabled = true;
+          btn.textContent = "Install unavailable on this browser";
+          status.textContent = "Try opening this page in Chrome (Android/Desktop), Edge, or Safari (iOS).";
+      }
+    }
+    apply(window.PositronInstall.mode);
+    window.PositronInstall.onChange(apply);
+  });
+</script>

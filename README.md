@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.7.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.8.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.8.0** | Shareable PWA install flow on the public site: dedicated `/install` page with per-platform instructions, one-tap install button (native prompt on supported browsers, iOS modal fallback), and a branded QR code (atom mark centred in a rounded card) that points back to `/install/`. The `?install=1` query param on any page auto-opens the install flow. New `admin/lib` script generates the QR; a shared `install.js` exposes a `window.PositronInstall` API so other pages can add their own install CTAs later |
 | **2.7.1** | PWA icon swapped from the speech-bubble logo to the bright Positron atom mark (same geometry as the admin nav bar, rendered on a cream background with maskable-safe padding) |
 | **2.7.0** | Public site is now an installable PWA. Added `/manifest.webmanifest` (English-default, bright speech-bubble icon at 192/512 on a cream background, maskable-safe padding), `/sw.js` (network-first with cache fallback so articles stay readable offline), Apple / Android install meta tags, and an SW registration snippet in the base layout. Visitors get an "Add to Home Screen" prompt on iOS and a native install prompt on Android; the site then launches full-screen with its own home-screen icon |
 | **2.6.0** | Duplicate-topic detection on the Preview page: each pending article's title is compared (same-language, Jaccard on normalised tokens) against other pending items and against draft / scheduled / published articles from the last 14 days. Likely duplicates get a prominent orange warning with the matching title, source and similarity score, and the Discard button turns orange to nudge the action — keeps the same story from reaching the site twice when multiple feeds cover it |

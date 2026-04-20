@@ -317,7 +317,8 @@
     })();
   </script>
 
-  {# ── PWA: register service worker for offline + install prompt ── #}
+  {# ── PWA: install helper + service worker registration ── #}
+  <script src="/assets/install.js" defer></script>
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
