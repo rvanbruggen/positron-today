@@ -40,6 +40,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  {# ── PWA ── #}
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#f59e0b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Positron">
   <link rel="alternate" type="application/rss+xml" title="Positron Today (English)" href="https://positron.today/feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Positron Today (Nederlands)" href="https://positron.today/feed-nl.xml">
   <link rel="alternate" type="application/rss+xml" title="Positron Today (Français)" href="https://positron.today/feed-fr.xml">
@@ -307,6 +315,17 @@
       var lang = localStorage.getItem('positron-today-lang') || 'en';
       if (lang !== 'en') setLang(lang);
     })();
+  </script>
+
+  {# ── PWA: register service worker for offline + install prompt ── #}
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/sw.js").catch(function (err) {
+          console.warn("SW registration failed:", err);
+        });
+      });
+    }
   </script>
 </body>
 </html>

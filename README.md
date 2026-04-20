@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.6.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.7.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.7.0** | Public site is now an installable PWA. Added `/manifest.webmanifest` (English-default, bright speech-bubble icon at 192/512 on a cream background, maskable-safe padding), `/sw.js` (network-first with cache fallback so articles stay readable offline), Apple / Android install meta tags, and an SW registration snippet in the base layout. Visitors get an "Add to Home Screen" prompt on iOS and a native install prompt on Android; the site then launches full-screen with its own home-screen icon |
 | **2.6.0** | Duplicate-topic detection on the Preview page: each pending article's title is compared (same-language, Jaccard on normalised tokens) against other pending items and against draft / scheduled / published articles from the last 14 days. Likely duplicates get a prominent orange warning with the matching title, source and similarity score, and the Discard button turns orange to nudge the action — keeps the same story from reaching the site twice when multiple feeds cover it |
 | **2.5.3** | Human discards on the Preview page are now appended to the rejection log, under a dedicated "Discarded on Review" (`human-discarded`) category so they can be distinguished from AI-filter rejections. Keeps the "What We Skip" log complete and makes it possible to audit what a human chose to drop |
 | **2.5.2** | Unify scheduling timezone across the codebase. `/api/suggest-schedule`, `/api/positronitron` and `/api/publish-scheduled` now share a single `admin/lib/schedule-time.ts` helper; `publish_date` is unambiguously wall-clock time in `SCHEDULE_TZ` (env-configurable, defaults to `Europe/Brussels`). Fixes the iPad bug where the suggested schedule returned times already in the past because the server produced UTC wall-strings while the client interpreted them as Brussels wall-strings |

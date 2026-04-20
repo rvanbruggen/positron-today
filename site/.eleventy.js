@@ -2,6 +2,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  // PWA: sw.js and manifest.webmanifest must sit at the site root so the
+  // service worker gets full-site scope and the manifest link resolves.
+  eleventyConfig.addPassthroughCopy("src/sw.js");
+  eleventyConfig.addPassthroughCopy("src/manifest.webmanifest");
 
   // URL-encode filter for use in meta tag attributes
   eleventyConfig.addFilter("urlencode", (str) => encodeURIComponent(String(str ?? "")));
