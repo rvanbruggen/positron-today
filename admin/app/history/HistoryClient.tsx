@@ -373,18 +373,24 @@ export default function HistoryClient({
                 return (
                   <tr key={a.id} className={`${!isLast ? "border-b border-yellow-50" : ""} hover:bg-amber-50/40 transition-colors`}>
 
-                    {/* Title */}
+                    {/* Title — featured articles get bold weight and a ⭐ prefix */}
                     <td className="px-4 py-2.5 max-w-xs">
                       <div className="flex items-start gap-1.5">
                         <span className="shrink-0 text-base leading-5">{a.article_emoji ?? "📰"}</span>
                         <div className="min-w-0">
                           {postUrl ? (
                             <a href={postUrl} target="_blank" rel="noopener noreferrer"
-                              className="font-medium text-amber-900 hover:text-amber-600 transition-colors line-clamp-2 leading-snug">
+                              className={`${a.featured ? "font-bold" : "font-medium"} text-amber-900 hover:text-amber-600 transition-colors line-clamp-2 leading-snug`}
+                              title={a.featured ? "Featured on the public site (wide card)" : undefined}>
+                              {a.featured && <span className="mr-0.5" aria-label="Featured">⭐</span>}
                               {title}
                             </a>
                           ) : (
-                            <span className="font-medium text-amber-900 line-clamp-2 leading-snug">{title}</span>
+                            <span className={`${a.featured ? "font-bold" : "font-medium"} text-amber-900 line-clamp-2 leading-snug`}
+                              title={a.featured ? "Featured on the public site (wide card)" : undefined}>
+                              {a.featured && <span className="mr-0.5" aria-label="Featured">⭐</span>}
+                              {title}
+                            </span>
                           )}
                         </div>
                       </div>
