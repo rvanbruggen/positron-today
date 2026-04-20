@@ -460,10 +460,34 @@ export default function ScheduledClient({
                         />
                       </div>
                       <div className="flex flex-col sm:items-end gap-2 w-full sm:w-auto sm:shrink-0">
+                        {/* Uncontrolled on purpose. A controlled datetime-local
+                             fights typing: the browser emits value="" during
+                             partial edits (e.g. while clearing the day
+                             segment), which — through the controlled-value
+                             path — would call setDate(id, "") and cause the
+                             input to snap back to "today" mid-keystroke. By
+                             making it uncontrolled and committing only on
+                             blur, typing flows naturally and only complete,
+                             valid values reach the server. `key` remounts the
+                             input when the parent value changes legitimately
+                             (e.g. after suggest-schedule rewrites the slot). */}
                         <input
+                          key={a.publish_date ?? "none"}
                           type="datetime-local"
-                          value={toDatetimeLocal(a.publish_date ?? null)}
-                          onChange={(e) => setDate(a.id, e.target.value)}
+                          defaultValue={toDatetimeLocal(a.publish_date ?? null)}
+                          onBlur={(e) => {
+                            const next     = e.target.value;
+                            const current  = toDatetimeLocal(a.publish_date ?? null);
+                            const complete = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(next);
+                            if (complete && next !== current) {
+                              setDate(a.id, next);
+                            } else if (!complete) {
+                              // User left the field in a bad state — revert
+                              // the DOM value so they don't stare at an
+                              // invalid string after the blur.
+                              e.target.value = current;
+                            }
+                          }}
                           className="border border-yellow-200 rounded px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400"
                         />
                         <div className="flex flex-col gap-1">
