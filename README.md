@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.8.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.8.1 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.8.1** | Wire the `/install` page into the main nav (after Contact) in EN / NL / FR; add theme overrides so the page renders correctly under the Mono and Mondrian colour schemes (Classic was already correct). Fix stale site footer version: the Eleventy meta data was pulling from the rarely-updated root `package.json` — now reads from `admin/package.json`, the real source of truth, so future bumps propagate automatically |
 | **2.8.0** | Shareable PWA install flow on the public site: dedicated `/install` page with per-platform instructions, one-tap install button (native prompt on supported browsers, iOS modal fallback), and a branded QR code (atom mark centred in a rounded card) that points back to `/install/`. The `?install=1` query param on any page auto-opens the install flow. New `admin/lib` script generates the QR; a shared `install.js` exposes a `window.PositronInstall` API so other pages can add their own install CTAs later |
 | **2.7.1** | PWA icon swapped from the speech-bubble logo to the bright Positron atom mark (same geometry as the admin nav bar, rendered on a cream background with maskable-safe padding) |
 | **2.7.0** | Public site is now an installable PWA. Added `/manifest.webmanifest` (English-default, bright speech-bubble icon at 192/512 on a cream background, maskable-safe padding), `/sw.js` (network-first with cache fallback so articles stay readable offline), Apple / Android install meta tags, and an SW registration snippet in the base layout. Visitors get an "Add to Home Screen" prompt on iOS and a native install prompt on Android; the site then launches full-screen with its own home-screen icon |

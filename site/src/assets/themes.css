@@ -705,3 +705,110 @@ html[data-theme="classic"] .nav-select {
 }
 html:not([data-theme]) .nav-select:hover,
 html[data-theme="classic"] .nav-select:hover { background-color: rgba(120,53,15,0.1); }
+
+/* ============================================================================
+   /install page — theme overrides
+   The page's own CSS uses the classic amber palette; these rules flip it
+   to the mono and mondrian palettes. Structure mirrors how card and
+   post-body rules are themed elsewhere in this file.
+   ============================================================================ */
+
+/* ── MONO ── black + white, hairline borders, no rounded corners, no shadows */
+html[data-theme="mono"] .install-hero h1 { color: var(--mono-fg); font-weight: 800; letter-spacing: -0.01em; }
+html[data-theme="mono"] .install-hero p  { color: var(--mono-muted); }
+
+html[data-theme="mono"] .install-cta button {
+  background: var(--mono-fg);
+  color: var(--mono-bg);
+  border-radius: 0;
+  box-shadow: none;
+}
+html[data-theme="mono"] .install-cta button:hover  { background: #000000; }
+html[data-theme="mono"] .install-cta button:disabled {
+  background: #ffffff;
+  color: var(--mono-muted);
+  border: 1px solid var(--mono-hairline);
+}
+html[data-theme="mono"] .install-status { color: var(--mono-muted); }
+
+html[data-theme="mono"] .install-step {
+  background: #ffffff;
+  border: 1px solid var(--mono-hairline);
+  border-radius: 0;
+}
+html[data-theme="mono"] .install-step h3 { color: var(--mono-fg); }
+html[data-theme="mono"] .install-step ol { color: var(--mono-fg); }
+html[data-theme="mono"] .install-step strong { color: var(--mono-fg); }
+
+html[data-theme="mono"] .install-qr {
+  background: #ffffff;
+  border: 1px dashed var(--mono-hairline-strong);
+  border-radius: 0;
+}
+html[data-theme="mono"] .install-qr h2 { color: var(--mono-fg); }
+html[data-theme="mono"] .install-qr p  { color: var(--mono-muted); }
+html[data-theme="mono"] .install-qr img { border-radius: 0; box-shadow: none; filter: grayscale(1); }
+
+html[data-theme="mono"] .install-already {
+  background: #ffffff;
+  border: 1px solid var(--mono-hairline-strong);
+  color: var(--mono-fg);
+  border-radius: 0;
+}
+
+/* ── MONDRIAN ── primary palette, thick black borders, sharp corners */
+html[data-theme="mondrian"] .install-hero h1 { color: var(--md-black); font-weight: 800; letter-spacing: -0.01em; }
+html[data-theme="mondrian"] .install-hero p  { color: var(--md-muted); }
+
+html[data-theme="mondrian"] .install-cta button {
+  background: var(--md-red);
+  color: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 var(--md-black);
+}
+html[data-theme="mondrian"] .install-cta button:hover {
+  background: var(--md-blue);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--md-black);
+}
+html[data-theme="mondrian"] .install-cta button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--md-black);
+}
+html[data-theme="mondrian"] .install-cta button:disabled {
+  background: #ffffff;
+  color: var(--md-black);
+  box-shadow: 4px 4px 0 var(--md-black);
+}
+html[data-theme="mondrian"] .install-status { color: var(--md-muted); }
+
+html[data-theme="mondrian"] .install-step {
+  background: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .install-step h3 { color: var(--md-black); }
+html[data-theme="mondrian"] .install-step ol { color: var(--md-black); }
+html[data-theme="mondrian"] .install-step strong { color: var(--md-red); }
+
+html[data-theme="mondrian"] .install-qr {
+  background: var(--md-yellow);
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .install-qr h2 { color: var(--md-black); }
+html[data-theme="mondrian"] .install-qr p  { color: var(--md-black); }
+html[data-theme="mondrian"] .install-qr img {
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--md-black);
+  border: 3px solid var(--md-black);
+  background: #ffffff;
+}
+
+html[data-theme="mondrian"] .install-already {
+  background: var(--md-yellow);
+  border: 3px solid var(--md-black);
+  color: var(--md-black);
+  border-radius: 0;
+}
