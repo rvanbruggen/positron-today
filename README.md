@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.10.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.10.1 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -443,6 +443,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.10.1** | Soften the copyright wording on the About page: drop the "fair use / fair dealing" phrasing, which is US/UK-legal-system-specific, in favour of a neutral statement — "I rely on standard conventions of commentary, curation and quotation, with attribution and a direct link to the source." Translations use the correct jurisdiction-specific legal terminology where it exists: `het citaatrecht` (Dutch Auteurswet) and `le droit de citation` (French Code de la propriété intellectuelle) |
 | **2.10.0** | Redesign the click target on homepage + archive cards: the card now opens the original source article in a new tab (the primary user flow — browsing). A small atom-icon permalink in the card-meta row still leads to the Positron Today page for the story, which remains the target for social unfurls, RSS items, and search results — the plumbing stays intact. Added an extensive "A personal, not-for-profit initiative" section to the About page (tri-lingual) stating that the site is run by one individual with no commercial motive, explicitly respects source copyright, and exists to *promote* the linked journalism rather than replace it |
 | **2.9.2** | Correct the `/install` page instructions (and the iOS fallback modal): drop the "Share button at the bottom" claim — the Share button is at the top on iPad, iPhone in landscape, and iPhone with Single Tab layout. Describe it visually ("square with an arrow pointing up") instead. Add "Scroll down" to the iOS steps so users don't miss the Add-to-Home-Screen entry. Change "Tap" → "Click" on desktop; drop the poorly-rendered 🖳 emoji in favour of a clearer "install icon" description. Note the Android "Install app" / "Add to Home screen" label variance |
 | **2.9.1** | Fix flaky typing in the Scheduled page's "Ready to publish" datetime input. The input was controlled + fetch-on-every-keystroke, so partial/empty intermediate values (e.g. while clearing a segment) got PATCH'd to the server, the async round-trip snapped the value back mid-edit, and the `toDatetimeLocal` fallback teleported empty states to "today". Switched to uncontrolled (`defaultValue` + `key`), commit only on blur with regex validation, revert on incomplete — typing now flows naturally |
