@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.13.3 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.14.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -184,18 +184,7 @@ cd site && npm run dev           # http://localhost:8080/
 
 ## Article Pipeline
 
-There are two ways to run the pipeline: **manual** (step by step) or **Fast Track** (one click).
-
----
-
-### ⚡ Fast Track (recommended)
-
-Go to **Admin → Fast Track** and choose a mode:
-
-- **Publish now** — runs the full pipeline immediately: fetch all sources → filter at maximum strictness (threshold 10) → summarise each passing article → commit to GitHub. Live progress streams to the browser as each article is processed.
-- **Schedule → every N min** — same pipeline, but instead of publishing immediately, assigns staggered `publish_date` values to each article (one every N minutes, default 30), queuing them for the scheduled publisher to release automatically.
-
-Fast Track is designed for daily use. One click processes everything from RSS to live site.
+There are two ways to run the pipeline: **manual** (step by step from the admin UI) or **automated** via Positronitron (cron-driven, configured on the Settings page).
 
 ---
 
@@ -257,7 +246,7 @@ Re-publishing an already-published article (after editing) always overwrites the
 
 ### Scheduled publishing
 
-Articles assigned a `publish_date` (via Fast Track schedule mode or the Scheduled page) are held in a queue and published automatically when their time arrives.
+Articles assigned a `publish_date` (via the Scheduled page or by Positronitron in `summarise`/`full` mode) are held in a queue and published automatically when their time arrives.
 
 **How it works:**
 
@@ -369,7 +358,6 @@ This is the migration path between environments (e.g. local SQLite → Turso clo
 | `/` | Dashboard — quick stats |
 | `/sources` | Manage RSS sources (add, edit inline, toggle active) |
 | `/tags` | Manage topic tags |
-| `/fast-track` | ⚡ One-click pipeline: fetch → filter → summarise → publish now or schedule |
 | `/preview` | Review pending articles, summarise, edit, publish |
 | `/scheduled` | Drafts awaiting summarisation (single + bulk "Summarise all") and scheduled publish queue — set publish times, suggest schedule, publish on demand |
 | `/history` | Published article history — edit, re-publish, generate Instagram card, post to socials |
@@ -443,6 +431,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.14.0** | Surface the prompts auto runs will use directly inside the Positronitron card on `/settings`. Two collapsible details now show, by current state: *"Positivity filter: threshold N — &lt;tier&gt;"* (or *"custom override"*) and *"Summarisation style: default style"* (or *"custom override"*) — expand either to see the full prompt text the LLM will receive on the next auto run. Closes a real source of confusion: the Positronitron section previously gave no hint that auto runs read the same `filter_prompt_override` / `summarise_style_override` values as manual runs do, so it wasn't obvious which strictness tier auto was actually applying. Also retire the entire Fast Track surface — the `/fast-track` page + `/api/fast-track` route + nav links + dashboard quick action + vercel function entry — now that the Positronitron automation modes cover the same ground without the hardcoded threshold-10 override that bypassed user prompt customisation |
 | **2.13.3** | Fix 404 social-post previews when publishing manually from the Scheduled page. The "Publish →" / "publish now ↑" buttons in `admin/app/api/publish/route.ts` were calling `postArticleToSocial` inline, right after the GitHub commit — long before Pages had actually deployed the new post, so Bluesky / X / etc. fetched a 404 for the link preview. Removed the inline social call so articles with `post_to_social_on_publish=1` now sit in the same pending state the cron path uses (`status='published'`, `social_posted_at IS NULL`); the Pages-deploy workflow's callback to `/api/post-pending-social` picks them up once the URL is live, same as scheduled publishing |
 | **2.13.2** | Strip the featured signal entirely from archive month pages. Archive is a purely chronological historical browse — featured is an editorial "interesting now" signal that doesn't apply to past months — so featured and non-featured posts now look identical on `/archive/YYYY/MM/`. Removes the `card-featured-display` class from the archive template and drops its CSS rules, so the 4-column archive grid reads as a uniform historical list with no visual echo of the homepage's featured treatment |
 | **2.13.1** | Two polish fixes on top of 2.13.0. Trim the desktop featured rail so it ends roughly where the main feed ends — previously, when there were far more featured articles than regulars the right column ran much longer than the left, leaving a big whitespace hole at the bottom of the left column. Now a small post-Masonry JS pass hides any rail card whose bottom would extend past the feed's bottom (with an 8px tolerance), and the pass re-runs on filter changes and on window resize so the alignment holds. Also extend the same layout cleanup to archive month pages (`/archive/YYYY/MM/`): the old `.card-featured` double-width class is gone there too, replaced with the same `.card-featured-display` visual treatment (larger headline, image-first, no emoji) used on the homepage, so featured posts still stand out but the 4-column archive grid stays uniform |

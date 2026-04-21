@@ -648,6 +648,45 @@ export default function SettingsPage() {
             </div>
             <p className="text-[11px] text-amber-400 mt-1">1–4 daily run times. Changes take effect after saving.</p>
           </div>
+
+          {/* ── Active prompts preview ──
+              Surfaces exactly which filter and summarisation prompts the next
+              auto run will use. Auto reads the same DB columns as manual,
+              so editing the textareas higher up on this page is what changes
+              what shows here — but until a user opens those sections it isn't
+              obvious that auto picks them up. */}
+          <div className={`mt-4 pt-4 border-t border-yellow-100 ${settings?.positronitron_mode === "off" ? "opacity-50" : ""}`}>
+            <div className="text-xs text-amber-700 font-medium mb-2">
+              Prompts the next auto run will use
+            </div>
+
+            <details className="mb-2 border border-yellow-200 rounded-lg bg-amber-50">
+              <summary className="cursor-pointer px-3 py-2 text-xs select-none">
+                <span className="font-medium text-amber-800">Positivity filter:</span>{" "}
+                <span className="text-amber-600">
+                  {filterHasOverride
+                    ? "custom override"
+                    : `threshold ${threshold} — ${(THRESHOLD_LABELS[threshold] || "").split(" — ")[1] || ""}`}
+                </span>
+              </summary>
+              <pre className="px-3 py-2 text-[11px] text-amber-700 whitespace-pre-wrap font-mono leading-relaxed border-t border-yellow-200 bg-white rounded-b-lg overflow-x-auto">{filterInstructionsPreview}</pre>
+            </details>
+
+            <details className="border border-yellow-200 rounded-lg bg-amber-50">
+              <summary className="cursor-pointer px-3 py-2 text-xs select-none">
+                <span className="font-medium text-amber-800">Summarisation style:</span>{" "}
+                <span className="text-amber-600">
+                  {summariseHasOverride ? "custom override" : "default style"}
+                </span>
+              </summary>
+              <pre className="px-3 py-2 text-[11px] text-amber-700 whitespace-pre-wrap font-mono leading-relaxed border-t border-yellow-200 bg-white rounded-b-lg overflow-x-auto">{summariseStylePreview}</pre>
+            </details>
+
+            <p className="text-[11px] text-amber-500 mt-2 leading-relaxed">
+              These are the prompts auto runs will use right now. Both manual and auto modes read the same values — edit them in the <span className="font-medium">Filtering</span> and <span className="font-medium">Summarisation &amp; translation</span> sections at the top of this page.
+            </p>
+          </div>
+
           <div className="flex items-center gap-3 mt-4 pt-3 border-t border-yellow-100">
             <button
               onClick={save}
