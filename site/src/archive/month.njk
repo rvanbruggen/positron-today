@@ -16,24 +16,16 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
   .page-header p { font-size: 0.875rem; color: #b45309; }
 
   /* Masonry layout — card widths set by CSS, vertical positioning by Masonry.js.
-     Archive deliberately keeps the 4-tier column system (denser grid for
-     historical browsing) but drops the old .card-featured double-width rule
-     that used to leave Masonry gaps. Featured posts here get the same visual
-     treatment as on the homepage (.card-featured-display — larger headline,
-     no emoji) without disturbing the grid's column widths. */
+     Archive is a purely chronological historical view: featured status is
+     an editorial "interesting now" signal that has no meaning on a by-month
+     browse, so archive cards intentionally get no featured treatment.
+     Uniform 4-tier column grid; every card the same. */
   .card-grid { margin: 0 -0.5rem; }
   .grid-sizer, .card-grid .card { width: calc(100% - 1rem); margin: 0.5rem; box-sizing: border-box; }
   .grid-sizer { height: 0; padding: 0; margin: 0.5rem; visibility: hidden; }
   @media (min-width: 480px) { .grid-sizer, .card-grid .card { width: calc(50% - 1rem); } }
   @media (min-width: 700px)  { .grid-sizer, .card-grid .card { width: calc(33.333% - 1rem); } }
   @media (min-width: 1200px) { .grid-sizer, .card-grid .card { width: calc(25% - 1rem); } }
-
-  /* Featured card visual treatment — same rules as index.njk, no width override. */
-  .card-featured-display .card-emoji { display: none; }
-  .card-featured-display .card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
-  @media (min-width: 640px) {
-    .card-featured-display .card-title { font-size: 1.1rem; }
-  }
 
   .card {
     position: relative;
@@ -146,7 +138,7 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
     {% endif %}
     {% set firstTag = cardTags[0] if cardTags.length > 0 else "" %}
     <article
-      class="card card-{{ firstTag | topicColor }}{% if post.data.featured %} card-featured-display{% endif %}"
+      class="card card-{{ firstTag | topicColor }}"
       data-tags="{{ cardTags | join(',') }}"
     >
       <a class="card-link"
