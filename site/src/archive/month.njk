@@ -15,17 +15,25 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
   .page-header h1 { font-size: clamp(1.35rem, 5vw, 1.75rem); font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
   .page-header p { font-size: 0.875rem; color: #b45309; }
 
-  /* Masonry layout — card widths set by CSS, vertical positioning by Masonry.js */
+  /* Masonry layout — card widths set by CSS, vertical positioning by Masonry.js.
+     Archive deliberately keeps the 4-tier column system (denser grid for
+     historical browsing) but drops the old .card-featured double-width rule
+     that used to leave Masonry gaps. Featured posts here get the same visual
+     treatment as on the homepage (.card-featured-display — larger headline,
+     no emoji) without disturbing the grid's column widths. */
   .card-grid { margin: 0 -0.5rem; }
   .grid-sizer, .card-grid .card { width: calc(100% - 1rem); margin: 0.5rem; box-sizing: border-box; }
   .grid-sizer { height: 0; padding: 0; margin: 0.5rem; visibility: hidden; }
   @media (min-width: 480px) { .grid-sizer, .card-grid .card { width: calc(50% - 1rem); } }
   @media (min-width: 700px)  { .grid-sizer, .card-grid .card { width: calc(33.333% - 1rem); } }
   @media (min-width: 1200px) { .grid-sizer, .card-grid .card { width: calc(25% - 1rem); } }
-  .card-featured { width: calc(100% - 1rem) !important; }
-  @media (min-width: 480px) { .card-featured { width: calc(100% - 1rem) !important; } }
-  @media (min-width: 700px)  { .card-featured { width: calc(66.666% - 1rem) !important; } }
-  @media (min-width: 1200px) { .card-featured { width: calc(50% - 1rem) !important; } }
+
+  /* Featured card visual treatment — same rules as index.njk, no width override. */
+  .card-featured-display .card-emoji { display: none; }
+  .card-featured-display .card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
+  @media (min-width: 640px) {
+    .card-featured-display .card-title { font-size: 1.1rem; }
+  }
 
   .card {
     position: relative;
@@ -138,7 +146,7 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
     {% endif %}
     {% set firstTag = cardTags[0] if cardTags.length > 0 else "" %}
     <article
-      class="card card-{{ firstTag | topicColor }}{% if post.data.featured %} card-featured{% endif %}"
+      class="card card-{{ firstTag | topicColor }}{% if post.data.featured %} card-featured-display{% endif %}"
       data-tags="{{ cardTags | join(',') }}"
     >
       <a class="card-link"

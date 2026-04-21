@@ -591,14 +591,57 @@ title: Home
       transitionDuration: '0.2s'
     });
     // Re-layout after all images load
-    imagesLoaded(grid, function() { msnry.layout(); });
+    imagesLoaded(grid, function() {
+      msnry.layout();
+      trimRailToFeed();
+    });
     // Re-layout after filters hide/show cards
     var _baseApply = window.applyFilters;
     window.applyFilters = function() {
       _baseApply();
-      setTimeout(function() { msnry.layout(); }, 50);
+      setTimeout(function() {
+        msnry.layout();
+        trimRailToFeed();
+      }, 50);
     };
     // Expose for manual re-layout if needed
     window.msnry = msnry;
   }
+
+  // Trim the desktop featured rail so it ends at roughly the same vertical
+  // position as the main feed — prevents a very tall rail leaving a big
+  // white-space hole at the bottom of the left column when there are many
+  // featured articles but few regulars. Only active on desktop (≥1100px);
+  // tablet/mobile hide the rail entirely via CSS.
+  function trimRailToFeed() {
+    var rail = document.querySelector('.home-rail-featured');
+    var feed = document.getElementById('card-grid');
+    if (!rail || !feed) return;
+
+    var cards = rail.querySelectorAll('.card');
+    // Always reset before re-measuring so resize from desktop → tablet → desktop
+    // doesn't leave stale hidden cards.
+    cards.forEach(function(c) { c.style.display = ''; });
+
+    if (window.innerWidth < 1100) return;
+
+    // Hide any rail card that would extend past the main feed's bottom —
+    // check the card's *bottom*, not its top, so the rail never pokes below
+    // the feed (user preference: both columns end roughly together). Each
+    // display:none triggers a reflow, so the next card's measured position
+    // reflects the new layout — the loop compounds correctly.
+    var feedBottom = feed.getBoundingClientRect().bottom + window.scrollY;
+    cards.forEach(function(card) {
+      var bottom = card.getBoundingClientRect().bottom + window.scrollY;
+      if (bottom > feedBottom + 8) card.style.display = 'none';
+    });
+  }
+
+  // Re-run trim on resize (debounced). Keeps the rail in step when the user
+  // drags the window across the 1100px breakpoint or simply changes width.
+  var _trimTimer = null;
+  window.addEventListener('resize', function() {
+    clearTimeout(_trimTimer);
+    _trimTimer = setTimeout(trimRailToFeed, 120);
+  });
 </script>
