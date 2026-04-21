@@ -160,6 +160,60 @@ module.exports = function (eleventyConfig) {
     return Object.fromEntries(counts);
   });
 
+  // Homepage layout collections.
+  //
+  // The three-column homepage splits posts into three buckets so each region
+  // renders without Masonry gaps:
+  //   - homeTopFeatured: exactly 2 posts, always shown at the top of the
+  //     featured region (with fallback — see below).
+  //   - homeRestFeatured: any featured posts beyond the first 2, shown only
+  //     in the desktop right rail.
+  //   - homeMainFeedItems: everything else (non-featured + rest-featured),
+  //     sorted by date, shown in the left 2-column feed. Rest-featured items
+  //     appear here for tablet/mobile (where they render as regular cards
+  //     via the .feed-dup-featured class), and are hidden via CSS on desktop.
+  //
+  // Fallback: if fewer than 2 posts are marked featured, fill the top slot(s)
+  // with the most-recent non-featured posts so the region always contains
+  // exactly 2 items. This is a safety net — under editorial control.
+  function computeHomepageBuckets(collectionApi) {
+    const all = collectionApi.getFilteredByGlob("src/posts/*.md");
+    const sorted = all.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+    const featured = sorted.filter((p) => p.data.featured);
+    const regulars = sorted.filter((p) => !p.data.featured);
+
+    const topFeatured = featured.slice(0, 2);
+    if (topFeatured.length < 2) {
+      const needed = 2 - topFeatured.length;
+      for (const r of regulars.slice(0, needed)) topFeatured.push(r);
+    }
+    const restFeatured = featured.slice(2);
+
+    const topSet = new Set(topFeatured.map((p) => p.inputPath));
+    const restSet = new Set(restFeatured.map((p) => p.inputPath));
+    const mainFeedItems = sorted.filter((p) => !topSet.has(p.inputPath));
+
+    return { topFeatured, restFeatured, mainFeedItems, restSet };
+  }
+
+  eleventyConfig.addCollection("homeTopFeatured", function (api) {
+    return computeHomepageBuckets(api).topFeatured;
+  });
+
+  eleventyConfig.addCollection("homeRestFeatured", function (api) {
+    return computeHomepageBuckets(api).restFeatured;
+  });
+
+  eleventyConfig.addCollection("homeMainFeedItems", function (api) {
+    return computeHomepageBuckets(api).mainFeedItems;
+  });
+
+  // Paths of rest-featured posts so index.njk can tag their dup'd renders
+  // in the main feed with .feed-dup-featured (hidden on desktop).
+  eleventyConfig.addCollection("homeRestFeaturedPaths", function (api) {
+    return [...computeHomepageBuckets(api).restSet];
+  });
+
   // Groups all posts by month (YYYY-MM), sorted newest-first.
   // Each entry: { key: "2026-04", posts: [...] }
   eleventyConfig.addCollection("postsByMonth", function (collectionApi) {
