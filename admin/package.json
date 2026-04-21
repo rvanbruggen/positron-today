@@ -1,13 +1,14 @@
 {
   "name": "admin",
-  "version": "2.14.1",
+  "version": "2.14.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "node --experimental-strip-types scripts/seed-sources.ts"
+    "seed": "node --experimental-strip-types scripts/seed-sources.ts",
+    "cleanup:sources": "node --env-file=.env.local --experimental-strip-types scripts/cleanup-website-only-sources.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.82.0",

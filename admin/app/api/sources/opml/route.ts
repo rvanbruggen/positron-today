@@ -260,9 +260,13 @@ export async function POST(request: NextRequest) {
       skippedInvalid.push({ name: o.name, reason: "no URL" });
       continue;
     }
+    if (!o.feed_url) {
+      skippedInvalid.push({ name: o.name, reason: "no RSS feed URL" });
+      continue;
+    }
 
     const urlKey     = url.toLowerCase();
-    const feedUrlKey = o.feed_url ? o.feed_url.toLowerCase() : "";
+    const feedUrlKey = o.feed_url.toLowerCase();
     const dupByUrl     = existingByUrl.get(urlKey);
     const dupByFeedUrl = feedUrlKey ? existingByFeedUrl.get(feedUrlKey) : undefined;
     const dup = dupByUrl ?? dupByFeedUrl;
@@ -280,11 +284,11 @@ export async function POST(request: NextRequest) {
     try {
       await db.execute({
         sql: "INSERT INTO sources (name, url, feed_url, type, language) VALUES (?, ?, ?, ?, ?)",
-        args: [o.name, url, o.feed_url || null, o.type, o.language || "en"],
+        args: [o.name, url, o.feed_url, "rss", o.language || "en"],
       });
       imported.push({ name: o.name, url, feed_url: o.feed_url, language: o.language });
-      existingByUrl.set(urlKey, { id: 0, name: o.name, url, feed_url: o.feed_url, type: o.type, language: o.language, active: 1 });
-      if (feedUrlKey) existingByFeedUrl.set(feedUrlKey, { id: 0, name: o.name, url, feed_url: o.feed_url, type: o.type, language: o.language, active: 1 });
+      existingByUrl.set(urlKey, { id: 0, name: o.name, url, feed_url: o.feed_url, type: "rss", language: o.language, active: 1 });
+      if (feedUrlKey) existingByFeedUrl.set(feedUrlKey, { id: 0, name: o.name, url, feed_url: o.feed_url, type: "rss", language: o.language, active: 1 });
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       // Race condition fallback — UNIQUE constraint could still fire if the same URL

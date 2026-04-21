@@ -14,16 +14,19 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { name, url, feed_url, type, language } = body;
+  const { name, url, feed_url, language } = body;
 
-  if (!name || !url || !type) {
-    return Response.json({ error: "name, url and type are required" }, { status: 400 });
+  if (!name || !url) {
+    return Response.json({ error: "name and url are required" }, { status: 400 });
+  }
+  if (!feed_url || !String(feed_url).trim()) {
+    return Response.json({ error: "RSS feed URL is required" }, { status: 400 });
   }
 
   try {
     const result = await db.execute({
       sql: "INSERT INTO sources (name, url, feed_url, type, language) VALUES (?, ?, ?, ?, ?) RETURNING *",
-      args: [name, url, feed_url || null, type, language ?? "en"],
+      args: [name, url, String(feed_url).trim(), "rss", language ?? "en"],
     });
     triggerExport();
     return Response.json(result.rows[0], { status: 201 });
@@ -49,9 +52,12 @@ export async function PATCH(request: NextRequest) {
     });
   } else {
     // Full field edit
+    if (!feed_url || !String(feed_url).trim()) {
+      return Response.json({ error: "RSS feed URL is required" }, { status: 400 });
+    }
     await db.execute({
       sql: "UPDATE sources SET name = ?, url = ?, feed_url = ?, language = ? WHERE id = ?",
-      args: [name, url, feed_url || null, language, id],
+      args: [name, url, String(feed_url).trim(), language, id],
     });
   }
 

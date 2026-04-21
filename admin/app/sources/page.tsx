@@ -44,7 +44,7 @@ function SourceRow({
           </div>
           <input className="border border-yellow-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:border-yellow-500"
             value={editState.feed_url} onChange={e => onEditStateChange({ ...editState, feed_url: e.target.value })}
-            placeholder="RSS feed URL (leave blank if none)" />
+            placeholder="RSS feed URL" required />
           <div className="flex gap-2 items-center flex-wrap">
             <select className="border border-yellow-300 rounded-lg px-3 py-1.5 text-sm"
               value={editState.language} onChange={e => onEditStateChange({ ...editState, language: e.target.value })}>
@@ -107,7 +107,7 @@ function SourceRow({
 
 export default function SourcesPage() {
   const [sources, setSources] = useState<Source[]>([]);
-  const [form, setForm] = useState({ name: "", url: "", feed_url: "", type: "website", language: "en" });
+  const [form, setForm] = useState({ name: "", url: "", feed_url: "", language: "en" });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editState, setEditState] = useState<EditState>({ name: "", url: "", feed_url: "", language: "en" });
   const [error, setError] = useState("");
@@ -189,7 +189,7 @@ export default function SourcesPage() {
     });
     setLoading(false);
     if (!res.ok) { setError((await res.json()).error ?? "Error"); return; }
-    setForm({ name: "", url: "", feed_url: "", type: "website", language: "en" });
+    setForm({ name: "", url: "", feed_url: "", language: "en" });
     load();
   }
 
@@ -229,7 +229,6 @@ export default function SourcesPage() {
   }
 
   const withFeed = sources.filter(s => s.feed_url || s.type === "rss");
-  const webOnly  = sources.filter(s => !s.feed_url && s.type !== "rss");
 
   return (
     <div>
@@ -274,7 +273,7 @@ export default function SourcesPage() {
         </div>
       </div>
       <p className="text-amber-700 text-sm mb-4">
-        Sources with an RSS feed URL are fetched automatically. Website-only sources can be browsed manually via the Preview tab.
+        Every source needs an RSS feed URL so articles can be fetched automatically. For one-off articles that aren&apos;t in a feed, use the URL field on the Preview tab.
         Changes are published to the About page automatically; use the button to force a manual sync.
       </p>
 
@@ -358,8 +357,8 @@ export default function SourcesPage() {
               onChange={e => setForm({ ...form, url: e.target.value })} required />
           </div>
           <input className="border border-yellow-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-yellow-400"
-            placeholder="RSS feed URL (optional — enables auto-fetch)" value={form.feed_url}
-            onChange={e => setForm({ ...form, feed_url: e.target.value })} />
+            placeholder="RSS feed URL" value={form.feed_url}
+            onChange={e => setForm({ ...form, feed_url: e.target.value })} required />
           <div className="flex gap-3 flex-wrap items-center">
             <select className="border border-yellow-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-yellow-400"
               value={form.language} onChange={e => setForm({ ...form, language: e.target.value })}>
@@ -379,7 +378,7 @@ export default function SourcesPage() {
       {withFeed.length > 0 && (
         <div className="mb-8">
           <h2 className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-3">
-            Auto-fetched via RSS ({withFeed.length})
+            Sources ({withFeed.length})
           </h2>
           <div className="flex flex-col gap-2">{withFeed.map(s => (
             <SourceRow key={s.id} source={s}
@@ -390,21 +389,7 @@ export default function SourcesPage() {
         </div>
       )}
 
-      {webOnly.length > 0 && (
-        <div className="mb-8">
-          <h2 className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-3">
-            Website only — add articles manually ({webOnly.length})
-          </h2>
-          <div className="flex flex-col gap-2">{webOnly.map(s => (
-            <SourceRow key={s.id} source={s}
-              isEditing={editingId === s.id} editState={editState}
-              onEdit={startEdit} onSave={saveEdit} onCancel={() => setEditingId(null)}
-              onToggle={toggle} onRemove={remove} onEditStateChange={setEditState} />
-          ))}</div>
-        </div>
-      )}
-
-      {sources.length === 0 && <p className="text-amber-600 text-sm">No sources yet.</p>}
+      {withFeed.length === 0 && <p className="text-amber-600 text-sm">No sources yet.</p>}
     </div>
   );
 }
