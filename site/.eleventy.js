@@ -127,6 +127,39 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Unique sorted list of every tag used across posts.
+  // Resolves `tags[]` first, falls back to the legacy `topic` string, to match
+  // the same precedence index.njk uses when it renders card tag pills — so
+  // what shows on the homepage is what gets a tag page.
+  eleventyConfig.addCollection("tagsList", function (collectionApi) {
+    const tagSet = new Set();
+    for (const post of collectionApi.getFilteredByGlob("src/posts/*.md")) {
+      const list = (post.data.tags && post.data.tags.length)
+        ? post.data.tags
+        : (post.data.topic ? [post.data.topic] : []);
+      for (const t of list) {
+        if (t && String(t).trim()) tagSet.add(String(t).trim());
+      }
+    }
+    return [...tagSet].sort((a, b) => a.localeCompare(b));
+  });
+
+  // How many posts each tag has — used by /tags/ index to show counts without
+  // iterating every post per tag inside the template.
+  eleventyConfig.addCollection("tagCounts", function (collectionApi) {
+    const counts = new Map();
+    for (const post of collectionApi.getFilteredByGlob("src/posts/*.md")) {
+      const list = (post.data.tags && post.data.tags.length)
+        ? post.data.tags
+        : (post.data.topic ? [post.data.topic] : []);
+      for (const t of list) {
+        const key = t && String(t).trim();
+        if (key) counts.set(key, (counts.get(key) || 0) + 1);
+      }
+    }
+    return Object.fromEntries(counts);
+  });
+
   // Groups all posts by month (YYYY-MM), sorted newest-first.
   // Each entry: { key: "2026-04", posts: [...] }
   eleventyConfig.addCollection("postsByMonth", function (collectionApi) {

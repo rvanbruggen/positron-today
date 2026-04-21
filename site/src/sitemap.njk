@@ -31,6 +31,19 @@ eleventyExcludeFromCollections: true
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://positron.today/tags/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  {% for tag in collections.tagsList %}
+  <url>
+    <loc>https://positron.today/tags/{{ tag | slugify }}/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  {% endfor %}
 
   {% for post in collections.posts %}
   <url>
