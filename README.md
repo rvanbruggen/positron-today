@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.14.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.14.1 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -431,6 +431,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 
 | Version | Highlights |
 |---------|-----------|
+| **2.14.1** | Hotfix on top of 2.14.0 — Vercel build was failing with `Property 'bold' does not exist on type '{ href: string; label: string; }'` because the MobileNav destructured `bold` and `icon` off each `NAV_LINKS` entry, but those properties only existed on the (now removed) Fast Track entry. Drop the dead destructure variables and the `${bold ? ... : ...}` className branch; the desktop nav already lacked them so this just brings MobileNav into line. Pure type-error fix, no UI change |
 | **2.14.0** | Surface the prompts auto runs will use directly inside the Positronitron card on `/settings`. Two collapsible details now show, by current state: *"Positivity filter: threshold N — &lt;tier&gt;"* (or *"custom override"*) and *"Summarisation style: default style"* (or *"custom override"*) — expand either to see the full prompt text the LLM will receive on the next auto run. Closes a real source of confusion: the Positronitron section previously gave no hint that auto runs read the same `filter_prompt_override` / `summarise_style_override` values as manual runs do, so it wasn't obvious which strictness tier auto was actually applying. Also retire the entire Fast Track surface — the `/fast-track` page + `/api/fast-track` route + nav links + dashboard quick action + vercel function entry — now that the Positronitron automation modes cover the same ground without the hardcoded threshold-10 override that bypassed user prompt customisation |
 | **2.13.3** | Fix 404 social-post previews when publishing manually from the Scheduled page. The "Publish →" / "publish now ↑" buttons in `admin/app/api/publish/route.ts` were calling `postArticleToSocial` inline, right after the GitHub commit — long before Pages had actually deployed the new post, so Bluesky / X / etc. fetched a 404 for the link preview. Removed the inline social call so articles with `post_to_social_on_publish=1` now sit in the same pending state the cron path uses (`status='published'`, `social_posted_at IS NULL`); the Pages-deploy workflow's callback to `/api/post-pending-social` picks them up once the URL is live, same as scheduled publishing |
 | **2.13.2** | Strip the featured signal entirely from archive month pages. Archive is a purely chronological historical browse — featured is an editorial "interesting now" signal that doesn't apply to past months — so featured and non-featured posts now look identical on `/archive/YYYY/MM/`. Removes the `card-featured-display` class from the archive template and drops its CSS rules, so the 4-column archive grid reads as a uniform historical list with no visual echo of the homepage's featured treatment |

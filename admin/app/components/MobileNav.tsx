@@ -35,18 +35,18 @@ export default function MobileNav() {
       {open && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-yellow-400 border-t border-yellow-500 shadow-lg z-50">
           <div className="max-w-screen-2xl mx-auto px-4 py-3 flex flex-col gap-1">
-            {NAV_LINKS.map(({ href, label, bold, icon }) => (
+            {NAV_LINKS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className={`px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   pathname === href
                     ? "bg-amber-900 text-yellow-300 font-semibold"
                     : "text-amber-900 hover:bg-yellow-300"
-                } ${bold ? "font-semibold" : "font-medium"}`}
+                }`}
               >
-                {icon ? `${icon} ${label}` : label}
+                {label}
               </Link>
             ))}
             <a
