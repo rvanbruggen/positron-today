@@ -1,6 +1,5 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
-import { postArticleToSocial } from "@/app/api/post-social/route";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO = process.env.GITHUB_REPO!;
@@ -156,17 +155,12 @@ export async function POST(request: NextRequest) {
       args: [path, id],
     });
 
-    // Opt-in social announcement — only if the admin ticked the checkbox on this article.
-    let social: unknown = undefined;
-    if (Number(article.post_to_social_on_publish ?? 0) === 1) {
-      try {
-        social = await postArticleToSocial(Number(id));
-      } catch (err) {
-        social = { ok: false, error: err instanceof Error ? err.message : String(err) };
-      }
-    }
-
-    return Response.json({ ok: true, path, social });
+    // Social posting is intentionally NOT done here. Articles with
+    // post_to_social_on_publish=1 stay pending (social_posted_at IS NULL)
+    // until the Pages-deploy workflow calls /api/post-pending-social once
+    // the URL is actually live. Posting here caused 404 previews because
+    // GitHub Pages hadn't finished deploying yet.
+    return Response.json({ ok: true, path });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
     console.error("Publish error:", message);
