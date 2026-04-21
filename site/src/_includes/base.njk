@@ -6,7 +6,7 @@
   <title>{% if title %}{{ title }} - {% endif %}Positron Today</title>
 
   {# ── SEO: description ── #}
-  {% set metaDesc = description if description else "Positron Today — positive news, curated by AI, published every day. Good things are happening; we make sure you hear about them." %}
+  {% set metaDesc = description if description else "Positron Today — positive news, curated by AI, published every day. Good things are happening; you'll hear about them here." %}
   <meta name="description" content="{{ metaDesc }}">
 
   {# ── SEO: canonical URL ── #}
@@ -258,7 +258,7 @@
     <div class="nav-links">
       <a href="/about/">
         <span class="t-en">About</span>
-        <span class="t-nl">Over ons</span>
+        <span class="t-nl">Over deze site</span>
         <span class="t-fr">À propos</span>
       </a>
       <a href="/archive/">
@@ -267,9 +267,9 @@
         <span class="t-fr">Archives</span>
       </a>
       <a href="/negativity/">
-        <span class="t-en">What we skip</span>
-        <span class="t-nl">Wat we overslaan</span>
-        <span class="t-fr">Ce qu'on ignore</span>
+        <span class="t-en">What gets skipped</span>
+        <span class="t-nl">Wat wordt overgeslagen</span>
+        <span class="t-fr">Ce qui est ignoré</span>
       </a>
       <a href="/contact/">Contact</a>
       <a href="/install/">
@@ -325,9 +325,26 @@
   {# ── PWA: install helper + service worker registration ── #}
   <script src="/assets/install.js" defer></script>
   <script>
+    // Registering the SW with a ?v= query forces the browser to see a new
+    // script on each deploy, trigger install/activate, and drop old caches
+    // (the SW reads v from its own URL and uses it as the cache name).
+    // When that happens in an open tab we also auto-reload so the PWA picks
+    // up fresh content and functionality immediately instead of after the
+    // browser's usual 24h SW refresh window.
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/sw.js").catch(function (err) {
+        var swUrl = "/sw.js?v={{ meta.version }}";
+        navigator.serviceWorker.register(swUrl).then(function (reg) {
+          reg.addEventListener("updatefound", function () {
+            var nw = reg.installing;
+            if (!nw) return;
+            nw.addEventListener("statechange", function () {
+              if (nw.state === "activated" && navigator.serviceWorker.controller) {
+                window.location.reload();
+              }
+            });
+          });
+        }).catch(function (err) {
           console.warn("SW registration failed:", err);
         });
       });

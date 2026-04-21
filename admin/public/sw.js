@@ -2,16 +2,25 @@
  * Minimal service worker — required for Chrome PWA install prompt.
  * Uses a network-first strategy: always tries the network, falls back
  * to cache for previously visited pages when offline.
+ *
+ * Version comes from the ?v= query string on the registration URL so each
+ * deploy yields a fresh CACHE_NAME and SW script URL; the activate handler
+ * purges old caches, and the registration code reloads open tabs.
  */
 
-const CACHE_NAME = "positron-admin-v1";
+const SW_VERSION = new URLSearchParams(self.location.search).get("v") || "dev";
+const CACHE_NAME = "positron-admin-v" + SW_VERSION;
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(clients.claim());
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)));
+    await self.clients.claim();
+  })());
 });
 
 self.addEventListener("fetch", (event) => {

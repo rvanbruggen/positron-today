@@ -4,12 +4,14 @@
  * Strategy: network-first with cache fallback — users always see fresh
  * articles when online, and a previously visited page when offline.
  *
- * Bump CACHE_NAME to invalidate the offline cache after a breaking change
- * (e.g. asset path rename). The "activate" handler below then cleans up old
- * caches automatically.
+ * Version comes from the ?v= query string on the registration URL, so each
+ * deploy yields a fresh CACHE_NAME and a new SW script URL — the browser
+ * detects a change, installs the new worker, and the activate handler below
+ * purges old caches. The page-side registration code then reloads open tabs.
  */
 
-const CACHE_NAME = "positron-today-v1";
+const SW_VERSION = new URLSearchParams(self.location.search).get("v") || "dev";
+const CACHE_NAME = "positron-today-v" + SW_VERSION;
 
 self.addEventListener("install", () => {
   self.skipWaiting();

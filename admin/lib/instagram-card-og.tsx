@@ -58,6 +58,59 @@ async function getFonts(): Promise<FontEntry[]> {
   return cachedFonts;
 }
 
+// ─── Emoji rendering via Twemoji SVGs ────────────────────────────────────────
+//
+// Satori can only render glyphs present in the loaded fonts. Since Playfair
+// Display and Inter contain no emoji glyphs, any emoji would render as the
+// literal placeholder text "NO GLYPH" — visible both on the title line and,
+// worse, at fontSize 200 in the hero fallback when the source image fails
+// to prefetch. Feeding satori per-emoji SVG assets via loadAdditionalAsset
+// replaces those placeholders with the Twemoji colour graphics.
+
+const TWEMOJI_BASE = "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg";
+const emojiSvgCache = new Map<string, string>();
+
+/**
+ * Convert an emoji grapheme (which may be a surrogate pair, a ZWJ sequence,
+ * or contain variation selectors) into the hyphen-joined codepoint string
+ * used by the Twemoji asset filenames (e.g. "1f680", "1f1fa-1f1f8").
+ * Variation selector U+FE0F is stripped for non-ZWJ sequences, matching
+ * Twemoji's own naming convention.
+ */
+function emojiToTwemojiCode(segment: string): string {
+  const hasZwj = segment.includes("\u200d");
+  const source = hasZwj ? segment : segment.replace(/\uFE0F/g, "");
+  const codepoints: string[] = [];
+  for (const char of source) {
+    const cp = char.codePointAt(0);
+    if (cp !== undefined) codepoints.push(cp.toString(16));
+  }
+  return codepoints.join("-");
+}
+
+async function loadEmojiSvgDataUri(segment: string): Promise<string> {
+  const code = emojiToTwemojiCode(segment);
+  const cached = emojiSvgCache.get(code);
+  if (cached) return cached;
+
+  let svg: string;
+  try {
+    const res = await fetch(`${TWEMOJI_BASE}/${code}.svg`, {
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!res.ok) throw new Error(`twemoji ${code}: HTTP ${res.status}`);
+    svg = await res.text();
+  } catch (err) {
+    console.warn(`[instagram-card] Failed to load Twemoji for ${segment} (${code}): ${err}`);
+    // Transparent 1x1 SVG — much better than rendering "NO GLYPH".
+    svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>';
+  }
+
+  const dataUri = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+  emojiSvgCache.set(code, dataUri);
+  return dataUri;
+}
+
 // ─── Hero image pre-fetch ────────────────────────────────────────────────────
 
 /**
@@ -251,6 +304,10 @@ export async function generateInstagramCardOg(opts: CardProps): Promise<Buffer> 
     width: 1080,
     height: 1080,
     fonts,
+    loadAdditionalAsset: async (code, segment) => {
+      if (code === "emoji") return await loadEmojiSvgDataUri(segment);
+      return segment;
+    },
   });
 
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
