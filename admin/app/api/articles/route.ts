@@ -259,7 +259,7 @@ export async function PATCH(request: NextRequest) {
   // When approved, create a draft article record ready for summarisation.
   // When discarded by a human on the Preview page, also append to the rejection
   // log (with a dedicated "human-discarded" category) so the discard shows up
-  // in the admin rejections view and public "What We Skip" export.
+  // in the admin rejections view and public "What gets skipped" export.
   if (status === "approved" || status === "discarded") {
     const rawResult = await db.execute({
       sql: `SELECT r.*, s.name as source_name

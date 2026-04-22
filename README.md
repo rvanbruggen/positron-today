@@ -8,7 +8,7 @@
 
 ## Overview
 
-Positron Today automatically scans RSS feeds from news sources around the world, filters out negative and anxiety-inducing stories using an AI model, and publishes the remaining good-news articles to a public website. It also maintains a transparent "What We Skip" log — a public record of every rejected story, illustrating just how skewed mainstream news coverage tends to be.
+Positron Today automatically scans RSS feeds from news sources around the world, filters out negative and anxiety-inducing stories using an AI model, and publishes the remaining good-news articles to a public website. It also maintains a transparent "What gets skipped" log — a public record of every rejected story, illustrating just how skewed mainstream news coverage tends to be.
 
 The project has two parts:
 
@@ -45,7 +45,7 @@ A positron is the antimatter counterpart of an electron — positively charged, 
 │                SITE (Eleventy → GitHub Pages)            │
 │                                                         │
 │  index.njk       — card grid with tag + date-range filters │
-│  negativity.njk  — "What We Skip" rejection log (EN/NL/FR) │
+│  negativity.njk  — "What gets skipped" rejection log (EN/NL/FR) │
 │  about.njk       — project description + RSS subscribe  │
 │  contact.njk     — contact page                        │
 └─────────────────────────────────────────────────────────┘
@@ -250,9 +250,10 @@ Articles assigned a `publish_date` (via the Scheduled page or by Positronitron i
 
 **How it works:**
 
-- A macOS launchd agent (`~/Library/LaunchAgents/today.positron.publish-scheduled.plist`) calls `POST /api/publish-scheduled` every 5 minutes
-- The endpoint finds all scheduled articles whose `publish_date ≤ now` (compared in local time) and commits them to GitHub
-- On Vercel, use [cron-job.org](https://cron-job.org) (free) to call `POST /api/publish-scheduled` on the same schedule
+- In production, a Synology NAS cron task calls `POST https://admin.positron.today/api/publish-scheduled` every 30 minutes. The previous GitHub Actions workflow (`.github/workflows/scheduled-jobs.yml`) is kept as a `workflow_dispatch`-only fallback that can still be triggered manually from the GitHub UI if the NAS is unavailable.
+- For local development, a macOS launchd agent (`~/Library/LaunchAgents/today.positron.publish-scheduled.plist`, checked in at `scripts/today.positron.publish-scheduled.plist`) hits `POST http://localhost:3000/api/publish-scheduled` every hour.
+- The endpoint finds all scheduled articles whose `publish_date ≤ now` (compared in `SCHEDULE_TZ`, default `Europe/Brussels`) and commits them to GitHub.
+- If an article was marked for social announcement, its social post is **not** triggered from this endpoint — it waits for the site-deploy workflow to call back to `/api/post-pending-social` once the URL is actually live. See the [Social Publishing](#social-publishing) section for that flow.
 
 **Managing the queue:**
 
@@ -260,7 +261,7 @@ Go to **Admin → Scheduled** to see queued articles, edit their publish times, 
 
 ---
 
-## Rejection Log ("What We Skip")
+## Rejection Log ("What gets skipped")
 
 Every article rejected by the AI filter is stored in `rejected_articles` and published to the public site at `/negativity/`.
 
@@ -280,11 +281,21 @@ The public page shows:
 
 ## Social Publishing
 
-From **Admin → History**, the 📣 button posts a published article to all enabled social platforms in one click via [Post for Me](https://www.postforme.dev/).
+Positron Today posts to social media via [Post for Me](https://www.postforme.dev/). There are two paths to a social post — **manual** (one click on History) and **automatic** (opt-in per article when scheduling). Both paths produce the same post; they differ only in what triggers it.
 
 **Platforms supported:** Bluesky, X (Twitter), Threads, Facebook, Instagram
 
-**How it works:**
+### Manual: the 📣 button
+
+From **Admin → History**, the 📣 button on any published article posts it to every enabled social platform in one click.
+
+### Automatic: auto-post on publish
+
+On **Admin → Scheduled**, each article in the "Ready to publish" list carries a **"📣 Announce on social"** checkbox. Ticking it sets `post_to_social_on_publish=1` on that article. When the article is later published — manually or by the scheduled-publish cron — the commit to GitHub happens immediately but the social post is deliberately deferred until the URL is actually live on GitHub Pages. Otherwise link previews on Bluesky / X / etc. resolve to a 404.
+
+The deferred post is triggered by the site-deploy workflow. After [.github/workflows/deploy-site.yml](.github/workflows/deploy-site.yml) finishes publishing the site to GitHub Pages, its final step POSTs to `https://admin.positron.today/api/post-pending-social` with a bearer token. That endpoint finds every article where `post_to_social_on_publish=1 AND social_posted_at IS NULL AND published_at >= now()-24h`, HEAD-checks each URL, and posts the live ones via Post for Me.
+
+### How the post is assembled (both paths)
 
 1. Generates a branded 1080×1080 PNG card for the article (same image as the 📸 download button)
 2. Uploads the card to Post for Me's media hosting
@@ -292,17 +303,20 @@ From **Admin → History**, the 📣 button posts a published article to all ena
 4. Posts the **card image + caption** to Instagram
 5. Caption is capped to fit both X's 280-char limit (URLs via t.co = 23 chars) and Bluesky's 300-char limit (full URL length)
 
-**Configuration:**
+### Configuration
 
-Go to **Admin → Settings → Social publishing** to toggle which accounts the 📣 button posts to. The list is fetched live from Post for Me — any account connected in the Post for Me dashboard appears here immediately. Changes take effect without a restart.
+Go to **Admin → Settings → Social publishing** to toggle which accounts posts go to. The list is fetched live from Post for Me — any account connected in the Post for Me dashboard appears here immediately. Changes take effect without a restart.
 
 To add a new platform, connect it via OAuth in the [Post for Me dashboard](https://app.postforme.dev), then enable it in Settings.
 
-**Required environment variables:**
+### Required environment variables
 
 ```env
 POSTFORME_API_KEY=pfm_live_...
+SOCIAL_POST_TOKEN=...    # shared secret for the deploy-time callback
 ```
+
+`SOCIAL_POST_TOKEN` must be set on the admin deployment (e.g. Vercel) **and** as a GitHub repo secret of the same name, so the deploy workflow can authenticate when it calls `/api/post-pending-social`. Without it the automatic path silently skips social posting; the manual 📣 button still works.
 
 Account IDs (`POSTFORME_ACCOUNT_*`) are no longer needed in `.env.local` — they are managed through the Settings UI and stored in the database.
 
@@ -371,7 +385,7 @@ This is the migration path between environments (e.g. local SQLite → Turso clo
 | Page | Purpose |
 |------|---------|
 | `/` | Home — card grid (round-robin columns, newest first) with topic tag + date-range filters |
-| `/negativity/` | "What We Skip" — the rejection log with category breakdown (EN/NL/FR) |
+| `/negativity/` | "What gets skipped" — the rejection log with category breakdown (EN/NL/FR) |
 | `/about/` | About the project, the positron metaphor, active sources, and RSS subscription links |
 | `/contact/` | Contact page with links to email, LinkedIn, and Instagram (@positron_today) |
 | `/archive/` | Full archive of all articles older than the 60 shown on the homepage |
@@ -420,6 +434,7 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 | `GITHUB_BRANCH` | No | Target branch (default: `main`) |
 | `ADMIN_SECRET` | Recommended | Password for the admin login page. If unset, auth is disabled. Generate with `openssl rand -hex 24` |
 | `POSTFORME_API_KEY` | If using social publishing | API key from [postforme.dev](https://www.postforme.dev/) |
+| `SOCIAL_POST_TOKEN` | If using auto-post-on-publish | Shared secret for the deploy-time callback to `/api/post-pending-social`. Must match a repo secret of the same name on GitHub |
 | `BLUESKY_HANDLE` | If using direct Bluesky | Handle for the legacy direct Bluesky posting route |
 | `BLUESKY_APP_PASSWORD` | If using direct Bluesky | App password for the legacy direct Bluesky posting route |
 
