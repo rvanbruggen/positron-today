@@ -105,7 +105,16 @@ export default async function RootLayout({
           {children}
         </main>
         <footer className="max-w-screen-2xl mx-auto w-full px-4 py-4 text-center text-xs text-amber-500">
-          Positron Today admin · v{APP_VERSION}
+          Positron Today admin · v{APP_VERSION} ·{" "}
+          <a
+            href="https://github.com/rvanbruggen/positron-today/blob/main/LICENSE"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-amber-700 transition-colors underline"
+            title="Source code licensed under the MIT License"
+          >
+            MIT License
+          </a>
         </footer>
       </body>
     </html>
