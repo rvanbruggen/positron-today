@@ -1,0 +1,21 @@
+---
+title: "Netherlands returns looted art to Jewish community in landmark move"
+title_nl: "Nederland geeft roofkunst terug aan de Joodse gemeenschap in historische stap"
+title_fr: "Les Pays-Bas restituent des œuvres pillées à la communauté juive dans un geste historique"
+date: 2026-04-22T11:30:05
+source_pub_date: 2026-04-22
+fetched_date: 2026-04-22
+source_url: "https://www.nrc.nl/nieuws/2026/04/22/nederland-geeft-roofkunst-terug-aan-joodse-gemeenschap-met-het-roven-werd-ook-de-waardigheid-van-de-eigenaar-aangetast-a4925803"
+source_name: "NRC"
+topic: "Arts"
+tags: ["Arts","Society"]
+emoji: "🎨"
+summary: "So: the Netherlands is taking a really meaningful step by transferring the so-called NK-collection - thousands of artworks, instruments and household objects looted by the Nazis - to the Jewish community on moral grounds. A commission led by former deputy prime minister Lodewijk Asscher presented fourteen recommendations, including setting up an independent foundation preferably housed at the Jewish Museum in Amsterdam. Which brings me to one of the most touching details - objects on loan to museums will get a label clearly stating they were looted or sold under duress between 1933 and 1945. And here's the thing: with an annual budget of 400,000 euros and a focus on schools and exhibitions, this is about keeping memory alive and making sure restitution remains possible for as long as it needs to be."
+summary_nl: "Nederland zet een historisch belangrijke stap door de zogenoemde NK-collectie - duizenden kunstwerken, instrumenten en gebruiksvoorwerpen die door de nazi's werden geroofd - op morele gronden over te dragen aan de Joodse gemeenschap. Een commissie onder leiding van oud-vicepremier Lodewijk Asscher presenteerde veertien aanbevelingen, waaronder het oprichten van een onafhankelijke stichting bij het Joods Museum in Amsterdam. En wat ik zo mooi vind: objecten die in bruikleen zijn bij musea krijgen een bordje waarop staat dat ze tussen 1933 en 1945 geroofd of onder dwang verkocht zijn. Met een jaarlijks budget van 400.000 euro en aandacht voor scholen en tentoonstellingen wordt dit een levend monument voor de herinnering én een open deur voor toekomstige restitutieverzoeken."
+summary_fr: "Voilà une étape vraiment significative : les Pays-Bas transfèrent la collection NK - des milliers d'œuvres d'art, d'instruments et d'objets du quotidien pillés par les nazis - à la communauté juive pour des raisons morales. Une commission présidée par l'ancien vice-Premier ministre Lodewijk Asscher a présenté quatorze recommandations, notamment la création d'une fondation indépendante hébergée de préférence au Musée juif d'Amsterdam. Ce qui me touche particulièrement, c'est que les objets prêtés aux musées devront porter une étiquette indiquant clairement qu'ils ont été volés ou vendus sous la contrainte entre 1933 et 1945. Avec un budget annuel de 400 000 euros et un accent mis sur les écoles et les expositions, cette initiative garantit que la mémoire reste vivante et que la restitution reste possible pour ceux qui en ont besoin."
+image_url: "https://images.nrc.nl/gs73IIJ0CJjbdlySD4172g_IY3Y=/1200x627/smart/filters:no_upscale()/s3/static.nrc.nl/wp-content/uploads/2026/04/21133400/220426CUL_2032985656_puls.jpg"
+featured: true
+layout: post.njk
+---
+
+So: the Netherlands is taking a really meaningful step by transferring the so-called NK-collection - thousands of artworks, instruments and household objects looted by the Nazis - to the Jewish community on moral grounds. A commission led by former deputy prime minister Lodewijk Asscher presented fourteen recommendations, including setting up an independent foundation preferably housed at the Jewish Museum in Amsterdam. Which brings me to one of the most touching details - objects on loan to museums will get a label clearly stating they were looted or sold under duress between 1933 and 1945. And here's the thing: with an annual budget of 400,000 euros and a focus on schools and exhibitions, this is about keeping memory alive and making sure restitution remains possible for as long as it needs to be.
