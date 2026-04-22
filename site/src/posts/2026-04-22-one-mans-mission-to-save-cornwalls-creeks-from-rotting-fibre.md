@@ -1,0 +1,20 @@
+---
+title: "One man's mission to save Cornwall's creeks from rotting fibreglass boats"
+title_nl: "Één man op missie om de kreken van Cornwall te redden van rottende glasvezelbootjes"
+title_fr: "La mission d'un homme pour sauver les criques de Cornouailles des bateaux en fibre de verre abandonnés"
+date: 2026-04-22T13:30:05
+source_pub_date: 2026-04-22
+fetched_date: 2026-04-22
+source_url: "https://www.theguardian.com/environment/2026/apr/22/mission-clear-rotting-boats-poisoning-cornwall-creeks-fibreglass-pollution"
+source_name: "The Guardian Europe"
+topic: "Environment"
+tags: ["Environment","Nature","Society"]
+emoji: "⛵"
+summary: "Steve Green, a boat engineer from Cornwall, is on a remarkable one-man mission to clear 166 abandoned fibreglass yachts from the hidden creeks of the Helford and Fal rivers. And here's the thing - marine biologists have found thousands of fibreglass shards embedded in sea creatures near these wrecks, comparing the pollution to asbestos. Green does all of this with his wonderfully eccentric chip-oil-powered VW campervan Cecil, complete with a crane on the front, and a 100-year-old wooden schooner called Annie. His organisation, Clean Ocean Sailing, runs on small grants and crowdfunding - and Green even ran up £8,000 on credit cards last year just to keep the work going."
+summary_nl: "Steve Green, een bootingenieur uit Cornwall, is bezig met een opmerkelijke eenmansmissie om 166 verlaten glasvezeljatten te verwijderen uit de verborgen kreken van de Helford en Fal-rivieren. En wat blijkt - mariene biologen vinden duizenden glasvezelscherven in het vlees van zeedieren bij deze wrakken, en vergelijken de vervuiling met asbest. Green doet dit allemaal met zijn heerlijk excentrieke VW-camperbus Cecil, die rijdt op gedoneerde frituurolie en een kraan op de voorkant heeft. Zijn organisatie Clean Ocean Sailing draait op kleine subsidies en crowdfunding, en vorig jaar liep hij zelfs £8.000 op zijn creditcard op om het werk vol te kunnen houden."
+summary_fr: "Steve Green, ingénieur naval originaire de Cornouailles, mène une remarquable mission en solo pour retirer 166 voiliers en fibre de verre abandonnés des criques cachées des rivières Helford et Fal. Et voilà le vrai problème - des biologistes marins ont trouvé des milliers d'éclats de fibre de verre incrustés dans la chair des créatures marines près de ces épaves, comparant cette pollution à l'amiante. Green accomplit tout cela avec son incroyable VW aménagé Cecil, qui fonctionne à l'huile de friture recyclée et est équipé d'une grue à l'avant. Son organisation Clean Ocean Sailing survit grâce à de petites subventions et au crowdfunding - et l'an dernier, Green a même accumulé 8 000 livres sterling sur ses cartes de crédit pour continuer à avancer."
+image_url: "https://i.guim.co.uk/img/media/f5ac547b885933029fb7c735567c971d4950a7f9/250_591_2748_2199/master/2748.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=ce863c4dfa51c3aaf69772f4e946d46c"
+layout: post.njk
+---
+
+Steve Green, a boat engineer from Cornwall, is on a remarkable one-man mission to clear 166 abandoned fibreglass yachts from the hidden creeks of the Helford and Fal rivers. And here's the thing - marine biologists have found thousands of fibreglass shards embedded in sea creatures near these wrecks, comparing the pollution to asbestos. Green does all of this with his wonderfully eccentric chip-oil-powered VW campervan Cecil, complete with a crane on the front, and a 100-year-old wooden schooner called Annie. His organisation, Clean Ocean Sailing, runs on small grants and crowdfunding - and Green even ran up £8,000 on credit cards last year just to keep the work going.
