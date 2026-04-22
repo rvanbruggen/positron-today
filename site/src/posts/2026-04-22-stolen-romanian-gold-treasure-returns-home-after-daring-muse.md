@@ -1,0 +1,20 @@
+---
+title: "Stolen Romanian gold treasure returns home after daring museum heist"
+title_nl: "Gestolen Roemeense goudschat keert terug na spectaculaire museumroof"
+title_fr: "Le trésor d'or roumain volé retrouve sa patrie après un audacieux cambriolage"
+date: 2026-04-22T11:00:06
+source_pub_date: 2026-04-22
+fetched_date: 2026-04-22
+source_url: "https://vrtnws.be/p.y3RNPR5wQ"
+source_name: "VRT Nws"
+topic: "Arts"
+tags: ["Arts","Society"]
+emoji: "🏺"
+summary: "So: the famous golden helmet of Coțofenești and two spiral golden armbands - stolen from a museum in Assen, Netherlands, back in January 2025 - are now safely back in Romania. The 2,500-year-old Dacian treasures, worth over 4 million euros, were recovered through plea agreements with three suspects and are now on display in Bucharest's National History Museum, flanked by masked and armed guards. Which brings me to the really good news - the helmet has only minor dents and the armbands are in perfect condition, so restoration can happen after the public gets to celebrate their return. The interim director put it beautifully: 'For us this is a moment of joy, but also of reflection - for months we lived with the fear that part of our past would be lost forever.' The third armband is still missing, but the search continues."
+summary_nl: "Dus: de beroemde gouden helm van Coțofenești en twee spiraalvormige gouden armbanden - gestolen uit een museum in Assen in januari 2025 - zijn veilig teruggekeerd naar Roemenië. De 2.500 jaar oude Dacische schatten, met een waarde van meer dan 4 miljoen euro, werden teruggevonden dankzij procesafspraken met drie verdachten en zijn nu tentoongesteld in het Nationaal Historisch Museum in Boekarest. En hier is het mooie: de helm heeft slechts lichte deuken opgelopen en de armbanden zijn in perfecte staat, zodat restauratie kan wachten tot het publiek de terugkeer heeft gevierd. De interim-directeur verwoordde het prachtig: 'Voor ons is dit een moment van vreugde, maar ook van bezinning - maandenlang leefden we met de angst dat een deel van ons verleden voorgoed verloren zou gaan.' De derde gouden armband is nog steeds spoorloos, maar de zoektocht gaat door."
+summary_fr: "Voilà: le célèbre casque en or de Coțofenești et deux bracelets en or en spirale - volés dans un musée d'Assen aux Pays-Bas en janvier 2025 - sont maintenant rentrés sains et saufs en Roumanie. Ces trésors daciques vieux de 2.500 ans, estimés à plus de 4 millions d'euros, ont été récupérés grâce à des accords judiciaires avec trois suspects et sont désormais exposés au Musée national d'histoire de Bucarest, flanqués de gardes masqués et armés. Et c'est là que vient la vraie bonne nouvelle: le casque ne présente que de légères bosses et les bracelets sont en parfait état, si bien que la restauration attendra que le public ait pu célébrer leur retour. Le directeur par intérim a résumé magnifiquement: 'Pour nous, c'est un moment de joie, mais aussi de réflexion - pendant des mois, nous avons vécu avec la crainte qu'une partie de notre passé soit perdue à jamais.' Le troisième bracelet en or reste introuvable, mais les recherches se poursuivent."
+image_url: "https://images.vrt.be/vrtnws_share/2026/04/22/1475de8d-b90f-4594-97d5-ce758fbac057.jpg"
+layout: post.njk
+---
+
+So: the famous golden helmet of Coțofenești and two spiral golden armbands - stolen from a museum in Assen, Netherlands, back in January 2025 - are now safely back in Romania. The 2,500-year-old Dacian treasures, worth over 4 million euros, were recovered through plea agreements with three suspects and are now on display in Bucharest's National History Museum, flanked by masked and armed guards. Which brings me to the really good news - the helmet has only minor dents and the armbands are in perfect condition, so restoration can happen after the public gets to celebrate their return. The interim director put it beautifully: 'For us this is a moment of joy, but also of reflection - for months we lived with the fear that part of our past would be lost forever.' The third armband is still missing, but the search continues.
