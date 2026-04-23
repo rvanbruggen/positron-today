@@ -231,6 +231,108 @@ title: Home
   .card-green   { background:#dcfce7; border-color:#4ade80; color:#14532d; }
   .card-lime    { background:#ecfccb; border-color:#a3e635; color:#365314; }
   .card-pink    { background:#fce7f3; border-color:#f472b6; color:#831843; }
+
+  /* ────────── Mobile (<700px) compact layout ──────────
+     The goal on phones is that several articles are visible as soon as
+     the page opens, rather than one full card filling the viewport.
+     Two layouts kick in together:
+
+       - Top-featured becomes a 2-col row of hero TILES: image on top,
+         title below, nothing else. Both featured #1 and featured #2
+         get this treatment — the "lead story" idea is preserved by
+         visual prominence (larger image, featured font weight), but
+         both fit above the fold.
+
+       - Everything else becomes compact ROWS: 80×80 thumbnail on the
+         left, title on the right. The main feed is also forced to 1
+         column so rows are full-width and easy to tap.
+
+     Mobile also swaps the active card-link: every card links to the
+     Positron intermediate page (post.url) rather than jumping straight
+     to the external source. Rationale: tapping an external link from a
+     standalone PWA drops the user out of the app shell, and on mobile
+     the summary isn't shown inline anyway — so the intermediate page
+     is the natural next step. Desktop keeps jump-to-source because
+     the summary is already inline on the homepage. */
+  .card-link-mobile { display: none; }
+
+  @media (max-width: 699px) {
+    /* ─── Top-featured: 2-col hero tiles ─── */
+    .home-top-featured {
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+    .home-top-featured > .card {
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 0.5rem;
+      gap: 0.3rem;
+    }
+    .home-top-featured .card-img {
+      width: calc(100% + 1rem);
+      margin: -0.5rem -0.5rem 0.25rem;
+      aspect-ratio: 16 / 9;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+    .home-top-featured .card-emoji,
+    .home-top-featured .card-tags,
+    .home-top-featured .card-summary,
+    .home-top-featured .card-meta {
+      display: none;
+    }
+    .home-top-featured .card-title {
+      font-size: 0.85rem;
+      line-height: 1.3;
+      font-weight: 700;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ─── Main feed + rest-featured dupes: compact rows ─── */
+    .card.card-mobile-compact {
+      flex-direction: row;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      align-items: center;
+    }
+    .card.card-mobile-compact .card-img {
+      width: 80px;
+      height: 80px;
+      aspect-ratio: 1 / 1;
+      margin: 0;
+      border-radius: 0.5rem;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    .card.card-mobile-compact .card-emoji,
+    .card.card-mobile-compact .card-tags,
+    .card.card-mobile-compact .card-summary,
+    .card.card-mobile-compact .card-meta {
+      display: none;
+    }
+    .card.card-mobile-compact .card-title {
+      font-size: 0.95rem;
+      line-height: 1.35;
+      font-weight: 600;
+      flex: 1;
+      min-width: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Force 1-col main feed on phones so compact rows are full-width and
+       comfortable to tap. Overrides the 480px+ 2-col Masonry rule. */
+    .home-main-feed .grid-sizer,
+    .home-main-feed .card { width: calc(100% - 1rem); }
+
+    /* Swap card-link routing: in-PWA link active, external link disabled. */
+    .card-link-desktop { display: none; }
+    .card-link-mobile { display: block; }
+  }
 </style>
 
 <div class="page-header">
@@ -293,11 +395,14 @@ title: Home
       data-sitedate="{{ post.date | dateIso }}"
       data-fulldate="{% if post.data.source_pub_date %}{{ post.data.source_pub_date }}{% else %}{{ post.date | dateIso }}{% endif %}"
     >
-      <a class="card-link"
+      <a class="card-link card-link-desktop"
          href="{{ post.data.source_url }}"
          target="_blank"
          rel="noopener noreferrer"
          aria-label="{{ post.data.title | striptags | replace('\"','') }} — read at {{ post.data.source_name }} (opens in a new tab)"></a>
+      <a class="card-link card-link-mobile"
+         href="{{ post.url | url }}"
+         aria-label="{{ post.data.title | striptags | replace('\"','') }}"></a>
 
       {% if post.data.image_url %}<img class="card-img" src="{{ post.data.image_url }}" alt="{{ post.data.title | striptags | replace('\"','') }}" loading="lazy" onerror="this.style.display='none'">{% endif %}
       <div class="card-emoji">{{ post.data.emoji }}</div>
@@ -399,9 +504,9 @@ title: Home
            .feed-dup-featured class so CSS hides them on desktop (where the
            same posts are shown in the rail with featured styling). #}
         {% if post.data.featured %}
-          {{ card(post, 'feed-dup-featured') }}
+          {{ card(post, 'feed-dup-featured card-mobile-compact') }}
         {% else %}
-          {{ card(post, '') }}
+          {{ card(post, 'card-mobile-compact') }}
         {% endif %}
       {% endfor %}
     </section>
