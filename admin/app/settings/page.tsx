@@ -718,7 +718,7 @@ export default function SettingsPage() {
             {ptronResult && <p className="text-sm text-amber-600">{ptronResult}</p>}
           </div>
           <p className="text-[11px] text-amber-400 mt-3">
-            Schedule: {runTimes.join(", ")} daily via launchd. The hourly publish job handles the actual publishing.
+            Schedule: {runTimes.join(", ")} daily. A separate publish job handles the actual publishing of any articles Positronitron schedules.
           </p>
         </div>
       </div>
