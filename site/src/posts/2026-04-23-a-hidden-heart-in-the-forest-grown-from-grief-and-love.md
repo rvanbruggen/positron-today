@@ -1,0 +1,19 @@
+---
+title: "A hidden heart in the forest, grown from grief and love"
+title_nl: "Een verborgen hart in het bos, gekweekt uit verdriet en liefde"
+title_fr: "Un cœur caché dans la forêt, né du deuil et de l'amour"
+date: 2026-04-23T06:30:04
+source_pub_date: 2026-04-22
+fetched_date: 2026-04-22
+source_url: "https://www.upworthy.com/pn-air-balloonist-captured-mans-secret-forest-for-wife/?utm_source=rss&utm_medium=rss&utm_campaign=pn-air-balloonist-captured-mans-secret-forest-for-wife"
+source_name: "Upworthy"
+topic: "Family life"
+tags: ["Family life","Nature","Society"]
+emoji: "💚"
+summary: "After losing his wife Janet suddenly in 1995, English farmer Winston Howes planted 6,000 oak trees on his farm in South Gloucestershire - and secretly shaped them into a massive heart visible only from the sky. The point of the heart aimed directly at Janet's childhood home, and inside the clearing he placed a quiet seat where he could go to think and remember. For nearly two decades, this tender tribute stayed a private family secret, until a hot air balloonist drifted overhead and captured the breathtaking aerial view. Which brings me to the part I love most - when the images went viral, millions of people around the world were genuinely moved by one man's patient, quiet, and deeply beautiful act of love."
+summary_nl: "Na het plotselinge overlijden van zijn vrouw Janet in 1995 plantte de Engelse boer Winston Howes maar liefst 6.000 eikenbomen op zijn boerderij in South Gloucestershire - en gaf ze in het geheim de vorm van een enorm hart dat alleen vanuit de lucht te zien is. De punt van het hart wijst rechtstreeks naar het geboortehuis van Janet, en midden in de open plek plaatste hij een rustige zitbank om te denken en te herinneren. Bijna twee decennia lang bleef dit ontroerende eerbetoon een privégeheim voor de familie, totdat een luchtballonvaarder eroverheen zweefde en het adembenemende uitzicht vastlegde. En hier is het mooie - toen de beelden viraal gingen, waren miljoenen mensen wereldwijd diep geraakt door dit geduldige, stille en prachtige liefdesverhaal."
+summary_fr: "Après la disparition soudaine de sa femme Janet en 1995, le fermier anglais Winston Howes a planté 6 000 jeunes chênes sur ses terres du South Gloucestershire - en leur donnant secrètement la forme d'un immense cœur visible uniquement depuis le ciel. La pointe du cœur est orientée directement vers la maison d'enfance de Janet, et au centre de la clairière il a installé un banc discret pour se recueillir et se souvenir. Pendant près de deux décennies, ce tendre hommage est resté un secret de famille, jusqu'à ce qu'un aéronaute survole la propriété et capture cette vue aérienne époustouflante. Et voilà ce qui me touche le plus - quand les images sont devenues virales, des millions de personnes à travers le monde ont été profondément émues par cet acte d'amour patient, silencieux et magnifique."
+layout: post.njk
+---
+
+After losing his wife Janet suddenly in 1995, English farmer Winston Howes planted 6,000 oak trees on his farm in South Gloucestershire - and secretly shaped them into a massive heart visible only from the sky. The point of the heart aimed directly at Janet's childhood home, and inside the clearing he placed a quiet seat where he could go to think and remember. For nearly two decades, this tender tribute stayed a private family secret, until a hot air balloonist drifted overhead and captured the breathtaking aerial view. Which brings me to the part I love most - when the images went viral, millions of people around the world were genuinely moved by one man's patient, quiet, and deeply beautiful act of love.
