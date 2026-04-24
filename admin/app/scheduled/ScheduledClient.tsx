@@ -20,6 +20,7 @@ type Article = {
   summary_nl: string | null;
   summary_fr: string | null;
   publish_date: string | null;
+  image_url: string | null;
   post_to_social_on_publish: boolean;
   featured: boolean;
   positivity_score: number | null;
@@ -233,6 +234,8 @@ export default function ScheduledClient({
                 title_en: data.title_en, title_nl: data.title_nl, title_fr: data.title_fr,
                 summary_en: data.summary_en, summary_nl: data.summary_nl, summary_fr: data.summary_fr,
                 tags: Array.isArray(data.matched_tags) ? data.matched_tags : a.tags,
+                image_url: data.image_url ?? a.image_url,
+                publish_date: data.publish_date ?? a.publish_date,
               }
             : a
         )
@@ -416,7 +419,17 @@ export default function ScheduledClient({
                     )}
                     <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-start gap-2">
+                        <div className="flex items-start gap-3">
+                          {a.image_url ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={a.image_url}
+                              alt=""
+                              loading="lazy"
+                              className="w-20 h-20 rounded-lg object-cover shrink-0 border border-yellow-200 bg-yellow-50"
+                              onError={(e) => { e.currentTarget.style.display = "none"; }}
+                            />
+                          ) : null}
                           {a.article_emoji && (
                             <span className="text-xl shrink-0 leading-snug">{a.article_emoji}</span>
                           )}

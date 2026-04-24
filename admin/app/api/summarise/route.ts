@@ -4,6 +4,34 @@ import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
 import { parseArticle } from "@/lib/parse-html";
+import { nextSlot, parseScheduleWallString, toScheduleWallString } from "@/lib/schedule-time";
+
+const DEFAULT_SUGGEST_INTERVAL_MINUTES = 30;
+
+// Chain the next suggested slot after the latest currently-scheduled article's
+// publish_date (or from now if nothing is scheduled / the latest is in the past).
+// Mirrors /api/suggest-schedule's cadence so a freshly summarised article slots
+// naturally onto the end of the queue without the user having to press the
+// "Suggest schedule" button.
+async function suggestNextSlot(intervalMinutes: number): Promise<string> {
+  const latest = await db.execute(`
+    SELECT MAX(publish_date) as max_date
+    FROM articles
+    WHERE status = 'scheduled' AND publish_date IS NOT NULL
+  `);
+  const maxDateStr = latest.rows[0]?.max_date ? String(latest.rows[0].max_date) : null;
+
+  let cursor = new Date();
+  if (maxDateStr) {
+    try {
+      const parsed = parseScheduleWallString(maxDateStr);
+      if (parsed > cursor) cursor = parsed;
+    } catch {
+      // Malformed stored value — fall back to "now".
+    }
+  }
+  return toScheduleWallString(nextSlot(cursor, intervalMinutes));
+}
 
 async function fetchArticleContent(url: string): Promise<{ text: string; imageUrl: string | null }> {
   try {
@@ -197,13 +225,22 @@ export async function POST(request: NextRequest) {
       style,
     );
 
-    // Save summaries + emoji + og:image
+    // Suggest a publish slot up-front so a freshly summarised article lands
+    // on "Ready to publish" already scheduled. Only fills empty slots — if
+    // the user had already set publish_date before re-summarising, preserve it.
+    const existingPublishDate = article.publish_date ? String(article.publish_date) : null;
+    const suggestedPublishDate = existingPublishDate
+      ? existingPublishDate
+      : await suggestNextSlot(DEFAULT_SUGGEST_INTERVAL_MINUTES);
+
+    // Save summaries + emoji + og:image + suggested publish slot
     await db.execute({
       sql: `UPDATE articles SET
               title_nl = ?, title_fr = ?, title_en = ?,
               summary_nl = ?, summary_fr = ?, summary_en = ?,
               article_emoji = ?,
               image_url = ?,
+              publish_date = ?,
               status = 'scheduled'
             WHERE id = ?`,
       args: [
@@ -211,6 +248,7 @@ export async function POST(request: NextRequest) {
         summaries.summary_nl, summaries.summary_fr, summaries.summary_en,
         summaries.emoji,
         imageUrl,
+        suggestedPublishDate,
         id,
       ],
     });
@@ -230,7 +268,13 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    return Response.json({ ok: true, ...summaries, matched_tags: matchedTags });
+    return Response.json({
+      ok: true,
+      ...summaries,
+      matched_tags: matchedTags,
+      image_url: imageUrl,
+      publish_date: suggestedPublishDate,
+    });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
     console.error("Summarise error:", message);

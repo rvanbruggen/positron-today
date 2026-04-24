@@ -61,19 +61,34 @@ export async function POST(request: NextRequest) {
   const article = result.rows[0];
   if (!article) return Response.json({ error: "Not found" }, { status: 404 });
 
-  // Check not already in raw_articles
+  // If the raw article already exists (typical when the reject came from a
+  // human discard on Preview — raw row is kept with status='discarded'),
+  // flip it back to 'pending' so it reappears in the review queue. Only
+  // refuse when the raw row is already active (pending/approved), since
+  // there's nothing sensible to "override" in that case.
   const existing = await db.execute({
-    sql: "SELECT id FROM raw_articles WHERE url = ?",
+    sql: "SELECT id, status FROM raw_articles WHERE url = ?",
     args: [article.url as string],
   });
   if (existing.rows.length > 0) {
-    return Response.json({ error: "Already in review queue" }, { status: 409 });
+    const existingStatus = String(existing.rows[0].status ?? "");
+    if (existingStatus === "discarded") {
+      await db.execute({
+        sql: "UPDATE raw_articles SET status = 'pending' WHERE id = ?",
+        args: [existing.rows[0].id as number],
+      });
+    } else {
+      return Response.json(
+        { error: `Already in review queue (status: ${existingStatus})` },
+        { status: 409 },
+      );
+    }
+  } else {
+    await db.execute({
+      sql: "INSERT INTO raw_articles (source_id, url, title, content) VALUES (?, ?, ?, ?)",
+      args: [article.source_id, article.url as string, article.title as string, article.snippet ?? ""],
+    });
   }
-
-  await db.execute({
-    sql: "INSERT INTO raw_articles (source_id, url, title, content) VALUES (?, ?, ?, ?)",
-    args: [article.source_id, article.url as string, article.title as string, article.snippet ?? ""],
-  });
 
   // Remove from rejected so it doesn't show as both
   await db.execute({ sql: "DELETE FROM rejected_articles WHERE id = ?", args: [id] });

@@ -19,6 +19,7 @@ type Article = {
   summary_nl: string | null;
   summary_fr: string | null;
   publish_date: string | null;
+  image_url: string | null;
   post_to_social_on_publish: boolean;
   featured: boolean;
   positivity_score: number | null;
