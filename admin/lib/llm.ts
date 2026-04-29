@@ -51,6 +51,7 @@ class AnthropicProvider implements LLMProvider {
     const message = await anthropic.messages.create({
       model: this.model,
       max_tokens: 200,
+      temperature: 0,
       messages: [{ role: "user", content: prompt }],
     });
     const raw = (message.content[0] as { type: string; text: string }).text.trim();
@@ -83,18 +84,19 @@ class OllamaProvider implements LLMProvider {
   }
 
   async classify(prompt: string): Promise<ClassifyResult> {
-    const raw = await this.callOllama(prompt, undefined, 120);
+    const raw = await this.callOllama(prompt, undefined, 120, 0);
     return parseClassifyResponse(raw);
   }
 
   async generate(prompt: string, systemPrompt?: string, maxTokens = 1200): Promise<string> {
-    return this.callOllama(prompt, systemPrompt, maxTokens);
+    return this.callOllama(prompt, systemPrompt, maxTokens, 0.3);
   }
 
   private async callOllama(
     userPrompt: string,
     systemPrompt: string | undefined,
     maxTokens: number,
+    temperature: number,
   ): Promise<string> {
     const messages: { role: string; content: string }[] = [];
     if (systemPrompt) messages.push({ role: "system", content: systemPrompt });
@@ -108,7 +110,7 @@ class OllamaProvider implements LLMProvider {
         messages,
         max_tokens: maxTokens,
         stream: false,
-        options: { temperature: 0.3 },
+        options: { temperature },
       }),
       signal: AbortSignal.timeout(120_000),
     });
@@ -133,18 +135,19 @@ class OpenAIProvider implements LLMProvider {
   constructor(private model: string) {}
 
   async classify(prompt: string): Promise<ClassifyResult> {
-    const raw = await this.call(prompt, undefined, 200);
+    const raw = await this.call(prompt, undefined, 200, 0);
     return parseClassifyResponse(raw);
   }
 
   async generate(prompt: string, systemPrompt?: string, maxTokens = 1200): Promise<string> {
-    return this.call(prompt, systemPrompt, maxTokens);
+    return this.call(prompt, systemPrompt, maxTokens, 0.3);
   }
 
   private async call(
     userPrompt: string,
     systemPrompt: string | undefined,
     maxTokens: number,
+    temperature: number,
   ): Promise<string> {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) throw new Error("OPENAI_API_KEY is not set in .env.local");
@@ -163,7 +166,7 @@ class OpenAIProvider implements LLMProvider {
         model: this.model,
         messages,
         max_tokens: maxTokens,
-        temperature: 0.3,
+        temperature,
       }),
       signal: AbortSignal.timeout(120_000),
     });
