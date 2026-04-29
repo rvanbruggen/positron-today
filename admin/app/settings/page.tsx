@@ -282,8 +282,15 @@ export default function SettingsPage() {
     setSaving(true);
     setSaveMsg(null);
     try {
-      // Sync run times into settings before saving
-      const toSave = { ...settings, positronitron_run_times: JSON.stringify(runTimes) };
+      // Sync run times into settings before saving. Sort chronologically
+      // before persisting — "HH:MM" zero-padded strings sort lexicographically
+      // the same as by time, so a plain .sort() does the right thing. The
+      // spread avoids mutating React state in place; setRunTimes then keeps
+      // the UI in sync with what was saved, so the list visibly re-orders on
+      // save (matches what the user will see on next page load anyway).
+      const sortedRunTimes = [...runTimes].sort();
+      setRunTimes(sortedRunTimes);
+      const toSave = { ...settings, positronitron_run_times: JSON.stringify(sortedRunTimes) };
       const res = await fetch("/api/llm-settings", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
