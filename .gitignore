@@ -24,6 +24,9 @@ site/_site/
 *.pem
 npm-debug.log*
 
+# Claude Code working directory (settings, worktrees, session state)
+.claude/
+
 # start.sh / stop.sh runtime files
 .admin.log
 .site.log
