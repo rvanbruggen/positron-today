@@ -126,6 +126,10 @@ html[data-theme="mono"] .card-title   { color: var(--mono-fg); font-weight: 700;
 html[data-theme="mono"] .card-summary { color: var(--mono-fg); opacity: 0.85; }
 html[data-theme="mono"] .card-tag,
 html[data-theme="mono"] .card-meta    { color: var(--mono-muted); opacity: 1; }
+/* Mono uses --mono-muted color to mute, not opacity — neutralise the 0.6
+   span-opacity rule from index.njk so text doesn't end up double-muted. */
+html[data-theme="mono"] .card-meta > span:not(.card-meta-right),
+html[data-theme="mono"] .card-meta-right > span { opacity: 1; }
 html[data-theme="mono"] .card-img     { border-radius: 0; filter: grayscale(1) contrast(1.05); }
 @media (hover: hover) {
   html[data-theme="mono"] .card:hover {
@@ -443,6 +447,10 @@ html[data-theme="mondrian"] .card-title   { color: var(--md-black); font-weight:
 html[data-theme="mondrian"] .card-summary { color: var(--md-black); opacity: 0.85; }
 html[data-theme="mondrian"] .card-tag,
 html[data-theme="mondrian"] .card-meta    { color: var(--md-muted); opacity: 1; }
+/* Mondrian uses --md-muted color to mute, not opacity — neutralise the
+   0.6 span-opacity rule from index.njk so text isn't double-muted. */
+html[data-theme="mondrian"] .card-meta > span:not(.card-meta-right),
+html[data-theme="mondrian"] .card-meta-right > span { opacity: 1; }
 html[data-theme="mondrian"] .card-img     { border-radius: 0; }
 @media (hover: hover) {
   html[data-theme="mondrian"] .card:hover {

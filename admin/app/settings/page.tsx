@@ -639,14 +639,12 @@ export default function SettingsPage() {
                   )}
                 </div>
               ))}
-              {runTimes.length < 4 && (
-                <button
-                  onClick={() => setRunTimes([...runTimes, "12:00"])}
-                  className="text-xs text-amber-600 hover:text-amber-800 border border-dashed border-yellow-300 rounded px-2 py-1"
-                >+ Add time</button>
-              )}
+              <button
+                onClick={() => setRunTimes([...runTimes, "12:00"])}
+                className="text-xs text-amber-600 hover:text-amber-800 border border-dashed border-yellow-300 rounded px-2 py-1"
+              >+ Add time</button>
             </div>
-            <p className="text-[11px] text-amber-400 mt-1">1–4 daily run times. Changes take effect after saving.</p>
+            <p className="text-[11px] text-amber-400 mt-1">Add as many daily run times as you like. Changes take effect after saving.</p>
           </div>
 
           {/* ── Active prompts preview ──

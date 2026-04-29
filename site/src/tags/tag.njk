@@ -95,7 +95,6 @@ eleventyComputed:
   .tag-card-summary { font-size: 0.82rem; line-height: 1.55; opacity: 0.85; }
   .tag-card-meta {
     font-size: 0.7rem;
-    opacity: 0.6;
     margin-top: auto;
     padding-top: 0.5rem;
     display: flex;
@@ -103,6 +102,11 @@ eleventyComputed:
     flex-wrap: wrap;
     gap: 0.25rem;
   }
+  /* Apply muting to text spans only — see index.njk for the rationale.
+     Without this split, .tag-card-permalink's own 0.4 opacity stacks with
+     the parent and the icon becomes invisible on every theme. */
+  .tag-card-meta > span:not(.tag-card-meta-right),
+  .tag-card-meta-right > span { opacity: 0.6; }
   .tag-card-meta-right { display: inline-flex; align-items: center; gap: 0.4rem; }
 
   .card-yellow  { background:#fef9c3; border-color:#fde047; color:#713f12; }
