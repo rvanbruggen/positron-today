@@ -1,4 +1,5 @@
 import db from "./db";
+import { formatRejectionTimestamp } from "./schedule-time";
 
 const GITHUB_TOKEN  = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO   = process.env.GITHUB_REPO!;
@@ -76,7 +77,7 @@ export async function exportRejections(): Promise<{ exported: number }> {
       reason:   (r.rejection_reason as string) || null,
       category: (r.rejection_category as string) || null,
       url:      r.url as string,
-      date:     String(r.fetched_at).slice(0, 10),
+      date:     formatRejectionTimestamp(String(r.fetched_at)),
     })),
   };
 

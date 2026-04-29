@@ -100,6 +100,30 @@ export function wallPartsToDate(
   return new Date(tentative - offsetMs);
 }
 
+/**
+ * Format a SQLite UTC timestamp (e.g. "2026-04-29 14:35:42" — the form returned
+ * by `datetime('now')`) as "YYYY-MM-DD HH:MM" wall-clock in SCHEDULE_TZ.
+ *
+ * Used by surfaces that surface `fetched_at` to readers — the public negativity
+ * page and the admin Rejections page — so admin and public site agree on which
+ * clock the timestamps live in (Brussels by default), and the documented
+ * "all times shown are Brussels local time" claim on the About page holds.
+ *
+ * Returns the input unchanged if parsing fails, so a malformed row never breaks
+ * a render.
+ */
+export function formatRejectionTimestamp(sqliteUtc: string): string {
+  if (!sqliteUtc) return "";
+  // Normalise SQLite's "YYYY-MM-DD HH:MM:SS" UTC form to ISO + Z.
+  // Tolerate inputs that already carry a timezone marker (Z or ±HH:MM).
+  let iso = sqliteUtc.replace(" ", "T");
+  if (!/[Zz]|[+-]\d{2}:?\d{2}$/.test(iso)) iso += "Z";
+  const date = new Date(iso);
+  if (isNaN(date.getTime())) return sqliteUtc;
+  const p = partsOf(date);
+  return `${p.year}-${pad(p.month)}-${pad(p.day)} ${pad(p.hour)}:${pad(p.minute)}`;
+}
+
 /** Parse "YYYY-MM-DDTHH:MM[:SS]" (or with a space separator) as wall-clock
  *  time in SCHEDULE_TZ. Throws on invalid input. */
 export function parseScheduleWallString(raw: string): Date {

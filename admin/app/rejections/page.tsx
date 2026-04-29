@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useMemo } from "react";
 import { REJECTION_CATEGORIES, CATEGORY_MAP } from "@/lib/rejection-categories";
+import { formatRejectionTimestamp } from "@/lib/schedule-time";
 
 type SortKey = "title" | "source" | "category" | "date";
 type SortDir = "asc" | "desc";
@@ -453,10 +454,10 @@ export default function RejectionsPage() {
                       {item.source_pub_date ? (
                         <div>
                           <div title="Original source date">{item.source_pub_date.slice(0, 10)}</div>
-                          <div className="text-amber-300 text-[10px]" title="Date fetched by us">fetched {item.fetched_at.slice(0, 10)}</div>
+                          <div className="text-amber-300 text-[10px]" title="Date and time fetched by us (Brussels local time)">fetched {formatRejectionTimestamp(item.fetched_at)}</div>
                         </div>
                       ) : (
-                        item.fetched_at.slice(0, 10)
+                        <span title="Date and time fetched by us (Brussels local time)">{formatRejectionTimestamp(item.fetched_at)}</span>
                       )}
                     </td>
 
