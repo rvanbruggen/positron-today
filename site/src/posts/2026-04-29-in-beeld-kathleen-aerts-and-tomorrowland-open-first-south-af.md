@@ -2,7 +2,7 @@
 title: "In beeld. Kathleen Aerts and Tomorrowland open first South African Music & Arts School: “Children here also deserve chances to dream”"
 title_nl: "IN BEELD. Kathleen Aerts en Tomorrowland openen eerste Zuid-Afrikaanse Music & Arts School: “Ook kinderen hier verdienen kansen om te dromen”"
 title_fr: "EN IMAGE. Kathleen Aerts et Tomorrowland ouvrent la première école de musique et d'arts d'Afrique du Sud : “Les enfants ici méritent aussi des chances de rêver”"
-date: 2026-04-29T15:00:04
+date: 2026-04-29T15:51:53
 source_pub_date: 2026-04-29
 fetched_date: 2026-04-29
 source_url: "https://www.hln.be/showbizz/in-beeld-kathleen-aerts-en-tomorrowland-openen-eerste-zuid-afrikaanse-music-en-arts-school-ook-kinderen-hier-verdienen-kansen-om-te-dromen~af7a56df/"
