@@ -156,18 +156,28 @@ class OpenAIProvider implements LLMProvider {
     if (systemPrompt) messages.push({ role: "system", content: systemPrompt });
     messages.push({ role: "user", content: userPrompt });
 
+    // OpenAI reasoning models (o1*, o3*, …) reject `temperature` and `top_p`
+    // and require `max_completion_tokens` instead of `max_tokens`. Detect by
+    // the canonical "o<digit>" prefix so future o-series releases work too.
+    const isReasoningModel = /^o[1-9]/i.test(this.model);
+    const body: Record<string, unknown> = {
+      model: this.model,
+      messages,
+    };
+    if (isReasoningModel) {
+      body.max_completion_tokens = maxTokens;
+    } else {
+      body.max_tokens = maxTokens;
+      body.temperature = temperature;
+    }
+
     const res = await fetch(this.endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${apiKey}`,
       },
-      body: JSON.stringify({
-        model: this.model,
-        messages,
-        max_tokens: maxTokens,
-        temperature,
-      }),
+      body: JSON.stringify(body),
       signal: AbortSignal.timeout(120_000),
     });
 
