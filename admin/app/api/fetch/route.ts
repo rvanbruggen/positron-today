@@ -6,7 +6,9 @@ import { getSettings } from "@/lib/settings";
 import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import RSSParser from "rss-parser";
 
-const parser = new RSSParser();
+// 8s per-feed timeout: a single hanging RSS host used to eat the whole
+// 60s Vercel budget. rss-parser has no default timeout.
+const parser = new RSSParser({ timeout: 8000 });
 
 async function checkPositivity(
   title: string,
@@ -41,7 +43,10 @@ export async function POST(request: Request) {
   // In auto mode, rotate through source chunks automatically.
   // Each call processes 10 sources, then saves the next offset for the next call.
   let offset: number;
-  const limit = Math.max(1, parseInt(url.searchParams.get("limit") ?? "10"));
+  // Default chunk size of 5 (was 10) so each invocation comfortably fits
+  // under Vercel's 60s Hobby-tier maxDuration. The auto-offset wraps, so
+  // smaller chunks just mean more cron ticks per full cycle.
+  const limit = Math.max(1, parseInt(url.searchParams.get("limit") ?? "5"));
 
   if (isAuto) {
     const offsetResult = await db.execute({
@@ -87,7 +92,10 @@ export async function POST(request: Request) {
 
           try {
             const feed = await parser.parseURL(feedUrl);
-            const items = feed.items.slice(0, 20).filter(i => i.link && i.title);
+            // Cap at 10 items per feed (was 20). Most healthy feeds only have
+            // a handful of new items per cycle anyway, and the LLM classify
+            // call dominates per-item cost.
+            const items = feed.items.slice(0, 10).filter(i => i.link && i.title);
 
             for (const item of items) {
               const [existingRaw, existingRejected, existingArticle] = await Promise.all([
