@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { SOURCE_LANGUAGE_OPTIONS } from "@/lib/languages";
 
 type Source = {
   id: number;
@@ -48,9 +49,9 @@ function SourceRow({
           <div className="flex gap-2 items-center flex-wrap">
             <select className="border border-yellow-300 rounded-lg px-3 py-1.5 text-sm"
               value={editState.language} onChange={e => onEditStateChange({ ...editState, language: e.target.value })}>
-              <option value="nl">Dutch (NL)</option>
-              <option value="fr">French (FR)</option>
-              <option value="en">English (EN)</option>
+              {SOURCE_LANGUAGE_OPTIONS.map(opt => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
             </select>
             <button type="button" onClick={() => onSave(source.id)}
               className="bg-green-400 hover:bg-green-500 text-green-900 font-medium px-4 py-1.5 rounded-lg text-sm transition-colors">
@@ -362,9 +363,9 @@ export default function SourcesPage() {
           <div className="flex gap-3 flex-wrap items-center">
             <select className="border border-yellow-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-yellow-400"
               value={form.language} onChange={e => setForm({ ...form, language: e.target.value })}>
-              <option value="nl">Dutch (NL)</option>
-              <option value="fr">French (FR)</option>
-              <option value="en">English (EN)</option>
+              {SOURCE_LANGUAGE_OPTIONS.map(opt => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
             </select>
             <button type="submit" disabled={loading}
               className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">

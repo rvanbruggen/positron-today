@@ -22,6 +22,10 @@ export interface ClassifyResult {
   reason: string;
   category?: string;   // rejection category slug, present only when fits === false
   score?: number;      // positivity score 1-10, present when the LLM returns one
+  // English preview translation, present when buildFilterPrompt was called with
+  // translateToEnglish=true (i.e. the source language is not en/nl/fr).
+  preview_title_en?: string;
+  preview_snippet_en?: string;
 }
 
 export interface LLMProvider {
@@ -210,11 +214,19 @@ function parseClassifyResponse(raw: string): ClassifyResult {
         : (parsed.verdict === "NO" ? "does not fit positive news criteria" : "");
     const rawScore = Number(parsed.score);
     const score = rawScore >= 1 && rawScore <= 10 ? rawScore : undefined;
+    const preview_title_en = typeof parsed.preview_title_en === "string" && parsed.preview_title_en.trim()
+      ? parsed.preview_title_en.trim()
+      : undefined;
+    const preview_snippet_en = typeof parsed.preview_snippet_en === "string" && parsed.preview_snippet_en.trim()
+      ? parsed.preview_snippet_en.trim()
+      : undefined;
     return {
       fits: parsed.verdict === "YES",
       reason,
       category: parsed.verdict === "NO" ? (parsed.category ?? "other-negative") : undefined,
       score,
+      preview_title_en,
+      preview_snippet_en,
     };
   } catch {
     const fits = raw.toUpperCase().includes('"YES"') || raw.toUpperCase().startsWith("YES");

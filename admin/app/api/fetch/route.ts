@@ -4,6 +4,7 @@ import { getFilterProvider } from "@/lib/llm";
 import { buildFilterInstructions, buildFilterPrompt } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
 import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
+import { isNativeOutputLanguage } from "@/lib/languages";
 import RSSParser from "rss-parser";
 
 // 8s per-feed timeout: a single hanging RSS host used to eat the whole
@@ -14,15 +15,25 @@ async function checkPositivity(
   title: string,
   snippet: string,
   filterInstructions: string,
-): Promise<{ fits: boolean; reason: string; category: string; score?: number }> {
+  translateToEnglish: boolean,
+): Promise<{
+  fits: boolean;
+  reason: string;
+  category: string;
+  score?: number;
+  preview_title_en?: string;
+  preview_snippet_en?: string;
+}> {
   const provider = await getFilterProvider();
-  const prompt = buildFilterPrompt(filterInstructions, title, snippet);
+  const prompt = buildFilterPrompt(filterInstructions, title, snippet, translateToEnglish);
   const result = await provider.classify(prompt);
   return {
     fits: result.fits,
     reason: result.reason,
     category: result.category ?? "other-negative",
     score: result.score,
+    preview_title_en: result.preview_title_en,
+    preview_snippet_en: result.preview_snippet_en,
   };
 }
 
@@ -118,7 +129,9 @@ export async function POST(request: Request) {
                 ? new Date(item.pubDate).toISOString().slice(0, 10)
                 : null;
 
-              const { fits, reason, category, score } = await checkPositivity(item.title!, snippet, filterInstructions);
+              const needsTranslation = !isNativeOutputLanguage(source.language as string);
+              const { fits, reason, category, score, preview_title_en, preview_snippet_en } =
+                await checkPositivity(item.title!, snippet, filterInstructions, needsTranslation);
 
               if (!fits) {
                 filtered++;
@@ -135,8 +148,14 @@ export async function POST(request: Request) {
                 } catch { /* duplicate */ }
               } else {
                 await db.execute({
-                  sql: "INSERT INTO raw_articles (source_id, url, title, content, source_pub_date, positivity_score) VALUES (?, ?, ?, ?, ?, ?)",
-                  args: [source.id, item.link!, item.title!, snippet, sourcePubDate, score ?? null],
+                  sql: `INSERT INTO raw_articles
+                          (source_id, url, title, content, source_pub_date, positivity_score,
+                           preview_title_en, preview_snippet_en)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+                  args: [
+                    source.id, item.link!, item.title!, snippet, sourcePubDate, score ?? null,
+                    preview_title_en ?? null, preview_snippet_en ?? null,
+                  ],
                 });
                 added++;
                 send({ type: "article", verdict: "added", title: item.title!, score });

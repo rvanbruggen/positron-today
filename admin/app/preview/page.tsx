@@ -15,12 +15,15 @@ type DuplicateHint = {
 type RawArticle = {
   id: number;
   source_name: string;
+  source_language: string;
   url: string;
   title: string;
   content: string;
   fetched_at: string;
   status: string;
   duplicate_of: DuplicateHint | null;
+  preview_title_en: string | null;
+  preview_snippet_en: string | null;
 };
 
 const ORIGIN_LABELS: Record<DuplicateHint["origin"], string> = {
@@ -316,13 +319,31 @@ export default function PreviewPage() {
             )}
             <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
               <div className="min-w-0">
-                <p className="text-xs text-amber-500 mb-1">{article.source_name}</p>
+                <p className="text-xs text-amber-500 mb-1">
+                  {article.source_name}
+                  {article.source_language && (
+                    <span className="ml-2 inline-block bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded uppercase text-[10px] tracking-wide">
+                      {article.source_language}
+                    </span>
+                  )}
+                </p>
                 <a href={article.url} target="_blank" rel="noopener noreferrer"
                   className="font-medium text-amber-900 hover:text-amber-600 transition-colors text-sm leading-snug">
                   {article.title}
                 </a>
                 {article.content && (
                   <p className="text-xs text-amber-600 mt-2 line-clamp-3">{article.content}</p>
+                )}
+                {(article.preview_title_en || article.preview_snippet_en) && (
+                  <div className="mt-2 border-l-2 border-blue-200 pl-2">
+                    <p className="text-[10px] text-blue-500 uppercase tracking-wide font-semibold">English preview</p>
+                    {article.preview_title_en && (
+                      <p className="text-xs text-blue-800 font-medium mt-0.5">{article.preview_title_en}</p>
+                    )}
+                    {article.preview_snippet_en && (
+                      <p className="text-xs text-blue-700 mt-0.5">{article.preview_snippet_en}</p>
+                    )}
+                  </div>
                 )}
                 <p className="text-xs text-amber-400 mt-2">
                   {new Date(article.fetched_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}

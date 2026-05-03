@@ -54,23 +54,44 @@ export const DEFAULT_FILTER_INSTRUCTIONS = buildFilterInstructions(5);
 /**
  * Assembles the complete prompt sent to the LLM for a given article.
  * `instructions` is either the user's custom override or the output of buildFilterInstructions().
+ *
+ * When `translateToEnglish` is true (sources with an input language outside
+ * en/nl/fr, including auto-detect), the model is also asked for a short
+ * English rendering of the title + snippet so the human reviewer can judge
+ * the article on the Preview page without reading the original language.
  */
 export function buildFilterPrompt(
   instructions: string,
   title: string,
   snippet: string,
+  translateToEnglish = false,
 ): string {
+  const translationFields = translateToEnglish
+    ? `\nThe article may be in a language other than English. ALWAYS also include:
+  - "preview_title_en":   a faithful English translation of the title (one short line)
+  - "preview_snippet_en": a 1-2 sentence English rendering of what the article is about
+These two fields are required regardless of verdict.`
+    : "";
+
+  const yesExample = translateToEnglish
+    ? `{"verdict":"YES","score":7,"preview_title_en":"...","preview_snippet_en":"..."}`
+    : `{"verdict":"YES","score":7}`;
+
+  const noExample = translateToEnglish
+    ? `{"verdict":"NO","score":3,"reason":"1-2 sentence explanation of why this story is too negative or not uplifting","category":"<slug>","preview_title_en":"...","preview_snippet_en":"..."}`
+    : `{"verdict":"NO","score":3,"reason":"1-2 sentence explanation of why this story is too negative or not uplifting","category":"<slug>"}`;
+
   return `${instructions}
 
 Article title: ${title}
 Snippet: ${snippet}
 
 Reply with JSON only — no other text.
-Always include a "score" field: an integer from 1 (not positive at all) to 10 (exceptionally uplifting).
+Always include a "score" field: an integer from 1 (not positive at all) to 10 (exceptionally uplifting).${translationFields}
 
-If it fits: {"verdict":"YES","score":7}
+If it fits: ${yesExample}
 
-If it does NOT fit: {"verdict":"NO","score":3,"reason":"1-2 sentence explanation of why this story is too negative or not uplifting","category":"<slug>"}
+If it does NOT fit: ${noExample}
 
 Valid category slugs (pick the single best match):
 ${CATEGORY_PROMPT_LIST}`;

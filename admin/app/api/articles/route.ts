@@ -6,6 +6,7 @@ import {
   normaliseTitleTokens,
   type DuplicateCandidate,
 } from "@/lib/title-similarity";
+import { isNativeOutputLanguage } from "@/lib/languages";
 
 // Delete the published markdown file from the GitHub Pages site.
 // Best-effort: logs and swallows errors so the caller's DB update still lands.
@@ -55,6 +56,11 @@ export async function GET(request: NextRequest) {
   // similar to something else already in the pipeline. Comparison is
   // same-language-only and uses a cheap Jaccard token overlap — see
   // lib/title-similarity.ts for the tuning.
+  //
+  // Sources whose input language is NOT en/nl/fr (Spanish, German, "auto",
+  // etc.) get an English preview translation at fetch time. We use that
+  // preview to dedup them in English space — so a Spanish article and an
+  // English article about the same event will still match each other.
   if (status !== "pending" || result.rows.length === 0) {
     return Response.json(result.rows);
   }
@@ -86,49 +92,112 @@ export async function GET(request: NextRequest) {
 
   const pool: DuplicateCandidate<Candidate>[] = [];
 
+  // Pool building rules:
+  //   - en/nl/fr pending raws → one entry in their native language.
+  //   - non-native pending raws WITH an English preview translation →
+  //     one entry tagged language="en" using the preview tokens, so they
+  //     can match (and be matched by) any English-comparable article.
+  //   - non-native pending raws WITHOUT a preview → not in pool, not annotated.
+  //   - recent articles (en/nl/fr) → entry in their native language. If the
+  //     source language is not English, ALSO add an "en" entry from
+  //     title_en so non-native pending raws can match against them via English.
   for (const r of result.rows) {
-    const title = String(r.title ?? "").trim();
-    if (!title) continue;
-    pool.push({
-      item: {
-        id:           Number(r.id),
-        title,
-        source_name:  String(r.source_name ?? ""),
-        language:     String(r.source_language ?? "en"),
-        origin:       "pending",
-        published_at: null,
-      },
-      tokens: normaliseTitleTokens(title),
-    });
+    const lang        = String(r.source_language ?? "en");
+    const nativeTitle = String(r.title ?? "").trim();
+    const previewEn   = String(r.preview_title_en ?? "").trim();
+
+    if (isNativeOutputLanguage(lang) && nativeTitle) {
+      pool.push({
+        item: {
+          id:           Number(r.id),
+          title:        nativeTitle,
+          source_name:  String(r.source_name ?? ""),
+          language:     lang,
+          origin:       "pending",
+          published_at: null,
+        },
+        tokens: normaliseTitleTokens(nativeTitle),
+      });
+    } else if (!isNativeOutputLanguage(lang) && previewEn) {
+      pool.push({
+        item: {
+          id:           Number(r.id),
+          // Show the preview text in the duplicate hint so the reviewer
+          // sees why the match fired (it's the English rendering, not the
+          // original-language title).
+          title:        previewEn,
+          source_name:  String(r.source_name ?? ""),
+          language:     "en",
+          origin:       "pending",
+          published_at: null,
+        },
+        tokens: normaliseTitleTokens(previewEn),
+      });
+    }
   }
 
   for (const a of recentArticles.rows) {
     const lang = String(a.source_language ?? "en");
-    const title =
+    if (!isNativeOutputLanguage(lang)) continue;
+    const nativeTitle =
       lang === "nl" ? String(a.title_nl ?? a.title_en ?? a.title_fr ?? "") :
       lang === "fr" ? String(a.title_fr ?? a.title_en ?? a.title_nl ?? "") :
                       String(a.title_en ?? a.title_nl ?? a.title_fr ?? "");
-    if (!title.trim()) continue;
-    pool.push({
-      item: {
-        id:           Number(a.id),
-        title,
-        source_name:  String(a.source_name ?? ""),
-        language:     lang,
-        origin:       String(a.status) as Candidate["origin"],
-        published_at: a.published_at ? String(a.published_at) : null,
-      },
-      tokens: normaliseTitleTokens(title),
-    });
+    if (nativeTitle.trim()) {
+      pool.push({
+        item: {
+          id:           Number(a.id),
+          title:        nativeTitle,
+          source_name:  String(a.source_name ?? ""),
+          language:     lang,
+          origin:       String(a.status) as Candidate["origin"],
+          published_at: a.published_at ? String(a.published_at) : null,
+        },
+        tokens: normaliseTitleTokens(nativeTitle),
+      });
+    }
+
+    // For nl/fr-language recent articles, add an English-side entry too so
+    // non-native pending raws (matched in English space) can find them.
+    // Skip when source is already English to avoid a duplicate copy.
+    const titleEn = String(a.title_en ?? "").trim();
+    if (lang !== "en" && titleEn) {
+      pool.push({
+        item: {
+          id:           Number(a.id),
+          title:        titleEn,
+          source_name:  String(a.source_name ?? ""),
+          language:     "en",
+          origin:       String(a.status) as Candidate["origin"],
+          published_at: a.published_at ? String(a.published_at) : null,
+        },
+        tokens: normaliseTitleTokens(titleEn),
+      });
+    }
   }
 
   const annotated = result.rows.map((r) => {
     const id       = Number(r.id);
-    const title    = String(r.title ?? "");
     const language = String(r.source_language ?? "en");
-    const tokens   = normaliseTitleTokens(title);
-    const hint = findDuplicateHint(tokens, pool, (c) => c.origin === "pending" && c.id === id
-                                                    || c.language !== language);
+    const nativeTitle = String(r.title ?? "");
+    const previewEn   = String(r.preview_title_en ?? "").trim();
+
+    // Pick the comparison title + language. Native rows compare in their own
+    // language; non-native rows with a preview compare in English.
+    let compareTokens: Set<string>;
+    let compareLang:   string;
+    if (isNativeOutputLanguage(language) && nativeTitle) {
+      compareTokens = normaliseTitleTokens(nativeTitle);
+      compareLang   = language;
+    } else if (!isNativeOutputLanguage(language) && previewEn) {
+      compareTokens = normaliseTitleTokens(previewEn);
+      compareLang   = "en";
+    } else {
+      return { ...r, duplicate_of: null };
+    }
+
+    const hint = findDuplicateHint(compareTokens, pool, (c) => c.origin === "pending" && c.id === id
+                                                            || c.language !== compareLang);
     return {
       ...r,
       duplicate_of: hint

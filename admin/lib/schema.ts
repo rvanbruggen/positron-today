@@ -111,6 +111,14 @@ export async function initSchema() {
     // v1.13: positivity score (1-10) assigned by the LLM during filtering
     "ALTER TABLE articles ADD COLUMN positivity_score REAL",
     "ALTER TABLE raw_articles ADD COLUMN positivity_score REAL",
+
+    // v2.17: English-translated title/snippet for sources whose input language
+    // is NOT one of the three output languages (en/nl/fr). Lets the human
+    // reviewer evaluate Spanish/German/Danish/etc. articles on the Preview page
+    // without having to read the original. Populated at fetch time as part of
+    // the same LLM call that does the positivity filter.
+    "ALTER TABLE raw_articles ADD COLUMN preview_title_en TEXT",
+    "ALTER TABLE raw_articles ADD COLUMN preview_snippet_en TEXT",
   ];
 
   for (const sql of migrations) {
