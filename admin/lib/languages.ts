@@ -15,26 +15,25 @@ export const NATIVE_OUTPUT_LANGUAGES = ["en", "nl", "fr"] as const;
 
 export type SourceLanguage = string;
 
+// Auto-detect pinned at the top; the rest sorted alphabetically by label.
 export const SOURCE_LANGUAGE_OPTIONS: { value: string; label: string }[] = [
   { value: "auto", label: "Auto-detect" },
-  // The three output languages first — these stay zero-cost (no extra translation step).
-  { value: "en",   label: "English (EN)" },
-  { value: "nl",   label: "Dutch (NL)" },
-  { value: "fr",   label: "French (FR)" },
-  // Common European input languages. Translated to English at fetch time for the review step.
-  { value: "de",   label: "German (DE)" },
-  { value: "es",   label: "Spanish (ES)" },
-  { value: "it",   label: "Italian (IT)" },
-  { value: "pt",   label: "Portuguese (PT)" },
-  { value: "da",   label: "Danish (DA)" },
-  { value: "sv",   label: "Swedish (SV)" },
-  { value: "no",   label: "Norwegian (NO)" },
-  { value: "fi",   label: "Finnish (FI)" },
-  { value: "pl",   label: "Polish (PL)" },
   { value: "cs",   label: "Czech (CS)" },
-  { value: "ro",   label: "Romanian (RO)" },
+  { value: "da",   label: "Danish (DA)" },
+  { value: "nl",   label: "Dutch (NL)" },
+  { value: "en",   label: "English (EN)" },
+  { value: "fi",   label: "Finnish (FI)" },
+  { value: "fr",   label: "French (FR)" },
+  { value: "de",   label: "German (DE)" },
   { value: "el",   label: "Greek (EL)" },
   { value: "hu",   label: "Hungarian (HU)" },
+  { value: "it",   label: "Italian (IT)" },
+  { value: "no",   label: "Norwegian (NO)" },
+  { value: "pl",   label: "Polish (PL)" },
+  { value: "pt",   label: "Portuguese (PT)" },
+  { value: "ro",   label: "Romanian (RO)" },
+  { value: "es",   label: "Spanish (ES)" },
+  { value: "sv",   label: "Swedish (SV)" },
 ];
 
 /** True if the source language matches one of the public-site output languages. */
