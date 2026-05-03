@@ -68,18 +68,31 @@ export async function exportSources(): Promise<{ exported: number }> {
 
   const rows = result.rows as unknown as SourceRow[];
 
-  // Group by language; preserve insertion order (en, nl, fr) in the JSON
-  const byLanguage: Record<string, { name: string; url: string; feed_url: string | null }[]> = {
-    en: [], nl: [], fr: [],
-  };
+  // Group by language. The three site-output languages get their own keys
+  // (en/nl/fr) so the About template can render dedicated sections; every
+  // other source language — German, Spanish, Danish, "auto", etc., added in
+  // 2.17.0 — collects under a single "other" bucket so it doesn't silently
+  // get filed under English the way it used to.
+  type Pill = { name: string; url: string; feed_url: string | null; language: string };
+  const byLanguage: Record<string, Pill[]> = { en: [], nl: [], fr: [], other: [] };
   for (const row of rows) {
-    const lang = row.language in byLanguage ? row.language : "en";
-    byLanguage[lang].push({
+    const lang = row.language;
+    const bucket = lang === "en" || lang === "nl" || lang === "fr" ? lang : "other";
+    byLanguage[bucket].push({
       name:     row.name,
       url:      normaliseSourceUrl(row.url),
       feed_url: row.feed_url || null,
+      language: lang,
     });
   }
+
+  // Within the "other" bucket, sort by language code first so identical-
+  // language sources cluster together, then by name (matching the SQL ORDER
+  // BY for the named buckets).
+  byLanguage.other.sort((a, b) => {
+    if (a.language !== b.language) return a.language.localeCompare(b.language);
+    return a.name.localeCompare(b.name);
+  });
 
   const payload = {
     exported_at: new Date().toISOString(),

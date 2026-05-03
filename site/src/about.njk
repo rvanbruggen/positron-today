@@ -356,6 +356,21 @@ title: About
     </div>
     {% endif %}
 
+    {% if sources.by_language.other.length %}
+    <div class="sources-lang-group">
+      <div class="sources-lang-label">
+        <span class="t-en">🌍 Other languages</span>
+        <span class="t-nl" style="display:none">🌍 Andere talen</span>
+        <span class="t-fr" style="display:none">🌍 Autres langues</span>
+      </div>
+      <div class="sources-pills">
+        {% for source in sources.by_language.other %}
+        <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer" class="source-pill">{% if source.feed_url %}<span class="feed-dot"></span>{% endif %}{{ source.name }}<span style="opacity:0.5;font-size:0.7rem;margin-left:0.35rem;text-transform:uppercase;">{{ source.language }}</span></a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
   </div>
 
   <!-- ══ RSS Feeds ════════════════════════════════════════════════════════ -->
