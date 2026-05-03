@@ -33,16 +33,27 @@ const ORIGIN_LABELS: Record<DuplicateHint["origin"], string> = {
   published: "a published article",
 };
 
+// Two-phase fetch pipeline:
+//   Phase 1 — /api/fetch-feeds: pulls RSS, dedups, queues new items into pending_items (no LLM)
+//   Phase 2 — /api/classify:    drains pending_items via the positivity filter
+// The UI streams NDJSON from each, loops through chunks/batches until both phases are empty.
 type LogLine =
-  | { type: "start"; totalSources: number }
+  // Phase 1 events
+  | { type: "start"; phase: "fetch-feeds"; totalSources: number; chunkSize?: number; offset?: number; hasMore?: boolean }
   | { type: "source"; name: string; url: string }
-  | { type: "article"; verdict: "added" | "filtered"; title: string; reason?: string }
-  | { type: "source_done"; name: string; added: number; filtered: number; skipped: number }
+  | { type: "item"; verdict?: "queued"; title: string; source?: string }
+  | { type: "source_done"; name: string; queued: number; skipped: number }
   | { type: "source_error"; name: string; message: string }
+  | { type: "done"; phase: "fetch-feeds"; queued: number; skipped: number; hasMore: boolean; nextOffset: number; queueDepth: number }
+  // Phase 2 events
+  | { type: "start"; phase: "classify"; batchSize: number; queueDepth: number }
+  | { type: "result"; verdict: "added" | "filtered" | "error"; title: string; reason?: string; message?: string }
+  | { type: "done"; phase: "classify"; added: number; filtered: number; errored: number; processed: number; queueDepth: number; hasMore: boolean }
+  // Shared / sectioning events
+  | { type: "phase"; label: string }
   | { type: "exporting" }
   | { type: "exported"; count: number }
   | { type: "export_error"; message: string }
-  | { type: "done"; added: number; filtered: number; skipped: number; hasMore?: boolean; nextOffset?: number }
   | { type: "fatal"; message: string };
 
 export default function PreviewPage() {
@@ -68,6 +79,28 @@ export default function PreviewPage() {
     if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
   }, [logs]);
 
+  // Stream an NDJSON endpoint, calling onEvent for each parsed line.
+  async function streamNdjson(url: string, onEvent: (event: LogLine) => void) {
+    const res = await fetch(url, { method: "POST" });
+    if (!res.body) throw new Error("No response body");
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? "";
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        try {
+          onEvent(JSON.parse(line) as LogLine);
+        } catch { /* malformed line */ }
+      }
+    }
+  }
+
   async function fetchNew() {
     setFetching(true);
     setLogs([]);
@@ -75,65 +108,83 @@ export default function PreviewPage() {
     setTotalSources(0);
     setSourcesDone(0);
 
-    const CHUNK = 10;
-    let currentOffset = 0;
-    let total = 0;
-    let cumulativeDone = 0;
+    const FETCH_CHUNK = 15;     // sources per fetch-feeds call (no LLM, can be wide)
+    const CLASSIFY_BATCH = 15;  // items per classify call (LLM-bounded)
 
     try {
+      // ── Phase 1: drain all sources into pending_items ────────────────────
+      setLogs(prev => [...prev, { type: "phase", label: "Phase 1 — fetching feeds" }]);
+      let currentOffset = 0;
+      let total = 0;
+      let sourcesDoneCount = 0;
+      let queueDepthAfterFetch = 0;
+
       while (true) {
-        const res = await fetch(`/api/fetch?offset=${currentOffset}&limit=${CHUNK}`, { method: "POST" });
-        if (!res.body) throw new Error("No response body");
-
-        const reader = res.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = "";
         let chunkHasMore = false;
-        let nextOffset = currentOffset + CHUNK;
+        let nextOffset = currentOffset + FETCH_CHUNK;
 
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop() ?? "";
+        await streamNdjson(`/api/fetch-feeds?offset=${currentOffset}&limit=${FETCH_CHUNK}`, (event) => {
+          setLogs(prev => [...prev, event]);
 
-          for (const line of lines) {
-            if (!line.trim()) continue;
-            try {
-              const event = JSON.parse(line) as LogLine;
-              setLogs(prev => [...prev, event]);
-
-              if (event.type === "start") {
-                if (total === 0) {
-                  total = event.totalSources;
-                  setTotalSources(total);
-                }
-              }
-              if (event.type === "source_done" || event.type === "source_error") {
-                cumulativeDone++;
-                setSourcesDone(cumulativeDone);
-                setProgress(total > 0 ? Math.round((cumulativeDone / total) * 100) : 0);
-              }
-              if (event.type === "done") {
-                chunkHasMore = !!event.hasMore;
-                nextOffset = event.nextOffset ?? nextOffset;
-                if (!chunkHasMore) {
-                  setProgress(100);
-                  load();
-                }
-              }
-              if (event.type === "exported" || event.type === "export_error" || event.type === "fatal") {
-                if (!chunkHasMore) setFetching(false);
-              }
-            } catch { /* malformed line */ }
+          if (event.type === "start" && event.phase === "fetch-feeds") {
+            if (total === 0) {
+              total = event.totalSources;
+              setTotalSources(total);
+            }
           }
-        }
+          if (event.type === "source_done" || event.type === "source_error") {
+            sourcesDoneCount++;
+            setSourcesDone(sourcesDoneCount);
+            // Phase 1 occupies first 50% of the progress bar.
+            setProgress(total > 0 ? Math.round((sourcesDoneCount / total) * 50) : 0);
+          }
+          if (event.type === "done" && event.phase === "fetch-feeds") {
+            chunkHasMore = event.hasMore;
+            nextOffset = event.nextOffset;
+            queueDepthAfterFetch = event.queueDepth;
+          }
+        });
 
         if (!chunkHasMore) break;
         currentOffset = nextOffset;
-        setLogs(prev => [...prev, { type: "source" as const, name: `── Chunk ${Math.floor(currentOffset / CHUNK) + 1} ──`, url: "" }]);
+        setLogs(prev => [...prev, { type: "source", name: `── Next chunk (offset ${currentOffset}) ──`, url: "" }]);
       }
+
+      setProgress(50);
+
+      // ── Phase 2: drain pending_items via LLM ─────────────────────────────
+      setLogs(prev => [...prev, { type: "phase", label: `Phase 2 — classifying ${queueDepthAfterFetch} item${queueDepthAfterFetch === 1 ? "" : "s"}` }]);
+
+      let queueTotal = queueDepthAfterFetch;
+      let queueProcessed = 0;
+
+      // If nothing was queued there's nothing to do — just call /api/classify
+      // once to handle leftovers from a previous run, then bail.
+      if (queueTotal === 0) queueTotal = 1; // avoid div-by-zero; loop ends after first empty batch
+
+      while (true) {
+        let batchHasMore = false;
+        let processedThisBatch = 0;
+
+        await streamNdjson(`/api/classify?limit=${CLASSIFY_BATCH}`, (event) => {
+          setLogs(prev => [...prev, event]);
+
+          if (event.type === "result") {
+            queueProcessed++;
+            const pct = 50 + Math.min(50, Math.round((queueProcessed / queueTotal) * 50));
+            setProgress(pct);
+          }
+          if (event.type === "done" && event.phase === "classify") {
+            batchHasMore = event.hasMore;
+            processedThisBatch = event.processed;
+          }
+        });
+
+        if (!batchHasMore || processedThisBatch === 0) break;
+      }
+
+      setProgress(100);
+      load();
     } catch (err) {
       setLogs(prev => [...prev, { type: "fatal", message: String(err) }]);
     }
@@ -175,7 +226,22 @@ export default function PreviewPage() {
   }
 
   const isDone = logs.some(l => l.type === "exported" || l.type === "export_error" || l.type === "fatal");
-  const doneEvent = logs.find((l): l is Extract<LogLine, { type: "done" }> => l.type === "done");
+  // Aggregate counters across all phases for the bottom summary bar
+  const totals = logs.reduce(
+    (acc, l) => {
+      if (l.type === "done" && l.phase === "fetch-feeds") {
+        acc.queued += l.queued;
+        acc.skipped += l.skipped;
+      } else if (l.type === "done" && l.phase === "classify") {
+        acc.added += l.added;
+        acc.filtered += l.filtered;
+        acc.errored += l.errored;
+      }
+      return acc;
+    },
+    { queued: 0, skipped: 0, added: 0, filtered: 0, errored: 0 },
+  );
+  const hasAnyDone = logs.some((l): l is Extract<LogLine, { type: "done" }> => l.type === "done");
 
   return (
     <div>
@@ -225,10 +291,12 @@ export default function PreviewPage() {
             <div className="flex items-center justify-between text-xs text-amber-400 mb-1.5">
               <span>
                 {fetching
-                  ? totalSources === 0
-                    ? "Starting…"
-                    : sourcesDone < totalSources
-                      ? `Scanning source ${sourcesDone + 1} of ${totalSources}…`
+                  ? progress < 50
+                    ? totalSources === 0
+                      ? "Starting…"
+                      : `Phase 1 — scanning source ${Math.min(sourcesDone + 1, totalSources)} of ${totalSources}…`
+                    : progress < 100
+                      ? "Phase 2 — classifying queued items…"
                       : "Finalising…"
                   : isDone ? "Fetch complete" : "Starting…"}
               </span>
@@ -248,20 +316,32 @@ export default function PreviewPage() {
             className="px-4 pb-4 font-mono text-xs leading-relaxed overflow-y-auto max-h-72"
           >
             {logs.map((line, i) => {
-              if (line.type === "start")
-                return <div key={i} className="text-amber-400 mt-1">Found {line.totalSources} sources to scan</div>;
+              if (line.type === "phase")
+                return <div key={i} className="text-yellow-200 font-bold mt-3 border-t border-amber-800 pt-2">▸ {line.label}</div>;
+              if (line.type === "start" && line.phase === "fetch-feeds")
+                return <div key={i} className="text-amber-400 mt-1">Found {line.totalSources} sources — scanning chunk of {line.chunkSize ?? "?"}</div>;
+              if (line.type === "start" && line.phase === "classify")
+                return <div key={i} className="text-amber-400 mt-1">Queue depth: {line.queueDepth} — classifying batch of {line.batchSize}</div>;
               if (line.type === "source")
                 return <div key={i} className="text-yellow-300 font-semibold mt-2">📡 {line.name}</div>;
-              if (line.type === "article" && line.verdict === "added")
+              if (line.type === "item" && line.verdict === "queued")
+                return <div key={i} className="text-blue-300 pl-3">⏳ {line.title}</div>;
+              if (line.type === "item")
+                return <div key={i} className="text-amber-300 pl-3">→ {line.title}{line.source ? <span className="text-amber-500"> · {line.source}</span> : null}</div>;
+              if (line.type === "result" && line.verdict === "added")
                 return <div key={i} className="text-green-400 pl-3">✓ {line.title}</div>;
-              if (line.type === "article" && line.verdict === "filtered")
+              if (line.type === "result" && line.verdict === "filtered")
                 return <div key={i} className="text-red-400 pl-3">✗ {line.title}{line.reason ? <span className="text-red-600"> — {line.reason}</span> : null}</div>;
+              if (line.type === "result" && line.verdict === "error")
+                return <div key={i} className="text-orange-400 pl-3">⚠ {line.title}{line.message ? <span className="text-orange-600"> — {line.message}</span> : null}</div>;
               if (line.type === "source_done")
-                return <div key={i} className="text-amber-600 pl-3 pb-1">↳ +{line.added} added · {line.filtered} filtered · {line.skipped} already known</div>;
+                return <div key={i} className="text-amber-600 pl-3 pb-1">↳ +{line.queued} queued · {line.skipped} already known</div>;
               if (line.type === "source_error")
                 return <div key={i} className="text-orange-400 pl-3">⚠ {line.name}: {line.message}</div>;
-              if (line.type === "done")
-                return <div key={i} className="text-green-300 font-semibold mt-2">✅ Done — {line.added} added · {line.filtered} filtered · {line.skipped} already known</div>;
+              if (line.type === "done" && line.phase === "fetch-feeds")
+                return <div key={i} className="text-green-300 font-semibold mt-2">✅ Phase 1 chunk done — {line.queued} queued · {line.skipped} skipped · queue depth {line.queueDepth}</div>;
+              if (line.type === "done" && line.phase === "classify")
+                return <div key={i} className="text-green-300 font-semibold mt-2">✅ Phase 2 batch done — {line.added} added · {line.filtered} filtered{line.errored ? ` · ${line.errored} errored` : ""} · queue depth {line.queueDepth}</div>;
               if (line.type === "fatal")
                 return <div key={i} className="text-red-300 font-semibold mt-2">💥 {line.message}</div>;
               if (line.type === "exporting")
@@ -275,12 +355,14 @@ export default function PreviewPage() {
             {fetching && <div className="text-amber-700 animate-pulse mt-1">▌</div>}
           </div>
 
-          {/* Summary bar when done */}
-          {doneEvent && (
+          {/* Summary bar — aggregates Phase 1 + Phase 2 totals across all chunks/batches */}
+          {hasAnyDone && (
             <div className="border-t border-amber-800 px-4 py-2 flex gap-4 text-xs">
-              <span className="text-green-400 font-semibold">+{doneEvent.added} new</span>
-              <span className="text-red-400">{doneEvent.filtered} filtered</span>
-              <span className="text-amber-600">{doneEvent.skipped} skipped</span>
+              <span className="text-green-400 font-semibold">+{totals.added} added</span>
+              <span className="text-red-400">{totals.filtered} filtered</span>
+              <span className="text-blue-300">{totals.queued} queued</span>
+              <span className="text-amber-600">{totals.skipped} skipped</span>
+              {totals.errored > 0 && <span className="text-orange-400">{totals.errored} errored</span>}
             </div>
           )}
         </div>

@@ -119,6 +119,22 @@ export async function initSchema() {
     // the same LLM call that does the positivity filter.
     "ALTER TABLE raw_articles ADD COLUMN preview_title_en TEXT",
     "ALTER TABLE raw_articles ADD COLUMN preview_snippet_en TEXT",
+
+    // v2.19: staging queue for the two-phase fetch pipeline. /api/fetch-feeds
+    // pulls RSS items, dedups against raw_articles/rejected_articles/articles,
+    // and inserts genuinely new items here. /api/classify then drains this
+    // queue through the LLM filter into raw_articles or rejected_articles.
+    // Splitting the work means each Vercel invocation is bounded — RSS fetches
+    // (Phase 1) don't compete with LLM calls (Phase 2) for the 60s budget.
+    `CREATE TABLE IF NOT EXISTS pending_items (
+      id              INTEGER PRIMARY KEY AUTOINCREMENT,
+      source_id       INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
+      url             TEXT NOT NULL UNIQUE,
+      title           TEXT NOT NULL,
+      snippet         TEXT,
+      source_pub_date TEXT,
+      queued_at       TEXT NOT NULL DEFAULT (datetime('now'))
+    )`,
   ];
 
   for (const sql of migrations) {
