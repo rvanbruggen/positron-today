@@ -36,6 +36,8 @@ export async function proxy(request: NextRequest) {
     "/api/post-pending-social",
     "/api/positronitron",
     "/api/fetch",
+    "/api/fetch-feeds",
+    "/api/classify",
     "/api/instagram-card-preview",
   ];
   if (publicPaths.some((p) => pathname.startsWith(p))) {

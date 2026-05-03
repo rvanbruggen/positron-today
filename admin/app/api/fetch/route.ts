@@ -7,6 +7,12 @@ import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import { isNativeOutputLanguage } from "@/lib/languages";
 import RSSParser from "rss-parser";
 
+// LEGACY single-phase route. Kept for backward compatibility with existing
+// crons (e.g. Synology) that still POST /api/fetch?auto=1. New deployments
+// should call /api/fetch-feeds (Phase 1, no LLM) and /api/classify (Phase 2,
+// LLM filter) separately — that split keeps each invocation well under
+// Vercel's 60s budget regardless of source count.
+
 // 8s per-feed timeout: a single hanging RSS host used to eat the whole
 // 60s Vercel budget. rss-parser has no default timeout.
 const parser = new RSSParser({ timeout: 8000 });
@@ -109,13 +115,14 @@ export async function POST(request: Request) {
             const items = feed.items.slice(0, 10).filter(i => i.link && i.title);
 
             for (const item of items) {
-              const [existingRaw, existingRejected, existingArticle] = await Promise.all([
+              const [existingPending, existingRaw, existingRejected, existingArticle] = await Promise.all([
+                db.execute({ sql: "SELECT id FROM pending_items WHERE url = ?", args: [item.link!] }),
                 db.execute({ sql: "SELECT id FROM raw_articles WHERE url = ?", args: [item.link!] }),
                 db.execute({ sql: "SELECT id FROM rejected_articles WHERE url = ?", args: [item.link!] }),
                 db.execute({ sql: "SELECT id FROM articles WHERE source_url = ?", args: [item.link!] }),
               ]);
 
-              if (existingRaw.rows.length > 0 || existingRejected.rows.length > 0 || existingArticle.rows.length > 0) {
+              if (existingPending.rows.length > 0 || existingRaw.rows.length > 0 || existingRejected.rows.length > 0 || existingArticle.rows.length > 0) {
                 skipped++;
                 continue;
               }
