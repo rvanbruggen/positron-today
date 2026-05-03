@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-05-03T17:19:30.842Z",
-  "total_rejected": 16220,
+  "exported_at": "2026-05-03T17:30:32.527Z",
+  "total_rejected": 16225,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 3937
+      "count": 3939
     },
     {
       "category": "soft-news-filler",
-      "count": 1900
+      "count": 1902
     },
     {
       "category": "crime-violence",
@@ -17,7 +17,7 @@
     },
     {
       "category": "sports-negative",
-      "count": 1621
+      "count": 1622
     },
     {
       "category": "celebrity-entertainment",
@@ -69,6 +69,46 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Mike Penders en Diego Moreira verliezen tegen Toulouse, Juventus op achterstand tegen laagvlieger Hellas Verona ",
+      "reason": "The article discusses sports results and standings, which do not meet the positive-news criteria as they focus on negative outcomes for specific teams.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/voetbal/mike-penders-en-diego-moreira-verliezen-tegen-toulouse-juventus-op-achterstand-tegen-laagvlieger-hellas-verona/83116277.html",
+      "date": "2026-05-03 19:30"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "LIVE MIDDEN-OOSTEN. Nieuwe details over Iraans vredesvoorstel: einde aan de oorlog binnen dertig dagen, maar geen nucleaire ontmanteling",
+      "reason": "The article discusses a political proposal related to the ongoing conflict in the Middle East, which does not provide an uplifting or universally positive message.",
+      "category": "political-conflict",
+      "url": "https://www.gva.be/buitenland/live-midden-oosten.-nieuwe-details-over-iraans-vredesvoorstel-einde-aan-de-oorlog-binnen-dertig-dagen-maar-geen-nucleaire-ontmanteling/76854338.html",
+      "date": "2026-05-03 19:30"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Bewoners Linkeroever zwaaien laatste tram uit: “We gaan ze hard missen”",
+      "reason": "The article focuses on a local event related to the farewell of a tram service, which lacks broader human relevance and would not interest readers outside the local area.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/borgerhout/bewoners-linkeroever-zwaaien-laatste-tram-uit-we-gaan-ze-hard-missen/151002285.html",
+      "date": "2026-05-03 19:30"
+    },
+    {
+      "source": "De Standaard Buitenland",
+      "title": "Al Jazeera deelt nieuwe details over Iraans vredesplan",
+      "reason": "The article discusses a political peace plan related to the Middle East, which falls under political conflict and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.standaard.be/buitenland/al-jazeera-deelt-nieuwe-details-over-iraans-vredesplan/35173881.html",
+      "date": "2026-05-03 19:30"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "\"Dit had hij zeker aangemoedigd\": zitbank in Herentals voor overleden radiostem Christophe Lambrecht",
+      "reason": "The article focuses on a local tribute to a deceased radio personality, which may not have broad relevance outside the local community and does not uplift in a universal sense.",
+      "category": "soft-news-filler",
+      "url": "https://vrtnws.be/p.ewoORmKlE",
+      "date": "2026-05-03 19:30"
+    },
     {
       "source": "Dagens Nyheter",
       "title": "Direkt: Partiledardebatt i SVT:s Agenda",
@@ -8028,46 +8068,6 @@
       "category": "tech-ai-concern",
       "url": "https://www.wired.com/story/openai-enables-cookies-by-default-for-free-chatgpt-users/",
       "date": "2026-05-02 00:30"
-    },
-    {
-      "source": "Popular Science",
-      "title": "Why parrots talk like humans",
-      "reason": "The article focuses on a specific aspect of animal behavior, which may not have broad human relevance and could be considered more of a soft news filler rather than uplifting content.",
-      "category": "soft-news-filler",
-      "url": "https://www.popsci.com/environment/why-parrots-talk-podcast/",
-      "date": "2026-05-02 00:30"
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "Peter Kay show evacuated and man held after police investigate 'suspicious bag'",
-      "reason": "The article reports on a police investigation related to a suspicious bag, which is a negative event involving potential danger and crime.",
-      "category": "crime-violence",
-      "url": "https://www.bbc.com/news/articles/c4g4xkw87p5o?at_medium=RSS&at_campaign=rss",
-      "date": "2026-05-02 00:30"
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "Trump tells Congress ceasefire means he does not need their approval for Iran war",
-      "reason": "The article discusses a political decision regarding military action, which is inherently negative and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.bbc.com/news/articles/c4g4xexy4w7o?at_medium=RSS&at_campaign=rss",
-      "date": "2026-05-02 00:30"
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "US to cut troop levels in Germany by 5,000 amid Trump spat with Merz",
-      "reason": "The article discusses a reduction in US troop levels in Germany amid political tensions, which is a negative and contentious topic rather than uplifting news.",
-      "category": "political-conflict",
-      "url": "https://www.bbc.com/news/articles/c0729d374mxo?at_medium=RSS&at_campaign=rss",
-      "date": "2026-05-02 00:30"
-    },
-    {
-      "source": "De Standaard Economie",
-      "title": "Alphabet ontpopt zich stilaan als de kampioen van de AI-race",
-      "reason": "The article focuses on corporate performance and competition in the tech industry, which falls under corporate PR and routine tech updates, lacking broad human relevance.",
-      "category": "tech-ai-concern",
-      "url": "https://www.standaard.be/economie/beurs/alphabet-ontpopt-zich-stilaan-als-de-kampioen-van-de-ai-race/150647931.html",
-      "date": "2026-05-02 00:00"
     }
   ]
 }
