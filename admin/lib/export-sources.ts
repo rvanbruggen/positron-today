@@ -36,6 +36,23 @@ type SourceRow = {
   language: string;
 };
 
+// Some legacy DB rows have URLs without a scheme ("www.politiken.dk") or with
+// a capitalised scheme ("Https://elpais.com"). When those land verbatim in an
+// <a href="..."> on the public site, the browser treats a scheme-less value
+// as a RELATIVE path → /about/www.politiken.dk → 404. Normalise here so the
+// JSON committed to the public repo is always safe to drop into an <a> tag.
+function normaliseSourceUrl(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) return trimmed;
+  const m = trimmed.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):/);
+  if (m) {
+    // Scheme present — lower-case the scheme part, keep the rest verbatim.
+    return m[1].toLowerCase() + trimmed.slice(m[1].length);
+  }
+  // No scheme at all → assume https.
+  return `https://${trimmed}`;
+}
+
 export async function exportSources(): Promise<{ exported: number }> {
   if (!GITHUB_TOKEN || !GITHUB_REPO) {
     throw new Error("GITHUB_TOKEN and GITHUB_REPO must be set");
@@ -59,7 +76,7 @@ export async function exportSources(): Promise<{ exported: number }> {
     const lang = row.language in byLanguage ? row.language : "en";
     byLanguage[lang].push({
       name:     row.name,
-      url:      row.url,
+      url:      normaliseSourceUrl(row.url),
       feed_url: row.feed_url || null,
     });
   }
