@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-05-04T01:30:35.060Z",
-  "total_rejected": 16434,
+  "exported_at": "2026-05-04T02:00:35.426Z",
+  "total_rejected": 16440,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 3993
+      "count": 3995
     },
     {
       "category": "soft-news-filler",
-      "count": 1922
+      "count": 1923
     },
     {
       "category": "sports-negative",
@@ -29,7 +29,7 @@
     },
     {
       "category": "economic-doom",
-      "count": 993
+      "count": 994
     },
     {
       "category": "war-conflict",
@@ -37,7 +37,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 844
+      "count": 845
     },
     {
       "category": "human-discarded",
@@ -49,7 +49,7 @@
     },
     {
       "category": "health-scare",
-      "count": 431
+      "count": 432
     },
     {
       "category": "tech-ai-concern",
@@ -69,6 +69,54 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "Aux États-Unis, un Boeing 767 heurte un camion sur une autoroute",
+      "reason": "The article discusses an accident involving a plane and a truck, which is inherently negative and focuses on a potentially dangerous situation rather than uplifting content.",
+      "category": "disaster-accident",
+      "url": "https://www.lefigaro.fr/international/aux-etats-unis-un-boeing-767-heurte-un-camion-sur-une-autoroute-20260504",
+      "date": "2026-05-04 04:00"
+    },
+    {
+      "source": "The New York Times",
+      "title": "3 Dead in Hantavirus Outbreak Aboard Cruise Ship, W.H.O. Says",
+      "reason": "The article reports on a hantavirus outbreak resulting in deaths, which is a serious health scare and not uplifting.",
+      "category": "health-scare",
+      "url": "https://www.nytimes.com/2026/05/03/well/cruise-ship-virus-fatal-outbreak.html",
+      "date": "2026-05-04 04:00"
+    },
+    {
+      "source": "De Morgen",
+      "title": "‘Wij aanvaarden de krijtlijnen van cd&v niet’: Vooruit wil voor de zomer nog doorbraak in euthanasie voor dementerenden",
+      "reason": "The article discusses political conflict regarding euthanasia legislation, which is a divisive and sensitive topic, lacking a positive or uplifting angle.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/politiek/wij-aanvaarden-de-krijtlijnen-van-cd-v-niet-vooruit-wil-voor-de-zomer-nog-doorbraak-in-euthanasie-voor-dementerenden~b823948a/",
+      "date": "2026-05-04 04:00"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Burgers in Pickering besluiten zelf handen uit de mouwen te steken: ‘Ik wil in een plaats wonen die er netjes uitziet’",
+      "reason": "The article focuses on a local initiative in Pickering, which may not have broad relevance or interest outside the immediate community.",
+      "category": "soft-news-filler",
+      "url": "https://www.demorgen.be/beter-leven/burgers-in-pickering-besluiten-zelf-handen-uit-de-mouwen-te-steken-ik-wil-in-een-plaats-wonen-die-er-netjes-uitziet~b6a2ef35/",
+      "date": "2026-05-04 04:00"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Giorgia Meloni nadert record van Berlusconi, maar haar ‘magie lijkt te vervagen’",
+      "reason": "The article discusses Giorgia Meloni's political standing and suggests a decline in her influence, which falls under political commentary and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/nieuws/giorgia-meloni-nadert-record-van-berlusconi-maar-haar-magie-lijkt-te-vervagen~b828e8ef/",
+      "date": "2026-05-04 04:00"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Heeft China last van Trumps tarieven? En de Iran-oorlog? ‘Onderschat nooit de veerkracht van de Chinese fabrikant’",
+      "reason": "The article discusses economic challenges and geopolitical issues, which are not uplifting and focus on negative aspects of international relations and trade.",
+      "category": "economic-doom",
+      "url": "https://www.demorgen.be/nieuws/heeft-china-last-van-trumps-tarieven-en-de-iran-oorlog-onderschat-nooit-de-veerkracht-van-de-chinese-fabrikant~bee5860f/",
+      "date": "2026-05-04 04:00"
+    },
     {
       "source": "Neue Zürcher Zeitung",
       "title": "Es geht nicht nur um Öl: Der Austritt der Emirate aus dem Kartell Opec zeugt vom Bruderzwist mit Saudiarabien",
@@ -8019,54 +8067,6 @@
       "reason": "The article discusses the dissatisfaction with a common medical treatment for endometriosis, which is a health issue that can be distressing and negative in nature.",
       "category": "health-scare",
       "url": "https://sante.lefigaro.fr/social/sante-publique/c-est-tres-frequent-que-les-femmes-veuillent-arreter-contre-l-endometriose-l-option-insatisfaisante-d-une-vie-sous-pilule-20260502",
-      "date": "2026-05-02 12:30"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Carburants : l’indemnité de 50 euros pour «travailleurs modestes grands rouleurs» est publiée au journal officiel",
-      "reason": "The article discusses a government financial aid program, which falls under political content and lacks broad human relevance beyond a specific context.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/conso/carburants-l-indemnite-de-50-euros-pour-travailleurs-modestes-grands-rouleurs-est-publiee-au-journal-officiel-20260502",
-      "date": "2026-05-02 12:30"
-    },
-    {
-      "source": "The Washington Post",
-      "title": "A mob hit in Ireland, a 10-year manhunt and an arrest in Dubai",
-      "reason": "The article discusses a mob hit and a manhunt, which are negative and violent topics, lacking uplifting content.",
-      "category": "crime-violence",
-      "url": "https://www.washingtonpost.com/world/2026/05/02/ireland-daniel-kinahan-arrested-dubai/",
-      "date": "2026-05-02 12:30"
-    },
-    {
-      "source": "The New York Times",
-      "title": "How Germany Misjudged Trump’s Anger on Iran",
-      "reason": "The article discusses political conflict and criticism involving President Trump, which does not align with positive news standards.",
-      "category": "political-conflict",
-      "url": "https://www.nytimes.com/2026/05/02/world/europe/germany-trump-merz-troops-withdrawal.html",
-      "date": "2026-05-02 12:30"
-    },
-    {
-      "source": "The New York Times",
-      "title": "N.I.H. Reinstates Employee Put on Leave After Criticizing Trump Research Cuts",
-      "reason": "The article discusses a political conflict involving a whistle-blower complaint and retaliation, which does not fit the positive-news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.nytimes.com/2026/05/01/us/politics/trump-jenna-norton-nih.html",
-      "date": "2026-05-02 12:30"
-    },
-    {
-      "source": "The New York Times",
-      "title": "Kennedy Consulted With Scandal P.R. Firm While Seeking Cabinet Nomination",
-      "reason": "The article discusses a political figure's consultation with a P.R. firm involved in negative campaigning, which is not uplifting and relates to political conflict.",
-      "category": "political-conflict",
-      "url": "https://www.nytimes.com/2026/05/01/nyregion/kennedy-lively-baldoni-smear-campaign.html",
-      "date": "2026-05-02 12:30"
-    },
-    {
-      "source": "The New York Times",
-      "title": "Trump’s Vision for D.C. ‘Garden of Heroes’ Statues Grows in Size and Cost",
-      "reason": "The article discusses a political project related to a controversial figure, which does not align with positive news standards and may not uplift readers.",
-      "category": "political-conflict",
-      "url": "https://www.nytimes.com/2026/05/02/us/politics/trump-garden-of-heroes-statues.html",
       "date": "2026-05-02 12:30"
     }
   ]
