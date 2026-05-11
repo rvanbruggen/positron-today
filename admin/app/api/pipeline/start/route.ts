@@ -1,7 +1,5 @@
-import { after } from "next/server";
 import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
-import { selfFetch } from "@/lib/self-url";
 
 export async function POST() {
   const settings = await getSettings();
@@ -45,20 +43,6 @@ export async function POST() {
     args: [totalSources],
   });
   const runId = Number(result.lastInsertRowid);
-
-  // Fire off the first step after the response is sent.
-  after(async () => {
-    try {
-      const res = await selfFetch("/api/pipeline/step", { runId, phase: "fetch", offset: 0 });
-      if (!res.ok) throw new Error(`Step self-call returned ${res.status}`);
-    } catch (err) {
-      const msg = `Failed to start first step: ${err}`;
-      await db.execute({
-        sql: `UPDATE pipeline_runs SET status = 'error', error_message = ?, log = ?, finished_at = datetime('now') WHERE id = ?`,
-        args: [msg, JSON.stringify([{ type: "fatal", message: msg }]), runId],
-      });
-    }
-  });
 
   return Response.json({ runId });
 }
