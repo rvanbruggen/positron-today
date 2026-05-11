@@ -34,7 +34,7 @@ async function appendLog(runId: number, entries: object[]) {
 
 async function updateRun(runId: number, fields: Record<string, string | number | null>) {
   const keys = Object.keys(fields);
-  const sets = keys.map(k => `${k} = ?`).join(", ");
+  const sets = keys.map(k => `"${k}" = ?`).join(", ");
   const args: (string | number | null)[] = keys.map(k => fields[k]);
   args.push(runId);
   await db.execute({ sql: `UPDATE pipeline_runs SET ${sets} WHERE id = ?`, args });
