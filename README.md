@@ -213,16 +213,15 @@ Additional settings available in the Settings page:
 
 Click **Fetch New Articles** on the Preview page. The admin:
 
-1. Queries all active sources that have a `feed_url`
-2. For each feed, retrieves up to 20 recent items
-3. Skips articles already in `raw_articles` or `rejected_articles`
-4. Sends each new headline + snippet to the **configured filter model** with the positivity filter prompt
-5. The model returns `{"verdict":"YES"}` or `{"verdict":"NO","reason":"..."}`
-6. Positive articles → `raw_articles` table (status: pending)
-7. Negative articles → `rejected_articles` table with rejection reason
-8. After all sources are processed, auto-exports the rejection log to `site/src/_data/rejections.json` via the GitHub API, triggering a site rebuild
+1. Creates a task queue in the database — one task per chunk of sources (fetch), a planning task, one task per batch of queued items (classify), and an export task
+2. For each fetch task: queries a chunk of active sources, retrieves up to 10 recent RSS items per feed, skips articles already in `raw_articles`, `rejected_articles`, or `articles`, and queues genuinely new items in `pending_items`
+3. For each classify task: sends a batch of queued items to the **configured filter model** with the positivity filter prompt
+4. The model returns `{"verdict":"YES"}` or `{"verdict":"NO","reason":"..."}`
+5. Positive articles → `raw_articles` table (status: pending)
+6. Negative articles → `rejected_articles` table with rejection reason
+7. After all items are classified, auto-exports the rejection log to `site/src/_data/rejections.json` via the GitHub API, triggering a site rebuild
 
-Progress is streamed to the browser as newline-delimited JSON (NDJSON) so you see a live log as articles are processed.
+The browser polls `/api/pipeline/tick` every 2 seconds; each tick picks the next pending task, executes it, and returns progress. If the browser tab is closed or the mobile app is backgrounded, the tasks remain in the database — reopening the page resumes from where it left off. An external cron (e.g. Synology NAS) can also call the same endpoint to keep the pipeline moving without a browser.
 
 #### Step 3b — Manual URL submission (optional)
 
@@ -361,6 +360,9 @@ This is the migration path between environments (e.g. local SQLite → Turso clo
 | `articles` | Published articles (title_en/nl/fr, summary_en/nl/fr, emoji, tags, image_url, published_at, published_path) |
 | `article_tags` | Many-to-many join between articles and topics |
 | `rejected_articles` | Articles rejected by the AI filter (source_name, url, title, snippet, rejection_reason, fetched_at) |
+| `pending_items` | Staging queue for RSS items awaiting LLM classification |
+| `pipeline_runs` | Tracks each fetch-classify cycle (status, phase, counters, log) |
+| `pipeline_tasks` | Task queue for pipeline work items (fetch chunks, classify batches, export) |
 | `settings` | Key-value store for LLM provider/model configuration |
 
 ---
