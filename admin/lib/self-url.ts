@@ -20,11 +20,13 @@ async function makeInternalToken(): Promise<string | null> {
 
 export async function selfFetch(path: string, body: object): Promise<Response> {
   const token = await makeInternalToken();
+  const bypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
   return fetch(selfUrl(path), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(bypass ? { "x-vercel-protection-bypass": bypass } : {}),
     },
     body: JSON.stringify(body),
   });
