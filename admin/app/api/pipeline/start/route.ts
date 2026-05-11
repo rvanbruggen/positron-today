@@ -49,16 +49,16 @@ export async function POST() {
   // Fire off the first step after the response is sent.
   after(async () => {
     try {
-      await fetch(selfUrl("/api/pipeline/step"), {
+      const res = await fetch(selfUrl("/api/pipeline/step"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ runId, phase: "fetch", offset: 0 }),
       });
-    } catch {
-      // If the self-call fails, mark the run as errored so the UI isn't stuck.
+      if (!res.ok) throw new Error(`Step self-call returned ${res.status}`);
+    } catch (err) {
       await db.execute({
-        sql: `UPDATE pipeline_runs SET status = 'error', error_message = 'Failed to start first step', finished_at = datetime('now') WHERE id = ?`,
-        args: [runId],
+        sql: `UPDATE pipeline_runs SET status = 'error', error_message = ?, finished_at = datetime('now') WHERE id = ?`,
+        args: [`Failed to start first step: ${err}`, runId],
       });
     }
   });

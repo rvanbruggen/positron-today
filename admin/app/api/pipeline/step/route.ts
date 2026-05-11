@@ -43,15 +43,16 @@ async function updateRun(runId: number, fields: Record<string, string | number |
 function chainNext(payload: StepPayload) {
   after(async () => {
     try {
-      await fetch(selfUrl("/api/pipeline/step"), {
+      const res = await fetch(selfUrl("/api/pipeline/step"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-    } catch {
+      if (!res.ok) throw new Error(`Step self-call returned ${res.status}`);
+    } catch (err) {
       await db.execute({
-        sql: `UPDATE pipeline_runs SET status = 'error', error_message = 'Failed to chain next step', finished_at = datetime('now') WHERE id = ?`,
-        args: [payload.runId],
+        sql: `UPDATE pipeline_runs SET status = 'error', error_message = ?, finished_at = datetime('now') WHERE id = ?`,
+        args: [`Failed to chain next step: ${err}`, payload.runId],
       });
     }
   });
