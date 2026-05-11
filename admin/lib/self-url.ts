@@ -24,7 +24,7 @@ export async function selfFetch(path: string, body: object): Promise<Response> {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(token ? { Cookie: `admin_session=${token}` } : {}),
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify(body),
   });

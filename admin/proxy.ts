@@ -58,7 +58,12 @@ export async function proxy(request: NextRequest) {
   const expected = await makeToken(secret);
   const session  = request.cookies.get(COOKIE)?.value;
 
-  if (session === expected) {
+  // Also accept Authorization: Bearer <token> for server-to-server self-calls
+  // (Vercel strips Cookie headers from internal fetch requests)
+  const authHeader = request.headers.get("authorization");
+  const bearerToken = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+
+  if (session === expected || bearerToken === expected) {
     return NextResponse.next();
   }
 
