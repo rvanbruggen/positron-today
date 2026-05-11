@@ -10,14 +10,29 @@ export async function POST() {
   }
 
   // Prevent overlapping runs — abort if one is already in progress.
+  // Auto-stop stale runs older than 10 minutes so the UI never gets permanently stuck.
   const existing = await db.execute(
-    "SELECT id FROM pipeline_runs WHERE status = 'running' LIMIT 1",
+    "SELECT id, started_at FROM pipeline_runs WHERE status = 'running' LIMIT 1",
   );
   if (existing.rows.length > 0) {
-    return Response.json(
-      { error: "A pipeline run is already in progress.", runId: existing.rows[0].id },
-      { status: 409 },
-    );
+    const startedAt = existing.rows[0].started_at
+      ? new Date(String(existing.rows[0].started_at)).getTime()
+      : 0;
+    const ageMs = Date.now() - startedAt;
+    if (ageMs > 10 * 60 * 1000) {
+      await db.execute({
+        sql: `UPDATE pipeline_runs
+              SET status = 'error', error_message = 'Timed out (stale run)', finished_at = datetime('now')
+              WHERE id = ?`,
+        args: [existing.rows[0].id],
+      });
+      await db.execute("DELETE FROM pending_items");
+    } else {
+      return Response.json(
+        { error: "A pipeline run is already in progress.", runId: existing.rows[0].id },
+        { status: 409 },
+      );
+    }
   }
 
   const totalResult = await db.execute(

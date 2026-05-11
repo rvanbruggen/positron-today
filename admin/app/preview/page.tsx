@@ -66,6 +66,7 @@ export default function PreviewPage() {
   const [manualResult, setManualResult] = useState<{ ok: boolean; message: string } | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [activeRunId, setActiveRunId] = useState<number | null>(null);
 
   async function load() {
     const res = await fetch("/api/articles?status=pending");
@@ -79,6 +80,7 @@ export default function PreviewPage() {
   }, [logs]);
 
   // On mount, check if a run is already in progress (e.g. user navigated away and came back).
+  // Also detect stale runs that got stuck (no update for >10 min) and auto-stop them.
   useEffect(() => {
     (async () => {
       try {
@@ -86,7 +88,20 @@ export default function PreviewPage() {
         const data = await res.json();
         const run = data.run ?? data;
         if (run?.status === "running" && run?.id) {
+          // Check if this run is stale (started >10 min ago with no progress)
+          const startedAt = run.started_at ? new Date(run.started_at).getTime() : 0;
+          const ageMs = Date.now() - startedAt;
+          if (ageMs > 10 * 60 * 1000) {
+            // Auto-stop stale run
+            await fetch("/api/pipeline/stop", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ runId: Number(run.id) }),
+            });
+            return;
+          }
           setFetching(true);
+          setActiveRunId(Number(run.id));
           setTotalSources(Number(run.total_sources ?? 0));
           setSourcesDone(Number(run.sources_done ?? 0));
           if (run.log) setLogs(Array.isArray(run.log) ? run.log : JSON.parse(run.log));
@@ -129,6 +144,7 @@ export default function PreviewPage() {
         if (run.status === "done" || run.status === "error") {
           setProgress(run.status === "done" ? 100 : progress);
           setFetching(false);
+          setActiveRunId(null);
           if (pollRef.current) clearInterval(pollRef.current);
           pollRef.current = null;
           load();
@@ -150,7 +166,7 @@ export default function PreviewPage() {
 
       if (!res.ok) {
         if (data.runId) {
-          // Already running — attach to it.
+          setActiveRunId(data.runId);
           startPolling(data.runId);
           return;
         }
@@ -159,11 +175,23 @@ export default function PreviewPage() {
         return;
       }
 
+      setActiveRunId(data.runId);
       startPolling(data.runId);
     } catch (err) {
       setLogs([{ type: "fatal", message: String(err) }]);
       setFetching(false);
     }
+  }
+
+  async function stopPipeline() {
+    if (!activeRunId) return;
+    try {
+      await fetch("/api/pipeline/stop", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ runId: activeRunId }),
+      });
+    } catch { /* polling will pick up the state change */ }
   }
 
   async function addManualUrl(e: React.FormEvent) {
@@ -200,7 +228,8 @@ export default function PreviewPage() {
     setArticles(prev => prev.filter(a => a.id !== id));
   }
 
-  const isDone = logs.some(l => l.type === "exported" || l.type === "export_error" || l.type === "fatal");
+  const isCancelled = logs.some(l => l.type === "fatal" && "message" in l && l.message === "Cancelled by user");
+  const isDone = isCancelled || logs.some(l => l.type === "exported" || l.type === "export_error" || l.type === "fatal");
   // Aggregate counters across all phases for the bottom summary bar
   const totals = logs.reduce(
     (acc, l) => {
@@ -222,13 +251,23 @@ export default function PreviewPage() {
     <div>
       <div className="flex items-center justify-between mb-1 gap-3 flex-wrap">
         <h1 className="text-2xl font-bold text-amber-900">Preview</h1>
-        <button
-          onClick={fetchNew}
-          disabled={fetching}
-          className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
-        >
-          {fetching ? "Fetching…" : "Fetch new articles"}
-        </button>
+        <div className="flex gap-2">
+          {fetching && (
+            <button
+              onClick={stopPipeline}
+              className="bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors"
+            >
+              Stop
+            </button>
+          )}
+          <button
+            onClick={fetchNew}
+            disabled={fetching}
+            className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+          >
+            {fetching ? "Fetching…" : "Fetch new articles"}
+          </button>
+        </div>
       </div>
       <p className="text-amber-700 text-sm mb-4">
         Review incoming articles. Approve the ones worth summarising, discard the rest.
@@ -273,7 +312,7 @@ export default function PreviewPage() {
                     : progress < 100
                       ? "Phase 2 — classifying queued items…"
                       : "Finalising…"
-                  : isDone ? "Fetch complete" : "Starting…"}
+                  : isCancelled ? "Stopped by user" : isDone ? "Fetch complete" : "Ready"}
               </span>
               <span>{progress}%</span>
             </div>
