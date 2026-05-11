@@ -66,6 +66,7 @@ export default function PreviewPage() {
   const [manualResult, setManualResult] = useState<{ ok: boolean; message: string } | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const tickInFlight = useRef(false);
   const [activeRunId, setActiveRunId] = useState<number | null>(null);
 
   async function load() {
@@ -114,9 +115,16 @@ export default function PreviewPage() {
 
   function startPolling(runId: number) {
     if (pollRef.current) clearInterval(pollRef.current);
-    pollRef.current = setInterval(async () => {
+
+    const tick = async () => {
+      if (tickInFlight.current) return;
+      tickInFlight.current = true;
       try {
-        const res = await fetch(`/api/pipeline/status?runId=${runId}&t=${Date.now()}`);
+        const res = await fetch("/api/pipeline/tick", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ runId }),
+        });
         const run = await res.json();
         if (!run || run.error) return;
 
@@ -153,7 +161,11 @@ export default function PreviewPage() {
           load();
         }
       } catch { /* network hiccup, keep polling */ }
-    }, 2000);
+      finally { tickInFlight.current = false; }
+    };
+
+    tick();
+    pollRef.current = setInterval(tick, 2000);
   }
 
   async function fetchNew() {
