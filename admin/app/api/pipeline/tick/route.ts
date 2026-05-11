@@ -7,15 +7,17 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
   const runId = body.runId as number | undefined;
 
+  const cols = `id, status, phase, "offset", total_sources, sources_done,
+       queued, classified, added, filtered, errored, queue_depth,
+       error_message, log, started_at, finished_at`;
+  // With runId: return that specific run.
+  // Without runId: prefer a running pipeline; fall back to the most recent run
+  // (so the mount check can show error/done state after the tab was closed).
   const targetSql = runId
-    ? `SELECT id, status, phase, "offset", total_sources, sources_done,
-             queued, classified, added, filtered, errored, queue_depth,
-             error_message, log, started_at, finished_at
-       FROM pipeline_runs WHERE id = ?`
-    : `SELECT id, status, phase, "offset", total_sources, sources_done,
-             queued, classified, added, filtered, errored, queue_depth,
-             error_message, log, started_at, finished_at
-       FROM pipeline_runs WHERE status = 'running' ORDER BY id DESC LIMIT 1`;
+    ? `SELECT ${cols} FROM pipeline_runs WHERE id = ?`
+    : `SELECT ${cols} FROM pipeline_runs ORDER BY
+         CASE status WHEN 'running' THEN 0 ELSE 1 END,
+         id DESC LIMIT 1`;
   const targetArgs = runId ? [runId] : [];
   const result = await db.execute({ sql: targetSql, args: targetArgs });
 
