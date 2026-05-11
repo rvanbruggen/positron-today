@@ -80,22 +80,26 @@ export default function PreviewPage() {
     if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
   }, [logs]);
 
-  // On mount, check for a recent pipeline run (running, error, or done).
-  // If still running: resume ticking. If recently finished/errored: show the final state
-  // so the user sees what happened while the tab was closed.
+  // On mount, check for a running pipeline by calling the tick endpoint directly.
+  // The tick endpoint is in publicPaths (no auth issues) and auto-discovers active runs.
   useEffect(() => {
     (async () => {
       try {
-        const statusRes = await fetch("/api/pipeline/status");
-        const statusData = await statusRes.json();
-        const check = statusData.run ?? statusData;
-        if (!check?.id) return;
+        const res = await fetch("/api/pipeline/tick", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: "{}",
+        });
+        if (!res.ok) return;
+        const run = await res.json();
+        if (!run?.id) return;
 
-        const runId = Number(check.id);
+        const runId = Number(run.id);
+        const runLogs: LogLine[] = Array.isArray(run.log) ? run.log : JSON.parse(String(run.log ?? "[]"));
 
-        if (check.status === "running") {
+        if (run.status === "running") {
           // Auto-stop stale runs (>10 min since start)
-          const startedAt = check.started_at ? new Date(check.started_at).getTime() : 0;
+          const startedAt = run.started_at ? new Date(run.started_at).getTime() : 0;
           if (Date.now() - startedAt > 10 * 60 * 1000) {
             await fetch("/api/pipeline/stop", {
               method: "POST",
@@ -106,29 +110,20 @@ export default function PreviewPage() {
           }
           setFetching(true);
           setActiveRunId(runId);
-          setTotalSources(Number(check.total_sources ?? 0));
-          setSourcesDone(Number(check.sources_done ?? 0));
+          setTotalSources(Number(run.total_sources ?? 0));
+          setSourcesDone(Number(run.sources_done ?? 0));
+          setLogs(runLogs);
           startPolling(runId);
-          return;
-        }
-
-        // Show recent error/done runs so the user sees what happened.
-        // Only show if finished within the last 10 minutes.
-        const finishedAt = check.finished_at ? new Date(check.finished_at).getTime() : 0;
-        if (finishedAt && Date.now() - finishedAt < 10 * 60 * 1000) {
-          // Fetch full run with logs
-          const fullRes = await fetch(`/api/pipeline/status?runId=${runId}&t=${Date.now()}`);
-          const full = await fullRes.json();
-          const runLogs: LogLine[] = Array.isArray(full.log) ? full.log : JSON.parse(String(full.log ?? "[]"));
-
-          if (full.status === "error" && full.error_message && runLogs.length === 0) {
-            setLogs([{ type: "fatal", message: full.error_message }]);
-          } else {
+        } else if (run.status === "error" || run.status === "done") {
+          // Show final state so user sees what happened while the tab was closed
+          if (run.status === "error" && run.error_message && runLogs.length === 0) {
+            setLogs([{ type: "fatal", message: run.error_message }]);
+          } else if (runLogs.length > 0) {
             setLogs(runLogs);
           }
-          setTotalSources(Number(full.total_sources ?? 0));
-          setSourcesDone(Number(full.sources_done ?? 0));
-          setProgress(full.status === "done" ? 100 : 0);
+          setTotalSources(Number(run.total_sources ?? 0));
+          setSourcesDone(Number(run.sources_done ?? 0));
+          setProgress(run.status === "done" ? 100 : 0);
           load();
         }
       } catch { /* ignore */ }
