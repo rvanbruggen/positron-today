@@ -101,7 +101,7 @@ export default function PreviewPage() {
     if (pollRef.current) clearInterval(pollRef.current);
     pollRef.current = setInterval(async () => {
       try {
-        const res = await fetch(`/api/pipeline/status?runId=${runId}`);
+        const res = await fetch(`/api/pipeline/status?runId=${runId}&t=${Date.now()}`);
         const run = await res.json();
         if (!run || run.error) return;
 

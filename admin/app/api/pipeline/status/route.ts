@@ -1,12 +1,14 @@
 import db from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const runId = url.searchParams.get("runId");
 
   if (runId) {
     const result = await db.execute({
-      sql: `SELECT id, status, phase, offset, total_sources, sources_done,
+      sql: `SELECT id, status, phase, "offset", total_sources, sources_done,
                    queued, classified, added, filtered, errored, queue_depth,
                    error_message, log, started_at, finished_at
             FROM pipeline_runs WHERE id = ?`,
