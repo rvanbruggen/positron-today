@@ -1,7 +1,7 @@
 import { after } from "next/server";
 import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
-import { selfUrl } from "@/lib/self-url";
+import { processStep } from "../step/route";
 
 export async function POST() {
   const settings = await getSettings();
@@ -47,14 +47,10 @@ export async function POST() {
   const runId = Number(result.lastInsertRowid);
 
   // Fire off the first step after the response is sent.
+  // Calls processStep directly — no HTTP self-call, no proxy/auth issues.
   after(async () => {
     try {
-      const res = await fetch(selfUrl("/api/pipeline/step"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ runId, phase: "fetch", offset: 0 }),
-      });
-      if (!res.ok) throw new Error(`Step self-call returned ${res.status}`);
+      await processStep({ runId, phase: "fetch", offset: 0 });
     } catch (err) {
       const msg = `Failed to start first step: ${err}`;
       await db.execute({

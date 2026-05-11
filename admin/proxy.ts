@@ -39,7 +39,6 @@ export async function proxy(request: NextRequest) {
     "/api/fetch-feeds",
     "/api/classify",
     "/api/instagram-card-preview",
-    "/api/pipeline/step",
   ];
   if (publicPaths.some((p) => pathname.startsWith(p))) {
     return NextResponse.next();
