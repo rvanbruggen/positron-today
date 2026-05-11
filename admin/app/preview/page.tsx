@@ -80,54 +80,16 @@ export default function PreviewPage() {
     if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
   }, [logs]);
 
-  // On mount, check for a running pipeline by calling the tick endpoint directly.
-  // The tick endpoint is in publicPaths (no auth issues) and auto-discovers active runs.
+  // On mount, check localStorage for a pipeline run that was active when the tab was last open.
+  // This avoids relying on API discovery calls that may be blocked by auth/proxy.
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch("/api/pipeline/tick", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: "{}",
-        });
-        if (!res.ok) return;
-        const run = await res.json();
-        if (!run?.id) return;
-
-        const runId = Number(run.id);
-        const runLogs: LogLine[] = Array.isArray(run.log) ? run.log : JSON.parse(String(run.log ?? "[]"));
-
-        if (run.status === "running") {
-          // Auto-stop stale runs (>10 min since start)
-          const startedAt = run.started_at ? new Date(run.started_at).getTime() : 0;
-          if (Date.now() - startedAt > 10 * 60 * 1000) {
-            await fetch("/api/pipeline/stop", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ runId }),
-            });
-            return;
-          }
-          setFetching(true);
-          setActiveRunId(runId);
-          setTotalSources(Number(run.total_sources ?? 0));
-          setSourcesDone(Number(run.sources_done ?? 0));
-          setLogs(runLogs);
-          startPolling(runId);
-        } else if (run.status === "error" || run.status === "done") {
-          // Show final state so user sees what happened while the tab was closed
-          if (run.status === "error" && run.error_message && runLogs.length === 0) {
-            setLogs([{ type: "fatal", message: run.error_message }]);
-          } else if (runLogs.length > 0) {
-            setLogs(runLogs);
-          }
-          setTotalSources(Number(run.total_sources ?? 0));
-          setSourcesDone(Number(run.sources_done ?? 0));
-          setProgress(run.status === "done" ? 100 : 0);
-          load();
-        }
-      } catch { /* ignore */ }
-    })();
+    const saved = localStorage.getItem("pipeline_runId");
+    if (!saved) return;
+    const runId = Number(saved);
+    if (!runId || isNaN(runId)) { localStorage.removeItem("pipeline_runId"); return; }
+    setFetching(true);
+    setActiveRunId(runId);
+    startPolling(runId);
     return () => { if (pollRef.current) clearInterval(pollRef.current); };
   }, []);
 
@@ -174,6 +136,7 @@ export default function PreviewPage() {
           setProgress(run.status === "done" ? 100 : progress);
           setFetching(false);
           setActiveRunId(null);
+          localStorage.removeItem("pipeline_runId");
           if (pollRef.current) clearInterval(pollRef.current);
           pollRef.current = null;
           load();
@@ -200,6 +163,7 @@ export default function PreviewPage() {
       if (!res.ok) {
         if (data.runId) {
           setActiveRunId(data.runId);
+          localStorage.setItem("pipeline_runId", String(data.runId));
           startPolling(data.runId);
           return;
         }
@@ -209,6 +173,7 @@ export default function PreviewPage() {
       }
 
       setActiveRunId(data.runId);
+      localStorage.setItem("pipeline_runId", String(data.runId));
       startPolling(data.runId);
     } catch (err) {
       setLogs([{ type: "fatal", message: String(err) }]);
@@ -218,6 +183,7 @@ export default function PreviewPage() {
 
   async function stopPipeline() {
     if (!activeRunId) return;
+    localStorage.removeItem("pipeline_runId");
     try {
       await fetch("/api/pipeline/stop", {
         method: "POST",
