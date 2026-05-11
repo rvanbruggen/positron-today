@@ -50,9 +50,16 @@ function chainNext(payload: StepPayload) {
       });
       if (!res.ok) throw new Error(`Step self-call returned ${res.status}`);
     } catch (err) {
+      const msg = `Failed to chain next step: ${err}`;
+      const current = await db.execute({
+        sql: "SELECT log FROM pipeline_runs WHERE id = ?",
+        args: [payload.runId],
+      });
+      const log: object[] = JSON.parse(String(current.rows[0]?.log ?? "[]"));
+      log.push({ type: "fatal", message: msg });
       await db.execute({
-        sql: `UPDATE pipeline_runs SET status = 'error', error_message = ?, finished_at = datetime('now') WHERE id = ?`,
-        args: [`Failed to chain next step: ${err}`, payload.runId],
+        sql: `UPDATE pipeline_runs SET status = 'error', error_message = ?, log = ?, finished_at = datetime('now') WHERE id = ?`,
+        args: [msg, JSON.stringify(log), payload.runId],
       });
     }
   });

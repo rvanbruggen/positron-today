@@ -56,9 +56,10 @@ export async function POST() {
       });
       if (!res.ok) throw new Error(`Step self-call returned ${res.status}`);
     } catch (err) {
+      const msg = `Failed to start first step: ${err}`;
       await db.execute({
-        sql: `UPDATE pipeline_runs SET status = 'error', error_message = ?, finished_at = datetime('now') WHERE id = ?`,
-        args: [`Failed to start first step: ${err}`, runId],
+        sql: `UPDATE pipeline_runs SET status = 'error', error_message = ?, log = ?, finished_at = datetime('now') WHERE id = ?`,
+        args: [msg, JSON.stringify([{ type: "fatal", message: msg }]), runId],
       });
     }
   });

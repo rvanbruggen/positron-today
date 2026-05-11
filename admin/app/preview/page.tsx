@@ -142,6 +142,9 @@ export default function PreviewPage() {
         }
 
         if (run.status === "done" || run.status === "error") {
+          if (run.status === "error" && run.error_message && runLogs.length === 0) {
+            setLogs([{ type: "fatal", message: run.error_message }]);
+          }
           setProgress(run.status === "done" ? 100 : progress);
           setFetching(false);
           setActiveRunId(null);
