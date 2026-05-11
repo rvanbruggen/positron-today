@@ -1,7 +1,7 @@
 import { after } from "next/server";
 import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
-import { selfUrl } from "@/lib/self-url";
+import { selfFetch } from "@/lib/self-url";
 import { exportRejections } from "@/lib/export-rejections";
 import { getFilterProvider } from "@/lib/llm";
 import { buildFilterInstructions, buildFilterPrompt } from "@/lib/prompts";
@@ -43,11 +43,7 @@ async function updateRun(runId: number, fields: Record<string, string | number |
 function chainNext(payload: StepPayload) {
   after(async () => {
     try {
-      const res = await fetch(selfUrl("/api/pipeline/step"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const res = await selfFetch("/api/pipeline/step", payload);
       if (!res.ok) throw new Error(`Step self-call returned ${res.status}`);
     } catch (err) {
       const msg = `Failed to chain next step: ${err}`;
