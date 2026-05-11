@@ -1,6 +1,7 @@
 import { after } from "next/server";
 import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
+import { selfUrl } from "@/lib/self-url";
 import { exportRejections } from "@/lib/export-rejections";
 import { getFilterProvider } from "@/lib/llm";
 import { buildFilterInstructions, buildFilterPrompt } from "@/lib/prompts";
@@ -12,7 +13,7 @@ const FETCH_CHUNK = 15;
 const CLASSIFY_BATCH = 15;
 const parser = new RSSParser({ timeout: 8000 });
 
-export type StepPayload = {
+type StepPayload = {
   runId: number;
   phase: "fetch" | "classify" | "export";
   offset?: number;
@@ -42,7 +43,12 @@ async function updateRun(runId: number, fields: Record<string, string | number |
 function chainNext(payload: StepPayload) {
   after(async () => {
     try {
-      await processStep(payload);
+      const res = await fetch(selfUrl("/api/pipeline/step"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Step self-call returned ${res.status}`);
     } catch (err) {
       const msg = `Failed to chain next step: ${err}`;
       const current = await db.execute({
@@ -289,9 +295,9 @@ async function runExport(runId: number) {
   });
 }
 
-// ── Shared entry point: called directly by after() and by the HTTP handler ──
-export async function processStep(payload: StepPayload) {
-  const { runId, phase, offset } = payload;
+export async function POST(request: Request) {
+  const body = (await request.json()) as StepPayload;
+  const { runId, phase, offset } = body;
 
   // Verify the run still exists and is running.
   const run = await db.execute({
@@ -299,7 +305,7 @@ export async function processStep(payload: StepPayload) {
     args: [runId],
   });
   if (run.rows.length === 0 || run.rows[0].status !== "running") {
-    return;
+    return Response.json({ skipped: true });
   }
 
   try {
@@ -318,10 +324,6 @@ export async function processStep(payload: StepPayload) {
       finished_at: new Date().toISOString().replace("T", " ").slice(0, 19),
     });
   }
-}
 
-export async function POST(request: Request) {
-  const body = (await request.json()) as StepPayload;
-  await processStep(body);
   return Response.json({ ok: true });
 }
