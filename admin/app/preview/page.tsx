@@ -33,10 +33,8 @@ const ORIGIN_LABELS: Record<DuplicateHint["origin"], string> = {
   published: "a published article",
 };
 
-// Two-phase fetch pipeline:
-//   Phase 1 — /api/fetch-feeds: pulls RSS, dedups, queues new items into pending_items (no LLM)
-//   Phase 2 — /api/classify:    drains pending_items via the positivity filter
-// The UI streams NDJSON from each, loops through chunks/batches until both phases are empty.
+// Log events emitted by the server-side pipeline (stored in pipeline_runs.log).
+// The UI polls /api/pipeline/status and renders these.
 type LogLine =
   // Phase 1 events
   | { type: "start"; phase: "fetch-feeds"; totalSources: number; chunkSize?: number; offset?: number; hasMore?: boolean }
@@ -47,7 +45,7 @@ type LogLine =
   | { type: "done"; phase: "fetch-feeds"; queued: number; skipped: number; hasMore: boolean; nextOffset: number; queueDepth: number }
   // Phase 2 events
   | { type: "start"; phase: "classify"; batchSize: number; queueDepth: number }
-  | { type: "result"; verdict: "added" | "filtered" | "error"; title: string; reason?: string; message?: string }
+  | { type: "result"; verdict: "added" | "filtered" | "error"; title: string; reason?: string; message?: string; score?: number; category?: string }
   | { type: "done"; phase: "classify"; added: number; filtered: number; errored: number; processed: number; queueDepth: number; hasMore: boolean }
   // Shared / sectioning events
   | { type: "phase"; label: string }
@@ -67,6 +65,7 @@ export default function PreviewPage() {
   const [manualLoading, setManualLoading] = useState(false);
   const [manualResult, setManualResult] = useState<{ ok: boolean; message: string } | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   async function load() {
     const res = await fetch("/api/articles?status=pending");
@@ -79,26 +78,63 @@ export default function PreviewPage() {
     if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
   }, [logs]);
 
-  // Stream an NDJSON endpoint, calling onEvent for each parsed line.
-  async function streamNdjson(url: string, onEvent: (event: LogLine) => void) {
-    const res = await fetch(url, { method: "POST" });
-    if (!res.body) throw new Error("No response body");
-    const reader = res.body.getReader();
-    const decoder = new TextDecoder();
-    let buffer = "";
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split("\n");
-      buffer = lines.pop() ?? "";
-      for (const line of lines) {
-        if (!line.trim()) continue;
-        try {
-          onEvent(JSON.parse(line) as LogLine);
-        } catch { /* malformed line */ }
-      }
-    }
+  // On mount, check if a run is already in progress (e.g. user navigated away and came back).
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch("/api/pipeline/status");
+        const data = await res.json();
+        const run = data.run ?? data;
+        if (run?.status === "running" && run?.id) {
+          setFetching(true);
+          setTotalSources(Number(run.total_sources ?? 0));
+          setSourcesDone(Number(run.sources_done ?? 0));
+          if (run.log) setLogs(Array.isArray(run.log) ? run.log : JSON.parse(run.log));
+          startPolling(Number(run.id));
+        }
+      } catch { /* ignore */ }
+    })();
+    return () => { if (pollRef.current) clearInterval(pollRef.current); };
+  }, []);
+
+  function startPolling(runId: number) {
+    if (pollRef.current) clearInterval(pollRef.current);
+    pollRef.current = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/pipeline/status?runId=${runId}`);
+        const run = await res.json();
+        if (!run || run.error) return;
+
+        const runLogs: LogLine[] = Array.isArray(run.log) ? run.log : JSON.parse(String(run.log ?? "[]"));
+        setLogs(runLogs);
+
+        const total = Number(run.total_sources ?? 0);
+        const done = Number(run.sources_done ?? 0);
+        const classified = Number(run.classified ?? 0);
+        const queueDepth = Number(run.queue_depth ?? 0);
+
+        setTotalSources(total);
+        setSourcesDone(done);
+
+        if (run.phase === "fetch" || run.phase === "fetch-feeds") {
+          setProgress(total > 0 ? Math.round((done / total) * 50) : 0);
+        } else if (run.phase === "classify") {
+          const classifyTotal = classified + queueDepth;
+          const classifyPct = classifyTotal > 0 ? Math.round((classified / classifyTotal) * 50) : 0;
+          setProgress(50 + classifyPct);
+        } else if (run.phase === "export") {
+          setProgress(95);
+        }
+
+        if (run.status === "done" || run.status === "error") {
+          setProgress(run.status === "done" ? 100 : progress);
+          setFetching(false);
+          if (pollRef.current) clearInterval(pollRef.current);
+          pollRef.current = null;
+          load();
+        }
+      } catch { /* network hiccup, keep polling */ }
+    }, 2000);
   }
 
   async function fetchNew() {
@@ -108,87 +144,26 @@ export default function PreviewPage() {
     setTotalSources(0);
     setSourcesDone(0);
 
-    const FETCH_CHUNK = 15;     // sources per fetch-feeds call (no LLM, can be wide)
-    const CLASSIFY_BATCH = 15;  // items per classify call (LLM-bounded)
-
     try {
-      // ── Phase 1: drain all sources into pending_items ────────────────────
-      setLogs(prev => [...prev, { type: "phase", label: "Phase 1 — fetching feeds" }]);
-      let currentOffset = 0;
-      let total = 0;
-      let sourcesDoneCount = 0;
-      let queueDepthAfterFetch = 0;
+      const res = await fetch("/api/pipeline/start", { method: "POST" });
+      const data = await res.json();
 
-      while (true) {
-        let chunkHasMore = false;
-        let nextOffset = currentOffset + FETCH_CHUNK;
-
-        await streamNdjson(`/api/fetch-feeds?offset=${currentOffset}&limit=${FETCH_CHUNK}`, (event) => {
-          setLogs(prev => [...prev, event]);
-
-          if (event.type === "start" && event.phase === "fetch-feeds") {
-            if (total === 0) {
-              total = event.totalSources;
-              setTotalSources(total);
-            }
-          }
-          if (event.type === "source_done" || event.type === "source_error") {
-            sourcesDoneCount++;
-            setSourcesDone(sourcesDoneCount);
-            // Phase 1 occupies first 50% of the progress bar.
-            setProgress(total > 0 ? Math.round((sourcesDoneCount / total) * 50) : 0);
-          }
-          if (event.type === "done" && event.phase === "fetch-feeds") {
-            chunkHasMore = event.hasMore;
-            nextOffset = event.nextOffset;
-            queueDepthAfterFetch = event.queueDepth;
-          }
-        });
-
-        if (!chunkHasMore) break;
-        currentOffset = nextOffset;
-        setLogs(prev => [...prev, { type: "source", name: `── Next chunk (offset ${currentOffset}) ──`, url: "" }]);
+      if (!res.ok) {
+        if (data.runId) {
+          // Already running — attach to it.
+          startPolling(data.runId);
+          return;
+        }
+        setLogs([{ type: "fatal", message: data.error ?? `Error ${res.status}` }]);
+        setFetching(false);
+        return;
       }
 
-      setProgress(50);
-
-      // ── Phase 2: drain pending_items via LLM ─────────────────────────────
-      setLogs(prev => [...prev, { type: "phase", label: `Phase 2 — classifying ${queueDepthAfterFetch} item${queueDepthAfterFetch === 1 ? "" : "s"}` }]);
-
-      let queueTotal = queueDepthAfterFetch;
-      let queueProcessed = 0;
-
-      // If nothing was queued there's nothing to do — just call /api/classify
-      // once to handle leftovers from a previous run, then bail.
-      if (queueTotal === 0) queueTotal = 1; // avoid div-by-zero; loop ends after first empty batch
-
-      while (true) {
-        let batchHasMore = false;
-        let processedThisBatch = 0;
-
-        await streamNdjson(`/api/classify?limit=${CLASSIFY_BATCH}`, (event) => {
-          setLogs(prev => [...prev, event]);
-
-          if (event.type === "result") {
-            queueProcessed++;
-            const pct = 50 + Math.min(50, Math.round((queueProcessed / queueTotal) * 50));
-            setProgress(pct);
-          }
-          if (event.type === "done" && event.phase === "classify") {
-            batchHasMore = event.hasMore;
-            processedThisBatch = event.processed;
-          }
-        });
-
-        if (!batchHasMore || processedThisBatch === 0) break;
-      }
-
-      setProgress(100);
-      load();
+      startPolling(data.runId);
     } catch (err) {
-      setLogs(prev => [...prev, { type: "fatal", message: String(err) }]);
+      setLogs([{ type: "fatal", message: String(err) }]);
+      setFetching(false);
     }
-    setFetching(false);
   }
 
   async function addManualUrl(e: React.FormEvent) {

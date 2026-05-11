@@ -135,6 +135,28 @@ export async function initSchema() {
       source_pub_date TEXT,
       queued_at       TEXT NOT NULL DEFAULT (datetime('now'))
     )`,
+
+    // v2.20: server-side pipeline runs. Tracks progress so the client can
+    // disconnect (e.g. mobile backgrounding) without interrupting the work.
+    // Each row is one full fetch-feeds → classify cycle.
+    `CREATE TABLE IF NOT EXISTS pipeline_runs (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      status     TEXT NOT NULL DEFAULT 'running' CHECK(status IN ('running', 'done', 'error')),
+      phase      TEXT NOT NULL DEFAULT 'fetch',
+      offset     INTEGER NOT NULL DEFAULT 0,
+      total_sources   INTEGER NOT NULL DEFAULT 0,
+      sources_done    INTEGER NOT NULL DEFAULT 0,
+      queued     INTEGER NOT NULL DEFAULT 0,
+      classified INTEGER NOT NULL DEFAULT 0,
+      added      INTEGER NOT NULL DEFAULT 0,
+      filtered   INTEGER NOT NULL DEFAULT 0,
+      errored    INTEGER NOT NULL DEFAULT 0,
+      queue_depth     INTEGER NOT NULL DEFAULT 0,
+      error_message   TEXT,
+      log        TEXT NOT NULL DEFAULT '[]',
+      started_at TEXT NOT NULL DEFAULT (datetime('now')),
+      finished_at TEXT
+    )`,
   ];
 
   for (const sql of migrations) {
