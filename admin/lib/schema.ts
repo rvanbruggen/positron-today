@@ -157,6 +157,20 @@ export async function initSchema() {
       started_at TEXT NOT NULL DEFAULT (datetime('now')),
       finished_at TEXT
     )`,
+
+    // v2.23: task queue — each pipeline run is broken into discrete tasks
+    // that any caller (browser poll or external cron) can pick up and execute.
+    `CREATE TABLE IF NOT EXISTS pipeline_tasks (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      run_id      INTEGER NOT NULL REFERENCES pipeline_runs(id) ON DELETE CASCADE,
+      kind        TEXT NOT NULL,
+      seq         INTEGER NOT NULL DEFAULT 0,
+      status      TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'running', 'done', 'error')),
+      payload     TEXT NOT NULL DEFAULT '{}',
+      error       TEXT,
+      started_at  TEXT,
+      finished_at TEXT
+    )`,
   ];
 
   for (const sql of migrations) {

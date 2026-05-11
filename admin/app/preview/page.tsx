@@ -67,6 +67,8 @@ export default function PreviewPage() {
   const logRef = useRef<HTMLDivElement>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const tickInFlight = useRef(false);
+  const tickStartedAt = useRef(0);
+  const tickFnRef = useRef<(() => Promise<void>) | null>(null);
   const [activeRunId, setActiveRunId] = useState<number | null>(null);
 
   async function load() {
@@ -80,31 +82,92 @@ export default function PreviewPage() {
     if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
   }, [logs]);
 
-  // On mount, check localStorage for a pipeline run that was active when the tab was last open.
-  // This avoids relying on API discovery calls that may be blocked by auth/proxy.
+  // On mount, check for any active pipeline — localStorage first, then ask the server.
   useEffect(() => {
-    const saved = localStorage.getItem("pipeline_runId");
-    if (!saved) return;
-    const runId = Number(saved);
-    if (!runId || isNaN(runId)) { localStorage.removeItem("pipeline_runId"); return; }
-    setFetching(true);
-    setActiveRunId(runId);
-    startPolling(runId);
-    return () => { if (pollRef.current) clearInterval(pollRef.current); };
+    let cancelled = false;
+
+    async function resumeActivePipeline() {
+      // 1. Check localStorage for a saved runId
+      const saved = localStorage.getItem("pipeline_runId");
+      if (saved) {
+        const runId = Number(saved);
+        if (runId && !isNaN(runId)) {
+          try {
+            const res = await fetch(`/api/pipeline/status?runId=${runId}`);
+            if (res.ok) {
+              const data = await res.json();
+              if (!cancelled && data.status === "running") {
+                setFetching(true);
+                setActiveRunId(runId);
+                startPolling(runId);
+                return;
+              }
+            }
+          } catch {}
+          localStorage.removeItem("pipeline_runId");
+        } else {
+          localStorage.removeItem("pipeline_runId");
+        }
+      }
+
+      // 2. Fallback: ask the server for any running pipeline
+      if (cancelled) return;
+      try {
+        const res = await fetch("/api/pipeline/status");
+        if (res.ok) {
+          const data = await res.json();
+          const run = data.run ?? data;
+          if (!cancelled && run && run.status === "running" && run.id) {
+            const runId = Number(run.id);
+            localStorage.setItem("pipeline_runId", String(runId));
+            setFetching(true);
+            setActiveRunId(runId);
+            startPolling(runId);
+          }
+        }
+      } catch {}
+    }
+
+    resumeActivePipeline();
+
+    return () => {
+      cancelled = true;
+      if (pollRef.current) clearInterval(pollRef.current);
+    };
+  }, []);
+
+  // Handle mobile app backgrounding — reset stuck tickInFlight and fire immediate tick
+  useEffect(() => {
+    function handleVisibility() {
+      if (document.visibilityState !== "visible") return;
+      tickInFlight.current = false;
+      tickFnRef.current?.();
+    }
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
   }, []);
 
   function startPolling(runId: number) {
     if (pollRef.current) clearInterval(pollRef.current);
 
     const tick = async () => {
-      if (tickInFlight.current) return;
+      // Timeout: if a tick has been in-flight for >15s, it was likely suspended mid-request
+      if (tickInFlight.current) {
+        if (Date.now() - tickStartedAt.current > 15_000) {
+          tickInFlight.current = false;
+        } else {
+          return;
+        }
+      }
       tickInFlight.current = true;
+      tickStartedAt.current = Date.now();
       try {
         const res = await fetch("/api/pipeline/tick", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ runId }),
         });
+        if (!res.ok) return;
         const run = await res.json();
         if (!run || run.error) return;
 
@@ -113,38 +176,35 @@ export default function PreviewPage() {
 
         const total = Number(run.total_sources ?? 0);
         const done = Number(run.sources_done ?? 0);
-        const classified = Number(run.classified ?? 0);
-        const queueDepth = Number(run.queue_depth ?? 0);
 
         setTotalSources(total);
         setSourcesDone(done);
 
-        if (run.phase === "fetch" || run.phase === "fetch-feeds") {
-          setProgress(total > 0 ? Math.round((done / total) * 50) : 0);
-        } else if (run.phase === "classify") {
-          const classifyTotal = classified + queueDepth;
-          const classifyPct = classifyTotal > 0 ? Math.round((classified / classifyTotal) * 50) : 0;
-          setProgress(50 + classifyPct);
-        } else if (run.phase === "export") {
-          setProgress(95);
+        // Progress from task queue counts (tasks_total includes dynamically added classify tasks)
+        const tasksTotal = Number(run.tasks_total ?? 0);
+        const tasksDone = Number(run.tasks_done ?? 0);
+        if (tasksTotal > 0) {
+          setProgress(Math.round((tasksDone / tasksTotal) * 100));
         }
 
         if (run.status === "done" || run.status === "error") {
           if (run.status === "error" && run.error_message && runLogs.length === 0) {
             setLogs([{ type: "fatal", message: run.error_message }]);
           }
-          setProgress(run.status === "done" ? 100 : progress);
+          if (run.status === "done") setProgress(100);
           setFetching(false);
           setActiveRunId(null);
           localStorage.removeItem("pipeline_runId");
           if (pollRef.current) clearInterval(pollRef.current);
           pollRef.current = null;
+          tickFnRef.current = null;
           load();
         }
       } catch { /* network hiccup, keep polling */ }
       finally { tickInFlight.current = false; }
     };
 
+    tickFnRef.current = tick;
     tick();
     pollRef.current = setInterval(tick, 2000);
   }

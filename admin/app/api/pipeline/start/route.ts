@@ -1,6 +1,8 @@
 import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
 
+const FETCH_CHUNK = 15;
+
 export async function POST() {
   const settings = await getSettings();
   if (settings.positronitron_mode === "off") {
@@ -25,6 +27,10 @@ export async function POST() {
         args: [existing.rows[0].id],
       });
       await db.execute("DELETE FROM pending_items");
+      await db.execute({
+        sql: "UPDATE pipeline_tasks SET status = 'error' WHERE run_id = ? AND status IN ('pending', 'running')",
+        args: [existing.rows[0].id],
+      });
     } else {
       return Response.json(
         { error: "A pipeline run is already in progress.", runId: existing.rows[0].id },
@@ -43,6 +49,20 @@ export async function POST() {
     args: [totalSources],
   });
   const runId = Number(result.lastInsertRowid);
+
+  // Create the task queue: fetch chunks → plan_classify sentinel
+  const numChunks = Math.max(1, Math.ceil(totalSources / FETCH_CHUNK));
+  for (let i = 0; i < numChunks; i++) {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq, payload) VALUES (?, 'fetch_chunk', ?, ?)`,
+      args: [runId, i, JSON.stringify({ offset: i * FETCH_CHUNK })],
+    });
+  }
+  // plan_classify runs after all fetch chunks — it creates classify_batch + export tasks
+  await db.execute({
+    sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'plan_classify', ?)`,
+    args: [runId, numChunks],
+  });
 
   return Response.json({ runId });
 }

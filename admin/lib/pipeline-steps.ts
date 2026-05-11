@@ -111,10 +111,6 @@ export async function runFetchChunk(runId: number, offset: number) {
     queue_depth: queueDepth,
   });
   await appendLog(runId, logEntries);
-
-  if (!hasMore) {
-    await updateRun(runId, { phase: "classify" });
-  }
 }
 
 // ── Phase 2: classify one batch of pending_items via LLM ──────────────────
@@ -142,7 +138,7 @@ export async function runClassifyBatch(runId: number) {
   if (batch.length === 0) {
     log({ type: "done", phase: "classify", added: 0, filtered: 0, errored: 0, processed: 0, queueDepth: 0, hasMore: false });
     await appendLog(runId, logEntries);
-    await updateRun(runId, { phase: "export", queue_depth: 0 });
+    await updateRun(runId, { queue_depth: 0 });
     return;
   }
 
@@ -225,10 +221,6 @@ export async function runClassifyBatch(runId: number) {
     queue_depth: queueDepthAfter,
   });
   await appendLog(runId, logEntries);
-
-  if (!hasMore) {
-    await updateRun(runId, { phase: "export" });
-  }
 }
 
 // ── Phase 3: export rejection log ─────────────────────────────────────────
@@ -245,8 +237,4 @@ export async function runExport(runId: number) {
   }
 
   await appendLog(runId, logEntries);
-  await updateRun(runId, {
-    status: "done",
-    finished_at: new Date().toISOString().replace("T", " ").slice(0, 19),
-  });
 }

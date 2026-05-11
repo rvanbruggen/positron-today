@@ -30,7 +30,11 @@ export async function POST(request: Request) {
     args: [JSON.stringify(existingLog), id],
   });
 
-  // Drain leftover pending_items so a fresh run starts clean
+  // Cancel remaining tasks and drain leftover pending_items
+  await db.execute({
+    sql: "UPDATE pipeline_tasks SET status = 'error' WHERE run_id = ? AND status IN ('pending', 'running')",
+    args: [id],
+  });
   await db.execute("DELETE FROM pending_items");
 
   return Response.json({ stopped: true, runId: id });
