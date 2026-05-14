@@ -16,12 +16,16 @@ export default async function ScheduledPage() {
     db.execute(`
       SELECT a.*,
              r.title as raw_title,
+             r.preview_title_en,
+             r.preview_snippet_en,
+             s.language as source_language,
              (SELECT GROUP_CONCAT(t.id || '|' || t.name || '|' || t.emoji, '~~')
               FROM article_tags at2
               JOIN topics t ON at2.tag_id = t.id
               WHERE at2.article_id = a.id) as tag_data
       FROM articles a
       LEFT JOIN raw_articles r ON a.raw_article_id = r.id
+      LEFT JOIN sources s ON r.source_id = s.id
       WHERE a.status IN ('draft', 'scheduled')
       ORDER BY a.status ASC, a.publish_date ASC
     `),
@@ -47,6 +51,9 @@ export default async function ScheduledPage() {
     post_to_social_on_publish: Number(a.post_to_social_on_publish ?? 0) === 1,
     featured: Number(a.featured ?? 0) === 1,
     positivity_score: a.positivity_score != null ? Number(a.positivity_score) : null,
+    source_language: a.source_language ? String(a.source_language) : null,
+    preview_title_en: a.preview_title_en ? String(a.preview_title_en) : null,
+    preview_snippet_en: a.preview_snippet_en ? String(a.preview_snippet_en) : null,
   }));
 
   const tags = tagsResult.rows.map((t) => ({

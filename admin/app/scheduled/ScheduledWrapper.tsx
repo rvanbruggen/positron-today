@@ -23,6 +23,9 @@ type Article = {
   post_to_social_on_publish: boolean;
   featured: boolean;
   positivity_score: number | null;
+  source_language: string | null;
+  preview_title_en: string | null;
+  preview_snippet_en: string | null;
 };
 
 const ScheduledClient = dynamic(() => import("./ScheduledClient"), {

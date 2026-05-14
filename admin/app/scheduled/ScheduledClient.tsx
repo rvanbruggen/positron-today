@@ -24,6 +24,9 @@ type Article = {
   post_to_social_on_publish: boolean;
   featured: boolean;
   positivity_score: number | null;
+  source_language: string | null;
+  preview_title_en: string | null;
+  preview_snippet_en: string | null;
 };
 
 function TagPills({
@@ -332,7 +335,25 @@ export default function ScheduledClient({
                         >
                           {a.raw_title ?? a.source_url}
                         </a>
-                        <p className="text-xs text-amber-500 mt-0.5">{a.source_name}</p>
+                        <p className="text-xs text-amber-500 mt-0.5">
+                          {a.source_name}
+                          {a.source_language && !["en", "nl", "fr"].includes(a.source_language) && (
+                            <span className="ml-2 inline-block bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded uppercase text-[10px] tracking-wide">
+                              {a.source_language}
+                            </span>
+                          )}
+                        </p>
+                        {a.source_language && !["en", "nl", "fr"].includes(a.source_language) && (a.preview_title_en || a.preview_snippet_en) && (
+                          <div className="mt-1.5 border-l-2 border-blue-200 pl-2">
+                            <p className="text-[10px] text-blue-500 uppercase tracking-wide font-semibold">English preview</p>
+                            {a.preview_title_en && (
+                              <p className="text-xs text-blue-800 font-medium mt-0.5">{a.preview_title_en}</p>
+                            )}
+                            {a.preview_snippet_en && (
+                              <p className="text-xs text-blue-700 mt-0.5">{a.preview_snippet_en}</p>
+                            )}
+                          </div>
+                        )}
                       </div>
                       <div className="flex gap-2 sm:shrink-0 items-start flex-wrap">
                         <button
