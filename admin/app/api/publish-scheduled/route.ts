@@ -84,27 +84,33 @@ function generateMarkdown(article: Record<string, unknown>, tagNames: string[]):
 async function commitToGitHub(path: string, content: string, message: string) {
   const encoded = Buffer.from(content).toString("base64");
   const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+  const headers = { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" };
 
-  let sha: string | undefined;
-  const existing = await fetch(url, {
-    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" },
-  });
-  if (existing.ok) sha = (await existing.json()).sha;
+  const MAX_RETRIES = 3;
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    let sha: string | undefined;
+    const existing = await fetch(url, { headers });
+    if (existing.ok) sha = (await existing.json()).sha;
 
-  const body: Record<string, unknown> = { message, content: encoded, branch: GITHUB_BRANCH };
-  if (sha) body.sha = sha;
+    const body: Record<string, unknown> = { message, content: encoded, branch: GITHUB_BRANCH };
+    if (sha) body.sha = sha;
 
-  const res = await fetch(url, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: { ...headers, "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
 
-  if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
+    if (res.ok) return;
+
+    if (res.status === 409 && attempt < MAX_RETRIES - 1) {
+      console.warn(`SHA conflict on attempt ${attempt + 1}, retrying…`);
+      await new Promise((r) => setTimeout(r, 500 * (attempt + 1)));
+      continue;
+    }
+
+    throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
+  }
 }
 
 // ─── GET — dry-run ────────────────────────────────────────────────────────────
