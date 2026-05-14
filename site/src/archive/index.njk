@@ -5,52 +5,90 @@ permalink: /archive/
 ---
 
 <style>
-  .archive-header { margin-bottom: 1.75rem; }
-  .archive-header h1 { font-size: clamp(1.35rem, 5vw, 1.75rem); font-weight: 700; color: #78350f; margin-bottom: 0.25rem; }
-  .archive-header p { font-size: 0.875rem; color: #b45309; }
-  .archive-back { font-size: 0.85rem; margin-bottom: 1.5rem; }
-  .archive-back a { color: #b45309; text-decoration: none; font-weight: 600; border-bottom: 1.5px solid #fde68a; padding-bottom: 1px; }
-  .archive-back a:hover { border-color: #f59e0b; }
-  .month-list { display: flex; flex-direction: column; gap: 0.5rem; max-width: 520px; }
-  .month-link {
-    display: flex; align-items: center; justify-content: space-between;
+  .archive-hub { max-width: 640px; }
+  .archive-hub-header { margin-bottom: 1.75rem; }
+  .archive-hub-header h1 {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+    font-weight: 700;
+    color: #78350f;
+    margin-bottom: 0.25rem;
+  }
+  .archive-hub-header p { font-size: 0.875rem; color: #b45309; }
+  .archive-hub-options { display: flex; flex-direction: column; gap: 0.75rem; }
+  .archive-hub-link {
+    display: flex; align-items: center; gap: 1rem;
     background: white; border: 1.5px solid #fde68a; border-radius: 1rem;
-    padding: 0.85rem 1.25rem; text-decoration: none; color: #451a03;
+    padding: 1.25rem 1.5rem; text-decoration: none; color: #451a03;
     transition: border-color 0.15s, box-shadow 0.15s;
   }
-  .month-link:hover { border-color: #fbbf24; box-shadow: 0 4px 12px rgba(0,0,0,0.07); }
-  .month-name { font-weight: 600; font-size: 0.95rem; }
-  .month-count { font-size: 0.8rem; color: #b45309; background: #fef3c7; border-radius: 99px; padding: 0.2rem 0.65rem; white-space: nowrap; }
+  .archive-hub-link:hover { border-color: #fbbf24; box-shadow: 0 4px 12px rgba(0,0,0,0.07); }
+  .archive-hub-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .archive-hub-text { display: flex; flex-direction: column; gap: 0.15rem; }
+  .archive-hub-label { font-weight: 700; font-size: 1rem; }
+  .archive-hub-desc { font-size: 0.82rem; color: #b45309; }
+  .archive-hub-count {
+    margin-left: auto; flex-shrink: 0;
+    font-size: 0.8rem; color: #b45309;
+    background: #fef3c7; border-radius: 99px; padding: 0.2rem 0.65rem;
+    white-space: nowrap;
+  }
 </style>
 
-<div class="archive-header">
-  <h1>
-    <span class="t-en">Archive</span>
-    <span class="t-nl" style="display:none">Archief</span>
-    <span class="t-fr" style="display:none">Archives</span>
-  </h1>
-  <p>
-    <span class="t-en">All {{ collections.posts.length }} articles, organised by month. Or <a href="/tags/" style="color:#b45309; font-weight:600;">browse by topic →</a></span>
-    <span class="t-nl" style="display:none">Alle {{ collections.posts.length }} artikelen, per maand geordend. Of <a href="/tags/" style="color:#b45309; font-weight:600;">bladeren per onderwerp →</a></span>
-    <span class="t-fr" style="display:none">Tous les {{ collections.posts.length }} articles, organisés par mois. Ou <a href="/tags/" style="color:#b45309; font-weight:600;">parcourir par sujet →</a></span>
-  </p>
-</div>
+<div class="archive-hub">
+  <div class="archive-hub-header">
+    <h1>
+      <span class="t-en">Archive</span>
+      <span class="t-nl" style="display:none">Archief</span>
+      <span class="t-fr" style="display:none">Archives</span>
+    </h1>
+    <p>
+      <span class="t-en">All {{ collections.posts.length }} articles — browse by date or by topic.</span>
+      <span class="t-nl" style="display:none">Alle {{ collections.posts.length }} artikelen — blader per datum of per onderwerp.</span>
+      <span class="t-fr" style="display:none">Tous les {{ collections.posts.length }} articles — parcourez par date ou par sujet.</span>
+    </p>
+  </div>
 
-<div class="month-list">
-  {% for m in collections.postsByMonth %}
-    {% set href = ("/archive/" + m.key + "/") | replace("-", "/") | url %}
-    <a href="{{ href }}" class="month-link">
-      <span class="month-name">
-        <span class="t-en">{{ m.key | dateMonthLabel }}</span>
-        <span class="t-nl" style="display:none">{{ m.key | dateMonthLabelNl }}</span>
-        <span class="t-fr" style="display:none">{{ m.key | dateMonthLabelFr }}</span>
+  <div class="archive-hub-options">
+    <a href="/archive/by-date/" class="archive-hub-link">
+      <span class="archive-hub-icon">&#x1F4C5;</span>
+      <span class="archive-hub-text">
+        <span class="archive-hub-label">
+          <span class="t-en">By date</span>
+          <span class="t-nl" style="display:none">Per datum</span>
+          <span class="t-fr" style="display:none">Par date</span>
+        </span>
+        <span class="archive-hub-desc">
+          <span class="t-en">Articles organised by month</span>
+          <span class="t-nl" style="display:none">Artikelen geordend per maand</span>
+          <span class="t-fr" style="display:none">Articles organis&eacute;s par mois</span>
+        </span>
       </span>
-      <span class="month-count">
-        {{ m.posts.length }}
-        <span class="t-en">{% if m.posts.length == 1 %}article{% else %}articles{% endif %}</span>
-        <span class="t-nl" style="display:none">{% if m.posts.length == 1 %}artikel{% else %}artikelen{% endif %}</span>
-        <span class="t-fr" style="display:none">{% if m.posts.length == 1 %}article{% else %}articles{% endif %}</span>
+      <span class="archive-hub-count">{{ collections.postsByMonth | length }}
+        <span class="t-en">months</span>
+        <span class="t-nl" style="display:none">maanden</span>
+        <span class="t-fr" style="display:none">mois</span>
       </span>
     </a>
-  {% endfor %}
+
+    <a href="/archive/by-topic/" class="archive-hub-link">
+      <span class="archive-hub-icon">&#x1F3F7;&#xFE0F;</span>
+      <span class="archive-hub-text">
+        <span class="archive-hub-label">
+          <span class="t-en">By topic</span>
+          <span class="t-nl" style="display:none">Per onderwerp</span>
+          <span class="t-fr" style="display:none">Par sujet</span>
+        </span>
+        <span class="archive-hub-desc">
+          <span class="t-en">Articles grouped by subject tag</span>
+          <span class="t-nl" style="display:none">Artikelen gegroepeerd per onderwerp</span>
+          <span class="t-fr" style="display:none">Articles group&eacute;s par sujet</span>
+        </span>
+      </span>
+      <span class="archive-hub-count">{{ collections.tagsList | length }}
+        <span class="t-en">topics</span>
+        <span class="t-nl" style="display:none">onderwerpen</span>
+        <span class="t-fr" style="display:none">sujets</span>
+      </span>
+    </a>
+  </div>
 </div>

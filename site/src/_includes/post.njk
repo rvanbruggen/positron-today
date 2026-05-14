@@ -114,7 +114,7 @@ layout: base.njk
   <div class="post-emoji">{{ emoji }}</div>
   {% if postTags.length > 0 %}
   <div class="post-tags">
-    {% for tag in postTags %}<a class="post-tag" href="/tags/{{ tag | slugify }}/">{{ tag }}</a>{% if not loop.last %} <span class="post-tag-sep" aria-hidden="true">·</span> {% endif %}{% endfor %}
+    {% for tag in postTags %}<a class="post-tag" href="/archive/by-topic/{{ tag | slugify }}/">{{ tag }}</a>{% if not loop.last %} <span class="post-tag-sep" aria-hidden="true">·</span> {% endif %}{% endfor %}
   </div>
   {% endif %}
   <h1 class="post-title">

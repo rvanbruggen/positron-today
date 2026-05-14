@@ -413,7 +413,7 @@ title: Home
       {% if post.data.image_url %}<img class="card-img" src="{{ post.data.image_url }}" alt="{{ post.data.title | striptags | replace('\"','') }}" loading="lazy" onerror="this.style.display='none'">{% endif %}
       <div class="card-emoji">{{ post.data.emoji }}</div>
       <div class="card-tags">
-        {% for tag in cardTags %}<a class="card-tag" href="/tags/{{ tag | slugify }}/">{{ tag }}</a>{% if not loop.last %} <span class="card-tag-sep" aria-hidden="true">·</span> {% endif %}{% endfor %}
+        {% for tag in cardTags %}<a class="card-tag" href="/archive/by-topic/{{ tag | slugify }}/">{{ tag }}</a>{% if not loop.last %} <span class="card-tag-sep" aria-hidden="true">·</span> {% endif %}{% endfor %}
       </div>
       <div class="card-title">
         <span class="t-en">{{ post.data.title }}</span>

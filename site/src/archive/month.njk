@@ -109,10 +109,10 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
 </style>
 
 <div class="archive-back">
-  <a href="{{ '/archive/' | url }}">
-    ← <span class="t-en">Archive</span>
-    <span class="t-nl" style="display:none">Archief</span>
-    <span class="t-fr" style="display:none">Archives</span>
+  <a href="{{ '/archive/by-date/' | url }}">
+    ← <span class="t-en">By date</span>
+    <span class="t-nl" style="display:none">Per datum</span>
+    <span class="t-fr" style="display:none">Par date</span>
   </a>
 </div>
 
@@ -154,7 +154,7 @@ permalink: "archive/{{ month.key | replace('-', '/') }}/"
       {% if post.data.image_url %}<img class="card-img" src="{{ post.data.image_url }}" alt="{{ post.data.title | striptags | replace('\"','') }}" loading="lazy" onerror="this.style.display='none'">{% endif %}
       <div class="card-emoji">{{ post.data.emoji }}</div>
       <div class="card-tags">
-        {% for tag in cardTags %}<a class="card-tag" href="/tags/{{ tag | slugify }}/">{{ tag }}</a>{% if not loop.last %} <span class="card-tag-sep" aria-hidden="true">·</span> {% endif %}{% endfor %}
+        {% for tag in cardTags %}<a class="card-tag" href="/archive/by-topic/{{ tag | slugify }}/">{{ tag }}</a>{% if not loop.last %} <span class="card-tag-sep" aria-hidden="true">·</span> {% endif %}{% endfor %}
       </div>
       <div class="card-title">
         <span class="t-en">{{ post.data.title }}</span>
