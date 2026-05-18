@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **2.25.2** | Add live pipeline counter bar to preview page showing article flow: fetched → in queue → classified → added/filtered |
 | **2.25.1** | Fix stuck pending_items: use `INSERT OR IGNORE` for raw_articles so duplicate URLs don't prevent deletion; clear leftover pending_items at the start of every new pipeline run |
 | **2.25.0** | Fix concurrent classify batches processing duplicate items; dynamic task chaining drains queue fully. Each classify batch now atomically claims its rows via a `claimed_at` token on `pending_items`, preventing overlapping batches (browser poll + NAS cron) from selecting the same articles. Instead of pre-planning a fixed number of classify_batch tasks, each batch dynamically enqueues the next one until the queue is empty — guaranteeing all items are classified even when overlap previously wasted batches. Stale claims (>90s) are automatically released for crash recovery. Root `package.json` version synced with admin |
 | **2.24.0** | Restructure archive into hub page with "By date" and "By topic" sub-pages; fix tag pages not respecting Mono/Mondrian themes; add full theme overrides for tag cloud, tag cards, and archive hub; old `/tags/` URLs redirect to `/archive/by-topic/`; trilingual support on all new pages |
