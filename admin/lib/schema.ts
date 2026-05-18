@@ -177,6 +177,9 @@ export async function initSchema() {
     try { await db.execute(sql); } catch { /* already applied */ }
   }
 
+  // v2.24: claim column so concurrent classify batches don't process the same rows
+  try { await db.execute("ALTER TABLE pending_items ADD COLUMN claimed_at TEXT"); } catch { /* already applied */ }
+
   // One-time data migration: promote existing topic_id → article_tags
   try {
     await db.execute(`

@@ -118,8 +118,20 @@ export async function runClassifyBatch(runId: number) {
   const logEntries: object[] = [];
   const log = (entry: object) => logEntries.push(entry);
 
+  const now = new Date().toISOString().replace("T", " ").slice(0, 19);
+  const claimToken = now + "-" + Math.random().toString(36).slice(2, 8);
+
+  // Atomically claim unclaimed rows so concurrent batches can't pick the same items
+  await db.execute({
+    sql: `UPDATE pending_items SET claimed_at = ?
+          WHERE id IN (
+            SELECT id FROM pending_items WHERE claimed_at IS NULL ORDER BY id ASC LIMIT ?
+          )`,
+    args: [claimToken, CLASSIFY_BATCH],
+  });
+
   const queueDepthBefore = Number(
-    (await db.execute("SELECT COUNT(*) AS c FROM pending_items")).rows[0]?.c ?? 0,
+    (await db.execute("SELECT COUNT(*) AS c FROM pending_items WHERE claimed_at IS NULL")).rows[0]?.c ?? 0,
   );
 
   const batchResult = await db.execute({
@@ -127,9 +139,9 @@ export async function runClassifyBatch(runId: number) {
                  s.name AS source_name, s.language AS source_language
           FROM pending_items p
           JOIN sources s ON p.source_id = s.id
-          ORDER BY p.id ASC
-          LIMIT ?`,
-    args: [CLASSIFY_BATCH],
+          WHERE p.claimed_at = ?
+          ORDER BY p.id ASC`,
+    args: [claimToken],
   });
   const batch = batchResult.rows;
 
@@ -206,7 +218,7 @@ export async function runClassifyBatch(runId: number) {
   }
 
   const queueDepthAfter = Number(
-    (await db.execute("SELECT COUNT(*) AS c FROM pending_items")).rows[0]?.c ?? 0,
+    (await db.execute("SELECT COUNT(*) AS c FROM pending_items WHERE claimed_at IS NULL")).rows[0]?.c ?? 0,
   );
   const hasMore = queueDepthAfter > 0;
 

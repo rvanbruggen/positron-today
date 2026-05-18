@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.24.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.25.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -452,12 +452,13 @@ See [CHANGELOG.md](CHANGELOG.md) for the full release history.
 
 ## Version Tracking
 
-The canonical version lives in **four places** — keep them in sync when bumping:
+The canonical version lives in **five places** — keep them in sync when bumping:
 
 1. `admin/lib/version.ts` — `export const APP_VERSION = "x.y.z";`
 2. `admin/package.json` — `"version": "x.y.z"` (the public site reads its footer version from here too)
-3. `README.md` — the **Version:** badge at the top of this file
-4. `CHANGELOG.md` — a new row at the top of the history table
+3. `package.json` (root) — kept in sync with admin since v2.25.0
+4. `README.md` — the **Version:** badge at the top of this file
+5. `CHANGELOG.md` — a new row at the top of the history table
 
 After every version bump:
 

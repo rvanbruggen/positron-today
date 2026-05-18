@@ -33,6 +33,11 @@ export async function POST(request: Request) {
       args: [id],
     });
 
+    // Release pending_items claimed >90s ago but never deleted (crashed batch)
+    await db.execute(
+      "UPDATE pending_items SET claimed_at = NULL WHERE claimed_at IS NOT NULL AND claimed_at < datetime('now', '-90 seconds')",
+    );
+
     // Pick the next pending task
     const taskResult = await db.execute({
       sql: `SELECT id, kind, payload FROM pipeline_tasks
@@ -71,6 +76,8 @@ export async function POST(request: Request) {
           } else if (kind === "classify_batch") {
             await updateRun(id, { phase: "classify" });
             await runClassifyBatch(id);
+            // Dynamically enqueue the next step based on remaining items
+            await enqueueNextAfterClassify(id);
           } else if (kind === "export") {
             await updateRun(id, { phase: "export" });
             await runExport(id);
@@ -123,31 +130,60 @@ export async function POST(request: Request) {
 }
 
 async function planClassifyTasks(runId: number) {
-  const countResult = await db.execute("SELECT COUNT(*) AS c FROM pending_items");
+  const countResult = await db.execute("SELECT COUNT(*) AS c FROM pending_items WHERE claimed_at IS NULL");
   const pendingCount = Number(countResult.rows[0]?.c ?? 0);
 
   const maxSeqResult = await db.execute({
     sql: "SELECT MAX(seq) AS m FROM pipeline_tasks WHERE run_id = ?",
     args: [runId],
   });
-  let nextSeq = Number(maxSeqResult.rows[0]?.m ?? 0) + 1;
+  const nextSeq = Number(maxSeqResult.rows[0]?.m ?? 0) + 1;
 
   if (pendingCount > 0) {
-    const numBatches = Math.ceil(pendingCount / CLASSIFY_BATCH);
-    for (let i = 0; i < numBatches; i++) {
-      await db.execute({
-        sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'classify_batch', ?)`,
-        args: [runId, nextSeq + i],
-      });
-    }
-    nextSeq += numBatches;
+    // Create one classify_batch; it will enqueue the next one if items remain
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'classify_batch', ?)`,
+      args: [runId, nextSeq],
+    });
     await updateRun(runId, { phase: "classify" });
   } else {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'export', ?)`,
+      args: [runId, nextSeq],
+    });
     await updateRun(runId, { phase: "export" });
   }
+}
 
-  await db.execute({
-    sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'export', ?)`,
-    args: [runId, nextSeq],
+async function enqueueNextAfterClassify(runId: number) {
+  const remaining = Number(
+    (await db.execute("SELECT COUNT(*) AS c FROM pending_items WHERE claimed_at IS NULL")).rows[0]?.c ?? 0,
+  );
+
+  // Check if there's already a pending classify_batch or export task queued
+  const alreadyQueued = await db.execute({
+    sql: `SELECT id FROM pipeline_tasks
+          WHERE run_id = ? AND status = 'pending' AND kind IN ('classify_batch', 'export')
+          LIMIT 1`,
+    args: [runId],
   });
+  if (alreadyQueued.rows.length > 0) return;
+
+  const maxSeqResult = await db.execute({
+    sql: "SELECT MAX(seq) AS m FROM pipeline_tasks WHERE run_id = ?",
+    args: [runId],
+  });
+  const nextSeq = Number(maxSeqResult.rows[0]?.m ?? 0) + 1;
+
+  if (remaining > 0) {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'classify_batch', ?)`,
+      args: [runId, nextSeq],
+    });
+  } else {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'export', ?)`,
+      args: [runId, nextSeq],
+    });
+  }
 }
