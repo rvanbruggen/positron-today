@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **2.25.3** | Fix premature pipeline completion when concurrent ticks find no pending tasks; add visible status banner showing active pipeline phase |
 | **2.25.2** | Add live pipeline counter bar to preview page showing article flow: fetched → in queue → classified → added/filtered |
 | **2.25.1** | Fix stuck pending_items: use `INSERT OR IGNORE` for raw_articles so duplicate URLs don't prevent deletion; clear leftover pending_items at the start of every new pipeline run |
 | **2.25.0** | Fix concurrent classify batches processing duplicate items; dynamic task chaining drains queue fully. Each classify batch now atomically claims its rows via a `claimed_at` token on `pending_items`, preventing overlapping batches (browser poll + NAS cron) from selecting the same articles. Instead of pre-planning a fixed number of classify_batch tasks, each batch dynamically enqueues the next one until the queue is empty — guaranteeing all items are classified even when overlap previously wasted batches. Stale claims (>90s) are automatically released for crash recovery. Root `package.json` version synced with admin |

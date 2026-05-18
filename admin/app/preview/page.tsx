@@ -352,6 +352,22 @@ export default function PreviewPage() {
         Review incoming articles. Approve the ones worth summarising, discard the rest.
       </p>
 
+      {/* Active pipeline banner */}
+      {fetching && (
+        <div className="bg-amber-100 border border-amber-300 rounded-xl px-5 py-3 mb-4 flex items-center gap-3">
+          <span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse shrink-0" />
+          <span className="text-amber-800 text-sm font-medium">
+            {pipelineCounters.phase === "fetch"
+              ? `Fetching articles from ${totalSources} sources…`
+              : pipelineCounters.phase === "classify"
+                ? `Classifying articles — ${pipelineCounters.queue_depth} remaining in queue…`
+                : pipelineCounters.phase === "export"
+                  ? "Exporting rejection log…"
+                  : "Pipeline running…"}
+          </span>
+        </div>
+      )}
+
       {/* Manual URL input */}
       <form onSubmit={addManualUrl} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200 mb-4 flex gap-3 items-center">
         <input

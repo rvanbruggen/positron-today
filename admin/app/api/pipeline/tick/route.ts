@@ -47,11 +47,17 @@ export async function POST(request: Request) {
     });
 
     if (taskResult.rows.length === 0) {
-      // All tasks done — mark the run as complete
-      await updateRun(id, {
-        status: "done",
-        finished_at: new Date().toISOString().replace("T", " ").slice(0, 19),
+      // Only finish if no tasks are still running (another tick may be executing one)
+      const stillRunning = await db.execute({
+        sql: `SELECT id FROM pipeline_tasks WHERE run_id = ? AND status = 'running' LIMIT 1`,
+        args: [id],
       });
+      if (stillRunning.rows.length === 0) {
+        await updateRun(id, {
+          status: "done",
+          finished_at: new Date().toISOString().replace("T", " ").slice(0, 19),
+        });
+      }
     } else {
       const task = taskResult.rows[0];
       const taskId = Number(task.id);
