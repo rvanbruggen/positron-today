@@ -70,6 +70,15 @@ export default function PreviewPage() {
   const tickStartedAt = useRef(0);
   const tickFnRef = useRef<(() => Promise<void>) | null>(null);
   const [activeRunId, setActiveRunId] = useState<number | null>(null);
+  const [pipelineCounters, setPipelineCounters] = useState({
+    phase: "" as string,
+    queued: 0,
+    classified: 0,
+    added: 0,
+    filtered: 0,
+    errored: 0,
+    queue_depth: 0,
+  });
 
   async function load() {
     const res = await fetch("/api/articles?status=pending");
@@ -187,6 +196,16 @@ export default function PreviewPage() {
           setProgress(Math.round((tasksDone / tasksTotal) * 100));
         }
 
+        setPipelineCounters({
+          phase: String(run.phase ?? ""),
+          queued: Number(run.queued ?? 0),
+          classified: Number(run.classified ?? 0),
+          added: Number(run.added ?? 0),
+          filtered: Number(run.filtered ?? 0),
+          errored: Number(run.errored ?? 0),
+          queue_depth: Number(run.queue_depth ?? 0),
+        });
+
         if (run.status === "done" || run.status === "error") {
           if (run.status === "error" && run.error_message && runLogs.length === 0) {
             setLogs([{ type: "fatal", message: run.error_message }]);
@@ -215,6 +234,7 @@ export default function PreviewPage() {
     setProgress(0);
     setTotalSources(0);
     setSourcesDone(0);
+    setPipelineCounters({ phase: "", queued: 0, classified: 0, added: 0, filtered: 0, errored: 0, queue_depth: 0 });
 
     try {
       const res = await fetch("/api/pipeline/start", { method: "POST" });
@@ -382,6 +402,50 @@ export default function PreviewPage() {
               />
             </div>
           </div>
+
+          {/* Pipeline counters */}
+          {(pipelineCounters.queued > 0 || pipelineCounters.classified > 0) && (
+            <div className="mx-4 mb-3 rounded-lg bg-amber-900/60 border border-amber-800 px-4 py-3">
+              <div className="flex items-center gap-3 text-xs flex-wrap">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-blue-300 font-semibold">{pipelineCounters.queued}</span>
+                  <span className="text-amber-500">fetched</span>
+                </div>
+                <span className="text-amber-700">→</span>
+                <div className="flex items-center gap-1.5">
+                  <span className={`font-semibold ${pipelineCounters.queue_depth > 0 ? "text-yellow-300" : "text-amber-500"}`}>
+                    {pipelineCounters.queue_depth}
+                  </span>
+                  <span className="text-amber-500">in queue</span>
+                  {pipelineCounters.phase === "classify" && pipelineCounters.queue_depth > 0 && (
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+                  )}
+                </div>
+                <span className="text-amber-700">→</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-amber-300 font-semibold">{pipelineCounters.classified}</span>
+                  <span className="text-amber-500">classified</span>
+                </div>
+                <span className="text-amber-700">→</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-green-400 font-semibold">{pipelineCounters.added}</span>
+                    <span className="text-amber-500">added</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-red-400 font-semibold">{pipelineCounters.filtered}</span>
+                    <span className="text-amber-500">filtered</span>
+                  </div>
+                  {pipelineCounters.errored > 0 && (
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-orange-400 font-semibold">{pipelineCounters.errored}</span>
+                      <span className="text-amber-500">errored</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Log lines */}
           <div
