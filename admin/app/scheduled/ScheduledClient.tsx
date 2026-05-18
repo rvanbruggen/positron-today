@@ -287,7 +287,7 @@ export default function ScheduledClient({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-amber-900 mb-1">Scheduled</h1>
+      <h1 className="text-2xl font-bold text-amber-900 mb-1">Summarise &amp; Publish</h1>
       <p className="text-amber-700 text-sm mb-8">
         Approved articles waiting for summarisation or publishing.
       </p>

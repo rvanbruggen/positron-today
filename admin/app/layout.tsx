@@ -72,8 +72,8 @@ export default async function RootLayout({
             <div className="hidden md:flex gap-5 ml-6 text-sm font-medium text-amber-900">
               <Link href="/sources" className="hover:text-amber-600 transition-colors">Sources</Link>
               <Link href="/tags" className="hover:text-amber-600 transition-colors">Tags</Link>
-              <Link href="/preview" className="hover:text-amber-600 transition-colors">Preview</Link>
-              <Link href="/scheduled" className="hover:text-amber-600 transition-colors">Scheduled</Link>
+              <Link href="/preview" className="hover:text-amber-600 transition-colors">Fetch &amp; Filter</Link>
+              <Link href="/scheduled" className="hover:text-amber-600 transition-colors">Summarise &amp; Publish</Link>
               <Link href="/history" className="hover:text-amber-600 transition-colors">History</Link>
               <Link href="/rejections" className="hover:text-amber-600 transition-colors">Rejections</Link>
               <Link href="/settings" className="hover:text-amber-600 transition-colors">Settings</Link>

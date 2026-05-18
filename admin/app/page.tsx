@@ -34,7 +34,7 @@ export default async function DashboardPage() {
           { label: "Active sources", value: stats.sources, href: "/sources", emoji: "📡" },
           { label: "Topics", value: stats.topics, href: "/topics", emoji: "🏷️" },
           { label: "Pending review", value: stats.pending, href: "/preview", emoji: "📬" },
-          { label: "Scheduled", value: stats.scheduled, href: "/scheduled", emoji: "📅" },
+          { label: "Ready to publish", value: stats.scheduled, href: "/scheduled", emoji: "📅" },
         ].map((stat) => (
           <Link
             key={stat.label}

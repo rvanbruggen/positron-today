@@ -329,7 +329,7 @@ export default function PreviewPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-1 gap-3 flex-wrap">
-        <h1 className="text-2xl font-bold text-amber-900">Preview</h1>
+        <h1 className="text-2xl font-bold text-amber-900">Fetch &amp; Filter</h1>
         <div className="flex gap-2">
           {fetching && (
             <button
