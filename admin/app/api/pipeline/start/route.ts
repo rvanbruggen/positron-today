@@ -39,6 +39,9 @@ export async function POST() {
     }
   }
 
+  // Clear any leftover pending_items from previous runs
+  await db.execute("DELETE FROM pending_items");
+
   const totalResult = await db.execute(
     "SELECT COUNT(*) AS c FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss')",
   );

@@ -197,7 +197,7 @@ export async function runClassifyBatch(runId: number) {
         log({ type: "result", verdict: "filtered", title, reason, category, score });
       } else {
         await db.execute({
-          sql: `INSERT INTO raw_articles
+          sql: `INSERT OR IGNORE INTO raw_articles
                   (source_id, url, title, content, source_pub_date, positivity_score,
                    preview_title_en, preview_snippet_en)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
