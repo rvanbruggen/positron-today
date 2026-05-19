@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-05-19T00:30:33.696Z",
-  "total_rejected": 32574,
+  "exported_at": "2026-05-19T01:00:47.752Z",
+  "total_rejected": 32581,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 8629
+      "count": 8632
     },
     {
       "category": "soft-news-filler",
-      "count": 3892
+      "count": 3894
     },
     {
       "category": "sports-negative",
@@ -21,11 +21,11 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 2509
+      "count": 2510
     },
     {
       "category": "economic-doom",
-      "count": 2119
+      "count": 2120
     },
     {
       "category": "other-negative",
@@ -69,6 +69,62 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Episcopal priest beautifully explains patriotism vs. nationalism and what sets them apart",
+      "reason": "The article discusses political concepts, which falls under the category of political commentary and does not meet the positive-news criteria.",
+      "category": "political-conflict",
+      "url": "https://www.upworthy.com/patriotism-vs-nationalism-meaning-explained-ex1/",
+      "date": "2026-05-19 03:00"
+    },
+    {
+      "source": "Upworthy",
+      "title": "A teacher asked 7th graders the worst part of the 80s, and their answers have us howling",
+      "reason": "The article focuses on a humorous take from students about the 1980s, but it does not provide a genuinely uplifting or inspiring message, and it may not have broad human relevance.",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/students-answer-questions-ex1/",
+      "date": "2026-05-19 03:00"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Watch a 5-yr-old Italian piano prodigy blow away the crowd with his extraordinary ability",
+      "reason": "The article focuses on a young piano prodigy, which falls under the category of celebrity and entertainment, lacking broader human relevance.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.upworthy.com/5-yr-old-italian-piano-prodigy-mozart-ex1/",
+      "date": "2026-05-19 03:00"
+    },
+    {
+      "source": "The New York Times",
+      "title": "As L.I.R.R. Strike Continues, Tens of Thousands Endure Painful Commutes",
+      "reason": "The article focuses on a strike causing painful commutes, which is a negative situation affecting many people, and does not provide uplifting content.",
+      "category": "economic-doom",
+      "url": "https://www.nytimes.com/2026/05/18/nyregion/lirr-strike-long-island.html",
+      "date": "2026-05-19 03:00"
+    },
+    {
+      "source": "The New York Times",
+      "title": "What to Know About San Diego’s Islamic Center",
+      "reason": "The article focuses on a local Islamic center, which may not have broad relevance outside its immediate community, making it less interesting to a global audience.",
+      "category": "soft-news-filler",
+      "url": "https://www.nytimes.com/2026/05/18/us/islamic-center-san-diego-mosque.html",
+      "date": "2026-05-19 03:00"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Here’s How Iran Could Respond to Renewed U.S.-Israeli Strikes",
+      "reason": "The article discusses potential military responses and tactics in a conflict scenario, which is inherently negative and not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/05/18/world/middleeast/iran-war-retaliation-options.html",
+      "date": "2026-05-19 03:00"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Elon Musk verliest rechtszaak tegen OpenAI en Sam Altman, gaat in beroep",
+      "reason": "The article discusses a legal case involving Elon Musk, which falls under corporate and political conflict, and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.hln.be/buitenland/elon-musk-verliest-rechtszaak-tegen-openai-en-sam-altman-gaat-in-beroep~a2386655/",
+      "date": "2026-05-19 03:00"
+    },
     {
       "source": "Le Monde",
       "title": "Quatre policiers de la BAC condamnés pour avoir frappé sans raison des passants à Paris, en marge des quarts de finale de la Coupe du monde de 2022",
@@ -8011,62 +8067,6 @@
       "reason": "The article discusses a legal conflict regarding a renovation project, which is inherently negative and does not uplift the reader.",
       "category": "political-conflict",
       "url": "https://immobilier.lefigaro.fr/article/tour-montparnasse-xavier-niel-attaque-la-copropriete-la-renovation-a-727-millions-d-euros-menacee-20260518",
-      "date": "2026-05-18 08:30"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "«Un signal très positif» : le ministre algérien de l’Intérieur en visite à Paris dans «quelques jours», annonce Laurent Nuñez",
-      "reason": "The article discusses a political visit and cooperation between Algeria and France, which falls under political news and does not provide a universally uplifting story.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/international/un-signal-tres-positif-le-ministre-algerien-de-l-interieur-en-visite-a-paris-dans-quelques-jours-annonce-laurent-nunez-20260516",
-      "date": "2026-05-18 08:30"
-    },
-    {
-      "source": "The New York Times",
-      "title": "Catastrophe Is Emerging in the World’s Most Vulnerable Places",
-      "reason": "The article discusses the challenges faced by the humanitarian relief system due to war and rising costs, which is a negative and concerning topic rather than uplifting.",
-      "category": "war-conflict",
-      "url": "https://www.nytimes.com/2026/05/18/business/iran-war-somalia-usaid.html",
-      "date": "2026-05-18 08:30"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Vooruit wil strengere regels voor telefonische verkoop van energiecontracten: bedenktijd en informatieplicht",
-      "reason": "The article discusses proposed regulations in the political context, which does not meet the positive-news criteria and is primarily focused on consumer protection rather than an uplifting story.",
-      "category": "political-conflict",
-      "url": "https://www.hln.be/binnenland/vooruit-wil-strengere-regels-voor-telefonische-verkoop-van-energiecontracten-bedenktijd-en-informatieplicht~ab36fe0f/",
-      "date": "2026-05-18 08:30"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Veiligheidsblunder bij residentie koning Charles: slapende agenten riskeren schorsing",
-      "reason": "The article discusses a security lapse involving the British police, which is a negative incident rather than a positive story.",
-      "category": "crime-violence",
-      "url": "https://www.hln.be/royalty/veiligheidsblunder-bij-residentie-koning-charles-slapende-agenten-riskeren-schorsing~a6602566/",
-      "date": "2026-05-18 08:30"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Aantal asielaanvragen blijft dalen in ons land",
-      "reason": "The article discusses a decline in asylum requests in Belgium, which, while potentially positive in a specific context, does not provide uplifting content and is primarily political in nature.",
-      "category": "political-conflict",
-      "url": "https://www.hln.be/binnenland/aantal-asielaanvragen-blijft-dalen-in-ons-land~a60adb59a/",
-      "date": "2026-05-18 08:30"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Je belastingaangifte staat al klaar, maar deze 5 valkuilen kunnen je geld kosten: “Er zijn wel wat zaken veranderd dit jaar”",
-      "reason": "The article discusses potential pitfalls in tax filing, which is a negative topic that could cause stress or concern for readers, rather than uplifting them.",
-      "category": "economic-doom",
-      "url": "https://www.hln.be/mijn-geld/je-belastingaangifte-staat-al-klaar-maar-deze-5-valkuilen-kunnen-je-geld-kosten-er-zijn-wel-wat-zaken-veranderd-dit-jaar~ae377853/",
-      "date": "2026-05-18 08:30"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“Hij kan opnieuw wereldkampioen worden”: sterke Luca Brecel verliest in finale van uniek toernooi van snookericoon O’Sullivan, die vol lof is",
-      "reason": "The article focuses on a sports event where a player lost in the final, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/meer-sport/hij-kan-opnieuw-wereldkampioen-worden-sterke-luca-brecel-verliest-in-finale-van-uniek-toernooi-van-snookericoon-osullivan-die-vol-lof-is~a9b12cad/",
       "date": "2026-05-18 08:30"
     }
   ]
