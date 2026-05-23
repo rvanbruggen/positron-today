@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-05-23T01:00:45.939Z",
-  "total_rejected": 36854,
+  "exported_at": "2026-05-23T01:30:42.294Z",
+  "total_rejected": 36863,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 10034
+      "count": 10038
     },
     {
       "category": "soft-news-filler",
@@ -17,7 +17,7 @@
     },
     {
       "category": "crime-violence",
-      "count": 3249
+      "count": 3250
     },
     {
       "category": "celebrity-entertainment",
@@ -37,7 +37,7 @@
     },
     {
       "category": "health-scare",
-      "count": 1678
+      "count": 1680
     },
     {
       "category": "disaster-accident",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 848
+      "count": 850
     },
     {
       "category": "human-discarded",
@@ -69,6 +69,78 @@
     }
   ],
   "articles": [
+    {
+      "source": "The New York Times",
+      "title": "What Is Methyl Methacrylate, the Chemical at the Center of the Garden Grove Crisis?",
+      "reason": "The article discusses a chemical exposure warning, which is a health scare and not uplifting.",
+      "category": "health-scare",
+      "url": "https://www.nytimes.com/2026/05/22/us/methyl-methacrylate-garden-grove-chemical-leak.html",
+      "date": "2026-05-23 03:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "As Trump Weighs Return to Conflict in Iran, Here’s What Could Be Targeted Next",
+      "reason": "The article discusses potential military conflict involving a political figure, which is inherently negative and not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/05/22/us/politics/trump-iran-targets.html",
+      "date": "2026-05-23 03:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Tulsi Gabbard Resigns as Director of National Intelligence. Trump Names Aaron Lukas Acting Chief.",
+      "reason": "The article discusses a political resignation and the appointment of a new director, which falls under political news and does not provide an uplifting or positive narrative.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/05/22/us/politics/tulsi-gabbard-resigns.html",
+      "date": "2026-05-23 03:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Aanhangwagen vat vuur naast pick-up in Pittem: vermoedelijk aangestoken",
+      "reason": "The article reports on a fire that was likely set intentionally, which is a negative event despite the quick response from neighbors. It does not uplift or inspire.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/pittem/aanhangwagen-vat-vuur-naast-pick-up-in-pittem-vermoedelijk-aangestoken~aeb7446e/",
+      "date": "2026-05-23 03:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "SpaceX voert test uit met nieuwste versie van Starship",
+      "reason": "The article focuses on a test flight of SpaceX's Starship, which falls under routine tech/industry updates and does not present a truly exceptional breakthrough or uplifting story.",
+      "category": "tech-ai-concern",
+      "url": "https://www.hln.be/buitenland/spacex-voert-test-uit-met-nieuwste-versie-van-starship~a0708e48/",
+      "date": "2026-05-23 03:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "De Belgische zeemacht staat op zinken: ‘Een marine zonder fregatten is onmogelijk’",
+      "reason": "The article discusses the challenges facing the Belgian navy, which is a negative topic related to military capability and security concerns.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/nieuws/de-belgische-zeemacht-staat-op-zinken-een-marine-zonder-fregatten-is-onmogelijk~bd31ecefe/",
+      "date": "2026-05-23 03:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Worden we door het ziekenhuis juist zieker? ‘We denken dat dokters het leven moeten verlengen. Dat is een misverstand’",
+      "reason": "The article discusses a misunderstanding about doctors extending life, which suggests a negative perspective on healthcare practices, making it not uplifting.",
+      "category": "health-scare",
+      "url": "https://www.demorgen.be/nieuws/worden-we-door-het-ziekenhuis-juist-zieker-we-denken-dat-dokters-het-leven-moeten-verlengen-dat-is-een-misverstand~bee60afa/",
+      "date": "2026-05-23 03:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Vriendjespolitiek bij de ­politie: ‘ad interim’ kan soms tien jaar duren",
+      "reason": "The article discusses internal issues within the police force, which is a political topic and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/nieuws/vriendjespolitiek-bij-de-politie-ad-interim-kan-soms-tien-jaar-duren~b775f7d5/",
+      "date": "2026-05-23 03:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "SpaceX voert test uit met nieuwste versie van Starship",
+      "reason": "The article focuses on a test conducted by SpaceX, which falls under routine tech/industry updates and does not present a uniquely uplifting or inspiring story.",
+      "category": "tech-ai-concern",
+      "url": "https://www.demorgen.be/snelnieuws/spacex-voert-test-uit-met-nieuwste-versie-van-starship~b0708e48/",
+      "date": "2026-05-23 03:30"
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "EU og Mexico har underskrevet en udvidet handelsaftale",
@@ -7995,78 +8067,6 @@
       "reason": "The article discusses a man who escaped from police custody, which is a negative event related to crime and violence.",
       "category": "crime-violence",
       "url": "https://www.hln.be/binnenland/44-jarige-man-op-most-wanted-lijst-ontsnapte-tijdens-begeleide-fietstocht~ab53b7f6/",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Executie in VS afgebroken: medische staf kan geen ader vinden voor dodelijke injectie",
-      "reason": "The article discusses a halted execution due to medical staff's inability to find a suitable vein, which is a negative and distressing topic.",
-      "category": "crime-violence",
-      "url": "https://www.hln.be/buitenland/executie-in-vs-afgebroken-medische-staf-kan-geen-ader-vinden-voor-dodelijke-injectie~a988ca45/",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Nipte meerderheid Belgen voor regularisatie van sans-papiers die werken",
-      "reason": "The article discusses a political issue regarding the regularization of undocumented workers in Belgium, which falls under political conflict and may not have broad human relevance outside of the specific context.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/nieuws/nipte-meerderheid-belgen-voor-regularisatie-van-sans-papiers-die-werken~b34140f3/",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Van irritatie naar kennis: ‘De Morgen’ en de Universiteit Antwerpen gaan onderzoeken wat zwerfvuil met ons en onze buurt doet",
-      "reason": "The article focuses on a local initiative to study litter and its impact, which may not have broad human relevance outside the specific community involved.",
-      "category": "soft-news-filler",
-      "url": "https://www.demorgen.be/beter-leven/van-irritatie-naar-kennis-de-morgen-en-de-universiteit-antwerpen-gaan-onderzoeken-wat-zwerfvuil-met-ons-en-onze-buurt-doet~b33bfa794/",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Executie in VS afgebroken: medische staf kan geen ader vinden voor dodelijke injectie",
-      "reason": "The article discusses a failed execution due to medical staff's inability to find a vein, which is a negative and distressing topic rather than uplifting.",
-      "category": "crime-violence",
-      "url": "https://www.demorgen.be/snelnieuws/executie-in-vs-afgebroken-medische-staf-kan-geen-ader-vinden-voor-dodelijke-injectie~b988ca45/",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Twaalfde testvlucht van SpaceX met raket Starship uitgesteld door technisch mankement",
-      "reason": "The article discusses a technical issue causing a delay in a SpaceX test flight, which is not uplifting and focuses on a setback rather than a positive outcome.",
-      "category": "other-negative",
-      "url": "https://www.demorgen.be/snelnieuws/twaalfde-testvlucht-van-spacex-met-raket-starship-uitgesteld-door-technisch-mankement~ba707b23/",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Republikanere aflyser afstemning om Trumps krigsbeføjelser i Iran",
-      "reason": "The article discusses a political decision regarding Trump's war powers, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.dr.dk/nyheder/seneste/republikanere-aflyser-afstemning-om-trumps-krigsbefoejelser-i-iran",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Une commission de trois juges se prononce contre l’expulsion du militant palestinien Ramy Shaath",
-      "reason": "The article discusses a political decision regarding a Palestinian activist, which falls under political conflict and does not provide a broadly uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/societe/article/2026/05/22/une-commission-de-trois-juges-se-prononce-contre-l-expulsion-du-militant-palestinien-ramy-shaath_6691944_3224.html",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, guerre au Moyen-Orient : neuf blessés dans une frappe israélienne sur un hôpital au Liban",
-      "reason": "The article discusses a violent incident in a conflict zone, which is inherently negative and does not uplift the reader.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/international/live/2026/05/22/en-direct-guerre-au-moyen-orient-neuf-blesses-dans-une-frappe-israelienne-sur-un-hopital-au-liban_6691823_3210.html",
-      "date": "2026-05-22 03:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Onze wijnkenner selecteert 30 beste roséwijnen voor zomerse dagen: “Deze geeft meteen zin in een extra glas”",
-      "reason": "The article focuses on selecting the best rosé wines, which is more of a lifestyle piece and lacks broad human relevance or uplifting content that would appeal universally.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/lifestyle/eten-en-drinken/onze-wijnkenner-selecteert-30-beste-rosewijnen-voor-zomerse-dagen-deze-geeft-meteen-zin-in-een-extra-glas/151702342.html",
       "date": "2026-05-22 03:30"
     }
   ]
