@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-05-23T04:00:58.617Z",
-  "total_rejected": 36901,
+  "exported_at": "2026-05-23T04:30:45.379Z",
+  "total_rejected": 36912,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 10047
+      "count": 10050
     },
     {
       "category": "soft-news-filler",
-      "count": 4417
+      "count": 4419
     },
     {
       "category": "sports-negative",
@@ -17,11 +17,11 @@
     },
     {
       "category": "crime-violence",
-      "count": 3251
+      "count": 3252
     },
     {
       "category": "celebrity-entertainment",
-      "count": 2804
+      "count": 2805
     },
     {
       "category": "economic-doom",
@@ -41,7 +41,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 1535
+      "count": 1538
     },
     {
       "category": "divisive-social",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 851
+      "count": 852
     },
     {
       "category": "human-discarded",
@@ -69,6 +69,94 @@
     }
   ],
   "articles": [
+    {
+      "source": "The New York Times",
+      "title": "How a Chemical Tank in Southern California Came to the Brink of Disaster",
+      "reason": "The article discusses a potentially disastrous situation involving a chemical tank, which is inherently negative and alarming, lacking any uplifting elements.",
+      "category": "disaster-accident",
+      "url": "https://www.nytimes.com/2026/05/22/us/southern-california-chemical-tank-emergency.html",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "The Risks of Iran’s Threat to Control the Strait of Hormuz",
+      "reason": "The article discusses a geopolitical threat that could impact the shipping industry, which is inherently negative and does not uplift the reader.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/05/23/business/iran-toll-strait-hormuz.html",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Once Trump’s Co-Pilot Against Iran, Netanyahu Is Now a Mere Passenger",
+      "reason": "The article discusses political dynamics and setbacks, which are inherently negative and do not uplift the reader.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/05/23/world/middleeast/israel-trump-iran.html",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Canadese provincie Alberta stemt in oktober over mogelijke afscheiding",
+      "reason": "The article discusses a political referendum on separation, which is a divisive and contentious issue, not uplifting or positive.",
+      "category": "political-conflict",
+      "url": "https://www.hln.be/buitenland/canadese-provincie-alberta-stemt-in-oktober-over-mogelijke-afscheiding~a6241c34/",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "HLN-tool. Al meer dan 430.000 aangiftes ingediend. Zelf nog vragen? Onze Belastinggids helpt je op weg",
+      "reason": "The article focuses on a tax tool and guidance for filing taxes, which is primarily of local relevance and does not have broad human appeal or uplifting content.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/belastingen/hln-tool-al-meer-dan-430-000-aangiftes-ingediend-zelf-nog-vragen-onze-belastinggids-helpt-je-op-weg~acc56825/",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "EXCLUSIEF. Herman Van Holsbeeck wisselde jaren briefjes van 500 euro zwart geld in aan zelfscan Delhaize en in carwash: “Onze bankkluis was te klein voor al die biljetten”",
+      "reason": "The article discusses illegal activities and a court case involving a former sports manager, which is not uplifting and focuses on negative aspects of crime and corruption.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/nieuws/exclusief-herman-van-holsbeeck-wisselde-jaren-briefjes-van-500-euro-zwart-geld-in-aan-zelfscan-delhaize-en-in-carwash-onze-bankkluis-was-te-klein-voor-al-die-biljetten~aeb323d0/",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Nu VTM aantal ‘Tien om te zien’-shows halveert en nog slechts twee opnamedagen plant: host Aaron Blommaert legt uit waar het schoentje knelt",
+      "reason": "The article focuses on a reduction in the number of shows for a television program, which is a negative aspect rather than an uplifting story. It primarily discusses local entertainment news that lacks broad human relevance.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.hln.be/showbizz/nu-vtm-aantal-tien-om-te-zien-shows-halveert-en-nog-slechts-twee-opnamedagen-plant-host-aaron-blommaert-legt-uit-waar-het-schoentje-knelt~a41174fa/",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Dode bij reeks explosies in New York, tientallen brandweerlieden gewond",
+      "reason": "The article reports on a tragic incident involving explosions and injuries, which is clearly negative and not uplifting.",
+      "category": "disaster-accident",
+      "url": "https://www.hln.be/buitenland/dode-bij-reeks-explosies-in-new-york-tientallen-brandweerlieden-gewond~aacf91c8/",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Nooit meer in panne met lekke band? Chinese automerken ontwikkelen auto’s die op drie wielen kunnen rijden",
+      "reason": "The article discusses a technological advancement in cars, but it falls under routine tech updates and does not provide a universally uplifting story.",
+      "category": "tech-ai-concern",
+      "url": "https://www.hln.be/buitenland/nooit-meer-in-panne-met-lekke-band-chinese-automerken-ontwikkelen-autos-die-op-drie-wielen-kunnen-rijden~vafc79d68/",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Pak je zonnebril en korte broek maar: warme weer houdt aan, temperatu­ren tot 31 graden",
+      "reason": "The article focuses on weather updates, which are typically of local-only relevance and do not provide uplifting or universally appealing content.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/weernieuws/pak-je-zonnebril-en-korte-broek-maar-warme-weer-houdt-aan-temperaturen-tot-31-graden~ac484c3e/",
+      "date": "2026-05-23 06:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Dode bij reeks explosies in New York, tientallen brandweerlieden gewond",
+      "reason": "The article reports on a series of explosions in New York that resulted in injuries to firefighters, which is a negative event and does not uplift the reader.",
+      "category": "disaster-accident",
+      "url": "https://www.demorgen.be/snelnieuws/dode-bij-reeks-explosies-in-new-york-tientallen-brandweerlieden-gewond~bacf91c8/",
+      "date": "2026-05-23 06:30"
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "Mindst otte personer er døde efter eksplosion i kulmine i Kina",
@@ -7979,94 +8067,6 @@
       "reason": "The article discusses familial pressure in career choices, which is a negative social issue rather than a positive story. It lacks uplifting content and broad human relevance.",
       "category": "divisive-social",
       "url": "https://www.gva.be/binnenland/familiale-druk-weegt-zwaarst-door-bij-beroepskeuze-blijkt-uit-onderzoek-van-randstad/152546475.html",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Tweejarig meisje sterft in snikhete auto in Spanje nadat vader haar vergeet af te zetten aan kinderopvang",
-      "reason": "The article reports on a tragic incident involving the death of a young girl, which is deeply negative and not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://www.gva.be/buitenland/tweejarig-meisje-sterft-in-snikhete-auto-in-spanje-nadat-vader-haar-vergeet-af-te-zetten-aan-kinderopvang/152547821.html",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Meerderheid van Belgen steunt regularisatie van werkende mensen zonder papieren",
-      "reason": "The article discusses a political issue regarding the regularization of undocumented workers in Belgium, which falls under political commentary and does not provide a universally uplifting story.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/binnenland/meerderheid-van-belgen-steunt-regularisatie-van-werkende-mensen-zonder-papieren/152548928.html",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "5 tips om de waarde van je huis te schatten ",
-      "reason": "The article provides tips for estimating the value of a house, which is a routine topic that lacks broad human relevance and does not uplift the reader.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/partners/shop-en-partners/zimmo/5-tips-om-de-waarde-van-je-huis-te-schatten/152324150.html",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "België investeert bijna 700 miljoen euro in nieuwe kruisraketten voor F-35’s en drones",
-      "reason": "The article discusses Belgium's investment in military weapons, which is not uplifting and relates to defense spending rather than positive news.",
-      "category": "war-conflict",
-      "url": "https://www.gva.be/binnenland/belgie-investeert-bijna-700-miljoen-euro-in-nieuwe-kruisraketten-voor-f-35s-en-drones/152549840.html",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Vlaanderen schrapt aparte deskundige en attest voor nieuw M-peil in bouwsector: “Geen onnodige administratieve rompslomp”",
-      "reason": "The article discusses a political decision regarding administrative processes in the construction sector, which falls under political content and lacks broad human relevance.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/binnenland/vlaanderen-schrapt-aparte-deskundige-en-attest-voor-nieuw-m-peil-in-bouwsector-geen-onnodige-administratieve-rompslomp/152550320.html",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "US to send 5,000 more troops to Poland, Trump says",
-      "reason": "The article discusses a military deployment, which is related to political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.bbc.com/news/articles/cedpz9669deo?at_medium=RSS&at_campaign=rss",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "Ukraine war briefing: Oil plant strikes all going to plan, says Zelenskyy",
-      "reason": "The article discusses military actions and casualties in the context of the ongoing war in Ukraine, which is inherently negative and not uplifting.",
-      "category": "war-conflict",
-      "url": "https://www.theguardian.com/world/2026/may/22/ukraine-war-briefing-oil-plant-strikes-all-going-to-plan-says-zelenskyy",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Welke buurt wordt dit jaar Beste Buurt van Vlaanderen? Dit zijn de 15 kanshebbers",
-      "reason": "The article focuses on a local competition for the 'Best Neighborhood in Flanders,' which is unlikely to have broad human relevance outside the region and does not uplift readers universally.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.BlNVpLelY",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "\"Wetenschap is twijfelen en falen\": hoe leg je dat helder uit aan wie geen wetenschapper is?",
-      "reason": "The article discusses the challenges of explaining scientific concepts to non-scientists, which may not be uplifting or broadly relevant to a wide audience.",
-      "category": "other-negative",
-      "url": "https://vrtnws.be/p.pAJyjKGZM",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "\"Ik red me, maar niet zonder hulp op maat\": mensen met een handicap komen op straat tegen hervorming",
-      "reason": "The article discusses challenges faced by people with disabilities in relation to reforms, which suggests a focus on social issues rather than uplifting content.",
-      "category": "divisive-social",
-      "url": "https://vrtnws.be/p.OvQm1Vw8B",
-      "date": "2026-05-22 05:30"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "1 op de 5 mensen krijgt ooit te maken met eetbuien of compensatiegedrag",
-      "reason": "The article discusses binge eating and compensatory behaviors, which are health-related issues that are not uplifting and may evoke negative feelings.",
-      "category": "health-scare",
-      "url": "https://vrtnws.be/p.VL73nA8DB",
       "date": "2026-05-22 05:30"
     }
   ]
