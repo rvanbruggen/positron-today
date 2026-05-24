@@ -1,23 +1,23 @@
 {
-  "exported_at": "2026-05-24T07:00:41.998Z",
-  "total_rejected": 37815,
+  "exported_at": "2026-05-24T07:30:58.711Z",
+  "total_rejected": 37830,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 10246
+      "count": 10250
     },
     {
       "category": "soft-news-filler",
-      "count": 4517
+      "count": 4520
     },
     {
       "category": "sports-negative",
-      "count": 4006
+      "count": 4009
     },
     {
       "category": "crime-violence",
-      "count": 3329
+      "count": 3330
     },
     {
       "category": "celebrity-entertainment",
@@ -25,11 +25,11 @@
     },
     {
       "category": "economic-doom",
-      "count": 2475
+      "count": 2478
     },
     {
       "category": "other-negative",
-      "count": 1892
+      "count": 1893
     },
     {
       "category": "war-conflict",
@@ -69,6 +69,126 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Bombeeksplosion ved jernbane sårer mindst 24 i Pakistan",
+      "reason": "The article reports on a bombing incident in Pakistan that resulted in injuries, which is a negative event and does not uplift the reader.",
+      "category": "crime-violence",
+      "url": "https://www.dr.dk/nyheder/seneste/bombeeksplosion-ved-jernbane-saarer-mindst-24-i-pakistan",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Analyse: Første kortlægning af seniorers nedslidning",
+      "reason": "The article discusses the negative impacts of physical and mental deterioration on seniors, which is not uplifting and focuses on economic costs rather than positive outcomes.",
+      "category": "economic-doom",
+      "url": "https://politiken.dk/danmark/art10854989/Analyse-F%C3%B8rste-kortl%C3%A6gning-af-seniorers-nedslidning",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Efter fem års tavshed retter tidligere topfigur et hårdt angreb mod DBU-chef",
+      "reason": "The article discusses a former sports figure's criticism of a football organization, which falls under negative sports commentary and does not provide uplifting content.",
+      "category": "sports-negative",
+      "url": "https://politiken.dk/sport/art10829605/Efter-fem-%C3%A5rs-tavshed-retter-tidligere-topfigur-et-h%C3%A5rdt-angreb-mod-DBU-chef",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Det her er et kæmpeskridt for kvalitet i boligbyggeriet",
+      "reason": "The article focuses on a specific housing project in Denmark, which may not have broad relevance to readers in other countries.",
+      "category": "soft-news-filler",
+      "url": "https://politiken.dk/kultur/arkitektur/art10834988/Det-her-er-et-k%C3%A6mpeskridt-for-kvalitet-i-boligbyggeriet",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Ny bog: Ellemann forklarer, hvorfor han valgte rigsretssag mod Inger Støjberg",
+      "reason": "The article discusses a political decision and conflict, which does not align with positive news standards.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/danmark/art10853381/Ellemann-forklarer-hvorfor-han-valgte-rigsretssag-mod-Inger-St%C3%B8jberg",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Euronews",
+      "title": "Fighter jet tracks UFO in newly released Pentagon footage",
+      "reason": "The article discusses UFO footage released by the Pentagon, which, while intriguing, does not provide uplifting content and lacks broad human relevance. It primarily focuses on military transparency without any positive human interest angle.",
+      "category": "other-negative",
+      "url": "http://www.euronews.com/2026/05/24/fighter-jet-tracks-ufo-in-newly-released-pentagon-footage",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "Von der Reiskleie zum Hightech-Produkt – die Geschichte des Sonnenschutzes",
+      "reason": "The article discusses the history of sunscreen, which may not have broad human relevance and could be seen as local or niche content rather than universally uplifting.",
+      "category": "soft-news-filler",
+      "url": "https://www.nzz.ch/panorama/von-der-reiskleie-zum-hightech-produkt-die-geschichte-des-sonnenschutzes-ld.10005074",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "«Wir haben immer Notfallpläne»: Der neue SIX-Präsident spricht über das Szenario eines Kollapses des grössten Schweizer Zahlungsabwicklers",
+      "reason": "The article discusses a financial crisis involving a major payment processing company, which is inherently negative and not uplifting.",
+      "category": "economic-doom",
+      "url": "https://www.nzz.ch/wirtschaft/wir-haben-immer-notfallplaene-der-neue-six-praesident-spricht-ueber-das-szenario-eines-kollapses-des-groessten-schweizer-zahlungsabwicklers-ld.10007934",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Roland-Garros 2026 : le programme du dimanche 24 mai",
+      "reason": "The article focuses on a sports event, specifically the Roland-Garros tournament, which does not meet the criteria for exceptional or universally uplifting content.",
+      "category": "sports-negative",
+      "url": "https://www.lemonde.fr/sport/article/2026/05/24/roland-garros-2026-le-programme-du-dimanche-24-mai_6693198_3242.html",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Canicule : la vigilance jaune prolongée jusqu’à lundi dans le Finistère, une première pour le mois de mai",
+      "reason": "The article discusses a local weather event that is not of broad human relevance and primarily focuses on a regional heat alert, which does not uplift or inspire readers outside the local context.",
+      "category": "soft-news-filler",
+      "url": "https://www.lemonde.fr/planete/article/2026/05/24/canicule-la-vigilance-jaune-prolongee-jusqu-a-lundi-dans-le-finistere-une-premiere-pour-le-mois-de-mai_6693206_3244.html",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Têtes de cochon, « synagogues vertes »…. Dans les coulisses des opérations de désinformation russes visant la France",
+      "reason": "The article discusses Russian disinformation operations, which is a negative and politically charged topic, lacking uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.lemonde.fr/pixels/article/2026/05/24/tetes-de-cochon-synagogues-vertes-dans-les-coulisses-des-operations-de-desinformation-russes-visant-la-france_6693205_4408996.html",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Vorsorge: Wie sich langfristig Vermögen aufbauen lässt",
+      "reason": "The article discusses financial planning and tax implications, which is more of a routine economic update rather than an uplifting story.",
+      "category": "economic-doom",
+      "url": "https://www.faz.net/aktuell/finanzen/wie-sich-langfristig-vermoegen-aufbauen-laesst-accg-200856542.html",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Debatte über Diäten: Die Abgeordneten machen sich selbst klein",
+      "reason": "The article discusses a political conflict regarding the suspension of automatic salary increases for parliament members, which is not uplifting and focuses on a divisive issue.",
+      "category": "political-conflict",
+      "url": "https://www.faz.net/aktuell/politik/inland/verzicht-auf-diaetenerhoehung-die-abgeordneten-machen-sich-klein-200859847.html",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Bayern-Sieg im DFB-Pokal: Die Bierruhe des Vincent Kompany",
+      "reason": "The article discusses a sports event and focuses on the performance of a professional team and its players, which falls under the category of non-exceptional sports content.",
+      "category": "sports-negative",
+      "url": "https://www.faz.net/aktuell/sport/fussball/fc-bayern-gewinnt-dfb-pokal-vincent-kompany-laesst-die-buehne-den-spielern-accg-200863370.html",
+      "date": "2026-05-24 09:30"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Mögliches Kriegsende: Das soll im geplanten Abkommen zwischen USA und Iran stehen",
+      "reason": "The article discusses a potential agreement to end a war, but it is primarily focused on political negotiations and uncertainties, which does not meet the positive-news criteria.",
+      "category": "political-conflict",
+      "url": "https://www.faz.net/aktuell/politik/ausland/iran-krieg-das-steht-angeblich-im-geplanten-abkommen-zwischen-usa-und-iran-accg-200863291.html",
+      "date": "2026-05-24 09:30"
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "LIVE. Ook zondag blijft het warm, met maxima tot dertig graden",
@@ -7948,126 +8068,6 @@
       "category": "soft-news-filler",
       "url": "https://www.nrc.nl/puzzels/aan-zet/2026/05/23/",
       "date": "2026-05-23 02:30"
-    },
-    {
-      "source": "The New York Times",
-      "title": "Lawsuit Argues Trump’s $1.8 Billion Fund Excludes Those He Targeted",
-      "reason": "The article discusses a lawsuit related to political issues and partisan attacks, which falls under political conflict and is not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.nytimes.com/2026/05/22/us/politics/common-cause-lawsuit-trump-fund.html",
-      "date": "2026-05-23 02:03"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Van justitieminister naar CEO van deurwaardersbedrijf: overstap Van Tigchelt roept vragen op",
-      "reason": "The article discusses a transition from a political position to a corporate role, which raises questions and may imply negative connotations about the motivations behind the move. This falls under political content and corporate PR, making it not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/nieuws/van-justitieminister-naar-ceo-van-deurwaardersbedrijf-overstap-van-tigchelt-roept-vragen-op~be4fac41/",
-      "date": "2026-05-23 02:03"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Hoofd van Amerikaanse inlichtingendiensten stapt op: “Mijn man kreeg onlangs diagnose van zeldzame botkanker”",
-      "reason": "The article discusses the resignation of a U.S. intelligence chief due to a personal health crisis, which is a negative and sensitive topic rather than uplifting news.",
-      "category": "health-scare",
-      "url": "https://www.demorgen.be/snelnieuws/hoofd-van-amerikaanse-inlichtingendiensten-stapt-op-mijn-man-kreeg-onlangs-diagnose-van-zeldzame-botkanker~b8efb815/",
-      "date": "2026-05-23 02:03"
-    },
-    {
-      "source": "De Morgen",
-      "title": "België krijgt complimenten, maar ratingbureau Fitch verandert kredietwaardigheid voor ons land niet",
-      "reason": "The article discusses a change in credit rating for Belgium, which falls under political and economic analysis rather than uplifting news. It does not provide a positive or inspiring narrative.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/belgie-krijgt-complimenten-maar-ratingbureau-fitch-verandert-kredietwaardigheid-voor-ons-land-niet~b3cbee98/",
-      "date": "2026-05-23 02:03"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Paris : deux animateurs ayant exercé à l’école Saint-Dominique mis en examen pour viols et agressions sexuelles sur mineurs",
-      "reason": "The article discusses serious criminal charges against individuals, which is inherently negative and not uplifting.",
-      "category": "crime-violence",
-      "url": "https://www.lemonde.fr/societe/article/2026/05/23/paris-deux-animateurs-ayant-exerce-a-l-ecole-saint-dominique-mis-en-examen-pour-viols-et-agressions-sexuelles-sur-mineurs_6692356_3224.html",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Carte verte : l’administration Trump annonce imposer aux candidats de retourner dans leur pays d’origine pour déposer leur demande",
-      "reason": "The article discusses a policy change by the Trump administration that negatively impacts visa holders, which is a political issue and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/international/article/2026/05/23/carte-verte-l-administration-trump-annonce-imposer-aux-candidats-de-retourner-dans-leur-pays-d-origine-pour-deposer-leur-demande_6692389_3210.html",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Lens-Nice : le résumé du sacre historique des Sang et Or en finale de la Coupe de France",
-      "reason": "The article focuses on a sports event, specifically the victory of a football team in a national cup, which does not meet the criteria for exceptional human interest or emotional impact.",
-      "category": "sports-negative",
-      "url": "https://www.lemonde.fr/sport/article/2026/05/22/lens-nice-le-resume-du-sacre-historique-des-sang-et-or-en-finale-de-la-coupe-de-france_6692352_3242.html",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Science.org news",
-      "title": "It’s official: Europe physicists plan to build 91-kilometer particle collider",
-      "reason": "The article discusses a large-scale scientific project, which may not be universally uplifting or engaging for all readers, and it falls under routine tech/industry updates without a clear breakthrough.",
-      "category": "tech-ai-concern",
-      "url": "https://www.science.org/content/article/it-s-official-europe-physicists-plan-build-91-kilometer-particle-collider",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Science.org news",
-      "title": "Meet the microbiologist and science advocate who’s headed to Congress",
-      "reason": "The article focuses on a political figure's primary win, which falls under political content and does not meet the positive-news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.science.org/content/article/meet-microbiologist-and-science-advocate-who-s-headed-congress",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Eerste, claustrofobische beelden vrijgegeven uit grot bij Malediven waar vijf Italiaanse duikers om het leven kwamen",
-      "reason": "The article discusses a tragic incident involving the deaths of divers, which is not uplifting and focuses on a negative event.",
-      "category": "disaster-accident",
-      "url": "https://www.gva.be/buitenland/eerste-claustrofobische-beelden-vrijgegeven-uit-grot-bij-malediven-waar-vijf-italiaanse-duikers-om-het-leven-kwamen/152718879.html",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Politie overmeestert verwarde gewapende man in Antwerpen-Noord ",
-      "reason": "The article discusses a violent incident involving a confused armed man, which is not uplifting and falls under crime and violence.",
-      "category": "crime-violence",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/politie-overmeestert-verwarde-gewapende-man-in-antwerpen-noord/152723144.html",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Controle bij barbiers en kappers in Boom legt verschillende inbreuken bloot",
-      "reason": "The article reports on violations found during inspections at barbers and hairdressers, which is negative in nature and does not uplift the reader.",
-      "category": "other-negative",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/boom/controle-bij-barbiers-en-kappers-in-boom-legt-verschillende-inbreuken-bloot/152741604.html",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Canadese premier noemt Alberta “essentieel” nu separatisten opnieuw aandringen op onafhankelijkheid",
-      "reason": "The article discusses a political conflict regarding Alberta's potential independence, which is divisive and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/buitenland/canadese-premier-noemt-alberta-essentieel-nu-separatisten-opnieuw-aandringen-op-onafhankelijkheid/152762925.html",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Oostenrijkse regisseur bekroond in Cannes voor ingetogen film “Everytime” over rouw en verlies",
-      "reason": "The article focuses on a film award, which falls under the category of celebrity and entertainment news, and does not provide a universally uplifting story.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.gva.be/buitenland/oostenrijkse-regisseur-bekroond-in-cannes-voor-ingetogen-film-everytime-over-rouw-en-verlies/152774108.html",
-      "date": "2026-05-23 01:30"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Experimentele medicijnen geven hoop aan Amerikaanse ebolapatiënt in Duitsland",
-      "reason": "The article discusses a serious health issue involving an Ebola patient and experimental treatments, which is inherently a health scare rather than uplifting news.",
-      "category": "health-scare",
-      "url": "https://www.gva.be/buitenland/experimentele-medicijnen-geven-hoop-aan-amerikaanse-ebolapatient-in-duitsland/152778422.html",
-      "date": "2026-05-23 01:30"
     }
   ]
 }
