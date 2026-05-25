@@ -128,6 +128,15 @@ export default function ScheduledClient({
     });
   }
 
+  async function setDigestPick(id: number, value: boolean) {
+    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, digest_pick: value } : a)));
+    await fetch("/api/articles", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, digest_pick: value }),
+    });
+  }
+
   async function setDate(id: number, value: string) {
     // datetime-local returns "YYYY-MM-DDTHH:MM" — store as-is (SQLite accepts this)
     await fetch("/api/articles", {
@@ -549,6 +558,18 @@ export default function ScheduledClient({
                               className="accent-yellow-500"
                             />
                             ⭐ Featured (wide card)
+                          </label>
+                          <label
+                            title="Include this article in the next social media digest post"
+                            className="flex items-center gap-1.5 text-xs text-amber-700 cursor-pointer select-none"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={!!a.digest_pick}
+                              onChange={(e) => setDigestPick(a.id, e.target.checked)}
+                              className="accent-yellow-500"
+                            />
+                            📬 Include in digest
                           </label>
                         </div>
 
