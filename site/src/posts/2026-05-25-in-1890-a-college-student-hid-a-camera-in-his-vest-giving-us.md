@@ -2,7 +2,7 @@
 title: "In 1890, a college student hid a camera in his vest, giving us the first candid look at Victorian life"
 title_nl: "In 1890 verstopte een student een camera in zijn vest, wat ons de eerste spontane kijk op het Victoriaanse leven gaf"
 title_fr: "En 1890, un étudiant a caché une caméra dans son gilet, nous donnant un premier aperçu candide de la vie victorienne"
-date: 2026-05-25T07:30:05
+date: 2026-05-25T08:14:27
 source_pub_date: 2026-05-24
 fetched_date: 2026-05-24
 source_url: "https://www.upworthy.com/in-1890-a-college-student-hid-a-camera-in-his-vest-giving-us-the-first-candid-look-at-victorian-life/"
