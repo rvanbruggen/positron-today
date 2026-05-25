@@ -2,7 +2,7 @@
 title: "Golf ball-sized octopus discovered near the Galápagos Islands"
 title_nl: "Golfbalgrote octopus ontdekt nabij de Galápagos-eilanden"
 title_fr: "Une pieuvre de la taille d'une balle de golf découverte près des îles Galápagos"
-date: 2026-05-25T08:00:05
+date: 2026-05-25T08:14:11
 source_pub_date: 2026-05-25
 fetched_date: 2026-05-25
 source_url: "https://www.popsci.com/environment/blue-galapagos-octopus/"
