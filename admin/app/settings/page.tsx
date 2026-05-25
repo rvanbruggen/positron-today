@@ -883,6 +883,13 @@ export default function SettingsPage() {
               {saving ? "Saving…" : "Save"}
             </button>
             <button
+              onClick={() => window.open("/api/post-social-digest?preview=image", "_blank")}
+              disabled={digestPending !== null && digestPending < 3}
+              className="bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            >
+              Preview collage
+            </button>
+            <button
               onClick={async () => {
                 setDigestRunning(true);
                 setDigestResult(null);
