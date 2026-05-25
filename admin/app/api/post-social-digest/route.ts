@@ -9,6 +9,8 @@
  *   ?dry_run=1 — generate collage + caption but don't post
  */
 
+export const dynamic = "force-dynamic";
+
 import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
 import { scheduleNow } from "@/lib/schedule-time";
@@ -144,7 +146,7 @@ export async function GET(request: Request) {
       imageUrl: a.image_url,
     }));
     const png = await generateDigestCollage(digestArticles);
-    return new Response(png, { headers: { "Content-Type": "image/png", "Cache-Control": "no-store" } });
+    return new Response(new Uint8Array(png), { headers: { "Content-Type": "image/png", "Cache-Control": "no-store" } });
   }
 
   if (preview === "caption") {
