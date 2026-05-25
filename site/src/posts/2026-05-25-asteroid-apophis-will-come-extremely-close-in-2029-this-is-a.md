@@ -2,7 +2,7 @@
 title: "Asteroid Apophis will come extremely close in 2029; this is a unique opportunity for space agencies"
 title_nl: "Planetoïde Apophis komt in 2029 extreem dichtbij; dat is een unieke kans voor ruimtevaartorganisaties"
 title_fr: "L'astéroïde Apophis s'approchera extrêmement près en 2029; c'est une occasion unique pour les agences spatiales"
-date: 2026-05-25T07:00:05
+date: 2026-05-25T08:14:40
 source_pub_date: 2026-05-24
 fetched_date: 2026-05-24
 source_url: "https://www.demorgen.be/tech-wetenschap/planetoide-apophis-komt-in-2029-extreem-dichtbij-dat-is-een-unieke-kans-voor-ruimtevaartorganisaties~ba49c912/"
