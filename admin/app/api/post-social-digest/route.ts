@@ -160,7 +160,7 @@ export async function GET(request: Request) {
       tags: tags.get(a.id) ?? [],
     }));
     return Response.json({
-      caption: buildDigestCaption(captionArticles),
+      caption: await buildDigestCaption(captionArticles),
       instagram_caption: buildInstagramDigestCaption(captionArticles),
       articles: articles.map((a) => ({ id: a.id, title: a.title_en ?? a.title_nl })),
     });
@@ -218,7 +218,7 @@ export async function POST(request: Request) {
     tags: tags.get(a.id) ?? [],
   }));
 
-  const caption = buildDigestCaption(captionArticles);
+  const caption = await buildDigestCaption(captionArticles);
   const instagramCaption = buildInstagramDigestCaption(captionArticles);
 
   let collagePng: Buffer;
