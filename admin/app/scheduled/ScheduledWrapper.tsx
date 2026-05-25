@@ -22,6 +22,7 @@ type Article = {
   image_url: string | null;
   post_to_social_on_publish: boolean;
   featured: boolean;
+  digest_pick: boolean;
   positivity_score: number | null;
   source_language: string | null;
   preview_title_en: string | null;
