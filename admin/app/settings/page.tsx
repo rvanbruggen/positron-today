@@ -44,6 +44,7 @@ interface LLMSettings {
   positronitron_mode: PositronitronMode;
   positronitron_count: string;
   positronitron_run_times: string;
+  digest_run_times: string;
 }
 
 const ANTHROPIC_MODELS = [
@@ -114,6 +115,12 @@ export default function SettingsPage() {
   const [ptronResult,   setPtronResult]   = useState<string | null>(null);
   const [runTimes,      setRunTimes]      = useState<string[]>(["08:00", "15:00"]);
 
+  // Digest state
+  const [digestTimes,      setDigestTimes]      = useState<string[]>([]);
+  const [digestRunning,    setDigestRunning]    = useState(false);
+  const [digestResult,     setDigestResult]     = useState<string | null>(null);
+  const [digestPending,    setDigestPending]    = useState<number | null>(null);
+
   // Auth state
   const [loggingOut,   setLoggingOut]   = useState(false);
 
@@ -126,6 +133,12 @@ export default function SettingsPage() {
       setSocialAccounts(accountsData.accounts ?? []);
       setEnabledIds(new Set(enabledData.enabled ?? []));
     }).catch(console.error).finally(() => setSocialLoading(false));
+
+    // Load pending digest count
+    fetch("/api/post-social-digest")
+      .then(r => r.json())
+      .then(data => setDigestPending(data.pending ?? null))
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -159,7 +172,9 @@ export default function SettingsPage() {
         if (!data.positronitron_mode || !POSITRONITRON_MODES.includes(data.positronitron_mode)) data.positronitron_mode = "off";
         if (!data.positronitron_count)     data.positronitron_count     = "3";
         if (!data.positronitron_run_times) data.positronitron_run_times = '["08:00","15:00"]';
+        if (!data.digest_run_times) data.digest_run_times = '[]';
         try { setRunTimes(JSON.parse(data.positronitron_run_times)); } catch {}
+        try { setDigestTimes(JSON.parse(data.digest_run_times)); } catch {}
         setSettings(data);
       })
       .catch(err => setLoadError(err.message));
@@ -290,7 +305,9 @@ export default function SettingsPage() {
       // save (matches what the user will see on next page load anyway).
       const sortedRunTimes = [...runTimes].sort();
       setRunTimes(sortedRunTimes);
-      const toSave = { ...settings, positronitron_run_times: JSON.stringify(sortedRunTimes) };
+      const sortedDigestTimes = [...digestTimes].sort();
+      setDigestTimes(sortedDigestTimes);
+      const toSave = { ...settings, positronitron_run_times: JSON.stringify(sortedRunTimes), digest_run_times: JSON.stringify(sortedDigestTimes) };
       const res = await fetch("/api/llm-settings", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -801,6 +818,97 @@ export default function SettingsPage() {
               </div>
             </div>
           )}
+        </div>
+      </div>
+
+      {/* ── Digest publishing ── */}
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">📬 Digest publishing</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          Post a collage of 3 hand-picked articles to social media on a schedule.
+          Pick articles for the digest on the History page using the 📬 button.
+        </p>
+        <div className={`border rounded-xl p-5 transition-colors ${digestTimes.length > 0 ? "bg-teal-50 border-teal-300" : "bg-white border-yellow-200"}`}>
+          <div className="mb-4">
+            <label className="text-xs text-amber-700 font-medium">Digest schedule:</label>
+            <div className="flex flex-wrap items-center gap-2 mt-1.5">
+              {digestTimes.map((time, i) => (
+                <div key={i} className="flex items-center gap-1">
+                  <input
+                    type="time"
+                    value={time}
+                    onChange={(e) => {
+                      const updated = [...digestTimes];
+                      updated[i] = e.target.value;
+                      setDigestTimes(updated);
+                    }}
+                    className="border border-yellow-200 rounded px-2 py-1 text-sm text-amber-800 focus:outline-none focus:border-yellow-400"
+                  />
+                  <button
+                    onClick={() => setDigestTimes(digestTimes.filter((_, j) => j !== i))}
+                    className="text-red-400 hover:text-red-600 text-sm px-1"
+                    title="Remove this time"
+                  >✕</button>
+                </div>
+              ))}
+              <button
+                onClick={() => setDigestTimes([...digestTimes, "12:00"])}
+                className="text-xs text-amber-600 hover:text-amber-800 border border-dashed border-yellow-300 rounded px-2 py-1"
+              >+ Add time</button>
+            </div>
+            <p className="text-[11px] text-amber-400 mt-1">
+              {digestTimes.length === 0
+                ? "No scheduled times — add one to enable automatic digest posting."
+                : "Digest posts at these times daily (if 3 articles are picked). Save to apply."}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 mb-4 text-sm">
+            <span className="text-xs text-amber-700 font-medium">Pending articles:</span>
+            <span className={`text-xs font-bold px-2 py-0.5 rounded ${
+              digestPending !== null && digestPending >= 3
+                ? "bg-teal-100 text-teal-700"
+                : "bg-amber-100 text-amber-700"
+            }`}>
+              {digestPending ?? "…"} / 3 needed
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 pt-3 border-t border-yellow-100">
+            <button
+              onClick={save}
+              disabled={saving}
+              className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            >
+              {saving ? "Saving…" : "Save"}
+            </button>
+            <button
+              onClick={async () => {
+                setDigestRunning(true);
+                setDigestResult(null);
+                try {
+                  const res = await fetch("/api/post-social-digest?manual=1", { method: "POST" });
+                  const data = await res.json();
+                  if (res.ok) {
+                    setDigestResult(`Done — posted digest with ${data.articles?.length ?? 0} article(s).`);
+                    setDigestPending(0);
+                  } else {
+                    setDigestResult(`Error: ${data.error ?? res.statusText}`);
+                  }
+                } catch (err) {
+                  setDigestResult(`Error: ${err instanceof Error ? err.message : String(err)}`);
+                } finally {
+                  setDigestRunning(false);
+                }
+              }}
+              disabled={digestRunning || (digestPending !== null && digestPending < 3)}
+              className="bg-teal-600 hover:bg-teal-700 text-white font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            >
+              {digestRunning ? "Posting…" : "📬 Post digest now"}
+            </button>
+            {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
+            {digestResult && <p className="text-sm text-teal-700">{digestResult}</p>}
+          </div>
         </div>
       </div>
 

@@ -25,6 +25,8 @@ type Article = {
   social_posted_at: string | null;
   featured: boolean;
   positivity_score: number | null;
+  digest_pick: boolean;
+  digest_posted_at: string | null;
 };
 
 const SITE_BASE = "https://positron.today";
@@ -85,6 +87,7 @@ export default function HistoryClient({
     () => new Set(initialArticles.filter((a) => a.social_posted_at).map((a) => a.id))
   );
   const [socialMenuOpen, setSocialMenuOpen]   = useState<number | null>(null);
+  const [togglingDigest, setTogglingDigest]  = useState<Set<number>>(new Set());
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
@@ -276,6 +279,25 @@ export default function HistoryClient({
       setError(err instanceof Error ? err.message : "Unexpected error");
     } finally {
       setPostingSocial((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
+    }
+  }
+
+  async function toggleDigestPick(a: Article) {
+    setTogglingDigest((prev) => new Set(prev).add(a.id));
+    try {
+      const newVal = !a.digest_pick;
+      const res = await fetch("/api/articles", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: a.id, digest_pick: newVal }),
+      });
+      if (res.ok) {
+        setArticles((prev) => prev.map((x) =>
+          x.id === a.id ? { ...x, digest_pick: newVal } : x
+        ));
+      }
+    } finally {
+      setTogglingDigest((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
     }
   }
 
@@ -505,6 +527,27 @@ export default function HistoryClient({
                           )}
                         </div>
 
+                        {/* Digest pick */}
+                        <button
+                          onClick={() => toggleDigestPick(a)}
+                          disabled={togglingDigest.has(a.id)}
+                          title={
+                            a.digest_posted_at
+                              ? `Included in digest on ${formatDate(a.digest_posted_at)}`
+                              : a.digest_pick
+                              ? "Remove from next social digest"
+                              : "Include in next social digest"
+                          }
+                          className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors disabled:opacity-40 ${
+                            a.digest_posted_at
+                              ? "bg-teal-200 text-teal-700"
+                              : a.digest_pick
+                              ? "bg-teal-100 hover:bg-teal-200 text-teal-700 ring-2 ring-teal-400"
+                              : "bg-gray-100 hover:bg-gray-200 text-gray-400"
+                          }`}>
+                          {togglingDigest.has(a.id) ? "⏳" : a.digest_posted_at ? "📬✓" : "📬"}
+                        </button>
+
                         {/* Edit */}
                         <button
                           onClick={() => setEditingId(a.id)}
@@ -575,6 +618,7 @@ export default function HistoryClient({
               summary_fr: a.summary_fr ?? "",
               article_emoji: a.article_emoji ?? "✨",
               featured: !!a.featured,
+              digest_pick: !!a.digest_pick,
             }}
             onClose={() => setEditingId(null)}
             onSaved={(fields: EditableFields) => {

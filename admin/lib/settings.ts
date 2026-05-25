@@ -31,6 +31,8 @@ export interface LLMSettings {
   positronitron_count: string;
   /** JSON array of "HH:MM" strings — daily run times for Positronitron */
   positronitron_run_times: string;
+  /** JSON array of "HH:MM" strings — daily run times for digest social posts */
+  digest_run_times: string;
 }
 
 const DEFAULTS: LLMSettings = {
@@ -45,6 +47,7 @@ const DEFAULTS: LLMSettings = {
   positronitron_mode: "off",
   positronitron_count: "3",
   positronitron_run_times: '["08:00","15:00"]',
+  digest_run_times: '[]',
 };
 
 export async function getSettings(): Promise<LLMSettings> {
@@ -77,6 +80,7 @@ export async function getSettings(): Promise<LLMSettings> {
       positronitron_mode:       mode,
       positronitron_count:      map.positronitron_count       || DEFAULTS.positronitron_count,
       positronitron_run_times:  map.positronitron_run_times   || DEFAULTS.positronitron_run_times,
+      digest_run_times:         map.digest_run_times          || DEFAULTS.digest_run_times,
     };
   } catch {
     // Table may not exist yet (migration pending) — return defaults

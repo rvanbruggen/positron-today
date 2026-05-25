@@ -4,138 +4,17 @@
  * Uses satori to render JSX → SVG, then sharp to convert SVG → PNG.
  * Both work reliably in Vercel's Node.js serverless runtime, unlike
  * @vercel/og and next/og which require the Edge runtime.
- *
- * Fonts are cached at module level so warm invocations skip the
- * Google Fonts round-trips entirely. Hero images are pre-fetched
- * with a timeout and graceful fallback to emoji-only.
  */
 
 import satori from "satori";
 import sharp from "sharp";
-import React from "react";
+import { getFonts, prefetchImageAsDataUri, loadEmojiSvgDataUri, React } from "@/lib/card-shared";
 
 interface CardProps {
   title: string;
   emoji: string;
   source: string;
   imageUrl: string | null;
-}
-
-type Weight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
-type FontEntry = { name: string; data: ArrayBuffer; weight: Weight; style: "normal" };
-
-// ─── Font cache (survives warm Vercel invocations) ───────────────────────────
-
-let cachedFonts: FontEntry[] | null = null;
-
-async function loadGoogleFont(family: string, weights: Weight[]): Promise<FontEntry[]> {
-  const results: FontEntry[] = [];
-  for (const weight of weights) {
-    const url = `https://fonts.googleapis.com/css2?family=${family.replace(/ /g, "+")}:wght@${weight}&display=swap`;
-    const css = await fetch(url, {
-      headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" },
-      signal: AbortSignal.timeout(8000),
-    }).then(r => r.text());
-    const match = css.match(/src:\s*url\(([^)]+)\)/);
-    if (match?.[1]) {
-      const fontData = await fetch(match[1], {
-        signal: AbortSignal.timeout(8000),
-      }).then(r => r.arrayBuffer());
-      results.push({ name: family, data: fontData, weight, style: "normal" });
-    }
-  }
-  return results;
-}
-
-async function getFonts(): Promise<FontEntry[]> {
-  if (cachedFonts) return cachedFonts;
-
-  const [playfairFonts, interFonts] = await Promise.all([
-    loadGoogleFont("Playfair Display", [900]),
-    loadGoogleFont("Inter", [500, 700]),
-  ]);
-  cachedFonts = [...playfairFonts, ...interFonts];
-  return cachedFonts;
-}
-
-// ─── Emoji rendering via Twemoji SVGs ────────────────────────────────────────
-//
-// Satori can only render glyphs present in the loaded fonts. Since Playfair
-// Display and Inter contain no emoji glyphs, any emoji would render as the
-// literal placeholder text "NO GLYPH" — visible both on the title line and,
-// worse, at fontSize 200 in the hero fallback when the source image fails
-// to prefetch. Feeding satori per-emoji SVG assets via loadAdditionalAsset
-// replaces those placeholders with the Twemoji colour graphics.
-
-const TWEMOJI_BASE = "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg";
-const emojiSvgCache = new Map<string, string>();
-
-/**
- * Convert an emoji grapheme (which may be a surrogate pair, a ZWJ sequence,
- * or contain variation selectors) into the hyphen-joined codepoint string
- * used by the Twemoji asset filenames (e.g. "1f680", "1f1fa-1f1f8").
- * Variation selector U+FE0F is stripped for non-ZWJ sequences, matching
- * Twemoji's own naming convention.
- */
-function emojiToTwemojiCode(segment: string): string {
-  const hasZwj = segment.includes("\u200d");
-  const source = hasZwj ? segment : segment.replace(/\uFE0F/g, "");
-  const codepoints: string[] = [];
-  for (const char of source) {
-    const cp = char.codePointAt(0);
-    if (cp !== undefined) codepoints.push(cp.toString(16));
-  }
-  return codepoints.join("-");
-}
-
-async function loadEmojiSvgDataUri(segment: string): Promise<string> {
-  const code = emojiToTwemojiCode(segment);
-  const cached = emojiSvgCache.get(code);
-  if (cached) return cached;
-
-  let svg: string;
-  try {
-    const res = await fetch(`${TWEMOJI_BASE}/${code}.svg`, {
-      signal: AbortSignal.timeout(5000),
-    });
-    if (!res.ok) throw new Error(`twemoji ${code}: HTTP ${res.status}`);
-    svg = await res.text();
-  } catch (err) {
-    console.warn(`[instagram-card] Failed to load Twemoji for ${segment} (${code}): ${err}`);
-    // Transparent 1x1 SVG — much better than rendering "NO GLYPH".
-    svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>';
-  }
-
-  const dataUri = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
-  emojiSvgCache.set(code, dataUri);
-  return dataUri;
-}
-
-// ─── Hero image pre-fetch ────────────────────────────────────────────────────
-
-/**
- * Pre-fetch a hero image and convert to a data URI so satori doesn't
- * need to do its own fetch (which can fail silently).
- * Returns null if the image can't be fetched within the timeout.
- */
-async function prefetchImageAsDataUri(url: string): Promise<string | null> {
-  try {
-    const res = await fetch(url, {
-      signal: AbortSignal.timeout(6000),
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; PositronToday/1.0)" },
-    });
-    if (!res.ok) return null;
-
-    const contentType = res.headers.get("content-type") ?? "image/jpeg";
-    const buffer = await res.arrayBuffer();
-    if (buffer.byteLength < 100) return null; // too small to be a real image
-
-    const base64 = Buffer.from(buffer).toString("base64");
-    return `data:${contentType};base64,${base64}`;
-  } catch (err) {
-    console.warn(`[instagram-card] Failed to prefetch hero image: ${err}`);
-    return null;
-  }
 }
 
 // ─── Card generation ─────────────────────────────────────────────────────────

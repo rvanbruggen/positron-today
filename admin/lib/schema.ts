@@ -171,6 +171,10 @@ export async function initSchema() {
       started_at  TEXT,
       finished_at TEXT
     )`,
+
+    // v2.26: social digest — hand-pick articles for periodic bundled social posts
+    "ALTER TABLE articles ADD COLUMN digest_pick INTEGER NOT NULL DEFAULT 0",
+    "ALTER TABLE articles ADD COLUMN digest_posted_at TEXT",
   ];
 
   for (const sql of migrations) {

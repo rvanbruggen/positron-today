@@ -14,67 +14,16 @@
 
 import db from "@/lib/db";
 import { generateInstagramCardOg } from "@/lib/instagram-card-og";
+import {
+  getEnabledAccounts,
+  uploadCardToPostForMe,
+  postToPlatforms,
+  twitterLen,
+  isUrlLive,
+  getApiKey,
+} from "@/lib/social-helpers";
 
-const PFM_BASE  = "https://api.postforme.dev/v1";
-const API_KEY   = process.env.POSTFORME_API_KEY!;
 const SITE_BASE = "https://positron.today";
-
-/** Returns the enabled account IDs + their platforms from DB + Post for Me. */
-async function getEnabledAccounts(): Promise<{ id: string; platform: string }[]> {
-  // 1. Read enabled IDs from settings
-  const settingsResult = await db.execute({
-    sql:  "SELECT value FROM settings WHERE key = 'postforme_enabled_accounts'",
-    args: [],
-  });
-  if (settingsResult.rows.length === 0) return [];
-
-  let enabledIds: string[] = [];
-  try {
-    enabledIds = JSON.parse(String(settingsResult.rows[0].value));
-  } catch { return []; }
-  if (enabledIds.length === 0) return [];
-
-  // 2. Fetch account list from Post for Me to get platform info
-  const pfmRes = await fetch(`${PFM_BASE}/social-accounts`, {
-    headers: { Authorization: `Bearer ${API_KEY}` },
-    cache: "no-store",
-  });
-  if (!pfmRes.ok) return [];
-
-  const pfmData = await pfmRes.json();
-  const allAccounts: { id: string; platform: string }[] = (pfmData.data ?? []).map(
-    (a: Record<string, string>) => ({ id: a.id, platform: a.platform }),
-  );
-
-  // 3. Filter to only the enabled ones
-  return allAccounts.filter((a) => enabledIds.includes(a.id));
-}
-
-function pfmHeaders() {
-  return { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" };
-}
-
-/**
- * Twitter's weighted character count treats most emoji as 2 chars even though
- * JS .length returns 1 for BMP emoji (e.g. ✨). Post for Me also enforces a
- * raw character limit before Twitter applies t.co shortening, so we must
- * budget against the actual URL length, not the 23-char t.co estimate.
- * We add a 5-char safety buffer on top for any other Unicode width surprises.
- */
-function twitterLen(s: string): number {
-  // Count each non-BMP character (surrogate pair in JS) as 2, same as Twitter.
-  // BMP emoji (single code unit, length=1) are also counted as 2 by Twitter —
-  // detect them via the emoji regex.
-  let count = 0;
-  for (const char of s) {
-    const cp = char.codePointAt(0) ?? 0;
-    // Emoji: Twitter counts as 2. Surrogate pairs (non-BMP) already iterate as
-    // one character via for..of, so codePointAt > 0xFFFF means non-BMP.
-    const isEmoji = cp > 0x2100 && cp <= 0x1FAFF; // broad emoji block range
-    count += (cp > 0xFFFF || isEmoji) ? 2 : 1;
-  }
-  return count;
-}
 
 function buildCaption(article: Record<string, unknown>): string {
   const emoji   = String(article.article_emoji ?? "✨");
@@ -89,9 +38,6 @@ function buildCaption(article: Record<string, unknown>): string {
   const prefix = `${emoji} ${title}\n\n`;
   const suffix = `\n\n${url}`;
 
-  // Budget against actual URL length (not t.co's 23) because Post for Me
-  // enforces a raw character limit. Use twitterLen for the prefix to account
-  // for emoji being counted as 2 chars. Safety buffer of 5 chars.
   const SAFETY = 5;
   const xBudget       = 280 - url.length       - 2 - twitterLen(prefix) - SAFETY;
   const blueskyBudget = 300 - url.length        - 2 - prefix.length;
@@ -102,60 +48,6 @@ function buildCaption(article: Record<string, unknown>): string {
     : "";
 
   return `${prefix}${snippet}${suffix}`;
-}
-
-async function uploadCardToPostForMe(png: Buffer): Promise<string> {
-  // Step 1: get a signed upload URL
-  const urlRes = await fetch(`${PFM_BASE}/media/create-upload-url`, {
-    method:  "POST",
-    headers: pfmHeaders(),
-    body:    JSON.stringify({ content_type: "image/png" }),
-  });
-  if (!urlRes.ok) {
-    const err = await urlRes.json().catch(() => ({}));
-    throw new Error(`Post for Me media URL failed: ${err.message ?? urlRes.status}`);
-  }
-  const { upload_url, media_url } = await urlRes.json();
-
-  // Step 2: PUT the PNG to the signed URL
-  const putRes = await fetch(upload_url, {
-    method:  "PUT",
-    headers: { "Content-Type": "image/png" },
-    body:    new Uint8Array(png),
-  });
-  if (!putRes.ok) {
-    throw new Error(`Media upload failed: ${putRes.status}`);
-  }
-
-  return media_url as string;
-}
-
-/** Returns true if the URL responds with 2xx, false otherwise (including 404). */
-async function isUrlLive(url: string): Promise<boolean> {
-  try {
-    const res = await fetch(url, { method: "HEAD", redirect: "follow" });
-    return res.ok;
-  } catch {
-    return false;
-  }
-}
-
-async function postToPlatforms(
-  accounts: string[],
-  caption: string,
-  mediaUrl?: string,
-): Promise<{ id: string; status: string }> {
-  const body: Record<string, unknown> = { caption, social_accounts: accounts };
-  if (mediaUrl) body.media = [{ url: mediaUrl }];
-
-  const res = await fetch(`${PFM_BASE}/social-posts`, {
-    method:  "POST",
-    headers: pfmHeaders(),
-    body:    JSON.stringify(body),
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.message ?? `Post for Me error ${res.status}`);
-  return { id: data.id, status: data.status };
 }
 
 export type PostArticleResult = {
@@ -180,7 +72,7 @@ export type PostArticleResult = {
  *                    When omitted, posts to all enabled accounts.
  */
 export async function postArticleToSocial(id: number, platforms?: string[]): Promise<PostArticleResult> {
-  if (!API_KEY) {
+  if (!getApiKey()) {
     return { ok: false, status: 500, error: "POSTFORME_API_KEY is not set." };
   }
 

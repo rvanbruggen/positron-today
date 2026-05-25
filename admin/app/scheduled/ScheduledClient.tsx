@@ -635,6 +635,7 @@ export default function ScheduledClient({
               summary_fr: a.summary_fr ?? "",
               article_emoji: a.article_emoji ?? "✨",
               featured: !!a.featured,
+              digest_pick: false,
             }}
             onClose={() => setEditingId(null)}
             onSaved={(fields: EditableFields) => {

@@ -11,6 +11,7 @@ export type EditableFields = {
   summary_fr: string;
   article_emoji: string;
   featured: boolean;
+  digest_pick: boolean;
 };
 
 type Props = {
@@ -114,6 +115,19 @@ export default function EditArticleModal({ articleId, initial, isPublished, onCl
             />
             <span className="text-xs font-semibold text-amber-700 uppercase tracking-wide">
               ⭐ Featured (wide card on public site)
+            </span>
+          </label>
+
+          {/* Digest pick toggle */}
+          <label className="flex items-center gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={!!fields.digest_pick}
+              onChange={(e) => setFields((f) => ({ ...f, digest_pick: e.target.checked }))}
+              className="accent-teal-500"
+            />
+            <span className="text-xs font-semibold text-teal-700 uppercase tracking-wide">
+              📬 Include in next social digest
             </span>
           </label>
 
