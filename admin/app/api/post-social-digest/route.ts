@@ -266,10 +266,10 @@ export async function POST(request: Request) {
     errors.push(`Collage upload: ${msg}`);
   }
 
-  // Post to text platforms
+  // Post to text platforms (with collage image)
   if (textAccounts.length > 0) {
     try {
-      results.text = await postToPlatforms(textAccounts.map((a) => a.id), caption);
+      results.text = await postToPlatforms(textAccounts.map((a) => a.id), caption, collageMediaUrl ?? undefined);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.error("[digest] Text post failed:", msg);
@@ -278,12 +278,12 @@ export async function POST(request: Request) {
   }
 
   // Post to Instagram with collage image and Instagram-specific caption
-  if (collageMediaUrl && instagramAccounts.length > 0) {
+  if (instagramAccounts.length > 0) {
     try {
       results.instagram = await postToPlatforms(
         instagramAccounts.map((a) => a.id),
         instagramCaption,
-        collageMediaUrl,
+        collageMediaUrl ?? undefined,
       );
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);

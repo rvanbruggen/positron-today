@@ -47,50 +47,38 @@ function buildHashtags(articles: DigestCaptionArticle[], maxCount: number): stri
  */
 export function buildDigestCaption(articles: DigestCaptionArticle[]): string {
   const header = "Today on Positron:\n\n";
-
-  const articleLines = articles
-    .map((a) => `${a.emoji} ${a.title}`)
-    .join("\n");
-
   const suffix = `\n\n${SITE_URL}`;
-
-  const instagramHashtags = buildHashtags(articles, 8);
   const shortHashtags = buildHashtags(articles, 4);
-
   const hashtagBlock = "\n\n" + shortHashtags.join(" ");
-  const instagramHashtagBlock = "\n\n" + instagramHashtags.join(" ");
-
-  const body = header + articleLines;
-
-  // Check fit for X (280 chars, emoji-weighted) and Bluesky (300 graphemes)
   const SAFETY = 5;
-  const withHashtags = body + hashtagBlock + suffix;
-  const xLen = twitterLen(withHashtags);
-  const bsLen = [...withHashtags].length;
+  const X_LIMIT = 280 - SAFETY;
+  const BS_LIMIT = 300 - SAFETY;
 
-  if (xLen <= 280 - SAFETY && bsLen <= 300 - SAFETY) {
-    return withHashtags;
+  function fits(s: string): boolean {
+    return twitterLen(s) <= X_LIMIT && [...s].length <= BS_LIMIT;
   }
 
-  // If hashtags push it over, try without hashtags
-  const withoutHashtags = body + suffix;
-  const xLen2 = twitterLen(withoutHashtags);
-  const bsLen2 = [...withoutHashtags].length;
-
-  if (xLen2 <= 280 - SAFETY && bsLen2 <= 300 - SAFETY) {
-    return withoutHashtags;
+  function buildWith(maxTitleLen: number): string {
+    const lines = articles
+      .map((a) => {
+        const t = a.title.length > maxTitleLen ? a.title.slice(0, maxTitleLen - 1) + "…" : a.title;
+        return `${a.emoji} ${t}`;
+      })
+      .join("\n");
+    return header + lines + hashtagBlock + suffix;
   }
 
-  // If still too long, truncate article titles
-  const maxTitleLen = 40;
-  const shortLines = articles
-    .map((a) => {
-      const t = a.title.length > maxTitleLen ? a.title.slice(0, maxTitleLen - 1) + "…" : a.title;
-      return `${a.emoji} ${t}`;
-    })
-    .join("\n");
+  // Try full titles with hashtags
+  const full = buildWith(999);
+  if (fits(full)) return full;
 
-  return header + shortLines + suffix;
+  // Progressively truncate titles to keep hashtags
+  for (const len of [60, 45, 35, 25]) {
+    const attempt = buildWith(len);
+    if (fits(attempt)) return attempt;
+  }
+
+  return buildWith(20);
 }
 
 /**
