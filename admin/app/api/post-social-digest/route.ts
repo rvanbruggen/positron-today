@@ -130,6 +130,40 @@ async function fetchDigestArticles(): Promise<{ articles: ArticleRow[]; tags: Ma
 }
 
 export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const preview = url.searchParams.get("preview");
+
+  if (preview === "image") {
+    const { articles } = await fetchDigestArticles();
+    if (articles.length < 3) {
+      return Response.json({ error: `Need 3 digest picks, found ${articles.length}` }, { status: 400 });
+    }
+    const digestArticles: DigestArticle[] = articles.map((a) => ({
+      title: a.title_en ?? a.title_nl ?? "",
+      emoji: a.article_emoji ?? "✨",
+      imageUrl: a.image_url,
+    }));
+    const png = await generateDigestCollage(digestArticles);
+    return new Response(png, { headers: { "Content-Type": "image/png", "Cache-Control": "no-store" } });
+  }
+
+  if (preview === "caption") {
+    const { articles, tags } = await fetchDigestArticles();
+    if (articles.length < 3) {
+      return Response.json({ error: `Need 3 digest picks, found ${articles.length}` }, { status: 400 });
+    }
+    const captionArticles: DigestCaptionArticle[] = articles.map((a) => ({
+      emoji: a.article_emoji ?? "✨",
+      title: a.title_en ?? a.title_nl ?? "",
+      tags: tags.get(a.id) ?? [],
+    }));
+    return Response.json({
+      caption: buildDigestCaption(captionArticles),
+      instagram_caption: buildInstagramDigestCaption(captionArticles),
+      articles: articles.map((a) => ({ id: a.id, title: a.title_en ?? a.title_nl })),
+    });
+  }
+
   const result = await db.execute({
     sql: `SELECT COUNT(*) as cnt FROM articles
           WHERE digest_pick = 1 AND digest_posted_at IS NULL AND status = 'published'`,
