@@ -9,20 +9,70 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
   const runId = body.runId as number | undefined;
 
-  // Find the target run
-  const runSql = runId
-    ? "SELECT id, status FROM pipeline_runs WHERE id = ?"
-    : `SELECT id, status FROM pipeline_runs ORDER BY
-         CASE status WHEN 'running' THEN 0 ELSE 1 END,
-         id DESC LIMIT 1`;
-  const runResult = await db.execute({ sql: runSql, args: runId ? [runId] : [] });
+  // Always release pending_items claimed >90s ago but never deleted (crashed batch).
+  // Done outside the run-status gate so orphaned claims from a finished run can
+  // still be recovered by a subsequent tick.
+  await db.execute(
+    "UPDATE pending_items SET claimed_at = NULL WHERE claimed_at IS NOT NULL AND claimed_at < datetime('now', '-90 seconds')",
+  );
 
-  if (runResult.rows.length === 0) {
-    return Response.json({ error: "No active run" }, { status: 404 });
+  // Find the target run.
+  let id: number;
+  let status: string;
+
+  if (runId) {
+    const explicit = await db.execute({
+      sql: "SELECT id, status FROM pipeline_runs WHERE id = ?",
+      args: [runId],
+    });
+    if (explicit.rows.length === 0) {
+      return Response.json({ error: "No active run" }, { status: 404 });
+    }
+    id = Number(explicit.rows[0].id);
+    status = String(explicit.rows[0].status);
+  } else {
+    // Prefer an already-running run.
+    const running = await db.execute(
+      `SELECT id, status FROM pipeline_runs WHERE status = 'running' ORDER BY id DESC LIMIT 1`,
+    );
+    if (running.rows.length > 0) {
+      id = Number(running.rows[0].id);
+      status = String(running.rows[0].status);
+    } else {
+      // No active run. If there's unclaimed work in pending_items, auto-create
+      // a run so the cron can drain the queue without a browser kicking it off.
+      const pendingResult = await db.execute(
+        "SELECT COUNT(*) AS c FROM pending_items WHERE claimed_at IS NULL",
+      );
+      const pendingCount = Number(pendingResult.rows[0]?.c ?? 0);
+
+      if (pendingCount > 0) {
+        const created = await db.execute({
+          sql: `INSERT INTO pipeline_runs (status, phase) VALUES ('running', 'classify')`,
+          args: [],
+        });
+        id = Number(created.lastInsertRowid);
+        status = "running";
+        await db.execute({
+          sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'classify_batch', 1)`,
+          args: [id],
+        });
+        await appendLog(id, [
+          { type: "info", message: `Auto-started by tick: ${pendingCount} unclaimed pending_items` },
+        ]);
+      } else {
+        // Nothing to do. Report the most recent run (if any) for status visibility.
+        const latest = await db.execute(
+          `SELECT id, status FROM pipeline_runs ORDER BY id DESC LIMIT 1`,
+        );
+        if (latest.rows.length === 0) {
+          return Response.json({ error: "No active run" }, { status: 404 });
+        }
+        id = Number(latest.rows[0].id);
+        status = String(latest.rows[0].status);
+      }
+    }
   }
-
-  const id = Number(runResult.rows[0].id);
-  const status = runResult.rows[0].status as string;
 
   if (status === "running") {
     // Reset tasks stuck in 'running' for >90 seconds (Vercel timeout recovery)
@@ -32,11 +82,6 @@ export async function POST(request: Request) {
               AND started_at < datetime('now', '-90 seconds')`,
       args: [id],
     });
-
-    // Release pending_items claimed >90s ago but never deleted (crashed batch)
-    await db.execute(
-      "UPDATE pending_items SET claimed_at = NULL WHERE claimed_at IS NOT NULL AND claimed_at < datetime('now', '-90 seconds')",
-    );
 
     // Pick the next pending task
     const taskResult = await db.execute({
