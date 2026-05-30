@@ -1,19 +1,19 @@
 {
-  "exported_at": "2026-05-30T04:36:05.133Z",
-  "total_rejected": 43876,
+  "exported_at": "2026-05-30T05:00:41.315Z",
+  "total_rejected": 43886,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 11936
+      "count": 11939
     },
     {
       "category": "soft-news-filler",
-      "count": 5273
+      "count": 5275
     },
     {
       "category": "sports-negative",
-      "count": 4690
+      "count": 4691
     },
     {
       "category": "crime-violence",
@@ -21,7 +21,7 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 3324
+      "count": 3326
     },
     {
       "category": "economic-doom",
@@ -29,7 +29,7 @@
     },
     {
       "category": "other-negative",
-      "count": 2134
+      "count": 2135
     },
     {
       "category": "war-conflict",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 1002
+      "count": 1003
     },
     {
       "category": "human-discarded",
@@ -69,6 +69,86 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Drop ukrudtsbrænderen, siger forsikringsselskab ",
+      "reason": "The article appears to be related to insurance advice regarding the use of a specific product, which falls under corporate PR and does not provide uplifting content.",
+      "category": "other-negative",
+      "url": "https://www.dr.dk/nyheder/seneste/drop-ukrudtsbraenderen-siger-forsikringsselskab",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Prof. Jacek Czaputowicz: Polska nie potrafi zbudować bezpieczeństwa, więc musi za nie płacić",
+      "reason": "The article discusses Poland's military weaknesses and the implications of American troop presence, which is a political conflict topic and not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/publicystyka/art44469131-prof-jacek-czaputowicz-polska-nie-potrafi-zbudowac-bezpieczenstwa-wiec-musi-za-nie-placic",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Dansk dikt som drar sig samman, expanderar, sviktar och sväller",
+      "reason": "The article discusses a Danish poetry collection, which falls under the category of celebrity and entertainment, lacking broad human relevance and uplifting content.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dn.se/kultur/dansk-dikt-som-drar-sig-samman-expanderar-sviktar-och-svaller/",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Tidligere var Mette Frederiksen rystet. Og det er ikke blevet mindre »gak« på de syv år, der er gået",
+      "reason": "The article discusses political issues related to EU budget constraints and Denmark's position, which falls under political commentary and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/danmark/politik/art10858388/Tidligere-var-Mette-Frederiksen-rystet.-Og-det-er-ikke-blevet-mindre-%C2%BBgak%C2%AB-p%C3%A5-de-syv-%C3%A5r-der-er-g%C3%A5et",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Danskerklub er videre til Stanley Cup-finale efter vild målfest",
+      "reason": "The article discusses a professional sports event, specifically the Carolina Hurricanes reaching the Stanley Cup finals, which falls under the category of non-exceptional sports news without a unique emotional or inspiring angle.",
+      "category": "sports-negative",
+      "url": "https://politiken.dk/sport/ishockey/art10862729/Danskerklub-er-videre-til-Stanley-Cup-finale-efter-vild-m%C3%A5lfest",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Berlingske trænger til et solidt gennemtjek af deres sikkerhedsprocedurer",
+      "reason": "The article discusses concerns about security procedures in a media outlet, which is not uplifting and leans towards negative commentary on the state of journalism.",
+      "category": "tech-ai-concern",
+      "url": "https://politiken.dk/kultur/medier/art10860765/Berlingske-tr%C3%A6nger-til-et-solidt-gennemtjek-af-deres-sikkerhedsprocedurer",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Euroactiv",
+      "title": "\n\t\t\t\t\tThe electric revolution will not be televised\t\t\t\t\t",
+      "reason": "The article discusses political calls for economic overhaul, which falls under political commentary and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "\n\t\t\t\t\thttps://www.euractiv.com/news/the-electric-revolution-will-not-be-televised/\t\t\t\t",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Le Monde",
+      "title": "EN DIRECT, canicule | La vigilance orange est levée dans toute la France, sauf à Paris et dans la petite couronne",
+      "reason": "The article discusses weather conditions in France, specifically a heatwave, which is not uplifting and has local-only relevance.",
+      "category": "soft-news-filler",
+      "url": "https://www.lemonde.fr/planete/live/2026/05/30/en-direct-canicule-la-vigilance-orange-est-levee-dans-toute-la-france-sauf-a-paris-et-dans-la-petite-couronne_6693854_3244.html",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Au Grau-du-Roi, les employés de l’aquarium prennent la mer",
+      "reason": "The article focuses on a local initiative involving aquarium employees, which may not have broad relevance outside the specific community. While it is a positive story, it lacks universal appeal.",
+      "category": "soft-news-filler",
+      "url": "https://www.lemonde.fr/m-le-mag/article/2026/05/30/au-grau-du-roi-les-employes-de-l-aquarium-prennent-la-mer_6695204_4500055.html",
+      "date": "2026-05-30 07:00"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Aya Nakamura, de retour sur scène, s’impose en reine du Stade de France",
+      "reason": "The article focuses on a concert by a celebrity, which falls under the category of entertainment news and does not have broad human relevance beyond the context of the performance.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.lemonde.fr/culture/article/2026/05/30/aya-nakamura-de-retour-sur-scene-s-impose-en-reine-du-stade-de-france_6695203_3246.html",
+      "date": "2026-05-30 07:00"
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "Nieuwe genetische test kan miljoenen borstkankerpatiënten chemotherapie besparen",
@@ -7988,86 +8068,6 @@
       "category": "political-conflict",
       "url": "https://www.faz.net/aktuell/feuilleton/medien-und-film/talkshow/maybrit-illner-in-der-tv-kritik-reisst-euch-endlich-zusammen-accg-200878094.html",
       "date": "2026-05-29 10:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Dit staat er naast de centenindex nog allemaal in de programmawet",
-      "reason": "The article discusses the approval of a program law, which falls under political content and does not provide uplifting or universally relevant news.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/politiek/dit-staat-er-naast-de-centenindex-nog-allemaal-in-de-programmawet/153902761.html",
-      "date": "2026-05-29 10:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "WEERBERICHT. Hitte en onweer, vanaf zondag koelere temperaturen",
-      "reason": "The article discusses weather conditions, which is local-only relevance and does not have broad human interest.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/binnenland/weerbericht.-hitte-en-onweer-vanaf-zondag-koelere-temperaturen/153908163.html",
-      "date": "2026-05-29 10:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Gemeentelijk nieuws in nieuwe vorm ",
-      "reason": "The article focuses on a local municipal publication, which is unlikely to interest readers outside of the specific community of Zemst.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/vlaams-brabant/halle-vilvoorde/zemst/gemeentelijk-nieuws-in-nieuwe-vorm/153910733.html",
-      "date": "2026-05-29 10:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Ex-Rode Duivels Radja Nainggolan en Olivier Deschacht duiken op in WK-single van Samson en Marie",
-      "reason": "The article focuses on a music video featuring two former football players, which falls under celebrity and entertainment news rather than a universally uplifting story.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.gva.be/media-en-cultuur/bv-en-co/ex-rode-duivels-radja-nainggolan-en-olivier-deschacht-duiken-op-in-wk-single-van-samson-en-marie/153910049.html",
-      "date": "2026-05-29 09:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "VIDEO. Darts van een andere planeet: fenomenale maar emotionele Luke Littler wint de Premier League na spectaculaire finale tegen Luke Humphries",
-      "reason": "The article focuses on a professional sports event, specifically the Premier League Darts, which does not meet the criteria for exceptional human-interest stories. It primarily reports on a competitive outcome rather than a universally uplifting narrative.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/darts/video.-darts-van-een-andere-planeet-fenomenale-maar-emotionele-luke-littler-wint-de-premier-league-na-spectaculaire-finale-tegen-luke-humphries/153911277.html",
-      "date": "2026-05-29 09:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "LIVE WK. Argentinië haalt opgelucht adem: Lionel Messi haalt WK-selectie, Egypte wint oefenduel tegen Rusland",
-      "reason": "The article focuses on sports news related to the World Cup and player selections, which does not meet the positive-news editorial standard due to its routine nature and lack of exceptional human interest.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/voetbal/live-wk.-argentinie-haalt-opgelucht-adem-lionel-messi-haalt-wk-selectie-egypte-wint-oefenduel-tegen-rusland/151454494.html",
-      "date": "2026-05-29 09:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "LIVE OORLOG IN OEKRAÏNE. Russische drone slaat in op Roemeens flatgebouw, NAVO zegt dat ze haar verdediging “tegen alle bedreigingen” zal versterken",
-      "reason": "The article discusses the ongoing war in Ukraine, which is a negative and conflict-related topic, failing to meet positive news standards.",
-      "category": "war-conflict",
-      "url": "https://www.gva.be/buitenland/live-oorlog-in-oekraine.-russische-drone-slaat-in-op-roemeens-flatgebouw-navo-zegt-dat-ze-haar-verdediging-tegen-alle-bedreigingen-zal-versterken/76695337.html",
-      "date": "2026-05-29 09:31"
-    },
-    {
-      "source": "The Guardian",
-      "title": "Russian drone crashes into Romanian apartments, wounding two people and starting fire",
-      "reason": "The article reports on a violent incident involving a drone crash that resulted in injuries and a fire, which is not uplifting and focuses on a negative event.",
-      "category": "war-conflict",
-      "url": "https://www.theguardian.com/world/2026/may/29/russian-drone-romanian-apartments-wounding-two-people-and-starting-fire",
-      "date": "2026-05-29 09:31"
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "Russian drone crashes into apartment building in Romania",
-      "reason": "The article reports on a drone crash that caused injuries and a fire, which is a negative event and not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://www.bbc.com/news/articles/c93x4nxlkjeo?at_medium=RSS&at_campaign=rss",
-      "date": "2026-05-29 09:31"
-    },
-    {
-      "source": "De Standaard Economie",
-      "title": "Het is nipt, maar het kan nog: dankzij stemming in Kamer kan centenindex al maandag van start",
-      "reason": "The article discusses a political decision regarding the implementation of a financial index, which falls under political news and does not provide uplifting content that resonates broadly across cultures.",
-      "category": "political-conflict",
-      "url": "https://www.standaard.be/economie/het-is-nipt-maar-het-kan-nog-dankzij-stemming-in-kamer-kan-centenindex-al-maandag-van-start/153775465.html",
-      "date": "2026-05-29 09:31"
     }
   ]
 }
