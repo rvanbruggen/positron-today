@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-05-30T02:00:37.914Z",
-  "total_rejected": 43791,
+  "exported_at": "2026-05-30T02:30:40.240Z",
+  "total_rejected": 43800,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 11905
+      "count": 11907
     },
     {
       "category": "soft-news-filler",
-      "count": 5265
+      "count": 5266
     },
     {
       "category": "sports-negative",
@@ -17,15 +17,15 @@
     },
     {
       "category": "crime-violence",
-      "count": 3807
+      "count": 3808
     },
     {
       "category": "celebrity-entertainment",
-      "count": 3315
+      "count": 3317
     },
     {
       "category": "economic-doom",
-      "count": 2889
+      "count": 2890
     },
     {
       "category": "other-negative",
@@ -37,7 +37,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 1959
+      "count": 1960
     },
     {
       "category": "health-scare",
@@ -45,7 +45,7 @@
     },
     {
       "category": "divisive-social",
-      "count": 1220
+      "count": 1221
     },
     {
       "category": "tech-ai-concern",
@@ -69,6 +69,78 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Communication expert says we decide how ‘confident’ a person is in just 200 milliseconds",
+      "reason": "The article discusses a communication expert's insights, which may not have broad human relevance and could be seen as soft news rather than uplifting content.",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/communication-expert-says-we-decide-how-confident-a-person-is-in-just-200-milliseconds/",
+      "date": "2026-05-30 04:30"
+    },
+    {
+      "source": "Upworthy",
+      "title": "How a real Chinese Titanic survivor inspired an iconic scene from the James Cameron film",
+      "reason": "The article focuses on a historical figure related to a film, which falls under celebrity and entertainment content, lacking broad human relevance.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.upworthy.com/how-a-real-chinese-titanic-survivor-inspired-an-iconic-scene-from-the-james-cameron-film/",
+      "date": "2026-05-30 04:30"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Aya Nakamura au Stade de France, peut mieux faire",
+      "reason": "The article focuses on a concert performance by a celebrity, but it critiques the event rather than celebrating it, making it not uplifting.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.lefigaro.fr/musique/aya-nakamura-au-stade-de-france-peut-mieux-faire-20260530",
+      "date": "2026-05-30 04:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Amerikaanse en Cubaanse generaals ontmoeten elkaar bij Guantanamo",
+      "reason": "The article discusses a meeting between American and Cuban generals, which falls under political conflict and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.hln.be/buitenland/amerikaanse-en-cubaanse-generaals-ontmoeten-elkaar-bij-guantanamo~a79c6d94/",
+      "date": "2026-05-30 04:30"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Drie bergbeklimmers omgekomen na val op hoogste berg van Noord-Amerika",
+      "reason": "The article reports on the tragic death of three climbers, which is a negative event and does not uplift the reader.",
+      "category": "disaster-accident",
+      "url": "https://www.hln.be/buitenland/drie-bergbeklimmers-omgekomen-na-val-op-hoogste-berg-van-noord-amerika~ae201139/",
+      "date": "2026-05-30 04:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Haar man stierf tijdens zijn flexi-job. Nu dreigt financiële nood: ‘Het systeem is onrechtvaardig’",
+      "reason": "The article discusses financial difficulties following a man's death during work, which is a negative and distressing topic rather than uplifting.",
+      "category": "economic-doom",
+      "url": "https://www.demorgen.be/politiek/haar-man-stierf-tijdens-zijn-flexi-job-nu-dreigt-financiele-nood-het-systeem-is-onrechtvaardig~b364c585/",
+      "date": "2026-05-30 04:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "En plots duikt een corrupte Duitse procureur op in een groot drugsdossier met Antwerpse criminelen",
+      "reason": "The article discusses a corrupt prosecutor involved in a drug case, which is negative and related to crime, lacking uplifting content.",
+      "category": "crime-violence",
+      "url": "https://www.demorgen.be/meningen/en-plots-duikt-een-corrupte-duitse-procureur-op-in-een-groot-drugsdossier-met-antwerpse-criminelen~be90f9c2/",
+      "date": "2026-05-30 04:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "‘Mijn uitgesproken meningen mogen toch niemand een vrijgeleide geven om mij zwart te maken?’ Marc Van Ranst over de hetze rond zijn instituut, ebola en de Vlaamse sluipwegen",
+      "reason": "The article discusses a controversial figure and the backlash he faces, which is not uplifting and focuses on negative social tensions.",
+      "category": "divisive-social",
+      "url": "https://www.demorgen.be/nieuws/mijn-uitgesproken-meningen-mogen-toch-niemand-een-vrijgeleide-geven-om-mij-zwart-te-maken-marc-van-ranst-over-de-hetze-rond-zijn-instituut-ebola-en-de-vlaamse-sluipwegen~bba55c85/",
+      "date": "2026-05-30 04:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "‘Wees verdomme eens trots op wat we hier doen’: Annick De Ridder (N-VA) over Oosterweel, De Lijn en pestkoppen",
+      "reason": "The article discusses political topics and local issues, which do not have broad human relevance and are not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/politiek/wees-verdomme-eens-trots-op-wat-we-hier-doen-annick-de-ridder-n-va-over-oosterweel-de-lijn-en-pestkoppen~b94bc07fe/",
+      "date": "2026-05-30 04:30"
+    },
     {
       "source": "Le Monde",
       "title": "EN DIRECT, guerre en Ukraine : l’OTAN affirme que le drone qui s’est écrasé sur un immeuble en Roumanie était bien russe",
@@ -7996,78 +8068,6 @@
       "category": "celebrity-entertainment",
       "url": "https://www.gva.be/media-en-cultuur/bv-en-co/niels-destadsbader-lanceert-nieuwe-single-vuur-en-vlam-en-kondigt-theatertour-aan/153782438.html",
       "date": "2026-05-29 07:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "LIVE POLITIEK. Kamer keurt centenindex en pensioenhervorming goed, vakbonden trekken naar Grondwettelijk Hof tegen pensioenhervorming",
-      "reason": "The article discusses political decisions and actions, which do not meet the positive-news criteria and are not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/politiek/live-politiek.-kamer-keurt-centenindex-en-pensioenhervorming-goed-vakbonden-trekken-naar-grondwettelijk-hof-tegen-pensioenhervorming/77026519.html",
-      "date": "2026-05-29 06:30"
-    },
-    {
-      "source": "The Guardian",
-      "title": "Blue Origin rocket explodes during test in latest setback for Jeff Bezos-owned company",
-      "reason": "The article discusses a rocket explosion, which is a negative event, and does not provide uplifting content or a positive resolution.",
-      "category": "disaster-accident",
-      "url": "https://www.theguardian.com/science/2026/may/29/blue-origin-rocket-explodes",
-      "date": "2026-05-29 06:30"
-    },
-    {
-      "source": "The Guardian",
-      "title": "Why are our homes and cities all so hot? – podcast",
-      "reason": "The article discusses the negative impacts of extreme heat and the UK's unpreparedness for climate change, which is not uplifting and focuses on a pressing environmental issue.",
-      "category": "climate-environment",
-      "url": "https://www.theguardian.com/environment/audio/2026/may/29/why-are-our-homes-and-cities-all-so-hot-podcast",
-      "date": "2026-05-29 06:30"
-    },
-    {
-      "source": "The Guardian",
-      "title": "‘I can gauge John’s reaction: that’s good, stick that in’: Paul McCartney on how old bandmates – and Oasis – inspired his nostalgic new album",
-      "reason": "The article focuses on Paul McCartney's reflections and his new album, which falls under celebrity and entertainment news, lacking broad human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.theguardian.com/music/2026/may/29/paul-mccartney-bandmates-oasis-nostalgic-new-album-the-boys-of-dungeon-lane",
-      "date": "2026-05-29 06:30"
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Twee gewonden nadat drone neerstort op flatgebouw in Roemenië, bij grens met Oekraïne",
-      "reason": "The article discusses a drone crash resulting in injuries, which is a negative event related to the ongoing conflict in Ukraine, lacking uplifting content.",
-      "category": "disaster-accident",
-      "url": "https://www.standaard.be/buitenland/twee-gewonden-nadat-drone-neerstort-op-flatgebouw-in-roemenie-bij-grens-met-oekrane/35173633.html",
-      "date": "2026-05-29 06:30"
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "VS ontkennen dat Iran Amerikaans toestel uit de lucht schoot",
-      "reason": "The article discusses a conflict situation in the Middle East, which is inherently negative and does not uplift the reader.",
-      "category": "political-conflict",
-      "url": "https://www.standaard.be/buitenland/vs-ontkennen-dat-iran-amerikaans-toestel-uit-de-lucht-schoot/35173881.html",
-      "date": "2026-05-29 06:30"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Cellisten Koningin Elisabethwedstrijd kiezen voor 'nieuwere' muziek  ",
-      "reason": "The article focuses on a specific music competition, which may not have broad human relevance outside of its immediate context, making it less appealing to a global audience.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.APxdQbnN8",
-      "date": "2026-05-29 06:30"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Nog geen plannen dit weekend? Dit zijn onze tips",
-      "reason": "The article appears to be a local guide with tips for the weekend, which may not have broad human relevance or upliftment beyond a specific area.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.vLVKpW1Q3",
-      "date": "2026-05-29 06:30"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Chinese export bedreigt Europese economie, maar hoe hard durft Europa terugslaan?",
-      "reason": "The article discusses economic tensions between China and Europe, which is a negative topic related to political conflict and economic doom.",
-      "category": "political-conflict",
-      "url": "https://vrtnws.be/p.11dbobwla",
-      "date": "2026-05-29 06:30"
     }
   ]
 }
