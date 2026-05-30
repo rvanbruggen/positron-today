@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-05-30T23:00:43.329Z",
-  "total_rejected": 44565,
+  "exported_at": "2026-05-30T23:30:38.556Z",
+  "total_rejected": 44568,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 12072
+      "count": 12073
     },
     {
       "category": "soft-news-filler",
@@ -13,11 +13,11 @@
     },
     {
       "category": "sports-negative",
-      "count": 4845
+      "count": 4846
     },
     {
       "category": "crime-violence",
-      "count": 3843
+      "count": 3844
     },
     {
       "category": "celebrity-entertainment",
@@ -69,6 +69,30 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "Incidents après la victoire du PSG en Ligue des champions : le RN s'indigne des «violences» et «dégradations» pendant la liesse",
+      "reason": "The article discusses negative incidents following a sports event, focusing on violence and public disorder, which does not align with positive news standards.",
+      "category": "sports-negative",
+      "url": "https://www.lefigaro.fr/politique/victoire-du-psg-en-ligue-des-champions-le-rn-s-indigne-des-violences-et-degradations-pendant-la-liesse-20260531",
+      "date": "2026-05-31 01:30"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Incidents après la victoire du PSG en Ligue des champions : au moins 326 interpellations en France, dont 235 dans l’agglomération parisienne",
+      "reason": "The article discusses incidents and arrests following a sports event, which is negative and focuses on crime and violence rather than uplifting content.",
+      "category": "crime-violence",
+      "url": "https://www.lefigaro.fr/faits-divers/incidents-apres-la-victoire-du-psg-en-ligue-des-champions-au-moins-326-interpellations-en-france-dont-235-dans-l-agglomeration-parisienne-20260531",
+      "date": "2026-05-31 01:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Senator Dan Sullivan Has a New Challenger in Alaska: Dan Sullivan",
+      "reason": "The article discusses a political situation involving candidates with the same name, which is not uplifting and falls under political conflict.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/05/30/us/politics/dan-sullivan-election-senate-alaska.html",
+      "date": "2026-05-31 01:30"
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "Trump deler igen billede af sig selv over Grønland",
@@ -8044,30 +8068,6 @@
       "category": "sports-negative",
       "url": "https://www.dn.se/sport/lillebror-norge-ar-battre-an-sverige-svart-att-forsta/",
       "date": "2026-05-29 21:59"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "”Västvärlden borde sluta hoppas att Ryssland kollapsar av sanktioner”",
-      "reason": "The article discusses the limitations of sanctions on Russia, which is a negative political analysis rather than a positive news story.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/varlden/vastvarlden-borde-sluta-hoppas-att-ryssland-kollapsar-av-sanktioner/",
-      "date": "2026-05-29 21:59"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Lagad plastpåse från Nordkorea flöt i land på ö",
-      "reason": "The article discusses a plastic bag from North Korea, which, while it may have some interesting aspects, primarily reflects on the hardships of life in North Korea, making it more of a commentary on survival rather than an uplifting story.",
-      "category": "war-conflict",
-      "url": "https://www.dn.se/varlden/lagad-plastpase-fran-nordkorea-flot-i-land-pa-o/",
-      "date": "2026-05-29 21:59"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Nye tal viser markant stigning i søvnmedicin til børn: Her er professorens råd til forældrene",
-      "reason": "The article discusses a significant increase in the use of sleep medication among children, which is a concerning health issue rather than a positive story.",
-      "category": "health-scare",
-      "url": "https://politiken.dk/danmark/sundhed/art10861823/Nye-tal-viser-markant-stigning-i-s%C3%B8vnmedicin-til-b%C3%B8rn-Her-er-professorens-r%C3%A5d-til-for%C3%A6ldrene",
-      "date": "2026-05-29 21:31"
     }
   ]
 }
