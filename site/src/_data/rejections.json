@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-06-01T23:30:41.545Z",
-  "total_rejected": 46444,
+  "exported_at": "2026-06-02T00:03:11.145Z",
+  "total_rejected": 46453,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 12576
+      "count": 12579
     },
     {
       "category": "soft-news-filler",
-      "count": 5588
+      "count": 5589
     },
     {
       "category": "sports-negative",
@@ -17,15 +17,15 @@
     },
     {
       "category": "crime-violence",
-      "count": 4006
+      "count": 4008
     },
     {
       "category": "celebrity-entertainment",
-      "count": 3511
+      "count": 3512
     },
     {
       "category": "economic-doom",
-      "count": 3043
+      "count": 3044
     },
     {
       "category": "other-negative",
@@ -41,7 +41,7 @@
     },
     {
       "category": "health-scare",
-      "count": 2035
+      "count": 2036
     },
     {
       "category": "divisive-social",
@@ -69,6 +69,78 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Man shares the four words he uses to keep conversations flowing effortlessly",
+      "reason": "The article focuses on a communication technique, which may not have broad human relevance and could be seen as soft news or filler content.",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/man-shares-the-four-words-he-uses-to-keep-conversations-flowing-effortlessly/",
+      "date": "2026-06-02 02:03"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Teen spent minutes hunting for a dime to help a stranger. The delay may have saved him.",
+      "reason": "The story, while it has a positive element of helping a stranger, ultimately revolves around a violent scene, which detracts from its uplifting nature.",
+      "category": "crime-violence",
+      "url": "https://www.upworthy.com/pn-teen-dime-homeless-woman-delay-shooting/",
+      "date": "2026-06-02 02:02"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Greek man went home to die of cancer. The island had different plans.",
+      "reason": "The article discusses a man's battle with cancer, which is a health scare and inherently negative, despite a potentially uplifting twist. It does not meet the positive-news standard.",
+      "category": "health-scare",
+      "url": "https://www.upworthy.com/greek-man-went-home-to-die-of-cancer-the-island-had-different-plans/",
+      "date": "2026-06-02 02:02"
+    },
+    {
+      "source": "Humo",
+      "title": "Consternatie in ‘Blind gekocht’: plots koos Daan Alferink voor een ‘beige latte frappuccino’ interieur",
+      "reason": "The article focuses on a celebrity's choice of interior design, which falls under entertainment industry gossip and lacks broad human relevance.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.humo.be/tv/consternatie-in-blind-gekocht-plots-koos-daan-alferink-voor-een-beige-latte-frappuccino-interieur~b5f11027/",
+      "date": "2026-06-02 02:02"
+    },
+    {
+      "source": "The New York Times",
+      "title": "U.S. Says More People May Be Charged in Terror Case Linked to Iran",
+      "reason": "The article discusses a terrorism case linked to geopolitical tensions, which is inherently negative and does not uplift the reader.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/01/nyregion/nyc-synagogue-plot-iran.html",
+      "date": "2026-06-02 02:02"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Trump Finds High-Wire Iran Negotiations ‘Very Boring’",
+      "reason": "The article discusses political negotiations in a dismissive manner, which is not uplifting and lacks broad human relevance.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/01/us/politics/trump-iran-negotiations-boring.html",
+      "date": "2026-06-02 02:02"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Dode en twee zwaargewonden bij steekpartij in Nederlands bedrijf: “Ik wil weten of mijn zoon ongedeerd is”",
+      "reason": "The article reports on a violent incident resulting in death and injuries, which is clearly negative and not uplifting.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/buitenland/dode-en-twee-zwaargewonden-bij-steekpartij-in-nederlands-bedrijf-ik-wil-weten-of-mijn-zoon-ongedeerd-is~a74ff03c/",
+      "date": "2026-06-02 02:02"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Tot in vroege ochtend geen vliegverkeer op Belgische luchthavens door staking bij Skeyes: Brussels Airport kondigt vertragingen aan",
+      "reason": "The article discusses a strike causing flight disruptions at Belgian airports, which is a negative event affecting travel and logistics.",
+      "category": "economic-doom",
+      "url": "https://www.hln.be/binnenland/tot-in-vroege-ochtend-geen-vliegverkeer-op-belgische-luchthavens-door-staking-bij-skeyes-brussels-airport-kondigt-vertragingen-aan~afbbf5c0/",
+      "date": "2026-06-02 02:02"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Tot in de vroege ochtend geen vliegverkeer op Belgische luchthavens door staking bij Skeyes",
+      "reason": "The article discusses a strike affecting air traffic in Belgium, which is a negative event impacting travel and logistics, lacking uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/tot-in-de-vroege-ochtend-geen-vliegverkeer-op-belgische-luchthavens-door-staking-bij-skeyes~bfbbf5c0/",
+      "date": "2026-06-02 02:02"
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "ESG to skuteczny sposób na budowanie odporności biznesu",
@@ -7996,78 +8068,6 @@
       "category": "sports-negative",
       "url": "https://www.gva.be/sport/voetbal/geen-enkele-keer-gewonnen-in-de-play-offs-maar-toch-mag-gent-europa-in-dit-bescheiden-succes-mag-het-bestuur-niet-verblinden/154363007.html",
       "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Politie gaat week lang fietsen, motoren en steps extra controleren",
-      "reason": "The article focuses on police enforcement actions, which may be perceived as negative or concerning rather than uplifting.",
-      "category": "crime-violence",
-      "url": "https://www.gva.be/binnenland/politie-gaat-week-lang-fietsen-motoren-en-steps-extra-controleren/154363178.html",
-      "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Van energiedrank tot gespecialiseerde tabletten: hoe goed werken supplementen om te concentreren? ",
-      "reason": "The article discusses supplements for concentration in a way that lacks broad human relevance and does not provide uplifting content, focusing instead on the limitations of their effectiveness.",
-      "category": "health-scare",
-      "url": "https://www.gva.be/gezondheid/van-energiedrank-tot-gespecialiseerde-tabletten-hoe-goed-werken-supplementen-om-te-concentreren/92278634.html",
-      "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Zelensky beschuldigt Rusland van inzet van ontvoerde Oekraïense kinderen aan het front: “Ze leren hen hun vaderland en hun landgenoten te haten”",
-      "reason": "The article discusses serious allegations of child soldiers in a war context, which is highly negative and not uplifting.",
-      "category": "war-conflict",
-      "url": "https://www.gva.be/buitenland/zelensky-beschuldigt-rusland-van-inzet-van-ontvoerde-oekraense-kinderen-aan-het-front-ze-leren-hen-hun-vaderland-en-hun-landgenoten-te-haten/154425539.html",
-      "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "VS dichten achterpoortje voor export van geavanceerde AI-chips naar Chinese bedrijven",
-      "reason": "The article discusses U.S. measures to restrict AI chip exports to China, which is a political and economic issue rather than a positive news story.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/buitenland/vs-dichten-achterpoortje-voor-export-van-geavanceerde-ai-chips-naar-chinese-bedrijven/154392777.html",
-      "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "“Dit is een gecoördineerde aanval op de democratie”: vakbondskoepel waarschuwt voor systematische achteruitgang van werknemersrechten wereldwijd",
-      "reason": "The article discusses the alarming decline of workers' rights globally, which is a negative and concerning issue rather than uplifting news.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/buitenland/dit-is-een-gecoordineerde-aanval-op-de-democratie-vakbondskoepel-waarschuwt-voor-systematische-achteruitgang-van-werknemersrechten-wereldwijd/154402507.html",
-      "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "Ukraine war briefing: Big drone deal awaits Trump signature, says Zelenskyy",
-      "reason": "The article discusses ongoing conflict and military actions, which are inherently negative and do not uplift the reader.",
-      "category": "war-conflict",
-      "url": "https://www.theguardian.com/world/2026/jun/01/ukraine-war-briefing-big-drone-deal-awaits-trump-signature-says-zelenskyy",
-      "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "European leaders condemn Israel’s deepening incursion into Lebanon",
-      "reason": "The article discusses a military conflict and political condemnation, which is inherently negative and does not uplift the reader.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/world/2026/jun/01/european-leaders-condemn-israel-incursion-into-lebanon",
-      "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "NRC",
-      "title": "Trump-fan en mensenrechtenactivist nemen het tegen elkaar op in tweede stemronde presidentschap Colombia ",
-      "reason": "The article discusses a political election in Colombia, which falls under political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.nrc.nl/nieuws/2026/06/01/trump-fan-en-mensenrechtenactivist-nemen-het-tegen-elkaar-op-in-tweede-stemronde-presidentschap-colombia-a4929044",
-      "date": "2026-06-01 04:00"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Brésil: deux hommes présentant des symptômes possibles d'Ebola placés à l’isolement",
-      "reason": "The article discusses a potential Ebola outbreak, which is a serious health scare and not uplifting.",
-      "category": "health-scare",
-      "url": "https://www.lefigaro.fr/international/bresil-deux-hommes-presentant-des-symptomes-possibles-d-ebola-places-a-l-isolement-20260601",
-      "date": "2026-06-01 03:30"
     }
   ]
 }
