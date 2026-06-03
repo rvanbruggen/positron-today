@@ -825,7 +825,7 @@ export default function SettingsPage() {
       <div className="mt-8">
         <h2 className="text-base font-semibold text-amber-900 mb-0.5">📬 Digest publishing</h2>
         <p className="text-xs text-amber-600 mb-3">
-          Post a collage of 3 hand-picked articles to social media on a schedule.
+          Post a polaroid collage of 3–5 hand-picked articles to social media on a schedule.
           Pick articles for the digest on the History page using the 📬 button.
         </p>
         <div className={`border rounded-xl p-5 transition-colors ${digestTimes.length > 0 ? "bg-teal-50 border-teal-300" : "bg-white border-yellow-200"}`}>
@@ -859,7 +859,7 @@ export default function SettingsPage() {
             <p className="text-[11px] text-amber-400 mt-1">
               {digestTimes.length === 0
                 ? "No scheduled times — add one to enable automatic digest posting."
-                : "Digest posts at these times daily (if 3 articles are picked). Save to apply."}
+                : "Digest posts at these times daily (if at least 3 articles are picked; up to 5 are included). Save to apply."}
             </p>
           </div>
 
@@ -870,7 +870,7 @@ export default function SettingsPage() {
                 ? "bg-teal-100 text-teal-700"
                 : "bg-amber-100 text-amber-700"
             }`}>
-              {digestPending ?? "…"} / 3 needed
+              {digestPending ?? "…"} / 3 min (up to 5)
             </span>
           </div>
 

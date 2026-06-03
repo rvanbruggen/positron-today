@@ -40,7 +40,7 @@ function buildHashtags(articles: DigestCaptionArticle[], maxCount: number): stri
 }
 
 const DIGEST_SYSTEM_PROMPT = `You write short social media captions for Positron Today, a positive-news website.
-You will receive 3 article titles. Write a single short, upbeat paragraph (2-3 sentences max) that describes all three stories.
+You will receive a handful of article titles (3 to 5). Write a single short, upbeat paragraph (2-3 sentences max) that describes the stories together.
 Rules:
 - Warm, casual tone. No corporate speak.
 - Do NOT list the titles. Weave them into a natural summary.
@@ -50,7 +50,7 @@ Rules:
 - Output ONLY the summary text, nothing else.`;
 
 /**
- * Build a platform-aware digest caption using an LLM to summarise the 3 articles
+ * Build a platform-aware digest caption using an LLM to summarise the articles
  * into a short, engaging blurb that fits X (280) and Bluesky (300) limits.
  */
 export async function buildDigestCaption(articles: DigestCaptionArticle[]): Promise<string> {
@@ -71,7 +71,7 @@ export async function buildDigestCaption(articles: DigestCaptionArticle[]): Prom
   try {
     const llm = await getFilterProvider();
     const summary = await llm.generate(
-      `Summarise these 3 positive news stories in under ${maxSummaryChars} characters:\n\n${articlesText}`,
+      `Summarise these ${articles.length} positive news stories in under ${maxSummaryChars} characters:\n\n${articlesText}`,
       systemPrompt,
       150,
     );

@@ -1,8 +1,8 @@
 /**
  * POST /api/post-social-digest
  *
- * Posts a digest (3 hand-picked articles) to all enabled social platforms.
- * Generates a triptych collage image and a summary caption with hashtags.
+ * Posts a digest (3–5 hand-picked articles) to all enabled social platforms.
+ * Generates a scattered polaroid collage image and a summary caption with hashtags.
  *
  * Query params:
  *   ?manual=1  — admin-triggered (no Bearer token required)
@@ -14,7 +14,12 @@ export const dynamic = "force-dynamic";
 import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
 import { scheduleNow } from "@/lib/schedule-time";
-import { generateDigestCollage, type DigestArticle } from "@/lib/digest-collage";
+import {
+  generateDigestCollage,
+  MIN_DIGEST_ARTICLES,
+  MAX_DIGEST_ARTICLES,
+  type DigestArticle,
+} from "@/lib/digest-collage";
 import { buildDigestCaption, buildInstagramDigestCaption, type DigestCaptionArticle } from "@/lib/digest-caption";
 import {
   getEnabledAccounts,
@@ -96,8 +101,8 @@ async function fetchDigestArticles(): Promise<{ articles: ArticleRow[]; tags: Ma
             AND digest_posted_at IS NULL
             AND status = 'published'
           ORDER BY published_at DESC
-          LIMIT 3`,
-    args: [],
+          LIMIT ?`,
+    args: [MAX_DIGEST_ARTICLES],
   });
 
   const articles: ArticleRow[] = result.rows.map((r) => ({
@@ -137,8 +142,8 @@ export async function GET(request: Request) {
 
   if (preview === "image") {
     const { articles } = await fetchDigestArticles();
-    if (articles.length < 3) {
-      return Response.json({ error: `Need 3 digest picks, found ${articles.length}` }, { status: 400 });
+    if (articles.length < MIN_DIGEST_ARTICLES) {
+      return Response.json({ error: `Need at least ${MIN_DIGEST_ARTICLES} digest picks, found ${articles.length}` }, { status: 400 });
     }
     const digestArticles: DigestArticle[] = articles.map((a) => ({
       title: a.title_en ?? a.title_nl ?? "",
@@ -151,8 +156,8 @@ export async function GET(request: Request) {
 
   if (preview === "caption") {
     const { articles, tags } = await fetchDigestArticles();
-    if (articles.length < 3) {
-      return Response.json({ error: `Need 3 digest picks, found ${articles.length}` }, { status: 400 });
+    if (articles.length < MIN_DIGEST_ARTICLES) {
+      return Response.json({ error: `Need at least ${MIN_DIGEST_ARTICLES} digest picks, found ${articles.length}` }, { status: 400 });
     }
     const captionArticles: DigestCaptionArticle[] = articles.map((a) => ({
       emoji: a.article_emoji ?? "✨",
@@ -198,10 +203,10 @@ export async function POST(request: Request) {
 
   const { articles, tags } = await fetchDigestArticles();
 
-  if (articles.length < 3) {
+  if (articles.length < MIN_DIGEST_ARTICLES) {
     return Response.json({
       ok: false,
-      error: `Need 3 articles with digest_pick=1, found ${articles.length}. Pick more articles for the digest on the History page.`,
+      error: `Need at least ${MIN_DIGEST_ARTICLES} articles with digest_pick=1, found ${articles.length}. Pick more articles for the digest on the History page.`,
       pending: articles.length,
     }, { status: 400 });
   }
