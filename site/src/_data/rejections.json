@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-06-04T23:00:29.527Z",
-  "total_rejected": 49410,
+  "exported_at": "2026-06-04T23:30:47.290Z",
+  "total_rejected": 49421,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 13525
+      "count": 13527
     },
     {
       "category": "soft-news-filler",
-      "count": 5920
+      "count": 5923
     },
     {
       "category": "sports-negative",
@@ -21,11 +21,11 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 3730
+      "count": 3731
     },
     {
       "category": "economic-doom",
-      "count": 3253
+      "count": 3254
     },
     {
       "category": "war-conflict",
@@ -33,7 +33,7 @@
     },
     {
       "category": "other-negative",
-      "count": 2335
+      "count": 2336
     },
     {
       "category": "disaster-accident",
@@ -41,7 +41,7 @@
     },
     {
       "category": "health-scare",
-      "count": 2136
+      "count": 2138
     },
     {
       "category": "divisive-social",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 1152
+      "count": 1153
     },
     {
       "category": "human-discarded",
@@ -86,8 +86,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 2864,
-      "total": 2900
+      "negative": 2865,
+      "total": 2901
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -96,8 +96,8 @@
     },
     {
       "source": "De Morgen",
-      "negative": 2403,
-      "total": 2444
+      "negative": 2404,
+      "total": 2445
     },
     {
       "source": "NRC",
@@ -106,8 +106,8 @@
     },
     {
       "source": "The New York Times",
-      "negative": 2083,
-      "total": 2109
+      "negative": 2085,
+      "total": 2111
     },
     {
       "source": "Dagens Nyheter",
@@ -186,13 +186,13 @@
     },
     {
       "source": "De Standaard Binnenland",
-      "negative": 585,
-      "total": 600
+      "negative": 590,
+      "total": 605
     },
     {
       "source": "Upworthy",
-      "negative": 551,
-      "total": 754
+      "negative": 553,
+      "total": 756
     },
     {
       "source": "Euroactiv",
@@ -296,6 +296,94 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Grandma was told she had stage 4 cancer. One surgeon’s hunch revealed something else entirely.",
+      "reason": "The article discusses a serious health scare involving cancer, which may not be uplifting despite a potentially positive outcome. It focuses on a medical condition that is often distressing.",
+      "category": "health-scare",
+      "url": "https://www.upworthy.com/pn-grandma-misdiagnosed-cancer-brain-abscess-tooth/",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "Upworthy",
+      "title": "What did ancient humans do all day before ‘work’ was invented? It wasn’t all about survival.",
+      "reason": "The article focuses on a historical perspective that may not have broad human relevance and is more of a soft news filler rather than a truly uplifting story.",
+      "category": "soft-news-filler",
+      "url": "https://www.upworthy.com/what-did-ancient-humans-do-all-day-before-work-was-invented-it-wasnt-all-about-survival/",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "«Le rôle humain se réduit à chaque étape du développement» : Anthropic sonne l’alarme et appelle à ralentir l’IA",
+      "reason": "The article discusses concerns about the rapid development of AI and its implications for human roles, which is a negative and anxiety-inducing topic.",
+      "category": "tech-ai-concern",
+      "url": "https://www.lefigaro.fr/secteur/high-tech/le-role-humain-se-reduit-a-chaque-etape-du-developpement-anthropic-sonne-l-alarme-et-appelle-a-ralentir-l-ia-20260605",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Nick Bilton, New ‘60 Minutes’ Chief, Pledges Independence",
+      "reason": "The article focuses on the internal deliberations of a news program and the uncertainty surrounding its correspondents, which does not convey a positive or uplifting message.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.nytimes.com/2026/06/04/business/nick-bilton-60-minutes-memo.html",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "New Research Suggests a Possible Path to Prevent Lung Cancer",
+      "reason": "The article discusses research related to lung cancer prevention but includes a mention of political conflict, which detracts from its positive focus.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/04/briefing/lung-cancer-research-trump-fund.html",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Franstalig onderwijs in rep en roer door zware besparingen en protesten: wat is het probleem?",
+      "reason": "The article discusses protests and budget cuts in education, which is a negative issue and does not uplift the reader.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/nieuws/franstalig-onderwijs-in-rep-en-roer-door-zware-besparingen-en-protesten-wat-is-het-probleem~bad20eb7/",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "De Standaard Binnenland",
+      "title": "Steeds meer scholen organiseren schoolfeest op vrijdag: “Ouders moeten er soms even aan wennen”",
+      "reason": "The article focuses on a local trend in school events that may not be of interest to readers outside the specific community, making it too localized for broader relevance.",
+      "category": "soft-news-filler",
+      "url": "https://www.standaard.be/binnenland/steeds-meer-scholen-organiseren-schoolfeest-op-vrijdag-ouders-moeten-er-soms-even-aan-wennen/154762922.html",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "De Standaard Binnenland",
+      "title": "Communicatie met ouders bezorgt leerkrachten kopzorgen",
+      "reason": "The article discusses the pressures teachers face from communication with parents, which is a negative issue rather than a positive story.",
+      "category": "other-negative",
+      "url": "https://www.standaard.be/binnenland/communicatie-met-ouders-bezorgt-leerkrachten-kopzorgen/155204016.html",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "De Standaard Binnenland",
+      "title": "Wanneer moederschap naar een burn-out leidt: “Het doet mij veel verdriet dat ik niet de mama kan zijn die ik zo graag wil zijn”",
+      "reason": "The article discusses the struggles of mothers facing burnout and depression, which is a negative topic and does not uplift the reader.",
+      "category": "health-scare",
+      "url": "https://www.standaard.be/binnenland/wanneer-moederschap-naar-een-burn-out-leidt-het-doet-mij-veel-verdriet-dat-ik-niet-de-mama-kan-zijn-die-ik-zo-graag-wil-zijn/155216741.html",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "De Standaard Binnenland",
+      "title": "Wint de kunstenaar of de projectontwikkelaar? Openbare verkoop van beschermd Antwerps pand beroert de gemoederen",
+      "reason": "The article discusses a local issue regarding a historical building in Antwerp and the competing bids from an artist collective and a developer, which may not have broad human relevance outside the local context.",
+      "category": "soft-news-filler",
+      "url": "https://www.standaard.be/binnenland/wint-de-kunstenaar-of-de-projectontwikkelaar-openbare-verkoop-van-beschermd-antwerps-pand-beroert-de-gemoederen/155234708.html",
+      "date": "2026-06-05 01:30"
+    },
+    {
+      "source": "De Standaard Binnenland",
+      "title": "Aantal plaatsen in kinderopvang lijdt onder onthaalouders die afhaken: “Eigenlijk word je aan je lot overgelaten”",
+      "reason": "The article discusses a decline in childcare places due to a decrease in caregivers, which is a negative trend and lacks uplifting content.",
+      "category": "economic-doom",
+      "url": "https://www.standaard.be/binnenland/aantal-plaatsen-in-kinderopvang-lijdt-onder-onthaalouders-die-afhaken-eigenlijk-word-je-aan-je-lot-overgelaten/155246858.html",
+      "date": "2026-06-05 01:30"
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "Trump dropper jubilæumskoncerter og sætter sig selv på plakaten",
@@ -8207,94 +8295,6 @@
       "category": "sports-negative",
       "url": "https://www.gva.be/sport/tennis/live-roland-garros.-matteo-berrettini-moet-al-vroeg-in-tweede-set-de-strijd-staken-in-kwartfinale-flavio-cobolli-stuurt-het-vierde-reekshoofd-naar-huis/153012634.html",
       "date": "2026-06-04 00:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Genk-speler Zakaria El Ouahdi mocht het vliegtuig naar de VS niet op: houden visumproblemen hem weg van het WK met Marokko?  ",
-      "reason": "The article discusses a player's visa issues preventing him from participating in the World Cup, which is a negative situation rather than uplifting.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/voetbal/genk-speler-zakaria-el-ouahdi-mocht-het-vliegtuig-naar-de-vs-niet-op-houden-visumproblemen-hem-weg-van-het-wk-met-marokko/155130943.html",
-      "date": "2026-06-04 00:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Chemiereus Dow schrapt honderden banen in Terneuzen en andere Nederlandse vestigingen",
-      "reason": "The article discusses job cuts at Dow in the Netherlands, which is a negative economic development and does not uplift the reader.",
-      "category": "economic-doom",
-      "url": "https://www.gva.be/buitenland/chemiereus-dow-schrapt-honderden-banen-in-terneuzen-en-andere-nederlandse-vestigingen/155101576.html",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "US House passes war powers resolution to curb Trump’s authority in Iran",
-      "reason": "The article discusses a political resolution that rebukes a president, which is inherently divisive and not uplifting. It focuses on political conflict rather than a positive human interest story.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/us-news/2026/jun/03/house-passes-war-power-resolution-trump-iran",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "The Guardian",
-      "title": "Middle East crisis live: Trump claims peace deal with Iran could be reached ‘over the weekend’ as Iran claims it struck US ship",
-      "reason": "The article discusses ongoing violence and conflict in the Middle East, including missile attacks and casualties, which is not uplifting and focuses on negative events.",
-      "category": "war-conflict",
-      "url": "https://www.theguardian.com/world/live/2026/jun/03/us-israel-iran-war-lebanon-trump-khamenei-netanyahu-hormuz-latest-news-updates",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "The Guardian",
-      "title": "Police chief warns anti-white bias claims could drive UK policing ‘back to 60s’",
-      "reason": "The article discusses tensions related to policing and race, which is a divisive social issue and not uplifting.",
-      "category": "divisive-social",
-      "url": "https://www.theguardian.com/uk-news/2026/jun/03/police-chief-warns-anti-white-bias-claims-could-drive-uk-policing-back-to-60s",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "The Verge",
-      "title": "WiiM expands its whole-home ecosystem with a new soundbar",
-      "reason": "The article is primarily focused on a product launch and corporate news, which does not meet the positive-news editorial standard.",
-      "category": "other-negative",
-      "url": "https://www.theverge.com/tech/942748/wiim-releases-first-soundbar",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "The Verge",
-      "title": "Apple is bringing age verification to Texas this week",
-      "reason": "The article discusses a corporate policy change related to age verification, which falls under corporate PR and does not provide uplifting content.",
-      "category": "other-negative",
-      "url": "https://www.theverge.com/tech/942761/apple-texas-age-verification-app-store",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "MI5 warns Chinese spies using job websites to target government staff",
-      "reason": "The article discusses espionage activities, which is a negative and concerning topic, lacking any uplifting elements.",
-      "category": "political-conflict",
-      "url": "https://www.bbc.com/news/articles/cq6peqrnzpro?at_medium=RSS&at_campaign=rss",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "De Standaard Economie",
-      "title": "Unilin investeert 100 miljoen voor onder meer eiken spaanplaten, gemaakt van houtafval",
-      "reason": "The article focuses on a corporate investment in a factory, which falls under corporate PR and does not provide a universally uplifting story.",
-      "category": "economic-doom",
-      "url": "https://www.standaard.be/economie/unilin-investeert-100-miljoen-voor-onder-meer-eiken-spaanplaten-gemaakt-van-houtafval/154783857.html",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "De Standaard Economie",
-      "title": "Fender trekt ten strijde tegen Stratocasterkopieën en schaadt zo zijn eigen reputatie",
-      "reason": "The article discusses Fender's aggressive protection of its Stratocaster design, leading to dissatisfaction in the guitar community, which is not uplifting and reflects negatively on the brand.",
-      "category": "other-negative",
-      "url": "https://www.standaard.be/economie/fender-trekt-ten-strijde-tegen-stratocasterkopieen-en-schaadt-zo-zijn-eigen-reputatie/155018509.html",
-      "date": "2026-06-04 00:30"
-    },
-    {
-      "source": "De Standaard Economie",
-      "title": "SpaceX test de beurswereld als nooit tevoren",
-      "reason": "The article discusses the stock market implications of SpaceX's IPO, which falls under corporate PR and routine economic updates rather than uplifting news.",
-      "category": "economic-doom",
-      "url": "https://www.standaard.be/economie/spacex-test-de-beurswereld-als-nooit-tevoren/155070512.html",
-      "date": "2026-06-04 00:30"
     }
   ]
 }
