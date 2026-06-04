@@ -23,6 +23,23 @@ title: The News That Gets Skipped
   .breakdown-bar { height:100%; border-radius:99px; }
   .breakdown-count { font-size:0.72rem; color:#b45309; width:42px; text-align:right; flex-shrink:0; }
 
+  /* ── Source breakdown ── */
+  .source-breakdown-section { background:#fff; border:1.5px solid #fde68a; border-radius:1rem; padding:1.25rem 1.5rem; margin-bottom:2rem; }
+  .source-breakdown-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
+  .source-sort-toggle {
+    display:flex; gap:0; border:1.5px solid #fde68a; border-radius:99px; overflow:hidden;
+  }
+  .source-sort-btn {
+    padding:0.25rem 0.75rem; font-size:0.7rem; font-weight:600; cursor:pointer;
+    background:#fff; color:#78350f; border:none; font-family:inherit; transition:background 0.15s;
+  }
+  .source-sort-btn.active { background:#facc15; }
+  .source-row { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.55rem; }
+  .source-label { font-size:0.78rem; color:#78350f; width:200px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .source-bar-wrap { flex:1; height:8px; background:#fef3c7; border-radius:99px; overflow:hidden; }
+  .source-bar { height:100%; border-radius:99px; background:#f59e0b; }
+  .source-count { font-size:0.72rem; color:#b45309; width:120px; text-align:right; flex-shrink:0; white-space:nowrap; }
+
   /* ── Filter bar ── */
   .filter-bar { display:flex; gap:0.5rem; margin-bottom:1.25rem; flex-wrap:wrap; }
   .cat-pill {
@@ -193,6 +210,32 @@ title: The News That Gets Skipped
   </div>
   {% endif %}
 
+  <!-- Source breakdown -->
+  {% if rejections.source_breakdown and rejections.source_breakdown.length > 0 %}
+  <div class="source-breakdown-section">
+    <div class="source-breakdown-header">
+      <div class="breakdown-title" style="margin-bottom:0;">
+        <span class="t-en">Negativity by news source</span>
+        <span class="t-nl" style="display:none">Negativiteit per nieuwsbron</span>
+        <span class="t-fr" style="display:none">Négativité par source d'actualité</span>
+      </div>
+      <div class="source-sort-toggle">
+        <button class="source-sort-btn active" id="sort-abs-btn" onclick="sortSources('absolute')">
+          <span class="t-en">Absolute</span>
+          <span class="t-nl" style="display:none">Absoluut</span>
+          <span class="t-fr" style="display:none">Absolu</span>
+        </button>
+        <button class="source-sort-btn" id="sort-rel-btn" onclick="sortSources('relative')">
+          <span class="t-en">Relative</span>
+          <span class="t-nl" style="display:none">Relatief</span>
+          <span class="t-fr" style="display:none">Relatif</span>
+        </button>
+      </div>
+    </div>
+    <div id="source-breakdown-list"></div>
+  </div>
+  {% endif %}
+
   <!-- List heading -->
   <h2 class="section-heading">
     <span class="t-en">Most recent 1,000 skipped articles</span>
@@ -255,6 +298,47 @@ title: The News That Gets Skipped
 <script>
   var REJECTIONS = {{ rejections.articles | dump | safe }};
   var CAT_META   = {{ catMeta | dump | safe }};
+  var SOURCE_BREAKDOWN = {{ (rejections.source_breakdown or []) | dump | safe }};
+
+  var sourceSort = 'absolute';
+
+  function renderSourceBreakdown() {
+    var el = document.getElementById('source-breakdown-list');
+    if (!el || !SOURCE_BREAKDOWN.length) return;
+
+    var sorted = SOURCE_BREAKDOWN.slice();
+    if (sourceSort === 'relative') {
+      sorted.sort(function(a, b) {
+        return (b.total ? b.negative / b.total : 0) - (a.total ? a.negative / a.total : 0);
+      });
+    } else {
+      sorted.sort(function(a, b) { return b.negative - a.negative; });
+    }
+
+    var maxVal = sourceSort === 'relative'
+      ? Math.max.apply(null, sorted.map(function(s) { return s.total ? s.negative / s.total : 0; }))
+      : sorted[0].negative;
+
+    el.innerHTML = sorted.map(function(s) {
+      var pct = s.total ? Math.round(s.negative / s.total * 100) : 0;
+      var barWidth = sourceSort === 'relative'
+        ? (maxVal > 0 ? Math.round((s.negative / s.total) / maxVal * 100) : 0)
+        : (maxVal > 0 ? Math.round(s.negative / maxVal * 100) : 0);
+
+      return '<div class="source-row">'
+        + '<div class="source-label">' + escHtml(s.source) + '</div>'
+        + '<div class="source-bar-wrap"><div class="source-bar" style="width:' + barWidth + '%;"></div></div>'
+        + '<div class="source-count">' + s.negative + ' / ' + s.total + ' (' + pct + '%)</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  function sortSources(mode) {
+    sourceSort = mode;
+    document.getElementById('sort-abs-btn').classList.toggle('active', mode === 'absolute');
+    document.getElementById('sort-rel-btn').classList.toggle('active', mode === 'relative');
+    renderSourceBreakdown();
+  }
 
   var activeCat   = 'all';
   var pageSize    = 100;
@@ -342,6 +426,7 @@ title: The News That Gets Skipped
   }
 
   // Initial render
+  renderSourceBreakdown();
   renderPage();
 
   // Restore saved language

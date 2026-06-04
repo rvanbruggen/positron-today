@@ -66,11 +66,37 @@ export async function exportRejections(): Promise<{ exported: number }> {
     count: Number(r.cnt),
   }));
 
+  // Source breakdown: negative count + total count (negative + accepted) per source
+  const sourceResult = await db.execute(`
+    SELECT
+      neg.source_name,
+      neg.negative_count,
+      neg.negative_count + COALESCE(pos.positive_count, 0) AS total_count
+    FROM (
+      SELECT source_name, COUNT(*) AS negative_count
+      FROM rejected_articles
+      GROUP BY source_name
+    ) neg
+    LEFT JOIN (
+      SELECT s.name AS source_name, COUNT(*) AS positive_count
+      FROM raw_articles ra
+      JOIN sources s ON ra.source_id = s.id
+      GROUP BY s.name
+    ) pos ON neg.source_name = pos.source_name
+    ORDER BY neg.negative_count DESC
+  `);
+  const source_breakdown = sourceResult.rows.map(r => ({
+    source: r.source_name as string,
+    negative: Number(r.negative_count),
+    total: Number(r.total_count),
+  }));
+
   const payload = {
     exported_at: new Date().toISOString(),
     total_rejected: Number(stats.rows[0]?.total ?? 0),
     sources_count:  Number(stats.rows[0]?.sources ?? 0),
     category_breakdown,
+    source_breakdown,
     articles: articles.rows.map(r => ({
       source:   r.source_name as string,
       title:    r.title as string,
