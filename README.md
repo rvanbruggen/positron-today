@@ -420,14 +420,15 @@ The public site is deployed automatically via GitHub Actions:
 - **Build:** `cd site && npm run build` (Eleventy outputs to `site/_site/`)
 - **Deploy:** GitHub Pages from the `gh-pages` branch, served at [positron.today](https://positron.today)
 
-### Admin: two deployment modes
+### Admin: three deployment options
 
-The admin app supports two deployment modes, selectable in **Admin → Settings → Deployment mode**:
+The admin app can run in three ways. The **deployment mode** (serverless vs self-hosted) is selectable in **Admin → Settings → Deployment mode** and controls how the pipeline and scheduling work.
 
-| Mode | Infrastructure | Scheduling | Pipeline | Best for |
-|------|---------------|------------|----------|----------|
-| **Serverless** | Vercel / cloud functions | External cron (NAS, GitHub Actions) | Chunked — each API call stays within 60s | Vercel free tier |
-| **Self-hosted** | Docker on any machine | Built-in node-cron scheduler | Unified — single long-running flow, no time limits | Your own server, NAS, Raspberry Pi |
+| Option | Infrastructure | Deployment mode | Scheduling | Pipeline | Best for |
+|--------|---------------|----------------|------------|----------|----------|
+| **Vercel** | Vercel / cloud functions | Serverless | External cron (NAS, GitHub Actions) | Chunked — each API call stays within 60s | Vercel free tier, zero maintenance |
+| **Docker** | Docker on any machine | Self-hosted | Built-in node-cron scheduler | Unified — single long-running flow, no time limits | Your own server, old laptop, Raspberry Pi |
+| **Local dev** | Node.js directly | Either | Manual from the UI, or external cron | Both (depends on mode setting) | Development, testing, local use |
 
 #### Serverless mode (Vercel)
 
@@ -458,6 +459,10 @@ docker compose up -d --build
 ```bash
 ./admin/deploy.sh
 ```
+
+#### Local development
+
+Run the admin directly with Node.js — no Docker needed. See the [Setup](#setup) section for details. The deployment mode defaults to serverless, but you can set `DEPLOYMENT_MODE=self-hosted` in `.env.local` to activate the built-in scheduler locally. Ollama (local AI) is only available in this mode.
 
 ---
 
