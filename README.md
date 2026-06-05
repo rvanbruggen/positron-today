@@ -14,7 +14,7 @@ The project has two parts:
 
 | Part | Tech | Purpose |
 |------|------|---------|
-| **Admin** (`/admin`) | Next.js 16, TypeScript, Tailwind v4 | Content pipeline, source management, review & publish workflow |
+| **Admin** (`/admin`) | Next.js 16, TypeScript, Tailwind v4 | Content pipeline, source management, review & publish workflow. Runs on Vercel (serverless) or self-hosted via Docker |
 | **Site** (`/site`) | Eleventy v3, Nunjucks, vanilla JS | Public-facing website served via GitHub Pages |
 
 ### Why "Positron"?
@@ -74,9 +74,9 @@ You can mix and match freely, e.g. Ollama for filtering (high volume, low cost) 
 
 ## Prerequisites
 
-- Node.js 18+
+- Node.js 20+ (for local development) or Docker (for self-hosted deployment)
 - A GitHub Personal Access Token (with `repo` scope) for committing to the site repo
-- SQLite (local development) or a [Turso](https://turso.tech/) database (production)
+- SQLite (local file — used in both development and self-hosted Docker mode) or a [Turso](https://turso.tech/) database (Vercel serverless mode)
 - **At least one of:**
   - An [Anthropic API key](https://console.anthropic.com/) — for cloud AI (Haiku/Sonnet/Opus)
   - An [OpenAI API key](https://platform.openai.com/) — for cloud AI (GPT-4o, o3, etc.)
@@ -184,7 +184,7 @@ cd site && npm run dev           # http://localhost:8080/
 
 ## Article Pipeline
 
-There are two ways to run the pipeline: **manual** (step by step from the admin UI) or **automated** via Positronitron (cron-driven, configured on the Settings page).
+There are two ways to run the pipeline: **manual** (step by step from the admin UI) or **automated** via Positronitron (configured on the Settings page). In self-hosted mode, the built-in scheduler triggers a unified pipeline that runs the full flow in a single invocation. In serverless mode, external cron jobs call chunked API endpoints.
 
 ---
 
@@ -249,10 +249,9 @@ Articles assigned a `publish_date` (via the Scheduled page or by Positronitron i
 
 **How it works:**
 
-- In production, a Synology NAS cron task calls `POST https://admin.positron.today/api/publish-scheduled` every 30 minutes. The previous GitHub Actions workflow (`.github/workflows/scheduled-jobs.yml`) is kept as a `workflow_dispatch`-only fallback that can still be triggered manually from the GitHub UI if the NAS is unavailable.
-- For local development, a macOS launchd agent (`~/Library/LaunchAgents/today.positron.publish-scheduled.plist`, checked in at `scripts/today.positron.publish-scheduled.plist`) hits `POST http://localhost:3000/api/publish-scheduled` every hour.
-- The endpoint finds all scheduled articles whose `publish_date ≤ now` (compared in `SCHEDULE_TZ`, default `Europe/Brussels`) and commits them to GitHub.
-- If an article was marked for social announcement, its social post is **not** triggered from this endpoint — it waits for the site-deploy workflow to call back to `/api/post-pending-social` once the URL is actually live. See the [Social Publishing](#social-publishing) section for that flow.
+- **Self-hosted mode:** Each article gets an exact-time timer (`setTimeout`) that fires at its `publish_date`. When the timer fires, the article is published to GitHub, the system waits for the Pages deploy, then posts to social media. No polling — articles publish at the exact scheduled minute.
+- **Serverless mode:** An external cron task calls `POST /api/publish-scheduled` every 30 minutes. The endpoint finds all scheduled articles whose `publish_date ≤ now` (compared in `SCHEDULE_TZ`, default `Europe/Brussels`) and commits them to GitHub. Social posts are deferred until the site-deploy workflow calls back to `/api/post-pending-social` once the URL is actually live.
+- **Local development:** A macOS launchd agent (`~/Library/LaunchAgents/today.positron.publish-scheduled.plist`) hits `POST http://localhost:3000/api/publish-scheduled` every hour.
 
 **Managing the queue:**
 
@@ -412,6 +411,8 @@ All three language editions publish RSS 2.0 feeds. Subscribe directly or use the
 
 ## Deployment
 
+### Public site
+
 The public site is deployed automatically via GitHub Actions:
 
 - **Workflow:** `.github/workflows/deploy-site.yml`
@@ -419,7 +420,44 @@ The public site is deployed automatically via GitHub Actions:
 - **Build:** `cd site && npm run build` (Eleventy outputs to `site/_site/`)
 - **Deploy:** GitHub Pages from the `gh-pages` branch, served at [positron.today](https://positron.today)
 
-The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc.). Note that Ollama is only available when running the admin locally; a cloud-deployed admin must use Anthropic.
+### Admin: two deployment modes
+
+The admin app supports two deployment modes, selectable in **Admin → Settings → Deployment mode**:
+
+| Mode | Infrastructure | Scheduling | Pipeline | Best for |
+|------|---------------|------------|----------|----------|
+| **Serverless** | Vercel / cloud functions | External cron (NAS, GitHub Actions) | Chunked — each API call stays within 60s | Vercel free tier |
+| **Self-hosted** | Docker on any machine | Built-in node-cron scheduler | Unified — single long-running flow, no time limits | Your own server, NAS, Raspberry Pi |
+
+#### Serverless mode (Vercel)
+
+The traditional deployment. Each pipeline phase is a separate API endpoint called by external cron jobs. Work is chunked into small batches (15 sources, 15 items) to stay within Vercel's 60-second function timeout. Scheduled articles are published by a periodic cron call to `/api/publish-scheduled`.
+
+#### Self-hosted mode (Docker)
+
+Deploy the admin app in a Docker container on any machine with Docker installed. Set `DEPLOYMENT_MODE=self-hosted` in your environment.
+
+**What you get:**
+- **Built-in scheduler** — the app manages its own cron schedule using the run times configured in Settings. No external cron jobs needed.
+- **Unified pipeline** — fetch ALL sources → classify ALL pending items → positronitron → publish → social post, all in a single run with no time limits.
+- **Exact-time publish timers** — when an article is scheduled for 10:35, it publishes at exactly 10:35. No polling delay.
+- **Local SQLite database** — no Turso dependency. The database is a file on disk.
+
+**Docker setup:**
+
+```bash
+git clone https://github.com/rvanbruggen/positron-today.git
+cd positron-today/admin
+cp .env.docker.example .env.docker
+# Edit .env.docker with your API keys
+docker compose up -d --build
+```
+
+**Redeploying after code changes:**
+
+```bash
+./admin/deploy.sh
+```
 
 ---
 
@@ -435,6 +473,8 @@ The admin is a standard Next.js app — deploy it anywhere (Vercel, Railway, etc
 | `GITHUB_REPO` | Yes | `owner/repo` format |
 | `GITHUB_BRANCH` | No | Target branch (default: `main`) |
 | `ADMIN_SECRET` | Recommended | Password for the admin login page. If unset, auth is disabled. Generate with `openssl rand -hex 24` |
+| `DEPLOYMENT_MODE` | No | `serverless` (default) or `self-hosted`. Controls whether the built-in scheduler and unified pipeline are active |
+| `SCHEDULE_TZ` | No | Timezone for schedule calculations (default: `Europe/Brussels`) |
 | `POSTFORME_API_KEY` | If using social publishing | API key from [postforme.dev](https://www.postforme.dev/) |
 | `SOCIAL_POST_TOKEN` | If using auto-post-on-publish | Shared secret for the deploy-time callback to `/api/post-pending-social`. Must match a repo secret of the same name on GitHub |
 | `BLUESKY_HANDLE` | If using direct Bluesky | Handle for the legacy direct Bluesky posting route |
