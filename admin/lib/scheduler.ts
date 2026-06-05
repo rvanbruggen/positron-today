@@ -1,17 +1,16 @@
 /**
  * Built-in scheduler for self-hosted deployment mode.
  *
- * Uses node-cron to trigger the unified pipeline at configured run times.
- * Started from instrumentation.ts when DEPLOYMENT_MODE=self-hosted.
+ * Uses node-cron to trigger the unified pipeline at configured run times,
+ * and exact-time publish timers for individual articles.
  *
- * The scheduler reads positronitron_run_times from settings and creates
- * cron jobs for each time slot. The unified pipeline handles all phases
- * (fetch → classify → positronitron → publish → social) in a single run.
+ * Started from instrumentation.ts when DEPLOYMENT_MODE=self-hosted.
  */
 
 import * as cron from "node-cron";
 import { getSettings } from "@/lib/settings";
 import { runUnifiedPipeline } from "@/lib/unified-pipeline";
+import { syncTimersFromDb, cancelAllTimers } from "@/lib/publish-timer";
 
 let activeJobs: ReturnType<typeof cron.schedule>[] = [];
 let initialized = false;
@@ -30,14 +29,15 @@ function timeToCron(time: string): string | null {
 }
 
 /**
- * Stop all active cron jobs.
+ * Stop all active cron jobs and publish timers.
  */
 export function stopScheduler(): void {
   for (const job of activeJobs) {
     job.stop();
   }
   activeJobs = [];
-  console.log("[scheduler] All jobs stopped");
+  cancelAllTimers();
+  console.log("[scheduler] All jobs and timers stopped");
 }
 
 /**
@@ -72,32 +72,20 @@ export async function reloadScheduler(): Promise<void> {
     const job = cron.schedule(cronExpr, async () => {
       console.log(`[scheduler] Triggered by ${time} slot`);
       await runUnifiedPipeline();
+      // After pipeline runs, sync timers for any newly scheduled articles
+      await syncTimersFromDb();
     }, {
       timezone: tz,
     });
 
     activeJobs.push(job);
-    console.log(`[scheduler] Scheduled: ${time} (${cronExpr}) TZ=${tz}`);
+    console.log(`[scheduler] Pipeline scheduled: ${time} (${cronExpr}) TZ=${tz}`);
   }
 
-  // Also schedule a periodic "publish check" every 15 minutes
-  // to catch any manually scheduled articles that are due
-  const publishCheck = cron.schedule("*/15 * * * *", async () => {
-    // Only publish + social post, don't run the full pipeline
-    const { publishScheduledArticles } = await import("@/lib/publish-core");
-    const result = await publishScheduledArticles();
-    if (result.published > 0) {
-      console.log(`[scheduler] Publish check: ${result.published} articles published`);
-      // Wait for deploy, then post social
-      await new Promise((r) => setTimeout(r, 60_000));
-      const { postPendingSocial } = await import("@/lib/social-post-core");
-      await postPendingSocial({ waitForLive: true, maxWaitSeconds: 120 });
-    }
-  }, { timezone: tz });
-  activeJobs.push(publishCheck);
-  console.log("[scheduler] Scheduled: publish check every 15 min");
+  // Sync publish timers from the database
+  await syncTimersFromDb();
 
-  console.log(`[scheduler] Active with ${activeJobs.length} jobs`);
+  console.log(`[scheduler] Active with ${activeJobs.length} cron jobs`);
 }
 
 /**

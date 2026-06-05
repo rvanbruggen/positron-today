@@ -292,6 +292,18 @@ export async function PATCH(request: NextRequest) {
       sql: "UPDATE articles SET publish_date = ? WHERE id = ?",
       args: [publish_date, id],
     });
+    // In self-hosted mode, schedule an exact-time publish timer
+    try {
+      const { getSettings } = await import("@/lib/settings");
+      const settings = await getSettings();
+      if (settings.deployment_mode === "self-hosted" && publish_date) {
+        const { scheduleArticle } = await import("@/lib/publish-timer");
+        scheduleArticle(id, publish_date);
+      } else if (settings.deployment_mode === "self-hosted" && !publish_date) {
+        const { cancelArticle } = await import("@/lib/publish-timer");
+        cancelArticle(id);
+      }
+    } catch { /* scheduler may not be running */ }
     return Response.json({ ok: true });
   }
 
