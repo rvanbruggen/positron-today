@@ -313,26 +313,38 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
     console.log("[diag] D (badge): PASS");
   } catch (e) { console.error("[diag] D (badge): FAIL", e instanceof Error ? e.message : e); }
 
-  // Test E: each polaroid individually
-  for (let i = 0; i < articles.length; i++) {
-    try {
-      const p = polaroid(articles[i], heroDataUris[i] ?? null, aspects[i] ?? DEFAULT_ASPECT, placements[i], i);
-      const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p);
-      await satori(wrap, opts);
-      console.log(`[diag] E${i} (polaroid ${i}, "${articles[i].title.slice(0, 30)}"): PASS`);
-    } catch (e) { console.error(`[diag] E${i} (polaroid ${i}, "${articles[i].title.slice(0, 30)}"): FAIL`, e instanceof Error ? e.message : e); }
-  }
+  // Detailed diagnosis of article 1 (the failing one)
+  const badIdx = 1;
+  const badArticle = articles[badIdx];
+  const badHero = heroDataUris[badIdx] ?? null;
+  const badAspect = aspects[badIdx] ?? DEFAULT_ASPECT;
+  const badPlace = placements[badIdx];
+  console.log(`[diag] Bad article: emoji="${badArticle.emoji}", title="${badArticle.title}", hasImage=${!!badHero}, aspect=${badAspect}`);
+  console.log(`[diag] Bad placement: cx=${badPlace.cx}, cy=${badPlace.cy}, w=${badPlace.w}, rot=${badPlace.rot}`);
 
-  // Test F: pairs to find combination issue
+  // Test with title only (no image, generic emoji)
   try {
-    const pols = articles.map((a, i) => polaroid(a, heroDataUris[i] ?? null, aspects[i] ?? DEFAULT_ASPECT, placements[i], i));
-    for (let n = 2; n <= articles.length; n++) {
-      const subset = pols.slice(0, n);
-      const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, ...subset);
-      await satori(wrap, opts);
-      console.log(`[diag] F (first ${n} polaroids): PASS`);
-    }
-  } catch (e) { console.error(`[diag] F: FAIL`, e instanceof Error ? e.message : e); }
+    const p = polaroid({ title: badArticle.title, emoji: "✨", imageUrl: null }, null, DEFAULT_ASPECT, badPlace, 0);
+    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p);
+    await satori(wrap, opts);
+    console.log("[diag] G (bad title, no image, generic emoji): PASS");
+  } catch (e) { console.error("[diag] G (bad title, no image, generic emoji): FAIL", e instanceof Error ? e.message : e); }
+
+  // Test with image only (generic title/emoji)
+  try {
+    const p = polaroid({ title: "Test title", emoji: "✨", imageUrl: badArticle.imageUrl }, badHero, badAspect, badPlace, 0);
+    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p);
+    await satori(wrap, opts);
+    console.log("[diag] H (generic title, bad image): PASS");
+  } catch (e) { console.error("[diag] H (generic title, bad image): FAIL", e instanceof Error ? e.message : e); }
+
+  // Test with emoji only
+  try {
+    const p = polaroid({ title: "Test title", emoji: badArticle.emoji, imageUrl: null }, null, DEFAULT_ASPECT, badPlace, 0);
+    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p);
+    await satori(wrap, opts);
+    console.log(`[diag] I (bad emoji "${badArticle.emoji}" only): PASS`);
+  } catch (e) { console.error(`[diag] I (bad emoji "${badArticle.emoji}" only): FAIL`, e instanceof Error ? e.message : e); }
 
   const svg = await satori(element, {
     width: CANVAS,
