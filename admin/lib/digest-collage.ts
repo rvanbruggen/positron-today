@@ -231,7 +231,7 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
       }),
     ),
     // Polaroid pile
-    ...articles.map((a, i) => polaroid(a, heroDataUris[i], aspects[i], placements[i], i)),
+    ...articles.map((a, i) => polaroid(a, heroDataUris[i] ?? null, aspects[i] ?? DEFAULT_ASPECT, placements[i], i)),
     // Branding badge (top-center)
     React.createElement(
       "div",
