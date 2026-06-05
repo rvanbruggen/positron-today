@@ -271,8 +271,10 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
     ),
   );
 
-  console.log(`[digest-collage] Element type: ${typeof element}, children: ${Array.isArray(element?.props?.children) ? element.props.children.length : typeof element?.props?.children}`);
   console.log(`[digest-collage] satori type: ${typeof satori}, is function: ${typeof satori === 'function'}`);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const props = (element as any)?.props;
+  console.log(`[digest-collage] Element children count: ${Array.isArray(props?.children) ? props.children.length : typeof props?.children}`);
 
   const svg = await satori(element, {
     width: CANVAS,
