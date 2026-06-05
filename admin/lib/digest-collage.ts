@@ -271,13 +271,27 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
     ),
   );
 
-  // Minimal satori smoke test
+  // Test 1: element without emoji callback
   try {
-    const testEl = React.createElement("div", { style: { display: "flex" } }, "hello");
-    await satori(testEl, { width: 100, height: 100, fonts });
-    console.log("[digest-collage] Satori smoke test: PASSED");
+    await satori(element, { width: CANVAS, height: CANVAS, fonts });
+    console.log("[digest-collage] Test 1 (no emoji callback): PASSED");
   } catch (err) {
-    console.error("[digest-collage] Satori smoke test FAILED:", err instanceof Error ? err.message : err);
+    console.error("[digest-collage] Test 1 (no emoji callback) FAILED:", err instanceof Error ? err.stack : err);
+  }
+
+  // Test 2: simple element with emoji callback
+  try {
+    const simpleWithEmoji = React.createElement("div", { style: { display: "flex" } }, "⚡ hello");
+    await satori(simpleWithEmoji, {
+      width: 100, height: 100, fonts,
+      loadAdditionalAsset: async (code, segment) => {
+        if (code === "emoji") return await loadEmojiSvgDataUri(segment);
+        return segment;
+      },
+    });
+    console.log("[digest-collage] Test 2 (simple + emoji callback): PASSED");
+  } catch (err) {
+    console.error("[digest-collage] Test 2 (simple + emoji callback) FAILED:", err instanceof Error ? err.stack : err);
   }
 
   const svg = await satori(element, {
