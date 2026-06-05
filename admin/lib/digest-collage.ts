@@ -271,10 +271,14 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
     ),
   );
 
-  console.log(`[digest-collage] satori type: ${typeof satori}, is function: ${typeof satori === 'function'}`);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const props = (element as any)?.props;
-  console.log(`[digest-collage] Element children count: ${Array.isArray(props?.children) ? props.children.length : typeof props?.children}`);
+  // Minimal satori smoke test
+  try {
+    const testEl = React.createElement("div", { style: { display: "flex" } }, "hello");
+    await satori(testEl, { width: 100, height: 100, fonts });
+    console.log("[digest-collage] Satori smoke test: PASSED");
+  } catch (err) {
+    console.error("[digest-collage] Satori smoke test FAILED:", err instanceof Error ? err.message : err);
+  }
 
   const svg = await satori(element, {
     width: CANVAS,
