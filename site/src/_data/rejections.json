@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-06-05T02:00:42.168Z",
-  "total_rejected": 49465,
+  "exported_at": "2026-06-05T02:30:47.866Z",
+  "total_rejected": 49473,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 13538
+      "count": 13541
     },
     {
       "category": "soft-news-filler",
@@ -25,7 +25,7 @@
     },
     {
       "category": "economic-doom",
-      "count": 3255
+      "count": 3258
     },
     {
       "category": "war-conflict",
@@ -41,7 +41,7 @@
     },
     {
       "category": "health-scare",
-      "count": 2139
+      "count": 2141
     },
     {
       "category": "divisive-social",
@@ -96,8 +96,8 @@
     },
     {
       "source": "De Morgen",
-      "negative": 2406,
-      "total": 2447
+      "negative": 2410,
+      "total": 2451
     },
     {
       "source": "NRC",
@@ -106,8 +106,8 @@
     },
     {
       "source": "The New York Times",
-      "negative": 2088,
-      "total": 2114
+      "negative": 2090,
+      "total": 2116
     },
     {
       "source": "Dagens Nyheter",
@@ -191,8 +191,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 553,
-      "total": 756
+      "negative": 555,
+      "total": 760
     },
     {
       "source": "Euroactiv",
@@ -296,6 +296,70 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Sharon Stone shares ex-husband’s heartbreaking reaction to her mastectomy, prompting a flood of similar stories",
+      "reason": "The article focuses on a personal and potentially distressing experience related to health, which may not uplift readers and instead highlights a negative aspect of a personal story.",
+      "category": "health-scare",
+      "url": "https://www.upworthy.com/sharon-stone-shares-ex-husbands-heartbreaking-reaction-to-her-mastectomy-prompting-a-flood-of-similar-stories/",
+      "date": "2026-06-05 04:30"
+    },
+    {
+      "source": "Upworthy",
+      "title": "Texas firefighter battling terminal pancreatic cancer has final mission to find his wife a kidney donor",
+      "reason": "The article focuses on a firefighter with terminal cancer, which is a deeply negative situation, despite the intention to find a kidney donor for his wife. It does not uplift the reader and primarily highlights a health scare.",
+      "category": "health-scare",
+      "url": "https://www.upworthy.com/texas-firefighter-battling-terminal-pancreatic-cancer-has-final-mission-to-find-his-wife-a-kidney-donor/",
+      "date": "2026-06-05 04:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "House Passes Ukraine Aid in Defiance of Republican Leaders",
+      "reason": "The article discusses political actions and conflicts, which do not meet the positive-news criteria and may contribute to divisive sentiments.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/04/us/politics/house-ukraine-aid-russia-republicans.html",
+      "date": "2026-06-05 04:30"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Zelensky Mixes Taunts and Peace Talks Offer in Letter to Putin",
+      "reason": "The article discusses a political conflict and includes taunts between leaders, which does not promote a positive or uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/04/world/europe/zelensky-putin-letter.html",
+      "date": "2026-06-05 04:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Hoeveel verdienen huisartsen, radiologen of kinderartsen? Check het hier",
+      "reason": "The article focuses on the earnings of specific medical professionals, which is not universally uplifting and lacks broad human relevance.",
+      "category": "economic-doom",
+      "url": "https://www.demorgen.be/nieuws/hoeveel-verdienen-huisartsen-radiologen-of-kinderartsen-check-het-hier~b6b764ec/",
+      "date": "2026-06-05 04:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Peking viseert FN Herstal: zonder Chinees ‘schietkatoen’ is het moeilijk kogels maken",
+      "reason": "The article discusses the challenges in ammunition production due to reliance on Chinese materials, which is not uplifting and relates to economic and geopolitical tensions.",
+      "category": "economic-doom",
+      "url": "https://www.demorgen.be/nieuws/peking-viseert-fn-herstal-zonder-chinees-schietkatoen-is-het-moeilijk-kogels-maken~b730cfc3/",
+      "date": "2026-06-05 04:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Desinformatie, ‘valse’ stemmen en handelsblokkades: zo probeert het Kremlin de verkiezingen in Armenië te beïnvloeden",
+      "reason": "The article discusses negative influences on elections in Armenia, which is inherently political and focuses on disinformation and manipulation, making it not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/nieuws/desinformatie-valse-stemmen-en-handelsblokkades-zo-probeert-het-kremlin-de-verkiezingen-in-armenie-te-beinvloeden~b7e6234b1/",
+      "date": "2026-06-05 04:30"
+    },
+    {
+      "source": "De Morgen",
+      "title": "‘De Morgen’ onderzoekt dokterslonen: een op drie onderzochte artsen verdient meer dan de premier",
+      "reason": "The article discusses doctors' salaries in a way that may highlight economic disparities, which can be seen as negative or divisive rather than uplifting.",
+      "category": "economic-doom",
+      "url": "https://www.demorgen.be/nieuws/de-morgen-onderzoekt-dokterslonen-een-op-drie-onderzochte-artsen-verdient-meer-dan-de-premier~b8a7c9e7/",
+      "date": "2026-06-05 04:30"
+    },
     {
       "source": "Le Monde",
       "title": "Anthropic propose un moratoire mondial concerté du développement de l’IA",
@@ -8231,70 +8295,6 @@
       "category": "soft-news-filler",
       "url": "https://www.nrc.nl/puzzels/aan-zet/2026/06/04/",
       "date": "2026-06-04 03:30"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Spencer Pratt, le showman républicain qui veut devenir maire de Los Angeles",
-      "reason": "The article discusses a political figure and an election, which falls under the category of political content, making it unsuitable for a positive-news platform.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/international/spencer-pratt-le-showman-republicain-qui-veut-devenir-maire-de-los-angeles-20260604",
-      "date": "2026-06-04 03:00"
-    },
-    {
-      "source": "The New York Times",
-      "title": "Knicks Fans Invade San Antonio, Chasing a Finals Rematch 27 Years in the Making",
-      "reason": "The article focuses on a sports event and the excitement of fans, but it does not present a truly exceptional or universally uplifting story, making it fit the sports-negative category.",
-      "category": "sports-negative",
-      "url": "https://www.nytimes.com/2026/06/03/us/knicks-fans-tickets-san-antonio-nba-finals-spurs-2026.html",
-      "date": "2026-06-04 03:00"
-    },
-    {
-      "source": "The New York Times",
-      "title": "Massie, 3 Other House Republicans Broke From Trump on Iran War Powers Vote",
-      "reason": "The article discusses a political vote that involves party lines and conflict, which does not meet the positive-news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.nytimes.com/2026/06/03/us/politics/iran-war-powers-trump-republicans.html",
-      "date": "2026-06-04 03:00"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Geen akkoord bij Volvo-toeleverancier Plasman, staking wordt voortgezet",
-      "reason": "The article discusses a labor strike at a supplier for Volvo, which is a negative situation involving ongoing conflict and lack of resolution, not uplifting or positive.",
-      "category": "political-conflict",
-      "url": "https://www.hln.be/binnenland/geen-akkoord-bij-volvo-toeleverancier-plasman-staking-wordt-voortgezet~a969ea9e/",
-      "date": "2026-06-04 03:00"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "WHO: Jaarlijks 1,5 miljoen doden door onveilig voedsel, vooral risico voor jonge kinderen",
-      "reason": "The article discusses the serious health risks and deaths associated with unsafe food, which is a negative and alarming topic rather than uplifting.",
-      "category": "health-scare",
-      "url": "https://www.hln.be/buitenland/who-jaarlijks-1-5-miljoen-doden-door-onveilig-voedsel-vooral-risico-voor-jonge-kinderen~a9c26173/",
-      "date": "2026-06-04 03:00"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Geen akkoord bij Volvo-toeleverancier Plasman, staking wordt voortgezet",
-      "reason": "The article discusses a labor strike at a Volvo supplier, which is a negative situation related to economic conflict and labor issues, lacking uplifting content.",
-      "category": "economic-doom",
-      "url": "https://www.demorgen.be/snelnieuws/geen-akkoord-bij-volvo-toeleverancier-plasman-staking-wordt-voortgezet~b969ea9e/",
-      "date": "2026-06-04 03:00"
-    },
-    {
-      "source": "De Morgen",
-      "title": "WHO: Jaarlijks 1,5 miljoen doden door onveilig voedsel, vooral risico voor jonge kinderen",
-      "reason": "The article discusses the serious issue of unsafe food leading to 1.5 million deaths annually, particularly affecting young children, which is a health scare and not uplifting.",
-      "category": "health-scare",
-      "url": "https://www.demorgen.be/snelnieuws/who-jaarlijks-1-5-miljoen-doden-door-onveilig-voedsel-vooral-risico-voor-jonge-kinderen~b9c26173/",
-      "date": "2026-06-04 03:00"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "USA melder om ny våbenhvile mellem Israel og Libanon",
-      "reason": "The article discusses a conditional ceasefire agreement in a conflict zone, which is inherently tied to ongoing violence and political tensions, making it not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.dr.dk/nyheder/seneste/usa-melder-om-ny-vaabenhvile-mellem-israel-og-libanon",
-      "date": "2026-06-04 02:30"
     }
   ]
 }
