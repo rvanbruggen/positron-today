@@ -68,18 +68,17 @@ function truncateTitle(title: string, maxLen: number): string {
   return title.slice(0, maxLen - 1) + "…";
 }
 
-/** Read intrinsic pixel dimensions from an already-fetched data URI. */
-async function imageAspect(dataUri: string | null): Promise<number> {
-  if (!dataUri) return DEFAULT_ASPECT;
-  try {
-    const base64 = dataUri.split(",")[1];
-    if (!base64) return DEFAULT_ASPECT;
-    const meta = await sharp(Buffer.from(base64, "base64")).metadata();
-    if (meta.width && meta.height) return meta.width / meta.height;
-  } catch {
-    /* fall through to default */
-  }
-  return DEFAULT_ASPECT;
+/** Normalize a fetched image to a PNG data URI so satori can always render it. */
+async function normalizeImageToPng(dataUri: string): Promise<{ pngUri: string; width: number; height: number }> {
+  const base64 = dataUri.split(",")[1];
+  if (!base64) throw new Error("Invalid data URI");
+  const buf = Buffer.from(base64, "base64");
+  const meta = await sharp(buf).metadata();
+  const width = meta.width ?? 800;
+  const height = meta.height ?? 418;
+  const pngBuf = await sharp(buf).png().toBuffer();
+  const pngUri = `data:image/png;base64,${pngBuf.toString("base64")}`;
+  return { pngUri, width, height };
 }
 
 export async function generateDigestCollage(articles: DigestArticle[]): Promise<Buffer> {
@@ -92,10 +91,26 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
   const fonts = await getFonts();
   const placements = ARRANGEMENTS[articles.length];
 
-  const heroDataUris = await Promise.all(
+  const rawDataUris = await Promise.all(
     articles.map((a) => (a.imageUrl ? prefetchImageAsDataUri(a.imageUrl) : Promise.resolve(null))),
   );
-  const aspects = await Promise.all(heroDataUris.map((uri) => imageAspect(uri)));
+
+  // Normalize all images to PNG and extract dimensions in one pass
+  const imageData = await Promise.all(
+    rawDataUris.map(async (uri, i) => {
+      if (!uri) return { pngUri: null, aspect: DEFAULT_ASPECT };
+      try {
+        const { pngUri, width, height } = await normalizeImageToPng(uri);
+        return { pngUri, aspect: width / height };
+      } catch (err) {
+        console.warn(`[digest-collage] Image ${i} normalization failed, using emoji fallback:`, err instanceof Error ? err.message : err);
+        return { pngUri: null, aspect: DEFAULT_ASPECT };
+      }
+    }),
+  );
+
+  const heroDataUris = imageData.map((d) => d.pngUri);
+  const aspects = imageData.map((d) => d.aspect);
 
   console.log(
     `[digest-collage] Generating polaroid collage: count=${articles.length}, fonts=${fonts.length}, images=${heroDataUris.filter(Boolean).length}/${articles.length}`,
@@ -270,81 +285,6 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
       ),
     ),
   );
-
-  // Diagnostic: test each part of the element tree
-  const opts = { width: CANVAS, height: CANVAS, fonts };
-
-  // Test A: root div with gradient background
-  try {
-    const root = React.createElement("div", {
-      style: { width: CANVAS, height: CANVAS, display: "flex", background: "linear-gradient(135deg, #3a1a05 0%, #1a0800 100%)" },
-    });
-    await satori(root, opts);
-    console.log("[diag] A (gradient bg): PASS");
-  } catch (e) { console.error("[diag] A (gradient bg): FAIL", e instanceof Error ? e.message : e); }
-
-  // Test B: border element
-  try {
-    const border = React.createElement("div", {
-      style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const },
-    }, React.createElement("div", {
-      style: { position: "absolute" as const, top: 0, left: 0, right: 0, bottom: 0, border: "8px solid #d97706", display: "flex" },
-    }));
-    await satori(border, opts);
-    console.log("[diag] B (border): PASS");
-  } catch (e) { console.error("[diag] B (border): FAIL", e instanceof Error ? e.message : e); }
-
-  // Test C: single polaroid (first article)
-  try {
-    const p0 = polaroid(articles[0], heroDataUris[0] ?? null, aspects[0] ?? DEFAULT_ASPECT, placements[0], 0);
-    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p0);
-    await satori(wrap, opts);
-    console.log("[diag] C (1 polaroid): PASS");
-  } catch (e) { console.error("[diag] C (1 polaroid): FAIL", e instanceof Error ? e.message : e); }
-
-  // Test D: branding badge
-  try {
-    const badge = React.createElement("div", {
-      style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const },
-    }, React.createElement("div", {
-      style: { position: "absolute" as const, top: 24, display: "flex", alignItems: "center", gap: 8, background: "rgba(26,8,0,0.85)", border: "1.5px solid rgba(217,119,6,0.6)", borderRadius: 999, padding: "9px 20px" },
-    }, React.createElement("span", { style: { fontSize: 18, display: "flex" } }, "test")));
-    await satori(badge, opts);
-    console.log("[diag] D (badge): PASS");
-  } catch (e) { console.error("[diag] D (badge): FAIL", e instanceof Error ? e.message : e); }
-
-  // Detailed diagnosis of article 1 (the failing one)
-  const badIdx = 1;
-  const badArticle = articles[badIdx];
-  const badHero = heroDataUris[badIdx] ?? null;
-  const badAspect = aspects[badIdx] ?? DEFAULT_ASPECT;
-  const badPlace = placements[badIdx];
-  console.log(`[diag] Bad article: emoji="${badArticle.emoji}", title="${badArticle.title}", hasImage=${!!badHero}, aspect=${badAspect}`);
-  console.log(`[diag] Bad placement: cx=${badPlace.cx}, cy=${badPlace.cy}, w=${badPlace.w}, rot=${badPlace.rot}`);
-
-  // Test with title only (no image, generic emoji)
-  try {
-    const p = polaroid({ title: badArticle.title, emoji: "✨", imageUrl: null }, null, DEFAULT_ASPECT, badPlace, 0);
-    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p);
-    await satori(wrap, opts);
-    console.log("[diag] G (bad title, no image, generic emoji): PASS");
-  } catch (e) { console.error("[diag] G (bad title, no image, generic emoji): FAIL", e instanceof Error ? e.message : e); }
-
-  // Test with image only (generic title/emoji)
-  try {
-    const p = polaroid({ title: "Test title", emoji: "✨", imageUrl: badArticle.imageUrl }, badHero, badAspect, badPlace, 0);
-    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p);
-    await satori(wrap, opts);
-    console.log("[diag] H (generic title, bad image): PASS");
-  } catch (e) { console.error("[diag] H (generic title, bad image): FAIL", e instanceof Error ? e.message : e); }
-
-  // Test with emoji only
-  try {
-    const p = polaroid({ title: "Test title", emoji: badArticle.emoji, imageUrl: null }, null, DEFAULT_ASPECT, badPlace, 0);
-    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p);
-    await satori(wrap, opts);
-    console.log(`[diag] I (bad emoji "${badArticle.emoji}" only): PASS`);
-  } catch (e) { console.error(`[diag] I (bad emoji "${badArticle.emoji}" only): FAIL`, e instanceof Error ? e.message : e); }
 
   const svg = await satori(element, {
     width: CANVAS,
