@@ -6,7 +6,9 @@
  * @vercel/og and next/og which require the Edge runtime.
  */
 
-import satori from "satori";
+import { createRequire } from "module";
+const _require = createRequire(import.meta.url);
+const satori = _require("satori").default as typeof import("satori")["default"];
 import sharp from "sharp";
 import { getFonts, prefetchImageAsDataUri, loadEmojiSvgDataUri, React } from "@/lib/card-shared";
 
