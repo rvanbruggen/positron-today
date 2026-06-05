@@ -271,6 +271,9 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
     ),
   );
 
+  console.log(`[digest-collage] Element type: ${typeof element}, children: ${Array.isArray(element?.props?.children) ? element.props.children.length : typeof element?.props?.children}`);
+  console.log(`[digest-collage] satori type: ${typeof satori}, is function: ${typeof satori === 'function'}`);
+
   const svg = await satori(element, {
     width: CANVAS,
     height: CANVAS,
