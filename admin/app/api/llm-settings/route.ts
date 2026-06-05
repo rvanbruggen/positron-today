@@ -29,6 +29,7 @@ export async function PUT(request: NextRequest) {
       "positronitron_count",
       "positronitron_run_times",
       "digest_run_times",
+      "deployment_mode",
     ];
     const patch: Partial<LLMSettings> = {};
     for (const key of allowed) {
@@ -40,6 +41,17 @@ export async function PUT(request: NextRequest) {
       return Response.json({ error: "No valid fields provided" }, { status: 400 });
     }
     await setSettings(patch);
+
+    // Reload the built-in scheduler if deployment mode or run times changed
+    if (patch.deployment_mode || patch.positronitron_run_times || patch.digest_run_times) {
+      try {
+        const { reloadScheduler } = await import("@/lib/scheduler");
+        await reloadScheduler();
+      } catch (err) {
+        console.warn("[llm-settings] Scheduler reload failed:", err);
+      }
+    }
+
     const updated = await getSettings();
     return Response.json(updated);
   } catch (err) {

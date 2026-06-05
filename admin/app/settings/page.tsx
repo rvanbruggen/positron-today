@@ -6,6 +6,7 @@ import { buildFilterInstructions, DEFAULT_SUMMARISE_STYLE, THRESHOLD_LABELS } fr
 
 type Provider = "anthropic" | "ollama" | "openai";
 type PositronitronMode = "off" | "fetch" | "summarise" | "full";
+type DeploymentMode = "serverless" | "self-hosted";
 
 const POSITRONITRON_MODES: PositronitronMode[] = ["off", "fetch", "summarise", "full"];
 
@@ -45,6 +46,7 @@ interface LLMSettings {
   positronitron_count: string;
   positronitron_run_times: string;
   digest_run_times: string;
+  deployment_mode: DeploymentMode;
 }
 
 const ANTHROPIC_MODELS = [
@@ -173,6 +175,7 @@ export default function SettingsPage() {
         if (!data.positronitron_count)     data.positronitron_count     = "3";
         if (!data.positronitron_run_times) data.positronitron_run_times = '["08:00","15:00"]';
         if (!data.digest_run_times) data.digest_run_times = '[]';
+        if (!data.deployment_mode) data.deployment_mode = 'serverless';
         try { setRunTimes(JSON.parse(data.positronitron_run_times)); } catch {}
         try { setDigestTimes(JSON.parse(data.digest_run_times)); } catch {}
         setSettings(data);
@@ -375,6 +378,61 @@ export default function SettingsPage() {
       <p className="text-amber-700 text-sm mb-8">
         Choose which AI provider and model to use for each task. Changes take effect immediately — no restart needed.
       </p>
+
+      {/* ── Deployment mode ── */}
+      <div className="mb-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">Deployment mode</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          How the admin app is hosted. This controls whether the built-in scheduler runs or external cron jobs are needed.
+        </p>
+        <div className="bg-white border border-yellow-200 rounded-xl p-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {(["serverless", "self-hosted"] as DeploymentMode[]).map((mode) => {
+              const selected = settings.deployment_mode === mode;
+              const meta = mode === "serverless"
+                ? { label: "Serverless", tagline: "Vercel / cloud functions", description: "External cron jobs trigger chunked API endpoints. Each call stays within 60s. Use this on Vercel's free tier." }
+                : { label: "Self-hosted", tagline: "Docker / local server", description: "Built-in scheduler runs a unified pipeline with no time limits. No external cron needed." };
+              return (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => patch("deployment_mode", mode)}
+                  className={`text-left border rounded-lg px-3 py-2 transition-colors ${selected ? "bg-amber-900 border-amber-800 text-yellow-300" : "bg-white border-yellow-200 text-amber-800 hover:border-yellow-400"}`}
+                  aria-pressed={selected}
+                >
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm font-semibold">{meta.label}</span>
+                    <span className={`text-[11px] ${selected ? "text-yellow-200" : "text-amber-500"}`}>{meta.tagline}</span>
+                  </div>
+                  <p className={`text-[11px] mt-1 leading-snug ${selected ? "text-yellow-100" : "text-amber-600"}`}>{meta.description}</p>
+                </button>
+              );
+            })}
+          </div>
+          {settings.deployment_mode === "self-hosted" && (
+            <div className="mt-3 bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+              <p className="text-xs text-green-700">
+                <strong>Built-in scheduler active.</strong> The app manages its own schedule using the run times configured below.
+                No external cron jobs or Synology tasks are needed.
+              </p>
+            </div>
+          )}
+          {settings.deployment_mode === "serverless" && (
+            <div className="mt-3 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2">
+              <p className="text-xs text-blue-700">
+                <strong>External scheduler required.</strong> Configure your cron (NAS task scheduler, GitHub Actions, etc.)
+                to call the API endpoints on a regular interval.
+              </p>
+            </div>
+          )}
+          <div className="flex items-center gap-4 mt-4 pt-3 border-t border-yellow-100">
+            <button onClick={save} disabled={saving} className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+              {saving ? "Saving…" : "Save"}
+            </button>
+            {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
+          </div>
+        </div>
+      </div>
 
       {/* ── Positivity filter ── */}
       <Section title="Positivity filter" subtitle="Runs on every fetched article headline. High volume — a fast/cheap model is ideal.">
