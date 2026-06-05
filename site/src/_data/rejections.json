@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-06-05T16:28:02.132Z",
-  "total_rejected": 50276,
+  "exported_at": "2026-06-05T16:30:28.812Z",
+  "total_rejected": 50279,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 13761
+      "count": 13762
     },
     {
       "category": "soft-news-filler",
@@ -21,7 +21,7 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 3795
+      "count": 3796
     },
     {
       "category": "economic-doom",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 1177
+      "count": 1178
     },
     {
       "category": "human-discarded",
@@ -116,8 +116,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 1812,
-      "total": 1829
+      "negative": 1814,
+      "total": 1831
     },
     {
       "source": "BBC Top Stories",
@@ -126,8 +126,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 1733,
-      "total": 1740
+      "negative": 1734,
+      "total": 1741
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -296,6 +296,30 @@
     }
   ],
   "articles": [
+    {
+      "source": "Politiken.dk",
+      "title": "Farage har fået en ny rival fra det yderste højre",
+      "reason": "The article discusses political rivalry and potential radicalization within the right-wing parties in the UK, which is a divisive and negative topic.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/internationalt/art10869065/Farage-har-f%C3%A5et-en-ny-rival-fra-det-yderste-h%C3%B8jre",
+      "date": "2026-06-05 18:30"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Un apéro avec la compositrice Irène Drésel : « D’habitude, j’ai envie de vomir avant mes concerts »",
+      "reason": "The article focuses on a celebrity composer and her personal struggles before concerts, which falls under the category of celebrity and entertainment, lacking broad human relevance.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.lemonde.fr/m-perso/article/2026/06/05/un-apero-avec-la-compositrice-irene-dresel-d-habitude-j-ai-envie-de-vomir-avant-mes-concerts_6698004_4497916.html",
+      "date": "2026-06-05 18:30"
+    },
+    {
+      "source": "Le Monde",
+      "title": "« Mon boss, addict à ChatGPT, a décidé de revoir tous les process » : ces cadres qui vivent mal l’injonction d’utiliser l’IA",
+      "reason": "The article discusses concerns and negative feelings about the use of AI in the workplace, which does not present an uplifting narrative and focuses on anxiety rather than positive developments.",
+      "category": "tech-ai-concern",
+      "url": "https://www.lemonde.fr/emploi/article/2026/06/05/de-la-reticence-au-refus-ces-cadres-qui-vivent-mal-l-injonction-d-utiliser-l-ia_6697853_1698637.html",
+      "date": "2026-06-05 18:30"
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "Droneredegørelse offentliggøres i løbet af et par uger, siger nyudnævnt minister",
@@ -8270,30 +8294,6 @@
       "reason": "The article discusses a heated political conflict surrounding a murder and community tensions, which is not uplifting and focuses on negative events.",
       "category": "political-conflict",
       "url": "https://www.theguardian.com/politics/2026/jun/04/reform-andrea-jenkyns-storms-out-of-meeting-henry-nowak",
-      "date": "2026-06-05 00:02"
-    },
-    {
-      "source": "The Verge",
-      "title": "Google is letting social media stars customize their search result page",
-      "reason": "The article focuses on a corporate feature from Google that is limited to social media stars, which does not have broad human relevance and is primarily of interest to a specific group rather than uplifting for a general audience.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.theverge.com/tech/943233/google-search-profiles-custom-page",
-      "date": "2026-06-05 00:02"
-    },
-    {
-      "source": "The Verge",
-      "title": "Kevin O’Leary agrees to downsize massive Utah data center",
-      "reason": "The article discusses a corporate decision related to a data center project, which falls under corporate PR and does not provide a universally uplifting story.",
-      "category": "other-negative",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/943234/kevin-oleary-agrees-to-downsize-massive-utah-data-center",
-      "date": "2026-06-05 00:02"
-    },
-    {
-      "source": "Wired",
-      "title": "Phoebe Bridgers Ditched the Internet to Hype Up Her New Music. It’s Working",
-      "reason": "The article focuses on a celebrity's promotional strategy, which falls under entertainment industry news and does not provide broad human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.wired.com/story/phoebe-bridgers-ditched-the-internet-to-hype-up-her-new-music-its-working/",
       "date": "2026-06-05 00:02"
     }
   ]
