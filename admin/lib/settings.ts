@@ -11,6 +11,13 @@ export type LLMProvider = "anthropic" | "ollama" | "openai";
  */
 export type PositronitronMode = "off" | "fetch" | "summarise" | "full";
 
+/**
+ * Deployment mode.
+ * - serverless   — Vercel/serverless: external cron triggers chunked API endpoints (60s limit)
+ * - self-hosted  — Docker/local: built-in scheduler runs a unified pipeline (no time limit)
+ */
+export type DeploymentMode = "serverless" | "self-hosted";
+
 const POSITRONITRON_MODES: PositronitronMode[] = ["off", "fetch", "summarise", "full"];
 
 export interface LLMSettings {
@@ -33,6 +40,8 @@ export interface LLMSettings {
   positronitron_run_times: string;
   /** JSON array of "HH:MM" strings — daily run times for digest social posts */
   digest_run_times: string;
+  /** Deployment mode: "serverless" (Vercel, external cron) or "self-hosted" (built-in scheduler) */
+  deployment_mode: DeploymentMode;
 }
 
 const DEFAULTS: LLMSettings = {
@@ -48,6 +57,7 @@ const DEFAULTS: LLMSettings = {
   positronitron_count: "3",
   positronitron_run_times: '["08:00","15:00"]',
   digest_run_times: '[]',
+  deployment_mode: (process.env.DEPLOYMENT_MODE as DeploymentMode) || "serverless",
 };
 
 export async function getSettings(): Promise<LLMSettings> {
@@ -81,6 +91,7 @@ export async function getSettings(): Promise<LLMSettings> {
       positronitron_count:      map.positronitron_count       || DEFAULTS.positronitron_count,
       positronitron_run_times:  map.positronitron_run_times   || DEFAULTS.positronitron_run_times,
       digest_run_times:         map.digest_run_times          || DEFAULTS.digest_run_times,
+      deployment_mode:          (map.deployment_mode as DeploymentMode) || DEFAULTS.deployment_mode,
     };
   } catch {
     // Table may not exist yet (migration pending) — return defaults

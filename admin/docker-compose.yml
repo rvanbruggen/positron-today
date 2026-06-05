@@ -9,6 +9,7 @@ services:
       - .env.docker
     environment:
       - DATABASE_URL=file:/data/positron.db
+      - DEPLOYMENT_MODE=self-hosted
     restart: unless-stopped
 
 volumes:
