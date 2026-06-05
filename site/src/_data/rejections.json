@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-06-05T00:30:27.655Z",
-  "total_rejected": 49432,
+  "exported_at": "2026-06-05T01:00:35.807Z",
+  "total_rejected": 49438,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 13532
+      "count": 13534
     },
     {
       "category": "soft-news-filler",
-      "count": 5925
+      "count": 5926
     },
     {
       "category": "sports-negative",
@@ -33,11 +33,11 @@
     },
     {
       "category": "other-negative",
-      "count": 2336
+      "count": 2337
     },
     {
       "category": "disaster-accident",
-      "count": 2268
+      "count": 2269
     },
     {
       "category": "health-scare",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 1153
+      "count": 1154
     },
     {
       "category": "human-discarded",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 6282,
-      "total": 6475
+      "negative": 6283,
+      "total": 6476
     },
     {
       "source": "VRT Nws",
@@ -96,8 +96,8 @@
     },
     {
       "source": "De Morgen",
-      "negative": 2404,
-      "total": 2445
+      "negative": 2406,
+      "total": 2447
     },
     {
       "source": "NRC",
@@ -106,8 +106,8 @@
     },
     {
       "source": "The New York Times",
-      "negative": 2085,
-      "total": 2111
+      "negative": 2088,
+      "total": 2114
     },
     {
       "source": "Dagens Nyheter",
@@ -296,6 +296,54 @@
     }
   ],
   "articles": [
+    {
+      "source": "The New York Times",
+      "title": "Planning Commission Votes to Advance Trump’s Arch Project",
+      "reason": "The article discusses a political decision regarding a controversial project, which is likely to be divisive and not uplifting for readers.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/04/us/politics/trump-arch-dc-planning-meeting.html",
+      "date": "2026-06-05 03:00"
+    },
+    {
+      "source": "The New York Times",
+      "title": "In a First, Scientists Precisely Edit Human Embryo Genes",
+      "reason": "The article discusses a scientific advancement in gene editing that raises ethical concerns, which may not be uplifting for all readers and could be seen as alarming rather than positive.",
+      "category": "tech-ai-concern",
+      "url": "https://www.nytimes.com/2026/06/04/science/embryos-gene-editing-crispr.html",
+      "date": "2026-06-05 03:00"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Vanilla Ice Is In, Bret Michaels Is Out: Trump’s Battle for Celebrity Validation",
+      "reason": "The article focuses on political figures and their relationships with celebrities, which falls under political commentary and celebrity gossip, making it not uplifting or broadly relevant.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/04/us/trump-celebrities-vanilla-ice-freedom-250.html",
+      "date": "2026-06-05 03:00"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "CNN: brand op grootste Amerikaanse vliegdekschip in maart groter en schadelijker dan aangenomen",
+      "reason": "The article discusses a significant fire on a U.S. aircraft carrier, highlighting damage and failures in firefighting systems, which is a negative event rather than uplifting news.",
+      "category": "disaster-accident",
+      "url": "https://www.hln.be/buitenland/cnn-brand-op-grootste-amerikaanse-vliegdekschip-in-maart-groter-en-schadelijker-dan-aangenomen~ab302f4c/",
+      "date": "2026-06-05 03:00"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Nederlander Rob Smeets wordt CEO van haven van Antwerpen-Brugge",
+      "reason": "The article discusses a corporate leadership change, which falls under corporate PR and does not provide uplifting content that resonates broadly with human experiences.",
+      "category": "soft-news-filler",
+      "url": "https://www.demorgen.be/snelnieuws/nederlander-rob-smeets-wordt-ceo-van-haven-van-antwerpen-brugge~bbfb8565/",
+      "date": "2026-06-05 03:00"
+    },
+    {
+      "source": "De Morgen",
+      "title": "CNN: brand op grootste Amerikaanse vliegdekschip in maart groter en schadelijker dan aangenomen",
+      "reason": "The article discusses a brand on a U.S. aircraft carrier, which suggests a focus on military or corporate matters rather than uplifting human interest stories.",
+      "category": "other-negative",
+      "url": "https://www.demorgen.be/snelnieuws/cnn-brand-op-grootste-amerikaanse-vliegdekschip-in-maart-groter-en-schadelijker-dan-aangenomen~bb302f4c/",
+      "date": "2026-06-05 03:00"
+    },
     {
       "source": "Le Monde",
       "title": "Au Niger, quarante-neuf personnes meurent de soif après la panne de leur camion",
@@ -8246,54 +8294,6 @@
       "reason": "The article discusses a political event related to the Iran War, which falls under political conflict and does not provide an uplifting narrative.",
       "category": "political-conflict",
       "url": "https://www.nytimes.com/2026/06/03/briefing/house-iran-war-powers.html",
-      "date": "2026-06-04 01:30"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Rode Duivels doken nog fitness in, straks spreken Vanaken en Moreira met de pers",
-      "reason": "The article focuses on routine sports updates related to the national football team, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/rode-duivels/rode-duivels-doken-nog-fitness-in-straks-spreken-vanaken-en-moreira-met-de-pers~a38dda8b/",
-      "date": "2026-06-04 01:30"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Onderzoek: verwerking maaltijd- en ecocheques aanzienlijk duurder dan elektronische betalingen",
-      "reason": "The article discusses the costs associated with processing meal and eco-check payments compared to electronic payments, which is not uplifting and focuses on economic concerns.",
-      "category": "economic-doom",
-      "url": "https://www.hln.be/binnenland/onderzoek-verwerking-maaltijd-en-ecocheques-aanzienlijk-duurder-dan-elektronische-betalingen~ae19a89c/",
-      "date": "2026-06-04 01:30"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Griekenland herstelt van schuldencrisis en verlaat economische ‘probleemlijst’ van EU: “Dit moet worden gezien als de basis voor een beter leven”",
-      "reason": "The article discusses Greece's recovery from a debt crisis, which, while positive, falls under political and economic themes that may not uplift readers universally.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/griekenland-herstelt-van-schuldencrisis-en-verlaat-economische-probleemlijst-van-eu-dit-moet-worden-gezien-als-de-basis-voor-een-beter-leven~ba03352d/",
-      "date": "2026-06-04 01:30"
-    },
-    {
-      "source": "De Standaard Binnenland",
-      "title": "In 1958 huilde zangeres Enny Denita nog ‘bittere tranen’, nu komt Lillo zijn poldertrauma te boven",
-      "reason": "The article discusses local issues related to water management and protests, which may not have broad human relevance outside the specific area.",
-      "category": "climate-environment",
-      "url": "https://www.standaard.be/binnenland/in-1958-huilde-zangeres-enny-denita-nog-bittere-tranen-nu-komt-lillo-zijn-poldertrauma-te-boven/154990910.html",
-      "date": "2026-06-04 01:30"
-    },
-    {
-      "source": "De Standaard Binnenland",
-      "title": "De les van het geheugenpaleis in het Koninklijk Paleis: “Een wonderpil tegen dementie is er nog niet, de snelle oplossing zit in betere communicatie”",
-      "reason": "The article discusses dementia and the challenges of living with it, which, while it may have positive elements, primarily focuses on a serious health issue that affects many people, making it less uplifting overall.",
-      "category": "health-scare",
-      "url": "https://www.standaard.be/binnenland/de-les-van-het-geheugenpaleis-in-het-koninklijk-paleis-een-wonderpil-tegen-dementie-is-er-nog-niet-de-snelle-oplossing-zit-in-betere-communicatie/154995575.html",
-      "date": "2026-06-04 01:30"
-    },
-    {
-      "source": "De Standaard Binnenland",
-      "title": "Moeders lopen twee keer meer kans op burn-out of depressie dan vaders: “Zij gaan als eerste minder betaald werken, maar dat doet de stress nog stijgen”",
-      "reason": "The article discusses the mental health challenges faced by mothers compared to fathers, which is a negative topic and does not uplift the reader.",
-      "category": "health-scare",
-      "url": "https://www.standaard.be/binnenland/moeders-lopen-twee-keer-meer-kans-op-burn-out-of-depressie-dan-vaders-zij-gaan-als-eerste-minder-betaald-werken-maar-dat-doet-de-stress-nog-stijgen/155000912.html",
       "date": "2026-06-04 01:30"
     }
   ]
