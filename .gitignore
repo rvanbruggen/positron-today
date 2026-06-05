@@ -24,6 +24,9 @@ site/_site/
 *.pem
 npm-debug.log*
 
+# Docker env file (contains secrets)
+.env.docker
+
 # Claude Code working directory (settings, worktrees, session state)
 .claude/
 

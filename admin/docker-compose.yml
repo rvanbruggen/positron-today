@@ -1,0 +1,15 @@
+services:
+  admin:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - db-data:/data
+    env_file:
+      - .env.docker
+    environment:
+      - DATABASE_URL=file:/data/positron.db
+    restart: unless-stopped
+
+volumes:
+  db-data:
