@@ -313,13 +313,26 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
     console.log("[diag] D (badge): PASS");
   } catch (e) { console.error("[diag] D (badge): FAIL", e instanceof Error ? e.message : e); }
 
-  // Test E: all polaroids together
+  // Test E: each polaroid individually
+  for (let i = 0; i < articles.length; i++) {
+    try {
+      const p = polaroid(articles[i], heroDataUris[i] ?? null, aspects[i] ?? DEFAULT_ASPECT, placements[i], i);
+      const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p);
+      await satori(wrap, opts);
+      console.log(`[diag] E${i} (polaroid ${i}, "${articles[i].title.slice(0, 30)}"): PASS`);
+    } catch (e) { console.error(`[diag] E${i} (polaroid ${i}, "${articles[i].title.slice(0, 30)}"): FAIL`, e instanceof Error ? e.message : e); }
+  }
+
+  // Test F: pairs to find combination issue
   try {
     const pols = articles.map((a, i) => polaroid(a, heroDataUris[i] ?? null, aspects[i] ?? DEFAULT_ASPECT, placements[i], i));
-    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, ...pols);
-    await satori(wrap, opts);
-    console.log("[diag] E (all polaroids): PASS");
-  } catch (e) { console.error("[diag] E (all polaroids): FAIL", e instanceof Error ? e.message : e); }
+    for (let n = 2; n <= articles.length; n++) {
+      const subset = pols.slice(0, n);
+      const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, ...subset);
+      await satori(wrap, opts);
+      console.log(`[diag] F (first ${n} polaroids): PASS`);
+    }
+  } catch (e) { console.error(`[diag] F: FAIL`, e instanceof Error ? e.message : e); }
 
   const svg = await satori(element, {
     width: CANVAS,
