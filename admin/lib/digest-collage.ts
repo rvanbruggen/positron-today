@@ -271,28 +271,55 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
     ),
   );
 
-  // Test 1: element without emoji callback
-  try {
-    await satori(element, { width: CANVAS, height: CANVAS, fonts });
-    console.log("[digest-collage] Test 1 (no emoji callback): PASSED");
-  } catch (err) {
-    console.error("[digest-collage] Test 1 (no emoji callback) FAILED:", err instanceof Error ? err.stack : err);
-  }
+  // Diagnostic: test each part of the element tree
+  const opts = { width: CANVAS, height: CANVAS, fonts };
 
-  // Test 2: simple element with emoji callback
+  // Test A: root div with gradient background
   try {
-    const simpleWithEmoji = React.createElement("div", { style: { display: "flex" } }, "⚡ hello");
-    await satori(simpleWithEmoji, {
-      width: 100, height: 100, fonts,
-      loadAdditionalAsset: async (code, segment) => {
-        if (code === "emoji") return await loadEmojiSvgDataUri(segment);
-        return segment;
-      },
+    const root = React.createElement("div", {
+      style: { width: CANVAS, height: CANVAS, display: "flex", background: "linear-gradient(135deg, #3a1a05 0%, #1a0800 100%)" },
     });
-    console.log("[digest-collage] Test 2 (simple + emoji callback): PASSED");
-  } catch (err) {
-    console.error("[digest-collage] Test 2 (simple + emoji callback) FAILED:", err instanceof Error ? err.stack : err);
-  }
+    await satori(root, opts);
+    console.log("[diag] A (gradient bg): PASS");
+  } catch (e) { console.error("[diag] A (gradient bg): FAIL", e instanceof Error ? e.message : e); }
+
+  // Test B: border element
+  try {
+    const border = React.createElement("div", {
+      style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const },
+    }, React.createElement("div", {
+      style: { position: "absolute" as const, top: 0, left: 0, right: 0, bottom: 0, border: "8px solid #d97706", display: "flex" },
+    }));
+    await satori(border, opts);
+    console.log("[diag] B (border): PASS");
+  } catch (e) { console.error("[diag] B (border): FAIL", e instanceof Error ? e.message : e); }
+
+  // Test C: single polaroid (first article)
+  try {
+    const p0 = polaroid(articles[0], heroDataUris[0] ?? null, aspects[0] ?? DEFAULT_ASPECT, placements[0], 0);
+    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, p0);
+    await satori(wrap, opts);
+    console.log("[diag] C (1 polaroid): PASS");
+  } catch (e) { console.error("[diag] C (1 polaroid): FAIL", e instanceof Error ? e.message : e); }
+
+  // Test D: branding badge
+  try {
+    const badge = React.createElement("div", {
+      style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const },
+    }, React.createElement("div", {
+      style: { position: "absolute" as const, top: 24, display: "flex", alignItems: "center", gap: 8, background: "rgba(26,8,0,0.85)", border: "1.5px solid rgba(217,119,6,0.6)", borderRadius: 999, padding: "9px 20px" },
+    }, React.createElement("span", { style: { fontSize: 18, display: "flex" } }, "test")));
+    await satori(badge, opts);
+    console.log("[diag] D (badge): PASS");
+  } catch (e) { console.error("[diag] D (badge): FAIL", e instanceof Error ? e.message : e); }
+
+  // Test E: all polaroids together
+  try {
+    const pols = articles.map((a, i) => polaroid(a, heroDataUris[i] ?? null, aspects[i] ?? DEFAULT_ASPECT, placements[i], i));
+    const wrap = React.createElement("div", { style: { width: CANVAS, height: CANVAS, display: "flex", position: "relative" as const } }, ...pols);
+    await satori(wrap, opts);
+    console.log("[diag] E (all polaroids): PASS");
+  } catch (e) { console.error("[diag] E (all polaroids): FAIL", e instanceof Error ? e.message : e); }
 
   const svg = await satori(element, {
     width: CANVAS,
