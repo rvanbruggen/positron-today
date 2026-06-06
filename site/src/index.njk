@@ -719,7 +719,11 @@ title: Home
     if (!el) return;
     var inp = document.getElementById('search-input');
     if (!inp || !inp.value.trim()) { el.textContent = ''; return; }
-    var count = searchMatchUrls ? searchMatchUrls.size : 0;
+    var cards = document.querySelectorAll('.home-layout .card');
+    var count = 0;
+    cards.forEach(function(c) {
+      if (c.style.display !== 'none' && !c.classList.contains('feed-dup-featured')) count++;
+    });
     var lang = document.documentElement.getAttribute('data-lang') || 'en';
     if (lang === 'nl') el.textContent = count + ' resultaten';
     else if (lang === 'fr') el.textContent = count + ' résultats';

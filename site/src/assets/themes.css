@@ -103,6 +103,21 @@ html[data-theme="mono"] .tag-chip.selected {
   color: #ffffff !important;
   box-shadow: none;
 }
+html[data-theme="mono"] .search-input {
+  background: #ffffff;
+  color: var(--mono-fg);
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+  font-weight: 600;
+}
+html[data-theme="mono"] .search-input::placeholder { color: var(--mono-muted); opacity: 0.7; }
+html[data-theme="mono"] .search-input:focus { outline: 2px solid var(--mono-fg); outline-offset: 1px; border-color: var(--mono-hairline-strong); }
+html[data-theme="mono"] .search-input.has-value {
+  background: var(--mono-fg);
+  color: #ffffff;
+}
+html[data-theme="mono"] .search-input.has-value::placeholder { color: rgba(255,255,255,0.6); }
+html[data-theme="mono"] .search-result-count { color: var(--mono-muted); }
 html[data-theme="mono"] .filter-clear { color: var(--mono-fg); }
 
 /* Cards — neutralize all card-<color> classes into one flat look */
@@ -493,6 +508,17 @@ html[data-theme="mondrian"] .tag-chip.selected {
   color: var(--md-black) !important;
   box-shadow: none;
 }
+html[data-theme="mondrian"] .search-input {
+  background: #ffffff;
+  color: var(--md-black);
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .search-input::placeholder { color: var(--md-muted); opacity: 0.7; }
+html[data-theme="mondrian"] .search-input:focus { outline: 3px solid var(--md-blue); outline-offset: 1px; border-color: var(--md-black); }
+html[data-theme="mondrian"] .search-input.has-value { background: var(--md-yellow); }
+html[data-theme="mondrian"] .search-result-count { color: var(--md-muted); font-weight: 700; }
 html[data-theme="mondrian"] .filter-clear { color: var(--md-red); font-weight: 700; }
 
 /* Cards: white background, thick colored borders — rotate through the Mondrian
