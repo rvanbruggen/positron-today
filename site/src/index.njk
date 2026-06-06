@@ -47,6 +47,22 @@ title: Home
   .date-range-select:focus { outline: none; border-color: #f59e0b; }
   .date-range-select.has-selection { background: #facc15; border-color: #f59e0b; }
 
+  /* Search input */
+  .search-input {
+    padding: 0.4rem 0.85rem; border-radius: 99px; font-size: 0.8rem;
+    font-weight: 600; border: 2px solid #fde68a; background: #fef9c3;
+    color: #78350f; font-family: inherit; min-width: 0; flex: 1; max-width: 220px;
+  }
+  .search-input:focus { outline: none; border-color: #f59e0b; }
+  .search-input.has-value { background: #facc15; border-color: #f59e0b; }
+  .search-input::placeholder { color: #b45309; font-weight: 600; opacity: 0.7; }
+  .search-result-count {
+    font-size: 0.75rem; color: #b45309; font-weight: 600; white-space: nowrap;
+  }
+  @media (max-width: 699px) {
+    .search-input { max-width: none; width: 100%; flex: none; }
+  }
+
   /* Clear button */
   .filter-clear {
     padding: 0.35rem 0.7rem; border-radius: 99px; font-size: 0.75rem;
@@ -448,6 +464,14 @@ title: Home
   {% endmacro %}
 
   <div class="filter-bar">
+    <input type="text" class="search-input" id="search-input"
+           placeholder="Search articles…"
+           data-ph-en="Search articles…"
+           data-ph-nl="Zoek artikelen…"
+           data-ph-fr="Rechercher des articles…"
+           autocomplete="off" spellcheck="false">
+    <span class="search-result-count" id="search-result-count"></span>
+
     {% if seenTags.length > 0 %}
     <div class="tag-picker" id="tag-picker">
       <button class="tag-picker-btn" id="tag-picker-btn" onclick="toggleTagPicker(event)">
@@ -546,16 +570,29 @@ title: Home
     });
   }
 
-  // Override setLang so language switches also retranslate the select
+  // Translate search placeholder on language switch
+  function translateSearchPlaceholder(lang) {
+    var inp = document.getElementById('search-input');
+    if (!inp) return;
+    inp.placeholder = inp.getAttribute('data-ph-' + lang) || inp.getAttribute('data-ph-en');
+  }
+
+  // Override setLang so language switches also retranslate the select + search
   var _baseSLang = window.setLang;
   window.setLang = function(lang, btn) {
     _baseSLang(lang, btn);
     translateDateSelect(lang);
+    translateSearchPlaceholder(lang);
+    updateSearchResultCount();
   };
 
-  // ── Tag multi-select + date-range filter ─────────────────────────────────
+  // ── Tag multi-select + date-range + search filter ────────────────────────
   var activeTags = new Set(); // empty = show all
   var activeDateRange = 'all';
+  var searchMatchUrls = null;  // null = no search active; Set = matched URLs
+  var fuseInstance = null;
+  var searchIndex = null;
+  var searchDebounceTimer = null;
 
   // Returns a YYYY-MM-DD cutoff string, or null for "all time"
   // Returns today's date as "YYYY-MM-DD" in local time (avoids UTC timezone shift)
@@ -579,27 +616,28 @@ title: Home
   }
 
   function applyFilters() {
-    // Filter spans all three regions (top-featured, rail-featured, main-feed).
-    // Rest-featured duplicates live in the main feed tagged .feed-dup-featured
-    // — they're hidden by CSS on desktop regardless of filter state, so they
-    // don't count toward the "visible" total (otherwise a desktop user with a
-    // filter active could see an empty layout but get no "no match" message).
     var cards = document.querySelectorAll('.home-layout .card');
     var visible = 0;
     var cutoff = dateCutoff(activeDateRange);
     cards.forEach(function(card) {
       var cardTags = (card.dataset.tags || '').split(',').map(function(t) { return t.trim(); }).filter(Boolean);
       var tagMatch  = activeTags.size === 0 || cardTags.some(function(t) { return activeTags.has(t); });
-      // "Today" compares against when Positron published it (sitedate), not the source's original date
       var cardDate  = activeDateRange === 'today' ? (card.dataset.sitedate || '') : (card.dataset.fulldate || '');
       var dateMatch = !cutoff || cardDate >= cutoff;
-      var show = tagMatch && dateMatch;
+      var searchMatch = true;
+      if (searchMatchUrls !== null) {
+        var permalink = card.querySelector('.card-permalink');
+        var cardUrl = permalink ? permalink.getAttribute('href') : '';
+        searchMatch = searchMatchUrls.has(cardUrl);
+      }
+      var show = tagMatch && dateMatch && searchMatch;
       card.style.display = show ? '' : 'none';
       if (show && !card.classList.contains('feed-dup-featured')) visible++;
     });
     var noMatch = document.getElementById('no-match');
     if (noMatch) noMatch.classList.toggle('visible', visible === 0);
     updateFilterUI();
+    updateSearchResultCount();
   }
 
   function updateFilterUI() {
@@ -626,8 +664,12 @@ title: Home
     // Date-range select highlight
     if (rangeEl) rangeEl.classList.toggle('has-selection', activeDateRange !== 'all');
 
+    // Search input highlight
+    var searchInp = document.getElementById('search-input');
+    if (searchInp) searchInp.classList.toggle('has-value', searchInp.value.length > 0);
+
     // Clear button
-    var hasFilter = activeTags.size > 0 || activeDateRange !== 'all';
+    var hasFilter = activeTags.size > 0 || activeDateRange !== 'all' || (searchInp && searchInp.value.length > 0);
     if (clear) clear.style.display = hasFilter ? '' : 'none';
   }
 
@@ -659,16 +701,77 @@ title: Home
   function clearAllFilters() {
     activeTags.clear();
     activeDateRange = 'all';
+    searchMatchUrls = null;
     localStorage.removeItem('positron-today-tags');
     localStorage.removeItem('positron-today-daterange');
+    localStorage.removeItem('positron-today-search');
     var sel = document.getElementById('date-range-select');
     if (sel) sel.value = 'all';
+    var searchInp = document.getElementById('search-input');
+    if (searchInp) searchInp.value = '';
     applyFilters();
   }
 
 
-  // Translate select to whatever language is already active
-  translateDateSelect(document.documentElement.getAttribute('data-lang') || 'en');
+  // ── Search ───────────────────────────────────────────────────────────────
+  function updateSearchResultCount() {
+    var el = document.getElementById('search-result-count');
+    if (!el) return;
+    var inp = document.getElementById('search-input');
+    if (!inp || !inp.value.trim()) { el.textContent = ''; return; }
+    var count = searchMatchUrls ? searchMatchUrls.size : 0;
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    if (lang === 'nl') el.textContent = count + ' resultaten';
+    else if (lang === 'fr') el.textContent = count + ' résultats';
+    else el.textContent = count + ' results';
+  }
+
+  function initFuse(callback) {
+    if (fuseInstance) { callback(); return; }
+    fetch('/search-index.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        searchIndex = data;
+        fuseInstance = new Fuse(data, {
+          keys: ['title', 'title_nl', 'title_fr', 'summary', 'summary_nl', 'summary_fr', 'tags', 'source_name'],
+          threshold: 0.3,
+          ignoreLocation: true
+        });
+        callback();
+      })
+      .catch(function() { callback(); });
+  }
+
+  function runSearch(query) {
+    if (!query.trim()) {
+      searchMatchUrls = null;
+      localStorage.removeItem('positron-today-search');
+      applyFilters();
+      return;
+    }
+    localStorage.setItem('positron-today-search', query);
+    initFuse(function() {
+      if (!fuseInstance) { searchMatchUrls = null; applyFilters(); return; }
+      var results = fuseInstance.search(query);
+      searchMatchUrls = new Set(results.map(function(r) { return r.item.url; }));
+      applyFilters();
+    });
+  }
+
+  (function() {
+    var inp = document.getElementById('search-input');
+    if (!inp) return;
+    inp.addEventListener('input', function() {
+      clearTimeout(searchDebounceTimer);
+      var q = inp.value;
+      searchDebounceTimer = setTimeout(function() { runSearch(q); }, 200);
+    });
+  })();
+
+  // Translate select + search placeholder to whatever language is already active
+  var activeLang = document.documentElement.getAttribute('data-lang') || 'en';
+  translateDateSelect(activeLang);
+  translateSearchPlaceholder(activeLang);
 
   // Restore saved filters
   (function() {
@@ -682,11 +785,19 @@ title: Home
       var sel = document.getElementById('date-range-select');
       if (sel) sel.value = savedRange;
     }
+    var savedSearch = localStorage.getItem('positron-today-search');
+    if (savedSearch) {
+      var inp = document.getElementById('search-input');
+      if (inp) inp.value = savedSearch;
+      runSearch(savedSearch);
+      return;
+    }
     if (activeTags.size > 0 || activeDateRange !== 'all') applyFilters();
     else updateFilterUI();
   })();
 </script>
 
+<script src="https://unpkg.com/fuse.js@7.0.0/dist/fuse.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <script>
