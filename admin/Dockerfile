@@ -8,7 +8,9 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package-lock.json ./
+COPY package.json ./tmp-package.json
+RUN node -e "const p=require('./tmp-package.json'); delete p.version; require('fs').writeFileSync('package.json',JSON.stringify(p))"
 RUN npm ci
 
 COPY . .
