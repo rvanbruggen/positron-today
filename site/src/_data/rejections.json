@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-06-06T20:18:09.844Z",
-  "total_rejected": 51187,
+  "exported_at": "2026-06-06T20:36:58.959Z",
+  "total_rejected": 51199,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 13988
+      "count": 13994
     },
     {
       "category": "soft-news-filler",
@@ -13,15 +13,15 @@
     },
     {
       "category": "sports-negative",
-      "count": 5551
+      "count": 5553
     },
     {
       "category": "crime-violence",
-      "count": 4431
+      "count": 4432
     },
     {
       "category": "celebrity-entertainment",
-      "count": 3899
+      "count": 3902
     },
     {
       "category": "economic-doom",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 6517,
-      "total": 6873
+      "negative": 6518,
+      "total": 6874
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 6487,
-      "total": 6683
+      "negative": 6488,
+      "total": 6684
     },
     {
       "source": "VRT Nws",
@@ -91,13 +91,13 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 2902,
-      "total": 2936
+      "negative": 2903,
+      "total": 2937
     },
     {
       "source": "De Morgen",
-      "negative": 2486,
-      "total": 2528
+      "negative": 2487,
+      "total": 2529
     },
     {
       "source": "NRC",
@@ -106,8 +106,8 @@
     },
     {
       "source": "The New York Times",
-      "negative": 2131,
-      "total": 2157
+      "negative": 2132,
+      "total": 2158
     },
     {
       "source": "Dagens Nyheter",
@@ -116,23 +116,23 @@
     },
     {
       "source": "Le Monde",
-      "negative": 1865,
-      "total": 1884
+      "negative": 1866,
+      "total": 1885
     },
     {
       "source": "BBC Top Stories",
-      "negative": 1822,
-      "total": 1888
+      "negative": 1823,
+      "total": 1889
     },
     {
       "source": "Politiken.dk",
-      "negative": 1787,
-      "total": 1794
+      "negative": 1789,
+      "total": 1796
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 1780,
-      "total": 1789
+      "negative": 1782,
+      "total": 1791
     },
     {
       "source": "The Guardian",
@@ -186,8 +186,8 @@
     },
     {
       "source": "De Standaard Binnenland",
-      "negative": 609,
-      "total": 624
+      "negative": 610,
+      "total": 625
     },
     {
       "source": "Upworthy",
@@ -296,6 +296,102 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Żużlowe Grand Prix: Wielki dzień Kurtza. Zmarzlik nie jest już liderem",
+      "reason": "The article focuses on a sports event with non-exceptional results and league standings, which does not meet the positive-news editorial standard.",
+      "category": "sports-negative",
+      "url": "https://sport.rp.pl/moto/art44574401-zuzlowe-grand-prix-wielki-dzien-kurtza-zmarzlik-nie-jest-juz-liderem",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Hun gider ikke være et orakel",
+      "reason": "The article focuses on a writer's perspective on public expectations and questions surrounding her work, which may not be uplifting or universally appealing.",
+      "category": "celebrity-entertainment",
+      "url": "https://politiken.dk/kultur/boger/art10838335/Hun-gider-ikke-v%C3%A6re-et-orakel",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Landbrug & Fødevarer hævder: Trepartsaftalen eksisterer ikke længere",
+      "reason": "The article discusses political changes affecting agriculture, which is a negative topic related to political conflict and does not uplift the reader.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/danmark/art10871425/Landbrug-F%C3%B8devarer-h%C3%A6vder-Trepartsaftalen-eksisterer-ikke-l%C3%A6ngere",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Le projet de loi contre l’antisémitisme et le racisme sera présenté le 1er juillet en conseil des ministres",
+      "reason": "The article discusses a political bill aimed at combating anti-Semitism and racism, which falls under political content and does not meet the positive-news criteria.",
+      "category": "political-conflict",
+      "url": "https://www.lemonde.fr/societe/article/2026/06/06/le-projet-de-loi-contre-l-antisemitisme-et-le-racisme-sera-presente-le-1er-juillet-en-conseil-des-ministres_6698419_3224.html",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "USA unter Trump: Hegseth bringt D-Day in Zusammenhang mit europäischer Migrationspolitik",
+      "reason": "The article discusses political commentary related to Donald Trump and migration policy, which falls under political conflict and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.faz.net/aktuell/politik/usa-unter-trump/liveticker-usa-unter-trump-hegseth-bringt-d-day-in-zusammenhang-mit-europaeischer-migrationspolitik-faz-19444916.html",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Liveblog Fußball-WM 2026: Irans Nationalteam darf nur an Spieltagen in USA einreisen",
+      "reason": "The article focuses on the restrictions placed on Iran's national football team regarding their travel to the USA for the World Cup, which is a negative aspect of sports and international relations.",
+      "category": "sports-negative",
+      "url": "https://www.faz.net/aktuell/sport/fussball-wm/liveblog-zur-fussball-wm-2026-irans-nationalteam-darf-nur-an-spieltagen-in-usa-einreisen-faz-200749933.html",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "“Mijn kinderen moesten het met de restjes doen”: Dina Tersago over zware periode",
+      "reason": "The article discusses a difficult personal experience of a celebrity, which is not uplifting and focuses on negative emotions rather than positive outcomes.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.gva.be/media-en-cultuur/bv-en-co/mijn-kinderen-moesten-het-met-de-restjes-doen-dina-tersago-over-zware-periode/155788361.html",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "BBC Top Stories",
+      "title": "Hegseth attacks Europe over 'invasion' of migrants on its beaches in D-Day speech",
+      "reason": "The article discusses a political speech that addresses migration in a negative context, which does not uplift or inspire readers.",
+      "category": "political-conflict",
+      "url": "https://www.bbc.com/news/articles/c802e7jk458o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "The New York Times",
+      "title": "Trump Greets Farmers in Wisconsin, but Says He Could Be Home Watching TV",
+      "reason": "The article focuses on a political figure's visit and comments regarding economic issues affecting farmers, which does not provide an uplifting or universally positive message.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/05/us/politics/trump-wisconsin-farmers-midterms.html",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Run op Amsterdamse krant met “zelfgeschreven” bedankje van Harry Styles, fans bieden tot 200 euro",
+      "reason": "The article focuses on a celebrity's handwritten note and its resale value, which falls under entertainment industry gossip rather than uplifting news.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.hln.be/celebrities/run-op-amsterdamse-krant-met-zelfgeschreven-bedankje-van-harry-styles-fans-bieden-tot-200-euro~a5b19b15/",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Russische bloggers scherp voor Poetin na economisch forum in Sint-Petersburg: ‘Het leugenplafond is bereikt’",
+      "reason": "The article discusses negative sentiments from Russian bloggers towards Putin following an economic forum, which falls under political conflict and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/nieuws/russische-bloggers-scherp-voor-poetin-na-economisch-forum-in-sint-petersburg-het-leugenplafond-is-bereikt~b85400439/",
+      "date": "2026-06-06 22:36"
+    },
+    {
+      "source": "De Standaard Binnenland",
+      "title": "Drugsbaas sluit deal met parket en betaalt recordboete van 1,5 miljoen euro",
+      "reason": "The article discusses a criminal case and a plea deal, which is inherently negative and related to crime.",
+      "category": "crime-violence",
+      "url": "https://www.standaard.be/binnenland/drugsbaas-sluit-deal-met-parket-en-betaalt-recordboete-van-15-miljoen-euro/155780172.html",
+      "date": "2026-06-06 22:36"
+    },
     {
       "source": "Upworthy",
       "title": "A scared passenger was shaking, so this flight attendant stopped everything to hold her hand",
@@ -8199,102 +8295,6 @@
       "category": "crime-violence",
       "url": "https://www.demorgen.be/snelnieuws/politie-verspreidt-beelden-van-gevangene-die-uit-ziekenhuis-az-sint-jan-brugge-ontsnapte~b5290981/",
       "date": "2026-06-05 18:22"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Shia LaBeouf gaat op de vuist en moet van rechter behandelprogramma voor alcoholgebruik volgen",
-      "reason": "The article discusses Shia LaBeouf's legal issues and mandated treatment for alcohol use, which is negative and not uplifting.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.demorgen.be/nieuws/shia-labeouf-gaat-op-de-vuist-en-moet-van-rechter-behandelprogramma-voor-alcoholgebruik-volgen~bbe25a3d/",
-      "date": "2026-06-05 18:22"
-    },
-    {
-      "source": "De Standaard Binnenland",
-      "title": "Politie verspreidt opsporingsbericht voor gewapende gedetineerde die al eerder probeerde te ontsnappen",
-      "reason": "The article discusses a prison escape involving a potentially dangerous individual, which is a negative and concerning event rather than uplifting news.",
-      "category": "crime-violence",
-      "url": "https://www.standaard.be/binnenland/politie-verspreidt-opsporingsbericht-voor-gewapende-gedetineerde-die-al-eerder-probeerde-te-ontsnappen/155350606.html",
-      "date": "2026-06-05 18:22"
-    },
-    {
-      "source": "Science.org news",
-      "title": "Extinct brown bear had a surprising diet",
-      "reason": "The article discusses an extinct species and its diet, which may not have broad human relevance or upliftment. It lacks a clear positive message that resonates across cultures.",
-      "category": "other-negative",
-      "url": "https://www.science.org/content/article/extinct-brown-bear-had-surprising-diet",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Science.org news",
-      "title": "Satellite maps of sinking coastlines come under scrutiny",
-      "reason": "The article discusses contradictory results in radar studies related to sea level rise, which is a negative and concerning topic rather than uplifting.",
-      "category": "climate-environment",
-      "url": "https://www.science.org/content/article/satellite-maps-sinking-coastlines-come-under-scrutiny",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Voormalige Britse prins Andrew gespot met mysterieuze blauwe plek op zijn gezicht",
-      "reason": "The article focuses on a former royal's appearance and does not provide uplifting content, instead highlighting a potentially negative aspect of his health or well-being.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.gva.be/media-en-cultuur/bv-en-co/voormalige-britse-prins-andrew-gespot-met-mysterieuze-blauwe-plek-op-zijn-gezicht/155428152.html",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Guillaume (28) heeft universiteitsdiploma, maar opent nu eigen automatenschop: \"Zelfs Vinted-klanten kunnen hier terecht\"",
-      "reason": "The article focuses on a local entrepreneur's decision to open a business, which may not have broad relevance outside the local context.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/oost-vlaanderen/waasland/lokeren/guillaume-28-heeft-universiteitsdiploma-maar-opent-nu-eigen-automatenschop-zelfs-vinted-klanten-kunnen-hier-terecht/155334893.html",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "LIVE OORLOG IN OEKRAÏNE. Poetin zegt dat hij momenteel geen reden ziet om Zelensky te ontmoeten",
-      "reason": "The article discusses the ongoing war in Ukraine, which is a negative and conflict-related topic, lacking uplifting content.",
-      "category": "war-conflict",
-      "url": "https://www.gva.be/buitenland/live-oorlog-in-oekraine.-poetin-zegt-dat-hij-momenteel-geen-reden-ziet-om-zelensky-te-ontmoeten/76695337.html",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Burgemeester Marino Keulen verzet zich tegen de komst van Freddy Horion: “Mijn advies aan de instelling: niet doen”",
-      "reason": "The article discusses a political figure's opposition to a potential decision regarding a public institution, which does not provide uplifting content and is focused on local political conflict.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/binnenland/burgemeester-marino-keulen-verzet-zich-tegen-de-komst-van-freddy-horion-mijn-advies-aan-de-instelling-niet-doen/155429930.html",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Meer dan 13.000 voertuigen riskeren vanaf 1 juli aangepaste LEZ-boete in Brussel",
-      "reason": "The article discusses new fines for vehicles violating environmental regulations in Brussels, which is a negative topic related to local governance and does not uplift or inspire readers.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/binnenland/meer-dan-13.000-voertuigen-riskeren-vanaf-1-juli-aangepaste-lez-boete-in-brussel/155430297.html",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "LIVE ROLAND GARROS. Alexander Zverev verslaat 20-jarige Jakub Mensik in vier sets en staat in de finale, straks Italiaans onderonsje voor tweede halve finale",
-      "reason": "The article focuses on a sports event with non-exceptional results and does not provide a universally uplifting story.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/tennis/live-roland-garros.-alexander-zverev-verslaat-20-jarige-jakub-mensik-in-vier-sets-en-staat-in-de-finale-straks-italiaans-onderonsje-voor-tweede-halve-finale/153012634.html",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Toegangspoortjes Antwerps premetro zijn op komst, maar waar is nog niet geweten ",
-      "reason": "The article discusses local infrastructure updates that are unlikely to interest readers outside of the specific region, making it too localized and not broadly relevant.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/toegangspoortjes-antwerps-premetro-zijn-op-komst-maar-waar-is-nog-niet-geweten/155412024.html",
-      "date": "2026-06-05 18:03"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Bejaarde vrouw (80) uit Antwerpen in enkele uren tijd slachtoffer van helpdeskfraude en home-invasion: 3.600 euro en juwelen gestolen",
-      "reason": "The article reports on a crime involving an elderly woman who was defrauded and robbed, which is a negative and distressing event rather than uplifting news.",
-      "category": "crime-violence",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/bejaarde-vrouw-80-uit-antwerpen-in-enkele-uren-tijd-slachtoffer-van-helpdeskfraude-en-home-invasion-3.600-euro-en-juwelen-gestolen/155430424.html",
-      "date": "2026-06-05 18:03"
     }
   ]
 }
