@@ -63,6 +63,37 @@ title: Home
     .search-input { max-width: none; width: 100%; flex: none; }
   }
 
+  /* Search results (replaces normal layout when searching) */
+  .search-results {
+    display: grid; gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  .search-result-card {
+    position: relative;
+    border-radius: 1rem; padding: 1rem; border: 2px solid transparent;
+    display: flex; flex-direction: column; gap: 0.35rem;
+    text-decoration: none; transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .search-result-card-link {
+    position: absolute; inset: 0; z-index: 1;
+  }
+  .search-result-card-img {
+    width: 100%; aspect-ratio: 16/9; object-fit: cover;
+    border-radius: 0.6rem; margin-bottom: 0.25rem;
+  }
+  .search-result-card-emoji { font-size: 1.3rem; }
+  .search-result-card-tags { font-size: 0.7rem; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.03em; }
+  .search-result-card-tags span { margin-right: 0.3rem; }
+  .search-result-card-title { font-size: 0.95rem; font-weight: 700; line-height: 1.3; }
+  .search-result-card-summary { font-size: 0.8rem; line-height: 1.45; opacity: 0.85; }
+  .search-result-card-meta { font-size: 0.7rem; opacity: 0.6; display: flex; justify-content: space-between; }
+  @media (hover: hover) {
+    .search-result-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.10); }
+  }
+  @media (max-width: 479px) {
+    .search-results { grid-template-columns: 1fr; }
+  }
+
   /* Clear button */
   .filter-clear {
     padding: 0.35rem 0.7rem; border-radius: 99px; font-size: 0.75rem;
@@ -541,6 +572,7 @@ title: Home
       {% endfor %}
     </section>
   </div>
+  <div class="search-results" id="search-results" style="display:none"></div>
   <p class="no-match" id="no-match">
     <span class="t-en">No articles for this filter yet.</span>
     <span class="t-nl" style="display:none">Geen artikelen gevonden voor dit filter.</span>
@@ -583,13 +615,13 @@ title: Home
     _baseSLang(lang, btn);
     translateDateSelect(lang);
     translateSearchPlaceholder(lang);
-    updateSearchResultCount();
+    var q = document.getElementById('search-input')?.value;
+    if (q && q.trim()) runSearch(q);
   };
 
   // ── Tag multi-select + date-range + search filter ────────────────────────
   var activeTags = new Set(); // empty = show all
   var activeDateRange = 'all';
-  var searchMatchUrls = null;  // null = no search active; Set = matched URLs
   var fuseInstance = null;
   var searchIndex = null;
   var searchDebounceTimer = null;
@@ -624,20 +656,13 @@ title: Home
       var tagMatch  = activeTags.size === 0 || cardTags.some(function(t) { return activeTags.has(t); });
       var cardDate  = activeDateRange === 'today' ? (card.dataset.sitedate || '') : (card.dataset.fulldate || '');
       var dateMatch = !cutoff || cardDate >= cutoff;
-      var searchMatch = true;
-      if (searchMatchUrls !== null) {
-        var permalink = card.querySelector('.card-permalink');
-        var cardUrl = permalink ? permalink.getAttribute('href') : '';
-        searchMatch = searchMatchUrls.has(cardUrl);
-      }
-      var show = tagMatch && dateMatch && searchMatch;
+      var show = tagMatch && dateMatch;
       card.style.display = show ? '' : 'none';
       if (show && !card.classList.contains('feed-dup-featured')) visible++;
     });
     var noMatch = document.getElementById('no-match');
     if (noMatch) noMatch.classList.toggle('visible', visible === 0);
     updateFilterUI();
-    updateSearchResultCount();
   }
 
   function updateFilterUI() {
@@ -701,7 +726,6 @@ title: Home
   function clearAllFilters() {
     activeTags.clear();
     activeDateRange = 'all';
-    searchMatchUrls = null;
     localStorage.removeItem('positron-today-tags');
     localStorage.removeItem('positron-today-daterange');
     localStorage.removeItem('positron-today-search');
@@ -709,25 +733,82 @@ title: Home
     if (sel) sel.value = 'all';
     var searchInp = document.getElementById('search-input');
     if (searchInp) searchInp.value = '';
+    renderSearchResults(null);
     applyFilters();
   }
 
 
   // ── Search ───────────────────────────────────────────────────────────────
-  function updateSearchResultCount() {
+  var CARD_COLORS = ['yellow','teal','rose','blue','lime','purple','orange','cyan','green','pink'];
+  function topicColor(topic) {
+    if (!topic) return 'yellow';
+    var h = 0;
+    for (var i = 0; i < topic.length; i++) h = (Math.imul(31, h) + topic.charCodeAt(i)) | 0;
+    return CARD_COLORS[Math.abs(h) % CARD_COLORS.length];
+  }
+
+  function updateSearchResultCount(count) {
     var el = document.getElementById('search-result-count');
     if (!el) return;
     var inp = document.getElementById('search-input');
     if (!inp || !inp.value.trim()) { el.textContent = ''; return; }
-    var cards = document.querySelectorAll('.home-layout .card');
-    var count = 0;
-    cards.forEach(function(c) {
-      if (c.style.display !== 'none' && !c.classList.contains('feed-dup-featured')) count++;
-    });
     var lang = document.documentElement.getAttribute('data-lang') || 'en';
     if (lang === 'nl') el.textContent = count + ' resultaten';
     else if (lang === 'fr') el.textContent = count + ' résultats';
     else el.textContent = count + ' results';
+  }
+
+  function renderSearchResults(results) {
+    var container = document.getElementById('search-results');
+    var homeLayout = document.querySelector('.home-layout');
+    var noMatch = document.getElementById('no-match');
+    var archiveLink = document.querySelector('.home-layout ~ p[style*="text-align:center"]');
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+
+    if (!results || results.length === 0) {
+      container.style.display = 'none';
+      container.innerHTML = '';
+      if (homeLayout) homeLayout.style.display = '';
+      if (archiveLink) archiveLink.style.display = '';
+      if (document.getElementById('search-input')?.value.trim()) {
+        if (noMatch) noMatch.classList.add('visible');
+      }
+      updateSearchResultCount(0);
+      return;
+    }
+
+    if (homeLayout) homeLayout.style.display = 'none';
+    if (archiveLink) archiveLink.style.display = 'none';
+    if (noMatch) noMatch.classList.remove('visible');
+    container.style.display = '';
+
+    var html = '';
+    results.forEach(function(r) {
+      var item = r.item;
+      var tags = item.tags ? item.tags.split(', ').filter(Boolean) : [];
+      var firstTag = tags[0] || '';
+      var color = topicColor(firstTag);
+      var title = lang === 'nl' ? item.title_nl : lang === 'fr' ? item.title_fr : item.title;
+      var summary = lang === 'nl' ? item.summary_nl : lang === 'fr' ? item.summary_fr : item.summary;
+
+      html += '<article class="search-result-card card-' + color + '">';
+      html += '<a class="search-result-card-link" href="' + item.source_url + '" target="_blank" rel="noopener noreferrer"></a>';
+      if (item.image_url) {
+        html += '<img class="search-result-card-img" src="' + item.image_url + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
+      }
+      if (item.emoji) html += '<div class="search-result-card-emoji">' + item.emoji + '</div>';
+      if (tags.length) {
+        html += '<div class="search-result-card-tags">';
+        tags.forEach(function(t) { html += '<span>' + t + '</span>'; });
+        html += '</div>';
+      }
+      html += '<div class="search-result-card-title">' + title + '</div>';
+      if (summary) html += '<div class="search-result-card-summary">' + summary + '</div>';
+      html += '<div class="search-result-card-meta"><span>' + item.source_name + '</span><span>' + item.date + '</span></div>';
+      html += '</article>';
+    });
+    container.innerHTML = html;
+    updateSearchResultCount(results.length);
   }
 
   function initFuse(callback) {
@@ -748,17 +829,16 @@ title: Home
 
   function runSearch(query) {
     if (!query.trim()) {
-      searchMatchUrls = null;
       localStorage.removeItem('positron-today-search');
+      renderSearchResults(null);
       applyFilters();
       return;
     }
     localStorage.setItem('positron-today-search', query);
     initFuse(function() {
-      if (!fuseInstance) { searchMatchUrls = null; applyFilters(); return; }
+      if (!fuseInstance) { renderSearchResults(null); return; }
       var results = fuseInstance.search(query);
-      searchMatchUrls = new Set(results.map(function(r) { return r.item.url; }));
-      applyFilters();
+      renderSearchResults(results);
     });
   }
 
