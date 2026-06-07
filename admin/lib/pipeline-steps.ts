@@ -7,9 +7,67 @@ import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import { isNativeOutputLanguage } from "@/lib/languages";
 import RSSParser from "rss-parser";
 
-const FETCH_CHUNK = 15;
-const CLASSIFY_BATCH = 15;
+const FETCH_CHUNK = 5;
+const CLASSIFY_BATCH = 1;
 const parser = new RSSParser({ timeout: 8000 });
+
+/**
+ * Create a new pipeline run with fetch_chunk + plan_classify tasks.
+ * Returns the runId, or null if a run is already active (and not stale).
+ */
+export async function startPipelineRun(): Promise<{ runId: number } | { error: string; runId?: number }> {
+  const existing = await db.execute(
+    "SELECT id, started_at FROM pipeline_runs WHERE status = 'running' LIMIT 1",
+  );
+  if (existing.rows.length > 0) {
+    const startedAt = existing.rows[0].started_at
+      ? new Date(String(existing.rows[0].started_at)).getTime()
+      : 0;
+    const ageMs = Date.now() - startedAt;
+    if (ageMs > 10 * 60 * 1000) {
+      await db.execute({
+        sql: `UPDATE pipeline_runs
+              SET status = 'error', error_message = 'Timed out (stale run)', finished_at = datetime('now')
+              WHERE id = ?`,
+        args: [existing.rows[0].id],
+      });
+      await db.execute("DELETE FROM pending_items");
+      await db.execute({
+        sql: "UPDATE pipeline_tasks SET status = 'error' WHERE run_id = ? AND status IN ('pending', 'running')",
+        args: [existing.rows[0].id],
+      });
+    } else {
+      return { error: "A pipeline run is already in progress.", runId: Number(existing.rows[0].id) };
+    }
+  }
+
+  await db.execute("DELETE FROM pending_items");
+
+  const totalResult = await db.execute(
+    "SELECT COUNT(*) AS c FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss')",
+  );
+  const totalSources = Number(totalResult.rows[0]?.c ?? 0);
+
+  const result = await db.execute({
+    sql: `INSERT INTO pipeline_runs (status, phase, total_sources) VALUES ('running', 'fetch', ?)`,
+    args: [totalSources],
+  });
+  const runId = Number(result.lastInsertRowid);
+
+  const numChunks = Math.max(1, Math.ceil(totalSources / FETCH_CHUNK));
+  for (let i = 0; i < numChunks; i++) {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq, payload) VALUES (?, 'fetch_chunk', ?, ?)`,
+      args: [runId, i, JSON.stringify({ offset: i * FETCH_CHUNK })],
+    });
+  }
+  await db.execute({
+    sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'plan_classify', ?)`,
+    args: [runId, numChunks],
+  });
+
+  return { runId };
+}
 
 export async function appendLog(runId: number, entries: object[]) {
   const current = await db.execute({
@@ -249,4 +307,183 @@ export async function runExport(runId: number) {
   }
 
   await appendLog(runId, logEntries);
+}
+
+// ── Shared tick logic (used by both the API route and the scheduler) ─────
+
+async function planClassifyTasks(runId: number) {
+  const countResult = await db.execute("SELECT COUNT(*) AS c FROM pending_items WHERE claimed_at IS NULL");
+  const pendingCount = Number(countResult.rows[0]?.c ?? 0);
+
+  const maxSeqResult = await db.execute({
+    sql: "SELECT MAX(seq) AS m FROM pipeline_tasks WHERE run_id = ?",
+    args: [runId],
+  });
+  const nextSeq = Number(maxSeqResult.rows[0]?.m ?? 0) + 1;
+
+  if (pendingCount > 0) {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'classify_batch', ?)`,
+      args: [runId, nextSeq],
+    });
+    await updateRun(runId, { phase: "classify" });
+  } else {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'export', ?)`,
+      args: [runId, nextSeq],
+    });
+    await updateRun(runId, { phase: "export" });
+  }
+}
+
+async function enqueueNextAfterClassify(runId: number) {
+  const remaining = Number(
+    (await db.execute("SELECT COUNT(*) AS c FROM pending_items WHERE claimed_at IS NULL")).rows[0]?.c ?? 0,
+  );
+
+  const alreadyQueued = await db.execute({
+    sql: `SELECT id FROM pipeline_tasks
+          WHERE run_id = ? AND status = 'pending' AND kind IN ('classify_batch', 'export')
+          LIMIT 1`,
+    args: [runId],
+  });
+  if (alreadyQueued.rows.length > 0) return;
+
+  const maxSeqResult = await db.execute({
+    sql: "SELECT MAX(seq) AS m FROM pipeline_tasks WHERE run_id = ?",
+    args: [runId],
+  });
+  const nextSeq = Number(maxSeqResult.rows[0]?.m ?? 0) + 1;
+
+  if (remaining > 0) {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'classify_batch', ?)`,
+      args: [runId, nextSeq],
+    });
+  } else {
+    await db.execute({
+      sql: `INSERT INTO pipeline_tasks (run_id, kind, seq) VALUES (?, 'export', ?)`,
+      args: [runId, nextSeq],
+    });
+  }
+}
+
+/**
+ * Execute one pending task for a pipeline run. Returns the run status.
+ */
+export async function runOneTick(runId: number): Promise<"running" | "done" | "error"> {
+  await db.execute(
+    "UPDATE pending_items SET claimed_at = NULL WHERE claimed_at IS NOT NULL AND claimed_at < datetime('now', '-90 seconds')",
+  );
+
+  const runResult = await db.execute({
+    sql: "SELECT status FROM pipeline_runs WHERE id = ?",
+    args: [runId],
+  });
+  if (runResult.rows.length === 0) return "error";
+  const status = String(runResult.rows[0].status);
+  if (status !== "running") return status as "done" | "error";
+
+  await db.execute({
+    sql: `UPDATE pipeline_tasks SET status = 'pending', started_at = NULL
+          WHERE run_id = ? AND status = 'running'
+            AND started_at < datetime('now', '-90 seconds')`,
+    args: [runId],
+  });
+
+  const taskResult = await db.execute({
+    sql: `SELECT id, kind, payload FROM pipeline_tasks
+          WHERE run_id = ? AND status = 'pending'
+          ORDER BY seq ASC, id ASC LIMIT 1`,
+    args: [runId],
+  });
+
+  if (taskResult.rows.length === 0) {
+    const stillRunning = await db.execute({
+      sql: `SELECT id FROM pipeline_tasks WHERE run_id = ? AND status = 'running' LIMIT 1`,
+      args: [runId],
+    });
+    if (stillRunning.rows.length === 0) {
+      await updateRun(runId, {
+        status: "done",
+        finished_at: new Date().toISOString().replace("T", " ").slice(0, 19),
+      });
+      return "done";
+    }
+    return "running";
+  }
+
+  const task = taskResult.rows[0];
+  const taskId = Number(task.id);
+  const kind = task.kind as string;
+  const payload = JSON.parse(String(task.payload ?? "{}"));
+
+  const claim = await db.execute({
+    sql: `UPDATE pipeline_tasks SET status = 'running', started_at = datetime('now')
+          WHERE id = ? AND status = 'pending'`,
+    args: [taskId],
+  });
+  if (claim.rowsAffected === 0) return "running";
+
+  try {
+    if (kind === "fetch_chunk") {
+      await updateRun(runId, { phase: "fetch" });
+      await runFetchChunk(runId, payload.offset ?? 0);
+    } else if (kind === "plan_classify") {
+      await planClassifyTasks(runId);
+    } else if (kind === "classify_batch") {
+      await updateRun(runId, { phase: "classify" });
+      await runClassifyBatch(runId);
+      await enqueueNextAfterClassify(runId);
+    } else if (kind === "export") {
+      await updateRun(runId, { phase: "export" });
+      await runExport(runId);
+    }
+
+    await db.execute({
+      sql: "UPDATE pipeline_tasks SET status = 'done', finished_at = datetime('now') WHERE id = ?",
+      args: [taskId],
+    });
+  } catch (err) {
+    await db.execute({
+      sql: "UPDATE pipeline_tasks SET status = 'error', error = ?, finished_at = datetime('now') WHERE id = ?",
+      args: [String(err), taskId],
+    });
+    await appendLog(runId, [{ type: "fatal", message: String(err) }]);
+    await updateRun(runId, {
+      status: "error",
+      error_message: String(err),
+      finished_at: new Date().toISOString().replace("T", " ").slice(0, 19),
+    });
+    return "error";
+  }
+
+  return "running";
+}
+
+/**
+ * Run the chunked pipeline to completion. Creates a pipeline_run visible in the UI,
+ * then drains all tasks sequentially.
+ */
+export async function drainPipeline(): Promise<void> {
+  const result = await startPipelineRun();
+  if ("error" in result) {
+    console.log(`[pipeline] Cannot start: ${result.error}`);
+    return;
+  }
+
+  const { runId } = result;
+  console.log(`[pipeline] Started run ${runId}, draining tasks…`);
+
+  while (true) {
+    const status = await runOneTick(runId);
+    if (status === "done") {
+      console.log(`[pipeline] Run ${runId} complete`);
+      break;
+    }
+    if (status === "error") {
+      console.error(`[pipeline] Run ${runId} failed`);
+      break;
+    }
+  }
 }

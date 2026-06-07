@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.29.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.30.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -432,7 +432,7 @@ The admin app can run in three ways. The **deployment mode** (serverless vs self
 
 #### Serverless mode (Vercel)
 
-The traditional deployment. Each pipeline phase is a separate API endpoint called by external cron jobs. Work is chunked into small batches (15 sources, 15 items) to stay within Vercel's 60-second function timeout. Scheduled articles are published by a periodic cron call to `/api/publish-scheduled`.
+The traditional deployment. Each pipeline phase is a separate API endpoint called by external cron jobs. Work is chunked into small batches (5 sources, 1 item per tick) to stay within Vercel's 60-second function timeout. Scheduled articles are published by a periodic cron call to `/api/publish-scheduled`.
 
 #### Self-hosted mode (Docker)
 

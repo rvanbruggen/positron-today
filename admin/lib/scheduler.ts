@@ -1,8 +1,14 @@
 /**
  * Built-in scheduler for self-hosted deployment mode.
  *
- * Uses node-cron to trigger the unified pipeline at configured run times,
+ * Uses node-cron to trigger the pipeline at configured run times,
  * and exact-time publish timers for individual articles.
+ *
+ * - In "fetch" mode: runs the chunked pipeline (fetch + classify + export),
+ *   creating a pipeline_run visible in the Fetch & Filter UI.
+ * - In "summarise" or "full" mode: runs the unified pipeline
+ *   (fetch + classify + positronitron + publish + social).
+ * - In "off" mode: does nothing.
  *
  * Started from instrumentation.ts when DEPLOYMENT_MODE=self-hosted.
  */
@@ -10,6 +16,7 @@
 import * as cron from "node-cron";
 import { getSettings } from "@/lib/settings";
 import { runUnifiedPipeline } from "@/lib/unified-pipeline";
+import { drainPipeline } from "@/lib/pipeline-steps";
 import { syncTimersFromDb, cancelAllTimers } from "@/lib/publish-timer";
 
 let activeJobs: ReturnType<typeof cron.schedule>[] = [];
@@ -70,9 +77,24 @@ export async function reloadScheduler(): Promise<void> {
     }
 
     const job = cron.schedule(cronExpr, async () => {
-      console.log(`[scheduler] Triggered by ${time} slot`);
-      await runUnifiedPipeline();
-      // After pipeline runs, sync timers for any newly scheduled articles
+      const currentSettings = await getSettings();
+      const mode = currentSettings.positronitron_mode;
+
+      if (mode === "off") {
+        console.log(`[scheduler] ${time} — mode is "off", skipping`);
+        return;
+      }
+
+      console.log(`[scheduler] Triggered by ${time} slot (mode=${mode})`);
+
+      if (mode === "fetch") {
+        // Fetch mode: use the chunked pipeline so the run is visible in the UI
+        await drainPipeline();
+      } else {
+        // Summarise / full mode: use the unified pipeline
+        await runUnifiedPipeline();
+      }
+
       await syncTimersFromDb();
     }, {
       timezone: tz,
