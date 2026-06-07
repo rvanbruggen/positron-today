@@ -1,19 +1,19 @@
 {
-  "exported_at": "2026-06-07T05:20:06.539Z",
-  "total_rejected": 51304,
+  "exported_at": "2026-06-07T05:25:44.228Z",
+  "total_rejected": 51317,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 14025
+      "count": 14030
     },
     {
       "category": "soft-news-filler",
-      "count": 6165
+      "count": 6167
     },
     {
       "category": "sports-negative",
-      "count": 5560
+      "count": 5562
     },
     {
       "category": "crime-violence",
@@ -21,7 +21,7 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 3917
+      "count": 3919
     },
     {
       "category": "economic-doom",
@@ -29,7 +29,7 @@
     },
     {
       "category": "war-conflict",
-      "count": 2455
+      "count": 2457
     },
     {
       "category": "other-negative",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 6528,
-      "total": 6884
+      "negative": 6529,
+      "total": 6885
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 6497,
-      "total": 6693
+      "negative": 6501,
+      "total": 6697
     },
     {
       "source": "VRT Nws",
@@ -116,8 +116,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 1875,
-      "total": 1894
+      "negative": 1877,
+      "total": 1896
     },
     {
       "source": "BBC Top Stories",
@@ -136,8 +136,8 @@
     },
     {
       "source": "The Guardian",
-      "negative": 1723,
-      "total": 1817
+      "negative": 1726,
+      "total": 1821
     },
     {
       "source": "De Standaard Buitenland",
@@ -146,8 +146,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 993,
-      "total": 996
+      "negative": 994,
+      "total": 997
     },
     {
       "source": "The Verge",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 618,
-      "total": 630
+      "negative": 620,
+      "total": 632
     },
     {
       "source": "De Standaard Binnenland",
@@ -296,6 +296,110 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Sydkoreanere kræver omvalg på grund af for få stemmesedler",
+      "reason": "The article discusses a political issue regarding a demand for a re-election due to insufficient ballots, which is not uplifting and falls under political conflict.",
+      "category": "political-conflict",
+      "url": "https://www.dr.dk/nyheder/seneste/sydkoreanere-kraever-omvalg-paa-grund-af-faa-stemmesedler",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Euronews",
+      "title": "Armenia goes to polls in pivotal vote to decide South Caucasus future",
+      "reason": "The article discusses a political election in Armenia amidst geopolitical tensions, which does not provide an uplifting narrative and is primarily focused on political conflict.",
+      "category": "political-conflict",
+      "url": "http://www.euronews.com/2026/06/07/armenia-goes-to-polls-in-pivotal-vote-to-decide-south-caucasus-future",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Euronews",
+      "title": "Latest news bulletin | June 7th, 2026 – Morning",
+      "reason": "The article is a general news bulletin that covers a wide range of topics, including politics and entertainment, which do not meet the positive-news editorial standard.",
+      "category": "soft-news-filler",
+      "url": "http://www.euronews.com/video/2026/06/07/latest-news-bulletin-june-7th-2026-morning",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Le Monde",
+      "title": "« Nous devons relever la tête ! » : en Israël, les peurs et les maigres espoirs du « camp de la paix »",
+      "reason": "The article discusses ongoing political and social tensions in Israel, focusing on the challenges faced by peace activists, which does not provide an uplifting narrative and is primarily political in nature.",
+      "category": "political-conflict",
+      "url": "https://www.lemonde.fr/international/article/2026/06/07/nous-devons-relever-la-tete-en-israel-les-peurs-et-les-maigres-espoirs-du-camp-de-la-paix_6698623_3210.html",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Le Monde",
+      "title": "EN DIRECT, guerre en Ukraine : Vladimir Poutine « a laissé passer sa chance de se sortir de cette guerre », affirme le chef de la diplomatie ukrainienne",
+      "reason": "The article discusses ongoing conflict and violence in Ukraine, which is inherently negative and does not uplift the reader.",
+      "category": "war-conflict",
+      "url": "https://www.lemonde.fr/international/live/2026/06/07/en-direct-guerre-en-ukraine-vladimir-poutine-a-laisse-passer-sa-chance-de-se-sortir-de-cette-guerre-affirme-le-chef-de-la-diplomatie-ukrainienne_6698620_3210.html",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "LIVE OORLOG IN OEKRAÏNE. Oekraïne meldt twee doden bij Russische aanvallen - Rusland: “In 13 uur tijd 339 Oekraïense drones onderschept”",
+      "reason": "The article discusses ongoing violence and casualties in the Ukraine conflict, which is inherently negative and not uplifting.",
+      "category": "war-conflict",
+      "url": "https://www.gva.be/buitenland/live-oorlog-in-oekraine.-oekrane-meldt-twee-doden-bij-russische-aanvallen-rusland-in-13-uur-tijd-339-oekraense-drones-onderschept/76695337.html",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "The Guardian",
+      "title": "Trump’s failure to maintain ceasefires is part of the new world disorder – and ordinary people pay the price | Simon Tisdall",
+      "reason": "The article discusses political failures and conflicts, focusing on negative outcomes and criticisms of a political figure, which does not align with positive news standards.",
+      "category": "political-conflict",
+      "url": "https://www.theguardian.com/commentisfree/2026/jun/07/donald-trump-ceasefire-failure-ukraine-iran-gaza-lebanon-gaza",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "The Guardian",
+      "title": "Hello, goodbye: the Beatles’ chaotic, controversial final tour – as never seen before",
+      "reason": "The article focuses on the Beatles' final tour, which, while historical, delves into their emotional struggles and controversies, making it less uplifting and more reflective of challenges faced by the band.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.theguardian.com/music/2026/jun/07/the-beatles-unseen-photographs-chaotic-controversial-final-tour-jim-marshall",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "The Guardian",
+      "title": "Bar Shrimp, Manchester M1: ‘This is meaningful, highly adept cooking’ – restaurant review | Grace Dent on restaurants",
+      "reason": "The article is a restaurant review, which falls under the category of celebrity and entertainment, focusing on a specific venue rather than a universally uplifting story.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.theguardian.com/food/2026/jun/07/bar-shrimp-manchester-m1-grace-dent-restaurant-review",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "EXCLUSIEF. “We betalen nog te veel aan middelmatige spelers en hun makelaars”: zes topclubs debatteren over toekomst van het Belgisch voetbal",
+      "reason": "The article discusses the financial aspects and challenges of Belgian football clubs, which falls under routine sports content without a truly uplifting or exceptional angle.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/belgisch-voetbal/exclusief-we-betalen-nog-te-veel-aan-middelmatige-spelers-en-hun-makelaars-zes-topclubs-debatteren-over-toekomst-van-het-belgisch-voetbal~aed9d950/",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "HLN Belastingmarathon voorkomt 272.782 euro te veel betaalde belastingen bij onze lezers: uit deze veelgemaakte fouten kan je leren",
+      "reason": "The article focuses on a local tax event that, while it helped individuals save money, does not have broad human relevance and is primarily of local interest.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/mijn-geld/hln-belastingmarathon-voorkomt-272-782-euro-te-veel-betaalde-belastingen-bij-onze-lezers-uit-deze-veelgemaakte-fouten-kan-je-leren~a65ebdf1/",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Rode Duivels-tegenstanders Egypte en Nieuw-Zeeland tonen zich een taaie klant, maar verliezen nipt tegen toplanden Brazilië en Engeland",
+      "reason": "The article focuses on sports results and updates related to the World Cup, which does not meet the positive-news editorial standard due to its routine nature and lack of exceptional human interest.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/wk-voetbal/rode-duivels-tegenstanders-egypte-en-nieuw-zeeland-tonen-zich-een-taaie-klant-maar-verliezen-nipt-tegen-toplanden-brazilie-en-engeland~a3c3e7fe/",
+      "date": "2026-06-07 07:25"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Spanningen rond Taiwan lopen op: Chinese “handhavingsoperatie” leidt tot inzet van Taiwanese kustwacht",
+      "reason": "The article discusses rising tensions between China and Taiwan, which is a negative political conflict and does not uplift the reader.",
+      "category": "political-conflict",
+      "url": "https://www.hln.be/buitenland/spanningen-rond-taiwan-lopen-op-chinese-handhavingsoperatie-leidt-tot-inzet-van-taiwanese-kustwacht~a890e22a/",
+      "date": "2026-06-07 07:25"
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "12 personer såret efter skud ved amerikansk festival",
@@ -8191,110 +8295,6 @@
       "category": "sports-negative",
       "url": "https://www.gva.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/copa-crubeca-toont-opnieuw-rode-duivels-op-groot-scherm-inclusief-ontbijt-om-5-uur/155447051.html",
       "date": "2026-06-05 19:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Mechelaar zit opnieuw in cel voor hacking: deze keer viseerde hij telecombedrijven",
-      "reason": "The article discusses criminal activities related to hacking, which is inherently negative and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.gva.be/regio/antwerpen/rivierenland/mechelen/mechelaar-zit-opnieuw-in-cel-voor-hacking-deze-keer-viseerde-hij-telecombedrijven/155436686.html",
-      "date": "2026-06-05 19:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "LIVE ROLAND GARROS. Geen Italiaans onderonsje in tweede halve finale: Matteo Arnaldi moet ziek forfait geven, Alexander Zverev en Flavio Cobolli spelen finale",
-      "reason": "The article focuses on a sports event and includes details about player withdrawals and match outcomes, which do not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/tennis/live-roland-garros.-geen-italiaans-onderonsje-in-tweede-halve-finale-matteo-arnaldi-moet-ziek-forfait-geven-alexander-zverev-en-flavio-cobolli-spelen-finale/153012634.html",
-      "date": "2026-06-05 19:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "“Grote vraag naar aandelen SpaceX bij beursgang”",
-      "reason": "The article discusses the stock market and the demand for SpaceX shares, which falls under corporate PR and routine financial news, lacking broad human relevance or uplifting content.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/buitenland/grote-vraag-naar-aandelen-spacex-bij-beursgang/155448292.html",
-      "date": "2026-06-05 19:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Minister Verlinden erkent ernst gevangeniscrisis: 668 gedetineerden slapen op de grond",
-      "reason": "The article discusses a serious issue regarding prison overcrowding and the conditions faced by detainees, which is inherently negative and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/binnenland/minister-verlinden-erkent-ernst-gevangeniscrisis-668-gedetineerden-slapen-op-de-grond/155449470.html",
-      "date": "2026-06-05 19:31"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Met ‘Davos van Poetin’ wil Rusland zich tonen als land waar normaal zaken te doen valt",
-      "reason": "The article discusses an economic forum in Russia, which is tied to political and economic contexts that may not be uplifting or relevant to a broad audience.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/buitenland/met-davos-van-poetin-wil-rusland-zich-tonen-als-land-waar-normaal-zaken-te-doen-valt/155451379.html",
-      "date": "2026-06-05 19:31"
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "Outrage in Albania over Kushner-Trump $1.6bn luxury resort - The Latest",
-      "reason": "The article discusses public outrage over a luxury resort project, highlighting environmental concerns and political transparency issues, which are negative in nature.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/world/video/2026/jun/05/outrage-in-albania-over-kushner-trump-16bn-luxury-resort-plan-the-latest",
-      "date": "2026-06-05 19:31"
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "Dua Lipa and Callum Turner wedding divides Palermo: ‘I could understand if it was for the pope’",
-      "reason": "The article focuses on a celebrity wedding and the mixed reactions from local residents, which does not provide a universally uplifting message and leans towards local gossip and social tension.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.theguardian.com/music/2026/jun/05/dua-lipa-callum-turner-wedding-divides-palermo",
-      "date": "2026-06-05 19:31"
-    },
-    {
-      "source": "The Guardian",
-      "title": "Marjane Satrapi captured profound human emotions – and paved the way for a generation",
-      "reason": "The article discusses the death of Marjane Satrapi, which is a negative event despite her positive legacy. It does not uplift the reader and focuses on loss rather than celebration.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.theguardian.com/books/2026/jun/05/marjane-satrapi-death-graphic-novelist-paved-way-for-a-generation",
-      "date": "2026-06-05 19:30"
-    },
-    {
-      "source": "The Guardian",
-      "title": "‘I would draw blood’: Jemaine Clement and Nicola Walker’s wild wrongcom about sexual betrayal",
-      "reason": "The article focuses on a new comedy that explores complex and potentially negative themes such as betrayal and drug use, which detracts from a strictly positive narrative.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.theguardian.com/tv-and-radio/2026/jun/05/jemaine-clement-nicola-walker-interview-alice-and-steve-disney",
-      "date": "2026-06-05 19:30"
-    },
-    {
-      "source": "The Guardian",
-      "title": "Britain is a swamp of lies and disinformation – and we got here on the Brexit bus | Jonathan Freedland",
-      "reason": "The article discusses the negative impacts of Brexit and the current political climate in Britain, which is not uplifting and focuses on disinformation and economic struggles.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/commentisfree/2026/jun/05/britain-lies-disinformation-brexit-bus-economy-vote",
-      "date": "2026-06-05 19:30"
-    },
-    {
-      "source": "The Verge",
-      "title": "What happens when your phone is confiscated at the airport",
-      "reason": "The article discusses a negative experience involving customs agents and the confiscation of personal property, which is not uplifting and focuses on a troubling situation.",
-      "category": "political-conflict",
-      "url": "https://www.theverge.com/report/944076/cbp-airport-phone-searches-seizure-minneapolis-activists",
-      "date": "2026-06-05 19:30"
-    },
-    {
-      "source": "The Verge",
-      "title": "This is your laptop… on AI",
-      "reason": "The article discusses AI developments in a way that raises questions about their desirability, which leans towards skepticism rather than positivity.",
-      "category": "tech-ai-concern",
-      "url": "https://www.theverge.com/podcast/944058/ai-laptop-nvidia-build-gemini-spark-vergecast",
-      "date": "2026-06-05 19:30"
-    },
-    {
-      "source": "The Verge",
-      "title": "The Sonos Era 100 speaker is down to its lowest price in months",
-      "reason": "The article primarily focuses on product promotions and discounts, which falls under corporate PR and does not provide uplifting or universally relevant content.",
-      "category": "soft-news-filler",
-      "url": "https://www.theverge.com/gadgets/944095/sonos-era-100-google-nest-doorbell-deal-sale",
-      "date": "2026-06-05 19:30"
     }
   ]
 }
