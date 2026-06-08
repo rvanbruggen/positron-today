@@ -1,19 +1,19 @@
 {
-  "exported_at": "2026-06-08T05:46:57.297Z",
-  "total_rejected": 52009,
+  "exported_at": "2026-06-08T05:50:18.989Z",
+  "total_rejected": 52024,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 14210
+      "count": 14214
     },
     {
       "category": "soft-news-filler",
-      "count": 6257
+      "count": 6260
     },
     {
       "category": "sports-negative",
-      "count": 5680
+      "count": 5681
     },
     {
       "category": "crime-violence",
@@ -21,15 +21,15 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 3978
+      "count": 3979
     },
     {
       "category": "economic-doom",
-      "count": 3418
+      "count": 3420
     },
     {
       "category": "war-conflict",
-      "count": 2519
+      "count": 2521
     },
     {
       "category": "other-negative",
@@ -37,11 +37,11 @@
     },
     {
       "category": "disaster-accident",
-      "count": 2385
+      "count": 2386
     },
     {
       "category": "health-scare",
-      "count": 2234
+      "count": 2235
     },
     {
       "category": "divisive-social",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 6589,
-      "total": 6946
+      "negative": 6591,
+      "total": 6948
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 6572,
-      "total": 6768
+      "negative": 6575,
+      "total": 6771
     },
     {
       "source": "VRT Nws",
@@ -91,18 +91,18 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 2964,
-      "total": 3000
+      "negative": 2965,
+      "total": 3001
     },
     {
       "source": "De Morgen",
-      "negative": 2518,
-      "total": 2561
+      "negative": 2520,
+      "total": 2563
     },
     {
       "source": "NRC",
-      "negative": 2185,
-      "total": 2223
+      "negative": 2186,
+      "total": 2224
     },
     {
       "source": "The New York Times",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 1978,
-      "total": 1992
+      "negative": 1980,
+      "total": 1994
     },
     {
       "source": "Le Monde",
@@ -126,13 +126,13 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 1841,
-      "total": 1848
+      "negative": 1842,
+      "total": 1849
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 1825,
-      "total": 1834
+      "negative": 1827,
+      "total": 1836
     },
     {
       "source": "The Guardian",
@@ -146,8 +146,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 1016,
-      "total": 1019
+      "negative": 1017,
+      "total": 1020
     },
     {
       "source": "The Verge",
@@ -296,6 +296,126 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Festival giver ekstra rejsetid ved Lillebælt",
+      "reason": "The article appears to focus on a local festival and its travel arrangements, which may not have broad appeal outside the local context.",
+      "category": "soft-news-filler",
+      "url": "https://www.dr.dk/nyheder/seneste/festival-giver-ekstra-rejsetid-ved-lillebaelt",
+      "date": "2026-06-08 07:50"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Rosyjski opozycjonista: Putin wierzy, że Ukraina upadnie, a Zełenski ucieknie",
+      "reason": "The article discusses the political situation in Russia regarding the war in Ukraine, which is a negative and divisive topic rather than uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/konflikty-zbrojne/art44551891-rosyjski-opozycjonista-putin-wierzy-ze-ukraina-upadnie-a-zelenski-ucieknie",
+      "date": "2026-06-08 07:50"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Attacs it-girl har skrivit stökig memoar från upprorets tid",
+      "reason": "The article discusses a memoir related to political events and unrest, which may not be uplifting and could be seen as divisive or negative in nature.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/kultur/attacs-it-girl-har-skrivit-stokig-memoar-fran-upprorets-tid/",
+      "date": "2026-06-08 07:49"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Kalena: Så är hon ju en riktig surtant nu",
+      "reason": "The article appears to focus on a celebrity's exploration of past cultural themes, which falls under entertainment and does not provide uplifting or universally relevant content.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dn.se/kultur/kalena-sa-ar-hon-ju-en-riktig-surtant-nu/",
+      "date": "2026-06-08 07:48"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Israels militær angriber flere mål i Iran i hævnangreb",
+      "reason": "The article discusses military actions and conflict, which is inherently negative and does not uplift the reader.",
+      "category": "war-conflict",
+      "url": "https://politiken.dk/internationalt/art10871903/Israels-milit%C3%A6r-angriber-flere-m%C3%A5l-i-Iran-i-h%C3%A6vnangreb",
+      "date": "2026-06-08 07:48"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "DFB-Nachwuchsdirektor Wolf: „Wir müssen von unserem hohem Ross runterkommen“",
+      "reason": "The article discusses issues in youth football training in Germany, which falls under sports content and does not present an uplifting or inspiring narrative.",
+      "category": "sports-negative",
+      "url": "https://www.faz.net/aktuell/sport/fussball-wm/deutsches-team/dfb-nachwuchsdirektor-hannes-wolf-weiss-was-in-deutschland-fehlt-accg-200895287.html",
+      "date": "2026-06-08 07:48"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Starinvestor: Anlegen wie George Soros",
+      "reason": "The article focuses on investment strategies related to a well-known investor, which falls under corporate PR and routine financial advice, lacking broad human relevance and uplifting content.",
+      "category": "economic-doom",
+      "url": "https://www.faz.net/aktuell/finanzen/investor-george-soros-was-privatanleger-lernen-koennen-accg-200888607.html",
+      "date": "2026-06-08 07:48"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "GAMEBLOG. Het weekend van de game-aankondigingen: ontdek hier welke nieuwe spellen op de markt komen en wanneer",
+      "reason": "The article focuses on routine updates about video games, which falls under corporate PR and routine tech updates, lacking broad human relevance.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/media-en-cultuur/games/gameblog.-het-weekend-van-de-game-aankondigingen-ontdek-hier-welke-nieuwe-spellen-op-de-markt-komen-en-wanneer/151243292.html",
+      "date": "2026-06-08 07:48"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Gezellige drukte op de Kunstendagen op Teunenberg",
+      "reason": "The article focuses on a local art event, which may not have broad relevance outside the specific community, making it less interesting to a global audience.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/regio/antwerpen/kempen/olen/gezellige-drukte-op-de-kunstendagen-op-teunenberg/156137567.html",
+      "date": "2026-06-08 07:48"
+    },
+    {
+      "source": "NRC",
+      "title": "Tweede week corona-enquête: burgemeester Bruls en topambtenaar worden gehoord ",
+      "reason": "The article discusses a parliamentary inquiry into COVID-19 policy, which falls under political content and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://www.nrc.nl/nieuws/2026/06/08/tweede-week-corona-enquete-burgemeester-bruls-en-topambtenaar-worden-gehoord-a4929499",
+      "date": "2026-06-08 07:47"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Geen meerwaardebelasting, geen beurstaks: zo wil Voka 185 miljard (!) euro aan slapend spaargeld losweken. Wat is de groeirekening?",
+      "reason": "The article discusses a financial initiative that is primarily corporate in nature and lacks broad human relevance, focusing instead on economic policy and investment strategies.",
+      "category": "economic-doom",
+      "url": "https://www.hln.be/economie/geen-meerwaardebelasting-geen-beurstaks-zo-wil-voka-185-miljard-euro-aan-slapend-spaargeld-losweken-wat-is-de-groeirekening~a720c37d/",
+      "date": "2026-06-08 07:47"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Mercedes gaat twee keer overkop aan oprit Deurne: meerdere personen naar ziekenhuis",
+      "reason": "The article reports on a serious traffic accident involving injuries, which is inherently negative and not uplifting.",
+      "category": "disaster-accident",
+      "url": "https://www.hln.be/deurne/mercedes-gaat-twee-keer-overkop-aan-oprit-deurne-meerdere-personen-naar-ziekenhuis~a0e1bedb/",
+      "date": "2026-06-08 07:47"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Stuur jij af op een burn-out? Deze 6 alarmsignalen wijzen erop",
+      "reason": "The article discusses the alarming rise of burnout among workers, particularly among vulnerable groups, which is a negative health issue rather than a positive story.",
+      "category": "health-scare",
+      "url": "https://www.hln.be/mijn-geld/stuur-jij-af-op-een-burn-out-deze-6-alarmsignalen-wijzen-erop~ab9518a0/",
+      "date": "2026-06-08 07:47"
+    },
+    {
+      "source": "De Morgen",
+      "title": "▶ ‘Ofwel ben je oneerlijk, ofwel ben je gewoon dom’: Trump breekt interview af na kritische vragen over fraudeclaims",
+      "reason": "The article discusses a political interview that ended negatively, which does not align with positive news standards.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/nieuws/ofwel-ben-je-oneerlijk-ofwel-ben-je-gewoon-dom-trump-breekt-interview-af-na-kritische-vragen-over-fraudeclaims~b2980cda/",
+      "date": "2026-06-08 07:47"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Olieprijzen stijgen weer door wederzijdse aanvallen tussen Iran en Israël: prijs van een vat ruim 4 procent hoger",
+      "reason": "The article discusses rising oil prices due to conflict between Iran and Israel, which is a negative topic related to war and economic instability.",
+      "category": "war-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/live-olieprijzen-stijgen-weer-door-wederzijdse-aanvallen-tussen-iran-en-israel-prijs-van-een-vat-ruim-4-procent-hoger~b31dbb6e/",
+      "date": "2026-06-08 07:47"
+    },
     {
       "source": "De Morgen",
       "title": "Live - Demir trekt 40 miljoen euro uit om dure studierichtingen betaalbaarder te maken",
@@ -8175,126 +8295,6 @@
       "category": "soft-news-filler",
       "url": "https://moto.rp.pl/premiery/art44573931-audi-nuvolari-ma-1001-km-tak-wyglada-powrot-marki-do-swiata-supersamochodow",
       "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Europa odczuwa skutki wojny. Ceny paliw rosną w całej UE",
-      "reason": "The article discusses the negative impact of war on fuel prices in Europe, which is not uplifting and focuses on economic challenges.",
-      "category": "economic-doom",
-      "url": "https://energia.rp.pl/ropa/art44573661-europa-odczuwa-skutki-wojny-ceny-paliw-rosna-w-calej-ue",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Sondaż: Niemal połowa Polaków chce broni atomowej USA w Polsce",
-      "reason": "The article discusses public opinion on the deployment of U.S. nuclear weapons in Poland, which is a political topic and may evoke concerns rather than upliftment.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/spoleczenstwo/art44573911-sondaz-niemal-polowa-polakow-chce-broni-atomowej-usa-w-polsce",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Microsoft i najlepszy szpital świata tworzą medyczną AI. Ma zastąpić „Doktora Google”",
-      "reason": "The article discusses a corporate partnership between Microsoft and Mayo Clinic to develop medical AI, which falls under corporate PR and routine tech updates.",
-      "category": "soft-news-filler",
-      "url": "https://cyfrowa.rp.pl/ai/art44573821-microsoft-i-najlepszy-szpital-swiata-tworza-medyczna-ai-ma-zastapic-doktora-google",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Fico chce zwrotu kosztów za broń przekazaną Ukrainie. Będzie rozmawiać z KE",
-      "reason": "The article discusses political negotiations regarding financial compensation for military support to Ukraine, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/konflikty-zbrojne/art44574101-fico-chce-zwrotu-kosztow-za-bron-przekazana-ukrainie-bedzie-rozmawiac-z-ke",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Amerykanie zmieniają armię i szykują się do nowych wojen. A Polska może zyskać",
-      "reason": "The article discusses military changes and preparations for potential conflicts, which is inherently negative and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://radar.rp.pl/innowacje-w-armiach/art44479291-amerykanie-zmieniaja-armie-i-szykuja-sie-do-nowych-wojen-a-polska-moze-zyskac",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Roland Garros. Maja Chwalińska walczyła, ale nową mistrzynią została Mirra Andriejewa",
-      "reason": "The article focuses on a sports event where a player lost in the final, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://sport.rp.pl/sport/art44574131-roland-garros-maja-chwalinska-walczyla-ale-nowa-mistrzynia-zostala-mirra-andriejewa",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Maja Chwalińska przegrała w finale Roland Garros",
-      "reason": "The article reports on a tennis match where Maja Chwalińska lost in the final, which is a negative outcome and does not uplift the reader.",
-      "category": "sports-negative",
-      "url": "https://sport.rp.pl/tenis/art44573841-maja-chwalinska-kontra-mirra-andriejewa-final-roland-garros",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Var en ”lite sämre version av Ericsson” i höstas – nu springer Nokia ifrån",
-      "reason": "The article discusses stock market performance and corporate competition, which falls under corporate PR and routine tech updates, lacking broad human relevance.",
-      "category": "economic-doom",
-      "url": "https://www.dn.se/ekonomi/var-en-lite-samre-version-av-ericsson-i-hostas-nu-springer-nokia-ifran/",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Duplantis siktar mot nytt världsrekord: ”Går för det\"",
-      "reason": "The article focuses on a professional athlete aiming for a world record, which falls under sports content that is not exceptional enough to meet the positive-news standards.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/duplantis-siktar-mot-nytt-varldsrekord-gar-for-det/",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Ståhls lugnande besked: \"Mår jättebra\"",
-      "reason": "The article focuses on a professional athlete's health update, which falls under routine sports news and does not present a universally uplifting story.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/stahls-lugnande-besked-mar-jattebra/",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Nästan omöjligt att få tid för uppkörning i sommar",
-      "reason": "The article discusses the difficulties young people face in booking driving tests, highlighting a negative situation rather than an uplifting story.",
-      "category": "other-negative",
-      "url": "https://www.dn.se/sverige/nastan-omojligt-att-fa-tid-for-uppkorning-i-sommar/",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Sveriges nya Natostyrka invigd: ”Ger oss inflytande”",
-      "reason": "The article discusses the establishment of a NATO force in Sweden, which is primarily focused on military readiness and deterrence against Russia, making it a political and conflict-related topic rather than uplifting news.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/sverige/sveriges-nya-natostyrka-invigd-ger-oss-inflytande/",
-      "date": "2026-06-06 18:27"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Ny attack mot S:t Petersburg – flottbas träffad",
-      "reason": "The article discusses military conflict and attacks, which is inherently negative and does not uplift the reader.",
-      "category": "war-conflict",
-      "url": "https://www.dn.se/varlden/ny-attack-mot-st-petersburg-flottbas-traffad/",
-      "date": "2026-06-06 18:26"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Mette-Marit kan få svenska lungor – måste vara tillgänglig dygnet runt",
-      "reason": "The article discusses a health issue related to a public figure waiting for a lung transplant, which is a serious and negative situation rather than uplifting news.",
-      "category": "health-scare",
-      "url": "https://www.dn.se/sverige/mette-marit-kan-fa-svenska-lungor-maste-vara-tillganglig-dygnet-runt/",
-      "date": "2026-06-06 18:26"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Sjumånaders bebis sköts ihjäl i bil på Västbanken",
-      "reason": "The article reports on a tragic incident involving the death of a baby, which is deeply negative and not uplifting.",
-      "category": "crime-violence",
-      "url": "https://www.dn.se/varlden/sjumanaders-bebis-skots-ihjal-i-bil-pa-vastbanken/",
-      "date": "2026-06-06 18:26"
     }
   ]
 }
