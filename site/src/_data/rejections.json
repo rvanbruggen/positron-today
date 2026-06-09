@@ -1,23 +1,23 @@
 {
-  "exported_at": "2026-06-09T05:32:23.264Z",
-  "total_rejected": 52963,
+  "exported_at": "2026-06-09T05:33:19.970Z",
+  "total_rejected": 52974,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 14488
+      "count": 14489
     },
     {
       "category": "soft-news-filler",
-      "count": 6372
+      "count": 6374
     },
     {
       "category": "sports-negative",
-      "count": 5767
+      "count": 5768
     },
     {
       "category": "crime-violence",
-      "count": 4570
+      "count": 4572
     },
     {
       "category": "celebrity-entertainment",
@@ -29,7 +29,7 @@
     },
     {
       "category": "war-conflict",
-      "count": 2570
+      "count": 2573
     },
     {
       "category": "other-negative",
@@ -37,7 +37,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 2425
+      "count": 2427
     },
     {
       "category": "health-scare",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 6675,
-      "total": 7036
+      "negative": 6678,
+      "total": 7039
     },
     {
       "source": "Het Laatste Nieuws",
@@ -81,8 +81,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 3597,
-      "total": 3755
+      "negative": 3598,
+      "total": 3756
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -96,8 +96,8 @@
     },
     {
       "source": "De Morgen",
-      "negative": 2554,
-      "total": 2598
+      "negative": 2556,
+      "total": 2600
     },
     {
       "source": "NRC",
@@ -111,13 +111,13 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 2033,
-      "total": 2048
+      "negative": 2034,
+      "total": 2049
     },
     {
       "source": "Le Monde",
-      "negative": 1967,
-      "total": 1986
+      "negative": 1968,
+      "total": 1987
     },
     {
       "source": "Politiken.dk",
@@ -141,13 +141,13 @@
     },
     {
       "source": "De Standaard Buitenland",
-      "negative": 1125,
-      "total": 1135
+      "negative": 1126,
+      "total": 1136
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 1052,
-      "total": 1055
+      "negative": 1053,
+      "total": 1056
     },
     {
       "source": "The Verge",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 645,
-      "total": 658
+      "negative": 646,
+      "total": 659
     },
     {
       "source": "De Standaard Binnenland",
@@ -296,6 +296,94 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Amerikanske piloter meldes i god behold efter hændelse nær Hormuzstrædet",
+      "reason": "The article discusses an incident involving American pilots, which suggests a connection to military conflict, making it less uplifting and more focused on a potentially negative situation.",
+      "category": "war-conflict",
+      "url": "https://www.dr.dk/nyheder/seneste/amerikanske-piloter-meldes-i-god-behold-efter-haendelse-naer-hormuzstraedet",
+      "date": "2026-06-09 07:33"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Ranta: Så vann jag (nästan) kampen mot dropshippingbolaget i Kina",
+      "reason": "The article focuses on a personal experience with online shopping and a connection with a pen pal in China, which may not have broad human relevance and could be seen as a local or niche story.",
+      "category": "soft-news-filler",
+      "url": "https://www.dn.se/kultur/ranta-sa-vann-jag-nastan-kampen-mot-dropshippingbolaget-i-kina/",
+      "date": "2026-06-09 07:33"
+    },
+    {
+      "source": "Euronews",
+      "title": "Trump booed by crowd during national anthem prior to NBA Finals in New York",
+      "reason": "The article focuses on a politically charged event that includes negative reactions and security concerns, which does not uplift or inspire.",
+      "category": "political-conflict",
+      "url": "http://www.euronews.com/2026/06/09/trump-booed-by-crowd-during-national-anthem-prior-to-nba-finals-in-new-york",
+      "date": "2026-06-09 07:33"
+    },
+    {
+      "source": "Le Monde",
+      "title": "EN DIRECT, guerre au Moyen-Orient : un hélicoptère de l’armée américaine s’écrase près du détroit d’Ormuz dans des circonstances floues",
+      "reason": "The article discusses a military incident and ongoing conflict, which is inherently negative and does not uplift the reader.",
+      "category": "war-conflict",
+      "url": "https://www.lemonde.fr/international/live/2026/06/09/en-direct-guerre-au-moyen-orient-un-helicoptere-de-l-armee-americaine-s-ecrase-pres-du-detroit-d-ormuz-dans-des-circonstances-floues_6697888_3210.html",
+      "date": "2026-06-09 07:33"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Verdacht pakket in Antwerpen-Centraal, enkele ingangen en sporen afgesloten",
+      "reason": "The article discusses a suspicious package found at a train station, which is a negative and concerning situation rather than uplifting news.",
+      "category": "crime-violence",
+      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/verdacht-pakket-in-antwerpen-centraal-enkele-ingangen-en-sporen-afgesloten/156324621.html",
+      "date": "2026-06-09 07:33"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Louise (27) start eigen paardenmelkerij: “Paarden zijn altijd belangrijk deel van mijn leven geweest” ",
+      "reason": "The article focuses on a local business initiative that may not have broad human relevance outside its immediate context, making it less interesting to a global audience.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/regio/antwerpen/rivierenland/lier/louise-27-start-eigen-paardenmelkerij-paarden-zijn-altijd-belangrijk-deel-van-mijn-leven-geweest/156231246.html",
+      "date": "2026-06-09 07:33"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "LIVE WK. Doku deelt handtekeningen uit bij aankomst in Seattle, zo zien de hotelkamers van de Rode Duivels eruit",
+      "reason": "The article focuses on a sports event (the World Cup) and does not provide a unique or universally uplifting story, making it fall under the sports category.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/voetbal/live-wk.-doku-deelt-handtekeningen-uit-bij-aankomst-in-seattle-zo-zien-de-hotelkamers-van-de-rode-duivels-eruit/151454494.html",
+      "date": "2026-06-09 07:33"
+    },
+    {
+      "source": "De Standaard Buitenland",
+      "title": "Helikopter van Amerikaans leger stort neer nabij Straat van Hormuz, bemanning gered",
+      "reason": "The article discusses a military helicopter crash, which is a negative event, even though the crew was rescued. It does not uplift or inspire.",
+      "category": "disaster-accident",
+      "url": "https://www.standaard.be/buitenland/helikopter-van-amerikaans-leger-stort-neer-nabij-straat-van-hormuz-bemanning-gered/35173881.html",
+      "date": "2026-06-09 07:33"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "Woonblok in Peterboswijk in Anderlecht opgeschrikt door ontploffing",
+      "reason": "The article discusses an explosion in a residential area, which is a negative event and does not provide uplifting content.",
+      "category": "disaster-accident",
+      "url": "https://vrtnws.be/p.ZWa5RYVLa",
+      "date": "2026-06-09 07:32"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Amerikaanse Apache-gevechtshelikopter neergestort bij Straat van Hormuz • Veertien doden bij Israëlische aanvallen op Libanon",
+      "reason": "The article discusses a helicopter crash and military attacks, which are negative events related to war and conflict, lacking any uplifting elements.",
+      "category": "war-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/live-vliegverkeer-op-luchthaven-teheran-hernomen-nu-al-veertien-doden-bij-israelische-aanvallen-op-libanon~be9c4f82/",
+      "date": "2026-06-09 07:32"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Verdacht pakket gevonden nabij Antwerpen-Centraal, enkele ingangen afgesloten",
+      "reason": "The article discusses a suspicious package found near a train station, which is a negative event related to safety concerns and public anxiety.",
+      "category": "crime-violence",
+      "url": "https://www.demorgen.be/snelnieuws/verdacht-pakket-gevonden-nabij-antwerpen-centraal-enkele-ingangen-afgesloten~baf63843/",
+      "date": "2026-06-09 07:32"
+    },
     {
       "source": "Upworthy",
       "title": "A woman with Alzheimer’s hadn’t spoken in 5 years. A dose of psilocybin changed everything.",
@@ -8206,94 +8294,6 @@
       "reason": "The article discusses confirmed cases of Ebola and related deaths, which is a health scare and not uplifting.",
       "category": "health-scare",
       "url": "https://politiken.dk/internationalt/art10871881/DR-Congo-registrerer-515-bekr%C3%A6ftede-tilf%C3%A6lde-af-ebola",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Forskere finder tusindvis af kemikalier i drikkevandet",
-      "reason": "The article discusses concerns about the presence of man-made chemicals in drinking water, which is a negative health issue rather than a positive story.",
-      "category": "health-scare",
-      "url": "https://politiken.dk/danmark/art10871904/Forskere-finder-tusindvis-af-kemikalier-i-drikkevandet",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Florentino Pérez fastholder magten som præsident for Real Madrid",
-      "reason": "The article discusses a sports-related topic about Real Madrid's president and a potential coaching change, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://politiken.dk/sport/fodbold/art10871892/Florentino-P%C3%A9rez-fastholder-magten-som-pr%C3%A6sident-for-Real-Madrid",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Regeringen slår ned på ai i nyhedsproduktion",
-      "reason": "The article discusses government actions to limit media support for AI-generated news, which is a political issue and reflects concerns rather than positive developments.",
-      "category": "political-conflict",
-      "url": "https://politiken.dk/kultur/medier/art10869562/Regeringen-sl%C3%A5r-ned-p%C3%A5-ai-i-nyhedsproduktion",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "INTERVIEW - «Vielleicht werden wir die Heuchelei sogar  vermissen», sagt die Historikerin der Weltordnung",
-      "reason": "The article discusses political science and the liberal order, which falls under political commentary and does not provide an uplifting or universally positive message.",
-      "category": "political-conflict",
-      "url": "https://www.nzz.ch/deutschland/vielleicht-werden-wir-am-ende-sogar-die-heuchelei-vermissen-sagt-die-historikerin-der-weltordnung-ld.10009461",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Mimmo lebt in Venedig: Warum manche Delfine die Nähe zum Menschen suchen",
-      "reason": "The article discusses dolphin behavior in relation to humans, which may not have broad human relevance and could be seen as a niche topic.",
-      "category": "soft-news-filler",
-      "url": "https://www.nzz.ch/wissenschaft/warum-der-delfin-mimmo-in-venedig-lebt-ld.10008459",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "«Dr. Chatbot, was habe ich?» Wie man die KI dazu bringt, gute Antworten auf Gesundheitsfragen zu liefern",
-      "reason": "The article discusses the use of AI in health assessments, which, while potentially positive, falls under routine tech updates and does not present a truly exceptional breakthrough or uplifting story.",
-      "category": "tech-ai-concern",
-      "url": "https://www.nzz.ch/wissenschaft/ki-fuer-gesundheitsfragen-nutzen-so-erhalten-sie-gute-antworten-ld.10004460",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Geste der Freundschaft: Zwischen Peking und Pjongjang fährt die Eisenbahn wieder – aber unter grösster Geheimhaltung",
-      "reason": "The article discusses the resumption of train services between China and North Korea under strict secrecy, which implies a lack of transparency and raises concerns about the political situation, making it less uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.nzz.ch/international/peking-pjongjang-express-rollt-wieder-aber-in-groesster-diskretion-ld.10009814",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Im Ukraine-Krieg strecken alle Seiten diplomatische Fühler aus",
-      "reason": "The article discusses diplomatic efforts related to the ongoing conflict in Ukraine, which is a sensitive and negative topic rather than uplifting news.",
-      "category": "political-conflict",
-      "url": "https://www.nzz.ch/international/schroeder-im-kreml-selenski-in-london-im-ukraine-krieg-testen-alle-seiten-die-diplomatie-ld.10010276",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Schlechte Zeiten für Goliath: Drohnen haben eine neue Ära der asymmetrischen Kriegsführung eingeläutet",
-      "reason": "The article discusses the risks associated with new military technologies and their implications for warfare, which is inherently negative and not uplifting.",
-      "category": "war-conflict",
-      "url": "https://www.nzz.ch/meinung/schlechte-zeiten-fuer-goliath-drohnen-haben-eine-neue-aera-der-asymmetrischen-kriegsfuehrung-eingelaeutet-ld.10009653",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Ein Ex-Manager des Schnäppchenportals «Dein Deal» hat Geschäftsgeheimnisse an Konkurrenzfirma weitergegeben",
-      "reason": "The article discusses a former manager being convicted for sharing business secrets, which is a negative legal issue and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.nzz.ch/zuerich/ex-manager-von-dein-deal-wegen-geheimnisverrat-verurteilt-ld.10008118",
-      "date": "2026-06-08 07:28"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Ein 18-Jähriger wird zu zwei Jahren Haft verurteilt, bleibt aber mehr als ein Vierteljahrhundert im Gefängnis. Wie ist das möglich?",
-      "reason": "The article discusses a legal case involving a young person and the implications of psychiatric evaluations, which is not uplifting and focuses on negative aspects of the justice system.",
-      "category": "crime-violence",
-      "url": "https://www.nzz.ch/schweiz/ein-18-jaehriger-wird-zu-zwei-jahren-haft-verurteilt-bleibt-aber-mehr-als-ein-vierteljahrhundert-im-gefaengnis-wie-ist-das-moeglich-ld.10005651",
       "date": "2026-06-08 07:28"
     }
   ]
