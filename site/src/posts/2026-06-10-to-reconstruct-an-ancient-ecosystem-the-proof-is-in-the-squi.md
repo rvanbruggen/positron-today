@@ -2,7 +2,7 @@
 title: "To reconstruct an ancient ecosystem, the proof is in the squirrel poop"
 title_nl: "Om een oud ecosysteem te reconstrueren, ligt het bewijs in de eekhoornpoep"
 title_fr: "Pour reconstruire un ancien écosystème, la preuve se trouve dans les excréments d'écureuil"
-date: 2026-06-10T04:19:15
+date: 2026-06-10T04:19:17
 source_pub_date: 2026-06-09
 fetched_date: 2026-06-09
 source_url: "https://www.popsci.com/science/fossil-squirrel-poop/"
