@@ -2,7 +2,7 @@
 title: "Staggering results show HIV-transmission reduced 100% with twice-yearly Lenacapavir injection"
 title_nl: "Verbazingwekkende resultaten tonen 100% vermindering van hiv-overdracht met tweejaarlijkse Lenacapavir-injectie"
 title_fr: "Des résultats stupéfiants montrent une réduction de 100 % de la transmission du VIH avec une injection de Lenacapavir deux fois par an"
-date: 2026-06-10T04:19:16
+date: 2026-06-10T04:19:18
 source_pub_date: 2026-06-09
 fetched_date: 2026-06-09
 source_url: "https://www.goodnewsnetwork.org/staggering-results-show-hiv-transmission-reduced-100-with-twice-yearly-lenacapavir-injection/"
