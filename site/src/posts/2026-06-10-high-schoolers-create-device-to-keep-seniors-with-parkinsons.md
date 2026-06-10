@@ -2,7 +2,7 @@
 title: "High schoolers create device to keep seniors with Parkinson’s from falling, inspired by cats"
 title_nl: "Hogeschoolleerlingen creëren apparaat om ouderen met de ziekte van Parkinson te beschermen tegen vallen, geïnspireerd door katten"
 title_fr: "Des lycéens créent un dispositif pour empêcher les personnes âgées atteintes de Parkinson de tomber, inspiré par les chats"
-date: 2026-06-10T04:19:23
+date: 2026-06-10T04:19:25
 source_pub_date: 2026-06-09
 fetched_date: 2026-06-09
 source_url: "https://www.upworthy.com/high-schoolers-create-device-to-keep-seniors-with-parkinsons-from-falling-inspired-by-cats/"
