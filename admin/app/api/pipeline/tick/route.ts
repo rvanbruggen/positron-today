@@ -1,5 +1,6 @@
 import db from "@/lib/db";
-import { runOneTick, appendLog } from "@/lib/pipeline-steps";
+import { appendLog } from "@/lib/pipeline-steps";
+import { ensureWorkerRunning, resumeIfNeeded } from "@/lib/pipeline-worker";
 
 export const dynamic = "force-dynamic";
 
@@ -65,8 +66,13 @@ export async function POST(request: Request) {
     }
   }
 
+  // Ensure the background worker is driving this run — the browser poll
+  // is now just a status reader, not the engine.
   if (status === "running") {
-    await runOneTick(id);
+    ensureWorkerRunning(id);
+  } else {
+    // Server may have restarted — check for orphaned running pipelines
+    await resumeIfNeeded();
   }
 
   // Return the full run state
