@@ -2,7 +2,7 @@
 title: "The best way to start your day? The science backs naked cartwheels in the sun"
 title_nl: "De beste manier om je dag te beginnen? De wetenschap ondersteunt naakte radslagen in de zon"
 title_fr: "La meilleure façon de commencer votre journée? La science soutient les roues nues au soleil"
-date: 2026-06-10T04:19:31
+date: 2026-06-10T04:19:33
 source_pub_date: 2026-06-09
 fetched_date: 2026-06-09
 source_url: "https://www.nature.com/articles/d41586-026-01822-z"
