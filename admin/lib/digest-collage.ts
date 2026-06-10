@@ -31,6 +31,12 @@ const FRAME_PAD = 16; // cream margin on top + sides of the photo
 const CAPTION_H = 72; // thick polaroid bottom margin for the title
 const DEFAULT_ASPECT = 1.91; // OG landscape, used when dimensions are unknown
 
+// Largest edge (px) we embed a photo at. Polaroids display at most ~490px wide,
+// so this keeps photos crisp at 2x while bounding the base64 each one adds to the
+// satori SVG. Without this cap, full-resolution OG images inflate the SVG past
+// librsvg's ~10MB XML parse limit and sharp fails to rasterize the collage.
+const MAX_PHOTO_EDGE = 900;
+
 interface Placement {
   cx: number; // center x on the 1080 canvas
   cy: number; // center y
@@ -68,15 +74,25 @@ function truncateTitle(title: string, maxLen: number): string {
   return title.slice(0, maxLen - 1) + "…";
 }
 
-/** Normalize a fetched image to a PNG data URI so satori can always render it. */
+/**
+ * Normalize a fetched image to a downscaled PNG data URI so satori can always
+ * render it. Photos are capped at MAX_PHOTO_EDGE on their longest side: this
+ * keeps each embedded base64 image small enough that the final satori SVG stays
+ * under librsvg's XML parse limit when sharp rasterizes the collage.
+ */
 async function normalizeImageToPng(dataUri: string): Promise<{ pngUri: string; width: number; height: number }> {
   const base64 = dataUri.split(",")[1];
   if (!base64) throw new Error("Invalid data URI");
   const buf = Buffer.from(base64, "base64");
-  const meta = await sharp(buf).metadata();
+  const pngBuf = await sharp(buf)
+    .resize(MAX_PHOTO_EDGE, MAX_PHOTO_EDGE, { fit: "inside", withoutEnlargement: true })
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+  // Read dimensions from the resized buffer so the displayed aspect ratio matches
+  // exactly what we embed.
+  const meta = await sharp(pngBuf).metadata();
   const width = meta.width ?? 800;
   const height = meta.height ?? 418;
-  const pngBuf = await sharp(buf).png().toBuffer();
   const pngUri = `data:image/png;base64,${pngBuf.toString("base64")}`;
   return { pngUri, width, height };
 }
