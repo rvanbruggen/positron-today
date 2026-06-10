@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-06-10T13:52:50.119Z",
-  "total_rejected": 54220,
+  "exported_at": "2026-06-10T13:52:53.784Z",
+  "total_rejected": 54222,
   "sources_count": 45,
   "category_breakdown": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "category": "soft-news-filler",
-      "count": 6520
+      "count": 6521
     },
     {
       "category": "sports-negative",
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 959
+      "count": 960
     },
     {
       "category": "climate-environment",
@@ -86,8 +86,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 3126,
-      "total": 3164
+      "negative": 3127,
+      "total": 3165
     },
     {
       "source": "Le Figaro",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 2106,
-      "total": 2122
+      "negative": 2107,
+      "total": 2123
     },
     {
       "source": "Le Monde",
@@ -296,6 +296,22 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Parki kieszonkowe podbijają miasta. Małe zielone enklawy dają wielkie korzyści",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://regiony.rp.pl/ekologia/art44567051-parki-kieszonkowe-podbijaja-miasta-male-zielone-enklawy-daja-wielkie-korzysci",
+      "date": "2026-06-10 15:52"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Ostadigt midsommarväder – men hopp om sol i söder",
+      "reason": "The article discusses weather conditions for a local summer celebration, which may not be of interest to readers outside the region, making it too localized.",
+      "category": "soft-news-filler",
+      "url": "https://www.dn.se/sverige/ostadigt-midsommarvader-men-hopp-om-sol-i-soder/",
+      "date": "2026-06-10 15:52"
+    },
     {
       "source": "Good News Network",
       "title": "Shipwreck ‘Almost Beyond Belief’ Stunned Archaeologists with its Cargo of Intact Porcelain",
@@ -8278,22 +8294,6 @@
       "reason": "The article focuses on a local medical center's anniversary, which may not have broad relevance outside its immediate community.",
       "category": "soft-news-filler",
       "url": "https://www.gva.be/regio/vlaams-brabant/halle-vilvoorde/zemst/consultatie-eenheid-az-jan-portaels-blaast-tien-kaarsjes-uit-en-blijft-groeien/156396218.html",
-      "date": "2026-06-09 14:27"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "LIVE WK. Saelemaekers en Moreira wagen zich aan American Football, na het Viking-thema kiest Noorwegen weer voor opmerkelijke ploegfoto ",
-      "reason": "The article focuses on a sports event, specifically the World Cup, which does not meet the criteria for exceptional sports stories and lacks broad human relevance.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/voetbal/live-wk.-saelemaekers-en-moreira-wagen-zich-aan-american-football-na-het-viking-thema-kiest-noorwegen-weer-voor-opmerkelijke-ploegfoto/151454494.html",
-      "date": "2026-06-09 14:27"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Nieuwe campagne om lokaal te shoppen: “Mortselse winkels en horeca hebben zoveel te bieden” ",
-      "reason": "The article focuses on a local campaign to promote shopping in a specific town, which may not interest readers outside that locality.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/mortsel/nieuwe-campagne-om-lokaal-te-shoppen-mortselse-winkels-en-horeca-hebben-zoveel-te-bieden/156360577.html",
       "date": "2026-06-09 14:27"
     }
   ]
