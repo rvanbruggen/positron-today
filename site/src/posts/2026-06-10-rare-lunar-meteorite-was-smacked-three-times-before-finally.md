@@ -2,7 +2,7 @@
 title: "Rare lunar meteorite was smacked three times before finally hitting Earth"
 title_nl: "Zeldzame maanmeteoriet werd drie keer geraakt voordat hij de aarde bereikte"
 title_fr: "Une rare météorite lunaire a été frappée trois fois avant d'atteindre la Terre"
-date: 2026-06-10T20:38:26
+date: 2026-06-10T20:38:30
 source_pub_date: 2026-06-10
 fetched_date: 2026-06-10
 source_url: "https://www.popsci.com/science/rare-moon-meteorite-africa/"
