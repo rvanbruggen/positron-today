@@ -2,7 +2,7 @@
 title: "How ice forms is a mystery — now scientists are cracking the case"
 title_nl: "Hoe ijs vormt is een mysterie — nu kraken wetenschappers de zaak"
 title_fr: "Comment la glace se forme est un mystère — maintenant les scientifiques résolvent l'affaire"
-date: 2026-06-10T04:19:30
+date: 2026-06-10T04:19:28
 source_pub_date: 2026-06-09
 fetched_date: 2026-06-09
 source_url: "https://www.nature.com/articles/d41586-026-01817-w"
