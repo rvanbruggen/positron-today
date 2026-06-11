@@ -1,10 +1,8 @@
 ---
-title: "Mooier Wordt Het Niet: Kersebloesems Kleuren Japanse Tuin in Hasselt Sprookjesachtig Rood"
+title: "It Doesn't Get Any Better: Cherry Blossoms Color Japanese Garden in Hasselt Fairytale Red"
 title_nl: "Mooier wordt het niet: kersenbloesems kleuren Japanse tuin in Hasselt sprookjesachtig rood"
 title_fr: "Le Japonais de Hasselt devient toujours plus coloré : pourquoi les fleurs rouge vif"
-date: 2026-04-08
-source_pub_date: 2026-04-08
-fetched_date: 2026-04-08
+date: 2026-06-11T17:02:48
 source_url: "https://www.hln.be/hasselt/mooier-wordt-het-niet-kersenbloesems-kleuren-japanse-tuin-in-hasselt-sprookjesachtig-roze~abdb07e5/"
 source_name: "Het Laatste Nieuws"
 topic: "Arts"
