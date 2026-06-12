@@ -2,7 +2,7 @@
 title: "Goblin shark filmed in its native habitat for the first time"
 title_nl: "Goblinhaai voor het eerst gefilmd in zijn natuurlijke habitat"
 title_fr: "Requin gobelin filmé dans son habitat naturel pour la première fois"
-date: 2026-06-12T08:27:40
+date: 2026-06-12T08:27:45
 source_pub_date: 2026-06-11
 fetched_date: 2026-06-11
 source_url: "https://www.popsci.com/environment/goblin-shark-video/"
