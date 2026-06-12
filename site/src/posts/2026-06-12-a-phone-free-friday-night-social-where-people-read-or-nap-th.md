@@ -2,7 +2,7 @@
 title: "A phone-free Friday night social where people read or nap, then do puzzles and art? Sign me up."
 title_nl: "Een telefoonvrije vrijdagavond sociale bijeenkomst waar mensen lezen of slapen, en dan puzzels en kunst doen? Meld me aan."
 title_fr: "Une soirée sociale sans téléphone où les gens lisent ou font la sieste, puis font des puzzles et de l'art ? Inscrivez-moi."
-date: 2026-06-12T08:27:42
+date: 2026-06-12T08:27:46
 source_pub_date: 2026-06-11
 fetched_date: 2026-06-11
 source_url: "https://www.upworthy.com/a-phone-free-friday-night-social-where-people-read-or-nap-then-do-puzzles-and-art-sign-me-up/"
