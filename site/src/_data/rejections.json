@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-06-13T19:32:43.226Z",
-  "total_rejected": 56991,
+  "exported_at": "2026-06-13T19:33:38.891Z",
+  "total_rejected": 57000,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 15641
+      "count": 15643
     },
     {
       "category": "soft-news-filler",
@@ -13,15 +13,15 @@
     },
     {
       "category": "sports-negative",
-      "count": 6245
+      "count": 6247
     },
     {
       "category": "crime-violence",
-      "count": 4884
+      "count": 4886
     },
     {
       "category": "celebrity-entertainment",
-      "count": 4376
+      "count": 4377
     },
     {
       "category": "economic-doom",
@@ -37,7 +37,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 2564
+      "count": 2565
     },
     {
       "category": "health-scare",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 1403
+      "count": 1404
     },
     {
       "category": "human-discarded",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 7028,
-      "total": 7227
+      "negative": 7029,
+      "total": 7228
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 7026,
-      "total": 7391
+      "negative": 7027,
+      "total": 7392
     },
     {
       "source": "VRT Nws",
@@ -86,13 +86,13 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 3341,
-      "total": 3381
+      "negative": 3344,
+      "total": 3384
     },
     {
       "source": "Le Figaro",
-      "negative": 3200,
-      "total": 3237
+      "negative": 3201,
+      "total": 3238
     },
     {
       "source": "De Morgen",
@@ -106,8 +106,8 @@
     },
     {
       "source": "The New York Times",
-      "negative": 2320,
-      "total": 2346
+      "negative": 2321,
+      "total": 2347
     },
     {
       "source": "Dagens Nyheter",
@@ -116,8 +116,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 2189,
-      "total": 2210
+      "negative": 2191,
+      "total": 2212
     },
     {
       "source": "Politiken.dk",
@@ -296,6 +296,78 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "AI spadło nam z nieba. Uratuje dziennikarzy, media i pijarowców",
+      "reason": "The article discusses the impact of AI on journalism, which falls under routine tech updates and does not present a universally uplifting story.",
+      "category": "tech-ai-concern",
+      "url": "https://cyfrowa.rp.pl/opinie-i-komentarze/art44605121-ai-spadlo-nam-z-nieba-uratuje-dziennikarzy-media-i-pijarowcow",
+      "date": "2026-06-13 21:33"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Michał Szułdrzyński: Trump odcina świat od AI. Sprawa Anthropic zmienia reguły gry",
+      "reason": "The article discusses a controversial decision by the U.S. Department of Commerce regarding AI access, which raises concerns about global technology governance and could be seen as negative for international relations.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/komentarze/art44621171-michal-szuldrzynski-trump-odcina-swiat-od-ai-sprawa-anthropic-zmienia-reguly-gry",
+      "date": "2026-06-13 21:33"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Płody zakopane na posesji w Lutoryżu. Patomorfolożka aresztowana",
+      "reason": "The article discusses a serious crime involving the discovery of human remains, which is a negative and distressing topic.",
+      "category": "crime-violence",
+      "url": "https://www.rp.pl/przestepczosc/art44620511-plody-zakopane-na-posesji-w-lutoryzu-patomorfolozka-aresztowana",
+      "date": "2026-06-13 21:33"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Des milliers de manifestants défendent les free-parties à Paris et à Bordeaux",
+      "reason": "The article discusses a political mobilization against a law that would penalize participants in free parties, which is inherently a political conflict and not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.lemonde.fr/societe/article/2026/06/13/des-milliers-de-manifestants-defendent-les-free-parties-a-paris-et-a-bordeaux_6702024_3224.html",
+      "date": "2026-06-13 21:33"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Violences après le sacre du PSG : loin de bandes organisées, la justice dresse le constat d’actes spontanés d’auteurs aux « profils diversifiés »",
+      "reason": "The article discusses violence and disturbances following a sports event, which is negative in nature and does not uplift the reader.",
+      "category": "sports-negative",
+      "url": "https://www.lemonde.fr/societe/article/2026/06/13/violences-apres-le-sacre-du-psg-loin-de-bandes-organisees-la-justice-dresse-le-constat-d-actes-spontanes-d-auteurs-aux-profils-diversifies_6701670_3224.html",
+      "date": "2026-06-13 21:33"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Albanië vraagt arrestatie 20 verdachten voor internationale drughandel via ons land",
+      "reason": "The article discusses the arrest of suspects involved in international drug trafficking, which is a negative topic related to crime and violence.",
+      "category": "crime-violence",
+      "url": "https://www.gva.be/buitenland/albanie-vraagt-arrestatie-20-verdachten-voor-internationale-drughandel-via-ons-land/157168166.html",
+      "date": "2026-06-13 21:33"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Lyon : soupçonné d’avoir consommé du protoxyde d'azote, un homme meurt dans un accident de la route",
+      "reason": "The article reports on a fatal accident involving a man suspected of using nitrous oxide, which is a negative and tragic event. It does not provide uplifting content or a positive resolution.",
+      "category": "disaster-accident",
+      "url": "https://www.lefigaro.fr/faits-divers/lyon-soupconne-d-avoir-consomme-du-protoxyde-d-azote-un-homme-meurt-dans-un-accident-de-la-route-20260613",
+      "date": "2026-06-13 21:33"
+    },
+    {
+      "source": "The New York Times",
+      "title": "How David Hockney Taught Los Angeles to See Itself",
+      "reason": "The article focuses on a celebrity artist and his impact on a specific city's culture, which falls under the category of celebrity and entertainment news rather than universally uplifting content.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.nytimes.com/2026/06/13/arts/design/david-hockney-los-angeles-pool-paintings.html",
+      "date": "2026-06-13 21:33"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "LIVE. Zwitserland domineert en komt op voorsprong: Embolo trapt strafschop koeltjes binnen",
+      "reason": "The article focuses on a sports event, specifically a soccer match, which does not meet the positive-news editorial standard due to its routine nature and lack of exceptional human interest.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/wk-voetbal/live-zwitserland-domineert-en-komt-op-voorsprong-embolo-trapt-strafschop-koeltjes-binnen~adcf3564/",
+      "date": "2026-06-13 21:33"
+    },
     {
       "source": "Upworthy",
       "title": "18-year-old took her college savings and bought the restaurant where she was a dishwasher",
@@ -8223,78 +8295,6 @@
       "category": "celebrity-entertainment",
       "url": "https://politiken.dk/kultur/set_og_hoert/art10877142/Hvad-sker-der-Kendisserne-g%C3%A5r-amok-i-New-York",
       "date": "2026-06-12 14:29"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Danskere klager over krav om ekstra forsikringer ved billeje i udlandet",
-      "reason": "The article discusses complaints about rental car companies requiring extra insurance, which is a negative consumer experience and lacks uplifting content.",
-      "category": "economic-doom",
-      "url": "https://politiken.dk/rejser/art10874048/Danskere-klager-over-krav-om-ekstra-forsikringer-ved-billeje-i-udlandet",
-      "date": "2026-06-12 14:29"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Medarbejderen nægter høfligt. Det gør chefen magtesløs",
-      "reason": "The article appears to focus on a literary reference and its implications, which may not provide a universally uplifting message and lacks broad human relevance.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/kultur/art10783276/Medarbejderen-n%C3%A6gter-h%C3%B8fligt.-Det-g%C3%B8r-chefen-magtesl%C3%B8s",
-      "date": "2026-06-12 14:28"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "SAS-pilot testet positiv for kokain efter flyvning fra København",
-      "reason": "The article discusses a pilot testing positive for cocaine, which is a serious issue related to safety and health, making it too negative and not uplifting.",
-      "category": "health-scare",
-      "url": "https://politiken.dk/danmark/art10878998/SAS-pilot-testet-positiv-for-kokain-efter-flyvning-fra-K%C3%B8benhavn",
-      "date": "2026-06-12 14:28"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Schweiz stemmer om at sætte et loft over befolkningstallet",
-      "reason": "The article discusses a political vote in Switzerland regarding population control, which is a divisive and contentious issue, making it not uplifting.",
-      "category": "political-conflict",
-      "url": "https://politiken.dk/internationalt/art10879040/Schweiz-stemmer-om-at-s%C3%A6tte-et-loft-over-befolkningstallet",
-      "date": "2026-06-12 14:28"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Kias nye familie-mandskabsvogn ligner et salatfad fra RoboCop",
-      "reason": "The article discusses a new vehicle model in a way that focuses on its appearance rather than its positive attributes, which does not uplift the reader.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/danmark/forbrug/biler/art10874243/Kias-nye-familie-mandskabsvogn-ligner-et-salatfad-fra-RoboCop",
-      "date": "2026-06-12 14:28"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Donald Trumps ældste søn er spottet i København",
-      "reason": "The article focuses on Donald Trump Jr., which falls under celebrity and entertainment news, lacking broader human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://politiken.dk/danmark/art10879144/Donald-Trumps-%C3%A6ldste-s%C3%B8n-er-spottet-i-K%C3%B8benhavn",
-      "date": "2026-06-12 14:28"
-    },
-    {
-      "source": "Euronews",
-      "title": "Mexico's 'missing persons' crisis takes centre stage at the World Cup",
-      "reason": "The article addresses a serious social issue related to violence and disappearances in Mexico, which is not uplifting and focuses on a negative aspect of society.",
-      "category": "crime-violence",
-      "url": "http://www.euronews.com/2026/06/12/mexicos-missing-persons-crisis-takes-centre-stage-at-the-world-cup",
-      "date": "2026-06-12 14:28"
-    },
-    {
-      "source": "Euronews",
-      "title": "Russian drone barrage hits Kyiv and Mykolaiv as Ukraine reports major fires",
-      "reason": "The article reports on drone strikes and injuries in Ukraine, which is a negative event related to war and conflict, lacking uplifting content.",
-      "category": "war-conflict",
-      "url": "http://www.euronews.com/video/2026/06/12/russian-drone-barrage-hits-kyiv-and-mykolaiv-as-ukraine-reports-major-fires",
-      "date": "2026-06-12 14:28"
-    },
-    {
-      "source": "Euronews",
-      "title": "China claims 'spy sea turtles' are studying its coastline",
-      "reason": "The article discusses a claim about foreign intelligence agencies using sea turtles for espionage, which is negative and raises concerns about security and surveillance.",
-      "category": "political-conflict",
-      "url": "http://www.euronews.com/2026/06/12/china-claims-spy-sea-turtles-are-studying-its-coastline",
-      "date": "2026-06-12 14:28"
     }
   ]
 }
