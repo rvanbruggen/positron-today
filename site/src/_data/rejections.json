@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-06-14T19:24:02.346Z",
-  "total_rejected": 57662,
+  "exported_at": "2026-06-14T19:26:02.485Z",
+  "total_rejected": 57669,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 15854
+      "count": 15856
     },
     {
       "category": "soft-news-filler",
@@ -13,11 +13,11 @@
     },
     {
       "category": "sports-negative",
-      "count": 6427
+      "count": 6428
     },
     {
       "category": "crime-violence",
-      "count": 4919
+      "count": 4921
     },
     {
       "category": "celebrity-entertainment",
@@ -37,7 +37,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 2596
+      "count": 2598
     },
     {
       "category": "health-scare",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 7097,
-      "total": 7462
+      "negative": 7099,
+      "total": 7464
     },
     {
       "source": "VRT Nws",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 3233,
-      "total": 3270
+      "negative": 3235,
+      "total": 3272
     },
     {
       "source": "De Morgen",
@@ -106,13 +106,13 @@
     },
     {
       "source": "The New York Times",
-      "negative": 2343,
-      "total": 2369
+      "negative": 2345,
+      "total": 2371
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 2337,
-      "total": 2353
+      "negative": 2338,
+      "total": 2354
     },
     {
       "source": "Le Monde",
@@ -296,6 +296,62 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "Expert: Trumps ilska kan vara del av ett spel",
+      "reason": "The article discusses political tensions and conflicts involving Donald Trump and Israel, which does not fit the positive-news criteria.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/varlden/expert-trumps-ilska-kan-vara-del-av-ett-spel/",
+      "date": "2026-06-14 21:26"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Yvelines: un jeune homme mis en examen et écroué pour viols et agressions sexuelles",
+      "reason": "The article discusses serious criminal allegations involving sexual violence, which is a negative and distressing topic.",
+      "category": "crime-violence",
+      "url": "https://www.lefigaro.fr/faits-divers/yvelines-un-jeune-homme-mis-en-examen-et-ecroue-pour-viols-et-agressions-sexuelles-20260614",
+      "date": "2026-06-14 21:25"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Qui est Oliver Tree, ce chanteur américain décédé au Brésil dans un accident d’hélicoptère ?",
+      "reason": "The article discusses the death of a musician in a helicopter accident, which is a tragic event and not uplifting.",
+      "category": "disaster-accident",
+      "url": "https://www.lefigaro.fr/international/qui-est-oliver-tree-ce-chanteur-americain-decede-au-bresil-dans-un-accident-d-helicoptere-20260614",
+      "date": "2026-06-14 21:25"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "De discussie over het vertrek van Doku slaat onze reporter met verstomming: “Zijn we zijn vrouw in dit verhaal vergeten?”",
+      "reason": "The article discusses a sports-related topic that centers on a player's personal decision, which does not meet the positive-news criteria and is not universally uplifting.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/binnenland/de-discussie-over-het-vertrek-van-doku-slaat-onze-reporter-met-verstomming-zijn-we-zijn-vrouw-in-dit-verhaal-vergeten/157194034.html",
+      "date": "2026-06-14 21:25"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Speciale eenheden halen geseinde jongeman (23) uit flat in Bornem: “Hij verschanste zich urenlang en dreigde met mes”",
+      "reason": "The article reports on a police incident involving a young man threatening with a knife, which is a negative and violent situation, lacking any uplifting elements.",
+      "category": "crime-violence",
+      "url": "https://www.gva.be/regio/antwerpen/rivierenland/bornem/speciale-eenheden-halen-geseinde-jongeman-23-uit-flat-in-bornem-hij-verschanste-zich-urenlang-en-dreigde-met-mes/157195658.html",
+      "date": "2026-06-14 21:25"
+    },
+    {
+      "source": "The New York Times",
+      "title": "12 Killed in Skydiving Plane Crash in Butler, Missouri",
+      "reason": "The article reports on a tragic accident resulting in multiple fatalities, which is not uplifting and falls under disaster news.",
+      "category": "disaster-accident",
+      "url": "https://www.nytimes.com/2026/06/14/us/skydiving-plane-crash-butler-missouri.html",
+      "date": "2026-06-14 21:25"
+    },
+    {
+      "source": "The New York Times",
+      "title": "In Israel, Broad Discontent Over the Emerging U.S. Deal With Iran",
+      "reason": "The article discusses political discontent regarding a U.S. deal with Iran, which is a negative topic related to political conflict.",
+      "category": "political-conflict",
+      "url": "https://www.nytimes.com/2026/06/14/world/middleeast/israel-us-iran-deal.html",
+      "date": "2026-06-14 21:25"
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "Zelenskyj og Trump skal mødes til G7-topmødet",
@@ -8238,62 +8294,6 @@
       "reason": "The article focuses on a sports event and the excitement surrounding Team USA's performance, which falls under the category of non-exceptional sports content without a unique emotional or human-interest angle.",
       "category": "sports-negative",
       "url": "https://www.hln.be/wk-voetbal/het-monster-is-wakker-het-wk-leeft-hoe-amerika-zich-laat-wijsmaken-dat-team-usa-wereldkampioen-kan-worden~a46f0212/",
-      "date": "2026-06-13 14:25"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "\"Akkoord tussen VS en Iran waarschijnlijk binnen de 24 uur rond\", zegt Pakistaanse premier",
-      "reason": "The article discusses a political agreement between the US and Iran, which falls under political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.hln.be/buitenland/akkoord-tussen-vs-en-iran-waarschijnlijk-binnen-de-24-uur-rond-zegt-pakistaanse-premier~a99e0324/",
-      "date": "2026-06-13 14:25"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Na training nog even de jacuzzi of sauna in: Rode Duivels bereiden zich met extra warmteprikkels voor op hitte tegen Egypte",
-      "reason": "The article focuses on a sports team's preparation for a match, which falls under routine sports content without exceptional or inspiring elements.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/rode-duivels/na-training-nog-even-de-jacuzzi-of-sauna-in-rode-duivels-bereiden-zich-met-extra-warmteprikkels-voor-op-hitte-tegen-egypte~a40f9732/",
-      "date": "2026-06-13 14:25"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Ruben Van Gucht vertelt waarom hij momenteel zo hard werkt: “Ik doe alles voor mijn kinderen”",
-      "reason": "The article focuses on a celebrity's personal work-life balance and motivations, which falls under the category of celebrity and entertainment news rather than universally uplifting content.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.hln.be/bv/ruben-van-gucht-vertelt-waarom-hij-momenteel-zo-hard-werkt-ik-doe-alles-voor-mijn-kinderen~a239502a/",
-      "date": "2026-06-13 14:25"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“Mijn truiencollectie is compleet”: Tim Celen pakt na de tijdrit ook goud in de wegrit op het EK G-wielrennen",
-      "reason": "The article focuses on a sports achievement that does not meet the criteria for exceptional or universally inspiring content, making it less relevant to a broader audience.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/wielrennen/mijn-truiencollectie-is-compleet-tim-celen-pakt-na-de-tijdrit-ook-goud-in-de-wegrit-op-het-ek-g-wielrennen~a98ef736/",
-      "date": "2026-06-13 14:25"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Abramovitsj duikt weer op in Oekraïne: kan Poetins ‘boodschapper’ voor vredesonderhandelingen zorgen?",
-      "reason": "The article discusses a controversial figure's involvement in peace negotiations, which raises questions about motives and does not provide a clear positive outcome. It is also related to political conflict.",
-      "category": "political-conflict",
-      "url": "https://www.hln.be/buitenland/abramovitsj-duikt-weer-op-in-oekraine-kan-poetins-boodschapper-voor-vredesonderhandelingen-zorgen~a60117f6/",
-      "date": "2026-06-13 14:25"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Een kruis erover? Gehavende Paul Seixas zwemt na valpartij op meer dan drie minuten van peloton",
-      "reason": "The article discusses a professional sports event with a focus on race standings and competitors, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/wielrennen/een-kruis-erover-gehavende-paul-seixas-zwemt-na-valpartij-op-meer-dan-drie-minuten-van-peloton~a8cc8959/",
-      "date": "2026-06-13 14:25"
-    },
-    {
-      "source": "De Morgen",
-      "title": "‘Dit onderzoek bewijst dat de situatie onhoudbaar is’: minister van Volksgezondheid Frank Vandenbroucke over dossier Dokterslonen",
-      "reason": "The article discusses a serious issue regarding doctors' salaries and the health minister's comments, which falls under political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/nieuws/dit-onderzoek-bewijst-dat-de-situatie-onhoudbaar-is-minister-van-volksgezondheid-frank-vandenbroucke-over-dossier-dokterslonen~b112b5de/",
       "date": "2026-06-13 14:25"
     }
   ]
