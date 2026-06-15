@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-06-15T17:41:20.339Z",
-  "total_rejected": 58404,
+  "exported_at": "2026-06-15T17:41:27.825Z",
+  "total_rejected": 58408,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 16105
+      "count": 16106
     },
     {
       "category": "soft-news-filler",
@@ -13,7 +13,7 @@
     },
     {
       "category": "sports-negative",
-      "count": 6532
+      "count": 6533
     },
     {
       "category": "crime-violence",
@@ -37,7 +37,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 2620
+      "count": 2621
     },
     {
       "category": "health-scare",
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 996
+      "count": 997
     },
     {
       "category": "climate-environment",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 7175,
-      "total": 7377
+      "negative": 7176,
+      "total": 7378
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 7158,
-      "total": 7524
+      "negative": 7161,
+      "total": 7527
     },
     {
       "source": "VRT Nws",
@@ -296,6 +296,38 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Mysterieu­ze 'horrorhaai' voor het eerst levend gefilmd in diepzee: \"Zelfs hun moeder zou hun gezicht niet graag zien\"",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/dieren/mysterieuze-horrorhaai-voor-het-eerst-levend-gefilmd-in-diepzee-zelfs-hun-moeder-zou-hun-gezicht-niet-graag-zien~aaaa6800c/",
+      "date": "2026-06-15 19:41"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Ongelooflijk maar waar en dat ondanks het overwicht: Spanje-spits Mikel Oyarzabal laat historische WK-statistiek noteren tegen Kaapverdië",
+      "reason": "The article discusses a sports event with a focus on a player's performance in a match, which does not meet the criteria for positive news due to its routine nature and lack of exceptional human interest.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/voetbal/ongelooflijk-maar-waar-en-dat-ondanks-het-overwicht-spanje-spits-mikel-oyarzabal-laat-historische-wk-statistiek-noteren-tegen-kaapverdie/157251931.html",
+      "date": "2026-06-15 19:41"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Treinverkeer de rest van de dag verstoord tussen Kontich en Antwerpen-Centraal: geen treinen in Morstel-Oude-God ",
+      "reason": "The article discusses a disruption in train services, which is a negative event affecting transportation and does not provide uplifting content.",
+      "category": "disaster-accident",
+      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/treinverkeer-de-rest-van-de-dag-verstoord-tussen-kontich-en-antwerpen-centraal-geen-treinen-in-morstel-oude-god/157250730.html",
+      "date": "2026-06-15 19:41"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Zeven kinderen, geen plausibele troonopvolger: dood van Thailands favoriete royal stort koningshuis in crisis",
+      "reason": "The article discusses the death of a royal figure and the resulting crisis in the monarchy, which is a negative event and not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.gva.be/buitenland/zeven-kinderen-geen-plausibele-troonopvolger-dood-van-thailands-favoriete-royal-stort-koningshuis-in-crisis/157252697.html",
+      "date": "2026-06-15 19:41"
+    },
     {
       "source": "Upworthy",
       "title": "Man taking afternoon nap hears odd ‘popping’ noises—minutes later, a stranger pulls him to safety",
@@ -8262,38 +8294,6 @@
       "reason": "The article discusses the potential negative implications of SpaceX's IPO and investor anxiety, which is not uplifting and focuses on economic doom.",
       "category": "economic-doom",
       "url": "https://www.nzz.ch/meinung/willkommen-in-der-dagobert-oekonomie-oder-warum-der-crash-nicht-weit-weg-ist-ld.10011079",
-      "date": "2026-06-14 14:27"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Hochrechnung deutet auf ein Ja hin: Mit der Initiative «Stopp Prämienschock» will die SVP die Steuerzahler entlasten",
-      "reason": "The article discusses a political initiative related to tax relief, which falls under political content and does not provide a universally uplifting story.",
-      "category": "political-conflict",
-      "url": "https://www.nzz.ch/zuerich/hochrechnung-deutet-auf-ein-ja-hin-mit-der-initiative-stopp-praemienschock-will-die-svp-die-steuerzahler-entlasten-ld.10011241",
-      "date": "2026-06-14 14:27"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Die Schweiz sagt Nein zu einer Begrenzung der Bevölkerung auf 10 Millionen",
-      "reason": "The article discusses a political decision regarding population limits in Switzerland, which falls under political commentary and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.nzz.ch/schweiz/die-schweiz-sagt-nein-zu-einer-begrenzung-der-bevoelkerung-auf-10-millionen-ld.10011244",
-      "date": "2026-06-14 14:27"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Le salon de la défense Eurosatory attend une affluence record, reflet du réarmement mondial",
-      "reason": "The article discusses a defense exhibition with a focus on global rearmament, which is not uplifting and relates to military and conflict themes.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/economie/article/2026/06/14/le-salon-de-la-defense-eurosatory-attend-une-affluence-record-reflet-du-rearmement-mondial_6702457_3234.html",
-      "date": "2026-06-14 14:27"
-    },
-    {
-      "source": "Le Monde",
-      "title": "En Birmanie, la guerre recomposée par Pékin dans l’Etat Shan",
-      "reason": "The article discusses military and political dynamics in Myanmar, focusing on conflict and dependence on China, which is not uplifting and has negative implications for the region.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/international/article/2026/06/14/en-birmanie-la-guerre-recomposee-par-pekin-dans-l-etat-shan_6702232_3210.html",
       "date": "2026-06-14 14:27"
     }
   ]
