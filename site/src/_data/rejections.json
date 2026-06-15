@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-06-15T17:41:10.118Z",
-  "total_rejected": 58400,
+  "exported_at": "2026-06-15T17:41:20.339Z",
+  "total_rejected": 58404,
   "sources_count": 45,
   "category_breakdown": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "category": "soft-news-filler",
-      "count": 6987
+      "count": 6989
     },
     {
       "category": "sports-negative",
@@ -17,7 +17,7 @@
     },
     {
       "category": "crime-violence",
-      "count": 4982
+      "count": 4983
     },
     {
       "category": "celebrity-entertainment",
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 995
+      "count": 996
     },
     {
       "category": "climate-environment",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 7157,
-      "total": 7523
+      "negative": 7158,
+      "total": 7524
     },
     {
       "source": "VRT Nws",
@@ -161,8 +161,8 @@
     },
     {
       "source": "The Guardian Europe",
-      "negative": 959,
-      "total": 1009
+      "negative": 961,
+      "total": 1011
     },
     {
       "source": "Wired",
@@ -191,8 +191,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 661,
-      "total": 898
+      "negative": 662,
+      "total": 899
     },
     {
       "source": "Euroactiv",
@@ -296,6 +296,38 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Man taking afternoon nap hears odd ‘popping’ noises—minutes later, a stranger pulls him to safety",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/man-saved-from-house-fire-nap-ex1/",
+      "date": "2026-06-15 19:41"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "11-jarig meisje getuigde maanden voor verdwijning van Lyhanna (11) al over ongepast gedrag van hoofdverdachte",
+      "reason": "The article discusses a serious crime involving a missing child and inappropriate behavior, which is not uplifting and focuses on negative events.",
+      "category": "crime-violence",
+      "url": "https://www.gva.be/buitenland/11-jarig-meisje-getuigde-maanden-voor-verdwijning-van-lyhanna-11-al-over-ongepast-gedrag-van-hoofdverdachte/157253077.html",
+      "date": "2026-06-15 19:41"
+    },
+    {
+      "source": "The Guardian Europe",
+      "title": "‘She’d consumed a kilo of sand’: 11 Guardian readers on the weirdest things their dogs have ever eaten",
+      "reason": "The article focuses on humorous anecdotes about dogs eating unusual items, which may not be universally uplifting and could be seen as negative due to the potential harm to the pets involved.",
+      "category": "soft-news-filler",
+      "url": "https://www.theguardian.com/lifeandstyle/2026/jun/15/guardian-readers-on-the-weirdest-things-their-dogs-have-ever-eaten",
+      "date": "2026-06-15 19:41"
+    },
+    {
+      "source": "The Guardian Europe",
+      "title": "Midlife is the perfect time to start trail running – here’s how to get into it",
+      "reason": "The article focuses on a specific individual’s experience in trail running, which may not have broad appeal outside of a niche audience and lacks universal relevance.",
+      "category": "soft-news-filler",
+      "url": "https://www.theguardian.com/wellness/2026/jun/15/how-to-start-trail-running-ultrarunning",
+      "date": "2026-06-15 19:41"
+    },
     {
       "source": "Upworthy",
       "title": "How embracing the ‘Empty Boat Theory’ can help you keep anger and anxiety in check",
@@ -8262,38 +8294,6 @@
       "reason": "The article discusses military and political dynamics in Myanmar, focusing on conflict and dependence on China, which is not uplifting and has negative implications for the region.",
       "category": "political-conflict",
       "url": "https://www.lemonde.fr/international/article/2026/06/14/en-birmanie-la-guerre-recomposee-par-pekin-dans-l-etat-shan_6702232_3210.html",
-      "date": "2026-06-14 14:27"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Bac : Edouard Geffray ne veut plus d’examens l’après-midi à cause du réchauffement climatique",
-      "reason": "The article discusses the impact of climate change on exam scheduling, which is a political and environmental issue rather than a strictly positive story.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/societe/article/2026/06/14/bac-edouard-geffray-ne-veut-plus-d-examens-l-apres-midi-a-cause-du-rechauffement-climatique_6702564_3224.html",
-      "date": "2026-06-14 14:27"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Nicolas Kssis-Martov, historien du sport : « Le football a toujours cristallisé les enjeux politiques de la gauche »",
-      "reason": "The article discusses the political implications of football, which falls under political commentary and does not provide a strictly positive perspective.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/livres/article/2026/06/14/nicolas-kssis-martov-historien-du-sport-le-football-a-toujours-cristallise-les-enjeux-politiques-de-la-gauche_6702244_3260.html",
-      "date": "2026-06-14 14:27"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Das bringt der WM-Tag: Wie schlagen sich die anderen deutschen Gegner?",
-      "reason": "The article focuses on the performance of the German national football team and its opponents in the World Cup, which falls under routine sports coverage without exceptional or inspiring elements.",
-      "category": "sports-negative",
-      "url": "https://www.faz.net/aktuell/sport/fussball-wm/fussball-wm-2026-heute-deutschland-gegen-curacao-elfenbeinkueste-gegen-ecuador-accg-200927386.html",
-      "date": "2026-06-14 14:27"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Curaçao bei Fußball-WM: „Niemand hat hier je eine grüne Wiese gesehen“",
-      "reason": "The article focuses on Curaçao's participation in the World Cup, which falls under sports content that is not exceptional or universally uplifting.",
-      "category": "sports-negative",
-      "url": "https://www.faz.net/aktuell/sport/fussball-wm/fussball-wm-2026-wie-die-kinder-von-curacao-den-stolz-der-insel-bespielen-accg-200879775.html",
       "date": "2026-06-14 14:27"
     }
   ]
