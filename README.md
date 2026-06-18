@@ -14,7 +14,7 @@ The project has two parts:
 
 | Part | Tech | Purpose |
 |------|------|---------|
-| **Admin** (`/admin`) | Next.js 16, TypeScript, Tailwind v4 | Content pipeline, source management, review & publish workflow. Runs on Vercel (serverless) or self-hosted via Docker |
+| **Admin** (`/admin`) | Next.js 16, TypeScript, Tailwind v4 | Content pipeline, source management, review & publish workflow. Self-hosted via Docker |
 | **Site** (`/site`) | Eleventy v3, Nunjucks, vanilla JS | Public-facing website served via GitHub Pages |
 
 ### Why "Positron"?

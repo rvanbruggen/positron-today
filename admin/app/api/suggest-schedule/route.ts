@@ -52,15 +52,10 @@ export async function POST(request: NextRequest) {
     cursor = nextSlot(cursor, intervalMinutes);
   }
 
-  // In self-hosted mode, create publish timers for all newly scheduled articles
   try {
-    const { getSettings } = await import("@/lib/settings");
-    const settings = await getSettings();
-    if (settings.deployment_mode === "self-hosted") {
-      const { scheduleArticle } = await import("@/lib/publish-timer");
-      for (const slot of slots) {
-        scheduleArticle(slot.id, slot.publish_date);
-      }
+    const { scheduleArticle } = await import("@/lib/publish-timer");
+    for (const slot of slots) {
+      scheduleArticle(slot.id, slot.publish_date);
     }
   } catch { /* scheduler may not be running */ }
 

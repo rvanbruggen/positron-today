@@ -10,7 +10,7 @@
  * "YYYY-MM-DDTHH:MM:SS" representing wall-clock time in SCHEDULE_TZ.
  * All server code producing, parsing or comparing `publish_date` must
  * go through these helpers — otherwise the server's own timezone
- * (UTC on Vercel) leaks in and shifts times by the UTC↔SCHEDULE_TZ offset.
+ * leaks in and shifts times by the UTC↔SCHEDULE_TZ offset.
  */
 
 export const SCHEDULE_TZ = process.env.SCHEDULE_TZ ?? "Europe/Brussels";

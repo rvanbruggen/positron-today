@@ -1,9 +1,5 @@
 /**
  * HTML parsing utility using linkedom + @mozilla/readability.
- *
- * linkedom is a lightweight DOM implementation that works in serverless
- * environments (Vercel, Cloudflare Workers) — unlike jsdom which has
- * ESM-only transitive dependencies that crash on Vercel.
  */
 
 import { parseHTML } from "linkedom";

@@ -1,16 +1,10 @@
 /**
- * Built-in scheduler for self-hosted deployment mode.
+ * Built-in scheduler.
  *
  * Uses node-cron to trigger the pipeline at configured run times,
  * and exact-time publish timers for individual articles.
  *
- * - In "fetch" mode: runs the chunked pipeline (fetch + classify + export),
- *   creating a pipeline_run visible in the Fetch & Filter UI.
- * - In "summarise" or "full" mode: runs the unified pipeline
- *   (fetch + classify + positronitron + publish + social).
- * - In "off" mode: does nothing.
- *
- * Started from instrumentation.ts when DEPLOYMENT_MODE=self-hosted.
+ * Started from instrumentation.ts on server boot.
  */
 
 import * as cron from "node-cron";
@@ -55,10 +49,6 @@ export async function reloadScheduler(): Promise<void> {
   stopScheduler();
 
   const settings = await getSettings();
-  if (settings.deployment_mode !== "self-hosted") {
-    console.log("[scheduler] Not in self-hosted mode, scheduler inactive");
-    return;
-  }
 
   let runTimes: string[];
   try {

@@ -283,7 +283,7 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
         await markSlotCompleted(dueSlot);
         L(`Marked slot ${dueSlot} as completed (no candidates available)`);
       }
-      return { ok: true, selected: 0, log, message: "No articles in queue. Make sure /api/fetch has run first." };
+      return { ok: true, selected: 0, log, message: "No articles in queue. Run the pipeline first to fetch and classify articles." };
     }
 
     const tagsResult = await db.execute("SELECT id, name, emoji FROM topics ORDER BY name ASC");

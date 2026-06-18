@@ -29,7 +29,6 @@ export async function PUT(request: NextRequest) {
       "positronitron_count",
       "positronitron_run_times",
       "digest_run_times",
-      "deployment_mode",
     ];
     const patch: Partial<LLMSettings> = {};
     for (const key of allowed) {
@@ -42,8 +41,8 @@ export async function PUT(request: NextRequest) {
     }
     await setSettings(patch);
 
-    // Reload the built-in scheduler if deployment mode or run times changed
-    if (patch.deployment_mode || patch.positronitron_run_times || patch.digest_run_times) {
+    // Reload the scheduler if run times changed
+    if (patch.positronitron_run_times || patch.digest_run_times) {
       try {
         const { reloadScheduler } = await import("@/lib/scheduler");
         await reloadScheduler();

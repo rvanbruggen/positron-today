@@ -33,11 +33,7 @@ export async function proxy(request: NextRequest) {
     "/login",
     "/api/auth",
     "/api/publish-scheduled",
-    "/api/post-pending-social",
     "/api/positronitron",
-    "/api/fetch",
-    "/api/fetch-feeds",
-    "/api/classify",
     "/api/instagram-card-preview",
     "/api/pipeline/start",
     "/api/pipeline/status",
@@ -46,7 +42,6 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Log blocked API calls so we can diagnose 401s in Vercel logs
   if (pathname.startsWith("/api/")) {
     console.log(`[proxy] Checking auth for: ${pathname}`);
   }
@@ -60,8 +55,7 @@ export async function proxy(request: NextRequest) {
   const expected = await makeToken(secret);
   const session  = request.cookies.get(COOKIE)?.value;
 
-  // Also accept Authorization: Bearer <token> for server-to-server self-calls
-  // (Vercel strips Cookie headers from internal fetch requests)
+  // Also accept Authorization: Bearer <token> for server-to-server calls
   const authHeader = request.headers.get("authorization");
   const bearerToken = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
 

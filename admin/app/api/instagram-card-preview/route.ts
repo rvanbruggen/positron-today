@@ -1,7 +1,7 @@
 /**
  * Preview route for comparing Instagram card generators.
  * GET /api/instagram-card-preview?id=222&engine=og
- *   engine=og      → @vercel/og (new, portable)
+ *   engine=og      → Satori + Sharp
  *   engine=python   → Python/Playwright (current)
  *   engine=both     → returns HTML page with both side by side
  */
@@ -74,7 +74,7 @@ export async function GET(req: NextRequest) {
     <img src="/api/instagram-card-preview?id=${id}&engine=python" alt="Python card">
   </div>
   <div class="card">
-    <h2>New (@vercel/og)</h2>
+    <h2>Satori + Sharp</h2>
     <img src="/api/instagram-card-preview?id=${id}&engine=og" alt="OG card">
   </div>
 </div>

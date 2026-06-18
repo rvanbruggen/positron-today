@@ -2,8 +2,6 @@
  * Instagram card generation using Satori + Sharp.
  *
  * Uses satori to render JSX → SVG, then sharp to convert SVG → PNG.
- * Both work reliably in Vercel's Node.js serverless runtime, unlike
- * @vercel/og and next/og which require the Edge runtime.
  */
 
 import { createRequire } from "module";
