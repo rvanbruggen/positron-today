@@ -2,7 +2,7 @@
 title: "Simpler, older version of Stonehenge found three miles from famous site"
 title_nl: "Eenvoudigere, oudere versie van Stonehenge gevonden drie mijl van de beroemde site"
 title_fr: "Une version plus simple et plus ancienne de Stonehenge trouvée à trois miles du site célèbre"
-date: 2026-06-18T08:29:34
+date: 2026-06-18T08:29:33
 source_pub_date: 2026-06-17
 fetched_date: 2026-06-18
 source_url: "https://www.bbc.com/news/articles/clyxw8550y8o?at_medium=RSS&at_campaign=rss"
