@@ -252,11 +252,13 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
         await appendLog(runId, { type: "result", verdict: "error", title, message: String(err) });
       }
 
+      const remaining = Number((await db.execute("SELECT COUNT(*) as cnt FROM pending_items")).rows[0]?.cnt ?? 0);
       await updateRun(runId, {
         classified: totalAdded + totalFiltered + totalErrors,
         added: totalAdded,
         filtered: totalFiltered,
         errored: totalErrors,
+        queue_depth: remaining,
       });
     }
 
