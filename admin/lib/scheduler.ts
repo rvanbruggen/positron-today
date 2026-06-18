@@ -16,7 +16,6 @@
 import * as cron from "node-cron";
 import { getSettings } from "@/lib/settings";
 import { runUnifiedPipeline } from "@/lib/unified-pipeline";
-import { drainPipeline } from "@/lib/pipeline-steps";
 import { syncTimersFromDb, cancelAllTimers } from "@/lib/publish-timer";
 import { runDigest } from "@/lib/digest-core";
 
@@ -88,13 +87,7 @@ export async function reloadScheduler(): Promise<void> {
 
       console.log(`[scheduler] Triggered by ${time} slot (mode=${mode})`);
 
-      if (mode === "fetch") {
-        // Fetch mode: use the chunked pipeline so the run is visible in the UI
-        await drainPipeline();
-      } else {
-        // Summarise / full mode: use the unified pipeline
-        await runUnifiedPipeline();
-      }
+      await runUnifiedPipeline();
 
       await syncTimersFromDb();
     }, {

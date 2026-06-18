@@ -7,7 +7,7 @@ type DuplicateHint = {
   title:        string;
   source_name:  string;
   origin:       "pending" | "draft" | "scheduled" | "published";
-  similarity:   number;      // 0–1
+  similarity:   number;
   shared_tokens: number;
   published_at: string | null;
 };
@@ -33,21 +33,16 @@ const ORIGIN_LABELS: Record<DuplicateHint["origin"], string> = {
   published: "a published article",
 };
 
-// Log events emitted by the server-side pipeline (stored in pipeline_runs.log).
-// The UI polls /api/pipeline/status and renders these.
 type LogLine =
-  // Phase 1 events
   | { type: "start"; phase: "fetch-feeds"; totalSources: number; chunkSize?: number; offset?: number; hasMore?: boolean }
   | { type: "source"; name: string; url: string }
   | { type: "item"; verdict?: "queued"; title: string; source?: string }
   | { type: "source_done"; name: string; queued: number; skipped: number }
   | { type: "source_error"; name: string; message: string }
   | { type: "done"; phase: "fetch-feeds"; queued: number; skipped: number; hasMore: boolean; nextOffset: number; queueDepth: number }
-  // Phase 2 events
   | { type: "start"; phase: "classify"; batchSize: number; queueDepth: number }
   | { type: "result"; verdict: "added" | "filtered" | "error"; title: string; reason?: string; message?: string; score?: number; category?: string }
   | { type: "done"; phase: "classify"; added: number; filtered: number; errored: number; processed: number; queueDepth: number; hasMore: boolean }
-  // Shared / sectioning events
   | { type: "phase"; label: string }
   | { type: "exporting" }
   | { type: "exported"; count: number }
@@ -58,7 +53,7 @@ export default function PreviewPage() {
   const [articles, setArticles] = useState<RawArticle[]>([]);
   const [fetching, setFetching] = useState(false);
   const [logs, setLogs] = useState<LogLine[]>([]);
-  const [progress, setProgress] = useState(0); // 0–100
+  const [progress, setProgress] = useState(0);
   const [totalSources, setTotalSources] = useState(0);
   const [sourcesDone, setSourcesDone] = useState(0);
   const [manualUrl, setManualUrl] = useState("");
@@ -66,9 +61,6 @@ export default function PreviewPage() {
   const [manualResult, setManualResult] = useState<{ ok: boolean; message: string } | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const tickInFlight = useRef(false);
-  const tickStartedAt = useRef(0);
-  const tickFnRef = useRef<(() => Promise<void>) | null>(null);
   const [activeRunId, setActiveRunId] = useState<number | null>(null);
   const [pipelineCounters, setPipelineCounters] = useState({
     phase: "" as string,
@@ -86,146 +78,90 @@ export default function PreviewPage() {
   }
   useEffect(() => { load(); }, []);
 
-  // Auto-scroll log to bottom as lines arrive
   useEffect(() => {
     if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
   }, [logs]);
 
-  // On mount, check for any active pipeline — localStorage first, then ask the server.
+  // On mount, check for any active pipeline run
   useEffect(() => {
     let cancelled = false;
 
-    async function resumeActivePipeline() {
-      // 1. Check localStorage for a saved runId
-      const saved = localStorage.getItem("pipeline_runId");
-      if (saved) {
-        const runId = Number(saved);
-        if (runId && !isNaN(runId)) {
-          try {
-            const res = await fetch(`/api/pipeline/status?runId=${runId}`);
-            if (res.ok) {
-              const data = await res.json();
-              if (!cancelled && data.status === "running") {
-                setFetching(true);
-                setActiveRunId(runId);
-                startPolling(runId);
-                return;
-              }
-            }
-          } catch {}
-          localStorage.removeItem("pipeline_runId");
-        } else {
-          localStorage.removeItem("pipeline_runId");
-        }
-      }
-
-      // 2. Fallback: ask the server for any running pipeline
-      if (cancelled) return;
+    async function checkForActiveRun() {
       try {
         const res = await fetch("/api/pipeline/status");
-        if (res.ok) {
-          const data = await res.json();
-          const run = data.run ?? data;
-          if (!cancelled && run && run.status === "running" && run.id) {
-            const runId = Number(run.id);
-            localStorage.setItem("pipeline_runId", String(runId));
-            setFetching(true);
-            setActiveRunId(runId);
-            startPolling(runId);
-          }
+        if (!res.ok || cancelled) return;
+        const data = await res.json();
+        const run = data.run ?? data;
+        if (run && run.status === "running" && run.id) {
+          setFetching(true);
+          setActiveRunId(Number(run.id));
+          startPolling(Number(run.id));
         }
       } catch {}
     }
 
-    resumeActivePipeline();
-
-    return () => {
-      cancelled = true;
-      if (pollRef.current) clearInterval(pollRef.current);
-    };
+    checkForActiveRun();
+    return () => { cancelled = true; if (pollRef.current) clearInterval(pollRef.current); };
   }, []);
 
-  // Handle mobile app backgrounding — reset stuck tickInFlight and fire immediate tick
-  useEffect(() => {
-    function handleVisibility() {
-      if (document.visibilityState !== "visible") return;
-      tickInFlight.current = false;
-      tickFnRef.current?.();
+  function applyRunData(run: Record<string, unknown>) {
+    const runLogs: LogLine[] = Array.isArray(run.log) ? run.log : JSON.parse(String(run.log ?? "[]"));
+    setLogs(runLogs);
+
+    const total = Number(run.total_sources ?? 0);
+    const done = Number(run.sources_done ?? 0);
+    setTotalSources(total);
+    setSourcesDone(done);
+
+    // Progress: rough estimate based on phase
+    const phase = String(run.phase ?? "");
+    if (phase === "fetch" && total > 0) {
+      setProgress(Math.round((done / total) * 50));
+    } else if (phase === "classify") {
+      const qd = Number(run.queue_depth ?? 0);
+      const classified = Number(run.classified ?? 0);
+      const classifyTotal = classified + qd;
+      setProgress(classifyTotal > 0 ? 50 + Math.round((classified / classifyTotal) * 40) : 60);
+    } else if (phase === "positronitron" || phase === "publish" || phase === "social" || phase === "export") {
+      setProgress(92);
     }
-    document.addEventListener("visibilitychange", handleVisibility);
-    return () => document.removeEventListener("visibilitychange", handleVisibility);
-  }, []);
+
+    setPipelineCounters({
+      phase,
+      queued: Number(run.queued ?? 0),
+      classified: Number(run.classified ?? 0),
+      added: Number(run.added ?? 0),
+      filtered: Number(run.filtered ?? 0),
+      errored: Number(run.errored ?? 0),
+      queue_depth: Number(run.queue_depth ?? 0),
+    });
+  }
 
   function startPolling(runId: number) {
     if (pollRef.current) clearInterval(pollRef.current);
 
-    const tick = async () => {
-      // Timeout: if a tick has been in-flight for >15s, it was likely suspended mid-request
-      if (tickInFlight.current) {
-        if (Date.now() - tickStartedAt.current > 15_000) {
-          tickInFlight.current = false;
-        } else {
-          return;
-        }
-      }
-      tickInFlight.current = true;
-      tickStartedAt.current = Date.now();
+    const poll = async () => {
       try {
-        const res = await fetch("/api/pipeline/tick", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ runId }),
-        });
+        const res = await fetch(`/api/pipeline/status?runId=${runId}`);
         if (!res.ok) return;
         const run = await res.json();
         if (!run || run.error) return;
 
-        const runLogs: LogLine[] = Array.isArray(run.log) ? run.log : JSON.parse(String(run.log ?? "[]"));
-        setLogs(runLogs);
-
-        const total = Number(run.total_sources ?? 0);
-        const done = Number(run.sources_done ?? 0);
-
-        setTotalSources(total);
-        setSourcesDone(done);
-
-        // Progress from task queue counts (tasks_total includes dynamically added classify tasks)
-        const tasksTotal = Number(run.tasks_total ?? 0);
-        const tasksDone = Number(run.tasks_done ?? 0);
-        if (tasksTotal > 0) {
-          setProgress(Math.round((tasksDone / tasksTotal) * 100));
-        }
-
-        setPipelineCounters({
-          phase: String(run.phase ?? ""),
-          queued: Number(run.queued ?? 0),
-          classified: Number(run.classified ?? 0),
-          added: Number(run.added ?? 0),
-          filtered: Number(run.filtered ?? 0),
-          errored: Number(run.errored ?? 0),
-          queue_depth: Number(run.queue_depth ?? 0),
-        });
+        applyRunData(run);
 
         if (run.status === "done" || run.status === "error") {
-          if (run.status === "error" && run.error_message && runLogs.length === 0) {
-            setLogs([{ type: "fatal", message: run.error_message }]);
-          }
           if (run.status === "done") setProgress(100);
           setFetching(false);
           setActiveRunId(null);
-          localStorage.removeItem("pipeline_runId");
           if (pollRef.current) clearInterval(pollRef.current);
           pollRef.current = null;
-          tickFnRef.current = null;
           load();
         }
       } catch { /* network hiccup, keep polling */ }
-      finally { tickInFlight.current = false; }
     };
 
-    tickFnRef.current = tick;
-    tick();
-    pollRef.current = setInterval(tick, 2000);
+    poll();
+    pollRef.current = setInterval(poll, 2000);
   }
 
   async function fetchNew() {
@@ -243,7 +179,6 @@ export default function PreviewPage() {
       if (!res.ok) {
         if (data.runId) {
           setActiveRunId(data.runId);
-          localStorage.setItem("pipeline_runId", String(data.runId));
           startPolling(data.runId);
           return;
         }
@@ -253,7 +188,6 @@ export default function PreviewPage() {
       }
 
       setActiveRunId(data.runId);
-      localStorage.setItem("pipeline_runId", String(data.runId));
       startPolling(data.runId);
     } catch (err) {
       setLogs([{ type: "fatal", message: String(err) }]);
@@ -263,14 +197,13 @@ export default function PreviewPage() {
 
   async function stopPipeline() {
     if (!activeRunId) return;
-    localStorage.removeItem("pipeline_runId");
     try {
       await fetch("/api/pipeline/stop", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ runId: activeRunId }),
       });
-    } catch { /* polling will pick up the state change */ }
+    } catch {}
   }
 
   async function addManualUrl(e: React.FormEvent) {
@@ -309,7 +242,6 @@ export default function PreviewPage() {
 
   const isCancelled = logs.some(l => l.type === "fatal" && "message" in l && l.message === "Cancelled by user");
   const isDone = isCancelled || logs.some(l => l.type === "exported" || l.type === "export_error" || l.type === "fatal");
-  // Aggregate counters across all phases for the bottom summary bar
   const totals = logs.reduce(
     (acc, l) => {
       if (l.type === "done" && l.phase === "fetch-feeds") {
@@ -363,7 +295,13 @@ export default function PreviewPage() {
                 ? `Classifying articles — ${pipelineCounters.queue_depth} remaining in queue…`
                 : pipelineCounters.phase === "export"
                   ? "Exporting rejection log…"
-                  : "Pipeline running…"}
+                  : pipelineCounters.phase === "positronitron"
+                    ? "Selecting and summarising articles…"
+                    : pipelineCounters.phase === "publish"
+                      ? "Publishing to GitHub…"
+                      : pipelineCounters.phase === "social"
+                        ? "Posting to social media…"
+                        : "Pipeline running…"}
           </span>
         </div>
       )}
@@ -472,11 +410,11 @@ export default function PreviewPage() {
               if (line.type === "phase")
                 return <div key={i} className="text-yellow-200 font-bold mt-3 border-t border-amber-800 pt-2">▸ {line.label}</div>;
               if (line.type === "start" && line.phase === "fetch-feeds")
-                return <div key={i} className="text-amber-400 mt-1">Found {line.totalSources} sources — scanning chunk of {line.chunkSize ?? "?"}</div>;
+                return <div key={i} className="text-amber-400 mt-1">Found {line.totalSources} sources — scanning all</div>;
               if (line.type === "start" && line.phase === "classify")
                 return <div key={i} className="text-amber-400 mt-1">Queue depth: {line.queueDepth} — classifying batch of {line.batchSize}</div>;
               if (line.type === "source")
-                return <div key={i} className="text-yellow-300 font-semibold mt-2">📡 {line.name}</div>;
+                return null;
               if (line.type === "item" && line.verdict === "queued")
                 return <div key={i} className="text-blue-300 pl-3">⏳ {line.title}</div>;
               if (line.type === "item")
@@ -492,9 +430,9 @@ export default function PreviewPage() {
               if (line.type === "source_error")
                 return <div key={i} className="text-orange-400 pl-3">⚠ {line.name}: {line.message}</div>;
               if (line.type === "done" && line.phase === "fetch-feeds")
-                return <div key={i} className="text-green-300 font-semibold mt-2">✅ Phase 1 chunk done — {line.queued} queued · {line.skipped} skipped · queue depth {line.queueDepth}</div>;
+                return <div key={i} className="text-green-300 font-semibold mt-2">✅ Fetch done — {line.queued} queued · {line.skipped} skipped · queue depth {line.queueDepth}</div>;
               if (line.type === "done" && line.phase === "classify")
-                return <div key={i} className="text-green-300 font-semibold mt-2">✅ Phase 2 batch done — {line.added} added · {line.filtered} filtered{line.errored ? ` · ${line.errored} errored` : ""} · queue depth {line.queueDepth}</div>;
+                return <div key={i} className="text-green-300 font-semibold mt-2">✅ Classify done — {line.added} added · {line.filtered} filtered{line.errored ? ` · ${line.errored} errored` : ""} · queue depth {line.queueDepth}</div>;
               if (line.type === "fatal")
                 return <div key={i} className="text-red-300 font-semibold mt-2">💥 {line.message}</div>;
               if (line.type === "exporting")
@@ -508,7 +446,7 @@ export default function PreviewPage() {
             {fetching && <div className="text-amber-700 animate-pulse mt-1">▌</div>}
           </div>
 
-          {/* Summary bar — aggregates Phase 1 + Phase 2 totals across all chunks/batches */}
+          {/* Summary bar */}
           {hasAnyDone && (
             <div className="border-t border-amber-800 px-4 py-2 flex gap-4 text-xs">
               <span className="text-green-400 font-semibold">+{totals.added} added</span>

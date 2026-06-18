@@ -1,10 +1,8 @@
 import db from "@/lib/db";
-import { resumeIfNeeded } from "@/lib/pipeline-worker";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  await resumeIfNeeded();
   const url = new URL(request.url);
   const runId = url.searchParams.get("runId");
 
