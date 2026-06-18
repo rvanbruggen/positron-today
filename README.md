@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.32.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.33.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -184,7 +184,7 @@ cd site && npm run dev           # http://localhost:8080/
 
 ## Article Pipeline
 
-There are two ways to run the pipeline: **manual** (step by step from the admin UI) or **automated** via Positronitron (configured on the Settings page). In self-hosted mode, the built-in scheduler triggers a unified pipeline that runs the full flow in a single invocation. In serverless mode, external cron jobs call chunked API endpoints.
+There are two ways to run the pipeline: **manual** (step by step from the admin UI) or **automated** via Positronitron (configured on the Settings page). The built-in scheduler triggers a unified pipeline that runs the full flow in a single server-side invocation — the browser is only a status viewer, not a driver.
 
 ---
 
