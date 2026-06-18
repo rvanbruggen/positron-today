@@ -18,6 +18,7 @@ import { getSettings } from "@/lib/settings";
 import { runUnifiedPipeline } from "@/lib/unified-pipeline";
 import { drainPipeline } from "@/lib/pipeline-steps";
 import { syncTimersFromDb, cancelAllTimers } from "@/lib/publish-timer";
+import { runDigest } from "@/lib/digest-core";
 
 let activeJobs: ReturnType<typeof cron.schedule>[] = [];
 let initialized = false;
@@ -102,6 +103,42 @@ export async function reloadScheduler(): Promise<void> {
 
     activeJobs.push(job);
     console.log(`[scheduler] Pipeline scheduled: ${time} (${cronExpr}) TZ=${tz}`);
+  }
+
+  // ─── Digest cron jobs ──────────────────────────────────────────────────────
+
+  let digestTimes: string[];
+  try {
+    digestTimes = JSON.parse(settings.digest_run_times ?? "[]");
+  } catch {
+    digestTimes = [];
+  }
+
+  for (const time of digestTimes) {
+    const cronExpr = timeToCron(time);
+    if (!cronExpr) {
+      console.warn(`[scheduler] Invalid digest time format: ${time}, skipping`);
+      continue;
+    }
+
+    const job = cron.schedule(cronExpr, async () => {
+      console.log(`[scheduler] Digest triggered by ${time} slot`);
+      try {
+        const result = await runDigest();
+        if (result.ok) {
+          console.log(`[scheduler] Digest posted: ${result.articles?.length ?? 0} articles`);
+        } else {
+          console.log(`[scheduler] Digest skipped: ${result.message ?? result.error ?? "unknown"}`);
+        }
+      } catch (err) {
+        console.error(`[scheduler] Digest error:`, err instanceof Error ? err.message : err);
+      }
+    }, {
+      timezone: tz,
+    });
+
+    activeJobs.push(job);
+    console.log(`[scheduler] Digest scheduled: ${time} (${cronExpr}) TZ=${tz}`);
   }
 
   // Sync publish timers from the database
