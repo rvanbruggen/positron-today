@@ -238,9 +238,13 @@ export async function runDigest(options?: { isManual?: boolean }): Promise<Diges
     }
   }
 
-  const anySuccess = Object.keys(results).length > 0;
+  const expectedPlatforms = (textAccounts.length > 0 ? 1 : 0) + (instagramAccounts.length > 0 ? 1 : 0);
+  const succeededPlatforms = Object.keys(results).length;
+  const allSucceeded = succeededPlatforms === expectedPlatforms && errors.length === 0;
+  const anySuccess = succeededPlatforms > 0;
 
-  if (anySuccess) {
+  if (allSucceeded) {
+    // All platforms succeeded — mark articles as posted and slot as done
     const ids = articles.map((a) => a.id);
     const placeholders = ids.map(() => "?").join(",");
     await db.execute({
@@ -250,13 +254,16 @@ export async function runDigest(options?: { isManual?: boolean }): Promise<Diges
     if (dueSlot) {
       await markDigestSlotCompleted(dueSlot);
     }
+  } else if (anySuccess) {
+    // Partial success — log but don't mark slot complete so it retries
+    console.warn(`[digest] Partial success: ${succeededPlatforms}/${expectedPlatforms} platforms. Slot NOT marked complete — will retry on next trigger.`);
   }
 
   const articleSummary = articles.map((a) => ({ id: a.id, title: a.title_en ?? a.title_nl }));
   return {
-    ok: anySuccess,
+    ok: allSucceeded,
     articles: articleSummary,
     errors: errors.length > 0 ? errors : undefined,
-    ...(anySuccess ? {} : { error: "All platforms failed" }),
+    ...(allSucceeded ? {} : anySuccess ? { error: `Partial success: ${errors.join("; ")}` } : { error: "All platforms failed" }),
   };
 }

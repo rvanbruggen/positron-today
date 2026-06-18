@@ -23,6 +23,7 @@ import { runPositronitron } from "@/lib/positronitron-core";
 import { publishScheduledArticles } from "@/lib/publish-core";
 import { postPendingSocial } from "@/lib/social-post-core";
 import RSSParser from "rss-parser";
+import { withRetry } from "@/lib/retry";
 
 const parser = new RSSParser({ timeout: 8000 });
 
@@ -109,7 +110,7 @@ async function fetchAllSources(runId: number): Promise<{ queued: number; skipped
     await appendLog(runId, { type: "source", name: sourceName, url: feedUrl });
 
     try {
-      const feed = await parser.parseURL(feedUrl);
+      const feed = await withRetry(() => parser.parseURL(feedUrl), { label: `RSS ${sourceName}` });
       const items = feed.items.slice(0, 10).filter(i => i.link && i.title);
 
       for (const item of items) {

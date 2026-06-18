@@ -1,4 +1,5 @@
 import db from "@/lib/db";
+import { withRetry } from "@/lib/retry";
 
 const PFM_BASE = "https://api.postforme.dev/v1";
 const API_KEY = process.env.POSTFORME_API_KEY!;
@@ -20,10 +21,10 @@ export async function getEnabledAccounts(): Promise<{ id: string; platform: stri
   } catch { return []; }
   if (enabledIds.length === 0) return [];
 
-  const pfmRes = await fetch(`${PFM_BASE}/social-accounts`, {
+  const pfmRes = await withRetry(() => fetch(`${PFM_BASE}/social-accounts`, {
     headers: { Authorization: `Bearer ${API_KEY}` },
     cache: "no-store",
-  });
+  }), { label: "PFM list accounts" });
   if (!pfmRes.ok) return [];
 
   const pfmData = await pfmRes.json();
@@ -35,27 +36,29 @@ export async function getEnabledAccounts(): Promise<{ id: string; platform: stri
 }
 
 export async function uploadCardToPostForMe(png: Buffer): Promise<string> {
-  const urlRes = await fetch(`${PFM_BASE}/media/create-upload-url`, {
-    method: "POST",
-    headers: pfmHeaders(),
-    body: JSON.stringify({ content_type: "image/png" }),
-  });
-  if (!urlRes.ok) {
-    const err = await urlRes.json().catch(() => ({}));
-    throw new Error(`Post for Me media URL failed: ${err.message ?? urlRes.status}`);
-  }
-  const { upload_url, media_url } = await urlRes.json();
+  return withRetry(async () => {
+    const urlRes = await fetch(`${PFM_BASE}/media/create-upload-url`, {
+      method: "POST",
+      headers: pfmHeaders(),
+      body: JSON.stringify({ content_type: "image/png" }),
+    });
+    if (!urlRes.ok) {
+      const err = await urlRes.json().catch(() => ({}));
+      throw new Error(`Post for Me media URL failed: ${err.message ?? urlRes.status}`);
+    }
+    const { upload_url, media_url } = await urlRes.json();
 
-  const putRes = await fetch(upload_url, {
-    method: "PUT",
-    headers: { "Content-Type": "image/png" },
-    body: new Uint8Array(png),
-  });
-  if (!putRes.ok) {
-    throw new Error(`Media upload failed: ${putRes.status}`);
-  }
+    const putRes = await fetch(upload_url, {
+      method: "PUT",
+      headers: { "Content-Type": "image/png" },
+      body: new Uint8Array(png),
+    });
+    if (!putRes.ok) {
+      throw new Error(`Media upload failed: ${putRes.status}`);
+    }
 
-  return media_url as string;
+    return media_url as string;
+  }, { label: "PFM upload media" });
 }
 
 export async function postToPlatforms(
@@ -66,14 +69,16 @@ export async function postToPlatforms(
   const body: Record<string, unknown> = { caption, social_accounts: accounts };
   if (mediaUrl) body.media = [{ url: mediaUrl }];
 
-  const res = await fetch(`${PFM_BASE}/social-posts`, {
-    method: "POST",
-    headers: pfmHeaders(),
-    body: JSON.stringify(body),
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.message ?? `Post for Me error ${res.status}`);
-  return { id: data.id, status: data.status };
+  return withRetry(async () => {
+    const res = await fetch(`${PFM_BASE}/social-posts`, {
+      method: "POST",
+      headers: pfmHeaders(),
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message ?? `Post for Me error ${res.status}`);
+    return { id: data.id, status: data.status };
+  }, { label: "PFM post" });
 }
 
 /**

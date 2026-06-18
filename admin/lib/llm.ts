@@ -12,6 +12,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { getSettings, type LLMSettings } from "./settings";
+import { withRetry } from "@/lib/retry";
 
 // ---------------------------------------------------------------------------
 // Shared types
@@ -106,26 +107,28 @@ class OllamaProvider implements LLMProvider {
     if (systemPrompt) messages.push({ role: "system", content: systemPrompt });
     messages.push({ role: "user", content: userPrompt });
 
-    const res = await fetch(this.endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: this.model,
-        messages,
-        max_tokens: maxTokens,
-        stream: false,
-        options: { temperature },
-      }),
-      signal: AbortSignal.timeout(120_000),
-    });
+    return withRetry(async () => {
+      const res = await fetch(this.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: this.model,
+          messages,
+          max_tokens: maxTokens,
+          stream: false,
+          options: { temperature },
+        }),
+        signal: AbortSignal.timeout(120_000),
+      });
 
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`Ollama error ${res.status}: ${text.slice(0, 200)}`);
-    }
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Ollama error ${res.status}: ${text.slice(0, 200)}`);
+      }
 
-    const data = await res.json();
-    return (data.choices?.[0]?.message?.content ?? "").trim();
+      const data = await res.json();
+      return (data.choices?.[0]?.message?.content ?? "").trim();
+    }, { label: `Ollama ${this.model}`, baseDelayMs: 1000 });
   }
 }
 
@@ -175,23 +178,25 @@ class OpenAIProvider implements LLMProvider {
       body.temperature = temperature;
     }
 
-    const res = await fetch(this.endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(120_000),
-    });
+    return withRetry(async () => {
+      const res = await fetch(this.endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(120_000),
+      });
 
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`OpenAI error ${res.status}: ${text.slice(0, 200)}`);
-    }
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`OpenAI error ${res.status}: ${text.slice(0, 200)}`);
+      }
 
-    const data = await res.json();
-    return (data.choices?.[0]?.message?.content ?? "").trim();
+      const data = await res.json();
+      return (data.choices?.[0]?.message?.content ?? "").trim();
+    }, { label: `OpenAI ${this.model}`, baseDelayMs: 1000 });
   }
 }
 
