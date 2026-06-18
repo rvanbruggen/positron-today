@@ -211,12 +211,9 @@ export async function runUnifiedPipeline(options?: { isManual?: boolean }): Prom
       const publishResult = await publishScheduledArticles();
       console.log(`[unified] Publish: ${publishResult.published} published, ${publishResult.failed} failed`);
 
-      // Phase 5: Wait for deploy and post to social
+      // Phase 5: Post to social (polls for deploy liveness automatically)
       if (publishResult.published > 0) {
-        console.log("[unified] Waiting 60s for GitHub Pages deploy...");
-        await new Promise((r) => setTimeout(r, 60_000));
-
-        const socialResult = await postPendingSocial({ waitForLive: true, maxWaitSeconds: 120 });
+        const socialResult = await postPendingSocial({ waitForLive: true, maxWaitSeconds: 300 });
         console.log(`[unified] Social: ${socialResult.posted} posted, ${socialResult.skipped} skipped`);
       }
     } else {
@@ -226,9 +223,7 @@ export async function runUnifiedPipeline(options?: { isManual?: boolean }): Prom
       const publishResult = await publishScheduledArticles();
       if (publishResult.published > 0) {
         console.log(`[unified] Publish: ${publishResult.published} published`);
-        console.log("[unified] Waiting 60s for GitHub Pages deploy...");
-        await new Promise((r) => setTimeout(r, 60_000));
-        const socialResult = await postPendingSocial({ waitForLive: true, maxWaitSeconds: 120 });
+        const socialResult = await postPendingSocial({ waitForLive: true, maxWaitSeconds: 300 });
         console.log(`[unified] Social: ${socialResult.posted} posted, ${socialResult.skipped} skipped`);
       }
     }

@@ -45,11 +45,8 @@ async function publishAndPost(articleId: number): Promise<void> {
     if (published?.ok) {
       console.log(`[publish-timer] Published "${title}" → ${published.path}`);
 
-      // Wait for GitHub Pages deploy, then post to social
-      console.log(`[publish-timer] Waiting 60s for GitHub Pages deploy...`);
-      await new Promise(r => setTimeout(r, 60_000));
-
-      const socialResult = await postPendingSocial({ waitForLive: true, maxWaitSeconds: 120 });
+      // Post to social (polls for deploy liveness automatically)
+      const socialResult = await postPendingSocial({ waitForLive: true, maxWaitSeconds: 300 });
       console.log(`[publish-timer] Social: ${socialResult.posted} posted, ${socialResult.skipped} skipped`);
     } else if (published?.error) {
       console.error(`[publish-timer] Failed to publish "${title}": ${published.error}`);
