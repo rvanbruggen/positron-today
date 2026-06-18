@@ -2,7 +2,7 @@
 title: "Co-authors shocked to find their children’s book written 40 years ago is suddenly a smash hit"
 title_nl: "Co-auteurs geschokt dat hun kinderboek, 40 jaar geleden geschreven, plotseling een hit is"
 title_fr: "Co-auteurs choqués de découvrir que leur livre pour enfants écrit il y a 40 ans est soudainement un succès"
-date: 2026-06-18T08:29:43
+date: 2026-06-18T08:29:45
 source_pub_date: 2026-06-18
 fetched_date: 2026-06-18
 source_url: "https://www.upworthy.com/co-authors-shocked-to-find-their-childrens-book-written-40-years-ago-is-suddenly-a-smash-hit/"
