@@ -2,7 +2,7 @@
 title: "Cervical cancer deaths in England fall to zero in young women given vaccine"
 title_nl: "Doden door baarmoederhalskanker in Engeland dalen naar nul bij jonge vrouwen die vaccin krijgen"
 title_fr: "Les décès par cancer du col de l'utérus en Angleterre tombent à zéro chez les jeunes femmes vaccinées"
-date: 2026-06-18T08:29:34
+date: 2026-06-18T08:29:36
 source_pub_date: 2026-06-17
 fetched_date: 2026-06-18
 source_url: "https://www.bbc.com/news/articles/c621z28z138o?at_medium=RSS&at_campaign=rss"
