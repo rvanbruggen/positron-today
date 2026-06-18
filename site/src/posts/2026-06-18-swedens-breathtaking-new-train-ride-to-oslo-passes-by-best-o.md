@@ -2,7 +2,7 @@
 title: "Sweden’s breathtaking new train ride to Oslo passes by best of country’s landscape"
 title_nl: "Zweedse adembenemende nieuwe treinrit naar Oslo passeert de mooiste landschappen van het land"
 title_fr: "Le nouveau trajet en train à couper le souffle de la Suède vers Oslo passe par les plus beaux paysages du pays"
-date: 2026-06-18T08:29:42
+date: 2026-06-18T08:29:44
 source_pub_date: 2026-06-17
 fetched_date: 2026-06-18
 source_url: "https://www.goodnewsnetwork.org/swedens-breathtaking-new-train-ride-to-oslo-passes-by-best-of-countrys-landscape/"
