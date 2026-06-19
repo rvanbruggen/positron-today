@@ -163,8 +163,8 @@ export async function POST(request: NextRequest) {
 
     // Social posting is intentionally NOT done here. Articles with
     // post_to_social_on_publish=1 stay pending (social_posted_at IS NULL)
-    // until the Pages-deploy workflow calls /api/post-pending-social once
-    // the URL is actually live. Posting here caused 404 previews because
+    // and are posted by the publish timer's postPendingSocial() once the
+    // URL is actually live. Posting here caused 404 previews because
     // GitHub Pages hadn't finished deploying yet.
     return Response.json({ ok: true, path });
   } catch (err) {
