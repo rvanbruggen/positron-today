@@ -48,26 +48,8 @@ jobs:
       - uses: actions/deploy-pages@v5
         id: deployment
 
-      # After Pages has finished deploying, ping the admin so it can post any
-      # articles waiting for social media. The endpoint finds articles where
-      # post_to_social_on_publish=1 AND social_posted_at IS NULL AND
-      # published_at >= now()-24h, HEAD-checks the URL, then posts via the
-      # existing Post for Me pipeline. Bearer-token auth (env var on Vercel
-      # + same value as a repo secret here) prevents anyone else hitting it.
-      - name: Trigger social post for newly-deployed articles
-        if: success()
-        env:
-          SOCIAL_POST_TOKEN: ${{ secrets.SOCIAL_POST_TOKEN }}
-        run: |
-          if [ -z "$SOCIAL_POST_TOKEN" ]; then
-            echo "::warning::SOCIAL_POST_TOKEN secret is not set — skipping social trigger"
-            exit 0
-          fi
-          # Use --fail-with-body so curl exits non-zero on 4xx/5xx and we still
-          # see the response body in the workflow log.
-          curl --silent --show-error --fail-with-body \
-            --max-time 60 \
-            --retry 3 --retry-delay 10 --retry-all-errors \
-            -X POST https://admin.positron.today/api/post-pending-social \
-            -H "Authorization: Bearer $SOCIAL_POST_TOKEN" \
-            -H "Content-Type: application/json"
+      # Social posting is no longer triggered from here. The admin server's
+      # built-in publish timer (admin/lib/publish-timer.ts) publishes each
+      # scheduled article and calls postPendingSocial() itself — polling for
+      # Pages liveness before posting. The old /api/post-pending-social route
+      # was removed in v2.35.0, so this workflow no longer pings the admin.
