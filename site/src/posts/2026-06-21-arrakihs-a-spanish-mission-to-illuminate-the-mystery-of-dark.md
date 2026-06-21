@@ -2,7 +2,7 @@
 title: "Arrakihs, a Spanish mission to illuminate the mystery of dark matter: ‘We have broken molds’"
 title_nl: "Arrakihs, een Spaanse missie om het mysterie van donkere materie te verlichten: 'We hebben de mold doorbroken'"
 title_fr: "Arrakihs, une mission espagnole pour éclairer le mystère de la matière noire : 'Nous avons brisé les moules'"
-date: 2026-06-21T08:28:34
+date: 2026-06-21T08:28:36
 source_pub_date: 2026-06-21
 fetched_date: 2026-06-21
 source_url: "https://english.elpais.com/science-tech/2026-06-21/arrakihs-a-spanish-mission-to-illuminate-the-mystery-of-dark-matter-we-have-broken-molds.html"
