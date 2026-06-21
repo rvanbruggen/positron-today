@@ -2,7 +2,7 @@
 title: "Archaeologists uncover the largest Roman baths in the Netherlands"
 title_nl: "Archeologen ontdekken de grootste Romeinse baden in Nederland"
 title_fr: "Des archéologues mettent au jour les plus grands thermes romains des Pays-Bas"
-date: 2026-06-21T08:28:38
+date: 2026-06-21T08:28:42
 source_pub_date: 2026-06-21
 fetched_date: 2026-06-21
 source_url: "https://www.lefigaro.fr/culture/patrimoine/a-nimegue-des-archeologues-mettent-au-jour-les-plus-grands-thermes-romains-des-pays-bas-20260621"
