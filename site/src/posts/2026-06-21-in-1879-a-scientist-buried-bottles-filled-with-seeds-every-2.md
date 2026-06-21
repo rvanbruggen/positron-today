@@ -2,7 +2,7 @@
 title: "In 1879 a scientist buried bottles filled with seeds. Every 20 years, one is dug up and studied."
 title_nl: "In 1879 begroef een wetenschapper flessen gevuld met zaden. Elke 20 jaar wordt er een opgegraven en bestudeerd."
 title_fr: "En 1879, un scientifique a enterré des bouteilles remplies de graines. Toutes les 20 ans, une est déterrée et étudiée."
-date: 2026-06-21T08:28:39
+date: 2026-06-21T08:28:37
 source_pub_date: 2026-06-21
 fetched_date: 2026-06-21
 source_url: "https://www.upworthy.com/in-1879-a-scientist-buried-bottles-filled-with-seeds-every-20-years-a-new-one-is-dug-up-and-studied-ex1/"
