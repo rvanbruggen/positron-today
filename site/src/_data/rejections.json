@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-06-22T19:19:31.064Z",
-  "total_rejected": 64195,
+  "exported_at": "2026-06-22T19:21:01.924Z",
+  "total_rejected": 64202,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 17933
+      "count": 17934
     },
     {
       "category": "soft-news-filler",
@@ -13,19 +13,19 @@
     },
     {
       "category": "sports-negative",
-      "count": 7355
+      "count": 7358
     },
     {
       "category": "crime-violence",
-      "count": 5353
+      "count": 5354
     },
     {
       "category": "celebrity-entertainment",
-      "count": 4810
+      "count": 4811
     },
     {
       "category": "economic-doom",
-      "count": 4148
+      "count": 4149
     },
     {
       "category": "war-conflict",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 7706,
-      "total": 7914
+      "negative": 7707,
+      "total": 7915
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 7701,
-      "total": 8072
+      "negative": 7703,
+      "total": 8074
     },
     {
       "source": "VRT Nws",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 2745,
-      "total": 2762
+      "negative": 2746,
+      "total": 2763
     },
     {
       "source": "NRC",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 2620,
-      "total": 2643
+      "negative": 2622,
+      "total": 2645
     },
     {
       "source": "The New York Times",
@@ -126,8 +126,8 @@
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 2491,
-      "total": 2500
+      "negative": 2492,
+      "total": 2501
     },
     {
       "source": "BBC Top Stories",
@@ -296,6 +296,62 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "Missnöjet mot Trump växer bland senatens republikaner: ”Verkar njuta av kaos”",
+      "reason": "The article discusses growing dissatisfaction among Republican senators towards Donald Trump, highlighting political division and frustration, which is not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/varlden/missnojet-mot-trump-vaxer-bland-senatens-republikaner-verkar-njuta-av-kaos/",
+      "date": "2026-06-22 21:21"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Défense : l’Allemagne rejoint la France au capital de KNDS, une étape qui lui ouvre les portes de la Bourse",
+      "reason": "The article discusses a corporate partnership and stock market listing, which falls under corporate PR and lacks broad human relevance.",
+      "category": "economic-doom",
+      "url": "https://www.lemonde.fr/economie/article/2026/06/22/defense-l-allemagne-rejoint-la-france-au-capital-de-knds-une-etape-qui-lui-ouvre-les-portes-de-la-bourse_6708204_3234.html",
+      "date": "2026-06-22 21:20"
+    },
+    {
+      "source": "Le Monde",
+      "title": "EN DIRECT, France-Irak : à Philadelphie, une alerte aux orages pourrait retarder le deuxième match des Bleus au Mondial 2026",
+      "reason": "The article focuses on a sports event and discusses potential weather delays, which does not meet the positive-news criteria.",
+      "category": "sports-negative",
+      "url": "https://www.lemonde.fr/sport/live/2026/06/22/en-direct-france-irak-suivez-le-match-de-la-coupe-du-monde-de-football_6708202_3242.html",
+      "date": "2026-06-22 21:20"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "2:0 gegen Österreich: Messi schraubt den Torrekord nach oben",
+      "reason": "The article focuses on a sports event and discusses Lionel Messi's record in a match, which falls under routine sports coverage without exceptional emotional or human-interest elements.",
+      "category": "sports-negative",
+      "url": "https://www.faz.net/aktuell/sport/fussball-wm/fussball-wm-2026-messi-mit-torrekord-bei-2-0-argentiniens-gegen-oesterreich-200817807.html",
+      "date": "2026-06-22 21:20"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Nog één keer Margriet Hermans: Vlaanderen keek massaal naar uitvaart",
+      "reason": "The article focuses on a television presenter and her viewership ratings during a tribute, which falls under celebrity and entertainment news rather than universally uplifting content.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.gva.be/media-en-cultuur/nog-een-keer-margriet-hermans-vlaanderen-keek-massaal-naar-uitvaart/157610701.html",
+      "date": "2026-06-22 21:20"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "LIVE WK. Waarom Oostenrijker met opvallend gezichtsmasker speelt, Alisson ontbreekt op training van Brazilië",
+      "reason": "The article discusses a sports event (the World Cup) and mentions player training, which falls under the category of routine sports news without exceptional or uplifting content.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/voetbal/live-wk.-waarom-oostenrijker-met-opvallend-gezichtsmasker-speelt-alisson-ontbreekt-op-training-van-brazilie/151454494.html",
+      "date": "2026-06-22 21:20"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Het is gebeurd: seriemoordenaar Freddy Horion (78) verlaat gevangenis voor het eerst in 47 jaar",
+      "reason": "The article discusses the release of a serial killer from prison, which is a negative and unsettling topic rather than uplifting or positive.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/binnenland/het-is-gebeurd-seriemoordenaar-freddy-horion-78-verlaat-gevangenis-voor-het-eerst-in-47-jaar~a2f727b32/",
+      "date": "2026-06-22 21:20"
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "Udenrigsministeriet lemper rejsevejledninger for tre lande i Mellemøsten",
@@ -8238,62 +8294,6 @@
       "reason": "The article discusses the consumption of insects, which may not be universally appealing and could be seen as divisive or unappetizing to many readers, thus lacking broad human relevance.",
       "category": "divisive-social",
       "url": "https://www.rp.pl/nauka/art44658951-baton-z-owadami-smakowal-lepiej-niz-zwykly-uprzedzenia-znikaja-po-degustacji",
-      "date": "2026-06-21 18:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Semesterbokningar rusar i Irankrigets spår",
-      "reason": "The article discusses increased bookings in areas affected by the Iran conflict, which is tied to a negative situation and does not provide a genuinely uplifting narrative.",
-      "category": "war-conflict",
-      "url": "https://www.dn.se/varlden/semesterbokningar-rusar-i-irankrigets-spar/",
-      "date": "2026-06-21 18:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Milslång kö – flera olyckor i midsommartrafiken",
-      "reason": "The article discusses traffic accidents and long queues during Midsummer traffic, which is not uplifting and focuses on negative events.",
-      "category": "disaster-accident",
-      "url": "https://www.dn.se/sverige/lugn-midsommartrafik-trots-olyckor/",
-      "date": "2026-06-21 18:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Stormiga år vid makten",
-      "reason": "The article discusses criticism of a political figure, which falls under political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/varlden/stormiga-ar-vid-makten/",
-      "date": "2026-06-21 18:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Tog SM-guld 1975 – nu springer Liz Hjalmarsson på SM igen",
-      "reason": "The article focuses on a sports event featuring a former athlete, which falls under the category of non-exceptional sports content without a unique emotional or inspiring characteristic.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/tog-sm-guld-1975-nu-springer-liz-hjalmarsson-pa-sm-igen/",
-      "date": "2026-06-21 18:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Guide inför SM-veckan: Karlstad laddar för folkfest",
-      "reason": "The article focuses on a local sports event, which does not have broad human relevance and is primarily of interest to a specific community.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/guide-infor-sm-veckan-karlstad-laddar-for-folkfest/",
-      "date": "2026-06-21 18:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Författaren Slavenka Drakulic har avlidit",
-      "reason": "The article reports on the death of a notable author, which is inherently a negative event and does not uplift the reader.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.dn.se/kultur/forfattaren-slavenka-drakulic-har-avlidit/",
-      "date": "2026-06-21 18:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Nicholas Wennö: Här är sommarens bästa långfilmer på SVT Play",
-      "reason": "The article focuses on entertainment content, specifically listing films available on a streaming service, which falls under the category of celebrity and entertainment news rather than uplifting human interest stories.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.dn.se/kultur/nicholas-wenno-har-ar-sommarens-basta-langfilmer-pa-svt-play-2/",
       "date": "2026-06-21 18:28"
     }
   ]
