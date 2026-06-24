@@ -2,7 +2,7 @@
 title: "Hero who saved Octavie (92) from fire in Opwijk celebrated during National Day parade"
 title_nl: "Held die Octavie (92) redde uit brand in Opwijk wordt gevierd tijdens defilé Nationale Feestdag"
 title_fr: "Héros qui a sauvé Octavie (92) d'un incendie à Opwijk célébré lors du défilé de la Fête nationale"
-date: 2026-06-24T13:27:34
+date: 2026-06-24T13:27:36
 source_pub_date: 2026-06-05
 fetched_date: 2026-06-05
 source_url: "https://vrtnws.be/p.dLeN5NpOV"
