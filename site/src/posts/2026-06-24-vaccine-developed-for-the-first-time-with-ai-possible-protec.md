@@ -2,7 +2,7 @@
 title: "Vaccine developed for the first time with AI: possible protection against entire virus families"
 title_nl: "Vaccin voor het eerst ontwikkeld met AI: mogelijk bescherming tegen volledige virusfamilies"
 title_fr: "Vaccin développé pour la première fois avec l'IA : protection possible contre des familles de virus entières"
-date: 2026-06-24T13:27:52
+date: 2026-06-24T13:27:55
 source_pub_date: 2026-06-05
 fetched_date: 2026-06-05
 source_url: "https://www.hln.be/medisch/vaccin-voor-het-eerst-ontwikkeld-met-ai-mogelijk-bescherming-tegen-volledige-virusfamilies~a14f820f/"
