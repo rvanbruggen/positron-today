@@ -6,6 +6,8 @@ echo "Pulling latest code..."
 git pull
 
 cd admin
+echo "Stopping old containers..."
+docker compose down --remove-orphans
 echo "Rebuilding and restarting..."
 docker compose up -d --build
 
