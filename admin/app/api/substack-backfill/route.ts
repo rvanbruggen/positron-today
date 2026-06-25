@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
       continue;
     }
 
-    // Update the Substack post via the API
+    // Update the Substack post: update draft fields, then re-publish to push live
     try {
       const updatePayload: Record<string, unknown> = {
         draft_body: bodyHtml,
@@ -127,7 +127,30 @@ export async function POST(request: NextRequest) {
           articleId: Number(match.id),
           articleTitle,
           updated: false,
-          error: `${updateRes.status}: ${text.slice(0, 200)}`,
+          error: `Update failed ${updateRes.status}: ${text.slice(0, 200)}`,
+        });
+        continue;
+      }
+
+      // Re-publish to push draft changes live
+      const pubRes = await fetch(`${PUBLICATION_URL}/api/v1/drafts/${sp.id}/publish`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookie,
+        },
+        body: JSON.stringify({}),
+      });
+
+      if (!pubRes.ok) {
+        const text = await pubRes.text();
+        results.push({
+          substackId: sp.id,
+          substackTitle: sp.title,
+          articleId: Number(match.id),
+          articleTitle,
+          updated: false,
+          error: `Re-publish failed ${pubRes.status}: ${text.slice(0, 200)}`,
         });
       } else {
         results.push({
