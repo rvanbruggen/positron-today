@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
       ? String(match.published_path).split("/").pop()?.replace(/\.md$/, "")
       : null;
     const siteUrl = slug ? `${SITE_BASE}/posts/${slug}/` : SITE_BASE;
-    const subtitle = `Read on Positron.today: ${siteUrl}`;
+    const subtitle = "Originally published on Positron.today";
 
     if (dryRun) {
       results.push({

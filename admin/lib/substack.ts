@@ -150,7 +150,7 @@ export async function postToSubstack(articleId: number): Promise<SubstackPostRes
     ? String(article.published_path).split("/").pop()?.replace(/\.md$/, "")
     : null;
   const siteUrl = slug ? `${SITE_BASE}/posts/${slug}/` : SITE_BASE;
-  const subtitle = `Read on Positron.today: ${siteUrl}`;
+  const subtitle = "Originally published on Positron.today";
 
   try {
     const { url } = await createAndPublishDraft(title, subtitle, bodyJson, imageUrl);
