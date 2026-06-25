@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.0.4** | Fix Substack draft creation: add required `draft_bylines` field (extracted from existing post bylines). Revert deploy script from `--no-cache` to `--build` for faster deploys via layer caching |
 | **3.0.3** | Add explicit Substack publish button on History page. Remove Instagram card and social media buttons from History actions column. New `/api/post-substack` endpoint for on-demand publishing |
 | **3.0.2** | Show Substack cross-post toggle on all articles (not just pre-publish). Remove 24-hour window so older articles added to the digest also get cross-posted |
 | **3.0.1** | Fix Substack health check inside Docker (use direct API call instead of unreliable `substack-api` package). Auto cross-post digest-picked articles to Substack. Add `--no-cache` to deploy script to prevent stale Docker builds. Add compact Substack header wordmark |
