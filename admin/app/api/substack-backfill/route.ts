@@ -7,8 +7,9 @@ export const dynamic = "force-dynamic";
 const SITE_BASE = "https://positron.today";
 const PUBLICATION_URL = "https://positrontoday.substack.com";
 
-function buildLinksParagraphs(article: Record<string, unknown>) {
+function buildFullBodyJson(article: Record<string, unknown>) {
   const emoji = String(article.article_emoji ?? "✨");
+  const summary = String(article.summary_en ?? "");
   const sourceUrl = String(article.source_url ?? "");
   const sourceName = String(article.source_name ?? "");
 
@@ -17,31 +18,37 @@ function buildLinksParagraphs(article: Record<string, unknown>) {
     : null;
   const siteUrl = slug ? `${SITE_BASE}/posts/${slug}/` : SITE_BASE;
 
-  // ProseMirror document nodes for the links section
-  return [
-    { type: "horizontal_rule" },
-    {
-      type: "paragraph",
-      content: [
-        { type: "text", text: `${emoji} ` },
-        {
-          type: "text",
-          marks: [{ type: "link", attrs: { href: sourceUrl } }],
-          text: `Read the original article on ${sourceName} ↗`,
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      content: [
-        {
-          type: "text",
-          marks: [{ type: "link", attrs: { href: siteUrl } }],
-          text: "See this article on Positron.today ↗",
-        },
-      ],
-    },
-  ];
+  return {
+    type: "doc",
+    content: [
+      {
+        type: "paragraph",
+        content: [{ type: "text", text: summary }],
+      },
+      { type: "horizontal_rule" },
+      {
+        type: "paragraph",
+        content: [
+          { type: "text", text: `${emoji} ` },
+          {
+            type: "text",
+            marks: [{ type: "link", attrs: { href: sourceUrl } }],
+            text: `Read the original article on ${sourceName} ↗`,
+          },
+        ],
+      },
+      {
+        type: "paragraph",
+        content: [
+          {
+            type: "text",
+            marks: [{ type: "link", attrs: { href: siteUrl } }],
+            text: "See this article on Positron.today ↗",
+          },
+        ],
+      },
+    ],
+  };
 }
 
 function normalise(s: string): string {
@@ -101,7 +108,7 @@ export async function POST(request: NextRequest) {
 
     const articleTitle = String(match.title_en ?? match.title_nl ?? "");
     const imageUrl = match.image_url ? String(match.image_url) : null;
-    const linkNodes = buildLinksParagraphs(match as Record<string, unknown>);
+    const bodyJson = buildFullBodyJson(match as Record<string, unknown>);
 
     const slug = match.published_path
       ? String(match.published_path).split("/").pop()?.replace(/\.md$/, "")
@@ -120,46 +127,10 @@ export async function POST(request: NextRequest) {
       continue;
     }
 
-    // Fetch the existing post body JSON so we can append links to it
+    // Replace the full body with a properly structured ProseMirror document
     try {
-      const getRes = await fetch(`${PUBLICATION_URL}/api/v1/drafts/${sp.id}`, {
-        headers: { Cookie: cookie },
-      });
-      if (!getRes.ok) {
-        results.push({
-          substackId: sp.id,
-          substackTitle: sp.title,
-          articleId: Number(match.id),
-          articleTitle,
-          updated: false,
-          error: `Fetch existing post failed ${getRes.status}`,
-        });
-        continue;
-      }
-
-      const existing = await getRes.json();
-      let bodyJson = existing.draft_body_json ?? existing.body_json;
-
-      // Append link nodes to the existing document
-      if (bodyJson && typeof bodyJson === "object" && Array.isArray(bodyJson.content)) {
-        bodyJson = {
-          ...bodyJson,
-          content: [...bodyJson.content, ...linkNodes],
-        };
-      } else {
-        // No existing JSON body — build a minimal document
-        const summaryText = String(match.summary_en ?? "");
-        bodyJson = {
-          type: "doc",
-          content: [
-            ...(summaryText ? [{ type: "paragraph", content: [{ type: "text", text: summaryText }] }] : []),
-            ...linkNodes,
-          ],
-        };
-      }
-
       const updatePayload: Record<string, unknown> = {
-        draft_body_json: bodyJson,
+        draft_body: JSON.stringify(bodyJson),
         draft_subtitle: subtitle,
       };
       if (imageUrl) updatePayload.cover_image = imageUrl;

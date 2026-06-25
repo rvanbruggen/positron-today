@@ -80,7 +80,7 @@ async function createAndPublishDraft(
   const draftPayload: Record<string, unknown> = {
     draft_title: title,
     draft_subtitle: subtitle,
-    draft_body_json: bodyJson,
+    draft_body: JSON.stringify(bodyJson),
     type: "newsletter",
   };
   if (coverImageUrl) draftPayload.cover_image = coverImageUrl;
