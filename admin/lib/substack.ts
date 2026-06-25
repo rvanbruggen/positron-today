@@ -78,10 +78,19 @@ async function createAndPublishDraft(
   const sid = process.env.SUBSTACK_SID!;
   const cookie = `substack.sid=${sid}`;
 
+  // Fetch current user ID for draft_bylines
+  const meRes = await fetch("https://substack.com/api/v1/user/self", {
+    headers: { Cookie: cookie },
+  });
+  if (!meRes.ok) throw new Error(`Failed to fetch Substack user (${meRes.status})`);
+  const me = await meRes.json();
+  const userId = me.id as number;
+
   const draftPayload: Record<string, unknown> = {
     draft_title: title,
     draft_subtitle: subtitle,
     draft_body: JSON.stringify(bodyJson),
+    draft_bylines: [{ id: userId, is_guest: false }],
     type: "newsletter",
   };
   if (coverImageUrl) draftPayload.cover_image = coverImageUrl;
