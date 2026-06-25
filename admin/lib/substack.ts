@@ -24,7 +24,7 @@ export async function checkSubstackHealth(): Promise<{ ok: boolean; error?: stri
   }
 }
 
-function buildPostBody(article: Record<string, unknown>): string {
+function buildPostBodyJson(article: Record<string, unknown>) {
   const emoji = String(article.article_emoji ?? "✨");
   const summary = String(article.summary_en ?? "");
   const sourceUrl = String(article.source_url ?? "");
@@ -35,18 +35,43 @@ function buildPostBody(article: Record<string, unknown>): string {
     : null;
   const siteUrl = slug ? `${SITE_BASE}/posts/${slug}/` : SITE_BASE;
 
-  return [
-    `<p>${summary}</p>`,
-    `<hr>`,
-    `<p>${emoji} <a href="${sourceUrl}">Read the original article on ${sourceName} ↗</a></p>`,
-    `<p><a href="${siteUrl}">See this article on Positron.today ↗</a></p>`,
-  ].join("\n");
+  return {
+    type: "doc",
+    content: [
+      {
+        type: "paragraph",
+        content: [{ type: "text", text: summary }],
+      },
+      { type: "horizontal_rule" },
+      {
+        type: "paragraph",
+        content: [
+          { type: "text", text: `${emoji} ` },
+          {
+            type: "text",
+            marks: [{ type: "link", attrs: { href: sourceUrl } }],
+            text: `Read the original article on ${sourceName} ↗`,
+          },
+        ],
+      },
+      {
+        type: "paragraph",
+        content: [
+          {
+            type: "text",
+            marks: [{ type: "link", attrs: { href: siteUrl } }],
+            text: "See this article on Positron.today ↗",
+          },
+        ],
+      },
+    ],
+  };
 }
 
 async function createAndPublishDraft(
   title: string,
   subtitle: string,
-  bodyHtml: string,
+  bodyJson: Record<string, unknown>,
   coverImageUrl: string | null,
 ): Promise<{ id: number; url: string }> {
   const sid = process.env.SUBSTACK_SID!;
@@ -55,7 +80,7 @@ async function createAndPublishDraft(
   const draftPayload: Record<string, unknown> = {
     draft_title: title,
     draft_subtitle: subtitle,
-    draft_body: bodyHtml,
+    draft_body_json: bodyJson,
     type: "newsletter",
   };
   if (coverImageUrl) draftPayload.cover_image = coverImageUrl;
@@ -118,7 +143,7 @@ export async function postToSubstack(articleId: number): Promise<SubstackPostRes
   if (!article) return { ok: false, error: `Article ${articleId} not found` };
 
   const title = String(article.title_en ?? article.title_nl ?? "Untitled");
-  const bodyHtml = buildPostBody(article as Record<string, unknown>);
+  const bodyJson = buildPostBodyJson(article as Record<string, unknown>);
   const imageUrl = article.image_url ? String(article.image_url) : null;
 
   const slug = article.published_path
@@ -128,7 +153,7 @@ export async function postToSubstack(articleId: number): Promise<SubstackPostRes
   const subtitle = `Read on Positron.today: ${siteUrl}`;
 
   try {
-    const { url } = await createAndPublishDraft(title, subtitle, bodyHtml, imageUrl);
+    const { url } = await createAndPublishDraft(title, subtitle, bodyJson, imageUrl);
 
     await db.execute({
       sql: "UPDATE articles SET substack_posted_at = datetime('now') WHERE id = ?",
