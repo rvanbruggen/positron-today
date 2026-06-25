@@ -1,7 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import EditArticleModal, { type EditableFields } from "@/app/components/EditArticleModal";
+
+type SummariseJob = {
+  status: "running" | "done" | "error";
+  total: number;
+  done: number;
+  succeeded: number;
+  failed: number;
+  current_title: string | null;
+  error_message: string | null;
+};
 
 type ArticleTag = { id: number; name: string; emoji: string };
 
@@ -79,6 +89,8 @@ export default function ScheduledClient({
   const [articles, setArticles] = useState<Article[]>(initialArticles);
   const [summarising, setSummarising] = useState<Set<number>>(new Set());
   const [summarisingAll, setSummarisingAll] = useState(false);
+  const [summariseJob, setSummariseJob] = useState<SummariseJob | null>(null);
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [publishing, setPublishing] = useState<Set<number>>(new Set());
   const [published, setPublished] = useState<Set<number>>(new Set());
   const [error, setError] = useState<string | null>(null);
@@ -207,18 +219,112 @@ export default function ScheduledClient({
     }
   }
 
+  // ── Background "Summarise all" ──────────────────────────────────────────────
+  // The work runs entirely on the server (POST /api/summarise-drafts/start);
+  // this page just polls progress, so you can close the tab and the run keeps
+  // going. Reopening the page resumes the live view.
+
+  const stopPolling = useCallback(() => {
+    if (pollRef.current) {
+      clearInterval(pollRef.current);
+      pollRef.current = null;
+    }
+  }, []);
+
+  const startPolling = useCallback(() => {
+    stopPolling();
+    pollRef.current = setInterval(async () => {
+      try {
+        const res = await fetch("/api/summarise-drafts/status");
+        const data = await res.json();
+        const run = data.run ?? data;
+        if (!run || !run.status) {
+          stopPolling();
+          setSummarisingAll(false);
+          return;
+        }
+        setSummariseJob({
+          status: run.status,
+          total: Number(run.total ?? 0),
+          done: Number(run.done ?? 0),
+          succeeded: Number(run.succeeded ?? 0),
+          failed: Number(run.failed ?? 0),
+          current_title: run.current_title ?? null,
+          error_message: run.error_message ?? null,
+        });
+        if (run.status === "done" || run.status === "error") {
+          stopPolling();
+          setSummarisingAll(false);
+          if (run.status === "error" && run.error_message) {
+            setError(`Summarise run failed: ${run.error_message}`);
+          }
+          // Reload to reflect drafts that moved to "scheduled" server-side.
+          window.location.reload();
+        }
+      } catch {
+        // Transient network blip — keep polling.
+      }
+    }, 2000);
+  }, [stopPolling]);
+
   async function summariseAll() {
-    // Snapshot IDs up front: summarise() mutates article status to "scheduled"
-    // so the draft filter shrinks mid-loop otherwise.
-    const pending = articles.filter((a) => a.status === "draft").map((a) => a.id);
+    const pending = articles.filter((a) => a.status === "draft");
     if (pending.length === 0) return;
     setSummarisingAll(true);
     setError(null);
-    for (const id of pending) {
-      await summarise(id);
+    try {
+      const res = await fetch("/api/summarise-drafts/start", { method: "POST" });
+      if (!res.ok && res.status !== 409) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error ?? `Server error ${res.status}`);
+        setSummarisingAll(false);
+        return;
+      }
+      startPolling();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unexpected error");
+      setSummarisingAll(false);
     }
-    setSummarisingAll(false);
   }
+
+  async function stopSummariseAll() {
+    try {
+      await fetch("/api/summarise-drafts/stop", { method: "POST" });
+    } catch {
+      /* best effort */
+    }
+  }
+
+  // On mount, resume the live view if a server-side run is already in flight.
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/summarise-drafts/status");
+        const data = await res.json();
+        const run = data.run ?? data;
+        if (!cancelled && run && run.status === "running") {
+          setSummarisingAll(true);
+          setSummariseJob({
+            status: run.status,
+            total: Number(run.total ?? 0),
+            done: Number(run.done ?? 0),
+            succeeded: Number(run.succeeded ?? 0),
+            failed: Number(run.failed ?? 0),
+            current_title: run.current_title ?? null,
+            error_message: run.error_message ?? null,
+          });
+          startPolling();
+        }
+      } catch {
+        /* ignore */
+      }
+    })();
+    return () => {
+      cancelled = true;
+      stopPolling();
+    };
+  }, [startPolling, stopPolling]);
 
   async function summarise(id: number) {
     setSummarising((prev) => new Set(prev).add(id));
@@ -323,15 +429,46 @@ export default function ScheduledClient({
                   Drafts — needs summarisation ({drafts.length})
                 </h2>
                 {drafts.length > 1 && (
-                  <button
-                    onClick={summariseAll}
-                    disabled={summarisingAll || summarising.size > 0}
-                    className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-semibold px-3 py-1.5 rounded-lg text-xs transition-colors disabled:opacity-50 whitespace-nowrap"
-                  >
-                    {summarisingAll ? `Summarising… (${drafts.length} left)` : `✨ Summarise all (${drafts.length})`}
-                  </button>
+                  summarisingAll ? (
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-amber-700">
+                        Summarising on the server…
+                        {summariseJob ? ` (${summariseJob.done}/${summariseJob.total})` : ""}
+                      </span>
+                      <button
+                        onClick={stopSummariseAll}
+                        className="bg-white border border-yellow-300 hover:bg-yellow-50 text-amber-800 font-semibold px-3 py-1.5 rounded-lg text-xs transition-colors whitespace-nowrap"
+                      >
+                        Stop
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={summariseAll}
+                      disabled={summarising.size > 0}
+                      className="bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-semibold px-3 py-1.5 rounded-lg text-xs transition-colors disabled:opacity-50 whitespace-nowrap"
+                    >
+                      ✨ Summarise all ({drafts.length})
+                    </button>
+                  )
                 )}
               </div>
+              {summarisingAll && (
+                <div className="mb-3 rounded-lg border border-yellow-200 bg-yellow-50 px-4 py-2 text-xs text-amber-800">
+                  Running server-side — you can safely close this tab; summarisation
+                  will continue and the queue will update when it finishes.
+                  {summariseJob?.current_title && (
+                    <span className="block mt-1 text-amber-600 truncate">
+                      Now: {summariseJob.current_title}
+                    </span>
+                  )}
+                  {summariseJob && summariseJob.failed > 0 && (
+                    <span className="block mt-1 text-red-600">
+                      {summariseJob.failed} failed (will remain as drafts).
+                    </span>
+                  )}
+                </div>
+              )}
               <div className="flex flex-col gap-3">
                 {drafts.map((a) => (
                   <div key={a.id} className="bg-white rounded-xl px-5 py-4 shadow-sm border border-yellow-200">

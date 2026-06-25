@@ -172,6 +172,24 @@ export async function initSchema() {
     // v2.26: social digest — hand-pick articles for periodic bundled social posts
     "ALTER TABLE articles ADD COLUMN digest_pick INTEGER NOT NULL DEFAULT 0",
     "ALTER TABLE articles ADD COLUMN digest_posted_at TEXT",
+
+    // v2.36: server-side "Summarise all" runs. Tracks progress so the
+    // browser can disconnect (close the tab, background the app) without
+    // interrupting the work — exactly like pipeline_runs does for fetch +
+    // classify. Each row is one bulk-summarise-drafts cycle.
+    `CREATE TABLE IF NOT EXISTS summarise_runs (
+      id            INTEGER PRIMARY KEY AUTOINCREMENT,
+      status        TEXT NOT NULL DEFAULT 'running' CHECK(status IN ('running', 'done', 'error')),
+      total         INTEGER NOT NULL DEFAULT 0,
+      done          INTEGER NOT NULL DEFAULT 0,
+      succeeded     INTEGER NOT NULL DEFAULT 0,
+      failed        INTEGER NOT NULL DEFAULT 0,
+      current_title TEXT,
+      error_message TEXT,
+      log           TEXT NOT NULL DEFAULT '[]',
+      started_at    TEXT NOT NULL DEFAULT (datetime('now')),
+      finished_at   TEXT
+    )`,
   ];
 
   for (const sql of migrations) {
