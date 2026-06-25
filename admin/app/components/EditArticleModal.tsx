@@ -12,6 +12,9 @@ export type EditableFields = {
   article_emoji: string;
   featured: boolean;
   digest_pick: boolean;
+  /** Pre-publish only — announce on social when the article publishes.
+   *  Omitted for already-published articles (History), where it's moot. */
+  post_to_social_on_publish?: boolean;
 };
 
 type Props = {
@@ -130,6 +133,21 @@ export default function EditArticleModal({ articleId, initial, isPublished, onCl
               📬 Include in next social digest
             </span>
           </label>
+
+          {/* Announce-on-social toggle — only meaningful before publishing */}
+          {!isPublished && (
+            <label className="flex items-center gap-2 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={!!fields.post_to_social_on_publish}
+                onChange={(e) => setFields((f) => ({ ...f, post_to_social_on_publish: e.target.checked }))}
+                className="accent-yellow-500"
+              />
+              <span className="text-xs font-semibold text-amber-700 uppercase tracking-wide">
+                📣 Announce on social when published
+              </span>
+            </label>
+          )}
 
           {/* Language tabs */}
           <div className="flex gap-1 border-b border-yellow-100">

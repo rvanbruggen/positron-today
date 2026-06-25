@@ -122,24 +122,6 @@ export default function ScheduledClient({
     setArticles((prev) => prev.filter((a) => a.id !== id));
   }
 
-  async function setSocialFlag(id: number, value: boolean) {
-    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, post_to_social_on_publish: value } : a)));
-    await fetch("/api/articles", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, post_to_social_on_publish: value }),
-    });
-  }
-
-  async function setFeatured(id: number, value: boolean) {
-    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, featured: value } : a)));
-    await fetch("/api/articles", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, featured: value }),
-    });
-  }
-
   async function setDigestPick(id: number, value: boolean) {
     setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, digest_pick: value } : a)));
     await fetch("/api/articles", {
@@ -671,44 +653,29 @@ export default function ScheduledClient({
                           }}
                           className="border border-yellow-200 rounded px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400"
                         />
-                        <div className="flex flex-col gap-1">
-                          <label
-                            title="When this article publishes, also announce it on social media"
-                            className="flex items-center gap-1.5 text-xs text-amber-700 cursor-pointer select-none"
+                        {/* One-tap digest toggle. Featured + social live in
+                             the Edit modal now — this is the single per-article
+                             control on the card, sized for easy mobile use. */}
+                        <button
+                          onClick={() => setDigestPick(a.id, !a.digest_pick)}
+                          aria-pressed={!!a.digest_pick}
+                          title="Include this article in the next social media digest post"
+                          className={`w-full sm:w-auto px-3 py-2 rounded-lg text-xs font-semibold transition-colors border ${
+                            a.digest_pick
+                              ? "bg-teal-500 hover:bg-teal-600 text-white border-teal-500"
+                              : "bg-white hover:bg-teal-50 text-teal-700 border-teal-300"
+                          }`}
+                        >
+                          {a.digest_pick ? "📬 In digest ✓" : "📬 Add to digest"}
+                        </button>
+                        {a.featured && (
+                          <span
+                            title="Featured (wide card) — edit in the article's Edit dialog"
+                            className="text-[10px] text-amber-500 font-medium"
                           >
-                            <input
-                              type="checkbox"
-                              checked={!!a.post_to_social_on_publish}
-                              onChange={(e) => setSocialFlag(a.id, e.target.checked)}
-                              className="accent-yellow-500"
-                            />
-                            📣 Announce on social
-                          </label>
-                          <label
-                            title="Display this article spanning two columns on the public site"
-                            className="flex items-center gap-1.5 text-xs text-amber-700 cursor-pointer select-none"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={!!a.featured}
-                              onChange={(e) => setFeatured(a.id, e.target.checked)}
-                              className="accent-yellow-500"
-                            />
-                            ⭐ Featured (wide card)
-                          </label>
-                          <label
-                            title="Include this article in the next social media digest post"
-                            className="flex items-center gap-1.5 text-xs text-amber-700 cursor-pointer select-none"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={!!a.digest_pick}
-                              onChange={(e) => setDigestPick(a.id, e.target.checked)}
-                              className="accent-yellow-500"
-                            />
-                            📬 Include in digest
-                          </label>
-                        </div>
+                            ⭐ Featured
+                          </span>
+                        )}
 
                         {isQueued(a.publish_date ?? null) ? (
                           /* ── Queued: waiting for cron ── */
@@ -795,6 +762,7 @@ export default function ScheduledClient({
               article_emoji: a.article_emoji ?? "✨",
               featured: !!a.featured,
               digest_pick: !!a.digest_pick,
+              post_to_social_on_publish: !!a.post_to_social_on_publish,
             }}
             onClose={() => setEditingId(null)}
             onSaved={(fields: EditableFields) => {
