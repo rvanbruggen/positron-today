@@ -2,7 +2,7 @@
 title: "Want to get on the water? At Dobber, you can grab a kayak from a vending machine"
 title_nl: "Wilt u het water op? Bij Dobber haalt u een kajak uit de automaat"
 title_fr: "Vous voulez aller sur l'eau ? Chez Dobber, vous pouvez prendre un kayak dans un distributeur automatique"
-date: 2026-06-25T11:46:34
+date: 2026-06-25T13:23:25
 source_pub_date: 2026-06-24
 fetched_date: 2026-06-25
 source_url: "https://www.standaard.be/economie/u-wilt-het-water-op-bij-dobber-haalt-u-een-kajak-uit-de-automaat/157720276.html"
