@@ -9,8 +9,7 @@ cd admin
 echo "Stopping old containers..."
 docker compose down --remove-orphans
 echo "Rebuilding and restarting..."
-docker compose build --no-cache
-docker compose up -d
+docker compose up -d --build
 
 echo "Done. Waiting for startup..."
 sleep 3
