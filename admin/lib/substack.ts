@@ -196,6 +196,7 @@ export async function postPendingSubstack(): Promise<{ posted: number; skipped: 
     WHERE status = 'published'
       AND (post_to_substack = 1 OR digest_pick = 1)
       AND substack_posted_at IS NULL
+      AND published_at >= '2026-06-25'
     ORDER BY published_at ASC
   `);
 
