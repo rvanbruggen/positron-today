@@ -166,6 +166,13 @@ export async function POST(request: NextRequest) {
     // and are posted by the publish timer's postPendingSocial() once the
     // URL is actually live. Posting here caused 404 previews because
     // GitHub Pages hadn't finished deploying yet.
+
+    // Substack cross-posting doesn't need the URL to be live, so fire it now
+    const { postPendingSubstack } = await import("@/lib/substack");
+    postPendingSubstack().catch((err) =>
+      console.error("[publish] Substack auto-post failed:", err)
+    );
+
     return Response.json({ ok: true, path });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
