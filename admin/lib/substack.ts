@@ -78,13 +78,13 @@ async function createAndPublishDraft(
   const sid = process.env.SUBSTACK_SID!;
   const cookie = `substack.sid=${sid}`;
 
-  // Fetch current user ID for draft_bylines
-  const meRes = await fetch("https://substack.com/api/v1/user/self", {
+  // Fetch current user ID for draft_bylines via the publication endpoint
+  const meRes = await fetch(`${PUBLICATION_URL}/api/v1/me`, {
     headers: { Cookie: cookie },
   });
   if (!meRes.ok) throw new Error(`Failed to fetch Substack user (${meRes.status})`);
   const me = await meRes.json();
-  const userId = me.id as number;
+  const userId = (me.id ?? me.userId) as number;
 
   const draftPayload: Record<string, unknown> = {
     draft_title: title,
