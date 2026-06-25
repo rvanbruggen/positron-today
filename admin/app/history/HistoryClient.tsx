@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useCallback } from "react";
+import { useState, useMemo } from "react";
 import EditArticleModal, { type EditableFields } from "@/app/components/EditArticleModal";
 
 type ArticleTag = { id: number; name: string; emoji: string };
@@ -27,6 +27,7 @@ type Article = {
   positivity_score: number | null;
   digest_pick: boolean;
   digest_posted_at: string | null;
+  substack_posted_at: string | null;
 };
 
 const SITE_BASE = "https://positron.today";
@@ -78,16 +79,11 @@ export default function HistoryClient({
   const [republishing, setRepublishing]   = useState<Set<number>>(new Set());
   const [republished, setRepublished]     = useState<Set<number>>(new Set());
   const [removing, setRemoving]           = useState<Set<number>>(new Set());
-  const [generatingCard, setGeneratingCard]   = useState<Set<number>>(new Set());
-  const [postingBluesky, setPostingBluesky]   = useState<Set<number>>(new Set());
-  const [postedBluesky,  setPostedBluesky]    = useState<Set<number>>(new Set());
-  const [twitterOpened,  setTwitterOpened]    = useState<Set<number>>(new Set());
-  const [postingSocial,  setPostingSocial]    = useState<Set<number>>(new Set());
-  const [postedSocial,   setPostedSocial]     = useState<Set<number>>(
-    () => new Set(initialArticles.filter((a) => a.social_posted_at).map((a) => a.id))
-  );
-  const [socialMenuOpen, setSocialMenuOpen]   = useState<number | null>(null);
   const [togglingDigest, setTogglingDigest]  = useState<Set<number>>(new Set());
+  const [postingSubstack, setPostingSubstack] = useState<Set<number>>(new Set());
+  const [postedSubstack,  setPostedSubstack]  = useState<Set<number>>(
+    () => new Set(initialArticles.filter((a) => a.substack_posted_at).map((a) => a.id))
+  );
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
@@ -95,14 +91,6 @@ export default function HistoryClient({
   const [error, setError]                 = useState<string | null>(null);
   const [editingId, setEditingId]         = useState<number | null>(null);
 
-  // Close social dropdown when clicking outside
-  const closeSocialMenu = useCallback(() => setSocialMenuOpen(null), []);
-  useEffect(() => {
-    if (socialMenuOpen !== null) {
-      document.addEventListener("click", closeSocialMenu);
-      return () => document.removeEventListener("click", closeSocialMenu);
-    }
-  }, [socialMenuOpen, closeSocialMenu]);
 
   function handleSort(key: SortKey) {
     if (sortKey === key) {
@@ -200,85 +188,25 @@ export default function HistoryClient({
     }
   }
 
-  async function generateInstagramCard(a: Article) {
-    setGeneratingCard((prev) => new Set(prev).add(a.id));
+  async function postToSubstack(a: Article) {
+    setPostingSubstack((prev) => new Set(prev).add(a.id));
     setError(null);
     try {
-      const res = await fetch(`/api/instagram-card?id=${a.id}`);
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setError(data.error ?? `Card generation failed: ${res.status}`);
-        return;
-      }
-      // Trigger browser download
-      const blob = await res.blob();
-      const url  = URL.createObjectURL(blob);
-      const a_el = document.createElement("a");
-      a_el.href  = url;
-      const slug = (a.title_en ?? a.title_nl ?? "article").toLowerCase().replace(/[^\w]+/g, "-").slice(0, 50);
-      a_el.download = `positron-${slug}.png`;
-      a_el.click();
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Unexpected error");
-    } finally {
-      setGeneratingCard((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
-    }
-  }
-
-  function openTwitterIntent(a: Article) {
-    // Prevent double-firing (double-click, etc.)
-    if (twitterOpened.has(a.id)) return;
-    setTwitterOpened((prev) => new Set(prev).add(a.id));
-    setTimeout(() => setTwitterOpened((prev) => { const s = new Set(prev); s.delete(a.id); return s; }), 4000);
-
-    const SITE_BASE = "https://positron.today";
-    const slug = a.published_path
-      ? a.published_path.split("/").pop()?.replace(/\.md$/, "")
-      : null;
-    const url = slug ? `${SITE_BASE}/posts/${slug}/` : SITE_BASE;
-
-    // Build tweet text within 280 chars (URL counts as 23 via t.co)
-    const emoji   = a.article_emoji ?? "✨";
-    const title   = a.title_en ?? a.title_nl ?? "";
-    const summary = a.summary_en ?? "";
-    const prefix  = `${emoji} ${title}\n\n`;
-    const suffix  = `\n\n${url}`;
-    const budget  = 280 - 23 - 2 - prefix.length; // 23=t.co, 2=\n\n before url
-    const snippet = budget > 0
-      ? summary.length > budget ? summary.slice(0, budget - 1) + "…" : summary
-      : "";
-    const text = `${prefix}${snippet}${suffix}`;
-
-    window.open(
-      `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
-      "_blank"
-    );
-  }
-
-  async function postToSocials(a: Article, platforms?: string[]) {
-    setSocialMenuOpen(null);
-    setPostingSocial((prev) => new Set(prev).add(a.id));
-    setError(null);
-    try {
-      const body: Record<string, unknown> = { id: a.id };
-      if (platforms) body.platforms = platforms;
-      const res  = await fetch("/api/post-social", {
-        method:  "POST",
+      const res = await fetch("/api/post-substack", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify(body),
+        body: JSON.stringify({ id: a.id }),
       });
       const data = await res.json();
-      if (!res.ok) { setError(data.error ?? `Social post failed: ${res.status}`); return; }
-      if (data.warning) setError(`Posted, but: ${data.warning}`);
-      setPostedSocial((prev) => new Set(prev).add(a.id));
+      if (!res.ok) { setError(data.error ?? `Substack post failed: ${res.status}`); return; }
+      setPostedSubstack((prev) => new Set(prev).add(a.id));
       setArticles((prev) => prev.map((x) =>
-        x.id === a.id ? { ...x, social_posted_at: new Date().toISOString() } : x
+        x.id === a.id ? { ...x, substack_posted_at: new Date().toISOString() } : x
       ));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unexpected error");
     } finally {
-      setPostingSocial((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
+      setPostingSubstack((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
     }
   }
 
@@ -298,26 +226,6 @@ export default function HistoryClient({
       }
     } finally {
       setTogglingDigest((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
-    }
-  }
-
-  async function postToBluesky(a: Article) {
-    setPostingBluesky((prev) => new Set(prev).add(a.id));
-    setError(null);
-    try {
-      const res  = await fetch("/api/post-bluesky", {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ id: a.id }),
-      });
-      const data = await res.json();
-      if (!res.ok) { setError(data.error ?? `Bluesky post failed: ${res.status}`); return; }
-      setPostedBluesky((prev) => new Set(prev).add(a.id));
-      setTimeout(() => setPostedBluesky((prev) => { const s = new Set(prev); s.delete(a.id); return s; }), 3000);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Unexpected error");
-    } finally {
-      setPostingBluesky((prev) => { const s = new Set(prev); s.delete(a.id); return s; });
     }
   }
 
@@ -468,64 +376,22 @@ export default function HistoryClient({
                     <td className="px-3 py-2.5">
                       <div className="flex items-center gap-1 justify-end">
 
-                        {/* Instagram card */}
+                        {/* Publish to Substack */}
                         <button
-                          onClick={() => generateInstagramCard(a)}
-                          disabled={generatingCard.has(a.id)}
-                          title="Generate Instagram card"
-                          className="w-7 h-7 flex items-center justify-center rounded bg-pink-100 hover:bg-pink-200 text-pink-700 transition-colors disabled:opacity-40 text-sm">
-                          {generatingCard.has(a.id) ? "⏳" : "📸"}
+                          onClick={() => postToSubstack(a)}
+                          disabled={postingSubstack.has(a.id) || postedSubstack.has(a.id)}
+                          title={
+                            postedSubstack.has(a.id)
+                              ? `Published to Substack${a.substack_posted_at ? ` on ${formatDate(a.substack_posted_at)}` : ""}`
+                              : "Publish to Substack"
+                          }
+                          className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors disabled:opacity-40 ${
+                            postedSubstack.has(a.id)
+                              ? "bg-orange-200 text-orange-700"
+                              : "bg-orange-100 hover:bg-orange-200 text-orange-700"
+                          }`}>
+                          {postingSubstack.has(a.id) ? "⏳" : postedSubstack.has(a.id) ? "📰✓" : "📰"}
                         </button>
-
-                        {/* Post to socials via Post for Me — dropdown */}
-                        <div className="relative">
-                          <button
-                            onClick={(e) => { e.stopPropagation(); setSocialMenuOpen(socialMenuOpen === a.id ? null : a.id); }}
-                            disabled={postingSocial.has(a.id)}
-                            title={
-                              a.social_posted_at
-                                ? `Posted on ${formatDate(a.social_posted_at)} — click to repost`
-                                : "Post to social media"
-                            }
-                            className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors ${
-                              postingSocial.has(a.id)
-                                ? "bg-violet-200 text-violet-700"
-                                : postedSocial.has(a.id)
-                                ? "bg-violet-200 hover:bg-violet-300 text-violet-700"
-                                : "bg-violet-100 hover:bg-violet-200 text-violet-700"
-                            }`}>
-                            {postingSocial.has(a.id) ? "⏳" : postedSocial.has(a.id) ? "📣✓" : "📣"}
-                          </button>
-                          {socialMenuOpen === a.id && (
-                            <div className="absolute right-0 top-8 z-50 bg-white border border-violet-200 rounded-lg shadow-lg py-1 min-w-[160px]">
-                              <button onClick={() => postToSocials(a)}
-                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
-                                📣 All platforms
-                              </button>
-                              <hr className="border-violet-100 my-1" />
-                              <button onClick={() => postToSocials(a, ["instagram"])}
-                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
-                                📷 Instagram only
-                              </button>
-                              <button onClick={() => postToSocials(a, ["bluesky"])}
-                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
-                                🦋 Bluesky only
-                              </button>
-                              <button onClick={() => postToSocials(a, ["x"])}
-                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
-                                𝕏 X only
-                              </button>
-                              <button onClick={() => postToSocials(a, ["threads"])}
-                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
-                                🧵 Threads only
-                              </button>
-                              <button onClick={() => postToSocials(a, ["facebook"])}
-                                className="w-full text-left px-3 py-1.5 text-sm text-violet-800 hover:bg-violet-50">
-                                👤 Facebook only
-                              </button>
-                            </div>
-                          )}
-                        </div>
 
                         {/* Digest pick */}
                         <button
