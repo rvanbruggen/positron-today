@@ -296,6 +296,12 @@ export async function PATCH(request: NextRequest) {
       sql: "UPDATE articles SET digest_pick = ? WHERE id = ?",
       args: [digest_pick ? 1 : 0, id],
     });
+    if (digest_pick) {
+      const { postPendingSubstack } = await import("@/lib/substack");
+      postPendingSubstack().catch((err) =>
+        console.error("[articles] Substack auto-post after digest pick failed:", err)
+      );
+    }
     return Response.json({ ok: true });
   }
 
