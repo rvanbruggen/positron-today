@@ -14,9 +14,10 @@ export async function checkSubstackHealth(): Promise<{ ok: boolean; error?: stri
   const sid = process.env.SUBSTACK_SID;
   if (!sid) return { ok: false, error: "SUBSTACK_SID env var is not set" };
   try {
-    const client = getClient();
-    const reachable = await client.testConnectivity();
-    if (!reachable) return { ok: false, error: "Substack API unreachable — cookie may have expired" };
+    const res = await fetch(`${PUBLICATION_URL}/api/v1/archive?limit=1`, {
+      headers: { Cookie: `substack.sid=${sid}` },
+    });
+    if (!res.ok) return { ok: false, error: `Substack API returned ${res.status} — cookie may have expired` };
     return { ok: true };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
