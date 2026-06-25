@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.36.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.37.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -375,7 +375,7 @@ This is the migration path between environments (e.g. local SQLite → Turso clo
 | `/sources` | Manage RSS sources (add, edit inline, toggle active) |
 | `/tags` | Manage topic tags |
 | `/preview` | Review pending articles, summarise, edit, publish |
-| `/scheduled` | Drafts awaiting summarisation (single + bulk "Summarise all") and scheduled publish queue — set publish times, suggest schedule, publish on demand |
+| `/scheduled` | Drafts awaiting summarisation (single + bulk "Summarise all") and scheduled publish queue — set publish times, suggest schedule, publish on demand. Each "Ready to publish" card has one tap-friendly **digest toggle**; featured + announce-on-social live in the per-article Edit dialog |
 | `/history` | Published article history — edit, re-publish, generate Instagram card, post to socials |
 | `/rejections` | Browse rejection log, override or delete entries |
 | `/settings` | LLM providers, social publishing accounts, backup/restore, sign out |

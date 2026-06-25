@@ -224,14 +224,23 @@ export async function PATCH(request: NextRequest) {
 
   // Content edit: update title/summary/emoji fields directly
   if (content !== undefined) {
-    const { title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji, featured: featuredFlag, digest_pick: digestPickFlag } = content;
+    const {
+      title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji,
+      featured: featuredFlag, digest_pick: digestPickFlag,
+      post_to_social_on_publish: socialFlag,
+    } = content;
+    // socialFlag is omitted for already-published articles (History modal),
+    // where the announce-on-publish flag is moot — COALESCE keeps the stored
+    // value instead of clobbering it to 0.
+    const socialArg = socialFlag === undefined ? null : (socialFlag ? 1 : 0);
     await db.execute({
       sql: `UPDATE articles SET
               title_en = ?, title_nl = ?, title_fr = ?,
               summary_en = ?, summary_nl = ?, summary_fr = ?,
-              article_emoji = ?, featured = ?, digest_pick = ?
+              article_emoji = ?, featured = ?, digest_pick = ?,
+              post_to_social_on_publish = COALESCE(?, post_to_social_on_publish)
             WHERE id = ?`,
-      args: [title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji, featuredFlag ? 1 : 0, digestPickFlag ? 1 : 0, id],
+      args: [title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji, featuredFlag ? 1 : 0, digestPickFlag ? 1 : 0, socialArg, id],
     });
     return Response.json({ ok: true });
   }
