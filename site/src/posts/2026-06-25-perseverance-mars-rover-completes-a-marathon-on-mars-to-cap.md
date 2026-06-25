@@ -2,7 +2,7 @@
 title: "Perseverance Mars rover completes a marathon on Mars to cap off extraordinary 5 years"
 title_nl: "Perseverance Mars-rover voltooit een marathon op Mars ter afsluiting van vijf bijzondere jaren"
 title_fr: "Le rover Mars Perseverance termine un marathon sur Mars pour clore cinq années extraordinaires"
-date: 2026-06-25T12:10:48
+date: 2026-06-25T12:16:21
 source_pub_date: 2026-06-25
 fetched_date: 2026-06-25
 source_url: "https://www.goodnewsnetwork.org/perseverance-mars-rover-completes-a-marathon-on-mars-to-cap-off-extraordinary-5-years/"
