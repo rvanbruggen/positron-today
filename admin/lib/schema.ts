@@ -190,6 +190,10 @@ export async function initSchema() {
       started_at    TEXT NOT NULL DEFAULT (datetime('now')),
       finished_at   TEXT
     )`,
+
+    // v2.38: Substack cross-posting
+    "ALTER TABLE articles ADD COLUMN post_to_substack INTEGER NOT NULL DEFAULT 0",
+    "ALTER TABLE articles ADD COLUMN substack_posted_at TEXT",
   ];
 
   for (const sql of migrations) {

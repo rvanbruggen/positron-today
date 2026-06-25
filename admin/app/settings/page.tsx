@@ -114,6 +114,11 @@ export default function SettingsPage() {
   const [ptronResult,   setPtronResult]   = useState<string | null>(null);
   const [runTimes,      setRunTimes]      = useState<string[]>(["08:00", "15:00"]);
 
+  // Substack state
+  const [substackOk,      setSubstackOk]      = useState<boolean | null>(null);
+  const [substackError,   setSubstackError]   = useState<string | null>(null);
+  const [substackChecking, setSubstackChecking] = useState(false);
+
   // Digest state
   const [digestTimes,      setDigestTimes]      = useState<string[]>([]);
   const [digestRunning,    setDigestRunning]    = useState(false);
@@ -138,6 +143,18 @@ export default function SettingsPage() {
       .then(r => r.json())
       .then(data => setDigestPending(data.pending ?? null))
       .catch(() => {});
+
+    // Check Substack connectivity
+    fetch("/api/substack-status")
+      .then(r => r.json())
+      .then(data => {
+        setSubstackOk(data.ok ?? false);
+        setSubstackError(data.error ?? null);
+      })
+      .catch(() => {
+        setSubstackOk(false);
+        setSubstackError("Failed to reach status endpoint");
+      });
   }, []);
 
   useEffect(() => {
@@ -815,6 +832,76 @@ export default function SettingsPage() {
                   {enabledIds.size} of {socialAccounts.length} enabled
                 </p>
               </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ── Substack cross-posting ── */}
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">Substack cross-posting</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          Articles with the Substack toggle enabled are automatically cross-posted to{" "}
+          <a href="https://positrontoday.substack.com" target="_blank" rel="noopener noreferrer"
+            className="underline hover:text-amber-800">positrontoday.substack.com ↗</a>{" "}
+          after publishing. Requires a valid <code className="font-mono bg-amber-50 px-1 rounded text-xs">SUBSTACK_SID</code> cookie.
+        </p>
+        <div className={`border rounded-xl p-5 transition-colors ${
+          substackOk === true ? "bg-green-50 border-green-300" :
+          substackOk === false ? "bg-red-50 border-red-300" :
+          "bg-white border-yellow-200"
+        }`}>
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-3">
+              <span className={`text-lg ${substackOk === true ? "" : substackOk === false ? "" : "animate-pulse"}`}>
+                {substackOk === true ? "🟢" : substackOk === false ? "🔴" : "⏳"}
+              </span>
+              <div>
+                <p className="text-sm font-medium text-amber-900">
+                  {substackOk === null ? "Checking Substack connection…" :
+                   substackOk ? "Substack connected" :
+                   "Substack disconnected"}
+                </p>
+                {substackError && (
+                  <p className="text-xs text-red-600 mt-0.5">{substackError}</p>
+                )}
+                {substackOk && (
+                  <p className="text-xs text-green-600 mt-0.5">Cookie is valid — cross-posting will work</p>
+                )}
+              </div>
+            </div>
+            <button
+              onClick={async () => {
+                setSubstackChecking(true);
+                setSubstackOk(null);
+                setSubstackError(null);
+                try {
+                  const res = await fetch("/api/substack-status");
+                  const data = await res.json();
+                  setSubstackOk(data.ok ?? false);
+                  setSubstackError(data.error ?? null);
+                } catch {
+                  setSubstackOk(false);
+                  setSubstackError("Failed to reach status endpoint");
+                } finally {
+                  setSubstackChecking(false);
+                }
+              }}
+              disabled={substackChecking}
+              className="text-sm bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50 whitespace-nowrap"
+            >
+              {substackChecking ? "Checking…" : "Re-check"}
+            </button>
+          </div>
+          {substackOk === false && (
+            <div className="mt-4 bg-red-50 border border-red-200 rounded-lg p-3 text-xs text-red-700">
+              <p className="font-semibold mb-1">How to fix:</p>
+              <ol className="list-decimal ml-4 space-y-1">
+                <li>Sign into <a href="https://substack.com" target="_blank" rel="noopener noreferrer" className="underline">substack.com</a> in your browser</li>
+                <li>Open DevTools → Application → Cookies → find <code className="font-mono bg-red-100 px-1 rounded">substack.sid</code></li>
+                <li>Copy the value and update <code className="font-mono bg-red-100 px-1 rounded">SUBSTACK_SID</code> in your environment variables</li>
+                <li>Restart the admin server, then re-check</li>
+              </ol>
             </div>
           )}
         </div>

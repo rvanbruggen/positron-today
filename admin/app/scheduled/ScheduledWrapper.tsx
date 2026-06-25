@@ -21,6 +21,7 @@ type Article = {
   publish_date: string | null;
   image_url: string | null;
   post_to_social_on_publish: boolean;
+  post_to_substack: boolean;
   featured: boolean;
   digest_pick: boolean;
   positivity_score: number | null;

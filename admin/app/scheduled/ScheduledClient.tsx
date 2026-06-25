@@ -32,6 +32,7 @@ type Article = {
   publish_date: string | null;
   image_url: string | null;
   post_to_social_on_publish: boolean;
+  post_to_substack: boolean;
   featured: boolean;
   digest_pick: boolean;
   positivity_score: number | null;
@@ -763,6 +764,7 @@ export default function ScheduledClient({
               featured: !!a.featured,
               digest_pick: !!a.digest_pick,
               post_to_social_on_publish: !!a.post_to_social_on_publish,
+              post_to_substack: !!a.post_to_substack,
             }}
             onClose={() => setEditingId(null)}
             onSaved={(fields: EditableFields) => {

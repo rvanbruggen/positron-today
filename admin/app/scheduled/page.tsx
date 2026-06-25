@@ -49,6 +49,7 @@ export default async function ScheduledPage() {
     publish_date: a.publish_date ? String(a.publish_date) : null,
     image_url: a.image_url ? String(a.image_url) : null,
     post_to_social_on_publish: Number(a.post_to_social_on_publish ?? 0) === 1,
+    post_to_substack: Number(a.post_to_substack ?? 0) === 1,
     featured: Number(a.featured ?? 0) === 1,
     digest_pick: Number(a.digest_pick ?? 0) === 1,
     positivity_score: a.positivity_score != null ? Number(a.positivity_score) : null,

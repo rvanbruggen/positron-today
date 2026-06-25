@@ -228,19 +228,22 @@ export async function PATCH(request: NextRequest) {
       title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji,
       featured: featuredFlag, digest_pick: digestPickFlag,
       post_to_social_on_publish: socialFlag,
+      post_to_substack: substackFlag,
     } = content;
-    // socialFlag is omitted for already-published articles (History modal),
-    // where the announce-on-publish flag is moot — COALESCE keeps the stored
-    // value instead of clobbering it to 0.
+    // socialFlag / substackFlag are omitted for already-published articles
+    // (History modal), where the announce-on-publish flags are moot —
+    // COALESCE keeps the stored value instead of clobbering it to 0.
     const socialArg = socialFlag === undefined ? null : (socialFlag ? 1 : 0);
+    const substackArg = substackFlag === undefined ? null : (substackFlag ? 1 : 0);
     await db.execute({
       sql: `UPDATE articles SET
               title_en = ?, title_nl = ?, title_fr = ?,
               summary_en = ?, summary_nl = ?, summary_fr = ?,
               article_emoji = ?, featured = ?, digest_pick = ?,
-              post_to_social_on_publish = COALESCE(?, post_to_social_on_publish)
+              post_to_social_on_publish = COALESCE(?, post_to_social_on_publish),
+              post_to_substack = COALESCE(?, post_to_substack)
             WHERE id = ?`,
-      args: [title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji, featuredFlag ? 1 : 0, digestPickFlag ? 1 : 0, socialArg, id],
+      args: [title_en, title_nl, title_fr, summary_en, summary_nl, summary_fr, article_emoji, featuredFlag ? 1 : 0, digestPickFlag ? 1 : 0, socialArg, substackArg, id],
     });
     return Response.json({ ok: true });
   }

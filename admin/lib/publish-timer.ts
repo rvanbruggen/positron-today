@@ -14,6 +14,7 @@ import db from "@/lib/db";
 import { parseScheduleWallString } from "@/lib/schedule-time";
 import { publishScheduledArticles } from "@/lib/publish-core";
 import { postPendingSocial } from "@/lib/social-post-core";
+import { postPendingSubstack } from "@/lib/substack";
 
 // Map of article ID → timer handle
 const activeTimers = new Map<number, ReturnType<typeof setTimeout>>();
@@ -48,6 +49,12 @@ async function publishAndPost(articleId: number): Promise<void> {
       // Post to social (polls for deploy liveness automatically)
       const socialResult = await postPendingSocial({ waitForLive: true, maxWaitSeconds: 300 });
       console.log(`[publish-timer] Social: ${socialResult.posted} posted, ${socialResult.skipped} skipped`);
+
+      // Cross-post to Substack
+      const substackResult = await postPendingSubstack();
+      if (substackResult.posted > 0 || substackResult.skipped > 0) {
+        console.log(`[publish-timer] Substack: ${substackResult.posted} posted, ${substackResult.skipped} skipped`);
+      }
     } else if (published?.error) {
       console.error(`[publish-timer] Failed to publish "${title}": ${published.error}`);
     }

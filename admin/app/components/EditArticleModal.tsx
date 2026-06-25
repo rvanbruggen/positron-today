@@ -15,6 +15,7 @@ export type EditableFields = {
   /** Pre-publish only — announce on social when the article publishes.
    *  Omitted for already-published articles (History), where it's moot. */
   post_to_social_on_publish?: boolean;
+  post_to_substack?: boolean;
 };
 
 type Props = {
@@ -136,17 +137,30 @@ export default function EditArticleModal({ articleId, initial, isPublished, onCl
 
           {/* Announce-on-social toggle — only meaningful before publishing */}
           {!isPublished && (
-            <label className="flex items-center gap-2 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                checked={!!fields.post_to_social_on_publish}
-                onChange={(e) => setFields((f) => ({ ...f, post_to_social_on_publish: e.target.checked }))}
-                className="accent-yellow-500"
-              />
-              <span className="text-xs font-semibold text-amber-700 uppercase tracking-wide">
-                📣 Announce on social when published
-              </span>
-            </label>
+            <>
+              <label className="flex items-center gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={!!fields.post_to_social_on_publish}
+                  onChange={(e) => setFields((f) => ({ ...f, post_to_social_on_publish: e.target.checked }))}
+                  className="accent-yellow-500"
+                />
+                <span className="text-xs font-semibold text-amber-700 uppercase tracking-wide">
+                  📣 Announce on social when published
+                </span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={!!fields.post_to_substack}
+                  onChange={(e) => setFields((f) => ({ ...f, post_to_substack: e.target.checked }))}
+                  className="accent-orange-500"
+                />
+                <span className="text-xs font-semibold text-orange-700 uppercase tracking-wide">
+                  📰 Cross-post to Substack when published
+                </span>
+              </label>
+            </>
           )}
 
           {/* Language tabs */}
