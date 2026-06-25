@@ -2,7 +2,7 @@
 title: "Low-tech gadgets for your kids’ no-screen summer"
 title_nl: "Lage-technologie gadgets voor de schermvrije zomer van je kinderen"
 title_fr: "Gadgets low-tech pour l'été sans écran de vos enfants"
-date: 2026-06-25T11:05:19
+date: 2026-06-25T13:26:41
 source_pub_date: 2026-06-25
 fetched_date: 2026-06-25
 source_url: "https://www.positive.news/society/youth/low-tech-gadgets-for-your-kids-no-screen-summer/"
