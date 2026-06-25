@@ -78,13 +78,14 @@ async function createAndPublishDraft(
   const sid = process.env.SUBSTACK_SID!;
   const cookie = `substack.sid=${sid}`;
 
-  // Fetch current user ID for draft_bylines via the publication endpoint
-  const meRes = await fetch(`${PUBLICATION_URL}/api/v1/me`, {
+  // Get author user ID from an existing published post
+  const archiveRes = await fetch(`${PUBLICATION_URL}/api/v1/archive?limit=1`, {
     headers: { Cookie: cookie },
   });
-  if (!meRes.ok) throw new Error(`Failed to fetch Substack user (${meRes.status})`);
-  const me = await meRes.json();
-  const userId = (me.id ?? me.userId) as number;
+  if (!archiveRes.ok) throw new Error(`Failed to fetch Substack archive (${archiveRes.status})`);
+  const archive = await archiveRes.json();
+  const userId = archive?.[0]?.publishedBylines?.[0]?.id as number | undefined;
+  if (!userId) throw new Error("Could not determine Substack author ID from existing posts");
 
   const draftPayload: Record<string, unknown> = {
     draft_title: title,
