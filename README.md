@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 2.35.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 2.36.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -231,7 +231,7 @@ You can also submit individual article URLs manually from the **Admin → Previe
 
 Go to **Admin → Preview** to approve or discard each pending article. Approved articles move to **Admin → Scheduled** as drafts, where you can:
 - **Summarise** — the configured summarisation model reads the full article URL, writes a 4-5 sentence summary in English, Dutch, and French, suggests topic tags, adds an emoji, and captures the article's `og:image` thumbnail
-- **Summarise all** — when there are 2+ drafts, a bulk button iterates every draft sequentially through the same endpoint, so you don't have to click each one
+- **Summarise all** — when there are 2+ drafts, a bulk button summarises every draft **server-side in the background**. It POSTs once to `/api/summarise-drafts/start`; the run then proceeds entirely on the server (progress tracked in the `summarise_runs` table) while the page polls `/api/summarise-drafts/status` as a read-only viewer. You can close the tab or background the app and the run keeps going — reopening the Scheduled page resumes the live progress view, exactly like the Fetch & Filter pipeline. A **Stop** button requests cancellation after the current article finishes.
 - **Edit** — tweak the title, summary, emoji, or tags before publishing
 - **Discard** — remove from the queue
 
@@ -362,6 +362,7 @@ This is the migration path between environments (e.g. local SQLite → Turso clo
 | `pending_items` | Staging queue for RSS items awaiting LLM classification |
 | `pipeline_runs` | Tracks each fetch-classify cycle (status, phase, counters, log) |
 | `pipeline_tasks` | Task queue for pipeline work items (fetch chunks, classify batches, export) |
+| `summarise_runs` | Tracks each server-side "Summarise all drafts" run (status, counts, current article, log) so the browser can disconnect mid-run |
 | `settings` | Key-value store for LLM provider/model configuration |
 
 ---
