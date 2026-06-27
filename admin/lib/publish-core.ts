@@ -97,6 +97,43 @@ export async function commitToGitHub(path: string, content: string, message: str
   }
 }
 
+/**
+ * Re-commit the markdown for an already-published article so frontmatter
+ * changes (e.g. the `featured` flag flipping the wide-card layout) reach the
+ * live site without waiting for a manual republish.
+ *
+ * No-op for articles that have never been published (no `published_path`),
+ * so callers can fire it unconditionally after a flag change.
+ */
+export async function republishArticle(id: number): Promise<boolean> {
+  if (!GITHUB_TOKEN || !GITHUB_REPO) return false;
+
+  const articleResult = await db.execute({
+    sql: `SELECT a.*, r.source_pub_date, r.fetched_at
+          FROM articles a
+          LEFT JOIN raw_articles r ON a.raw_article_id = r.id
+          WHERE a.id = ?`,
+    args: [id],
+  });
+  const article = articleResult.rows[0];
+  if (!article || !article.published_path) return false;
+
+  const tagsResult = await db.execute({
+    sql: `SELECT t.name FROM article_tags at2
+          JOIN topics t ON at2.tag_id = t.id
+          WHERE at2.article_id = ?
+          ORDER BY t.name ASC`,
+    args: [id],
+  });
+  const tagNames = tagsResult.rows.map((r) => String(r.name));
+
+  const path = String(article.published_path);
+  const title = String(article.title_en ?? article.title_nl ?? path);
+  const markdown = generateMarkdown(article as Record<string, unknown>, tagNames);
+  await commitToGitHub(path, markdown, `Update post: ${title}`);
+  return true;
+}
+
 // ─── Main publish logic ──────────────────────────────────────────────────────
 
 export interface PublishResult {

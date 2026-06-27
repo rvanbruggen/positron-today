@@ -292,9 +292,15 @@ export async function PATCH(request: NextRequest) {
   }
 
   if (digest_pick !== undefined) {
+    // Digest inclusion and wider-column promotion move together on the one-tap
+    // button: picking an article for the digest also features it (wide card),
+    // and un-picking removes both. The Edit modal still sets `featured` and
+    // `digest_pick` independently for the rare article that should be one but
+    // not the other.
+    const flag = digest_pick ? 1 : 0;
     await db.execute({
-      sql: "UPDATE articles SET digest_pick = ? WHERE id = ?",
-      args: [digest_pick ? 1 : 0, id],
+      sql: "UPDATE articles SET digest_pick = ?, featured = ? WHERE id = ?",
+      args: [flag, flag, id],
     });
     if (digest_pick) {
       const { postPendingSubstack } = await import("@/lib/substack");
@@ -302,7 +308,16 @@ export async function PATCH(request: NextRequest) {
         console.error("[articles] Substack auto-post after digest pick failed:", err)
       );
     }
-    return Response.json({ ok: true });
+    // If the article is already published, re-commit so the featured change
+    // reaches the live site immediately. No-op for not-yet-published articles,
+    // where the flag is applied at publish time.
+    try {
+      const { republishArticle } = await import("@/lib/publish-core");
+      await republishArticle(Number(id));
+    } catch (err) {
+      console.error("[articles] republish after digest/featured toggle failed:", err);
+    }
+    return Response.json({ ok: true, featured: !!flag });
   }
 
   if (publish_date !== undefined) {

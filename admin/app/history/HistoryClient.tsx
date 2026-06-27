@@ -220,8 +220,10 @@ export default function HistoryClient({
         body: JSON.stringify({ id: a.id, digest_pick: newVal }),
       });
       if (res.ok) {
+        // The server couples `featured` to `digest_pick` (and republishes the
+        // live post), so mirror both flags optimistically here.
         setArticles((prev) => prev.map((x) =>
-          x.id === a.id ? { ...x, digest_pick: newVal } : x
+          x.id === a.id ? { ...x, digest_pick: newVal, featured: newVal } : x
         ));
       }
     } finally {
@@ -401,8 +403,8 @@ export default function HistoryClient({
                             a.digest_posted_at
                               ? `Included in digest on ${formatDate(a.digest_posted_at)}`
                               : a.digest_pick
-                              ? "Remove from next social digest"
-                              : "Include in next social digest"
+                              ? "Remove from next social digest and from the wide card (republishes the post)"
+                              : "Include in next social digest and promote to the wide card (republishes the post)"
                           }
                           className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors disabled:opacity-40 ${
                             a.digest_posted_at

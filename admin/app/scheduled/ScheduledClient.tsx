@@ -124,7 +124,9 @@ export default function ScheduledClient({
   }
 
   async function setDigestPick(id: number, value: boolean) {
-    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, digest_pick: value } : a)));
+    // Digest pick also promotes/demotes the wide card (the server couples
+    // `featured` to `digest_pick` here) — mirror both flags optimistically.
+    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, digest_pick: value, featured: value } : a)));
     await fetch("/api/articles", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -654,13 +656,14 @@ export default function ScheduledClient({
                           }}
                           className="border border-yellow-200 rounded px-2 py-1 text-xs text-amber-800 focus:outline-none focus:border-yellow-400"
                         />
-                        {/* One-tap digest toggle. Featured + social live in
-                             the Edit modal now — this is the single per-article
-                             control on the card, sized for easy mobile use. */}
+                        {/* One-tap digest toggle. Also promotes the article to
+                             the wide card on the public site (the server couples
+                             `featured` to `digest_pick`). Use the Edit modal to
+                             set the two independently for the rare exception. */}
                         <button
                           onClick={() => setDigestPick(a.id, !a.digest_pick)}
                           aria-pressed={!!a.digest_pick}
-                          title="Include this article in the next social media digest post"
+                          title="Include in the next social digest and promote to the wide card on the public site"
                           className={`w-full sm:w-auto px-3 py-2 rounded-lg text-xs font-semibold transition-colors border ${
                             a.digest_pick
                               ? "bg-teal-500 hover:bg-teal-600 text-white border-teal-500"
