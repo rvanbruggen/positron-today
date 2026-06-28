@@ -2,7 +2,7 @@
 title: "Two garden ornaments thought to be ‘worthless concrete’ turn out to be Italian marble busts worth thousands"
 title_nl: "Twee tuinornamenten die als 'waardeloze beton' werden beschouwd, blijken Italiaanse marmeren busten van duizenden euro's te zijn"
 title_fr: "Deux ornements de jardin considérés comme 'béton sans valeur' se révèlent être des bustes en marbre italien d'une valeur de milliers"
-date: 2026-06-28T08:27:55
+date: 2026-06-28T08:27:59
 source_pub_date: 2026-06-27
 fetched_date: 2026-06-27
 source_url: "https://www.goodnewsnetwork.org/two-garden-ornaments-thought-to-be-worthless-concrete-turn-out-to-be-italian-marble-busts/"
