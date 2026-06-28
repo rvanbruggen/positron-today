@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-06-28T20:37:37.984Z",
-  "total_rejected": 69152,
+  "exported_at": "2026-06-28T23:01:13.083Z",
+  "total_rejected": 69153,
   "sources_count": 45,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1063
+      "count": 1064
     },
     {
       "category": "divisive-racism",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 3046,
-      "total": 3067
+      "negative": 3047,
+      "total": 3068
     },
     {
       "source": "NRC",
@@ -296,6 +296,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "Förkolnad papyrusrulle kunde läsas med AI: ”Historiskt genombrott”",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dn.se/varlden/forkolnad-papyrusrulle-kunde-lasas-med-ai-historiskt-genombrott/",
+      "date": "2026-06-29 01:01"
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Chronoworking odpowiada na lekceważony problem. Nauka potwierdza: wygrywają wszyscy",
@@ -8286,14 +8294,6 @@
       "reason": "The article discusses a local event where market vendors were not allowed to serve food, which is not uplifting and has limited relevance outside the local context.",
       "category": "soft-news-filler",
       "url": "https://vrtnws.be/p.ewoXVv3ZY",
-      "date": "2026-06-27 14:26"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Hitte maakt ons prikkelbaar en dommer, zegt gedragspsycholoog: \"Brein meest hittegevoelige orgaan\"",
-      "reason": "The article discusses the negative effects of heat on cognitive function, which is not uplifting and focuses on a health scare.",
-      "category": "health-scare",
-      "url": "https://vrtnws.be/p.y39XLy0n5",
       "date": "2026-06-27 14:26"
     }
   ]
