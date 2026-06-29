@@ -2,7 +2,7 @@
 title: "High tech jacket prototype pulls drinking water from thin air – up to 1.5 pints per day"
 title_nl: "Hoogtechnologische jasprototype haalt drinkwater uit de lucht – tot 1,5 pint per dag"
 title_fr: "Prototype de veste haute technologie extrait de l'eau potable de l'air – jusqu'à 1,5 pinte par jour"
-date: 2026-06-29T04:18:51
+date: 2026-06-29T04:18:55
 source_pub_date: 2026-06-28
 fetched_date: 2026-06-28
 source_url: "https://www.goodnewsnetwork.org/prototype-high-tech-jacket-pulls-drinking-water-from-thin-air/"
