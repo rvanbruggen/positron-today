@@ -2,7 +2,7 @@
 title: "16 gorgeous images from the 1839 awards’ color photography contest"
 title_nl: "16 prachtige afbeeldingen van de 1839 Awards' kleurfotografie wedstrijd"
 title_fr: "16 superbes images du concours de photographie couleur des prix 1839"
-date: 2026-06-29T04:18:50
+date: 2026-06-29T04:18:52
 source_pub_date: 2026-06-28
 fetched_date: 2026-06-28
 source_url: "https://www.popsci.com/environment/1839-awards-color-photography-contest-2026/"
