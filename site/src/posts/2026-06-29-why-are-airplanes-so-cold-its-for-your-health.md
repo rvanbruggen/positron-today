@@ -2,7 +2,7 @@
 title: "Why are airplanes so cold? It’s for your health."
 title_nl: "Waarom zijn vliegtuigen zo koud? Het is voor je gezondheid."
 title_fr: "Pourquoi les avions sont-ils si froids ? C'est pour votre santé."
-date: 2026-06-29T04:18:54
+date: 2026-06-29T04:18:56
 source_pub_date: 2026-06-28
 fetched_date: 2026-06-28
 source_url: "https://www.popsci.com/science/why-planes-are-cold/"
