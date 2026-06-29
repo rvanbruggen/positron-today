@@ -2,7 +2,7 @@
 title: "Finland creates clever new ‘moose crossings’ that dropped collisions in dangerous area to zero"
 title_nl: "Finland creëert slimme nieuwe 'elke-oversteekplaatsen' die het aantal botsingen in gevaarlijke gebieden op nul brachten"
 title_fr: "La Finlande crée de nouvelles 'passerelles pour élans' astucieuses qui ont réduit les collisions dans une zone dangereuse à zéro"
-date: 2026-06-29T20:38:24
+date: 2026-06-29T20:38:26
 source_pub_date: 2026-06-29
 fetched_date: 2026-06-29
 source_url: "https://www.upworthy.com/finland-creates-clever-new-moose-crossings-that-dropped-collisions-in-dangerous-area-to-zero/"
