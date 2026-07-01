@@ -97,6 +97,25 @@ export async function commitToGitHub(path: string, content: string, message: str
   }
 }
 
+export async function deleteFromGitHub(path: string, message: string) {
+  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+  const headers = { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" };
+
+  const existing = await fetch(url, { headers });
+  if (!existing.ok) return;
+
+  const { sha } = await existing.json();
+  const res = await fetch(url, {
+    method: "DELETE",
+    headers: { ...headers, "Content-Type": "application/json" },
+    body: JSON.stringify({ message, sha, branch: GITHUB_BRANCH }),
+  });
+
+  if (!res.ok && res.status !== 404) {
+    throw new Error(`GitHub delete error ${res.status}: ${await res.text()}`);
+  }
+}
+
 /**
  * Re-commit the markdown for an already-published article so frontmatter
  * changes (e.g. the `featured` flag flipping the wide-card layout) reach the

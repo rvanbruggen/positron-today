@@ -206,12 +206,43 @@ export default function EditorialsPage() {
     await fetchList();
   }
 
-  async function handleDelete(id: number) {
-    if (!confirm("Delete this draft editorial?")) return;
-    await fetch(`/api/editorials/${id}`, { method: "DELETE" });
-    setView("list");
-    setSelected(null);
-    await fetchList();
+  async function handleDelete(id: number, isPublished: boolean) {
+    const msg = isPublished
+      ? "This will remove the editorial from the live site and delete it permanently. Continue?"
+      : "Delete this editorial?";
+    if (!confirm(msg)) return;
+    setBusy("Deleting…");
+    try {
+      const res = await fetch(`/api/editorials/${id}`, { method: "DELETE" });
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error ?? "Delete failed");
+        return;
+      }
+      setView("list");
+      setSelected(null);
+      await fetchList();
+    } finally {
+      setBusy("");
+    }
+  }
+
+  async function handleUnpublish(id: number) {
+    if (!confirm("Remove this editorial from the live site? It will return to 'Ready' status so you can re-publish later.")) return;
+    setBusy("Unpublishing…");
+    try {
+      const res = await fetch(`/api/editorials/${id}/unpublish`, { method: "POST" });
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error ?? "Unpublish failed");
+        return;
+      }
+      setSuccess("Editorial unpublished");
+      await fetchDetail(id);
+      await fetchList();
+    } finally {
+      setBusy("");
+    }
   }
 
   function renderBadge(status: string) {
@@ -385,12 +416,16 @@ export default function EditorialsPage() {
               </button>
             </>
           )}
-          {!isPublished && (
-            <button onClick={() => handleDelete(selected.id)} disabled={!!busy}
-              className="bg-red-100 hover:bg-red-200 text-red-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
-              🗑 Delete
+          {isPublished && (
+            <button onClick={() => handleUnpublish(selected.id)} disabled={!!busy}
+              className="bg-orange-100 hover:bg-orange-200 text-orange-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+              ↩ Unpublish
             </button>
           )}
+          <button onClick={() => handleDelete(selected.id, isPublished)} disabled={!!busy}
+            className="bg-red-100 hover:bg-red-200 text-red-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+            🗑 Delete
+          </button>
         </div>
 
         {/* Metadata */}

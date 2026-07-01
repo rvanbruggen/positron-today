@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
+import { unpublishEditorial } from "@/lib/editorial-core";
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -53,7 +54,10 @@ export async function DELETE(_request: NextRequest, { params }: { params: Promis
   const editorial = result.rows[0];
   if (!editorial) return Response.json({ error: "Not found" }, { status: 404 });
   if (editorial.status === "published") {
-    return Response.json({ error: "Cannot delete a published editorial" }, { status: 400 });
+    const unpubResult = await unpublishEditorial(Number(id));
+    if (!unpubResult.ok) {
+      return Response.json({ error: `Failed to unpublish: ${unpubResult.error}` }, { status: 500 });
+    }
   }
 
   await db.execute({ sql: "DELETE FROM editorials WHERE id = ?", args: [id] });

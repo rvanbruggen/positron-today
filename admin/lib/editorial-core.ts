@@ -1,7 +1,7 @@
 import db from "@/lib/db";
 import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
-import { slugify, yamlStr, commitToGitHub } from "@/lib/publish-core";
+import { slugify, yamlStr, commitToGitHub, deleteFromGitHub } from "@/lib/publish-core";
 import { postEditorialToSubstack } from "@/lib/editorial-substack";
 
 const LANG_LABELS: Record<string, string> = {
@@ -367,6 +367,61 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error(`[editorial] Failed to publish editorial ${id}:`, msg);
+    return { ok: false, error: msg };
+  }
+}
+
+// ─── Unpublish ──────────────────────────────────────────────────────────────
+
+export async function unpublishEditorial(id: number): Promise<{ ok: boolean; error?: string }> {
+  const result = await db.execute({ sql: "SELECT * FROM editorials WHERE id = ?", args: [id] });
+  const editorial = result.rows[0];
+  if (!editorial) return { ok: false, error: "Editorial not found" };
+  if (editorial.status !== "published") return { ok: false, error: "Editorial is not published" };
+
+  const slug = String(editorial.slug);
+  const title = String(editorial.title_en ?? slug);
+  const articleId = editorial.article_id ? Number(editorial.article_id) : null;
+  const filenames = parseImageFilenames(editorial.image_filename);
+
+  try {
+    // 1. Delete editorial page from GitHub
+    await deleteFromGitHub(`site/src/editorials/${slug}.md`, `Remove editorial: ${title}`);
+
+    // 2. Delete homepage card — find the path from the linked article
+    if (articleId) {
+      const artResult = await db.execute({ sql: "SELECT published_path FROM articles WHERE id = ?", args: [articleId] });
+      const publishedPath = artResult.rows[0]?.published_path ? String(artResult.rows[0].published_path) : null;
+      if (publishedPath) {
+        await deleteFromGitHub(publishedPath, `Remove editorial card: ${title}`);
+      }
+    }
+
+    // 3. Delete images from GitHub
+    for (const filename of filenames) {
+      await deleteFromGitHub(`site/src/assets/editorials/${filename}`, `Remove editorial image: ${filename}`);
+    }
+
+    // 4. Delete the linked articles row
+    if (articleId) {
+      await db.execute({ sql: "DELETE FROM article_tags WHERE article_id = ?", args: [articleId] });
+      await db.execute({ sql: "DELETE FROM articles WHERE id = ?", args: [articleId] });
+    }
+
+    // 5. Reset editorial to ready
+    await db.execute({
+      sql: `UPDATE editorials SET
+        status = 'ready', article_id = NULL, published_path = NULL,
+        published_at = NULL, substack_posted_at = NULL, updated_at = datetime('now')
+        WHERE id = ?`,
+      args: [id],
+    });
+
+    console.log(`[editorial] Unpublished editorial ${id}: "${title}"`);
+    return { ok: true };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[editorial] Failed to unpublish editorial ${id}:`, msg);
     return { ok: false, error: msg };
   }
 }
