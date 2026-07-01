@@ -444,6 +444,11 @@ export default function EditorialsPage() {
           </div>
         )}
 
+        {/* Substack Note */}
+        {(isReady || isPublished) && selected.title_en && selected.summary_en && (
+          <SubstackNote editorial={selected} />
+        )}
+
         {/* Content preview */}
         {(["en", "nl", "fr"] as const).map(lang => {
           const content = selected[`content_${lang}`];
@@ -577,6 +582,46 @@ function simpleMarkdownToHtml(md: string): string {
   if (inList) result.push(`</${listType}>`);
 
   return result.join("\n").replace(/<\/blockquote>\n<blockquote>/g, "\n");
+}
+
+function SubstackNote({ editorial }: { editorial: Editorial }) {
+  const [copied, setCopied] = useState(false);
+  const title = editorial.title_en ?? "Untitled";
+  const summary = editorial.summary_en ?? "";
+  const slug = editorial.slug;
+  const emoji = editorial.article_emoji ?? "✍️";
+  const url = `https://positron.today/editorials/${slug}/`;
+
+  const firstSentence = summary.split(/(?<=[.!?])\s+/)[0] ?? summary;
+
+  const noteText = `${emoji} New editorial: "${title}"
+
+${firstSentence}
+
+Read the full editorial on Positron.today:
+${url}`;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(noteText).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <div className="bg-white rounded-xl shadow-sm border border-yellow-200 p-5 mb-4">
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-sm font-semibold text-amber-800">📝 Substack Note</h2>
+        <button onClick={handleCopy}
+          className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${copied ? "bg-green-100 text-green-700" : "bg-amber-100 hover:bg-amber-200 text-amber-700"}`}>
+          {copied ? "✓ Copied!" : "Copy to clipboard"}
+        </button>
+      </div>
+      <pre className="whitespace-pre-wrap text-sm text-amber-900 bg-amber-50 rounded-lg p-4 font-sans leading-relaxed border border-amber-100">
+        {noteText}
+      </pre>
+    </div>
+  );
 }
 
 function rewriteImageSrcs(html: string, editorialId: number): string {
