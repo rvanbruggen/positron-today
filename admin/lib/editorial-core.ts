@@ -54,25 +54,21 @@ export async function translateEditorial(id: number): Promise<{
   if (!sourceContent.trim()) throw new Error(`No content in source language (${srcLang})`);
 
   const otherLangs = ["en", "nl", "fr"].filter(l => l !== srcLang);
-  const otherLabels = otherLangs.map(l => LANG_LABELS[l]).join(" and ");
+  const provider = await getSummariseProvider();
+  const str = (v: unknown, fallback = "") => (typeof v === "string" && v.trim() ? v.trim() : fallback);
 
-  const prompt = `${DEFAULT_SUMMARISE_STYLE}
+  // ── Step 1: titles + summaries + emoji (small JSON, reliable) ──
+  const metaPrompt = `${DEFAULT_SUMMARISE_STYLE}
 
 You are translating an editorial article written by Rik Van Bruggen about the Positron Today project.
-
-The editorial is written in ${LANG_LABELS[srcLang]}. Translate it fully into ${otherLabels}.
-
-IMPORTANT:
-- Preserve the author's writing style, tone, and personality faithfully in each translation.
-- Translate the COMPLETE text - every paragraph, every sentence. Do not summarise or shorten.
-- Keep any markdown formatting (headings, bold, italic, links, lists) intact.
-- The summaries should be 4-5 sentences each, capturing the essence of the editorial.
+The editorial is written in ${LANG_LABELS[srcLang]}.
 
 Here is the full editorial:
 
 ${sourceContent}
 
-Output ONLY this exact JSON object and nothing else. All fields are required:
+Output ONLY this exact JSON object and nothing else. All fields are required.
+Keep values SHORT — titles are one line, summaries are 4-5 sentences each.
 {
   "title_en": "Title in English",
   "title_nl": "Titel in het Nederlands",
@@ -80,90 +76,94 @@ Output ONLY this exact JSON object and nothing else. All fields are required:
   "summary_en": "4-5 sentence summary in English.",
   "summary_nl": "Samenvatting van 4-5 zinnen in het Nederlands.",
   "summary_fr": "Résumé de 4-5 phrases en français.",
-  "content_${otherLangs[0]}": "Full translated editorial in ${LANG_LABELS[otherLangs[0]]}.",
-  "content_${otherLangs[1]}": "Full translated editorial in ${LANG_LABELS[otherLangs[1]]}.",
   "emoji": "✍️"
 }`;
 
-  const systemPrompt = "You output only raw JSON. No prose, no markdown fences, no explanation. Every response must be a single complete JSON object with all fields filled in. Translations must be complete and faithful to the original.";
+  const metaSystem = "You output only raw JSON. No prose, no markdown fences, no explanation.";
+  let meta: Record<string, string> | null = null;
 
-  const str = (v: unknown, fallback = "") => (typeof v === "string" && v.trim() ? v.trim() : fallback);
-  const MAX_ATTEMPTS = 2;
-  const provider = await getSummariseProvider();
-  let missingFields: string[] = [];
-
-  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const finalPrompt = (attempt > 1 && missingFields.length > 0)
-      ? `${prompt}\n\nRETRY ${attempt}/${MAX_ATTEMPTS}: Your previous response had these fields empty or missing: ${missingFields.join(", ")}. Every field MUST contain text.`
-      : prompt;
-
-    const raw = await provider.generate(finalPrompt, systemPrompt, 16000);
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    const raw = await provider.generate(metaPrompt, metaSystem, 2000);
     const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
     const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
-
     if (!jsonMatch) {
-      missingFields = ["(no JSON found in response)"];
-      console.warn(`[editorial] attempt ${attempt}/${MAX_ATTEMPTS}: ${missingFields[0]}`);
-      if (attempt === MAX_ATTEMPTS) throw new Error(`Unexpected LLM response: ${raw.slice(0, 120)}`);
+      console.warn(`[editorial] meta attempt ${attempt}/3: no JSON found`);
       continue;
     }
-
-    let parsed: Record<string, unknown>;
     try {
-      parsed = JSON.parse(jsonMatch[0]);
-    } catch {
-      missingFields = ["(JSON parse error)"];
-      console.warn(`[editorial] attempt ${attempt}/${MAX_ATTEMPTS}: JSON parse failed`);
-      if (attempt === MAX_ATTEMPTS) throw new Error(`LLM returned invalid JSON after ${MAX_ATTEMPTS} attempts`);
-      continue;
-    }
-
-    const result = {
-      title_en: str(parsed.title_en),
-      title_nl: str(parsed.title_nl),
-      title_fr: str(parsed.title_fr),
-      summary_en: str(parsed.summary_en),
-      summary_nl: str(parsed.summary_nl),
-      summary_fr: str(parsed.summary_fr),
-      content_en: str(parsed.content_en, String(editorial.content_en || "")),
-      content_nl: str(parsed.content_nl, String(editorial.content_nl || "")),
-      content_fr: str(parsed.content_fr, String(editorial.content_fr || "")),
-      emoji: str(parsed.emoji, "✍️"),
-    };
-
-    // The source language content stays as-is (the LLM shouldn't overwrite it)
-    result[`content_${srcLang}` as keyof typeof result] = sourceContent;
-
-    missingFields = REQUIRED_FIELDS.filter(f => !result[f]);
-    const missingContent = otherLangs.filter(l => !result[`content_${l}` as keyof typeof result]);
-    if (missingContent.length > 0) missingFields.push(...missingContent.map(l => `content_${l}`));
-
-    if (missingFields.length === 0) {
-      await db.execute({
-        sql: `UPDATE editorials SET
-          title_en = ?, title_nl = ?, title_fr = ?,
-          summary_en = ?, summary_nl = ?, summary_fr = ?,
-          content_en = ?, content_nl = ?, content_fr = ?,
-          article_emoji = ?, status = 'ready', updated_at = datetime('now')
-          WHERE id = ?`,
-        args: [
-          result.title_en, result.title_nl, result.title_fr,
-          result.summary_en, result.summary_nl, result.summary_fr,
-          result.content_en, result.content_nl, result.content_fr,
-          result.emoji, id,
-        ],
-      });
-
-      return result;
-    }
-
-    console.warn(`[editorial] attempt ${attempt}/${MAX_ATTEMPTS}: missing fields: ${missingFields.join(", ")}`);
-    if (attempt === MAX_ATTEMPTS) {
-      throw new Error(`LLM failed to provide all translations after ${MAX_ATTEMPTS} attempts. Missing: ${missingFields.join(", ")}`);
+      const parsed = JSON.parse(jsonMatch[0]);
+      const missing = REQUIRED_FIELDS.filter(f => !str(parsed[f]));
+      if (missing.length > 0) {
+        console.warn(`[editorial] meta attempt ${attempt}/3: missing ${missing.join(", ")}`);
+        continue;
+      }
+      meta = parsed;
+      break;
+    } catch (e) {
+      console.warn(`[editorial] meta attempt ${attempt}/3: JSON parse failed`);
     }
   }
+  if (!meta) throw new Error("Failed to generate titles and summaries after 3 attempts");
 
-  throw new Error("Translation failed unexpectedly");
+  // ── Step 2 & 3: full content translations (raw text, no JSON) ──
+  const translations: Record<string, string> = {};
+  translations[`content_${srcLang}`] = sourceContent;
+
+  for (const lang of otherLangs) {
+    const translatePrompt = `Translate the following editorial from ${LANG_LABELS[srcLang]} into ${LANG_LABELS[lang]}.
+
+IMPORTANT:
+- Preserve the author's writing style, tone, and personality faithfully.
+- Translate the COMPLETE text — every paragraph, every sentence. Do not summarise or shorten.
+- Keep all markdown formatting (headings, bold, italic, links, lists, image references) intact.
+- Output ONLY the translated text. No preamble, no "Here is the translation:", no wrapping.
+
+${sourceContent}`;
+
+    const translateSystem = `You are a professional translator. Output only the translated text in ${LANG_LABELS[lang]}, preserving all markdown formatting. No commentary.`;
+
+    let translated = "";
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const raw = await provider.generate(translatePrompt, translateSystem, 16000);
+      if (raw.trim().length > 100) {
+        translated = raw.trim();
+        break;
+      }
+      console.warn(`[editorial] translation to ${lang} attempt ${attempt}/2: response too short (${raw.length} chars)`);
+    }
+    if (!translated) throw new Error(`Failed to translate editorial to ${LANG_LABELS[lang]}`);
+    translations[`content_${lang}`] = translated;
+  }
+
+  const result = {
+    title_en: str(meta.title_en),
+    title_nl: str(meta.title_nl),
+    title_fr: str(meta.title_fr),
+    summary_en: str(meta.summary_en),
+    summary_nl: str(meta.summary_nl),
+    summary_fr: str(meta.summary_fr),
+    content_en: translations.content_en ?? String(editorial.content_en || ""),
+    content_nl: translations.content_nl ?? String(editorial.content_nl || ""),
+    content_fr: translations.content_fr ?? String(editorial.content_fr || ""),
+    emoji: str(meta.emoji, "✍️"),
+  };
+
+  await db.execute({
+    sql: `UPDATE editorials SET
+      title_en = ?, title_nl = ?, title_fr = ?,
+      summary_en = ?, summary_nl = ?, summary_fr = ?,
+      content_en = ?, content_nl = ?, content_fr = ?,
+      article_emoji = ?, status = 'ready', updated_at = datetime('now')
+      WHERE id = ?`,
+    args: [
+      result.title_en, result.title_nl, result.title_fr,
+      result.summary_en, result.summary_nl, result.summary_fr,
+      result.content_en, result.content_nl, result.content_fr,
+      result.emoji, id,
+    ],
+  });
+
+  return result;
 }
 
 // ─── Markdown generation ─────────────────────────────────────────────────────
