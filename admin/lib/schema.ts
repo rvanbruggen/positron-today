@@ -194,6 +194,33 @@ export async function initSchema() {
     // v2.38: Substack cross-posting
     "ALTER TABLE articles ADD COLUMN post_to_substack INTEGER NOT NULL DEFAULT 0",
     "ALTER TABLE articles ADD COLUMN substack_posted_at TEXT",
+
+    // v3.1: Editorials — original long-form articles written by the site author
+    `CREATE TABLE IF NOT EXISTS editorials (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      slug TEXT NOT NULL UNIQUE,
+      status TEXT NOT NULL DEFAULT 'draft' CHECK(status IN ('draft', 'ready', 'published')),
+      source_language TEXT NOT NULL DEFAULT 'en' CHECK(source_language IN ('en', 'nl', 'fr')),
+      content_en TEXT,
+      content_nl TEXT,
+      content_fr TEXT,
+      title_en TEXT,
+      title_nl TEXT,
+      title_fr TEXT,
+      summary_en TEXT,
+      summary_nl TEXT,
+      summary_fr TEXT,
+      article_emoji TEXT DEFAULT '✍️',
+      image_filename TEXT,
+      image_data TEXT,
+      article_id INTEGER REFERENCES articles(id),
+      published_path TEXT,
+      published_at TEXT,
+      post_to_substack INTEGER NOT NULL DEFAULT 1,
+      substack_posted_at TEXT,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    )`,
   ];
 
   for (const sql of migrations) {

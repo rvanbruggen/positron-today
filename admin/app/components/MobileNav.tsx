@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/preview",    label: "Fetch & Filter" },
   { href: "/scheduled",  label: "Summarise & Publish" },
   { href: "/history",    label: "History" },
+  { href: "/editorials", label: "Editorials" },
   { href: "/rejections", label: "Rejections" },
   { href: "/settings",   label: "Settings" },
 ];

@@ -127,6 +127,12 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection("editorials", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("src/editorials/*.md").sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+  });
+
   // Unique sorted list of every tag used across posts.
   // Resolves `tags[]` first, falls back to the legacy `topic` string, to match
   // the same precedence index.njk uses when it renders card tag pills — so

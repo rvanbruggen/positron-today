@@ -1,0 +1,85 @@
+---
+layout: base.njk
+title: Editorials
+title_nl: Columns
+title_fr: Éditoriaux
+description: Original articles by Rik Van Bruggen about the Positron Today project, philosophy, and the pursuit of positive news.
+---
+
+<style>
+  .editorials-header {
+    margin-bottom: 2rem;
+  }
+  .editorials-header h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 800;
+    color: #451a03; margin-bottom: 0.5rem;
+  }
+  .editorials-header p {
+    font-size: 0.95rem; color: #b45309; max-width: 42rem; line-height: 1.6;
+  }
+  .editorial-list {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .editorial-card {
+    background: white; border: 2px solid #c084fc; border-radius: 1rem;
+    padding: 1.25rem; text-decoration: none; color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .editorial-card:hover {
+    border-color: #a855f7; box-shadow: 0 2px 12px rgba(168, 85, 247, 0.15);
+  }
+  .editorial-card-emoji { font-size: 1.5rem; margin-bottom: 0.35rem; }
+  .editorial-card-title {
+    font-size: 1.1rem; font-weight: 700; color: #581c87; line-height: 1.3; margin-bottom: 0.4rem;
+  }
+  .editorial-card-date {
+    font-size: 0.75rem; color: #7e22ce; margin-bottom: 0.5rem;
+  }
+  .editorial-card-summary {
+    font-size: 0.875rem; color: #451a03; line-height: 1.6;
+  }
+  .editorials-empty {
+    text-align: center; padding: 3rem; color: #b45309; font-size: 0.95rem;
+  }
+</style>
+
+<div class="editorials-header">
+  <h1>
+    <span class="t-en">✍️ Editorials</span>
+    <span class="t-nl" style="display:none">✍️ Columns</span>
+    <span class="t-fr" style="display:none">✍️ Éditoriaux</span>
+  </h1>
+  <p>
+    <span class="t-en">Original articles by Rik Van Bruggen about the Positron Today project, the philosophy behind it, and the pursuit of positive news.</span>
+    <span class="t-nl" style="display:none">Originele artikelen van Rik Van Bruggen over het Positron Today project, de filosofie erachter, en de zoektocht naar positief nieuws.</span>
+    <span class="t-fr" style="display:none">Articles originaux de Rik Van Bruggen sur le projet Positron Today, la philosophie qui le sous-tend, et la quête d'informations positives.</span>
+  </p>
+</div>
+
+{% set editorialPosts = collections.editorials %}
+{% if editorialPosts.length > 0 %}
+<div class="editorial-list">
+  {% for post in editorialPosts %}
+  <a href="{{ post.url }}" class="editorial-card">
+    <div class="editorial-card-emoji">{{ post.data.emoji if post.data.emoji else "✍️" }}</div>
+    <div class="editorial-card-title">
+      <span class="t-en">{{ post.data.title }}</span>
+      <span class="t-nl" style="display:none">{{ post.data.title_nl if post.data.title_nl else post.data.title }}</span>
+      <span class="t-fr" style="display:none">{{ post.data.title_fr if post.data.title_fr else post.data.title }}</span>
+    </div>
+    <div class="editorial-card-date">{{ post.date | dateDisplay }}</div>
+    <div class="editorial-card-summary">
+      <span class="t-en">{{ post.data.summary }}</span>
+      <span class="t-nl" style="display:none">{{ post.data.summary_nl if post.data.summary_nl else post.data.summary }}</span>
+      <span class="t-fr" style="display:none">{{ post.data.summary_fr if post.data.summary_fr else post.data.summary }}</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="editorials-empty">
+  <span class="t-en">No editorials published yet. Stay tuned!</span>
+  <span class="t-nl" style="display:none">Nog geen columns gepubliceerd. Binnenkort meer!</span>
+  <span class="t-fr" style="display:none">Aucun éditorial publié pour le moment. Restez connecté !</span>
+</div>
+{% endif %}

@@ -1,0 +1,174 @@
+---
+layout: base.njk
+---
+
+<style>
+  .post-back {
+    font-size: 0.8rem; color: #b45309; text-decoration: none;
+    display: inline-block; margin-bottom: 1.25rem;
+    min-height: 36px; line-height: 36px; -webkit-tap-highlight-color: transparent;
+  }
+  .post-back:hover { color: #78350f; }
+
+  :root { --accent-bg:#f3e8ff; --accent-border:#c084fc; --accent-text:#581c87; --accent-muted:#7e22ce; }
+
+  .post-header {
+    background: var(--accent-bg); border: 2px solid var(--accent-border);
+    border-radius: 1rem; padding: 1.1rem; margin-bottom: 1.25rem;
+  }
+  .post-emoji { font-size: 2rem; margin-bottom: 0.4rem; }
+  .post-title { font-size: clamp(1.15rem, 4.5vw, 1.5rem); font-weight: 700; color: var(--accent-text); line-height: 1.3; margin-bottom: 0.6rem; }
+  .post-meta { font-size: 0.8rem; color: var(--accent-muted); }
+  .post-author { font-weight: 600; }
+
+  .post-body {
+    background: white; border-radius: 1rem; padding: 1.1rem;
+    border: 2px solid var(--accent-border);
+    font-size: clamp(0.875rem, 2.5vw, 0.95rem);
+    line-height: 1.75; color: #451a03; margin-bottom: 1.25rem;
+  }
+  .post-body h2 { font-size: 1.25rem; font-weight: 700; color: var(--accent-text); margin: 1.5rem 0 0.75rem; }
+  .post-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--accent-text); margin: 1.25rem 0 0.5rem; }
+  .post-body p { margin-bottom: 1rem; }
+  .post-body ul, .post-body ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+  .post-body li { margin-bottom: 0.35rem; }
+  .post-body a { color: var(--accent-muted); text-decoration: underline; }
+  .post-body a:hover { color: var(--accent-text); }
+  .post-body img { max-width: 100%; border-radius: 0.5rem; margin: 1rem 0; }
+  .post-body blockquote {
+    border-left: 3px solid var(--accent-border); padding-left: 1rem;
+    color: var(--accent-muted); font-style: italic; margin: 1rem 0;
+  }
+
+  .post-hero {
+    width: 100%; border-radius: 1rem; overflow: hidden;
+    margin-bottom: 1.25rem; border: 2px solid var(--accent-border);
+    max-height: 420px;
+  }
+  .post-hero img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+
+  .post-share {
+    margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  }
+  .post-share-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--accent-muted); font-weight: 600; margin-right: 0.25rem;
+  }
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.45rem 0.85rem; border-radius: 0.5rem; font-size: 0.8rem;
+    font-weight: 600; text-decoration: none; border: 2px solid transparent;
+    cursor: pointer; transition: filter 0.15s; min-height: 36px;
+    -webkit-tap-highlight-color: transparent; background: none;
+  }
+  .share-btn:hover { filter: brightness(0.88); }
+  .share-btn-x        { background:#000;    color:#fff; border-color:#000; }
+  .share-btn-bluesky  { background:#0085ff; color:#fff; border-color:#0085ff; }
+  .share-btn-facebook { background:#1877f2; color:#fff; border-color:#1877f2; }
+  .share-btn-copy     { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent-border); }
+
+  @media (min-width: 640px) {
+    .post-header { padding: 1.5rem; }
+    .post-emoji { font-size: 2.5rem; }
+    .post-body { padding: 1.5rem; }
+  }
+</style>
+
+<a href="/editorials/" class="post-back">
+  <span class="t-en">← Back to editorials</span>
+  <span class="t-nl" style="display:none">← Terug naar columns</span>
+  <span class="t-fr" style="display:none">← Retour aux éditoriaux</span>
+</a>
+
+{% if image_url %}
+<div class="post-hero">
+  <img src="{{ image_url }}" alt="{{ title }}" loading="lazy">
+</div>
+{% endif %}
+
+<div class="post-header">
+  <div class="post-emoji">{{ emoji }}</div>
+  <h1 class="post-title">
+    <span class="t-en">{{ title }}</span>
+    <span class="t-nl" style="display:none">{{ title_nl if title_nl else title }}</span>
+    <span class="t-fr" style="display:none">{{ title_fr if title_fr else title }}</span>
+  </h1>
+  <p class="post-meta">
+    <span class="t-en"><span class="post-author">By Rik Van Bruggen</span> · {{ page.date | dateTimeDisplay }}</span>
+    <span class="t-nl" style="display:none"><span class="post-author">Door Rik Van Bruggen</span> · {{ page.date | dateTimeDisplay }}</span>
+    <span class="t-fr" style="display:none"><span class="post-author">Par Rik Van Bruggen</span> · {{ page.date | dateTimeDisplay }}</span>
+  </p>
+</div>
+
+<div class="post-body">
+  <span class="t-en">{{ content | safe }}</span>
+  <span class="t-nl" style="display:none">{{ content_nl | safe }}</span>
+  <span class="t-fr" style="display:none">{{ content_fr | safe }}</span>
+</div>
+
+<div class="post-share">
+  <span class="post-share-label">Share</span>
+
+  <a class="share-btn share-btn-x"
+     href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ meta.siteUrl }}{{ page.url | urlencode }}"
+     target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.261 5.636 5.903-5.636Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    X
+  </a>
+
+  <a class="share-btn share-btn-bluesky"
+     href="https://bsky.app/intent/compose?text={{ title | urlencode }}%20{{ meta.siteUrl }}{{ page.url | urlencode }}"
+     target="_blank" rel="noopener noreferrer" aria-label="Share on Bluesky">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+    Bluesky
+  </a>
+
+  <a class="share-btn share-btn-facebook"
+     href="https://www.facebook.com/sharer/sharer.php?u={{ meta.siteUrl }}{{ page.url | urlencode }}"
+     target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    Facebook
+  </a>
+
+  <button class="share-btn share-btn-copy" onclick="copyLink(this)" aria-label="Copy link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    Copy link
+  </button>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | dump | safe }},
+  "description": {{ summary | truncate(155, true, "…") | dump | safe }},
+  "url": "{{ meta.siteUrl }}{{ page.url }}",
+  "datePublished": "{{ page.date | dateIso }}",
+  "author": {
+    "@type": "Person",
+    "name": "Rik Van Bruggen"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Positron Today",
+    "url": "{{ meta.siteUrl }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ meta.siteUrl }}/assets/favicon-32x32.png"
+    }
+  }{% if image_url %},
+  "image": "{{ image_url }}"{% endif %}
+}
+</script>
+
+<script>
+function copyLink(btn) {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    var orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(function() { btn.innerHTML = orig; }, 2000);
+  });
+}
+</script>

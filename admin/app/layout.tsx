@@ -75,6 +75,7 @@ export default async function RootLayout({
               <Link href="/preview" className="hover:text-amber-600 transition-colors">Fetch &amp; Filter</Link>
               <Link href="/scheduled" className="hover:text-amber-600 transition-colors">Summarise &amp; Publish</Link>
               <Link href="/history" className="hover:text-amber-600 transition-colors">History</Link>
+              <Link href="/editorials" className="hover:text-amber-600 transition-colors">Editorials</Link>
               <Link href="/rejections" className="hover:text-amber-600 transition-colors">Rejections</Link>
               <Link href="/settings" className="hover:text-amber-600 transition-colors">Settings</Link>
             </div>
