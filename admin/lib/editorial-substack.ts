@@ -173,8 +173,14 @@ export async function postEditorialToSubstack(editorialId: number): Promise<Edit
   const slug = String(editorial.slug ?? "");
   const siteUrl = `${SITE_BASE}/editorials/${slug}/`;
 
+  // Rewrite bare image filenames to full public URLs before Prosemirror conversion
+  const contentWithImages = contentEn.replace(
+    /!\[([^\]]*)\]\(([^/)][^)]*)\)/g,
+    (_m, alt, src) => `![${alt}](${SITE_BASE}/assets/editorials/${src})`,
+  );
+
   // Build Prosemirror doc from markdown + append site link
-  const bodyDoc = markdownToProsemirror(contentEn);
+  const bodyDoc = markdownToProsemirror(contentWithImages);
   bodyDoc.content!.push(
     { type: "horizontal_rule" },
     {
