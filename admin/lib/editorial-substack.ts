@@ -1,4 +1,5 @@
 import db from "@/lib/db";
+import sharp from "sharp";
 
 const SITE_BASE = "https://positron.today";
 const PUBLICATION_URL = "https://positrontoday.substack.com";
@@ -9,27 +10,22 @@ export interface EditorialSubstackResult {
   url?: string;
 }
 
-export interface EditorialImageData {
-  filename: string;
-  base64: string;
+async function convertSvgToPng(svgBuffer: Buffer): Promise<Buffer> {
+  return sharp(svgBuffer, { density: 300 })
+    .resize({ width: 1200, withoutEnlargement: true })
+    .png()
+    .toBuffer();
 }
 
 async function uploadImageToSubstack(
-  base64Data: string,
+  imageBuffer: Buffer,
   filename: string,
   cookie: string,
 ): Promise<string | null> {
   try {
-    const ext = filename.split(".").pop()?.toLowerCase() ?? "png";
-    const mimeMap: Record<string, string> = {
-      svg: "image/svg+xml", png: "image/png", jpg: "image/jpeg",
-      jpeg: "image/jpeg", gif: "image/gif", webp: "image/webp",
-    };
-    const mime = mimeMap[ext] ?? "image/png";
-    const buffer = Buffer.from(base64Data, "base64");
-
+    const pngFilename = filename.replace(/\.svg$/i, ".png");
     const formData = new FormData();
-    formData.append("image", new Blob([buffer], { type: mime }), filename);
+    formData.append("image", new Blob([new Uint8Array(imageBuffer)], { type: "image/png" }), pngFilename);
 
     const res = await fetch(`${PUBLICATION_URL}/api/v1/image`, {
       method: "POST",
@@ -46,6 +42,24 @@ async function uploadImageToSubstack(
     return data.url ?? null;
   } catch (err) {
     console.warn(`[editorial-substack] Image upload error for ${filename}:`, err);
+    return null;
+  }
+}
+
+async function fetchAndPrepareImage(imageUrl: string): Promise<Buffer | null> {
+  try {
+    const res = await fetch(imageUrl, { signal: AbortSignal.timeout(15_000) });
+    if (!res.ok) {
+      console.warn(`[editorial-substack] Failed to fetch image ${imageUrl}: ${res.status}`);
+      return null;
+    }
+    const buffer = Buffer.from(await res.arrayBuffer());
+    if (imageUrl.toLowerCase().endsWith(".svg")) {
+      return convertSvgToPng(buffer);
+    }
+    return buffer;
+  } catch (err) {
+    console.warn(`[editorial-substack] Error fetching image ${imageUrl}:`, err);
     return null;
   }
 }
@@ -198,7 +212,6 @@ function parseInline(text: string): ProsemirrorNode[] {
 
 export async function postEditorialToSubstack(
   editorialId: number,
-  images?: EditorialImageData[],
 ): Promise<EditorialSubstackResult> {
   const sid = process.env.SUBSTACK_SID;
   if (!sid) return { ok: false, error: "SUBSTACK_SID is not set" };
@@ -218,14 +231,24 @@ export async function postEditorialToSubstack(
   const siteUrl = `${SITE_BASE}/editorials/${slug}/`;
   const cookie = `substack.sid=${sid}`;
 
-  // Upload images to Substack CDN and build a filename→CDN URL map
+  // Collect all image filenames referenced in the markdown
+  const imageRefs: string[] = [];
+  contentEn.replace(/!\[([^\]]*)\]\(([^/)][^)]*)\)/g, (_m, _alt, src) => {
+    imageRefs.push(src);
+    return "";
+  });
+
+  // Fetch each image from the public site, convert SVG→PNG, upload to Substack CDN
   const cdnMap = new Map<string, string>();
-  if (images && images.length > 0) {
-    for (const img of images) {
-      const cdnUrl = await uploadImageToSubstack(img.base64, img.filename, cookie);
+  for (const filename of imageRefs) {
+    const publicUrl = `${SITE_BASE}/assets/editorials/${filename}`;
+    console.log(`[editorial-substack] Fetching image: ${publicUrl}`);
+    const imageBuffer = await fetchAndPrepareImage(publicUrl);
+    if (imageBuffer) {
+      const cdnUrl = await uploadImageToSubstack(imageBuffer, filename, cookie);
       if (cdnUrl) {
-        cdnMap.set(img.filename, cdnUrl);
-        console.log(`[editorial-substack] Uploaded ${img.filename} → ${cdnUrl}`);
+        cdnMap.set(filename, cdnUrl);
+        console.log(`[editorial-substack] Uploaded ${filename} → ${cdnUrl}`);
       }
     }
   }
@@ -257,7 +280,7 @@ export async function postEditorialToSubstack(
   );
 
   const subtitle = "An editorial from Positron Today";
-  // Use the CDN URL for the cover image if available
+  // Use CDN URL for cover image; if not in cdnMap, fetch+upload it now
   let coverImageUrl: string | null = null;
   if (editorial.image_filename) {
     let firstImage: string | null = null;
@@ -266,7 +289,11 @@ export async function postEditorialToSubstack(
       firstImage = Array.isArray(arr) && arr.length > 0 ? arr[0] : String(editorial.image_filename);
     } catch { firstImage = String(editorial.image_filename); }
     if (firstImage) {
-      coverImageUrl = cdnMap.get(firstImage) ?? `${SITE_BASE}/assets/editorials/${firstImage}`;
+      coverImageUrl = cdnMap.get(firstImage) ?? null;
+      if (!coverImageUrl) {
+        const buf = await fetchAndPrepareImage(`${SITE_BASE}/assets/editorials/${firstImage}`);
+        if (buf) coverImageUrl = await uploadImageToSubstack(buf, firstImage, cookie);
+      }
     }
   }
 
