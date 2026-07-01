@@ -402,13 +402,7 @@ export async function unpublishEditorial(id: number): Promise<{ ok: boolean; err
       await deleteFromGitHub(`site/src/assets/editorials/${filename}`, `Remove editorial image: ${filename}`);
     }
 
-    // 4. Delete the linked articles row
-    if (articleId) {
-      await db.execute({ sql: "DELETE FROM article_tags WHERE article_id = ?", args: [articleId] });
-      await db.execute({ sql: "DELETE FROM articles WHERE id = ?", args: [articleId] });
-    }
-
-    // 5. Reset editorial to ready
+    // 4. Clear editorial foreign key first, then delete the linked articles row
     await db.execute({
       sql: `UPDATE editorials SET
         status = 'ready', article_id = NULL, published_path = NULL,
@@ -416,6 +410,11 @@ export async function unpublishEditorial(id: number): Promise<{ ok: boolean; err
         WHERE id = ?`,
       args: [id],
     });
+
+    if (articleId) {
+      await db.execute({ sql: "DELETE FROM article_tags WHERE article_id = ?", args: [articleId] });
+      await db.execute({ sql: "DELETE FROM articles WHERE id = ?", args: [articleId] });
+    }
 
     console.log(`[editorial] Unpublished editorial ${id}: "${title}"`);
     return { ok: true };
