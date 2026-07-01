@@ -227,6 +227,21 @@ export default function EditorialsPage() {
     }
   }
 
+  async function handlePostSubstack(id: number) {
+    setError(""); setSuccess("");
+    setBusy("Posting to Substack…");
+    try {
+      const res = await fetch(`/api/editorials/${id}/post-substack`, { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) { setError(data.error ?? "Substack post failed"); return; }
+      setSuccess(`Posted to Substack: ${data.url}`);
+      await fetchDetail(id);
+      await fetchList();
+    } finally {
+      setBusy("");
+    }
+  }
+
   async function handleUnpublish(id: number) {
     if (!confirm("Remove this editorial from the live site? It will return to 'Ready' status so you can re-publish later.")) return;
     setBusy("Unpublishing…");
@@ -417,10 +432,18 @@ export default function EditorialsPage() {
             </>
           )}
           {isPublished && (
-            <button onClick={() => handleUnpublish(selected.id)} disabled={!!busy}
-              className="bg-orange-100 hover:bg-orange-200 text-orange-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
-              ↩ Unpublish
-            </button>
+            <>
+              {!selected.substack_posted_at && (
+                <button onClick={() => handlePostSubstack(selected.id)} disabled={!!busy}
+                  className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+                  📨 Post to Substack
+                </button>
+              )}
+              <button onClick={() => handleUnpublish(selected.id)} disabled={!!busy}
+                className="bg-orange-100 hover:bg-orange-200 text-orange-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+                ↩ Unpublish
+              </button>
+            </>
           )}
           <button onClick={() => handleDelete(selected.id, isPublished)} disabled={!!busy}
             className="bg-red-100 hover:bg-red-200 text-red-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
