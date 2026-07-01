@@ -2,7 +2,7 @@ import db from "@/lib/db";
 import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { slugify, yamlStr, commitToGitHub, deleteFromGitHub } from "@/lib/publish-core";
-import { postEditorialToSubstack, type EditorialImageData } from "@/lib/editorial-substack";
+import { postEditorialToSubstack } from "@/lib/editorial-substack";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",
@@ -336,46 +336,49 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
       } catch { /* tag creation is best-effort */ }
     }
 
-    // 6. Update editorial status (keep image_data until after Substack post)
+    // 6. Mark the linked article as already posted to Substack so the regular
+    //    postPendingSubstack() doesn't grab it (editorials use their own poster)
+    if (articleId) {
+      await db.execute({
+        sql: "UPDATE articles SET substack_posted_at = datetime('now') WHERE id = ?",
+        args: [articleId],
+      });
+    }
+
+    // 7. Update editorial status
     await db.execute({
       sql: `UPDATE editorials SET
         status = 'published', article_id = ?, published_path = ?,
-        published_at = datetime('now'), updated_at = datetime('now')
+        published_at = datetime('now'), image_data = NULL, updated_at = datetime('now')
         WHERE id = ?`,
       args: [articleId, editorialPath, id],
     });
 
-    // 7. Post to Substack — pass image data so images can be uploaded to Substack CDN
-    let substackUrl: string | undefined;
+    // 8. Schedule Substack post for 5 minutes later so GitHub Pages has time to deploy
     if (Number(editorial.post_to_substack ?? 1) === 1) {
-      try {
-        const imageDataForSubstack: EditorialImageData[] = [];
-        for (let i = 0; i < filenames.length; i++) {
-          if (filenames[i] && datas[i]) {
-            imageDataForSubstack.push({ filename: filenames[i], base64: datas[i] });
+      const editorialId = id;
+      const delayMs = 5 * 60 * 1000;
+      console.log(`[editorial] Scheduling Substack post for editorial ${editorialId} in 5 minutes`);
+      setTimeout(async () => {
+        try {
+          const result = await postEditorialToSubstack(editorialId);
+          if (result.ok) {
+            await db.execute({
+              sql: "UPDATE editorials SET substack_posted_at = datetime('now') WHERE id = ?",
+              args: [editorialId],
+            });
+            console.log(`[editorial] Substack post succeeded for editorial ${editorialId}: ${result.url}`);
+          } else {
+            console.error(`[editorial] Substack post failed for editorial ${editorialId}: ${result.error}`);
           }
+        } catch (err) {
+          console.error(`[editorial] Substack post error for editorial ${editorialId}:`, err);
         }
-        const result = await postEditorialToSubstack(id, imageDataForSubstack);
-        if (result.ok) {
-          substackUrl = result.url;
-          await db.execute({
-            sql: "UPDATE editorials SET substack_posted_at = datetime('now') WHERE id = ?",
-            args: [id],
-          });
-        }
-      } catch (err) {
-        console.error(`[editorial] Substack post failed for editorial ${id}:`, err);
-      }
+      }, delayMs);
     }
 
-    // 8. Clear image_data now that Substack has its own copies
-    await db.execute({
-      sql: "UPDATE editorials SET image_data = NULL WHERE id = ?",
-      args: [id],
-    });
-
     console.log(`[editorial] Published editorial ${id}: "${title}" → ${editorialPath}`);
-    return { ok: true, editorialPath, cardPath, substackUrl };
+    return { ok: true, editorialPath, cardPath };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error(`[editorial] Failed to publish editorial ${id}:`, msg);
