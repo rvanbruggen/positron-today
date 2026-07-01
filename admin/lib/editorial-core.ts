@@ -2,7 +2,7 @@ import db from "@/lib/db";
 import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { slugify, yamlStr, commitToGitHub, deleteFromGitHub } from "@/lib/publish-core";
-import { postEditorialToSubstack } from "@/lib/editorial-substack";
+import { postEditorialToSubstack, type EditorialImageData } from "@/lib/editorial-substack";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",
@@ -336,20 +336,26 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
       } catch { /* tag creation is best-effort */ }
     }
 
-    // 6. Update editorial status
+    // 6. Update editorial status (keep image_data until after Substack post)
     await db.execute({
       sql: `UPDATE editorials SET
         status = 'published', article_id = ?, published_path = ?,
-        published_at = datetime('now'), image_data = NULL, updated_at = datetime('now')
+        published_at = datetime('now'), updated_at = datetime('now')
         WHERE id = ?`,
       args: [articleId, editorialPath, id],
     });
 
-    // 7. Post to Substack
+    // 7. Post to Substack — pass image data so images can be uploaded to Substack CDN
     let substackUrl: string | undefined;
     if (Number(editorial.post_to_substack ?? 1) === 1) {
       try {
-        const result = await postEditorialToSubstack(id);
+        const imageDataForSubstack: EditorialImageData[] = [];
+        for (let i = 0; i < filenames.length; i++) {
+          if (filenames[i] && datas[i]) {
+            imageDataForSubstack.push({ filename: filenames[i], base64: datas[i] });
+          }
+        }
+        const result = await postEditorialToSubstack(id, imageDataForSubstack);
         if (result.ok) {
           substackUrl = result.url;
           await db.execute({
@@ -361,6 +367,12 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
         console.error(`[editorial] Substack post failed for editorial ${id}:`, err);
       }
     }
+
+    // 8. Clear image_data now that Substack has its own copies
+    await db.execute({
+      sql: "UPDATE editorials SET image_data = NULL WHERE id = ?",
+      args: [id],
+    });
 
     console.log(`[editorial] Published editorial ${id}: "${title}" → ${editorialPath}`);
     return { ok: true, editorialPath, cardPath, substackUrl };

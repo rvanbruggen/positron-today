@@ -9,6 +9,47 @@ export interface EditorialSubstackResult {
   url?: string;
 }
 
+export interface EditorialImageData {
+  filename: string;
+  base64: string;
+}
+
+async function uploadImageToSubstack(
+  base64Data: string,
+  filename: string,
+  cookie: string,
+): Promise<string | null> {
+  try {
+    const ext = filename.split(".").pop()?.toLowerCase() ?? "png";
+    const mimeMap: Record<string, string> = {
+      svg: "image/svg+xml", png: "image/png", jpg: "image/jpeg",
+      jpeg: "image/jpeg", gif: "image/gif", webp: "image/webp",
+    };
+    const mime = mimeMap[ext] ?? "image/png";
+    const buffer = Buffer.from(base64Data, "base64");
+
+    const formData = new FormData();
+    formData.append("image", new Blob([buffer], { type: mime }), filename);
+
+    const res = await fetch(`${PUBLICATION_URL}/api/v1/image`, {
+      method: "POST",
+      headers: { Cookie: cookie },
+      body: formData,
+    });
+
+    if (!res.ok) {
+      console.warn(`[editorial-substack] Image upload failed (${res.status}) for ${filename}`);
+      return null;
+    }
+
+    const data = await res.json();
+    return data.url ?? null;
+  } catch (err) {
+    console.warn(`[editorial-substack] Image upload error for ${filename}:`, err);
+    return null;
+  }
+}
+
 interface ProsemirrorNode {
   type: string;
   content?: ProsemirrorNode[];
@@ -155,7 +196,10 @@ function parseInline(text: string): ProsemirrorNode[] {
   return nodes.length > 0 ? nodes : [{ type: "text", text: text || " " }];
 }
 
-export async function postEditorialToSubstack(editorialId: number): Promise<EditorialSubstackResult> {
+export async function postEditorialToSubstack(
+  editorialId: number,
+  images?: EditorialImageData[],
+): Promise<EditorialSubstackResult> {
   const sid = process.env.SUBSTACK_SID;
   if (!sid) return { ok: false, error: "SUBSTACK_SID is not set" };
 
@@ -172,11 +216,28 @@ export async function postEditorialToSubstack(editorialId: number): Promise<Edit
 
   const slug = String(editorial.slug ?? "");
   const siteUrl = `${SITE_BASE}/editorials/${slug}/`;
+  const cookie = `substack.sid=${sid}`;
 
-  // Rewrite bare image filenames to full public URLs before Prosemirror conversion
+  // Upload images to Substack CDN and build a filename→CDN URL map
+  const cdnMap = new Map<string, string>();
+  if (images && images.length > 0) {
+    for (const img of images) {
+      const cdnUrl = await uploadImageToSubstack(img.base64, img.filename, cookie);
+      if (cdnUrl) {
+        cdnMap.set(img.filename, cdnUrl);
+        console.log(`[editorial-substack] Uploaded ${img.filename} → ${cdnUrl}`);
+      }
+    }
+  }
+
+  // Rewrite bare image filenames to CDN URLs (or fall back to public site URLs)
   const contentWithImages = contentEn.replace(
     /!\[([^\]]*)\]\(([^/)][^)]*)\)/g,
-    (_m, alt, src) => `![${alt}](${SITE_BASE}/assets/editorials/${src})`,
+    (_m, alt, src) => {
+      const cdnUrl = cdnMap.get(src);
+      if (cdnUrl) return `![${alt}](${cdnUrl})`;
+      return `![${alt}](${SITE_BASE}/assets/editorials/${src})`;
+    },
   );
 
   // Build Prosemirror doc from markdown + append site link
@@ -196,16 +257,18 @@ export async function postEditorialToSubstack(editorialId: number): Promise<Edit
   );
 
   const subtitle = "An editorial from Positron Today";
-  let firstImage: string | null = null;
+  // Use the CDN URL for the cover image if available
+  let coverImageUrl: string | null = null;
   if (editorial.image_filename) {
+    let firstImage: string | null = null;
     try {
       const arr = JSON.parse(String(editorial.image_filename));
       firstImage = Array.isArray(arr) && arr.length > 0 ? arr[0] : String(editorial.image_filename);
     } catch { firstImage = String(editorial.image_filename); }
+    if (firstImage) {
+      coverImageUrl = cdnMap.get(firstImage) ?? `${SITE_BASE}/assets/editorials/${firstImage}`;
+    }
   }
-  const imageUrl = firstImage ? `${SITE_BASE}/assets/editorials/${firstImage}` : null;
-
-  const cookie = `substack.sid=${sid}`;
 
   try {
     // Get author user ID
@@ -224,7 +287,7 @@ export async function postEditorialToSubstack(editorialId: number): Promise<Edit
       draft_bylines: [{ id: userId, is_guest: false }],
       type: "newsletter",
     };
-    if (imageUrl) draftPayload.cover_image = imageUrl;
+    if (coverImageUrl) draftPayload.cover_image = coverImageUrl;
 
     const draftRes = await fetch(`${PUBLICATION_URL}/api/v1/drafts`, {
       method: "POST",
