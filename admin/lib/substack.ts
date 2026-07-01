@@ -146,12 +146,20 @@ export async function postToSubstack(articleId: number): Promise<SubstackPostRes
   const sid = process.env.SUBSTACK_SID;
   if (!sid) return { ok: false, error: "SUBSTACK_SID is not set" };
 
-  const result = await db.execute({
-    sql: "SELECT * FROM articles WHERE id = ?",
+  // Claim this article with an optimistic lock: set substack_posted_at now
+  // so concurrent calls to postPendingSubstack() skip it.
+  const claimed = await db.execute({
+    sql: `UPDATE articles SET substack_posted_at = datetime('now')
+          WHERE id = ? AND substack_posted_at IS NULL RETURNING *`,
     args: [articleId],
   });
-  const article = result.rows[0];
-  if (!article) return { ok: false, error: `Article ${articleId} not found` };
+  const article = claimed.rows[0];
+  if (!article) {
+    // Either not found or already posted
+    const exists = await db.execute({ sql: "SELECT id FROM articles WHERE id = ?", args: [articleId] });
+    if (!exists.rows[0]) return { ok: false, error: `Article ${articleId} not found` };
+    return { ok: false, error: "Already posted to Substack" };
+  }
 
   const title = String(article.title_en ?? article.title_nl ?? "Untitled");
   const bodyJson = buildPostBodyJson(article as Record<string, unknown>);
@@ -166,14 +174,14 @@ export async function postToSubstack(articleId: number): Promise<SubstackPostRes
   try {
     const { url } = await createAndPublishDraft(title, subtitle, bodyJson, imageUrl);
 
-    await db.execute({
-      sql: "UPDATE articles SET substack_posted_at = datetime('now') WHERE id = ?",
-      args: [articleId],
-    });
-
     console.log(`[substack] Posted article ${articleId}: "${title}" → ${url}`);
     return { ok: true, url };
   } catch (err) {
+    // Roll back the claim so the article can be retried
+    await db.execute({
+      sql: "UPDATE articles SET substack_posted_at = NULL WHERE id = ?",
+      args: [articleId],
+    });
     const msg = err instanceof Error ? err.message : String(err);
     console.error(`[substack] Failed to post article ${articleId}:`, msg);
     if (msg.includes("401") || msg.includes("403") || msg.includes("authentication")) {
