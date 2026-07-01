@@ -433,12 +433,10 @@ export default function EditorialsPage() {
           )}
           {isPublished && (
             <>
-              {!selected.substack_posted_at && (
-                <button onClick={() => handlePostSubstack(selected.id)} disabled={!!busy}
-                  className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
-                  📨 Post to Substack
-                </button>
-              )}
+              <button onClick={() => handlePostSubstack(selected.id)} disabled={!!busy}
+                className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+                📨 Post to Substack
+              </button>
               <button onClick={() => handleUnpublish(selected.id)} disabled={!!busy}
                 className="bg-orange-100 hover:bg-orange-200 text-orange-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
                 ↩ Unpublish
