@@ -1,4 +1,8 @@
+const markdownIt = require("markdown-it");
+const md = markdownIt({ html: true, linkify: true });
+
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("renderMarkdown", (str) => str ? md.render(str) : "");
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/robots.txt");

@@ -89,8 +89,8 @@ layout: base.njk
 
 <div class="post-body">
   <span class="t-en">{{ content | safe }}</span>
-  <span class="t-nl" style="display:none">{{ content_nl | safe }}</span>
-  <span class="t-fr" style="display:none">{{ content_fr | safe }}</span>
+  <span class="t-nl" style="display:none">{{ content_nl | renderMarkdown | safe }}</span>
+  <span class="t-fr" style="display:none">{{ content_fr | renderMarkdown | safe }}</span>
 </div>
 
 <div class="post-share">
