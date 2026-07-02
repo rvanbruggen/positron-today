@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.2.2** | Fix GitHub Pages deploy queue: set `cancel-in-progress: true` so newer pushes cancel stuck/queued deployments instead of timing out behind them |
 | **3.2.1** | Fix SQLITE_CONSTRAINT on editorial scheduling: recreate editorials table to widen CHECK constraint to include `scheduled` status (SQLite cannot ALTER a CHECK in place) |
 | **3.2.0** | Add scheduled editorial publishing (date picker, `publish_date` column, `editorial-publish-timer.ts`, `/api/editorials/[id]/schedule` route). Fix editorial pages not adapting to mono/mondrian colour schemes (add theme-specific CSS overrides for both detail and listing pages) |
 | **3.1.5** | Render editorial NL/FR translations as HTML on public site (added `renderMarkdown` Eleventy filter). Instruct translation LLM to preserve all numbers, statistics, percentages, dates, and proper nouns verbatim |
