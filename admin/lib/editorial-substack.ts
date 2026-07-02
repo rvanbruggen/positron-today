@@ -106,9 +106,15 @@ function markdownToProsemirror(markdown: string): ProsemirrorNode {
     // Image
     const imgMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)/);
     if (imgMatch) {
+      const imgAttrs: Record<string, unknown> = {
+        src: imgMatch[2],
+        fullscreen: true,
+        imageSize: "normal",
+      };
+      if (imgMatch[1]) imgAttrs.alt = imgMatch[1];
       content.push({
         type: "captionedImage",
-        attrs: { src: imgMatch[2], alt: imgMatch[1] },
+        content: [{ type: "image2", attrs: imgAttrs }],
       });
       i++;
       continue;
