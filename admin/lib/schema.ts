@@ -224,6 +224,47 @@ export async function initSchema() {
 
     // v3.2: Scheduled editorial publishing
     "ALTER TABLE editorials ADD COLUMN publish_date TEXT",
+
+    // v3.2.1: Widen the CHECK constraint to include 'scheduled' status.
+    // SQLite cannot ALTER a CHECK, so recreate the table.
+    `CREATE TABLE IF NOT EXISTS editorials_new (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      slug TEXT NOT NULL UNIQUE,
+      status TEXT NOT NULL DEFAULT 'draft' CHECK(status IN ('draft', 'ready', 'scheduled', 'published')),
+      source_language TEXT NOT NULL DEFAULT 'en' CHECK(source_language IN ('en', 'nl', 'fr')),
+      content_en TEXT,
+      content_nl TEXT,
+      content_fr TEXT,
+      title_en TEXT,
+      title_nl TEXT,
+      title_fr TEXT,
+      summary_en TEXT,
+      summary_nl TEXT,
+      summary_fr TEXT,
+      article_emoji TEXT DEFAULT '✍️',
+      image_filename TEXT,
+      image_data TEXT,
+      article_id INTEGER REFERENCES articles(id),
+      published_path TEXT,
+      published_at TEXT,
+      post_to_substack INTEGER NOT NULL DEFAULT 1,
+      substack_posted_at TEXT,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+      publish_date TEXT
+    )`,
+    `INSERT OR IGNORE INTO editorials_new
+       SELECT id, slug, status, source_language,
+              content_en, content_nl, content_fr,
+              title_en, title_nl, title_fr,
+              summary_en, summary_nl, summary_fr,
+              article_emoji, image_filename, image_data,
+              article_id, published_path, published_at,
+              post_to_substack, substack_posted_at,
+              created_at, updated_at, publish_date
+       FROM editorials`,
+    "DROP TABLE IF EXISTS editorials",
+    "ALTER TABLE editorials_new RENAME TO editorials",
   ];
 
   for (const sql of migrations) {
