@@ -199,7 +199,7 @@ export async function initSchema() {
     `CREATE TABLE IF NOT EXISTS editorials (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       slug TEXT NOT NULL UNIQUE,
-      status TEXT NOT NULL DEFAULT 'draft' CHECK(status IN ('draft', 'ready', 'published')),
+      status TEXT NOT NULL DEFAULT 'draft' CHECK(status IN ('draft', 'ready', 'scheduled', 'published')),
       source_language TEXT NOT NULL DEFAULT 'en' CHECK(source_language IN ('en', 'nl', 'fr')),
       content_en TEXT,
       content_nl TEXT,
@@ -221,6 +221,9 @@ export async function initSchema() {
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     )`,
+
+    // v3.2: Scheduled editorial publishing
+    "ALTER TABLE editorials ADD COLUMN publish_date TEXT",
   ];
 
   for (const sql of migrations) {

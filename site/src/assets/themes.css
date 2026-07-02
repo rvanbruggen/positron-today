@@ -193,6 +193,36 @@ html[data-theme="mono"] .share-btn-copy {
   border-radius: 0;
 }
 
+/* --- editorial.njk (mono) — override purple accent colors --- */
+html[data-theme="mono"] .post-body h2,
+html[data-theme="mono"] .post-body h3 { color: var(--mono-fg) !important; }
+html[data-theme="mono"] .post-body a { color: var(--mono-fg) !important; text-decoration: underline; }
+html[data-theme="mono"] .post-body a:hover { color: var(--mono-muted) !important; }
+html[data-theme="mono"] .post-body blockquote {
+  border-left-color: var(--mono-hairline-strong) !important;
+  color: var(--mono-muted) !important;
+}
+html[data-theme="mono"] .post-body img { border-radius: 0; filter: grayscale(1) contrast(1.05); }
+
+/* --- editorials/index.njk (mono) --- */
+html[data-theme="mono"] .editorials-header h1 { color: var(--mono-fg); }
+html[data-theme="mono"] .editorials-header p  { color: var(--mono-muted); }
+html[data-theme="mono"] .editorial-card {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+@media (hover: hover) {
+  html[data-theme="mono"] .editorial-card:hover {
+    box-shadow: 4px 4px 0 0 var(--mono-fg);
+    border-color: var(--mono-fg) !important;
+  }
+}
+html[data-theme="mono"] .editorial-card-title { color: var(--mono-fg) !important; }
+html[data-theme="mono"] .editorial-card-date  { color: var(--mono-muted) !important; }
+html[data-theme="mono"] .editorial-card-summary { color: var(--mono-fg) !important; }
+html[data-theme="mono"] .editorials-empty { color: var(--mono-muted) !important; }
+
 /* Generic headings/content on other pages (about, contact, negativity, archive) */
 html[data-theme="mono"] main h1,
 html[data-theme="mono"] main h2,
@@ -632,6 +662,36 @@ html[data-theme="mondrian"] .share-btn-copy {
   border: 3px solid var(--md-black) !important;
   border-radius: 0;
 }
+
+/* --- editorial.njk (mondrian) — override purple accent colors --- */
+html[data-theme="mondrian"] .post-body h2,
+html[data-theme="mondrian"] .post-body h3 { color: var(--md-black) !important; font-weight: 900; }
+html[data-theme="mondrian"] .post-body a { color: var(--md-blue) !important; border-bottom: 2px solid var(--md-blue); text-decoration: none; }
+html[data-theme="mondrian"] .post-body a:hover { color: var(--md-red) !important; border-color: var(--md-red); }
+html[data-theme="mondrian"] .post-body blockquote {
+  border-left: 5px solid var(--md-red) !important;
+  color: var(--md-muted) !important;
+}
+html[data-theme="mondrian"] .post-body img { border-radius: 0; }
+
+/* --- editorials/index.njk (mondrian) --- */
+html[data-theme="mondrian"] .editorials-header h1 { color: var(--md-black); font-weight: 900; }
+html[data-theme="mondrian"] .editorials-header p  { color: var(--md-muted); }
+html[data-theme="mondrian"] .editorial-card {
+  background: #ffffff !important;
+  border: 5px solid var(--md-blue) !important;
+  border-radius: 0;
+}
+@media (hover: hover) {
+  html[data-theme="mondrian"] .editorial-card:hover {
+    box-shadow: 6px 6px 0 0 var(--md-black);
+    border-color: var(--md-blue) !important;
+  }
+}
+html[data-theme="mondrian"] .editorial-card-title { color: var(--md-black) !important; font-weight: 800; }
+html[data-theme="mondrian"] .editorial-card-date  { color: var(--md-muted) !important; }
+html[data-theme="mondrian"] .editorial-card-summary { color: var(--md-black) !important; }
+html[data-theme="mondrian"] .editorials-empty { color: var(--md-muted) !important; }
 
 /* Generic headings on other pages */
 html[data-theme="mondrian"] main h1,

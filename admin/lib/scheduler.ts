@@ -11,6 +11,7 @@ import * as cron from "node-cron";
 import { getSettings } from "@/lib/settings";
 import { runUnifiedPipeline } from "@/lib/unified-pipeline";
 import { syncTimersFromDb, cancelAllTimers } from "@/lib/publish-timer";
+import { syncEditorialTimersFromDb, cancelAllEditorialTimers } from "@/lib/editorial-publish-timer";
 import { runDigest } from "@/lib/digest-core";
 
 let activeJobs: ReturnType<typeof cron.schedule>[] = [];
@@ -38,6 +39,7 @@ export function stopScheduler(): void {
   }
   activeJobs = [];
   cancelAllTimers();
+  cancelAllEditorialTimers();
   console.log("[scheduler] All jobs and timers stopped");
 }
 
@@ -126,6 +128,7 @@ export async function reloadScheduler(): Promise<void> {
 
   // Sync publish timers from the database
   await syncTimersFromDb();
+  await syncEditorialTimersFromDb();
 
   console.log(`[scheduler] Active with ${activeJobs.length} cron jobs`);
 }

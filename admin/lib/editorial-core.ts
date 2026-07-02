@@ -267,7 +267,7 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
   const row = await db.execute({ sql: "SELECT * FROM editorials WHERE id = ?", args: [id] });
   const editorial = row.rows[0];
   if (!editorial) return { ok: false, error: `Editorial ${id} not found` };
-  if (editorial.status !== "ready") return { ok: false, error: `Editorial is not ready (status: ${editorial.status})` };
+  if (editorial.status !== "ready" && editorial.status !== "scheduled") return { ok: false, error: `Editorial is not ready (status: ${editorial.status})` };
 
   const slug = String(editorial.slug);
   const title = String(editorial.title_en ?? "Untitled");

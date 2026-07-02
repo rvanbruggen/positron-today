@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 type Editorial = {
   id: number;
   slug: string;
-  status: "draft" | "ready" | "published";
+  status: "draft" | "ready" | "scheduled" | "published";
   source_language: string;
   title_en: string | null;
   title_nl: string | null;
@@ -20,6 +20,7 @@ type Editorial = {
   image_filename: string | null;
   post_to_substack: number;
   substack_posted_at: string | null;
+  publish_date: string | null;
   published_at: string | null;
   created_at: string;
   updated_at: string;
@@ -28,6 +29,7 @@ type Editorial = {
 const STATUS_BADGE: Record<string, { bg: string; text: string; label: string }> = {
   draft:     { bg: "bg-gray-200", text: "text-gray-700", label: "Draft" },
   ready:     { bg: "bg-green-200", text: "text-green-800", label: "Ready" },
+  scheduled: { bg: "bg-blue-200", text: "text-blue-800", label: "Scheduled" },
   published: { bg: "bg-amber-200", text: "text-amber-800", label: "Published" },
 };
 
@@ -57,6 +59,9 @@ export default function EditorialsPage() {
   const [busy, setBusy] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  // Schedule state
+  const [scheduleDate, setScheduleDate] = useState("");
 
   // Edit state for translations
   const [editFields, setEditFields] = useState<Record<string, string>>({});
@@ -206,6 +211,37 @@ export default function EditorialsPage() {
     await fetchList();
   }
 
+  async function handleSchedule() {
+    if (!selectedId || !scheduleDate) return;
+    setError(""); setSuccess("");
+    setBusy("Scheduling...");
+    const res = await fetch(`/api/editorials/${selectedId}/schedule`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ publish_date: scheduleDate }),
+    });
+    const data = await res.json();
+    setBusy("");
+    if (!res.ok) { setError(data.error ?? "Schedule failed"); return; }
+    setSuccess(`Scheduled for ${scheduleDate}`);
+    await fetchDetail(selectedId);
+    await fetchList();
+  }
+
+  async function handleUnschedule() {
+    if (!selectedId) return;
+    setError(""); setSuccess("");
+    setBusy("Unscheduling...");
+    const res = await fetch(`/api/editorials/${selectedId}/schedule`, { method: "DELETE" });
+    const data = await res.json();
+    setBusy("");
+    if (!res.ok) { setError(data.error ?? "Unschedule failed"); return; }
+    setSuccess("Unscheduled — editorial is back to Ready");
+    setScheduleDate("");
+    await fetchDetail(selectedId);
+    await fetchList();
+  }
+
   async function handleDelete(id: number, isPublished: boolean) {
     const msg = isPublished
       ? "This will remove the editorial from the live site and delete it permanently. Continue?"
@@ -295,6 +331,7 @@ export default function EditorialsPage() {
                     </p>
                     <p className="text-xs text-amber-500 mt-0.5">
                       {new Date(ed.created_at).toLocaleDateString()} · {ed.source_language.toUpperCase()}
+                      {ed.publish_date && !ed.published_at && ` · Scheduled ${new Date(ed.publish_date).toLocaleString()}`}
                       {ed.published_at && ` · Published ${new Date(ed.published_at).toLocaleDateString()}`}
                     </p>
                   </div>
@@ -388,6 +425,7 @@ export default function EditorialsPage() {
   if (view === "detail" && selected) {
     const isDraft = selected.status === "draft";
     const isReady = selected.status === "ready";
+    const isScheduled = selected.status === "scheduled";
     const isPublished = selected.status === "published";
 
     return (
@@ -431,6 +469,17 @@ export default function EditorialsPage() {
               </button>
             </>
           )}
+          {isScheduled && (
+            <>
+              <span className="text-sm text-blue-700 font-medium self-center">
+                📅 Scheduled: {selected.publish_date ? new Date(selected.publish_date).toLocaleString() : "—"}
+              </span>
+              <button onClick={handleUnschedule} disabled={!!busy}
+                className="bg-orange-100 hover:bg-orange-200 text-orange-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+                ✕ Unschedule
+              </button>
+            </>
+          )}
           {isPublished && (
             <>
               <button onClick={() => handlePostSubstack(selected.id)} disabled={!!busy}
@@ -449,6 +498,23 @@ export default function EditorialsPage() {
           </button>
         </div>
 
+        {/* Schedule picker — shown for ready editorials */}
+        {isReady && (
+          <div className="bg-blue-50 rounded-xl border border-blue-200 p-4 mb-4 flex flex-wrap items-center gap-3">
+            <span className="text-sm font-semibold text-blue-800">📅 Schedule publication:</span>
+            <input
+              type="datetime-local"
+              value={scheduleDate}
+              onChange={(e) => setScheduleDate(e.target.value)}
+              className="border border-blue-300 rounded-lg px-3 py-1.5 text-sm text-blue-900 bg-white"
+            />
+            <button onClick={handleSchedule} disabled={!!busy || !scheduleDate}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-4 py-1.5 rounded-lg text-sm transition-colors disabled:opacity-50">
+              Schedule
+            </button>
+          </div>
+        )}
+
         {/* Metadata */}
         <div className="bg-white rounded-xl shadow-sm border border-yellow-200 p-5 mb-4">
           <h2 className="text-sm font-semibold text-amber-800 mb-3">Details</h2>
@@ -456,6 +522,7 @@ export default function EditorialsPage() {
             <div><span className="text-amber-500">Slug:</span> {selected.slug}</div>
             <div><span className="text-amber-500">Language:</span> {selected.source_language.toUpperCase()}</div>
             <div><span className="text-amber-500">Created:</span> {new Date(selected.created_at).toLocaleString()}</div>
+            {selected.publish_date && <div><span className="text-amber-500">Scheduled:</span> {new Date(selected.publish_date).toLocaleString()}</div>}
             {selected.published_at && <div><span className="text-amber-500">Published:</span> {new Date(selected.published_at).toLocaleString()}</div>}
             {selected.substack_posted_at && <div><span className="text-amber-500">Substack:</span> {new Date(selected.substack_posted_at).toLocaleString()}</div>}
             {selected.image_filename && (() => {
@@ -467,7 +534,7 @@ export default function EditorialsPage() {
         </div>
 
         {/* Titles & Summaries (editable when not published) */}
-        {(isReady || isPublished) && (
+        {(isReady || isScheduled || isPublished) && (
           <div className="bg-white rounded-xl shadow-sm border border-yellow-200 p-5 mb-4">
             <h2 className="text-sm font-semibold text-amber-800 mb-3">Titles &amp; Summaries</h2>
             <div className="space-y-3">
@@ -490,7 +557,7 @@ export default function EditorialsPage() {
                   />
                 </div>
               ))}
-              {isReady && (
+              {(isReady || isScheduled) && (
                 <button onClick={handleSaveEdits} disabled={!!busy}
                   className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
                   Save Changes
@@ -501,7 +568,7 @@ export default function EditorialsPage() {
         )}
 
         {/* Substack Note */}
-        {(isReady || isPublished) && selected.title_en && selected.summary_en && (
+        {(isReady || isScheduled || isPublished) && selected.title_en && selected.summary_en && (
           <SubstackNote editorial={selected} />
         )}
 
