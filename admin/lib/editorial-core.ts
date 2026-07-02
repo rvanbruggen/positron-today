@@ -69,6 +69,7 @@ ${sourceContent}
 
 Output ONLY this exact JSON object and nothing else. All fields are required.
 Keep values SHORT — titles are one line, summaries are 4-5 sentences each.
+Preserve all numbers, statistics, percentages, dates, and proper nouns EXACTLY as they appear in the source.
 {
   "title_en": "Title in English",
   "title_nl": "Titel in het Nederlands",
@@ -116,6 +117,7 @@ IMPORTANT:
 - Preserve the author's writing style, tone, and personality faithfully.
 - Translate the COMPLETE text — every paragraph, every sentence. Do not summarise or shorten.
 - Keep all markdown formatting (headings, bold, italic, links, lists, image references) intact.
+- Preserve all numbers, statistics, percentages, dates, and proper nouns EXACTLY as they appear in the source. Do not round, convert, or alter any figures.
 - Output ONLY the translated text. No preamble, no "Here is the translation:", no wrapping.
 
 ${sourceContent}`;
