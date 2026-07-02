@@ -312,7 +312,7 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
         String(editorial.article_emoji ?? "✍️"),
         filenames.length > 0 ? `/assets/editorials/${filenames[0]}` : null,
         cardPath,
-        Number(editorial.post_to_substack ?? 1),
+        0,
       ],
     });
 

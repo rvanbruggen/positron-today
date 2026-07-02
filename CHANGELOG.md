@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.1.4** | Prevent editorial article card from being double-posted to Substack: set `post_to_substack = 0` on the linked articles row so only the dedicated editorial poster handles Substack |
 | **3.1.3** | Fix editorial images not rendering on Substack: use correct Prosemirror node structure (`captionedImage` wrapping `image2` child node with `fullscreen` and `imageSize` attrs) instead of bare attrs on the wrapper |
 | **3.1.2** | Delay editorial Substack post by 5 minutes to wait for GitHub Pages deploy. Split editorial translation into 3 separate LLM calls (titles+summaries, then each language translation as raw text) to fix JSON parse failures. Add manual "Post to Substack" button for published editorials |
 | **3.1.1** | Fix editorial images on Substack: upload images directly to Substack's CDN during publish instead of linking to public site URLs (which aren't available yet at publish time and break if the editorial is later unpublished). Defer clearing `image_data` from the database until after the Substack post completes |
