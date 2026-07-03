@@ -10,14 +10,14 @@ export interface EditorialSubstackResult {
   url?: string;
 }
 
-async function convertSvgToPng(svgBuffer: Buffer): Promise<Buffer> {
+export async function convertSvgToPng(svgBuffer: Buffer): Promise<Buffer> {
   return sharp(svgBuffer, { density: 300 })
     .resize({ width: 1200, withoutEnlargement: true })
     .png()
     .toBuffer();
 }
 
-async function uploadImageToSubstack(
+export async function uploadImageToSubstack(
   imageBuffer: Buffer,
   filename: string,
   cookie: string,
@@ -218,6 +218,7 @@ function parseInline(text: string): ProsemirrorNode[] {
 
 export async function postEditorialToSubstack(
   editorialId: number,
+  preUploadedCdnMap?: Map<string, string>,
 ): Promise<EditorialSubstackResult> {
   const sid = process.env.SUBSTACK_SID;
   if (!sid) return { ok: false, error: "SUBSTACK_SID is not set" };
@@ -237,24 +238,27 @@ export async function postEditorialToSubstack(
   const siteUrl = `${SITE_BASE}/editorials/${slug}/`;
   const cookie = `substack.sid=${sid}`;
 
-  // Collect all image filenames referenced in the markdown
-  const imageRefs: string[] = [];
-  contentEn.replace(/!\[([^\]]*)\]\(([^/)][^)]*)\)/g, (_m, _alt, src) => {
-    imageRefs.push(src);
-    return "";
-  });
+  // Use pre-uploaded CDN map if available (images uploaded from DB before clearing),
+  // otherwise fall back to fetching from the public site
+  const cdnMap = preUploadedCdnMap ?? new Map<string, string>();
 
-  // Fetch each image from the public site, convert SVG→PNG, upload to Substack CDN
-  const cdnMap = new Map<string, string>();
-  for (const filename of imageRefs) {
-    const publicUrl = `${SITE_BASE}/assets/editorials/${filename}`;
-    console.log(`[editorial-substack] Fetching image: ${publicUrl}`);
-    const imageBuffer = await fetchAndPrepareImage(publicUrl);
-    if (imageBuffer) {
-      const cdnUrl = await uploadImageToSubstack(imageBuffer, filename, cookie);
-      if (cdnUrl) {
-        cdnMap.set(filename, cdnUrl);
-        console.log(`[editorial-substack] Uploaded ${filename} → ${cdnUrl}`);
+  if (!preUploadedCdnMap) {
+    const imageRefs: string[] = [];
+    contentEn.replace(/!\[([^\]]*)\]\(([^/)][^)]*)\)/g, (_m, _alt, src) => {
+      imageRefs.push(src);
+      return "";
+    });
+
+    for (const filename of imageRefs) {
+      const publicUrl = `${SITE_BASE}/assets/editorials/${filename}`;
+      console.log(`[editorial-substack] Fetching image: ${publicUrl}`);
+      const imageBuffer = await fetchAndPrepareImage(publicUrl);
+      if (imageBuffer) {
+        const cdnUrl = await uploadImageToSubstack(imageBuffer, filename, cookie);
+        if (cdnUrl) {
+          cdnMap.set(filename, cdnUrl);
+          console.log(`[editorial-substack] Uploaded ${filename} → ${cdnUrl}`);
+        }
       }
     }
   }
