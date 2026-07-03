@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.2.3** | Fix editorial images missing on Substack: upload images to Substack CDN directly from DB base64 data before clearing `image_data`, instead of fetching from the public site (which may not have deployed yet). Eliminates the race condition between GitHub Pages deploy and Substack posting |
 | **3.2.2** | Fix GitHub Pages deploy queue: set `cancel-in-progress: true` so newer pushes cancel stuck/queued deployments instead of timing out behind them |
 | **3.2.1** | Fix SQLITE_CONSTRAINT on editorial scheduling: recreate editorials table to widen CHECK constraint to include `scheduled` status (SQLite cannot ALTER a CHECK in place) |
 | **3.2.0** | Add scheduled editorial publishing (date picker, `publish_date` column, `editorial-publish-timer.ts`, `/api/editorials/[id]/schedule` route). Fix editorial pages not adapting to mono/mondrian colour schemes (add theme-specific CSS overrides for both detail and listing pages) |

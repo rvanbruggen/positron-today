@@ -2,7 +2,7 @@ import db from "@/lib/db";
 import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { slugify, yamlStr, commitToGitHub, deleteFromGitHub } from "@/lib/publish-core";
-import { postEditorialToSubstack } from "@/lib/editorial-substack";
+import { postEditorialToSubstack, uploadImageToSubstack, convertSvgToPng } from "@/lib/editorial-substack";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",
@@ -356,14 +356,39 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
       args: [articleId, editorialPath, id],
     });
 
-    // 8. Schedule Substack post for 5 minutes later so GitHub Pages has time to deploy
+    // 8. Upload images to Substack CDN from DB data (before it was cleared above),
+    //    then schedule the Substack post for 5 minutes later.
     if (Number(editorial.post_to_substack ?? 1) === 1) {
       const editorialId = id;
+      const sid = process.env.SUBSTACK_SID;
+      const cdnMap = new Map<string, string>();
+
+      if (sid) {
+        const cookie = `substack.sid=${sid}`;
+        for (let i = 0; i < filenames.length; i++) {
+          if (filenames[i] && datas[i]) {
+            try {
+              const raw = Buffer.from(datas[i], "base64");
+              const buf = filenames[i].toLowerCase().endsWith(".svg")
+                ? await convertSvgToPng(raw)
+                : raw;
+              const cdnUrl = await uploadImageToSubstack(buf, filenames[i], cookie);
+              if (cdnUrl) {
+                cdnMap.set(filenames[i], cdnUrl);
+                console.log(`[editorial] Pre-uploaded ${filenames[i]} to Substack CDN → ${cdnUrl}`);
+              }
+            } catch (err) {
+              console.warn(`[editorial] Failed to pre-upload ${filenames[i]} to Substack:`, err);
+            }
+          }
+        }
+      }
+
       const delayMs = 5 * 60 * 1000;
-      console.log(`[editorial] Scheduling Substack post for editorial ${editorialId} in 5 minutes`);
+      console.log(`[editorial] Scheduling Substack post for editorial ${editorialId} in 5 minutes (${cdnMap.size} images pre-uploaded)`);
       setTimeout(async () => {
         try {
-          const result = await postEditorialToSubstack(editorialId);
+          const result = await postEditorialToSubstack(editorialId, cdnMap);
           if (result.ok) {
             await db.execute({
               sql: "UPDATE editorials SET substack_posted_at = datetime('now') WHERE id = ?",
