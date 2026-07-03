@@ -6,11 +6,16 @@ on:
     paths:
       - "site/**"
   workflow_dispatch:
+    inputs:
+      retry_attempt:
+        description: "Retry attempt number (auto-set by retry job)"
+        default: "0"
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 concurrency:
   group: pages
@@ -53,3 +58,21 @@ jobs:
       # scheduled article and calls postPendingSocial() itself — polling for
       # Pages liveness before posting. The old /api/post-pending-social route
       # was removed in v2.35.0, so this workflow no longer pings the admin.
+
+  retry-on-failure:
+    needs: build-and-deploy
+    if: failure() && (inputs.retry_attempt || '0') < '2'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait 60s before retry
+        run: sleep 60
+
+      - name: Re-trigger deploy (attempt ${{ inputs.retry_attempt && fromJSON(inputs.retry_attempt) + 1 || 1 }})
+        run: |
+          ATTEMPT=$(( ${{ inputs.retry_attempt || 0 }} + 1 ))
+          echo "Retry attempt $ATTEMPT of 2"
+          gh workflow run deploy-site.yml \
+            --repo "${{ github.repository }}" \
+            -f retry_attempt="$ATTEMPT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
