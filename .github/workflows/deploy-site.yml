@@ -61,15 +61,15 @@ jobs:
 
   retry-on-failure:
     needs: build-and-deploy
-    if: failure() && (inputs.retry_attempt || '0') < '2'
+    if: failure() && (github.event.inputs.retry_attempt || '0') < '2'
     runs-on: ubuntu-latest
     steps:
       - name: Wait 60s before retry
         run: sleep 60
 
-      - name: Re-trigger deploy (attempt ${{ inputs.retry_attempt && fromJSON(inputs.retry_attempt) + 1 || 1 }})
+      - name: Re-trigger deploy
         run: |
-          ATTEMPT=$(( ${{ inputs.retry_attempt || 0 }} + 1 ))
+          ATTEMPT=$(( ${{ github.event.inputs.retry_attempt || 0 }} + 1 ))
           echo "Retry attempt $ATTEMPT of 2"
           gh workflow run deploy-site.yml \
             --repo "${{ github.repository }}" \
