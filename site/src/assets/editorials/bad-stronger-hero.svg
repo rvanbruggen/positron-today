@@ -1,0 +1,54 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A balance scale where one heavy dark negative sphere on the left outweighs a whole cluster of smaller positive spheres on the right">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#fdfaf4"/>
+      <stop offset="100%" stop-color="#f5efe3"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- fulcrum -->
+  <rect x="592" y="300" width="16" height="230" fill="#5b5347"/>
+  <polygon points="600,150 560,300 640,300" fill="#5b5347"/>
+
+  <!-- tilted beam, heavy on the left (the single bad thing) -->
+  <g transform="rotate(-14 600 155)">
+    <rect x="180" y="146" width="840" height="16" rx="8" fill="#3f3a31"/>
+    <circle cx="600" cy="154" r="12" fill="#f59e0b"/>
+    <line x1="240" y1="154" x2="240" y2="245" stroke="#8a8375" stroke-width="3"/>
+    <line x1="960" y1="154" x2="960" y2="245" stroke="#8a8375" stroke-width="3"/>
+  </g>
+
+  <!-- LEFT pan: one heavy dark negative sphere, sits low -->
+  <g>
+    <path d="M130 455 q120 55 240 0" fill="none" stroke="#3f3a31" stroke-width="4"/>
+    <line x1="160" y1="300" x2="140" y2="455" stroke="#8a8375" stroke-width="3"/>
+    <line x1="330" y1="300" x2="360" y2="455" stroke="#8a8375" stroke-width="3"/>
+    <circle cx="250" cy="380" r="66" fill="#3f3a31"/>
+    <text x="250" y="402" text-anchor="middle" font-size="64" fill="#fdfaf4" font-family="Georgia, serif">–</text>
+    <text x="250" y="530" text-anchor="middle" font-size="22" fill="#5b5347" font-family="Georgia, serif">one bad thing</text>
+  </g>
+
+  <!-- RIGHT pan: many small positive spheres, floats high -->
+  <g>
+    <path d="M850 285 q120 40 240 0" fill="none" stroke="#3f3a31" stroke-width="4"/>
+    <line x1="875" y1="135" x2="865" y2="285" stroke="#8a8375" stroke-width="3"/>
+    <line x1="1045" y1="135" x2="1055" y2="285" stroke="#8a8375" stroke-width="3"/>
+    <g font-family="Georgia, serif" text-anchor="middle">
+      <circle cx="915" cy="230" r="22" fill="#f59e0b"/><text x="915" y="238" font-size="22" fill="#fffdf8">+</text>
+      <circle cx="965" cy="205" r="22" fill="#f7b13f"/><text x="965" y="213" font-size="22" fill="#fffdf8">+</text>
+      <circle cx="1015" cy="232" r="22" fill="#f59e0b"/><text x="1015" y="240" font-size="22" fill="#fffdf8">+</text>
+      <circle cx="940" cy="258" r="22" fill="#f7b13f"/><text x="940" y="266" font-size="22" fill="#fffdf8">+</text>
+      <circle cx="990" cy="258" r="22" fill="#f59e0b"/><text x="990" y="266" font-size="22" fill="#fffdf8">+</text>
+      <circle cx="965" cy="285" r="22" fill="#f7b13f"/><text x="965" y="293" font-size="22" fill="#fffdf8">+</text>
+    </g>
+    <text x="980" y="360" text-anchor="middle" font-size="22" fill="#5b5347" font-family="Georgia, serif">many good ones</text>
+  </g>
+
+  <text x="600" y="595" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#5b5347" font-style="italic">one bad outweighs many good</text>
+</svg>
