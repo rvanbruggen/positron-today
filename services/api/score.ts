@@ -100,6 +100,93 @@ function extractHeadlines(html: string): string[] {
   return headlines.slice(0, 50);
 }
 
+const FEED_PATHS = [
+  "/feed",
+  "/rss",
+  "/feed/rss",
+  "/rss.xml",
+  "/atom.xml",
+  "/feed.xml",
+  "/feeds/posts/default",
+  "/index.xml",
+];
+
+async function fetchWithTimeout(
+  targetUrl: string,
+  accept: string
+): Promise<Response | null> {
+  try {
+    const r = await fetch(targetUrl, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (compatible; PositronScorer/1.0; +https://positron.today)",
+        Accept: accept,
+      },
+      redirect: "follow",
+      signal: AbortSignal.timeout(8_000),
+    });
+    return r.ok ? r : null;
+  } catch {
+    return null;
+  }
+}
+
+function extractHeadlinesFromFeed(xml: string): string[] {
+  const $ = cheerio.load(xml, { xmlMode: true });
+  const titles: string[] = [];
+  const seen = new Set<string>();
+
+  $("item > title, entry > title").each((_, el) => {
+    const text = $(el).text().trim().replace(/\s+/g, " ");
+    if (text.length >= 10 && text.length <= 300 && !seen.has(text)) {
+      seen.add(text);
+      titles.push(text);
+    }
+  });
+
+  return titles.slice(0, 50);
+}
+
+function discoverFeedUrlFromHtml(html: string, base: URL): string | null {
+  const $ = cheerio.load(html);
+  const link = $(
+    'link[type="application/rss+xml"], link[type="application/atom+xml"]'
+  ).first();
+  const href = link.attr("href");
+  if (!href) return null;
+  try {
+    return new URL(href, base).toString();
+  } catch {
+    return null;
+  }
+}
+
+async function tryRssFeeds(url: URL, html?: string): Promise<string[]> {
+  if (html) {
+    const discovered = discoverFeedUrlFromHtml(html, url);
+    if (discovered) {
+      const r = await fetchWithTimeout(discovered, "application/xml, text/xml, */*");
+      if (r) {
+        const xml = await r.text();
+        const titles = extractHeadlinesFromFeed(xml);
+        if (titles.length > 0) return titles;
+      }
+    }
+  }
+
+  for (const path of FEED_PATHS) {
+    const feedUrl = url.origin + path;
+    const r = await fetchWithTimeout(feedUrl, "application/xml, text/xml, */*");
+    if (r) {
+      const xml = await r.text();
+      const titles = extractHeadlinesFromFeed(xml);
+      if (titles.length > 0) return titles;
+    }
+  }
+
+  return [];
+}
+
 interface ClassifiedHeadline {
   headline: string;
   sentiment: "positive" | "negative" | "neutral";
@@ -194,33 +281,30 @@ export default async function handler(
     return res.status(200).json(cached);
   }
 
-  let html: string;
-  try {
-    const response = await fetch(url.toString(), {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; PositronScorer/1.0; +https://positron.today)",
-        Accept: "text/html",
-      },
-      signal: AbortSignal.timeout(10_000),
-    });
-    if (!response.ok) {
-      return res
-        .status(502)
-        .json({ error: `Failed to fetch site: HTTP ${response.status}` });
-    }
-    html = await response.text();
-  } catch (e) {
-    return res
-      .status(502)
-      .json({ error: "Failed to fetch the target site" });
+  let headlines: string[] = [];
+  let html: string | undefined;
+  let fetchFailed = false;
+
+  const pageResponse = await fetchWithTimeout(url.toString(), "text/html");
+  if (pageResponse) {
+    html = await pageResponse.text();
+    headlines = extractHeadlines(html);
+  } else {
+    fetchFailed = true;
   }
 
-  const headlines = extractHeadlines(html);
   if (headlines.length === 0) {
-    return res
-      .status(422)
-      .json({ error: "No headlines found on the page" });
+    const rssHeadlines = await tryRssFeeds(url, html);
+    if (rssHeadlines.length > 0) {
+      headlines = rssHeadlines;
+    }
+  }
+
+  if (headlines.length === 0) {
+    const msg = fetchFailed
+      ? "This site blocks automated access and no RSS feed was found."
+      : "No headlines found on the page and no RSS feed was found.";
+    return res.status(422).json({ error: msg });
   }
 
   try {
