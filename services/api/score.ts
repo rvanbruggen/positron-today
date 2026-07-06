@@ -190,10 +190,9 @@ export default async function handler(
       breakdown: { positive, negative, neutral },
       headlines: classified,
     });
-  } catch (e: any) {
-    console.error("Classification error:", e?.message || e);
+  } catch (e) {
     return res
       .status(500)
-      .json({ error: "Headline classification failed", detail: e?.message });
+      .json({ error: "Headline classification failed" });
   }
 }
