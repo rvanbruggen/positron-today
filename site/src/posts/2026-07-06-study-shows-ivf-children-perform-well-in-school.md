@@ -2,7 +2,7 @@
 title: "Study shows IVF children perform well in school"
 title_nl: "Studie toont aan dat IVF-kinderen goed presteren op school"
 title_fr: "Une étude montre que les enfants IVF réussissent bien à l'école"
-date: 2026-07-06T16:30:00
+date: 2026-07-06T16:30:01
 source_pub_date: 2026-07-06
 fetched_date: 2026-07-06
 source_url: "https://www.dn.se/sverige/stor-studie-sa-klarar-sig-ivf-barnen-i-skolan/"
