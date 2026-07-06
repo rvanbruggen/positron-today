@@ -1,0 +1,371 @@
+---
+layout: base.njk
+title: Positivity Score
+---
+
+<style>
+  .page-header { margin-bottom: 1.5rem; }
+  .page-header h1 { font-size: clamp(1.35rem,5vw,1.75rem); font-weight:700; color:#78350f; margin-bottom:0.5rem; }
+  .page-header p  { font-size:0.9rem; color:#b45309; line-height:1.6; }
+
+  /* ── How it works ── */
+  .how-section { background:#fff; border:1.5px solid #fde68a; border-radius:1rem; padding:1.25rem 1.5rem; margin-bottom:2rem; }
+  .how-title { font-size:0.75rem; font-weight:700; color:#b45309; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.75rem; }
+  .how-steps { list-style:none; padding:0; margin:0; }
+  .how-steps li { font-size:0.85rem; color:#78350f; line-height:1.6; padding:0.3rem 0; padding-left:1.6rem; position:relative; }
+  .how-steps li::before { position:absolute; left:0; font-weight:700; color:#f59e0b; }
+  .how-steps li:nth-child(1)::before { content:"1."; }
+  .how-steps li:nth-child(2)::before { content:"2."; }
+  .how-steps li:nth-child(3)::before { content:"3."; }
+  .how-steps li:nth-child(4)::before { content:"4."; }
+
+  /* ── Input form ── */
+  .score-form { display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap; }
+  .score-input {
+    flex:1; min-width:200px; padding:0.65rem 1rem; border-radius:0.75rem;
+    border:2px solid #fde68a; font-size:0.9rem; font-family:inherit; color:#78350f;
+    background:#fff; outline:none; transition:border-color 0.15s;
+  }
+  .score-input:focus { border-color:#f59e0b; }
+  .score-input::placeholder { color:#d4a44a; }
+  .score-btn {
+    padding:0.65rem 1.5rem; border-radius:0.75rem; border:none;
+    background:#f59e0b; color:#fff; font-size:0.9rem; font-weight:600;
+    font-family:inherit; cursor:pointer; transition:background 0.15s;
+    white-space:nowrap;
+  }
+  .score-btn:hover { background:#d97706; }
+  .score-btn:disabled { opacity:0.5; cursor:not-allowed; }
+
+  /* ── Loading ── */
+  .loading { text-align:center; padding:2rem 0; color:#b45309; font-size:0.9rem; }
+  .loading-spinner {
+    display:inline-block; width:24px; height:24px; border:3px solid #fde68a;
+    border-top-color:#f59e0b; border-radius:50%; animation:spin 0.8s linear infinite;
+    vertical-align:middle; margin-right:0.5rem;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  /* ── Error ── */
+  .error-msg { background:#fef2f2; border:1.5px solid #fca5a5; border-radius:0.75rem; padding:0.9rem 1.1rem; color:#991b1b; font-size:0.85rem; margin-bottom:1.5rem; }
+
+  /* ── Results ── */
+  .results { display:none; }
+  .results.visible { display:block; }
+
+  /* ── Score gauge ── */
+  .gauge-section { text-align:center; margin-bottom:2rem; }
+  .gauge-wrap { position:relative; display:inline-block; width:200px; height:110px; overflow:hidden; }
+  .gauge-bg {
+    width:200px; height:200px; border-radius:50%;
+    background: conic-gradient(
+      #ef4444 0deg, #ef4444 var(--neg-end),
+      #9ca3af var(--neg-end), #9ca3af var(--neu-end),
+      #22c55e var(--neu-end), #22c55e 180deg,
+      transparent 180deg
+    );
+    mask: radial-gradient(circle at 50% 50%, transparent 60px, black 61px);
+    -webkit-mask: radial-gradient(circle at 50% 50%, transparent 60px, black 61px);
+  }
+  .gauge-score { font-size:2.5rem; font-weight:700; position:absolute; bottom:0; left:0; right:0; text-align:center; line-height:1; }
+  .gauge-label { font-size:0.75rem; color:#b45309; margin-top:0.25rem; }
+
+  /* ── Stat cards ── */
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1rem; margin-bottom:2rem; }
+  .stat-card { background:#fff; border:2px solid #fde047; border-radius:1rem; padding:1.25rem 1rem; text-align:center; }
+  .stat-num  { font-size:2rem; font-weight:700; }
+  .stat-num.positive { color:#16a34a; }
+  .stat-num.negative { color:#dc2626; }
+  .stat-num.neutral  { color:#78350f; }
+  .stat-lbl  { font-size:0.75rem; color:#b45309; margin-top:0.25rem; }
+
+  /* ── Headline list ── */
+  .headline-section { margin-bottom:2rem; }
+  .section-heading {
+    font-size:1.1rem; font-weight:700; color:#78350f;
+    margin:0 0 0.75rem; padding-bottom:0.5rem;
+    border-bottom:2px solid #fde68a;
+  }
+  .headline-list { display:flex; flex-direction:column; gap:0.4rem; }
+  .headline-item {
+    padding:0.6rem 0.9rem; border-radius:0.5rem; font-size:0.85rem; line-height:1.5;
+    border-left:4px solid transparent;
+  }
+  .headline-item.positive { background:#f0fdf4; border-left-color:#22c55e; color:#15803d; }
+  .headline-item.negative { background:#fef2f2; border-left-color:#ef4444; color:#991b1b; }
+  .headline-item.neutral  { background:#f9fafb; border-left-color:#d1d5db; color:#6b7280; }
+  .sentiment-tag {
+    display:inline-block; font-size:0.65rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.05em; padding:0.1rem 0.4rem; border-radius:99px; margin-right:0.4rem;
+    vertical-align:middle;
+  }
+  .sentiment-tag.positive { background:#dcfce7; color:#16a34a; }
+  .sentiment-tag.negative { background:#fee2e2; color:#dc2626; }
+  .sentiment-tag.neutral  { background:#f3f4f6; color:#9ca3af; }
+
+  /* ── Scored-site label ── */
+  .scored-url { font-size:0.85rem; color:#b45309; margin-bottom:1.5rem; word-break:break-all; }
+  .scored-url a { color:#d97706; }
+
+  /* ── Presets ── */
+  .presets { margin-bottom:1.5rem; }
+  .presets-label { font-size:0.75rem; font-weight:600; color:#b45309; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .preset-pills { display:flex; gap:0.4rem; flex-wrap:wrap; }
+  .preset-pill {
+    padding:0.3rem 0.7rem; border-radius:99px; font-size:0.75rem; font-weight:500;
+    cursor:pointer; border:1.5px solid #fde68a; background:#fff; color:#78350f;
+    transition:background 0.15s; white-space:nowrap;
+  }
+  .preset-pill:hover { background:#fef3c7; }
+</style>
+
+<div class="page-header">
+  <h1>
+    <span class="t-en">Positivity Score 📊</span>
+    <span class="t-nl" style="display:none">Positiviteitsscore 📊</span>
+    <span class="t-fr" style="display:none">Score de positivité 📊</span>
+  </h1>
+  <p>
+    <span class="t-en">How positive is your news source? Enter the URL of any news website, and an AI will scan its current headlines, classify each one as positive, negative, or neutral, and calculate a positivity score.</span>
+    <span class="t-nl" style="display:none">Hoe positief is jouw nieuwsbron? Voer de URL in van een nieuwswebsite, en een AI scant de huidige koppen, classificeert elke kop als positief, negatief of neutraal, en berekent een positiviteitsscore.</span>
+    <span class="t-fr" style="display:none">Votre source d'actualité est-elle positive ? Entrez l'URL d'un site d'information, et une IA analysera ses titres actuels, classera chacun comme positif, négatif ou neutre, et calculera un score de positivité.</span>
+  </p>
+</div>
+
+<!-- How it works -->
+<div class="how-section">
+  <div class="how-title">
+    <span class="t-en">How the score is calculated</span>
+    <span class="t-nl" style="display:none">Hoe de score wordt berekend</span>
+    <span class="t-fr" style="display:none">Comment le score est calculé</span>
+  </div>
+  <ul class="how-steps">
+    <li>
+      <span class="t-en">The homepage of the news site is fetched and all visible headlines are extracted.</span>
+      <span class="t-nl" style="display:none">De homepage van de nieuwssite wordt opgehaald en alle zichtbare koppen worden geëxtraheerd.</span>
+      <span class="t-fr" style="display:none">La page d'accueil du site est récupérée et tous les titres visibles sont extraits.</span>
+    </li>
+    <li>
+      <span class="t-en">Each headline is sent to a fast AI model (Claude Haiku) that classifies it as <strong>positive</strong>, <strong>negative</strong>, or <strong>neutral</strong>.</span>
+      <span class="t-nl" style="display:none">Elke kop wordt naar een snel AI-model (Claude Haiku) gestuurd dat deze classificeert als <strong>positief</strong>, <strong>negatief</strong> of <strong>neutraal</strong>.</span>
+      <span class="t-fr" style="display:none">Chaque titre est envoyé à un modèle d'IA rapide (Claude Haiku) qui le classe comme <strong>positif</strong>, <strong>négatif</strong> ou <strong>neutre</strong>.</span>
+    </li>
+    <li>
+      <span class="t-en">The positivity score is the percentage of headlines classified as positive out of the total.</span>
+      <span class="t-nl" style="display:none">De positiviteitsscore is het percentage koppen dat als positief is geclassificeerd ten opzichte van het totaal.</span>
+      <span class="t-fr" style="display:none">Le score de positivité est le pourcentage de titres classés comme positifs par rapport au total.</span>
+    </li>
+    <li>
+      <span class="t-en">Scores reflect a snapshot in time — news changes throughout the day, so results may vary.</span>
+      <span class="t-nl" style="display:none">Scores zijn een momentopname — nieuws verandert gedurende de dag, dus resultaten kunnen variëren.</span>
+      <span class="t-fr" style="display:none">Les scores reflètent un instantané — l'actualité évolue au cours de la journée, les résultats peuvent donc varier.</span>
+    </li>
+  </ul>
+</div>
+
+<!-- URL input -->
+<div class="score-form" id="score-form">
+  <input class="score-input" type="url" id="url-input"
+    placeholder="https://www.bbc.com" autocomplete="off" spellcheck="false">
+  <button class="score-btn" id="score-btn" onclick="runScore()">
+    <span class="t-en">Score this site</span>
+    <span class="t-nl" style="display:none">Beoordeel deze site</span>
+    <span class="t-fr" style="display:none">Évaluer ce site</span>
+  </button>
+</div>
+
+<!-- Presets -->
+<div class="presets">
+  <div class="presets-label">
+    <span class="t-en">Or try one of these</span>
+    <span class="t-nl" style="display:none">Of probeer een van deze</span>
+    <span class="t-fr" style="display:none">Ou essayez l'un de ceux-ci</span>
+  </div>
+  <div class="preset-pills">
+    <button class="preset-pill" onclick="tryPreset('https://www.bbc.com')">BBC</button>
+    <button class="preset-pill" onclick="tryPreset('https://www.cnn.com')">CNN</button>
+    <button class="preset-pill" onclick="tryPreset('https://www.theguardian.com')">The Guardian</button>
+    <button class="preset-pill" onclick="tryPreset('https://www.reuters.com')">Reuters</button>
+    <button class="preset-pill" onclick="tryPreset('https://www.lemonde.fr')">Le Monde</button>
+    <button class="preset-pill" onclick="tryPreset('https://www.nytimes.com')">NY Times</button>
+    <button class="preset-pill" onclick="tryPreset('https://positron.today')">Positron Today</button>
+  </div>
+</div>
+
+<!-- Loading -->
+<div class="loading" id="loading" style="display:none;">
+  <span class="loading-spinner"></span>
+  <span class="t-en">Scanning headlines and calculating score…</span>
+  <span class="t-nl" style="display:none">Koppen worden gescand en score wordt berekend…</span>
+  <span class="t-fr" style="display:none">Analyse des titres et calcul du score…</span>
+</div>
+
+<!-- Error -->
+<div class="error-msg" id="error-msg" style="display:none;"></div>
+
+<!-- Results -->
+<div class="results" id="results">
+
+  <div class="scored-url" id="scored-url"></div>
+
+  <!-- Gauge -->
+  <div class="gauge-section">
+    <div class="gauge-wrap">
+      <div class="gauge-bg" id="gauge-bg"></div>
+      <div class="gauge-score" id="gauge-score"></div>
+    </div>
+    <div class="gauge-label">
+      <span class="t-en">Positivity score</span>
+      <span class="t-nl" style="display:none">Positiviteitsscore</span>
+      <span class="t-fr" style="display:none">Score de positivité</span>
+    </div>
+  </div>
+
+  <!-- Breakdown stats -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num positive" id="stat-positive">0</div>
+      <div class="stat-lbl">
+        <span class="t-en">positive</span>
+        <span class="t-nl" style="display:none">positief</span>
+        <span class="t-fr" style="display:none">positif</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num negative" id="stat-negative">0</div>
+      <div class="stat-lbl">
+        <span class="t-en">negative</span>
+        <span class="t-nl" style="display:none">negatief</span>
+        <span class="t-fr" style="display:none">négatif</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num neutral" id="stat-neutral">0</div>
+      <div class="stat-lbl">
+        <span class="t-en">neutral</span>
+        <span class="t-nl" style="display:none">neutraal</span>
+        <span class="t-fr" style="display:none">neutre</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num neutral" id="stat-total">0</div>
+      <div class="stat-lbl">
+        <span class="t-en">headlines scanned</span>
+        <span class="t-nl" style="display:none">koppen gescand</span>
+        <span class="t-fr" style="display:none">titres analysés</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Headlines -->
+  <div class="headline-section">
+    <h2 class="section-heading">
+      <span class="t-en">Headline breakdown</span>
+      <span class="t-nl" style="display:none">Overzicht koppen</span>
+      <span class="t-fr" style="display:none">Détail des titres</span>
+    </h2>
+    <div class="headline-list" id="headline-list"></div>
+  </div>
+</div>
+
+<script>
+  var API_URL = 'https://api.positron.today/api/score';
+
+  function escHtml(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function tryPreset(url) {
+    document.getElementById('url-input').value = url;
+    runScore();
+  }
+
+  function runScore() {
+    var url = document.getElementById('url-input').value.trim();
+    if (!url) return;
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    document.getElementById('url-input').value = url;
+
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('error-msg').style.display = 'none';
+    document.getElementById('results').classList.remove('visible');
+    document.getElementById('score-btn').disabled = true;
+
+    fetch(API_URL + '?url=' + encodeURIComponent(url))
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('score-btn').disabled = false;
+
+        if (data.error) {
+          document.getElementById('error-msg').textContent = data.error;
+          document.getElementById('error-msg').style.display = 'block';
+          return;
+        }
+        showResults(data);
+      })
+      .catch(function(err) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('score-btn').disabled = false;
+        document.getElementById('error-msg').textContent = 'Failed to reach the scoring service. Please try again.';
+        document.getElementById('error-msg').style.display = 'block';
+      });
+  }
+
+  function showResults(data) {
+    var el = document.getElementById('results');
+    el.classList.add('visible');
+
+    // Scored URL
+    document.getElementById('scored-url').innerHTML =
+      '🔗 <a href="' + escHtml(data.url) + '" target="_blank" rel="noopener">' + escHtml(data.url) + '</a>';
+
+    // Gauge
+    var pos = data.breakdown.positive;
+    var neg = data.breakdown.negative;
+    var neu = data.breakdown.neutral;
+    var total = data.total;
+
+    var negDeg = Math.round((neg / total) * 180);
+    var neuDeg = negDeg + Math.round((neu / total) * 180);
+
+    var gauge = document.getElementById('gauge-bg');
+    gauge.style.setProperty('--neg-end', negDeg + 'deg');
+    gauge.style.setProperty('--neu-end', neuDeg + 'deg');
+
+    var scoreEl = document.getElementById('gauge-score');
+    scoreEl.textContent = data.score + '%';
+    if (data.score >= 40) scoreEl.style.color = '#16a34a';
+    else if (data.score >= 20) scoreEl.style.color = '#d97706';
+    else scoreEl.style.color = '#dc2626';
+
+    // Stats
+    document.getElementById('stat-positive').textContent = pos;
+    document.getElementById('stat-negative').textContent = neg;
+    document.getElementById('stat-neutral').textContent = neu;
+    document.getElementById('stat-total').textContent = total;
+
+    // Headlines
+    var sorted = data.headlines.slice().sort(function(a, b) {
+      var order = { positive: 0, negative: 1, neutral: 2 };
+      return (order[a.sentiment] || 2) - (order[b.sentiment] || 2);
+    });
+
+    var html = sorted.map(function(h) {
+      var tag = '<span class="sentiment-tag ' + h.sentiment + '">' + h.sentiment + '</span>';
+      return '<div class="headline-item ' + h.sentiment + '">'
+        + tag + escHtml(h.headline)
+        + '</div>';
+    }).join('');
+
+    document.getElementById('headline-list').innerHTML = html;
+
+    // Scroll to results
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Allow Enter key
+  document.getElementById('url-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') runScore();
+  });
+</script>

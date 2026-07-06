@@ -4,10 +4,8 @@ import * as cheerio from "cheerio";
 
 const client = new Anthropic();
 
-const ALLOWED_ORIGIN = "https://positron.today";
-
 function setCors(res: VercelResponse) {
-  res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 }
