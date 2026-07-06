@@ -1,0 +1,13 @@
+{
+  "name": "positron-services",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0",
+    "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^5.8.22",
+    "typescript": "^6.0.3"
+  }
+}
