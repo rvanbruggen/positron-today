@@ -4,6 +4,41 @@ import * as cheerio from "cheerio";
 
 const client = new Anthropic();
 
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 5;
+const CACHE_TTL_MS = 10 * 60_000;
+
+const ipHits = new Map<string, { count: number; resetAt: number }>();
+const responseCache = new Map<
+  string,
+  { data: object; expiresAt: number }
+>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = ipHits.get(ip);
+  if (!entry || now > entry.resetAt) {
+    ipHits.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
+function getCached(key: string): object | null {
+  const entry = responseCache.get(key);
+  if (!entry) return null;
+  if (Date.now() > entry.expiresAt) {
+    responseCache.delete(key);
+    return null;
+  }
+  return entry.data;
+}
+
+function setCache(key: string, data: object) {
+  responseCache.set(key, { data, expiresAt: Date.now() + CACHE_TTL_MS });
+}
+
 function setCors(res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
@@ -131,6 +166,16 @@ export default async function handler(
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  const clientIp =
+    (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
+    req.socket?.remoteAddress ||
+    "unknown";
+  if (isRateLimited(clientIp)) {
+    return res
+      .status(429)
+      .json({ error: "Too many requests. Please wait a minute and try again." });
+  }
+
   const rawUrl = req.query.url;
   if (!rawUrl || typeof rawUrl !== "string") {
     return res.status(400).json({ error: "Missing ?url= parameter" });
@@ -141,6 +186,12 @@ export default async function handler(
     return res
       .status(400)
       .json({ error: "Invalid or non-public URL" });
+  }
+
+  const cacheKey = url.origin + url.pathname;
+  const cached = getCached(cacheKey);
+  if (cached) {
+    return res.status(200).json(cached);
   }
 
   let html: string;
@@ -181,13 +232,15 @@ export default async function handler(
     const total = classified.length;
     const score = Math.round((positive / total) * 100);
 
-    return res.status(200).json({
+    const result = {
       url: url.toString(),
       score,
       total,
       breakdown: { positive, negative, neutral },
       headlines: classified,
-    });
+    };
+    setCache(cacheKey, result);
+    return res.status(200).json(result);
   } catch (e) {
     return res
       .status(500)
