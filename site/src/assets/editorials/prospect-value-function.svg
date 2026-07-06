@@ -1,0 +1,40 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The prospect theory value function: an S-shaped curve, concave for gains and convex and much steeper for losses, showing a loss of 50 feels bigger than a gain of 50">
+  <rect width="1200" height="700" fill="#fdfaf4"/>
+
+  <text x="80" y="80" font-family="Georgia, 'Times New Roman', serif" font-size="38" fill="#2b2b2b">why a loss feels bigger than a gain</text>
+  <text x="80" y="118" font-family="Georgia, serif" font-size="21" fill="#7d7568">the prospect theory value function · Kahneman &amp; Tversky, 1979</text>
+
+  <!-- axes -->
+  <g stroke="#c9c1b1" stroke-width="2">
+    <line x1="180" y1="380" x2="1050" y2="380"/>   <!-- x axis: losses <-> gains -->
+    <line x1="615" y1="180" x2="615" y2="600"/>    <!-- y axis: value -->
+  </g>
+
+  <!-- axis labels -->
+  <g font-family="Georgia, serif" font-size="20" fill="#7d7568">
+    <text x="1000" y="410">gains →</text>
+    <text x="200" y="410">← losses</text>
+    <text x="628" y="200">value (how it feels)</text>
+  </g>
+
+  <!-- gentle gain curve (concave, shallow) : from origin up-right -->
+  <path d="M615 380 Q760 320 900 300 T1040 288" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
+  <!-- steep loss curve (convex, deep) : from origin down-left -->
+  <path d="M615 380 Q505 470 400 520 T210 560" fill="none" stroke="#3f3a31" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- gain of +50 : small rise -->
+  <line x1="795" y1="380" x2="795" y2="315" stroke="#b9b2a5" stroke-width="2" stroke-dasharray="5 5"/>
+  <line x1="615" y1="315" x2="795" y2="315" stroke="#b9b2a5" stroke-width="2" stroke-dasharray="5 5"/>
+  <circle cx="795" cy="315" r="8" fill="#f59e0b"/>
+  <text x="806" y="308" font-family="Georgia, serif" font-size="19" fill="#5b5347">a small lift of pleasure</text>
+  <text x="806" y="333" font-family="Georgia, serif" font-size="19" fill="#5b5347">from gaining 50</text>
+
+  <!-- loss of -50 : big drop -->
+  <line x1="435" y1="380" x2="435" y2="507" stroke="#8a8375" stroke-width="2" stroke-dasharray="5 5"/>
+  <line x1="615" y1="507" x2="435" y2="507" stroke="#8a8375" stroke-width="2" stroke-dasharray="5 5"/>
+  <circle cx="435" cy="507" r="8" fill="#3f3a31"/>
+  <text x="150" y="555" font-family="Georgia, serif" font-size="19" fill="#3f3a31">a much deeper drop of pain</text>
+  <text x="150" y="580" font-family="Georgia, serif" font-size="19" fill="#3f3a31">from losing the same 50</text>
+
+  <text x="80" y="665" font-family="Georgia, serif" font-size="17" fill="#a59d8d" font-style="italic">Source: Kahneman &amp; Tversky (1979), Prospect Theory, Econometrica 47(2)</text>
+</svg>
