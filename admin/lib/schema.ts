@@ -265,6 +265,14 @@ export async function initSchema() {
        FROM editorials`,
     "DROP TABLE IF EXISTS editorials",
     "ALTER TABLE editorials_new RENAME TO editorials",
+
+    // v3.4: per-source health tracking — record fetch outcomes so the admin
+    // UI can surface broken feeds and auto-pause repeat offenders.
+    "ALTER TABLE sources ADD COLUMN last_fetch_status TEXT",
+    "ALTER TABLE sources ADD COLUMN last_fetch_error TEXT",
+    "ALTER TABLE sources ADD COLUMN last_fetch_at TEXT",
+    "ALTER TABLE sources ADD COLUMN consecutive_failures INTEGER NOT NULL DEFAULT 0",
+    "ALTER TABLE sources ADD COLUMN paused INTEGER NOT NULL DEFAULT 0",
   ];
 
   for (const sql of migrations) {

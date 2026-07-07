@@ -89,7 +89,7 @@ async function finishRun(runId: number, status: "done" | "error", errorMessage?:
 
 async function fetchAllSources(runId: number): Promise<{ queued: number; skipped: number; errors: number }> {
   const allSources = await db.execute(
-    "SELECT * FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss') ORDER BY id ASC",
+    "SELECT * FROM sources WHERE active = 1 AND paused = 0 AND (feed_url IS NOT NULL OR type = 'rss') ORDER BY id ASC",
   );
 
   const totalSources = allSources.rows.length;
@@ -143,10 +143,28 @@ async function fetchAllSources(runId: number): Promise<{ queued: number; skipped
           await appendLog(runId, { type: "item", verdict: "queued", title: item.title! });
         } catch { /* duplicate */ }
       }
+      await db.execute({
+        sql: `UPDATE sources SET last_fetch_status = 'ok', last_fetch_error = NULL,
+              last_fetch_at = datetime('now'), consecutive_failures = 0 WHERE id = ?`,
+        args: [source.id],
+      });
     } catch (err) {
       console.warn(`[unified] Error fetching ${sourceName}: ${err}`);
       totalErrors++;
       await appendLog(runId, { type: "source_error", name: sourceName, message: String(err) });
+
+      const newFailures = Number(source.consecutive_failures ?? 0) + 1;
+      const shouldPause = newFailures > 2 ? 1 : 0;
+      await db.execute({
+        sql: `UPDATE sources SET last_fetch_status = 'error', last_fetch_error = ?,
+              last_fetch_at = datetime('now'), consecutive_failures = ?,
+              paused = ? WHERE id = ?`,
+        args: [String(err).slice(0, 500), newFailures, shouldPause, source.id],
+      });
+      if (shouldPause) {
+        console.warn(`[unified] Auto-paused "${sourceName}" after ${newFailures} consecutive failures`);
+        await appendLog(runId, { type: "source_paused", name: sourceName, failures: newFailures });
+      }
     }
 
     totalQueued += queued;
@@ -296,7 +314,7 @@ export async function runUnifiedPipeline(options?: { isManual?: boolean }): Prom
 
   // Count sources for progress display
   const sourceCount = Number(
-    (await db.execute("SELECT COUNT(*) as cnt FROM sources WHERE active = 1 AND (feed_url IS NOT NULL OR type = 'rss')")).rows[0]?.cnt ?? 0
+    (await db.execute("SELECT COUNT(*) as cnt FROM sources WHERE active = 1 AND paused = 0 AND (feed_url IS NOT NULL OR type = 'rss')")).rows[0]?.cnt ?? 0
   );
 
   const runId = await createRun(sourceCount);

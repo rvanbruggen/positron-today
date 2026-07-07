@@ -44,19 +44,23 @@ export async function PATCH(request: NextRequest) {
   const { id, active, name, url, feed_url, language } = body;
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
 
-  if (active !== undefined) {
-    // Toggle active state only
+  if (body.unpause) {
+    await db.execute({
+      sql: "UPDATE sources SET paused = 0, consecutive_failures = 0, last_fetch_error = NULL WHERE id = ?",
+      args: [id],
+    });
+  } else if (active !== undefined) {
     await db.execute({
       sql: "UPDATE sources SET active = ? WHERE id = ?",
       args: [active ? 1 : 0, id],
     });
   } else {
-    // Full field edit
     if (!feed_url || !String(feed_url).trim()) {
       return Response.json({ error: "RSS feed URL is required" }, { status: 400 });
     }
     await db.execute({
-      sql: "UPDATE sources SET name = ?, url = ?, feed_url = ?, language = ? WHERE id = ?",
+      sql: `UPDATE sources SET name = ?, url = ?, feed_url = ?, language = ?,
+            paused = 0, consecutive_failures = 0, last_fetch_error = NULL WHERE id = ?`,
       args: [name, url, String(feed_url).trim(), language, id],
     });
   }

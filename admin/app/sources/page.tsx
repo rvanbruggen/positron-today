@@ -11,15 +11,46 @@ type Source = {
   type: "rss" | "website";
   language: string;
   active: number;
+  paused: number;
+  last_fetch_status: string | null;
+  last_fetch_error: string | null;
+  last_fetch_at: string | null;
+  consecutive_failures: number;
 };
 
 type EditState = { name: string; url: string; feed_url: string; language: string };
 
 // SourceRow must live outside SourcesPage so React doesn't treat it as a new
 // component type on every render (which would unmount/remount and scroll to top).
+function HealthBadge({ source }: { source: Source }) {
+  if (source.paused) {
+    return (
+      <span className="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-700 font-medium" title={source.last_fetch_error ?? "Auto-paused after repeated failures"}>
+        Paused
+      </span>
+    );
+  }
+  if (source.last_fetch_status === "error") {
+    return (
+      <span className="text-xs px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 font-medium"
+        title={source.last_fetch_error ?? "Last fetch failed"}>
+        Failing ({source.consecutive_failures})
+      </span>
+    );
+  }
+  if (source.last_fetch_status === "ok") {
+    return (
+      <span className="text-xs px-2 py-0.5 rounded-full bg-green-50 text-green-600" title={`Last fetched: ${source.last_fetch_at}`}>
+        Healthy
+      </span>
+    );
+  }
+  return null;
+}
+
 function SourceRow({
   source, isEditing, editState,
-  onEdit, onSave, onCancel, onToggle, onRemove, onEditStateChange,
+  onEdit, onSave, onCancel, onToggle, onRemove, onUnpause, onEditStateChange,
 }: {
   source: Source;
   isEditing: boolean;
@@ -29,10 +60,11 @@ function SourceRow({
   onCancel: () => void;
   onToggle: (s: Source) => void;
   onRemove: (id: number) => void;
+  onUnpause: (id: number) => void;
   onEditStateChange: (s: EditState) => void;
 }) {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-yellow-200 overflow-hidden">
+    <div className={`bg-white rounded-xl shadow-sm border overflow-hidden ${source.paused ? "border-red-300" : "border-yellow-200"}`}>
       {isEditing ? (
         <div className="px-5 py-4 flex flex-col gap-2">
           <div className="grid md:grid-cols-2 gap-2">
@@ -79,18 +111,31 @@ function SourceRow({
                   📡 {source.feed_url}
                 </a>
               )}
+              {source.last_fetch_error && (
+                <p className="text-xs text-red-500 mt-0.5 truncate" title={source.last_fetch_error}>
+                  {source.last_fetch_error.length > 80 ? source.last_fetch_error.slice(0, 80) + "…" : source.last_fetch_error}
+                </p>
+              )}
             </div>
           </div>
           <div className="flex items-center gap-2 sm:shrink-0 flex-wrap">
+            <HealthBadge source={source} />
             <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full uppercase">
               {source.language}
             </span>
-            <button type="button" onClick={() => onToggle(source)}
-              className={`text-xs px-3 py-1 rounded-full font-medium transition-colors ${
-                source.active ? "bg-green-100 text-green-700 hover:bg-green-200" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-              }`}>
-              {source.active ? "Active" : "Inactive"}
-            </button>
+            {source.paused ? (
+              <button type="button" onClick={() => onUnpause(source.id)}
+                className="text-xs px-3 py-1 rounded-full font-medium bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
+                Unpause
+              </button>
+            ) : (
+              <button type="button" onClick={() => onToggle(source)}
+                className={`text-xs px-3 py-1 rounded-full font-medium transition-colors ${
+                  source.active ? "bg-green-100 text-green-700 hover:bg-green-200" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                }`}>
+                {source.active ? "Active" : "Inactive"}
+              </button>
+            )}
             <button type="button" onClick={() => onEdit(source)}
               className="text-xs text-amber-600 hover:text-amber-900 transition-colors font-medium">
               Edit
@@ -218,6 +263,15 @@ export default function SourcesPage() {
     load();
   }
 
+  async function unpause(id: number) {
+    await fetch("/api/sources", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, unpause: true }),
+    });
+    load();
+  }
+
   async function remove(id: number) {
     if (!confirm("Remove this source? Any pending (unfetched) articles from this source will also be deleted.")) return;
     const res = await fetch(`/api/sources?id=${id}`, { method: "DELETE" });
@@ -229,7 +283,14 @@ export default function SourcesPage() {
     load();
   }
 
-  const withFeed = sources.filter(s => s.feed_url || s.type === "rss");
+  const withFeed = sources
+    .filter(s => s.feed_url || s.type === "rss")
+    .sort((a, b) => {
+      if (a.paused !== b.paused) return b.paused - a.paused;
+      if ((a.consecutive_failures > 0) !== (b.consecutive_failures > 0))
+        return (b.consecutive_failures > 0 ? 1 : 0) - (a.consecutive_failures > 0 ? 1 : 0);
+      return 0;
+    });
 
   return (
     <div>
@@ -380,12 +441,17 @@ export default function SourcesPage() {
         <div className="mb-8">
           <h2 className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-3">
             Sources ({withFeed.length})
+            {withFeed.filter(s => s.paused).length > 0 && (
+              <span className="text-red-600 ml-2">
+                · {withFeed.filter(s => s.paused).length} paused
+              </span>
+            )}
           </h2>
           <div className="flex flex-col gap-2">{withFeed.map(s => (
             <SourceRow key={s.id} source={s}
               isEditing={editingId === s.id} editState={editState}
               onEdit={startEdit} onSave={saveEdit} onCancel={() => setEditingId(null)}
-              onToggle={toggle} onRemove={remove} onEditStateChange={setEditState} />
+              onToggle={toggle} onRemove={remove} onUnpause={unpause} onEditStateChange={setEditState} />
           ))}</div>
         </div>
       )}
