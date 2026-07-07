@@ -196,6 +196,18 @@ title: Positivity Score
   <div class="chart-canvas-wrap">
     <canvas id="trend-chart"></canvas>
   </div>
+  <div class="chart-controls" id="chart-controls" style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+    <button class="preset-pill" onclick="chartSelectAll()" style="font-size:0.65rem;padding:0.2rem 0.6rem;">
+      <span class="t-en">Select all</span>
+      <span class="t-nl" style="display:none">Alles selecteren</span>
+      <span class="t-fr" style="display:none">Tout sélectionner</span>
+    </button>
+    <button class="preset-pill" onclick="chartDeselectAll()" style="font-size:0.65rem;padding:0.2rem 0.6rem;">
+      <span class="t-en">Deselect all</span>
+      <span class="t-nl" style="display:none">Alles deselecteren</span>
+      <span class="t-fr" style="display:none">Tout désélectionner</span>
+    </button>
+  </div>
   <div class="chart-legend" id="chart-legend"></div>
 </div>
 {% else %}
@@ -455,6 +467,18 @@ title: Positivity Score
 
   function toggleSource(src) {
     window._chartHidden[src] = !window._chartHidden[src];
+    renderTrendChart();
+  }
+
+  function chartSelectAll() {
+    window._chartHidden = {};
+    renderTrendChart();
+  }
+
+  function chartDeselectAll() {
+    var seen = {};
+    SCORE_DATA.forEach(function(e) { seen[e.source] = true; });
+    Object.keys(seen).forEach(function(src) { window._chartHidden[src] = true; });
     renderTrendChart();
   }
 
