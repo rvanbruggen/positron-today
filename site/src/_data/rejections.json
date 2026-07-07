@@ -1,27 +1,27 @@
 {
-  "exported_at": "2026-07-07T12:27:48.958Z",
-  "total_rejected": 75781,
-  "sources_count": 46,
+  "exported_at": "2026-07-07T14:01:24.506Z",
+  "total_rejected": 75822,
+  "sources_count": 48,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 20757
+      "count": 20769
     },
     {
       "category": "soft-news-filler",
-      "count": 9200
+      "count": 9208
     },
     {
       "category": "sports-negative",
-      "count": 9127
+      "count": 9130
     },
     {
       "category": "crime-violence",
-      "count": 6139
+      "count": 6142
     },
     {
       "category": "celebrity-entertainment",
-      "count": 5587
+      "count": 5591
     },
     {
       "category": "economic-doom",
@@ -33,15 +33,15 @@
     },
     {
       "category": "war-conflict",
-      "count": 3495
+      "count": 3500
     },
     {
       "category": "other-negative",
-      "count": 3349
+      "count": 3351
     },
     {
       "category": "health-scare",
-      "count": 3010
+      "count": 3011
     },
     {
       "category": "divisive-social",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 1821
+      "count": 1824
     },
     {
       "category": "climate-environment",
@@ -86,8 +86,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 4778,
-      "total": 4835
+      "negative": 4787,
+      "total": 4844
     },
     {
       "source": "Le Figaro",
@@ -96,13 +96,13 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 3455,
-      "total": 3481
+      "negative": 3457,
+      "total": 3483
     },
     {
       "source": "De Morgen",
-      "negative": 3439,
-      "total": 3491
+      "negative": 3441,
+      "total": 3494
     },
     {
       "source": "Le Monde",
@@ -111,13 +111,13 @@
     },
     {
       "source": "NRC",
-      "negative": 3270,
-      "total": 3324
+      "negative": 3271,
+      "total": 3325
     },
     {
       "source": "Politiken.dk",
-      "negative": 3152,
-      "total": 3162
+      "negative": 3158,
+      "total": 3168
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -186,8 +186,8 @@
     },
     {
       "source": "Humo",
-      "negative": 929,
-      "total": 938
+      "negative": 930,
+      "total": 939
     },
     {
       "source": "Upworthy",
@@ -280,18 +280,28 @@
       "total": 18
     },
     {
+      "source": "Knack",
+      "negative": 14,
+      "total": 15
+    },
+    {
       "source": "De Tijd",
       "negative": 10,
       "total": 10
     },
     {
-      "source": "Knack",
-      "negative": 10,
-      "total": 11
-    },
-    {
       "source": "L'Echo",
       "negative": 10,
+      "total": 10
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "negative": 10,
+      "total": 10
+    },
+    {
+      "source": "Scientific American",
+      "negative": 6,
       "total": 10
     },
     {
@@ -301,6 +311,334 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Man charged after alleged assault of three gardaí in Newbridge",
+      "reason": "This is a local crime story about an assault charge in Newbridge (Ireland). It reports a negative incident with no positive resolution or broader human-interest angle, and has only local relevance.",
+      "category": "crime-violence",
+      "url": "https://www.thejournal.ie/three-gardai-assaulted-newbridge-kildare-7094107-Jul2026/",
+      "date": "2026-07-07 16:01"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "French far-right leader Marine Le Pen cleared to stand for elections next year",
+      "reason": "This is political news about a far-right leader's legal case and election eligibility. It involves partisan politics, court decisions, and political figures — core Rule 6 content. The story is not about a breakthrough agreement or exceptional conflict resolution, but rather routine political-legal proceedings.",
+      "category": "political-conflict",
+      "url": "https://www.thejournal.ie/france-marine-le-pen-election-ankle-tag-7094109-Jul2026/",
+      "date": "2026-07-07 16:01"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Fianna Fáil MEPs to abstain on vote to add Aughinish Alumina exports to Russia sanction list ",
+      "reason": "This is political content about government/MEP voting decisions on sanctions policy. It involves partisan political divisions and geopolitical conflict, falling squarely under Rule 6 (Politics).",
+      "category": "political-conflict",
+      "url": "https://www.thejournal.ie/fianna-fail-aughinish-alumina-vote-7094102-Jul2026/",
+      "date": "2026-07-07 16:01"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Nigel Farage to step down as MP over donations scandal - but will run in byelection for his own seat",
+      "reason": "This is a political story involving a scandal, resignation pressure, and electoral controversy. It falls squarely under Rule 6 (Politics) as it concerns a political figure's decision to step down amid allegations, with no breakthrough or exceptional agreement involved.",
+      "category": "political-conflict",
+      "url": "https://www.thejournal.ie/farage-will-make-a-statement-on-future-in-public-life-amid-finances-scrutiny-7094060-Jul2026/",
+      "date": "2026-07-07 16:01"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Monaco bombing suspect found shot dead and intelligence officer arrested in Ukraine ",
+      "reason": "This article describes a death by gunshot and criminal investigation. It is fundamentally negative news about violence and crime, regardless of any potential positive framing.",
+      "category": "crime-violence",
+      "url": "https://www.thejournal.ie/monaco-bombing-suspect-found-dead-in-ukraine-7094195-Jul2026/",
+      "date": "2026-07-07 16:01"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "World Cup Magazine",
+      "reason": "This is sports content promoting World Cup tournament coverage. It falls under Rule 1 (professional sports) and lacks any exceptional human-interest angle, emotional narrative, or universal inspiration beyond standard match reporting.",
+      "category": "sports-negative",
+      "url": "https://www.thejournal.ie/river/world-cup-magazine-2483280-Jul2026/",
+      "date": "2026-07-07 16:01"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Prince Harry and others’ 97 claims against Daily Mail publisher dismissed by High Court",
+      "reason": "This is a legal dispute involving celebrities and media litigation. It falls under celebrity/entertainment coverage and involves partisan conflict rather than genuine positive news that uplifts readers.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.thejournal.ie/prince-harry-cant-stay-at-buckingham-palace-on-his-uk-visit-7094156-Jul2026/",
+      "date": "2026-07-07 16:01"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Donald and Gianni's red card trick: Trump rewrote the rules of the World Cup, and football lost",
+      "reason": "This article is fundamentally negative, focusing on institutional pressure, rule-breaking, and loss of integrity in sports governance. It documents institutional failure, not positive news.",
+      "category": "sports-negative",
+      "url": "https://www.thejournal.ie/readme/trump-infantino-7093859-Jul2026/",
+      "date": "2026-07-07 16:01"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Data centres accounted for almost a quarter of all electricity usage in Ireland last year",
+      "reason": "This is a routine industry/tech update about data centre electricity consumption trends. It presents a concerning resource-consumption issue without documenting a breakthrough or solution, and lacks the unambiguous positivity required for acceptance.",
+      "category": "tech-ai-concern",
+      "url": "https://www.thejournal.ie/data-centre-electricity-consumption-ireland-7094080-Jul2026/",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Eugen Constantin (72) charged with murder of his wife Adina Raluca Constantin in Portlaoise",
+      "reason": "This is a crime story involving a murder charge. It is inherently negative and tragic, involving loss of life and criminal proceedings. It does not meet the unambiguously positive standard required for acceptance.",
+      "category": "crime-violence",
+      "url": "https://www.thejournal.ie/portlaoise-man-charged-murder-wife-constantin-7093994-Jul2026/",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Scientific American",
+      "title": "Is AI ruining our skills? Early results are in—and they’re not good",
+      "reason": "The article presents a negative finding about AI's impact on professional skills, framed as a cautionary concern rather than an uplifting story. It does not meet the unambiguous positivity requirement for acceptance.",
+      "category": "tech-ai-concern",
+      "url": "https://www.scientificamerican.com/article/is-ai-ruining-our-skills-early-results-are-in-and-theyre-not-good/",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Scientific American",
+      "title": "Can the chances of a successful IVF pregnancy be improved with AI?",
+      "reason": "This is routine tech/industry news about AI feature adoption in fertility clinics. The article presents uncertainty ('some experts question') rather than a proven breakthrough, and focuses on whether technology *might* improve outcomes—not a civilisation-scale discovery or clear positive resolution.",
+      "category": "tech-ai-concern",
+      "url": "https://www.scientificamerican.com/article/can-the-chances-of-a-successful-ivf-pregnancy-be-improved-with-ai/",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Scientific American",
+      "title": "Wordle, but for art history—Anthropeum turns the Met Museum into an online game",
+      "reason": "This is a corporate PR story about a product launch (a new game/app) by a cultural institution. While the concept is creative, it falls under routine tech/industry updates and corporate partnership announcements.",
+      "category": "soft-news-filler",
+      "url": "https://www.scientificamerican.com/article/wordle-but-for-art-history-anthropeum-turns-the-met-museum-into-an-online-game/",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Scientific American",
+      "title": "Too many sleepless nights may lead to weight gain",
+      "reason": "This is a health-scare article warning about negative consequences of sleep deprivation. It informs rather than uplifts, and focuses on a problem (weight gain, sedentary behavior) rather than a solution or positive breakthrough.",
+      "category": "health-scare",
+      "url": "https://www.scientificamerican.com/article/too-many-sleepless-nights-may-lead-to-weight-gain/",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Scientific American",
+      "title": "New York City’s Manhattanhenge is back—here’s how to see it",
+      "reason": "This is local-only content about a New York City phenomenon with no broad human relevance beyond residents or tourists planning to visit that specific city. It's a routine seasonal event announcement.",
+      "category": "soft-news-filler",
+      "url": "https://www.scientificamerican.com/article/new-york-citys-manhattanhenge-is-back-heres-how-to-see-it/",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Scientific American",
+      "title": "Should you be taking creatine? Here's what the science says",
+      "reason": "This is routine health/nutrition content presenting scientific information about a supplement. It lacks the unambiguous positivity and uplifting human-interest angle required—it's informational rather than genuinely inspiring or emotionally resonant.",
+      "category": "soft-news-filler",
+      "url": "https://www.scientificamerican.com/article/should-you-be-taking-creatine-heres-what-the-science-says/",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Rosja ma problem z benzyną. Firmy od LPG nie nadążają z montażem",
+      "reason": "The article is fundamentally about war-related damage (Ukrainian attacks on Russian refineries) and fuel shortages caused by conflict. While it frames an adaptation (LPG conversion) neutrally, the underlying context is geopolitical conflict and economic disruption from warfare, which violates the positive-news standard.",
+      "category": "war-conflict",
+      "url": "https://energia.rp.pl/paliwa/art44784311-rosja-ma-problem-z-benzyna-firmy-od-lpg-nie-nadazaja-z-montazem",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Emeryt domaga się od państwa 100 tys. zł. Premier mówi o „nadużyciu prawa”",
+      "reason": "does not fit positive news criteria",
+      "category": "other-negative",
+      "url": "https://www.rp.pl/praca-emerytury-i-renty/art44784511-emeryt-domaga-sie-od-panstwa-100-tys-zl-premier-mowi-o-naduzyciu-prawa",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Konkurs Nagroda Jamesa Dysona. Ostatnie dni dla młodych wynalazców na zgłoszenia",
+      "reason": "This is corporate PR disguised as news. It announces a product/initiative (James Dyson Award competition) with a deadline reminder. While the underlying concept of supporting young inventors is positive, the article itself is a marketing announcement for a corporate program, which falls under rule 4.",
+      "category": "other-negative",
+      "url": "https://sukces.rp.pl/spoleczenstwo/art44783111-konkurs-nagroda-jamesa-dysona-ostatnie-dni-dla-mlodych-wynalazcow-na-zgloszenia",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Lider antyunijnej Reform UK Nigel Farage odchodzi z parlamentu. Oczekuje mandatu od wyborców",
+      "reason": "This is political news about a partisan political figure's parliamentary resignation and electoral strategy. It falls squarely under Rule 6 (Politics) — government/parliamentary decisions and political-figure actions are excluded regardless of framing.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/polityka/art44784811-lider-antyunijnej-reform-uk-nigel-farage-odchodzi-z-parlamentu-oczekuje-mandatu-od-wyborcow",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Nowy plan dla Bieszczad. Niedźwiedzie dostaną obroże i będą monitorowane",
+      "reason": "This is local-only relevance content about a regional wildlife management program in Poland's Bieszczady region. While the conservation effort is positive, the story lacks broad international human interest and would primarily appeal to readers in that specific area.",
+      "category": "soft-news-filler",
+      "url": "https://www.rp.pl/spoleczenstwo/art44784091-nowy-plan-dla-bieszczad-niedzwiedzie-dostana-obroze-i-beda-monitorowane",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Religijność ma wpływ na demografię. Członkowie Kościoła mają więcej dzieci",
+      "reason": "This article presents demographic decline (falling birth rates) as a negative consequence of religious disaffiliation. While framed as research analysis, the core narrative is about societal decline, not an uplifting human story. It lacks the unambiguous positivity required for acceptance.",
+      "category": "soft-news-filler",
+      "url": "https://www.rp.pl/spoleczenstwo/art44777641-religijnosc-ma-wplyw-na-demografie-czlonkowie-kosciola-maja-wiecej-dzieci",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Koniec ekościemy. Firma będzie musiała udowodnić, że produkt jest „zielony”",
+      "reason": "This is political/regulatory news about government legislation and enforcement actions. While the environmental protection angle has positive intent, the core story is about new laws, government bodies (UOKiK), and corporate penalties — which falls under political/regulatory content.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/konsumenci/art44784371-koniec-ekosciemy-firma-bedzie-musiala-udowodnic-ze-produkt-jest-zielony",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Ukraina chce więcej pocisków do Patriotów. Wołodymyr Zełenski: To palący temat",
+      "reason": "This is geopolitical/political conflict content about military aid requests during an ongoing war. It falls under Rule 6 (Politics) and involves war-related political messaging rather than unambiguously positive human-interest news.",
+      "category": "war-conflict",
+      "url": "https://www.rp.pl/polityka/art44784061-ukraina-chce-wiecej-pociskow-do-patriotow-wolodymyr-zelenski-to-palacy-temat",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Niespodzianka z Ukrainą. MFW: Oto pięć najszybciej rozwijających się gospodarek",
+      "reason": "This is economic/industry data reporting (IMF forecast) framed around geopolitical conflict. While Ukraine's economic resilience is noteworthy, the article is fundamentally a corporate/institutional report announcement rather than a human-interest story, and it centers on a country actively at war—making it inherently tied to conflict rather than unambiguous positivity.",
+      "category": "war-conflict",
+      "url": "https://www.rp.pl/gospodarka/art44783901-niespodzianka-z-ukraina-mfw-oto-piec-najszybciej-rozwijajacych-sie-gospodarek",
+      "date": "2026-07-07 16:00"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Erik de la Reguera: Trots domen – Le Pen har ödet i egen hand",
+      "reason": "This is a political story about a criminal conviction and electoral ban of a political figure. It falls squarely under Rule 6 (Politics) — government decisions, partisan figures, and political consequences. The article is about legal punishment and political consequences, not a positive breakthrough.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/varlden/erik-de-la-reguera-trots-domen-le-pen-har-odet-i-egen-hand/",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "SMHI varnar för skyfall och åska – tåg ställs in",
+      "reason": "This is a weather warning about severe storms and transport disruptions in southern Sweden. It is local-only news (regional weather alert) with no uplifting content, and would not interest readers outside Sweden.",
+      "category": "soft-news-filler",
+      "url": "https://www.dn.se/sverige/smhi-varnar-for-skyfall-och-aska-tag-stalls-in/",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Marine Le Pen har fået dom omstødt og kan alligevel stille op til præsidentvalg",
+      "reason": "This is a political story about a court decision affecting a political candidate's eligibility for presidential election. It falls squarely under Rule 6 (Politics) — government/legal decisions affecting political figures and elections.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/internationalt/art10859543/Marine-Le-Pen-har-f%C3%A5et-dom-omst%C3%B8dt-og-kan-alligevel-stille-op-til-pr%C3%A6sidentvalg",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Unge som gamle var kommet for at høre noget usædvanligt",
+      "reason": "This is entertainment/celebrity coverage about a musician's concert performance. It falls under Rule 3 (Celebrities and entertainment industry) — coverage of a performer's show, even if artistically praised, is not positive-news material.",
+      "category": "celebrity-entertainment",
+      "url": "https://politiken.dk/kultur/musik/koncertanmeldelser/art10873891/Unge-som-gamle-var-kommet-for-at-h%C3%B8re-noget-us%C3%A6dvanligt",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Farage opgiver sit sæde i parlamentet efter møgsag",
+      "reason": "This is a political story about a politician resigning amid scandal ('møgsag' = 'shit case'). It involves partisan political figures and negative circumstances, falling clearly under Rule 6 (Politics) with no exception applying.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/internationalt/art10910048/Farage-opgiver-sit-s%C3%A6de-i-parlamentet-efter-m%C3%B8gsag",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Eksminister ønsker Ida Auken ud af partiet efter præstejubel",
+      "reason": "This is a political conflict story about a former minister calling for a party member to leave the party. It involves partisan commentary and internal party disputes, which falls under Rule 6 (Politics).",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/danmark/politik/art10909291/Eksminister-%C3%B8nsker-Ida-Auken-ud-af-partiet-efter-pr%C3%A6stejubel",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Prins Harry og Elton John taber sag mod udgiver af Daily Mail",
+      "reason": "This is a legal defeat story involving celebrities and a privacy lawsuit. It combines rule 3 (celebrities and entertainment industry) with inherently negative news (a lost court case), making it unsuitable for a positive-news platform.",
+      "category": "celebrity-entertainment",
+      "url": "https://politiken.dk/kultur/medier/art10910046/Prins-Harry-og-Elton-John-taber-sag-mod-udgiver-af-Daily-Mail",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Kender du byen? Byens vartegn er en bro med fem trapper, der samler adgangen over flere kanaler",
+      "reason": "This is a local-only quiz/competition about identifying a Danish city landmark. It has no broad human relevance and would only interest residents familiar with this specific bridge.",
+      "category": "soft-news-filler",
+      "url": "https://politiken.dk/rejser/art10910022/Byens-vartegn-er-en-bro-med-fem-trapper-der-samler-adgangen-over-flere-kanaler",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "NRC",
+      "title": "Nelson Carrilho wilde positieve kracht tonen met zijn beelden als ‘Mama Baranka’ ",
+      "reason": "This is local-only content about a specific monument in Amsterdam's Vondelpark by a local artist. It lacks broad international relevance and would not meaningfully interest readers outside the Netherlands or Amsterdam.",
+      "category": "soft-news-filler",
+      "url": "https://www.nrc.nl/nieuws/2026/07/07/nelson-carrilho-wilde-positieve-kracht-tonen-met-zijn-beelden-als-mama-baranka-a4931968",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Knack",
+      "title": "Europees Parlement versterkt rechten van luchtvaartpassagiers",
+      "reason": "This is a political/legislative story about EU Parliament decisions. While passenger rights improvements are beneficial, the article documents a government/legislative action, which falls under Rule 6 (Politics). Legislative updates are not exceptions unless they mark major breakthroughs on long-disputed topics.",
+      "category": "political-conflict",
+      "url": "https://www.knack.be/nieuws/wereld/europa/live/europa/europees-parlement-versterkt-rechten-van-luchtvaartpassagiers-1574010/",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Knack",
+      "title": "NAVO-top: Trump aangekomen in Ankara",
+      "reason": "This is political news coverage of a NATO summit involving a political figure. It falls under rule 6 (Politics) as it reports on government/geopolitical activity without documenting a major breakthrough or exceptional agreement.",
+      "category": "political-conflict",
+      "url": "https://www.knack.be/nieuws/wereld/live/amerikaanse-verkiezingen-2024/navo-top-trump-aangekomen-in-ankara-1391035/",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Knack",
+      "title": "Zelensky: ‘Defensiecapaciteiten NAVO worden sterker als Oekraïne er deel van uitmaakt’",
+      "reason": "This is political commentary about an ongoing war and NATO membership negotiations. It falls under Rule 6 (Politics) as geopolitical analysis tied to the Russia-Ukraine conflict, without marking a major breakthrough or exceptional agreement.",
+      "category": "war-conflict",
+      "url": "https://www.knack.be/nieuws/wereld/live/oorlog-in-oekraine/zelensky-defensiecapaciteiten-navo-worden-sterker-als-oekraine-er-deel-van-uitmaakt-711329/",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Knack",
+      "title": "WK voetbal toont hardnekkig taboe: geen enkele speler openlijk homo- of biseksueel",
+      "reason": "This article highlights a persistent social problem (lack of openly LGBTQ+ representation in professional football) rather than documenting progress or a positive breakthrough. It is fundamentally a negative story about discrimination and taboo, not an uplifting one.",
+      "category": "sports-negative",
+      "url": "https://www.knack.be/sport/voetbal/wk-voetbal-geen-openlijk-homoseksuele-spelers/",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "Humo",
+      "title": "Geen Camelia Huls meer in derde seizoen van ‘The Real Housewives of Antwerp’ • VRT bekijkt of VRT Max ook content van andere media kan aanbieden",
+      "reason": "This is entertainment industry gossip about a cast member departure from a reality TV show, combined with internal media business news about content strategy.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.humo.be/tv/parket-start-onderzoek-naar-seppe-nobels-ai-actrice-tilly-norwood-strikt-eerste-filmrol~be6f66b3/",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "De Morgen",
+      "title": "‘Bijna heel Rusland kan nu een doelwit worden’: oorlogsbloggers trekken aan alarmbel na Oekraïense droneaanval op grootste olieraffinaderij van het land",
+      "reason": "This article covers military conflict and warfare (Ukrainian drone attacks on Russian infrastructure), which is inherently negative content focused on destruction and escalation, not uplifting human stories.",
+      "category": "war-conflict",
+      "url": "https://www.demorgen.be/niet-te-missen/bijna-heel-rusland-kan-nu-een-doelwit-worden-oorlogsbloggers-trekken-aan-alarmbel-na-oekraiense-droneaanval-op-grootste-olieraffinaderij-van-het-land~b94ce2f1/",
+      "date": "2026-07-07 15:59"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Na financieel schandaal: Nigel Farage treedt af als parlementslid en wil zijn naam zuiveren via tussentijdse verkiezingen",
+      "reason": "This article covers a political figure responding to a financial scandal and stepping down — a political controversy story that falls squarely under Rule 6 (Politics). It involves partisan political figures and government/parliamentary decisions, not a breakthrough or exceptional agreement.",
+      "category": "political-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/na-financieel-schandaal-nigel-farage-treedt-af-als-parlementslid-en-wil-zijn-naam-zuiveren-via-tussentijdse-verkiezingen~bbad2cda/",
+      "date": "2026-07-07 15:59"
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "4,7 miliona widzów Open’era w TVP, 230 tys. na miejscu. Larsson i The Cure rządzili",
@@ -7972,334 +8310,6 @@
       "category": "soft-news-filler",
       "url": "https://www.dr.dk/nyheder/seneste/odense-kommune-vil-afsaette-millioner-til-bekaempe-larven-fra-helvede",
       "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Mængden af både breve og pakker er faldet på det danske postmarked",
-      "reason": "The article discusses a decline in the volume of letters and packages in the Danish postal market, which is not uplifting and reflects a negative trend in communication and commerce.",
-      "category": "economic-doom",
-      "url": "https://www.dr.dk/nyheder/seneste/maengden-af-baade-breve-og-pakker-er-faldet-paa-det-danske-postmarked",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Genoptagelse af sejlads i Suezkanalen får Mærsk-aktie til at falde ",
-      "reason": "The article discusses a decline in Mærsk's stock due to the resumption of navigation in the Suez Canal, which is primarily economic news and not uplifting.",
-      "category": "economic-doom",
-      "url": "https://www.dr.dk/nyheder/seneste/genoptagelse-af-sejlads-i-suezkanalen-faar-maersk-aktie-til-falde",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "25 dræbte og flere end 100 såret efter sammenstød i fængsel i Sri Lanka",
-      "reason": "The article reports on a violent incident in a prison in Sri Lanka, which is a negative and distressing event rather than uplifting news.",
-      "category": "crime-violence",
-      "url": "https://www.dr.dk/nyheder/seneste/25-draebte-og-flere-end-100-saaret-efter-sammenstoed-i-faengsel-i-sri-lanka",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Dom Development nokautuje. Ile mieszkań sprzedali giełdowi deweloperzy w II kwartale",
-      "reason": "The article focuses on the sales performance of real estate developers, which falls under corporate PR and routine industry updates, lacking broad human relevance or uplifting content.",
-      "category": "other-negative",
-      "url": "https://www.rp.pl/nieruchomosci/art44776651-ile-mieszkan-sprzedali-gieldowi-deweloperzy-w-ii-kwartale",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Po telefonie Trumpa piłkarz USA może grać. UEFA: Przekroczono czerwoną linię",
-      "reason": "The article discusses a controversial decision in sports involving a player and political intervention, which does not present a positive or uplifting narrative.",
-      "category": "sports-negative",
-      "url": "https://sport.rp.pl/pilka-nozna/art44776261-po-telefonie-trumpa-pilkarz-usa-moze-grac-uefa-przekroczono-czerwona-linie",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Samorządowcy chcą zadbać o unijnych konsumentów",
-      "reason": "The article discusses political decisions regarding consumer rights within the EU, which falls under political content and lacks broad human relevance.",
-      "category": "political-conflict",
-      "url": "https://regiony.rp.pl/finanse-w-regionach/art44776641-samorzadowcy-chca-zadbac-o-unijnych-konsumentow",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Donald Tusk mówi o Patriotach dla Ukrainy. I apeluje: Nie igrajcie z ogniem",
-      "reason": "The article discusses political statements regarding military aid and production related to the ongoing conflict in Ukraine, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/polityka/art44776421-donald-tusk-mowi-o-patriotach-dla-ukrainy-i-apeluje-nie-igrajcie-z-ogniem",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Urzędy częściej załatwią sprawę poprzez tzw. milczącą zgodę. Są plany rządu",
-      "reason": "The article discusses government plans for regulatory changes, which falls under political content and does not provide an uplifting or universally appealing story.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/w-sadzie-i-w-urzedzie/art44776801-urzedy-czesciej-zalatwia-sprawe-poprzez-tzw-milczaca-zgode-sa-plany-rzadu",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Kryzys w NATO. Hiszpańskie media o zagrożeniach dla Sojuszu przed szczytem w Ankarze",
-      "reason": "The article discusses threats to NATO and diplomatic disputes, which are inherently negative and political in nature.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/dyplomacja/art44776691-kryzys-w-nato-hiszpanskie-media-o-zagrozeniach-dla-sojuszu-przed-szczytem-w-ankarze",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Wyliczenia ZUS dla 12 mln Polaków. Oto emerytury dzisiejszych 40- i 50-latków",
-      "reason": "The article discusses pension calculations for Polish citizens, which is primarily of local relevance and does not have broad human interest or uplifting content.",
-      "category": "economic-doom",
-      "url": "https://www.rp.pl/praca-emerytury-i-renty/art44776821-wyliczenia-zus-dla-12-mln-polakow-oto-emerytury-dzisiejszych-40-i-50-latkow",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Rząd szykuje nowy pakiet deregulacyjny dla przedsiębiorców",
-      "reason": "The article discusses a new regulatory package for entrepreneurs, which falls under corporate PR and political content, lacking broad human relevance and uplifting qualities.",
-      "category": "political-conflict",
-      "url": "https://pro.rp.pl/abc-firmy/art44776781-rzad-szykuje-nowy-pakiet-deregulacyjny-dla-przedsiebiorcow",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Hiszpania: W tym roku ponad 100 mln turystów. Pomoże wojna na Bliskim Wschodzie",
-      "reason": "The article discusses the influx of tourists to Spain due to the international situation, specifically mentioning the war in the Middle East, which is a negative context.",
-      "category": "war-conflict",
-      "url": "https://turystyka.rp.pl/popularne-trendy/art44776531-hiszpania-w-tym-roku-ponad-100-mln-turystow-pomoze-wojna-na-bliskim-wschodzie",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Rosyjski samolot przechwycony przez brytyjskie myśliwce. „Zrzucał boje sonarowe”",
-      "reason": "The article discusses a military incident involving a Russian aircraft being intercepted by British jets, which is related to conflict and military actions, making it not uplifting or positive.",
-      "category": "war-conflict",
-      "url": "https://www.rp.pl/dyplomacja/art44776051-rosyjski-samolot-przechwycony-przez-brytyjskie-mysliwce-zrzucal-boje-sonarowe",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Turkiet blockerar kryssningsfartyg med hbtq+-personer",
-      "reason": "The article discusses Turkey blocking an LGBTQ+ cruise, which is a negative event related to social and political tensions, rather than a positive story.",
-      "category": "lgbtq-rights",
-      "url": "https://www.dn.se/kultur/turkiet-blockerar-kryssningsfartyg-med-hbtq-personer/",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Anna-Lena Laurén: Invånarna i Kiev är trötta men inte knäckta",
-      "reason": "The article discusses the aftermath of bombings in Kiev, which is a negative event despite the resilience of the residents. It does not meet the positive-news standard due to its focus on violence and tragedy.",
-      "category": "war-conflict",
-      "url": "https://www.dn.se/varlden/anna-lena-lauren-invanarna-i-kiev-ar-trotta-men-inte-knackta/",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Det verkliga rättsfallet kommer obehagligt nära i ”Den ropande flickan”",
-      "reason": "The article discusses a novel that is based on a disturbing legal case, which implies a negative and uncomfortable theme rather than an uplifting story.",
-      "category": "crime-violence",
-      "url": "https://www.dn.se/kultur/det-verkliga-rattsfallet-kommer-obehagligt-nara-i-den-ropande-flickan/",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Ryssland bombar Kiev – kan vara signal inför Natomötet",
-      "reason": "The article discusses a violent military conflict and its implications, which is not uplifting and focuses on negative events.",
-      "category": "war-conflict",
-      "url": "https://www.dn.se/varlden/ryssland-bombar-kiev-kan-vara-signal-infor-natomotet/",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Uefa i hård kritik mot Fifa efter hävda avstängningen: ”Orättfärdigt”",
-      "reason": "The article discusses criticism of FIFA regarding a controversial decision related to a player's suspension, which falls under sports negativity and does not provide an uplifting narrative.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/uefa-i-hard-kritik-mot-fifa-efter-havda-avstangningen-orattfardigt/",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Hon åtalas för jätteskredet: ”Jag är besviken men inte uppgiven”",
-      "reason": "The article discusses a legal case involving allegations of causing a landslide, which is a negative event and does not uplift the reader.",
-      "category": "disaster-accident",
-      "url": "https://www.dn.se/sverige/hon-atalas-for-jatteskredet-jag-ar-besviken-men-inte-uppgiven/",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Kinesisk provskjutning ökar spänningarna i Stilla havet",
-      "reason": "The article discusses a military missile test by China, which increases tensions in the Pacific region, making it a negative and concerning topic rather than uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/varlden/kinesisk-provskjutning-okar-spanningarna-i-stilla-havet/",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Svensken bakom stjärnan under ”helvetesprovet”: ”Han blir inte trött”",
-      "reason": "The article focuses on a professional sports event, specifically the Tour de France, and discusses a coach and athlete's performance, which does not meet the criteria for exceptional human interest or emotional storytelling.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/svensken-bakom-stjarnan-under-helvetesprovet-han-blir-inte-trott/",
-      "date": "2026-07-06 14:05"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Nyt madmarked skal løfte udskældt københavnsk torv",
-      "reason": "The article focuses on a local initiative to transform a specific market area in Copenhagen, which may not have broad relevance outside the local context.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/kultur/art10905070/Nyt-madmarked-skal-l%C3%B8fte-udsk%C3%A6ldt-k%C3%B8benhavnsk-torv",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "10.000 landsbyboere evakueret under skovbrand nær Tour-ruten",
-      "reason": "The article discusses a forest fire and the evacuation of residents, which is a negative situation and does not uplift the reader.",
-      "category": "disaster-accident",
-      "url": "https://politiken.dk/internationalt/art10908261/10.000-landsbyboere-evakueret-under-skovbrand-n%C3%A6r-Tour-ruten",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Norges måske største pejs er grund nok til at booke sig ind her",
-      "reason": "The article focuses on a specific hotel in a small Norwegian town, which may not have broad appeal outside of that local context.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/rejser/art10848210/Norges-m%C3%A5ske-st%C3%B8rste-pejs-er-grund-nok-til-at-booke-sig-ind-her",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Sprogvikaren: Det får min hjerne til at koge over",
-      "reason": "The article appears to focus on a linguistic topic that may not have broad human relevance and does not uplift or inspire readers universally.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/kultur/art10905658/Sprogvikaren-Det-f%C3%A5r-min-hjerne-til-at-koge-over",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "I Kyiv ramte russerne flere boligblokke. Moskva siger, at de ramte militære mål",
-      "reason": "The article discusses missile and drone attacks on residential buildings in Kyiv, which is a negative and violent event, lacking uplifting content.",
-      "category": "war-conflict",
-      "url": "https://politiken.dk/internationalt/art10908150/I-Kyiv-ramte-russerne-flere-boligblokke.-Moskva-siger-at-de-ramte-milit%C3%A6re-m%C3%A5l",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Milliardær sælger sit livsværk til schweizisk finanskoncern",
-      "reason": "The article discusses a billionaire selling his stake in a bank, which falls under corporate PR and does not provide uplifting content for a broad audience.",
-      "category": "other-negative",
-      "url": "https://politiken.dk/danmark/art10908615/Milliard%C3%A6r-s%C3%A6lger-sit-livsv%C3%A6rk-til-schweizisk-finanskoncern",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Selvfølgelig vækker det harme, når Trump takker Fifa for at omstøde en stjernespillers karantæne",
-      "reason": "The article discusses political pressure related to a sports figure's suspension, which is negative and divisive in nature.",
-      "category": "political-conflict",
-      "url": "https://politiken.dk/sport/fodbold/VM_i_fodbold/art10908180/Selvf%C3%B8lgelig-v%C3%A6kker-det-harme-n%C3%A5r-Trump-takker-Fifa-for-at-omst%C3%B8de-en-stjernespillers-karant%C3%A6ne",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "Latest news bulletin | July 6th, 2026 – Morning",
-      "reason": "The article is a news bulletin that covers a wide range of topics, including politics and entertainment, which do not meet the positive-news editorial standard.",
-      "category": "soft-news-filler",
-      "url": "http://www.euronews.com/video/2026/07/06/latest-news-bulletin-july-6th-2026-morning",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "Activists covered in red paint protest bullfighting in Pamplona",
-      "reason": "The article focuses on a protest against bullfighting, which, while related to animal rights, highlights a divisive social issue rather than a universally uplifting story.",
-      "category": "divisive-social",
-      "url": "http://www.euronews.com/video/2026/07/06/activists-covered-in-red-paint-protest-bullfighting-in-pamplona",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "Ali Khamenei's coffin carried through the streets of Tehran",
-      "reason": "The article discusses the funeral of a political leader, which is inherently a somber event and does not convey a positive or uplifting message.",
-      "category": "political-conflict",
-      "url": "http://www.euronews.com/video/2026/07/06/ali-khameneis-coffin-carried-through-the-streets-of-tehran",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "Australia and Fiji seal mutual defence pact in push to counter China in Pacific",
-      "reason": "The article discusses a political agreement in the context of military strategy and geopolitical tensions, which does not provide an uplifting narrative and is primarily focused on conflict.",
-      "category": "political-conflict",
-      "url": "http://www.euronews.com/2026/07/06/australia-and-fiji-seal-mutual-defence-pact-in-push-to-counter-china-in-pacific",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "Mexico fans left heartbroken as World Cup dream comes to an end",
-      "reason": "The article focuses on the heartbreak of fans after a sports event, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "http://www.euronews.com/video/2026/07/06/mexico-fans-left-heartbroken-as-world-cup-dream-comes-to-an-end",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "At least 19 killed and more than 100 wounded in Sri Lanka prison riot, officials say",
-      "reason": "The article reports on a violent prison riot resulting in deaths and injuries, which is a negative event and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "http://www.euronews.com/2026/07/06/at-least-19-killed-and-more-than-100-wounded-in-sri-lanka-prison-riot-officials-say",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "Joy for England fans after dramatic World Cup victory",
-      "reason": "The article focuses on a sports event, specifically a World Cup match, which falls under the category of non-exceptional sports results and does not meet the positive-news editorial standard.",
-      "category": "sports-negative",
-      "url": "http://www.euronews.com/video/2026/07/06/joy-for-england-fans-after-dramatic-world-cup-victory",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "Hamas announces dissolution of Gaza governing body, paves way for technocratic committee",
-      "reason": "The article discusses a political shift in Gaza, which is a sensitive and complex issue, and does not provide an uplifting or universally positive narrative.",
-      "category": "political-conflict",
-      "url": "http://www.euronews.com/2026/07/06/hamas-announces-dissolution-gaza-governing-body-paves-way-for-technocratic-committee",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Euronews",
-      "title": "Wildfire rages in eastern Spain, forcing hundreds to flee",
-      "reason": "The article reports on a wildfire causing evacuations, which is a negative event and not uplifting.",
-      "category": "disaster-accident",
-      "url": "http://www.euronews.com/video/2026/07/06/wildfire-rages-in-eastern-spain-forcing-hundreds-to-flee",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Kalifornien erwägt Vermögenssteuer: Wenn Milliardäre ihre Picassos und Porsches verstecken müssen",
-      "reason": "The article discusses a proposed wealth tax in California, which is a political issue and may create divisive opinions rather than uplifting sentiments.",
-      "category": "political-conflict",
-      "url": "https://www.nzz.ch/technologie/kalifornien-erwaegt-vermoegenssteuer-wenn-milliardaere-ihre-picassos-und-porsches-verstecken-muessen-ld.10013645",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Exkommunikation: Der Papst zieht eine fast schon vergessene Strafe aus den Katakomben der Kirchenjustiz hervor",
-      "reason": "The article discusses the excommunication of bishops, which is a negative and divisive action within the context of religious authority, rather than a positive or uplifting story.",
-      "category": "political-conflict",
-      "url": "https://www.nzz.ch/feuilleton/exkommunikation-der-papst-zieht-eine-fast-schon-vergessene-strafe-aus-den-katakomben-der-kirchenjustiz-hervor-ld.10014066",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "England bricht den Mythos des Aztekenstadions – Mexiko begräbt unter bitteren Tränen den Traum vom Weltmeistertitel",
-      "reason": "The article discusses a negative outcome for Mexico in a sports context, focusing on their loss in a World Cup match, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.nzz.ch/sport/england-bricht-den-mythos-des-aztekenstadions-mexiko-begraebt-unter-bitteren-traenen-den-traum-vom-weltmeistertitel-ld.10014246",
-      "date": "2026-07-06 14:04"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "US-Investoren übernehmen die britische Billig-Airline Easy Jet",
-      "reason": "The article discusses a corporate acquisition of a budget airline, which falls under corporate PR and does not provide uplifting content for a broad audience.",
-      "category": "other-negative",
-      "url": "https://www.nzz.ch/wirtschaft/die-britische-billig-airline-easyjet-wird-von-us-investoren-uebernommen-ld.10014245",
-      "date": "2026-07-06 14:04"
     }
   ]
 }
