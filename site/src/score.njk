@@ -439,7 +439,20 @@ title: Positivity Score
     }
   }
 
+  // Start with only the first 10 sources visible
   window._chartHidden = {};
+  (function() {
+    var seen = {};
+    var count = 0;
+    SCORE_DATA.forEach(function(e) {
+      if (!seen[e.source]) {
+        seen[e.source] = true;
+        count++;
+        if (count > 10) window._chartHidden[e.source] = true;
+      }
+    });
+  })();
+
   function toggleSource(src) {
     window._chartHidden[src] = !window._chartHidden[src];
     renderTrendChart();
