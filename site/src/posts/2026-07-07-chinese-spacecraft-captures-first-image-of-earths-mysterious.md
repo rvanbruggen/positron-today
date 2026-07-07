@@ -2,7 +2,7 @@
 title: "Chinese spacecraft captures first image of Earth's mysterious mini moon"
 title_nl: "Chinees ruimtevaartuig maakt eerste foto van aardes mysterieuze mini-maan"
 title_fr: "L'engin spatial chinois capture la première image de la mini-lune mystérieuse de la Terre"
-date: 2026-07-07T15:14:04
+date: 2026-07-07T15:14:09
 source_pub_date: 2026-07-06
 fetched_date: 2026-07-07
 source_url: "https://www.scientificamerican.com/article/chinese-spacecraft-tianwen-2-beams-back-first-image-of-earths-mini-moon/"
