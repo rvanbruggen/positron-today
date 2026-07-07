@@ -92,12 +92,21 @@ async function scoreSourceForDate(source: { id: number; name: string; url: strin
 }
 
 async function getAvailableDates(): Promise<string[]> {
-  const result = await db.execute(`
-    SELECT DISTINCT source_pub_date as d FROM raw_articles WHERE source_pub_date IS NOT NULL
-    UNION
-    SELECT DISTINCT source_pub_date as d FROM rejected_articles WHERE source_pub_date IS NOT NULL
-    ORDER BY d ASC
-  `);
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - MAX_DAYS);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+  const result = await db.execute({
+    sql: `
+      SELECT DISTINCT source_pub_date as d FROM raw_articles
+        WHERE source_pub_date IS NOT NULL AND source_pub_date >= ?
+      UNION
+      SELECT DISTINCT source_pub_date as d FROM rejected_articles
+        WHERE source_pub_date IS NOT NULL AND source_pub_date >= ?
+      ORDER BY d ASC
+    `,
+    args: [cutoffStr, cutoffStr],
+  });
   return result.rows.map((r) => String(r.d)).filter(Boolean);
 }
 
