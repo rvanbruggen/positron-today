@@ -2,7 +2,7 @@
 title: "Rooftop solar gave power to Pakistan when fossil fuels failed– it’s now called a boom"
 title_nl: "Daken zonnepanelen gaven energie aan Pakistan toen fossiele brandstoffen faalden – het wordt nu een boom genoemd"
 title_fr: "L'énergie solaire sur les toits a fourni de l'énergie au Pakistan lorsque les combustibles fossiles ont échoué - on l'appelle maintenant un boom"
-date: 2026-07-07T04:20:02
+date: 2026-07-07T04:20:04
 source_pub_date: 2026-07-06
 fetched_date: 2026-07-06
 source_url: "https://www.goodnewsnetwork.org/rooftop-solar-gave-power-to-pakistan-when-fossil-fuels-failed-its-now-called-a-boom/"
