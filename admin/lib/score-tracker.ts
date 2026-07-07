@@ -151,12 +151,18 @@ export async function runScoreTracker(): Promise<{
 
   // Score all available dates, not just today
   const dates = await getAvailableDates();
+  console.log(`[score-tracker] ${allSources.length} sources, ${dates.length} dates in DB, ${existingKeys.size} existing entries`);
+  if (dates.length > 0) {
+    console.log(`[score-tracker] Date range: ${dates[0]} → ${dates[dates.length - 1]}`);
+  }
+
   const results: ScoreEntry[] = [];
   let skipped = 0;
+  let deduped = 0;
 
   for (const date of dates) {
     for (const source of allSources) {
-      if (existingKeys.has(`${date}|${source.name}`)) continue;
+      if (existingKeys.has(`${date}|${source.name}`)) { deduped++; continue; }
       const entry = await scoreSourceForDate(source, date);
       if (entry) {
         results.push(entry);
@@ -165,6 +171,8 @@ export async function runScoreTracker(): Promise<{
       }
     }
   }
+
+  console.log(`[score-tracker] ${results.length} new scores, ${deduped} already existed, ${skipped} had no articles`);
 
   if (results.length === 0) {
     console.log("[score-tracker] No new scores to add, skipping commit");
