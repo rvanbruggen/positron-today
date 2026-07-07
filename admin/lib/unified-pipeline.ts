@@ -92,7 +92,75 @@ async function finishRun(runId: number, status: "done" | "error", errorMessage?:
   });
 }
 
-// ─── Phase 1: Fetch ALL sources ──────────────────────────────────────────────
+// ─── Phase 1: Fetch ALL sources (parallel, capped concurrency) ──────────────
+
+const FETCH_CONCURRENCY = 10;
+const AUTO_PAUSE_THRESHOLD = 5;
+const CASCADE_ERROR_RATIO = 0.3;
+
+async function fetchOneFeed(
+  source: Record<string, unknown>,
+  runId: number,
+): Promise<{ queued: number; skipped: number; error: boolean }> {
+  const sourceId = source.id as number;
+  const feedUrl = (source.feed_url ?? source.url) as string;
+  const sourceName = String(source.name);
+  let queued = 0, skipped = 0;
+
+  await appendLog(runId, { type: "source", name: sourceName, url: feedUrl });
+
+  try {
+    const feed = await withRetry(() => parser.parseURL(feedUrl), { label: `RSS ${sourceName}` });
+    const items = feed.items.slice(0, 10).filter(i => i.link && i.title);
+
+    for (const item of items) {
+      const [existingPending, existingRaw, existingRejected, existingArticle] = await Promise.all([
+        db.execute({ sql: "SELECT id FROM pending_items WHERE url = ?", args: [item.link!] }),
+        db.execute({ sql: "SELECT id FROM raw_articles WHERE url = ?", args: [item.link!] }),
+        db.execute({ sql: "SELECT id FROM rejected_articles WHERE url = ?", args: [item.link!] }),
+        db.execute({ sql: "SELECT id FROM articles WHERE source_url = ?", args: [item.link!] }),
+      ]);
+
+      if (existingPending.rows.length > 0 || existingRaw.rows.length > 0 ||
+          existingRejected.rows.length > 0 || existingArticle.rows.length > 0) {
+        skipped++;
+        continue;
+      }
+
+      const snippet = item.contentSnippet ?? item.content ?? "";
+      const sourcePubDate = item.isoDate
+        ? item.isoDate.slice(0, 10)
+        : item.pubDate
+        ? new Date(item.pubDate).toISOString().slice(0, 10)
+        : null;
+
+      try {
+        await db.execute({
+          sql: `INSERT INTO pending_items (source_id, url, title, snippet, source_pub_date) VALUES (?, ?, ?, ?, ?)`,
+          args: [sourceId, item.link!, item.title!, snippet, sourcePubDate],
+        });
+        queued++;
+        await appendLog(runId, { type: "item", verdict: "queued", title: item.title! });
+      } catch { /* duplicate */ }
+    }
+    await db.execute({
+      sql: `UPDATE sources SET last_fetch_status = 'ok', last_fetch_error = NULL,
+            last_fetch_at = datetime('now'), consecutive_failures = 0 WHERE id = ?`,
+      args: [sourceId],
+    });
+    return { queued, skipped, error: false };
+  } catch (err) {
+    console.warn(`[unified] Error fetching ${sourceName}: ${err}`);
+    await appendLog(runId, { type: "source_error", name: sourceName, message: String(err) });
+
+    await db.execute({
+      sql: `UPDATE sources SET last_fetch_status = 'error', last_fetch_error = ?,
+            last_fetch_at = datetime('now') WHERE id = ?`,
+      args: [String(err).slice(0, 500), sourceId],
+    });
+    return { queued: 0, skipped: 0, error: true };
+  }
+}
 
 async function fetchAllSources(runId: number): Promise<{ queued: number; skipped: number; errors: number }> {
   const allSources = await db.execute(
@@ -103,83 +171,65 @@ async function fetchAllSources(runId: number): Promise<{ queued: number; skipped
   await updateRun(runId, { total_sources: totalSources });
   await appendLog(runId, { type: "start", phase: "fetch-feeds", totalSources });
 
-  console.log(`[unified] Phase 1: Fetching ${totalSources} sources`);
+  console.log(`[unified] Phase 1: Fetching ${totalSources} sources (concurrency=${FETCH_CONCURRENCY})`);
 
   let totalQueued = 0, totalSkipped = 0, totalErrors = 0, sourcesDone = 0;
+  const failedSources: Record<string, unknown>[] = [];
 
-  for (const source of allSources.rows) {
+  // Process sources in batches of FETCH_CONCURRENCY
+  for (let i = 0; i < allSources.rows.length; i += FETCH_CONCURRENCY) {
     if (cancelRequested) break;
 
-    const feedUrl = (source.feed_url ?? source.url) as string;
-    const sourceName = String(source.name);
-    let queued = 0, skipped = 0;
+    const batch = allSources.rows.slice(i, i + FETCH_CONCURRENCY);
+    const results = await Promise.allSettled(
+      batch.map(source => fetchOneFeed(source, runId)),
+    );
 
-    await appendLog(runId, { type: "source", name: sourceName, url: feedUrl });
+    for (let j = 0; j < results.length; j++) {
+      const result = results[j];
+      const source = batch[j];
+      const sourceName = String(source.name);
 
-    try {
-      const feed = await withRetry(() => parser.parseURL(feedUrl), { label: `RSS ${sourceName}` });
-      const items = feed.items.slice(0, 10).filter(i => i.link && i.title);
-
-      for (const item of items) {
-        const [existingPending, existingRaw, existingRejected, existingArticle] = await Promise.all([
-          db.execute({ sql: "SELECT id FROM pending_items WHERE url = ?", args: [item.link!] }),
-          db.execute({ sql: "SELECT id FROM raw_articles WHERE url = ?", args: [item.link!] }),
-          db.execute({ sql: "SELECT id FROM rejected_articles WHERE url = ?", args: [item.link!] }),
-          db.execute({ sql: "SELECT id FROM articles WHERE source_url = ?", args: [item.link!] }),
-        ]);
-
-        if (existingPending.rows.length > 0 || existingRaw.rows.length > 0 ||
-            existingRejected.rows.length > 0 || existingArticle.rows.length > 0) {
-          skipped++;
-          continue;
+      if (result.status === "fulfilled") {
+        totalQueued += result.value.queued;
+        totalSkipped += result.value.skipped;
+        if (result.value.error) {
+          totalErrors++;
+          failedSources.push(source);
         }
-
-        const snippet = item.contentSnippet ?? item.content ?? "";
-        const sourcePubDate = item.isoDate
-          ? item.isoDate.slice(0, 10)
-          : item.pubDate
-          ? new Date(item.pubDate).toISOString().slice(0, 10)
-          : null;
-
-        try {
-          await db.execute({
-            sql: `INSERT INTO pending_items (source_id, url, title, snippet, source_pub_date) VALUES (?, ?, ?, ?, ?)`,
-            args: [source.id, item.link!, item.title!, snippet, sourcePubDate],
-          });
-          queued++;
-          await appendLog(runId, { type: "item", verdict: "queued", title: item.title! });
-        } catch { /* duplicate */ }
+      } else {
+        totalErrors++;
+        failedSources.push(source);
       }
-      await db.execute({
-        sql: `UPDATE sources SET last_fetch_status = 'ok', last_fetch_error = NULL,
-              last_fetch_at = datetime('now'), consecutive_failures = 0 WHERE id = ?`,
-        args: [source.id],
-      });
-    } catch (err) {
-      console.warn(`[unified] Error fetching ${sourceName}: ${err}`);
-      totalErrors++;
-      await appendLog(runId, { type: "source_error", name: sourceName, message: String(err) });
 
+      sourcesDone++;
+      await appendLog(runId, { type: "source_done", name: sourceName,
+        queued: result.status === "fulfilled" ? result.value.queued : 0,
+        skipped: result.status === "fulfilled" ? result.value.skipped : 0 });
+    }
+
+    await updateRun(runId, { sources_done: sourcesDone, queued: totalQueued });
+  }
+
+  // Cascade guard: if too many sources failed, treat as systemic — don't bump failure counts
+  const isCascade = totalSources > 0 && (totalErrors / totalSources) > CASCADE_ERROR_RATIO;
+  if (isCascade) {
+    console.warn(`[unified] Cascade guard: ${totalErrors}/${totalSources} sources failed (>${Math.round(CASCADE_ERROR_RATIO * 100)}%) — skipping failure count increments`);
+    await appendLog(runId, { type: "cascade_guard", errors: totalErrors, total: totalSources });
+  } else {
+    for (const source of failedSources) {
       const newFailures = Number(source.consecutive_failures ?? 0) + 1;
-      const shouldPause = newFailures > 2 ? 1 : 0;
+      const shouldPause = newFailures >= AUTO_PAUSE_THRESHOLD ? 1 : 0;
       await db.execute({
-        sql: `UPDATE sources SET last_fetch_status = 'error', last_fetch_error = ?,
-              last_fetch_at = datetime('now'), consecutive_failures = ?,
-              paused = ? WHERE id = ?`,
-        args: [String(err).slice(0, 500), newFailures, shouldPause, source.id],
+        sql: `UPDATE sources SET consecutive_failures = ?, paused = ? WHERE id = ?`,
+        args: [newFailures, shouldPause, source.id as number],
       });
       if (shouldPause) {
+        const sourceName = String(source.name);
         console.warn(`[unified] Auto-paused "${sourceName}" after ${newFailures} consecutive failures`);
         await appendLog(runId, { type: "source_paused", name: sourceName, failures: newFailures });
       }
     }
-
-    totalQueued += queued;
-    totalSkipped += skipped;
-    sourcesDone++;
-
-    await appendLog(runId, { type: "source_done", name: sourceName, queued, skipped });
-    await updateRun(runId, { sources_done: sourcesDone, queued: totalQueued });
   }
 
   const queueDepth = Number((await db.execute("SELECT COUNT(*) as cnt FROM pending_items")).rows[0]?.cnt ?? 0);

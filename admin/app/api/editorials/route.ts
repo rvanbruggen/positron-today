@@ -4,7 +4,7 @@ import { slugify } from "@/lib/publish-core";
 
 export async function GET() {
   const result = await db.execute(
-    "SELECT id, slug, status, source_language, title_en, title_nl, title_fr, summary_en, article_emoji, image_filename, post_to_substack, substack_posted_at, published_at, created_at, updated_at FROM editorials ORDER BY created_at DESC"
+    "SELECT id, slug, status, source_language, title_en, title_nl, title_fr, summary_en, article_emoji, image_filename, post_to_substack, substack_posted_at, publish_date, published_at, created_at, updated_at FROM editorials ORDER BY created_at DESC"
   );
   return Response.json(result.rows);
 }
