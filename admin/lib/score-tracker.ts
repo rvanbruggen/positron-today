@@ -46,13 +46,13 @@ function classify(score: number | null, hasScore: boolean, isAccepted: boolean):
 async function scoreSourceForDate(source: { id: number; name: string; url: string }, date: string): Promise<ScoreEntry | null> {
   const accepted = await db.execute({
     sql: `SELECT positivity_score FROM raw_articles
-          WHERE source_id = ? AND date(fetched_at) = ?`,
+          WHERE source_id = ? AND source_pub_date = ?`,
     args: [source.id, date],
   });
 
   const rejected = await db.execute({
     sql: `SELECT positivity_score FROM rejected_articles
-          WHERE source_id = ? AND date(fetched_at) = ?`,
+          WHERE source_id = ? AND source_pub_date = ?`,
     args: [source.id, date],
   });
 
@@ -93,9 +93,9 @@ async function scoreSourceForDate(source: { id: number; name: string; url: strin
 
 async function getAvailableDates(): Promise<string[]> {
   const result = await db.execute(`
-    SELECT DISTINCT date(fetched_at) as d FROM raw_articles
+    SELECT DISTINCT source_pub_date as d FROM raw_articles WHERE source_pub_date IS NOT NULL
     UNION
-    SELECT DISTINCT date(fetched_at) as d FROM rejected_articles
+    SELECT DISTINCT source_pub_date as d FROM rejected_articles WHERE source_pub_date IS NOT NULL
     ORDER BY d ASC
   `);
   return result.rows.map((r) => String(r.d)).filter(Boolean);
