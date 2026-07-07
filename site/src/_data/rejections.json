@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-07T10:20:52.522Z",
-  "total_rejected": 75703,
+  "exported_at": "2026-07-07T10:27:41.639Z",
+  "total_rejected": 75711,
   "sources_count": 45,
   "category_breakdown": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "category": "soft-news-filler",
-      "count": 9183
+      "count": 9184
     },
     {
       "category": "sports-negative",
@@ -17,7 +17,7 @@
     },
     {
       "category": "crime-violence",
-      "count": 6129
+      "count": 6130
     },
     {
       "category": "celebrity-entertainment",
@@ -33,15 +33,15 @@
     },
     {
       "category": "war-conflict",
-      "count": 3489
+      "count": 3491
     },
     {
       "category": "other-negative",
-      "count": 3343
+      "count": 3345
     },
     {
       "category": "health-scare",
-      "count": 3007
+      "count": 3008
     },
     {
       "category": "divisive-social",
@@ -53,7 +53,7 @@
     },
     {
       "category": "climate-environment",
-      "count": 1253
+      "count": 1254
     },
     {
       "category": "human-discarded",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 8751,
-      "total": 8967
+      "negative": 8754,
+      "total": 8970
     },
     {
       "source": "Gazet van Antwerpen",
@@ -86,13 +86,13 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 4760,
-      "total": 4817
+      "negative": 4761,
+      "total": 4818
     },
     {
       "source": "Le Figaro",
-      "negative": 4126,
-      "total": 4166
+      "negative": 4127,
+      "total": 4167
     },
     {
       "source": "Dagens Nyheter",
@@ -106,8 +106,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 3276,
-      "total": 3302
+      "negative": 3278,
+      "total": 3304
     },
     {
       "source": "NRC",
@@ -176,8 +176,8 @@
     },
     {
       "source": "De Standaard Binnenland",
-      "negative": 969,
-      "total": 988
+      "negative": 970,
+      "total": 989
     },
     {
       "source": "De Standaard Economie",
@@ -296,6 +296,70 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Szantaż i zwlekanie. Eksperci radzą, jak walczyć ze sztuczkami deweloperów",
+      "reason": "This article is fundamentally about consumer problems, deceptive practices, and legal conflict with developers. While it offers advice on fighting back, the core narrative is adversarial and complaint-focused rather than genuinely uplifting. It documents a negative situation (developer tricks, extortion, delays) rather than celebrating a positive outcome or breakthrough.",
+      "category": "other-negative",
+      "url": "https://www.rp.pl/nieruchomosci/art44768281-szantaz-i-zwlekanie-eksperci-radza-jak-walczyc-ze-sztuczkami-deweloperow",
+      "date": "2026-07-07 12:27"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Affaire Jean Pormanove : des peines de prison et un « bannissement numérique » requis contre les streameurs Naruto et Safine",
+      "reason": "This is a crime and violence story reporting on criminal charges (assault, abuse, hate speech) against streamers. It documents negative behavior and legal consequences, not an uplifting human story.",
+      "category": "crime-violence",
+      "url": "https://www.lemonde.fr/societe/article/2026/07/07/affaire-jean-pormanove-des-peines-de-prison-et-un-bannissement-numerique-requis-contre-les-streameurs-naruto-et-safine_6721458_3224.html",
+      "date": "2026-07-07 12:27"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Le cycle menstruel, une fenêtre sur la santé des femmes à exploiter",
+      "reason": "This is routine health/medical research reporting about menstrual cycle science. While the topic has broad relevance, the article is a standard industry/research update announcing findings and potential future applications—not a proven breakthrough or transformative discovery that would genuinely uplift readers.",
+      "category": "other-negative",
+      "url": "https://www.lemonde.fr/sciences/article/2026/07/07/le-cycle-menstruel-une-fenetre-sur-la-sante-a-exploiter_6721392_1650684.html",
+      "date": "2026-07-07 12:27"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Syrie : «Ma visite se poursuit», affirme Emmanuel Macron après deux explosions à Damas",
+      "reason": "This article describes explosions near a political leader during a geopolitical visit to Syria. It combines war/conflict content with political travel, neither of which aligns with positive-news standards.",
+      "category": "war-conflict",
+      "url": "https://www.lefigaro.fr/international/syrie-ma-visite-se-poursuit-affirme-emmanuel-macron-apres-deux-explosions-a-damas-20260707",
+      "date": "2026-07-07 12:27"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Minder grijze garnalen en meer kleine pietermannen: zo veranderde het leven in Belgisch strandwater de voorbije 30 jaar",
+      "reason": "This article documents ecological decline in Belgian coastal waters — species disappearing, ecosystem disruption — framed as a warning signal. While scientifically interesting, the core message is environmental degradation, not genuine uplift. It fits the climate-environment category as a negative environmental trend story.",
+      "category": "climate-environment",
+      "url": "https://www.hln.be/oostende/minder-grijze-garnalen-en-meer-kleine-pietermannen-zo-veranderde-het-leven-in-belgisch-strandwater-de-voorbije-30-jaar~a71e1421/",
+      "date": "2026-07-07 12:27"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Nederlander redt hond uit bloedhete auto op parkeerplaats van Duits pretpark: “Je kan het je niet voorstellen!”",
+      "reason": "This is a local-only incident at a specific German theme park involving a single dog rescue. While the rescue itself is positive, the story lacks broad international relevance and would primarily interest readers in the Netherlands/Germany region.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/buitenland/nederlander-redt-hond-uit-bloedhete-auto-op-parkeerplaats-van-duits-pretpark-je-kan-het-je-niet-voorstellen~a4433f07/",
+      "date": "2026-07-07 12:27"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Oekraïne claimt droneaanval op acht tankers van Russische schaduwvloot",
+      "reason": "This article reports on military attacks during an ongoing war. War and conflict reporting, even when framed as a military success, does not meet the unambiguously positive and uplifting standard required for Positron.today.",
+      "category": "war-conflict",
+      "url": "https://www.hln.be/buitenland/oekraine-claimt-droneaanval-op-acht-tankers-van-russische-schaduwvloot~a93df6b5/",
+      "date": "2026-07-07 12:27"
+    },
+    {
+      "source": "De Standaard Binnenland",
+      "title": "WHO waarschuwt voor “nog meer dodelijke weken” in Europa door aanhoudende hitte - KMI verlengt code geel tot en met zaterdag",
+      "reason": "This article warns of deadly heat waves and health risks across Europe. It is explicitly negative in tone (WHO warnings, deaths, extreme danger) and does not present an uplifting or positive narrative.",
+      "category": "health-scare",
+      "url": "https://www.standaard.be/binnenland/who-waarschuwt-voor-nog-meer-dodelijke-weken-in-europa-door-aanhoudende-hitte-kmi-verlengt-code-geel-tot-en-met-zaterdag/157398228.html",
+      "date": "2026-07-07 12:27"
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "Brugse ingenieur Marc Moerman (62) na bijna vijf jaar achter tralies in Marokko opnieuw thuis",
@@ -8231,70 +8295,6 @@
       "category": "health-scare",
       "url": "https://www.nrc.nl/nieuws/2026/07/06/de-zoektocht-naar-goud-maakt-de-ebola-uitbraak-in-oost-congo-moeilijk-te-bedwingen-a4931515",
       "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "NRC",
-      "title": "Een roeping voelde Yvon Jaspers niet in het klooster, gezellig werd het wel ",
-      "reason": "The article focuses on a television program featuring a celebrity, which falls under the category of entertainment and does not provide broad human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/een-roeping-voelde-yvon-jaspers-niet-in-het-klooster-gezellig-werd-het-wel-a4931867",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "NRC",
-      "title": "Als tegenkracht tegen grote streamingdiensten gaan Britse televisiezenders van ITV en Sky samen ",
-      "reason": "The article discusses a collaboration between ITV and Sky, which is more of a corporate news update rather than a truly uplifting story with broad human relevance.",
-      "category": "other-negative",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/als-tegenkracht-tegen-grote-streamingdiensten-gaan-britse-televisiezenders-van-itv-en-sky-samen-a4931880",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "NRC",
-      "title": "Vrouwelijke bondscoach geen mogelijkheid voor Pierre van Hooijdonk, &#8216;heleboel Nederlandse spelers komen uit cultuur waarin de vrouw niet gelijk is aan de man&#8217; ",
-      "reason": "The article discusses a negative viewpoint on the suitability of a female football coach, reflecting societal issues regarding gender equality in sports, which is not uplifting.",
-      "category": "divisive-social",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/vrouwelijke-bondscoach-geen-mogelijkheid-voor-pierre-van-hooijdonk-heleboel-nederlandse-spelers-komen-uit-cultuur-waarin-de-vrouw-niet-gelijk-is-aan-de-man-a4931870",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "NRC",
-      "title": "Het wereldrecord van Marrit Steenbergen: ‘Ik wist gewoon dat zij iemand is die dit kan. Ze moest dat alleen zelf ook gaan inzien’ ",
-      "reason": "The article focuses on a professional sports achievement, which does not meet the strict positive-news editorial standard due to its nature as a sports story without exceptional emotional or human-interest elements.",
-      "category": "sports-negative",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/het-wereldrecord-van-marrit-steenbergen-ik-wist-gewoon-dat-zij-iemand-is-die-dit-kan-ze-moest-dat-alleen-zelf-ook-gaan-inzien-a4931711",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "NRC",
-      "title": "Nederland was niet goed voorbereid op vaccinatiecampagne tegen corona, zegt oud-RIVM-directeur ",
-      "reason": "The article discusses the lack of preparedness for the vaccination campaign in the Netherlands, which is a negative reflection on public health management and does not uplift the reader.",
-      "category": "health-scare",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/nederland-was-niet-goed-voorbereid-op-vaccinatiecampagne-tegen-corona-zegt-oud-rivm-directeur-a4931715",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "NRC",
-      "title": "Open de achterklep van dit halve Trabantje en daar liggen de &#8211; opvallend goede &#8211; boeken ",
-      "reason": "The article focuses on a local initiative involving book sharing in a specific location, which may not have broad relevance to readers outside of that area.",
-      "category": "soft-news-filler",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/open-de-achterklep-van-dit-halve-trabantje-en-daar-liggen-de-opvallend-goede-boeken-a4931871",
-      "date": "2026-07-06 14:01"
-    },
-    {
-      "source": "NRC",
-      "title": "China speelt niet mee op dit WK maar is nadrukkelijk aanwezig met reclames, sponsoren en een strenge scheidsrechter ",
-      "reason": "The article focuses on China's absence from the World Cup while highlighting advertising and sponsorship, which does not present a genuinely uplifting story and is primarily about sports-related content.",
-      "category": "sports-negative",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/china-speelt-niet-mee-op-dit-wk-maar-is-nadrukkelijk-aanwezig-met-reclames-sponsoren-en-een-strenge-scheidsrechter-a4931884",
-      "date": "2026-07-06 14:01"
-    },
-    {
-      "source": "Good News Network",
-      "title": "€12 Million Portrait of Picasso’s ‘Golden Muse’ Recovered from Thieves After Paris Theft",
-      "reason": "The article focuses on a stolen artwork and its recovery, which, while positive, is tied to crime and theft, making it less uplifting overall.",
-      "category": "crime-violence",
-      "url": "https://www.goodnewsnetwork.org/e12-million-portrait-of-picassos-golden-muse-recovered-from-thieves-after-paris-theft/",
-      "date": "2026-07-06 14:01"
     }
   ]
 }
