@@ -1,23 +1,23 @@
 {
-  "exported_at": "2026-07-07T10:27:45.207Z",
-  "total_rejected": 75711,
+  "exported_at": "2026-07-07T10:39:56.320Z",
+  "total_rejected": 75720,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 20740
+      "count": 20741
     },
     {
       "category": "soft-news-filler",
-      "count": 9184
+      "count": 9189
     },
     {
       "category": "sports-negative",
-      "count": 9123
+      "count": 9124
     },
     {
       "category": "crime-violence",
-      "count": 6130
+      "count": 6132
     },
     {
       "category": "celebrity-entertainment",
@@ -71,23 +71,23 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 8754,
-      "total": 8970
+      "negative": 8755,
+      "total": 8971
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 8738,
-      "total": 9123
+      "negative": 8740,
+      "total": 9125
     },
     {
       "source": "VRT Nws",
-      "negative": 4871,
-      "total": 5046
+      "negative": 4874,
+      "total": 5049
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 4761,
-      "total": 4818
+      "negative": 4762,
+      "total": 4819
     },
     {
       "source": "Le Figaro",
@@ -156,8 +156,8 @@
     },
     {
       "source": "The Verge",
-      "negative": 1467,
-      "total": 1477
+      "negative": 1469,
+      "total": 1479
     },
     {
       "source": "Wired",
@@ -296,6 +296,78 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Hiszpański sojusznik Donalda Trumpa broni Giorgii Meloni przed prezydentem USA",
+      "reason": "This is political conflict content involving partisan commentary and attacks between political figures. It documents disagreement and tension rather than a breakthrough or resolution, and falls squarely under Rule 6 (Politics).",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/dyplomacja/art44783121-hiszpanski-sojusznik-donalda-trumpa-broni-giorgii-meloni-przed-prezydentem-usa",
+      "date": "2026-07-07 12:39"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Vrouw die verdacht werd van moordaanslag in Monaco, dood teruggevonden in buurt van Kiev",
+      "reason": "This is a crime story involving murder, a murder suspect, and a dead body discovery. It is inherently negative and contains violence, fitting squarely within crime-and-violence content that is unsuitable for a positive-news platform.",
+      "category": "crime-violence",
+      "url": "https://www.gva.be/buitenland/vrouw-die-verdacht-werd-van-moordaanslag-in-monaco-dood-teruggevonden-in-buurt-van-kiev/158375893.html",
+      "date": "2026-07-07 12:39"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Eresenator en ereburgemeester Hugo Van Rompaey overleden: “Hij heeft heel veel voor stad en regio betekend”",
+      "reason": "This is an obituary of a local political figure with municipal-level relevance only. It combines local-only content (Geel city politics, regional significance) with a death announcement, neither of which meets the uplifting, broadly relevant standard for positive news.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/regio/antwerpen/kempen/geel/eresenator-en-ereburgemeester-hugo-van-rompaey-overleden-hij-heeft-heel-veel-voor-stad-en-regio-betekend/158363988.html",
+      "date": "2026-07-07 12:39"
+    },
+    {
+      "source": "The Verge",
+      "title": "Nothing’s new earbuds can record calls and what you’re listening to",
+      "reason": "This is corporate PR content announcing a product launch with new features and pricing. It fits rule 4 (Corporate PR) as it covers a product announcement, pricing strategy, and feature updates from a commercial company.",
+      "category": "soft-news-filler",
+      "url": "https://www.theverge.com/tech/961845/nothing-ear-3a-wireless-earbuds-call-recording-price-availability",
+      "date": "2026-07-07 12:39"
+    },
+    {
+      "source": "The Verge",
+      "title": "Nothing’s first B-series phone is also skipping the US",
+      "reason": "This is corporate PR content about a product launch and branding announcement. It contains no uplifting human element, breakthrough, or broadly relevant positive news—just routine tech industry updates about a phone model.",
+      "category": "soft-news-filler",
+      "url": "https://www.theverge.com/tech/962020/nothing-phone-4b-price-release-date-specs",
+      "date": "2026-07-07 12:39"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "Vrachtwagenchauffeur vrijgesproken voor dood van fietster in Waardamme: \"Hij kon haar onmogelijk zien\"",
+      "reason": "This is a local court ruling about a traffic death in a specific Belgian town (Waardamme). It involves a fatal accident, legal proceedings, and has only local relevance with no universal human-interest angle that transcends geography.",
+      "category": "crime-violence",
+      "url": "https://vrtnws.be/p.y39vGqvAO",
+      "date": "2026-07-07 12:39"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "Brusselse regering zoekt alternatieve datum voor 2e autoloze zondag op Irisfeest ",
+      "reason": "This is local-only municipal content about a Brussels government scheduling decision for a regional event (car-free Sunday during Iris festival). It has no relevance beyond Brussels and would not interest international readers.",
+      "category": "soft-news-filler",
+      "url": "https://vrtnws.be/p.JN6eLkvyw",
+      "date": "2026-07-07 12:39"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "Dag en nacht naar Gentse Feesten met tram en bus",
+      "reason": "This is local-only content about Ghent Festivals (Gentse Feesten) and public transport arrangements in a single Belgian city. It has no relevance beyond the local region and would not interest international readers.",
+      "category": "soft-news-filler",
+      "url": "https://vrtnws.be/p.y39vpmnXW",
+      "date": "2026-07-07 12:39"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Laat eens iets zien vandaag hé” - “Het zal niet van mij komen”: Mathieu van der Poel dolt met broer David voor start van snikhete rit",
+      "reason": "This is professional sports content about Tour de France stage coverage and race tactics. It covers non-exceptional competitive results and match preview content, which falls under Rule 1.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/tour-de-france/laat-eens-iets-zien-vandaag-he-het-zal-niet-van-mij-komen-mathieu-van-der-poel-dolt-met-broer-david-voor-start-van-snikhete-rit~afd6aec4/",
+      "date": "2026-07-07 12:39"
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Szantaż i zwlekanie. Eksperci radzą, jak walczyć ze sztuczkami deweloperów",
@@ -8222,78 +8294,6 @@
       "reason": "The article focuses on financial and economic news, which does not meet the positive-news editorial standard and lacks uplifting content.",
       "category": "economic-doom",
       "url": "https://www.standaard.be/economie/terreinen-van-hool-alweer-verkocht/35145140.html",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "18 doden na Russische aanvallen op Oekraïne, Zelensky waarschuwt voor tekort aan luchtafweerraketten",
-      "reason": "The article discusses casualties and warnings related to the ongoing war in Ukraine, which is a negative and distressing topic.",
-      "category": "war-conflict",
-      "url": "https://www.standaard.be/buitenland/18-doden-na-russische-aanvallen-op-oekrane-zelensky-waarschuwt-voor-tekort-aan-luchtafweerraketten/35173633.html",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Limburg.net stuurt brief naar 5.700 gezinnen die extreem veel grof vuil naar containerpark brengen",
-      "reason": "The article discusses a local issue regarding waste management, which is unlikely to interest readers outside the specific region. It lacks broad human relevance and does not present an uplifting narrative.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.7n8Y6vEZ6",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Proef Antwerpse wijn in de folterkamer van Het Steen: \"Gerijpt tegen de 11e-eeuwse burchtmuur\"",
-      "reason": "The article focuses on a local wine tasting event in a historical location, which may not have broad human relevance outside of its immediate area.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.5wRl96wxw",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Staking AB InBev-personeel in Leuven grotendeels afgelopen: \"Geen tekorten bij horeca\"",
-      "reason": "The article discusses staffing issues at a specific company and its impact on local hospitality, which lacks broad human relevance and is primarily of local interest.",
-      "category": "economic-doom",
-      "url": "https://vrtnws.be/p.93mM6lWV7",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Ouder dan 60? Via mypension.be kan je opnieuw je vroegste pensioendatum zien",
-      "reason": "The article focuses on a specific service related to pensions, which is likely to have local-only relevance and does not provide a universally uplifting story.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.qEvBvXm8l",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Ziekenhuis in Kortrijk lanceert nieuwe mug met primeur: \"Voor het eerst kunnen we bloedtransfusies toedienen op locatie\"",
-      "reason": "The article focuses on a local hospital's new capability for blood transfusions, which may not have broad human relevance outside the local context.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.3Boy6GVkn",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Ook N-VA-rapporteur stapt op bij onderzoekscommissie Anderlechtse Haard",
-      "reason": "The article discusses a political figure stepping down from a committee, which falls under political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://vrtnws.be/p.Nv65Dpe9w",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "\"Het is geweldig om getrouwd te zijn\": ongeziene 'Honeymoon Letter' van prinses Diana uit 1981 gaat onder de hamer",
-      "reason": "The article focuses on a letter from Princess Diana, which falls under celebrity and entertainment news, lacking broader human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://vrtnws.be/p.xZ90aJG90",
-      "date": "2026-07-06 14:02"
-    },
-    {
-      "source": "NRC",
-      "title": "De zoektocht naar goud maakt de ebola-uitbraak in Oost-Congo moeilijk te bedwingen ",
-      "reason": "The article discusses the challenges of combating an Ebola outbreak in East Congo, which is a serious health crisis and not uplifting.",
-      "category": "health-scare",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/de-zoektocht-naar-goud-maakt-de-ebola-uitbraak-in-oost-congo-moeilijk-te-bedwingen-a4931515",
       "date": "2026-07-06 14:02"
     }
   ]
