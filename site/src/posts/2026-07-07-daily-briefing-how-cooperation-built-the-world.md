@@ -2,7 +2,7 @@
 title: "Daily briefing: How cooperation built the world"
 title_nl: "Dagelijkse briefing: Hoe samenwerking de wereld heeft opgebouwd"
 title_fr: "Briefing quotidienne : Comment la coopération a construit le monde"
-date: 2026-07-07T04:20:16
+date: 2026-07-07T04:20:18
 source_pub_date: 2026-07-03
 fetched_date: 2026-07-06
 source_url: "https://www.nature.com/articles/d41586-026-02116-0"
