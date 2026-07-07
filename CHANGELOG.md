@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.3.2** | Fix score tracker to backfill historical data from all available dates in the DB, not just today — populates the trend chart with existing pipeline history |
 | **3.3.1** | Score tracker derives positivity scores from existing pipeline data instead of external API — eliminates API cost and separate schedule. Scores stored on rejected_articles (1-3 negative, 4-6 neutral, 7-10 positive). Score tracker runs automatically after each pipeline run. Admin score settings section removed |
 | **3.3.0** | Add Positivity Score feature — public scoring page at `/score/` with interactive URL scorer (Claude Haiku classifies headlines as positive/negative/neutral), trend chart for tracked sources, and Vercel serverless API at `api.positron.today`. Admin settings section for configuring which sources to track (selectable from existing sources list) and scoring schedule. Mono and Mondrian theme support for the score page. Score tracker runs on admin cron schedule and commits results to GitHub for static site rendering |
 | **3.2.4** | Fix deploy workflow crash on push-triggered runs: use `github.event.inputs` instead of bare `inputs` context in retry-on-failure job (bare `inputs` is only valid for `workflow_dispatch`, causing GitHub to reject the entire YAML on every push since the auto-retry was added) |
