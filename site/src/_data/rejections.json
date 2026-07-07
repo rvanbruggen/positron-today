@@ -1,23 +1,23 @@
 {
-  "exported_at": "2026-07-07T08:27:41.300Z",
-  "total_rejected": 75562,
+  "exported_at": "2026-07-07T08:35:36.750Z",
+  "total_rejected": 75572,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 20702
+      "count": 20704
     },
     {
       "category": "soft-news-filler",
-      "count": 9149
+      "count": 9151
     },
     {
       "category": "sports-negative",
-      "count": 9110
+      "count": 9112
     },
     {
       "category": "crime-violence",
-      "count": 6116
+      "count": 6117
     },
     {
       "category": "celebrity-entertainment",
@@ -25,11 +25,11 @@
     },
     {
       "category": "economic-doom",
-      "count": 4852
+      "count": 4853
     },
     {
       "category": "disaster-accident",
-      "count": 3747
+      "count": 3749
     },
     {
       "category": "war-conflict",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 8729,
-      "total": 8945
+      "negative": 8731,
+      "total": 8947
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 8716,
-      "total": 9100
+      "negative": 8717,
+      "total": 9101
     },
     {
       "source": "VRT Nws",
@@ -101,13 +101,13 @@
     },
     {
       "source": "De Morgen",
-      "negative": 3429,
-      "total": 3481
+      "negative": 3430,
+      "total": 3482
     },
     {
       "source": "Le Monde",
-      "negative": 3270,
-      "total": 3296
+      "negative": 3271,
+      "total": 3297
     },
     {
       "source": "NRC",
@@ -116,13 +116,13 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 3132,
-      "total": 3142
+      "negative": 3134,
+      "total": 3144
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 3125,
-      "total": 3134
+      "negative": 3127,
+      "total": 3136
     },
     {
       "source": "The New York Times",
@@ -171,8 +171,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1045,
-      "total": 1073
+      "negative": 1046,
+      "total": 1074
     },
     {
       "source": "De Standaard Binnenland",
@@ -296,6 +296,86 @@
     }
   ],
   "articles": [
+    {
+      "source": "Politiken.dk",
+      "title": "Xi kræver stor redningsindsats efter tornadoer og oversvømmelser",
+      "reason": "The article describes a natural disaster with deaths and significant property damage. While it mentions a government response effort, the core content is about tragedy and destruction, not a positive human-interest story or uplifting resolution.",
+      "category": "disaster-accident",
+      "url": "https://politiken.dk/internationalt/art10909375/Xi-kr%C3%A6ver-stor-redningsindsats-efter-tornadoer-og-oversv%C3%B8mmelser",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "USA lægger massivt pres på Europa inden topmøde i Ankara",
+      "reason": "This is geopolitical analysis about military pressure and defense negotiations between the USA and Europe. It falls squarely under Rule 6 (Politics) as it concerns government decisions, geopolitical analysis, and international relations strategy rather than a breakthrough or positive resolution.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/internationalt/art10899219/USA-l%C3%A6gger-massivt-pres-p%C3%A5-Europa-inden-topm%C3%B8de-i-Ankara",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "Euronews",
+      "title": "Argentina fans gather in Atlanta for traditional World Cup 'banderazo'",
+      "reason": "This is sports content focused on a World Cup match preview and fan gathering. It describes a routine pre-match event without exceptional emotional, inspiring, or universally unique human-interest characteristics that would warrant an exception.",
+      "category": "sports-negative",
+      "url": "http://www.euronews.com/video/2026/07/07/argentina-fans-gather-in-atlanta-for-traditional-world-cup-banderazo",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "Le Monde",
+      "title": "EN DIRECT, procès en appel de Marine Le Pen : posez vos questions à notre journaliste avant l’arrêt dans l’affaire des assistants parlementaires du FN",
+      "reason": "This is political coverage of a court case involving a far-right political figure and party finances. It falls squarely under Rule 6 (Politics) — government/legal proceedings involving partisan political figures and their legal troubles.",
+      "category": "political-conflict",
+      "url": "https://www.lemonde.fr/politique/live/2026/07/07/en-direct-proces-en-appel-de-marine-le-pen-suivez-l-arret-de-la-cour-d-appel-de-paris-dans-l-affaire-des-assistants-parlementaires-du-fn_6721429_823448.html",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Wie Profis investieren: Warum die Vermögensverwalter der Reichen auf Amerika setzen",
+      "reason": "This is corporate/financial PR content about investment strategies and market analysis. It lacks universal human relevance and emotional uplift—it's business-focused financial advice rather than a positive human-interest story.",
+      "category": "soft-news-filler",
+      "url": "https://www.faz.net/premium/meine-finanzen/aktien/warum-die-reichen-bei-aktien-weiter-auf-die-usa-setzen-accg-200990430.html",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Häfen, Brücken und Kanäle: Die Achillesferse der größten Unternehmen",
+      "reason": "This is corporate/industry analysis focused on vulnerabilities and risks in business infrastructure and logistics. It examines weak points ('Achillesferse' = Achilles' heel) in the economy rather than celebrating positive developments. The framing is analytical-critical, not uplifting.",
+      "category": "economic-doom",
+      "url": "https://www.faz.net/aktuell/wirtschaft/unternehmen/kritische-infrastruktur-das-ist-die-achillesferse-der-deutschen-industrie-accg-200935833.html",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "VIDEO. Belgische WK-vreugde samengevat in één moment: Diego Moreira danst erop los in kleedkamer (en poseert met Thierry Henry)",
+      "reason": "This is sports content focused on a professional football match result and player celebration. It falls under Rule 1 (sports) as it covers a non-exceptional match outcome (World Cup quarterfinal qualification) with routine celebration footage.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/voetbal/video.-belgische-wk-vreugde-samengevat-in-een-moment-diego-moreira-danst-erop-los-in-kleedkamer-en-poseert-met-thierry-henry/158367504.html",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "TUI verlaat luchthaven van Antwerpen: laatste vlucht in maart 2027",
+      "reason": "This is local-only news about a travel company withdrawing from a regional airport. It has no broad human relevance and would only interest readers in the Antwerp area.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/antwerpen/tui-verlaat-luchthaven-van-antwerpen-laatste-vlucht-in-maart-2027~ad65c69e/",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Vader van tien kinderen zit al 4 maanden in cel na betrapping als drugskoerier in Waregem: “Hij heeft het geld nooit gezien”",
+      "reason": "This is a crime story about a drug courier's arrest and imprisonment. It focuses on criminal activity, legal consequences, and family hardship—fundamentally negative content that does not meet the uplifting standard for positive news.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/waregem/vader-van-tien-kinderen-zit-al-4-maanden-in-cel-na-betrapping-als-drugskoerier-in-waregem-hij-heeft-het-geld-nooit-gezien~aeef5797/",
+      "date": "2026-07-07 10:35"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Zwaar stormweer in China: tornado’s, tyfoons en aardverschuiving zorgen voor minstens 20 doden en 48.000 evacuaties",
+      "reason": "This article reports on a natural disaster with deaths and mass evacuations. Disaster coverage is inherently negative and does not meet the unambiguously positive standard required for acceptance.",
+      "category": "disaster-accident",
+      "url": "https://www.demorgen.be/snelnieuws/zwaar-stormweer-in-china-tornado-s-tyfoons-en-aardverschuiving-zorgen-voor-minstens-20-doden-en-48-000-evacuaties~b10975b47/",
+      "date": "2026-07-07 10:35"
+    },
     {
       "source": "Le Monde",
       "title": "Le plan contre le racisme, l’antisémitisme et les discriminations laisse les acteurs du secteur sur leur faim",
@@ -8214,86 +8294,6 @@
       "reason": "The article discusses the Tour de France being affected by wildfires, which is a negative situation and does not uplift the reader.",
       "category": "disaster-accident",
       "url": "https://www.nrc.nl/nieuws/2026/07/06/touretappe-finisht-maandag-zonder-publiek-door-natuurbrand-in-de-pyreneeen-a4931848",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "NRC",
-      "title": "Amerikaanse topscorer Balogun mag ondanks rode kaart toch meedoen tegen België, &#8216;Trump belde met FIFA-baas Infantino&#8217; ",
-      "reason": "The article focuses on a sports-related event that is not exceptional and involves a player who was initially suspended, which detracts from its positivity.",
-      "category": "sports-negative",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/amerikaanse-topscorer-balogun-mag-ondanks-rode-kaart-toch-meedoen-tegen-belgie-trump-belde-met-fifa-baas-infantino-a4931861",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "NRC",
-      "title": "Meer dan tienduizend mensen geëvacueerd in Frankrijk vanwege bosbranden ",
-      "reason": "The article discusses evacuations due to wildfires, which is a negative event and does not uplift the reader.",
-      "category": "disaster-accident",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/meer-dan-tienduizend-mensen-geevacueerd-in-frankrijk-vanwege-bosbranden-a4931862",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "Good News Network",
-      "title": "Good News in History, July 6",
-      "reason": "The article focuses on a specific individual's birthday, which may not have broad human relevance and is more of a soft news piece rather than a universally uplifting story.",
-      "category": "soft-news-filler",
-      "url": "https://www.goodnewsnetwork.org/events060706/",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Tour de France : «À incendie exceptionnel, mesures exceptionnelles», la 3e étape sans public en France",
-      "reason": "The article discusses the Tour de France in the context of a significant wildfire, which detracts from its positivity and focuses on a disaster situation.",
-      "category": "disaster-accident",
-      "url": "https://www.lefigaro.fr/sports/cyclisme/tour-de-france/a-incendie-exceptionnel-mesures-exceptionnelles-la-3e-etape-sans-public-en-france-20260705",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "«Nous sommes traumatisés par les dix jours de canicule dont nous sortons» : des scientifiques réclament une «loi d’urgence climatique» dans une tribune",
-      "reason": "The article discusses the trauma caused by a heatwave and calls for urgent climate legislation, which is a negative topic related to climate issues and public health.",
-      "category": "climate-environment",
-      "url": "https://www.lefigaro.fr/sciences/nous-sommes-traumatises-par-les-dix-jours-de-canicule-dont-nous-sortons-des-scientifiques-reclament-une-loi-d-urgence-climatique-dans-une-tribune-20260706",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "EN DIRECT - Incendies, canicule : un «feu gigantesque» a parcouru 4600 hectares dans les Pyrénées-Orientales, 10.000 personnes évacuées selon Laurent Nuñez",
-      "reason": "The article discusses large-scale wildfires and evacuations, which are negative events and do not uplift the reader.",
-      "category": "disaster-accident",
-      "url": "https://www.lefigaro.fr/actualite-france/en-direct-incendies-canicule-un-feu-gigantesque-a-parcouru-4500-hectares-dans-les-pyrenees-orientales-la-troisieme-etape-du-tour-de-france-bousculee-20260706",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Trump, Infantino, Fifa, Balogun… Cinq questions sur le scandale inédit qui ébranle la Coupe du monde 2026",
-      "reason": "The article discusses a scandal related to the World Cup, which is negative in nature and does not uplift the reader.",
-      "category": "sports-negative",
-      "url": "https://www.lefigaro.fr/sports/football/coupe-du-monde/trump-infantino-fifa-balogun-cinq-questions-sur-le-scandale-inedit-qui-ebranle-la-coupe-du-monde-2026-20260706",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Mort de Lyhanna : une perquisition en cours au domicile de Jérôme Barella, en sa présence",
-      "reason": "The article discusses a murder investigation, which is a negative and distressing topic, lacking uplifting content.",
-      "category": "crime-violence",
-      "url": "https://www.lefigaro.fr/faits-divers/mort-de-lyhanna-une-perquisition-en-cours-au-domicile-de-jerome-barella-en-sa-presence-20260706",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "« Cédric Jubillar s’est lui-même condamné à être condamné » : l’épilogue des quatre semaines du procès, par l’envoyé spécial du Figaro",
-      "reason": "The article discusses a criminal case and the sentencing of an individual, which is inherently negative and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.lefigaro.fr/actualite-france/cedric-jubillar-s-est-lui-meme-condamne-a-etre-condamne-le-recit-des-quatre-semaines-du-proces-par-l-envoye-special-du-figaro-20251018",
-      "date": "2026-07-06 10:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Cédric Jubillar reconnaît le meurtre de son épouse Delphine, annonce son avocat",
-      "reason": "The article discusses a murder confession, which is a highly negative and distressing topic, failing to meet positive-news standards.",
-      "category": "crime-violence",
-      "url": "https://www.lefigaro.fr/faits-divers/cedric-jubillar-reconnait-le-meurtre-de-son-epouse-delphine-annonce-son-avocat-20260706",
       "date": "2026-07-06 10:26"
     }
   ]
