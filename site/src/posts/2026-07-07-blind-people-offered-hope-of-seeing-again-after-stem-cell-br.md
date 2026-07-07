@@ -2,7 +2,7 @@
 title: "Blind people offered hope of seeing again after stem cell breakthrough remakes retinal blood vessels"
 title_nl: "Blinde mensen krijgen hoop op weerzien na doorbraak met stamcellen die netvliesspecifieke bloedvaten herstellen"
 title_fr: "Les personnes aveugles ont de l'espoir de revoir grâce à une percée des cellules souches qui recréent les vaisseaux sanguins rétiniens"
-date: 2026-07-07T04:20:12
+date: 2026-07-07T04:20:14
 source_pub_date: 2026-07-06
 fetched_date: 2026-07-06
 source_url: "https://www.goodnewsnetwork.org/blind-people-offered-hope-of-seeing-again-after-stem-cell-breakthrough-remakes-retinal-blood-vessels/"
