@@ -2,7 +2,7 @@
 title: "Comet 3I/ATLAS is older than the sun"
 title_nl: "Komeet 3I/ATLAS is ouder dan de zon"
 title_fr: "La comète 3I/ATLAS est plus ancienne que le soleil"
-date: 2026-07-07T04:20:15
+date: 2026-07-07T04:20:18
 source_pub_date: 2026-07-06
 fetched_date: 2026-07-06
 source_url: "https://www.popsci.com/science/how-old-is-comet-3i-atlas/"
