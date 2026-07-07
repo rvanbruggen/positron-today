@@ -25,7 +25,14 @@ import { postPendingSocial } from "@/lib/social-post-core";
 import RSSParser from "rss-parser";
 import { withRetry } from "@/lib/retry";
 
-const parser = new RSSParser({ timeout: 8000 });
+const parser = new RSSParser({
+  timeout: 15_000,
+  headers: {
+    "User-Agent": "Mozilla/5.0 (compatible; Positron/3.4; +https://positron.today)",
+    "Accept": "application/rss+xml, application/xml, text/xml, */*",
+    "Accept-Encoding": "gzip, deflate",
+  },
+});
 
 let running = false;
 let activeRunId: number | null = null;
