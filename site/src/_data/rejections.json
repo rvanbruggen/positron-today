@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-07-07T14:30:51.427Z",
-  "total_rejected": 75828,
+  "exported_at": "2026-07-07T14:32:38.430Z",
+  "total_rejected": 75846,
   "sources_count": 48,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 20770
+      "count": 20777
     },
     {
       "category": "soft-news-filler",
-      "count": 9210
+      "count": 9216
     },
     {
       "category": "sports-negative",
@@ -17,11 +17,11 @@
     },
     {
       "category": "crime-violence",
-      "count": 6142
+      "count": 6143
     },
     {
       "category": "celebrity-entertainment",
-      "count": 5593
+      "count": 5595
     },
     {
       "category": "economic-doom",
@@ -33,7 +33,7 @@
     },
     {
       "category": "war-conflict",
-      "count": 3500
+      "count": 3501
     },
     {
       "category": "other-negative",
@@ -41,7 +41,7 @@
     },
     {
       "category": "health-scare",
-      "count": 3011
+      "count": 3012
     },
     {
       "category": "divisive-social",
@@ -86,8 +86,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 4789,
-      "total": 4846
+      "negative": 4791,
+      "total": 4848
     },
     {
       "source": "Le Figaro",
@@ -96,13 +96,13 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 3458,
-      "total": 3484
+      "negative": 3460,
+      "total": 3486
     },
     {
       "source": "De Morgen",
-      "negative": 3442,
-      "total": 3495
+      "negative": 3443,
+      "total": 3496
     },
     {
       "source": "Le Monde",
@@ -111,13 +111,13 @@
     },
     {
       "source": "NRC",
-      "negative": 3271,
-      "total": 3325
+      "negative": 3276,
+      "total": 3330
     },
     {
       "source": "Politiken.dk",
-      "negative": 3159,
-      "total": 3169
+      "negative": 3161,
+      "total": 3171
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -171,8 +171,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1048,
-      "total": 1076
+      "negative": 1051,
+      "total": 1079
     },
     {
       "source": "De Standaard Binnenland",
@@ -285,17 +285,17 @@
       "total": 15
     },
     {
+      "source": "The Journal (Ireland)",
+      "negative": 13,
+      "total": 13
+    },
+    {
       "source": "De Tijd",
       "negative": 10,
       "total": 10
     },
     {
       "source": "L'Echo",
-      "negative": 10,
-      "total": 10
-    },
-    {
-      "source": "The Journal (Ireland)",
       "negative": 10,
       "total": 10
     },
@@ -311,6 +311,150 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Journal (Ireland)",
+      "title": "It's the start of the school holidays - so how are you handling childcare?",
+      "reason": "This is a local-only, community-focused piece asking for reader submissions about a routine seasonal event. It lacks any newsworthy content, positive narrative arc, or broad human interest—it's a call-out for user-generated content rather than journalism.",
+      "category": "soft-news-filler",
+      "url": "https://www.thejournal.ie/childcare-in-summer-7092886-Jul2026/",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Taoiseach says EU 'must do more' to support Palestine in European Parliament address",
+      "reason": "This is political commentary on a geopolitical conflict. It covers a government leader's statement on a disputed international issue, which falls under political content and war-conflict commentary regardless of the framing.",
+      "category": "political-conflict",
+      "url": "https://www.thejournal.ie/taoiseach-strasbourg-russia-7093636-Jul2026/",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Almost €1m settlement for girl (11) over unapproved spring inserted in her body during spinal surgery",
+      "reason": "This article centers on medical negligence, harm to a child, and legal proceedings—fundamentally negative despite the settlement outcome. It documents a failure in duty of care, not an uplifting human story.",
+      "category": "health-scare",
+      "url": "https://www.thejournal.ie/court-settlement-spinal-spring-temple-street-chi-7094115-Jul2026/",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Euronews",
+      "title": "South Korean law targeting 'fake news' takes effect as journalists' groups raise concerns",
+      "reason": "This article covers political legislation and government decisions in response to political crisis (martial law attempt), with journalist concerns about potential censorship implications. It falls squarely under Rule 6 (Politics) and lacks the unambiguous positivity required for acceptance.",
+      "category": "political-conflict",
+      "url": "http://www.euronews.com/2026/07/07/south-korean-law-targeting-fake-news-takes-effect-as-journalists-groups-raise-concerns",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Euronews",
+      "title": "Euronews launches Kazakh language broadcasting in Astana",
+      "reason": "This is corporate PR announcing a product/service expansion. It lacks genuine human uplift and reads as a business announcement rather than a positive-news story.",
+      "category": "soft-news-filler",
+      "url": "http://www.euronews.com/2026/07/07/euronews-launches-kazakh-language-broadcasting-in-astana",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Euronews",
+      "title": "Goats roam free in this French Alpine village",
+      "reason": "This is local-only content about a specific French Alpine village attraction. It would not meaningfully interest readers outside that region and lacks the universal human relevance required for acceptance.",
+      "category": "soft-news-filler",
+      "url": "http://www.euronews.com/video/2026/07/07/goats-roam-free-in-this-french-alpine-village",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Farage lämnar parlamentet – men ställer upp igen",
+      "reason": "This is political news involving allegations of misconduct, parliamentary departure, and electoral strategy. It falls squarely under Rule 6 (Politics) as it covers a political figure's response to accusations and parliamentary decisions, with no breakthrough or exceptional agreement element.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/varlden/farage-lamnar-parlamentet-men-staller-upp-igen/",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Expert: Licens för Patriot löser inte Ukrainas akuta problem",
+      "reason": "This is geopolitical analysis about the Ukraine-Russia conflict framed around military capability limitations. It discusses war strategy and weapons systems in a context of ongoing conflict, which falls under political/military conflict coverage regardless of any positive framing.",
+      "category": "war-conflict",
+      "url": "https://www.dn.se/varlden/expert-licens-for-patriot-loser-inte-ukrainas-akuta-problem/",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Eksminister om Ida Auken: »Det bedste ville være, hvis hun foretog endnu et partiskifte«",
+      "reason": "This is political commentary about a Danish politician's party affiliation, featuring partisan criticism from a former minister. It falls squarely under political content and lacks any positive, uplifting angle.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/danmark/politik/art10909291/%C2%BBDet-bedste-ville-v%C3%A6re-hvis-hun-foretog-endnu-et-partiskifte%C2%AB",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Ny kommune finder udskældt larve i egetræer",
+      "reason": "This is local-only news about a pest problem in a specific Danish municipality (Nyborg Kommune). It has no broad international relevance and would not interest readers outside Denmark or the affected region.",
+      "category": "soft-news-filler",
+      "url": "https://politiken.dk/danmark/art10910144/Ny-kommune-finder-udsk%C3%A6ldt-larve-i-egetr%C3%A6er",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Niepokojące słowa Trumpa, żąda kontroli nad Grenlandią. „Dania nie wydaje pieniędzy”",
+      "reason": "This article covers political conflict and geopolitical tensions involving territorial claims, military withdrawal threats, and diplomatic disputes. It is explicitly negative in tone ('Niepokojące słowa' = 'Concerning words') and does not document a breakthrough or resolution—it reports escalating political tensions.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/polityka/art44784981-niepokojace-slowa-trumpa-zada-kontroli-nad-grenlandia-dania-nie-wydaje-pieniedzy",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "AI w podróży – tłumaczy, planuje, doradza. „Ale najważniejszego nie zastąpi”",
+      "reason": "This is routine tech/industry content about AI feature adoption in travel. It lacks a civilisation-scale breakthrough or proven transformative impact—it's a standard feature-announcement piece dressed as lifestyle commentary.",
+      "category": "soft-news-filler",
+      "url": "https://turystyka.rp.pl/popularne-trendy/art44784861-ai-w-podrozy-tlumaczy-planuje-doradza-ale-najwazniejszego-nie-zastapi",
+      "date": "2026-07-07 16:32"
+    },
+    {
+      "source": "NRC",
+      "title": "De bananenkoning van Midden-Amerika | In de schaduw van de macht ",
+      "reason": "This appears to be a documentary series about a historical business figure (Sam Zemurray, the 'banana king'). Without more context, the snippet suggests this is likely a corporate/business history narrative rather than an unambiguously positive human-interest story. It falls under corporate PR or routine historical content that lacks clear uplift.",
+      "category": "soft-news-filler",
+      "url": "https://www.nrc.nl/nieuws/2026/07/07/de-bananenkoning-van-midden-amerika-in-de-schaduw-van-de-macht-a4932011",
+      "date": "2026-07-07 16:31"
+    },
+    {
+      "source": "NRC",
+      "title": "Rechter veroordeelt oud-burgemeester tot 12 maanden gevangenis om verspreiden kinderporno ",
+      "reason": "This article reports on a criminal conviction for child sexual abuse material distribution. It is fundamentally negative content about serious crime and child exploitation, regardless of the positive framing of justice being served.",
+      "category": "crime-violence",
+      "url": "https://www.nrc.nl/nieuws/2026/07/07/rechter-veroordeelt-oud-burgemeester-tot-12-maanden-gevangenis-om-verspreiden-kinderporno-a4932009",
+      "date": "2026-07-07 16:31"
+    },
+    {
+      "source": "NRC",
+      "title": "Nigel Farage wil een ‘strijd tussen het volk en de gevestigde orde’, daarom stapt hij op als parlementariër ",
+      "reason": "This is political content about a partisan political figure's strategic maneuver involving allegations of improper sponsorship. It covers partisan politics, political conflict, and government/parliamentary matters.",
+      "category": "political-conflict",
+      "url": "https://www.nrc.nl/nieuws/2026/07/07/nigel-farage-wil-een-strijd-tussen-het-volk-en-de-gevestigde-orde-daarom-stapt-hij-op-als-parlementarier-a4931998",
+      "date": "2026-07-07 16:31"
+    },
+    {
+      "source": "NRC",
+      "title": "Libris-winnaar Frida Vogels analyseerde haar eigen leven in compromisloos goudeerlijk proza ",
+      "reason": "This is celebrity/entertainment industry coverage focused on a literary award winner and her book. It falls under Rule 3 (Celebrities and entertainment industry) — awards, casting, and entertainment-industry profiles are excluded regardless of positive framing.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.nrc.nl/nieuws/2026/07/07/libris-winnaar-frida-vogels-analyseerde-haar-eigen-leven-in-compromisloos-goudeerlijk-proza-a4932006",
+      "date": "2026-07-07 16:31"
+    },
+    {
+      "source": "NRC",
+      "title": "&#8216;Toen een collega-wetenschapper zei dat het in de VS niet meer veilig was, vroeg ik me af of ik zou worden gearresteerd&#8217; ",
+      "reason": "This article is fundamentally about political persecution, academic freedom restrictions, and forced migration due to government policy — core political conflict content. While framed around individuals finding refuge, the primary narrative is negative (fear of arrest, unsafe conditions, restricted freedoms).",
+      "category": "political-conflict",
+      "url": "https://www.nrc.nl/nieuws/2026/07/07/ik-vroeg-me-af-of-ik-zou-worden-gearresteerd-a4931993",
+      "date": "2026-07-07 16:31"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Prins Harry verliest rechtszaak tegen uitgever van tabloid Daily Mail",
+      "reason": "This is a legal defeat for a public figure involving tabloid litigation. It falls under celebrity/entertainment coverage and contains no uplifting human-interest element—it's a negative outcome for Prince Harry in a court case.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.demorgen.be/snelnieuws/prins-harry-verliest-rechtszaak-tegen-uitgever-van-tabloid-daily-mail~b20fa287/",
+      "date": "2026-07-07 16:31"
+    },
     {
       "source": "De Morgen",
       "title": "Elisabeth Lucie Baeten kreeg na 20 jaar pijn eindelijk een diagnose: ‘Ik kan stoppen met vechten’",
@@ -8166,150 +8310,6 @@
       "category": "political-conflict",
       "url": "https://www.gva.be/politiek/live-politiek.-regering-de-wever-moet-op-zoek-naar-79-miljard-euro/77026519.html",
       "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Subsidies voor 45 bijkomende kinderopvangplaatsen in Mortsel beschikbaar",
-      "reason": "The article focuses on local subsidies for childcare places, which is of limited interest outside the specific community and does not have broad human relevance.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/mortsel/subsidies-voor-45-bijkomende-kinderopvangplaatsen-in-mortsel-beschikbaar/158324734.html",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "Inquiry into care of man held after zoo attack",
-      "reason": "The article discusses an inquiry into a zoo attack, which is related to crime and violence, making it too negative and not uplifting.",
-      "category": "crime-violence",
-      "url": "https://www.bbc.co.uk/news/articles/cr7xxj7rey5o?at_medium=RSS&at_campaign=rss",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Brugge neemt onderhoud gewestwegen over van Wegen en Verkeer: \"Niveau was niet wat Bruggelingen verwachten\"",
-      "reason": "The article discusses local government maintenance of roads, which is of local-only relevance and does not have broad human interest.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.VL7Q7Za9Y",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Volgende week start ontmanteling vernielde Huisekoutermolen in Kruisem: \"Elk onderdeel nummeren en fotograferen\"",
-      "reason": "The article discusses the dismantling of a damaged windmill, which may not be of broad interest outside the local context and lacks a strong uplifting narrative.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.ZWaMa7Kkm",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Kringwinkel Okazi richt Truiense zomerbar Vrijstaat A in met tweedehandsmeubilair en kast met unieke objecten",
-      "reason": "The article focuses on a local event involving second-hand furniture and unique objects, which may not have broad human relevance outside the local context.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.8eW16m3Jl",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "NRC",
-      "title": "Voor het eerst in jaren gaat weer een Nederlandse handelsmissie naar China, en minister Sjoerdsma heeft wat te lijmen ",
-      "reason": "The article discusses a political and economic development between the Netherlands and China, which falls under political news and does not provide a universally uplifting story.",
-      "category": "political-conflict",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/voor-het-eerst-in-jaren-gaat-weer-een-nederlandse-handelsmissie-naar-china-en-minister-sjoerdsma-heeft-wat-te-lijmen-a4931881",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "NRC",
-      "title": "Hoe de glastuinbouw veel problemen op het stroomnet kan oplossen. Mits ze nog even gas mogen blijven gebruiken ",
-      "reason": "The article discusses the challenges faced by greenhouse growers in balancing sustainability with electricity usage, which presents a negative situation rather than an uplifting story.",
-      "category": "economic-doom",
-      "url": "https://www.nrc.nl/nieuws/2026/07/06/hoe-de-glastuinbouw-veel-problemen-op-het-stroomnet-kan-oplossen-mits-ze-nog-even-gas-mogen-blijven-gebruiken-a4931406",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Canicule : les députés PS ne voteront pas la motion de censure des Écologistes, contrairement à Olivier Faure",
-      "reason": "The article discusses political actions and opinions regarding climate inaction, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/politique/canicule-les-deputes-ps-ne-voteront-pas-la-motion-de-censure-des-ecologistes-contrairement-a-olivier-faure-20260706",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Sébastien Lecornu : «Les efforts engagés pour nous adapter aux chaleurs extrêmes n’ont pas été vains, mais il reste à faire»",
-      "reason": "The article discusses political actions and criticisms related to climate policy, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/vox/politique/sebastien-lecornu-les-efforts-engages-pour-nous-adapter-aux-chaleurs-extremes-n-ont-pas-ete-vains-mais-il-reste-a-faire-20260706",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“Hij is compact, maar speelt grotere elektrische auto’s gewoon naar huis”: onze autospecialist kon al met de Hyundai Ioniq 3 rijden en ziet véél potentieel",
-      "reason": "The article discusses a new car model and its features, which falls under routine tech/industry updates without a significant breakthrough or exceptional aspect.",
-      "category": "tech-ai-concern",
-      "url": "https://www.hln.be/mobiliteit/hij-is-compact-maar-speelt-grotere-elektrische-autos-gewoon-naar-huis-onze-autospecialist-kon-al-met-de-hyundai-ioniq-3-rijden-en-ziet-veel-potentieel~a7e32810/",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Le Pen of Bardella: morgenmiddag weet heel Frankrijk wie er in 2027 als favoriet aan de race naar het Elysée begint",
-      "reason": "The article discusses political developments in France, which falls under political news and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.hln.be/buitenland/le-pen-of-bardella-morgenmiddag-weet-heel-frankrijk-wie-er-in-2027-als-favoriet-aan-de-race-naar-het-elysee-begint~aeb269b8/",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Kan Elise Mertens voor het eerst de kwartfinales van Wimbledon bereiken?",
-      "reason": "The article focuses on a sports event, specifically Wimbledon, which does not meet the positive-news editorial standard due to its routine nature and lack of exceptional human-interest elements.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/wimbledon/kan-elise-mertens-voor-het-eerst-de-kwartfinales-van-wimbledon-bereiken~a2c0477b/",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Na lange en pittige strijd: Belgen Louis Vervaeke en Vlad Van Mechelen dwingen plaatsje af in sterke ‘vroege’ vlucht",
-      "reason": "The article discusses a professional sports event without any exceptional or inspiring elements, focusing on routine competition details.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/tour-de-france/na-lange-en-pittige-strijd-belgen-louis-vervaeke-en-vlad-van-mechelen-dwingen-plaatsje-af-in-sterke-vroege-vlucht~adeef4ae/",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Tomorrowland organiseert eerste looptocht in Antwerpen die eindigt in rave met Dimitri Vegas",
-      "reason": "The article focuses on a local running event that may not have broad appeal outside of its immediate community, making it less relevant to a global audience.",
-      "category": "soft-news-filler",
-      "url": "https://www.hln.be/showbizz/tomorrowland-organiseert-eerste-looptocht-in-antwerpen-die-eindigt-in-rave-met-dimitri-vegas~ab691d7b/",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“Remco lacht veel. Dat is altijd een goed teken”: HLN Wielerpodcast ziet Evenepoel met veel vertrouwen rondrijden in Tour",
-      "reason": "The article focuses on a professional sports event and the performance of a specific athlete, which does not meet the positive-news editorial standard due to its sports-related content.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/tour-de-france/remco-lacht-veel-dat-is-altijd-een-goed-teken-hln-wielerpodcast-ziet-evenepoel-met-veel-vertrouwen-rondrijden-in-tour~aa348a47/",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Ringo brult na 30 slagen live op Facebook, slachtoffer Danny bloedt op de grond. En Ringo’s vriendin? Zij is “te bang” om hulpdiensten te bellen",
-      "reason": "The article describes a violent incident involving a fatal assault, which is highly negative and not uplifting.",
-      "category": "crime-violence",
-      "url": "https://www.hln.be/roeselare/ringo-brult-na-30-slagen-live-op-facebook-slachtoffer-danny-bloedt-op-de-grond-en-ringos-vriendin-zij-is-te-bang-om-hulpdiensten-te-bellen~aab31919/",
-      "date": "2026-07-06 14:26"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“Ancelotti is door het ijs gezakt”: Braziliaanse legende Ronaldo Nazário reageert op de uitschakeling van Brazilië",
-      "reason": "The article focuses on the elimination of Brazil from the World Cup, which is a negative sports outcome and does not uplift the reader.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/wk-voetbal/ancelotti-is-door-het-ijs-gezakt-braziliaanse-legende-ronaldo-nazario-reageert-op-de-uitschakeling-van-brazilie~a3c3e7fe/",
-      "date": "2026-07-06 14:25"
-    },
-    {
-      "source": "De Morgen",
-      "title": "De vraag was niet óf, maar wanneer: waarom de Turkse comedian Deniz Göktas nu is opgepakt",
-      "reason": "The article discusses the arrest of a Turkish comedian, which is a negative event and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.demorgen.be/nieuws/de-vraag-was-niet-of-maar-wanneer-waarom-de-turkse-comedian-deniz-goktas-nu-is-opgepakt~be10c45e/",
-      "date": "2026-07-06 14:25"
     }
   ]
 }
