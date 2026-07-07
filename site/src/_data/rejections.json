@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-07T14:58:15.537Z",
-  "total_rejected": 76108,
+  "exported_at": "2026-07-07T14:58:19.340Z",
+  "total_rejected": 76109,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1117
+      "count": 1118
     },
     {
       "category": "divisive-racism",
@@ -355,14 +355,14 @@
       "total": 12
     },
     {
+      "source": "ScienceDaily",
+      "negative": 7,
+      "total": 13
+    },
+    {
       "source": "The Progress Network (What Could Go Right?)",
       "negative": 7,
       "total": 11
-    },
-    {
-      "source": "ScienceDaily",
-      "negative": 6,
-      "total": 12
     },
     {
       "source": "Scientific American",
@@ -391,6 +391,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "NASA's Hubble spots a stellar sparkler for the Fourth of July",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/07/260704232642.htm",
+      "date": "2026-07-07 16:58"
+    },
     {
       "source": "ScienceDaily",
       "title": "NASA's Hubble captures a crimson stellar nursery sparkling with blue and white stars",
@@ -8381,14 +8389,6 @@
       "reason": "The article focuses on a local artist's collection and background, which may not have broad relevance outside of its immediate context.",
       "category": "soft-news-filler",
       "url": "https://politiken.dk/kultur/art10865851/Maja-Lisa-Engelhardts-samling-er-vild.-Rigtig-vild-faktisk",
-      "date": "2026-07-06 21:23"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Hun har aldrig skrevet bedre",
-      "reason": "The article discusses a new book by a Norwegian author, which falls under the category of celebrity and entertainment news, lacking broad human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://politiken.dk/kultur/boger/boganmeldelser/krimi/art10857808/Hun-har-aldrig-skrevet-bedre",
       "date": "2026-07-06 21:23"
     }
   ]
