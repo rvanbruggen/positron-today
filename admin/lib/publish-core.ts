@@ -88,8 +88,8 @@ export async function commitToGitHub(path: string, content: string, message: str
     if (res.ok) return;
 
     if (res.status === 409 && attempt < MAX_RETRIES - 1) {
-      console.warn(`SHA conflict on attempt ${attempt + 1}, retrying…`);
-      await new Promise((r) => setTimeout(r, 500 * (attempt + 1)));
+      console.warn(`[commitToGitHub] SHA conflict on ${path}, attempt ${attempt + 1}, retrying…`);
+      await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
       continue;
     }
 
