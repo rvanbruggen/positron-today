@@ -368,6 +368,14 @@ title: Positivity Score
 
     var hiddenSources = window._chartHidden || {};
 
+    // Compute max visible score for dynamic Y axis
+    var maxScore = 0;
+    SCORE_DATA.forEach(function(e) {
+      if (!hiddenSources[e.source]) maxScore = Math.max(maxScore, e.score);
+    });
+    var yMax = Math.min(100, Math.ceil((maxScore * 1.1) / 10) * 10);
+    if (yMax < 10) yMax = 10;
+
     var pad = { top: 20, right: 20, bottom: 40, left: 40 };
     var plotW = W - pad.left - pad.right;
     var plotH = H - pad.top - pad.bottom;
@@ -379,14 +387,15 @@ title: Positivity Score
     var gridColor = theme === 'mono' ? '#e5e5e5' : theme === 'mondrian' ? '#e5e5e5' : '#fde68a';
     var labelColor = theme === 'mono' ? '#555555' : theme === 'mondrian' ? '#111111' : '#b45309';
 
-    // Y axis (0-100%)
+    // Y axis (dynamic, rounded to nearest 10)
+    var yStep = yMax <= 30 ? 5 : 10;
     ctx.strokeStyle = gridColor;
     ctx.lineWidth = 1;
     ctx.fillStyle = labelColor;
     ctx.font = '11px system-ui, sans-serif';
     ctx.textAlign = 'right';
-    for (var y = 0; y <= 100; y += 20) {
-      var py = pad.top + plotH - (y / 100) * plotH;
+    for (var y = 0; y <= yMax; y += yStep) {
+      var py = pad.top + plotH - (y / yMax) * plotH;
       ctx.beginPath();
       ctx.moveTo(pad.left, py);
       ctx.lineTo(pad.left + plotW, py);
@@ -414,7 +423,7 @@ title: Positivity Score
         if (entries.length === 0) return;
         var avg = entries.reduce(function(s, e) { return s + e.score; }, 0) / entries.length;
         var px = pad.left + (dates.length === 1 ? plotW / 2 : (di / (dates.length - 1)) * plotW);
-        var py = pad.top + plotH - (avg / 100) * plotH;
+        var py = pad.top + plotH - (avg / yMax) * plotH;
         points.push({ x: px, y: py });
       });
 
