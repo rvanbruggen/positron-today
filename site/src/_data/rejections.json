@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-07T14:57:17.174Z",
-  "total_rejected": 76104,
+  "exported_at": "2026-07-07T14:57:41.034Z",
+  "total_rejected": 76105,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1113
+      "count": 1114
     },
     {
       "category": "divisive-racism",
@@ -355,6 +355,11 @@
       "total": 11
     },
     {
+      "source": "Reasons to be Cheerful",
+      "negative": 6,
+      "total": 11
+    },
+    {
       "source": "Scientific American",
       "negative": 6,
       "total": 10
@@ -366,11 +371,6 @@
     },
     {
       "source": "Good Good Good",
-      "negative": 5,
-      "total": 10
-    },
-    {
-      "source": "Reasons to be Cheerful",
       "negative": 5,
       "total": 10
     },
@@ -391,6 +391,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "Reasons to be Cheerful",
+      "title": "Yellow Means Creepy: The Color-Coded Anti-Harassment System Used by Restaurant Workers",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://reasonstobecheerful.world/yellow-means-creepy-the-color-coded-anti-harassment-system-used-by-restaurant-workers/",
+      "date": "2026-07-07 16:57"
+    },
     {
       "source": "The Better India",
       "title": "The Doctor Who Couldn’t Save His Mother Now Spends 90% of His Salary to Bring Healthcare to Rural Bihar ",
@@ -8381,14 +8389,6 @@
       "reason": "The article focuses on a local initiative in Paris regarding urban cleanliness, which may not have broad relevance or interest outside the local context.",
       "category": "soft-news-filler",
       "url": "https://www.lemonde.fr/politique/article/2026/07/06/proprete-a-paris-emmanuel-gregoire-presente-sa-methode-pour-traiter-1-000-points-noirs_6721246_823448.html",
-      "date": "2026-07-06 21:23"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Affaire des assistants parlementaires européens du FN : un dispositif inédit de communication pour la cour d’appel de Paris",
-      "reason": "The article discusses a political initiative related to a court case, which falls under political content and does not provide a broadly uplifting message.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/politique/article/2026/07/06/proces-le-pen-un-dispositif-inedit-de-communication-pour-la-cour-d-appel-de-paris_6721239_823448.html",
       "date": "2026-07-06 21:23"
     }
   ]
