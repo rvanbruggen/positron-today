@@ -2,7 +2,7 @@
 title: "Chinese spacecraft captures first image of Earth's mysterious mini moon"
 title_nl: "Chinees ruimtevaartuig maakt eerste foto van aardes mysterieuze mini-maan"
 title_fr: "L'engin spatial chinois capture la première image de la mini-lune mystérieuse de la Terre"
-date: 2026-07-07T15:02:00
+date: 2026-07-07T15:14:04
 source_pub_date: 2026-07-06
 fetched_date: 2026-07-07
 source_url: "https://www.scientificamerican.com/article/chinese-spacecraft-tianwen-2-beams-back-first-image-of-earths-mini-moon/"
@@ -14,6 +14,7 @@ summary: "China's Tianwen-2 spacecraft has successfully beamed back its first im
 summary_nl: "Het Chinese ruimtevaartuig Tianwen-2 heeft met succes zijn eerste foto van Kamo'oalewa verzonden - een kleine asteroïde in de buurt van de aarde die rond onze planeet draait als een quasi-satelliet, waarom wetenschappers het aardig aardes \"mini-maan\" noemen. De ruimtesteen is slechts ongeveer 20 meter in doorsnee en is het doel van een ambitieuze monsterverzamelingmissie die al 1000 miljoen kilometer in 400 dagen heeft afgelegd. Nu begint het echte spannende gedeelte - Tianwen-2 zal een van drie geniale methodes gebruiken om monsters van het asteroïde-oppervlak te verzamelen, inclusief een \"touch-and-go\"-techniek, een ankeer-en-bevestigingsbenadering, of een zwevende robotarm. Na het terugbrengen van de kostbare monsters naar de aarde in 2027, zal het ruimtevaartuig zijn reis voortzetten om komeet 311P/PanSTARRS te verkennen, waardoor deze ongelooflijke missie nog verder wordt uitgebreid."
 summary_fr: "L'engin spatial chinois Tianwen-2 a réussi à envoyer sa première image de Kamo'oalewa - une petite astéroïde près de la Terre qui orbite autour de notre planète comme un quasi-satellite, c'est pourquoi les scientifiques l'appellent affectueusement la \"mini-lune\" de la Terre. Le rocher spatial ne mesure que environ 20 mètres de diamètre et est l'objectif d'une ambitieuse mission de collecte d'échantillons qui a déjà parcouru 1000 millions de kilomètres en 400 jours. Maintenant, la partie vraiment passionnante commence - Tianwen-2 utilisera l'une des trois méthodes ingénieuses pour prélever des échantillons de la surface de l'astéroïde, y compris une technique d'approche-contact, une approche d'ancrage-et-fixation, ou un bras robotisé en vol stationnaire. Après avoir ramené les précieux échantillons sur Terre en 2027, l'engin spatial poursuivra son voyage pour explorer la comète 311P/PanSTARRS, prolongeant encore cette incroyable mission."
 image_url: "https://static.scientificamerican.com/dam/asset/877b4759-1a58-4b1a-acab-d271639c7646/CNSA-asteroid-2.jpg?m=1783346131.674&w=1200"
+featured: true
 layout: post.njk
 ---
 
