@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-07T14:58:10.515Z",
-  "total_rejected": 76107,
+  "exported_at": "2026-07-07T14:58:15.537Z",
+  "total_rejected": 76108,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1116
+      "count": 1117
     },
     {
       "category": "divisive-racism",
@@ -360,6 +360,11 @@
       "total": 11
     },
     {
+      "source": "ScienceDaily",
+      "negative": 6,
+      "total": 12
+    },
+    {
       "source": "Scientific American",
       "negative": 6,
       "total": 10
@@ -375,11 +380,6 @@
       "total": 10
     },
     {
-      "source": "ScienceDaily",
-      "negative": 5,
-      "total": 11
-    },
-    {
       "source": "Quanta Magazine",
       "negative": 4,
       "total": 5
@@ -391,6 +391,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "NASA's Hubble captures a crimson stellar nursery sparkling with blue and white stars",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/07/260704232639.htm",
+      "date": "2026-07-07 16:58"
+    },
     {
       "source": "ScienceDaily",
       "title": "NASA's Hubble captures a star-spangled sea of 500,000 stars",
@@ -8381,14 +8389,6 @@
       "reason": "The article discusses a new book by a Norwegian author, which falls under the category of celebrity and entertainment news, lacking broad human relevance.",
       "category": "celebrity-entertainment",
       "url": "https://politiken.dk/kultur/boger/boganmeldelser/krimi/art10857808/Hun-har-aldrig-skrevet-bedre",
-      "date": "2026-07-06 21:23"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "LIVE-TICKER - Spanien gegen Portugal: Erste Riesenchance für Spanien in der achten Minute",
-      "reason": "The article is a live-ticker for a sports event, which does not meet the positive-news editorial standard due to its focus on routine sports coverage.",
-      "category": "sports-negative",
-      "url": "https://www.nzz.ch/sport/spanien-gegen-portugal-kommt-es-zum-letzten-wm-auftritt-von-ronaldo-ld.10014250",
       "date": "2026-07-06 21:23"
     }
   ]
