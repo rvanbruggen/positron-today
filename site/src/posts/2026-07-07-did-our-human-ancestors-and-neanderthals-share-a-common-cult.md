@@ -1,0 +1,21 @@
+---
+title: "Did our human ancestors and Neanderthals share a common culture?"
+title_nl: "Deelden onze menselijke voorouders en Neanderthalers een gemeenschappelijke cultuur?"
+title_fr: "Nos ancêtres humains et les Néandertaliens partageaient-ils une culture commune?"
+date: 2026-07-07T15:52:00
+source_pub_date: 2026-07-06
+fetched_date: 2026-07-07
+source_url: "https://www.scientificamerican.com/article/did-our-human-ancestors-and-neanderthals-share-a-common-culture/"
+source_name: "Scientific American"
+topic: "Nature"
+tags: ["Nature","Science","Society"]
+emoji: "🦴"
+summary: "New research from a Turkish cave suggests that Neanderthals and modern humans may have shared similar cultural practices and behaviors - which is pretty fascinating when you think about it. Scientists found that both groups used comparable stone tools, employed similar hunting strategies, and most surprisingly, collected the same type of Mediterranean mollusk shells despite other options being available. This shell-collecting behavior was previously thought to be unique to modern humans, so discovering it in Neanderthals really challenges what we assumed about their cognitive abilities. The findings suggest that both species placed real value on potentially symbolic behaviors, even under harsh survival conditions, forcing us to reconsider the cultural boundaries between different human groups in that ancient world."
+summary_nl: "Nieuw onderzoek uit een Turkse grot suggereert dat Neanderthalers en moderne mensen mogelijk dezelfde culturele praktijken en gedragingen deelden - wat behoorlijk fascinerend is als je erover nadenkt. Wetenschappers ontdekten dat beide groepen vergelijkbare stenen gereedschappen gebruikten, soortgelijke jachtstrategieën toepasten, en het meest verrassend, dezelfde soort Middellandse schelpen verzamelden ondanks andere beschikbare opties. Dit schelpenverza melgedrag werd eerder geacht exclusief voor moderne mensen te zijn, dus het ontdekken ervan bij Neanderthalers daagt echt uit wat we aannames over hun cognitieve capaciteiten. De bevindingen suggereren dat beide soorten echte waarde hechtten aan mogelijk symbolisch gedrag, zelfs onder harde overlevingsomstandigheden, wat ons dwingt de culturele grenzen tussen verschillende menselijke groepen in die oude wereld opnieuw te overwegen."
+summary_fr: "De nouvelles recherches provenant d'une grotte turque suggèrent que les Néandertaliens et les humains modernes auraient peut-être partagé des pratiques et des comportements culturels similaires - ce qui est plutôt fascinant quand on y pense. Les scientifiques ont découvert que les deux groupes utilisaient des outils en pierre comparables, employaient des stratégies de chasse similaires et, plus surprenant encore, collectaient le même type de coquillages méditerranéens malgré d'autres options disponibles. Ce comportement de collecte de coquillages était auparavant considéré comme exclusif aux humains modernes, donc sa découverte chez les Néandertaliens remet vraiment en question nos hypothèses sur leurs capacités cognitives. Les conclusions suggèrent que les deux espèces accordaient une véritable valeur à des comportements potentiellement symboliques, même dans des conditions de survie difficiles, nous forçant à reconsidérer les frontières culturelles entre les différents groupes humains du monde antique."
+image_url: "https://static.scientificamerican.com/dam/asset/236334be-4d7d-4a5f-9332-fdefb6c27f8e/Neaderthal.jpg?m=1783367344.816&w=1200"
+featured: true
+layout: post.njk
+---
+
+New research from a Turkish cave suggests that Neanderthals and modern humans may have shared similar cultural practices and behaviors - which is pretty fascinating when you think about it. Scientists found that both groups used comparable stone tools, employed similar hunting strategies, and most surprisingly, collected the same type of Mediterranean mollusk shells despite other options being available. This shell-collecting behavior was previously thought to be unique to modern humans, so discovering it in Neanderthals really challenges what we assumed about their cognitive abilities. The findings suggest that both species placed real value on potentially symbolic behaviors, even under harsh survival conditions, forcing us to reconsider the cultural boundaries between different human groups in that ancient world.
