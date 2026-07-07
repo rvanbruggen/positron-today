@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-07T14:56:43.483Z",
-  "total_rejected": 76103,
+  "exported_at": "2026-07-07T14:57:17.174Z",
+  "total_rejected": 76104,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1112
+      "count": 1113
     },
     {
       "category": "divisive-racism",
@@ -360,6 +360,11 @@
       "total": 10
     },
     {
+      "source": "The Better India",
+      "negative": 6,
+      "total": 12
+    },
+    {
       "source": "Good Good Good",
       "negative": 5,
       "total": 10
@@ -368,11 +373,6 @@
       "source": "Reasons to be Cheerful",
       "negative": 5,
       "total": 10
-    },
-    {
-      "source": "The Better India",
-      "negative": 5,
-      "total": 11
     },
     {
       "source": "Quanta Magazine",
@@ -391,6 +391,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Better India",
+      "title": "The Doctor Who Couldn’t Save His Mother Now Spends 90% of His Salary to Bring Healthcare to Rural Bihar ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/changemakers/dr-raman-kishore-free-healthcare-bihar-treating-thousands-of-patients-remote-villages-personal-loss-12142886",
+      "date": "2026-07-07 16:57"
+    },
     {
       "source": "The Better India",
       "title": "His Mother's Death Inspired Him to Treat 40,000 Patients for Free ",
@@ -8381,14 +8389,6 @@
       "reason": "The article discusses a political initiative related to a court case, which falls under political content and does not provide a broadly uplifting message.",
       "category": "political-conflict",
       "url": "https://www.lemonde.fr/politique/article/2026/07/06/proces-le-pen-un-dispositif-inedit-de-communication-pour-la-cour-d-appel-de-paris_6721239_823448.html",
-      "date": "2026-07-06 21:23"
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, guerre en Ukraine : Mark Rutte, le secrétaire général de l’OTAN, dénonce des attaques russes « indiscriminées »",
-      "reason": "The article discusses ongoing violence and casualties in the Ukraine conflict, which is inherently negative and does not uplift the reader.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/international/live/2026/07/06/en-direct-guerre-en-ukraine-mark-rutte-le-secretaire-general-de-l-otan-denonce-des-attaques-russes-indiscriminees_6720832_3210.html",
       "date": "2026-07-06 21:23"
     }
   ]
