@@ -43,19 +43,17 @@ function classify(score: number | null, hasScore: boolean, isAccepted: boolean):
   return isAccepted ? "positive" : "negative";
 }
 
-async function scoreSourceFromDb(source: { id: number; name: string; url: string }): Promise<ScoreEntry | null> {
-  const today = new Date().toISOString().slice(0, 10);
-
+async function scoreSourceForDate(source: { id: number; name: string; url: string }, date: string): Promise<ScoreEntry | null> {
   const accepted = await db.execute({
     sql: `SELECT positivity_score FROM raw_articles
           WHERE source_id = ? AND date(fetched_at) = ?`,
-    args: [source.id, today],
+    args: [source.id, date],
   });
 
   const rejected = await db.execute({
     sql: `SELECT positivity_score FROM rejected_articles
           WHERE source_id = ? AND date(fetched_at) = ?`,
-    args: [source.id, today],
+    args: [source.id, date],
   });
 
   const total = accepted.rows.length + rejected.rows.length;
@@ -84,13 +82,23 @@ async function scoreSourceFromDb(source: { id: number; name: string; url: string
   const pct = Math.round((positive / total) * 100);
 
   return {
-    date: today,
+    date,
     source: source.name,
     url: source.url,
     score: pct,
     total,
     breakdown: { positive, negative, neutral },
   };
+}
+
+async function getAvailableDates(): Promise<string[]> {
+  const result = await db.execute(`
+    SELECT DISTINCT date(fetched_at) as d FROM raw_articles
+    UNION
+    SELECT DISTINCT date(fetched_at) as d FROM rejected_articles
+    ORDER BY d ASC
+  `);
+  return result.rows.map((r) => String(r.d)).filter(Boolean);
 }
 
 async function fetchExistingScores(): Promise<ScoresData> {
@@ -134,23 +142,32 @@ export async function runScoreTracker(): Promise<{
   }));
 
   const existing = await fetchExistingScores();
-  const today = new Date().toISOString().slice(0, 10);
   const now = new Date().toISOString();
 
+  // Build a set of existing date+source keys to avoid duplicates
+  const existingKeys = new Set(
+    existing.entries.map((e) => `${e.date}|${e.source}`),
+  );
+
+  // Score all available dates, not just today
+  const dates = await getAvailableDates();
   const results: ScoreEntry[] = [];
   let skipped = 0;
 
-  for (const source of allSources) {
-    const entry = await scoreSourceFromDb(source);
-    if (entry) {
-      results.push(entry);
-    } else {
-      skipped++;
+  for (const date of dates) {
+    for (const source of allSources) {
+      if (existingKeys.has(`${date}|${source.name}`)) continue;
+      const entry = await scoreSourceForDate(source, date);
+      if (entry) {
+        results.push(entry);
+      } else {
+        skipped++;
+      }
     }
   }
 
   if (results.length === 0) {
-    console.log("[score-tracker] No scores collected, skipping commit");
+    console.log("[score-tracker] No new scores to add, skipping commit");
     return { ok: false, scored: 0, failed: skipped };
   }
 
@@ -162,8 +179,8 @@ export async function runScoreTracker(): Promise<{
   };
 
   const content = JSON.stringify(data, null, 2);
-  await commitToGitHub(DATA_PATH, content, `Update positivity scores (${today})`);
+  await commitToGitHub(DATA_PATH, content, `Update positivity scores (${now.slice(0, 10)})`);
 
-  console.log(`[score-tracker] Committed ${results.length} scores (${skipped} sources had no articles today)`);
+  console.log(`[score-tracker] Committed ${results.length} new scores across ${dates.length} dates`);
   return { ok: true, scored: results.length, failed: skipped };
 }
