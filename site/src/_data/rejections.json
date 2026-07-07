@@ -1,39 +1,39 @@
 {
-  "exported_at": "2026-07-07T05:12:01.944Z",
-  "total_rejected": 75314,
+  "exported_at": "2026-07-07T05:14:49.727Z",
+  "total_rejected": 75377,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 20651
+      "count": 20665
     },
     {
       "category": "soft-news-filler",
-      "count": 9092
+      "count": 9099
     },
     {
       "category": "sports-negative",
-      "count": 9065
+      "count": 9082
     },
     {
       "category": "crime-violence",
-      "count": 6107
+      "count": 6108
     },
     {
       "category": "celebrity-entertainment",
-      "count": 5543
+      "count": 5547
     },
     {
       "category": "economic-doom",
-      "count": 4841
+      "count": 4847
     },
     {
       "category": "disaster-accident",
-      "count": 3737
+      "count": 3739
     },
     {
       "category": "war-conflict",
-      "count": 3463
+      "count": 3469
     },
     {
       "category": "other-negative",
@@ -41,7 +41,7 @@
     },
     {
       "category": "health-scare",
-      "count": 3003
+      "count": 3007
     },
     {
       "category": "divisive-social",
@@ -49,11 +49,11 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 1816
+      "count": 1817
     },
     {
       "category": "climate-environment",
-      "count": 1249
+      "count": 1250
     },
     {
       "category": "human-discarded",
@@ -71,38 +71,43 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 8699,
-      "total": 8914
+      "negative": 8708,
+      "total": 8923
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 8682,
-      "total": 9066
+      "negative": 8689,
+      "total": 9073
     },
     {
       "source": "VRT Nws",
-      "negative": 4843,
-      "total": 5018
+      "negative": 4846,
+      "total": 5021
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 4713,
-      "total": 4769
+      "negative": 4717,
+      "total": 4773
     },
     {
       "source": "Le Figaro",
-      "negative": 4109,
-      "total": 4149
+      "negative": 4110,
+      "total": 4150
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 3437,
-      "total": 3463
+      "negative": 3443,
+      "total": 3469
     },
     {
       "source": "De Morgen",
-      "negative": 3417,
-      "total": 3469
+      "negative": 3420,
+      "total": 3472
+    },
+    {
+      "source": "Le Monde",
+      "negative": 3258,
+      "total": 3284
     },
     {
       "source": "NRC",
@@ -110,19 +115,14 @@
       "total": 3308
     },
     {
-      "source": "Le Monde",
-      "negative": 3250,
-      "total": 3276
-    },
-    {
       "source": "Politiken.dk",
-      "negative": 3115,
-      "total": 3125
+      "negative": 3122,
+      "total": 3132
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 3109,
-      "total": 3118
+      "negative": 3114,
+      "total": 3123
     },
     {
       "source": "The New York Times",
@@ -131,13 +131,13 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 2714,
-      "total": 2794
+      "negative": 2716,
+      "total": 2796
     },
     {
       "source": "The Guardian",
-      "negative": 2540,
-      "total": 2658
+      "negative": 2541,
+      "total": 2659
     },
     {
       "source": "DR (Danish Public broadcaster)",
@@ -146,13 +146,13 @@
     },
     {
       "source": "De Standaard Buitenland",
-      "negative": 1599,
-      "total": 1610
+      "negative": 1600,
+      "total": 1611
     },
     {
       "source": "Neue Zürcher Zeitung",
-      "negative": 1508,
-      "total": 1513
+      "negative": 1510,
+      "total": 1515
     },
     {
       "source": "The Verge",
@@ -161,13 +161,13 @@
     },
     {
       "source": "Wired",
-      "negative": 1225,
-      "total": 1265
+      "negative": 1226,
+      "total": 1266
     },
     {
       "source": "The Guardian Europe",
-      "negative": 1197,
-      "total": 1256
+      "negative": 1199,
+      "total": 1258
     },
     {
       "source": "Euronews",
@@ -176,8 +176,8 @@
     },
     {
       "source": "De Standaard Binnenland",
-      "negative": 965,
-      "total": 984
+      "negative": 966,
+      "total": 985
     },
     {
       "source": "De Standaard Economie",
@@ -296,6 +296,510 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "AI pod presją regulacji. Europa może zostać w tyle",
+      "reason": "The article discusses regulatory pressures on AI development in Europe and mentions various challenges faced by sectors, which creates a negative tone rather than an uplifting one.",
+      "category": "tech-ai-concern",
+      "url": "https://www.rp.pl/biznes/art44781151-ai-pod-presja-regulacji-europa-moze-zostac-w-tyle",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Donald Trump prowokuje Giorgię Meloni. „Przekroczył granice przyzwoitości”.",
+      "reason": "The article discusses a provocative statement made by Donald Trump regarding Italian Prime Minister Giorgia Meloni, which falls under political conflict and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/dyplomacja/art44781321-donald-trump-prowokuje-giorgie-meloni-przekroczyl-granice-przyzwoitosci",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Donald Trump jedzie na szczyt NATO z prezentem dla Turcji. Zmieni swoją decyzję sprzed lat",
+      "reason": "The article discusses a political event involving Donald Trump and Turkey, which falls under political news and does not provide a universally uplifting message.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/dyplomacja/art44781341-donald-trump-jedzie-na-szczyt-nato-z-prezentem-dla-turcji-zmieni-swoja-decyzje-sprzed-lat",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Mundial 2026, dzień dwudziesty siódmy. Wyniki meczów",
+      "reason": "The article focuses on the results of ongoing sports matches, which falls under the category of routine sports content without exceptional or inspiring elements.",
+      "category": "sports-negative",
+      "url": "https://sport.rp.pl/pilka-nozna/art44780621-mundial-2026-dzien-dwudziesty-siodmy-wyniki-meczow",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Hon fick cancer från donatorn: ”Ska inte hända”",
+      "reason": "The article discusses a serious health issue involving cancer and a liver transplant, which is inherently negative and not uplifting.",
+      "category": "health-scare",
+      "url": "https://www.dn.se/sverige/hon-fick-cancer-fran-donatorn-ska-inte-handa/",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Matpriserna fortsatte falla i juni",
+      "reason": "The article discusses falling food prices, which, while potentially positive, is framed in a way that lacks broad human relevance and may not uplift readers outside of a specific context.",
+      "category": "economic-doom",
+      "url": "https://www.dn.se/ekonomi/matpriserna-fortsatte-falla-i-juni/",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Ledare: 8 procent av svenskarna riskerar undernäring – sluta tramsa om söndagssteken",
+      "reason": "The article discusses the issue of undernutrition among seniors in Sweden, highlighting a serious social problem rather than an uplifting story.",
+      "category": "economic-doom",
+      "url": "https://www.dn.se/ledare/8-procent-av-svenskarna-riskerar-undernaring-sluta-tramsa-om-sondagssteken/",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Mick Jagger: ”Man ska inte göra musik för pengar”",
+      "reason": "The article focuses on Mick Jagger and The Rolling Stones, which falls under celebrity and entertainment news, making it less relevant to a broader audience.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dn.se/kultur/mick-jagger-man-ska-inte-gora-musik-for-pengar/",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Nu får 210 000 utlandssvenskar sina röstkort",
+      "reason": "The article discusses the distribution of voting cards to Swedish citizens living abroad, which is a political topic and does not meet the positive-news criteria.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/sverige/nu-far-210-000-utlandssvenskar-sina-rostkort/",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Jens Littorin: Behrang Safaris superhjältar finns på nära håll",
+      "reason": "The article focuses on a personal story of fear and disappointment related to family expectations, which does not convey a strictly positive message.",
+      "category": "sports-negative",
+      "url": "https://www.dn.se/kultur/jens-littorin-behrang-safaris-superhjaltar-finns-pa-nara-hall/",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Nyuddannede jordemødre flygter fra fødegangen: »Det ramlede jo fuldstændig sammen«",
+      "reason": "The article discusses the high turnover rate of newly graduated midwives, which highlights a concerning issue in the healthcare sector rather than a positive story.",
+      "category": "health-scare",
+      "url": "https://politiken.dk/danmark/sundhed/art10884415/Nyuddannede-jordem%C3%B8dre-flygter-fra-f%C3%B8degangen-%C2%BBDet-ramlede-jo-fuldst%C3%A6ndig-sammen%C2%AB",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "»Samtlige spillere burde rejse hjem i protest«: Avisledere raser mod Fifa",
+      "reason": "The article discusses FIFA's decision regarding a player's suspension, which is related to sports and does not present a universally uplifting story.",
+      "category": "sports-negative",
+      "url": "https://politiken.dk/sport/fodbold/art10909152/%C2%BBSamtlige-spillere-burde-rejse-hjem-i-protest%C2%AB-Avisledere-raser-mod-Fifa",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Digter i Florida taber plagiatsag mod Taylor Swift",
+      "reason": "The article discusses a legal case involving Taylor Swift, which falls under celebrity and entertainment news, and does not provide uplifting content.",
+      "category": "celebrity-entertainment",
+      "url": "https://politiken.dk/kultur/art10909099/Digter-i-Florida-taber-plagiatsag-mod-Taylor-Swift",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Havana får langsomt strømmen tilbage efter landsdækkende nedbrud",
+      "reason": "The article discusses the slow restoration of electricity in Cuba after a nationwide outage, which is a negative situation affecting many people.",
+      "category": "economic-doom",
+      "url": "https://politiken.dk/internationalt/art10909142/Havana-f%C3%A5r-langsomt-str%C3%B8mmen-tilbage-efter-landsd%C3%A6kkende-nedbrud",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "USA udtrykker stor bekymring over kinesisk missiltest i Stillehavet",
+      "reason": "The article discusses concerns over a missile test, which is a negative and alarming topic rather than uplifting.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/internationalt/art10909145/USA-udtrykker-stor-bekymring-over-kinesisk-missiltest-i-Stillehavet",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "USA tabte mere end en fodboldkamp: »Jeg synes, Trump har ødelagt alting. Det er lidt ligesom alt, hvad han rører ved«",
+      "reason": "The article discusses the negative impact of Donald Trump's involvement in FIFA and the USA's loss in a football match, which is not uplifting and focuses on political conflict.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/sport/fodbold/VM_i_fodbold/art10908747/USA-tabte-mere-end-en-fodboldkamp-%C2%BBJeg-synes-Trump-har-%C3%B8delagt-alting.-Det-er-lidt-ligesom-alt-hvad-han-r%C3%B8rer-ved%C2%AB",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "En af tidernes største kommer aldrig til at vinde det største",
+      "reason": "The article focuses on Cristiano Ronaldo's feelings about not winning the World Cup, which is a negative reflection on his career and does not uplift the reader.",
+      "category": "sports-negative",
+      "url": "https://politiken.dk/sport/art10909113/En-af-tidernes-st%C3%B8rste-kommer-aldrig-til-at-vinde-det-st%C3%B8rste",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "Ein Abend zum Weinen: Mit dem WM-Aus geht auch die Ära Ronaldo zu Ende",
+      "reason": "The article focuses on the emotional farewell of Cristiano Ronaldo from professional football, which is framed in a negative light due to the end of his career, making it not uplifting.",
+      "category": "sports-negative",
+      "url": "https://www.nzz.ch/sport/ein-abend-zum-weinen-mit-dem-wm-aus-geht-auch-die-aera-ronaldo-zu-ende-ld.10014404",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "Finnland hat die höchste Arbeitslosigkeit Europas. In der Kleinstadt Heinola zeigt sich, was in dem Land schiefläuft",
+      "reason": "The article discusses high unemployment in Finland and economic struggles, which is too negative and does not uplift the reader.",
+      "category": "economic-doom",
+      "url": "https://www.nzz.ch/international/finnland-gluecklichstes-land-hoechste-arbeitsloslosigkeit-ld.10006889",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Le Monde",
+      "title": "EN DIRECT, guerre en Ukraine : Moscou cherche à infliger « autant de souffrances et de dégâts que possible » aux Ukrainiens, accuse Volodymyr Zelensky",
+      "reason": "The article discusses the ongoing war in Ukraine and the suffering caused by attacks on civilians, which is highly negative and not uplifting.",
+      "category": "war-conflict",
+      "url": "https://www.lemonde.fr/international/live/2026/07/06/en-direct-guerre-en-ukraine-moscou-cherche-a-infliger-autant-de-souffrances-et-de-degats-que-possible-aux-ukrainiens-accuse-volodymyr-zelensky_6720832_3210.html",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Les parfumeries Marionnaud s’apprêtent à repasser sous pavillon français",
+      "reason": "The article discusses corporate ownership changes in the perfume industry, which falls under corporate PR and lacks broad human relevance.",
+      "category": "soft-news-filler",
+      "url": "https://www.lemonde.fr/economie/article/2026/07/06/les-parfumeries-marionnaud-s-appretent-a-repasser-sous-pavillon-francais_6721248_3234.html",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Des petits ateliers aux grandes maisons, la joaillerie ravive un secteur du luxe à la peine",
+      "reason": "The article focuses on the luxury jewelry market and its sales trends, which may not have broad human relevance and could be seen as corporate PR rather than uplifting news.",
+      "category": "soft-news-filler",
+      "url": "https://www.lemonde.fr/economie/article/2026/07/07/des-petits-ateliers-aux-grandes-maisons-la-joaillerie-ravive-un-secteur-du-luxe-a-la-peine_6721408_3234.html",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Forfait en jours : l’employeur, seul responsable du contrôle de la charge de travail de ses salariés",
+      "reason": "The article discusses legal obligations of employers regarding employee workload, which is more of a corporate or legal update rather than a universally uplifting story.",
+      "category": "economic-doom",
+      "url": "https://www.lemonde.fr/emploi/article/2026/07/07/forfait-en-jours-l-employeur-seul-responsable-du-controle-de-la-charge-de-travail-de-ses-salaries_6721409_1698637.html",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Le rêve d’une épopée à la Coupe du monde de football a brutalement pris fin pour Team USA",
+      "reason": "The article discusses the negative outcome of Team USA's performance in the World Cup, which is not uplifting and focuses on a loss rather than a positive story.",
+      "category": "sports-negative",
+      "url": "https://www.lemonde.fr/sport/article/2026/07/07/coupe-du-monde-2026-le-reve-d-une-epopee-a-brutalement-pris-fin-pour-team-usa_6721413_3242.html",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Sommet de l’OTAN : face au désengagement américain, les armées des pays européens gagnent en puissance mais de façon dispersée",
+      "reason": "The article discusses European military efforts in response to American disengagement, which falls under political conflict and does not provide an uplifting or positive narrative.",
+      "category": "political-conflict",
+      "url": "https://www.lemonde.fr/international/article/2026/07/07/face-au-desengagement-americain-de-l-otan-les-armees-des-pays-europeens-gagnent-en-puissance-de-facon-dispersee_6721403_3210.html",
+      "date": "2026-07-07 07:14"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Le Hamas annonce dissoudre ses instances dirigeantes à Gaza, le blocage persiste avec Israël",
+      "reason": "The article discusses a political conflict and humanitarian crisis, which is not uplifting and does not meet positive news standards.",
+      "category": "political-conflict",
+      "url": "https://www.lemonde.fr/international/article/2026/07/07/le-hamas-annonce-dissoudre-ses-instances-dirigeantes-a-gaza-le-blocage-persiste-avec-israel_6721404_3210.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Le Monde",
+      "title": "Incendies dans les Pyrénées-Orientales : « Entre la fumée qui obscurcissait tout, la cendre qu’on respirait, les Canadair qui rasaient nos têtes, je ne pensais pas m’en sortir »",
+      "reason": "The article discusses a significant fire causing evacuation and distress in a community, which is a negative event and does not uplift the reader.",
+      "category": "disaster-accident",
+      "url": "https://www.lemonde.fr/planete/article/2026/07/07/incendies-dans-les-pyrenees-orientales-entre-la-fumee-qui-obscurcissait-tout-la-cendre-qu-on-respirait-les-canadair-qui-rasaient-nos-tetes-je-ne-pensais-pas-m-en-sortir_6721412_3244.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Syrische Flüchtlinge: Abgeschoben werden die, die sich an die Regeln halten",
+      "reason": "The article discusses the German government's plans to deport refugees back to Syria, which is a negative and divisive topic rather than uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.faz.net/aktuell/feuilleton/debatten/abschiebebescheide-fuer-syrische-fluechtlinge-die-guten-muessen-gehen-accg-200980091.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Schmerzen im Alltag: „Vor einem Hüftimplantat kann sich jeder vier einfache Fragen stellen“",
+      "reason": "The article discusses medical procedures and patient requirements, which may not be uplifting and is more informative than positive. It focuses on health-related concerns rather than a universally positive story.",
+      "category": "health-scare",
+      "url": "https://www.faz.net/aktuell/gesellschaft/gesundheit/wann-brauche-ich-ein-neues-hueftgelenk-accg-200971436.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "1:0 gegen Portugal: Rodri hält die Fäden, Spaniens Joker bringen die Entscheidung",
+      "reason": "The article focuses on a sports match result and player performances, which falls under the category of non-exceptional sports content without a unique emotional or inspiring angle.",
+      "category": "sports-negative",
+      "url": "https://www.faz.net/aktuell/sport/fussball-wm/fussball-wm-2026-joker-merino-schiesst-spanien-gegen-portugal-und-ronaldo-ins-viertelfinale-200993666.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Liveblog Ukrainekrieg: Bürgermeister: Moskau von mehr als 400 ukrainischen Drohnen ins Visier genommen",
+      "reason": "The article discusses ongoing military conflict and geopolitical tensions, which are inherently negative and do not uplift the reader.",
+      "category": "war-conflict",
+      "url": "https://www.faz.net/aktuell/politik/ukraine/ukraine-liveticker-buergermeister-moskau-von-mehr-als-400-ukrainischen-drohnen-ins-visier-genommen-faz-110683325.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "„Logistischer Lockdown“: Die Ukraine schlägt Russland mit einer russischen Taktik",
+      "reason": "The article discusses military actions and strategies in the context of the ongoing conflict between Ukraine and Russia, which is inherently negative and not uplifting.",
+      "category": "war-conflict",
+      "url": "https://www.faz.net/aktuell/politik/ukraine/die-ukrainische-drohnenblockade-der-krim-zeigt-wirkung-200974708.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "IN BEELD. Zo beleefde Antwerpen de nachtelijke zege van de Rode Duivels ",
+      "reason": "The article focuses on a sports event involving the national team, which falls under the category of non-exceptional sports content and lacks broader human relevance.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/regio/antwerpen/in-beeld.-zo-beleefde-antwerpen-de-nachtelijke-zege-van-de-rode-duivels/158361273.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "“Vanaf nu is alles mogelijk”: fans in WK-dorp Brasschaat dromen van meer na klinkende zege tegen Verenigde Staten",
+      "reason": "The article focuses on a local sports event and the reactions of fans, which may not have broad relevance outside the local context and does not meet the criteria for exceptional human interest.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/brasschaat/vanaf-nu-is-alles-mogelijk-fans-in-wk-dorp-brasschaat-dromen-van-meer-na-klinkende-zege-tegen-verenigde-staten/158361221.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Voorzitster voetbalbond naast Infantino in de tribune: hoe de Belgische bond de kans miste een duidelijk signaal te sturen",
+      "reason": "The article discusses the Belgian football association's missed opportunity to challenge FIFA, which is a political conflict and not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.gva.be/sport/voetbal/voorzitster-voetbalbond-naast-infantino-in-de-tribune-hoe-de-belgische-bond-de-kans-miste-een-duidelijk-signaal-te-sturen/158361441.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Sterke Kim Huybrechts en Mike De Decker halen 1/8ste finale op 23ste vloertoernooi, Joe Cullen gooit negendarter",
+      "reason": "The article focuses on a sports event with non-exceptional results and does not provide a universally uplifting story.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/darts/sterke-kim-huybrechts-en-mike-de-decker-halen-18ste-finale-op-23ste-vloertoernooi-joe-cullen-gooit-negendarter/158361613.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "IN BEELD. Ook zij mochten niet ontbreken: spelersvrouwen steunen hun Rode Duivels",
+      "reason": "The article focuses on a sports event and the support of players' partners, which does not meet the criteria for exceptional human-interest stories. It primarily discusses a routine sports outcome.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/voetbal/in-beeld.-ook-zij-mochten-niet-ontbreken-spelersvrouwen-steunen-hun-rode-duivels/158360031.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Yves (54) levert met foto van vlinder uit eigen tuin de honderdmiljoenste waarneming voor grootste natuurdatabank van België",
+      "reason": "The article focuses on a local individual's contribution to a national nature database, which may not have broad relevance outside of Belgium.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/regio/antwerpen/rivierenland/puurs-sint-amands/yves-54-levert-met-foto-van-vlinder-uit-eigen-tuin-de-honderdmiljoenste-waarneming-voor-grootste-natuurdatabank-van-belgie/158358476.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Internationale media prijzen efficiënt “topland” België na WK-triomf tegen VS na ongeziene controverse: “Dit is een ploeg die weet hoe je knock-outwedstrijden wint”",
+      "reason": "The article focuses on a sports event, specifically a football match result, which does not meet the positive-news editorial standard due to its routine nature and lack of exceptional human interest.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/voetbal/internationale-media-prijzen-efficient-topland-belgie-na-wk-triomf-tegen-vs-na-ongeziene-controverse-dit-is-een-ploeg-die-weet-hoe-je-knock-outwedstrijden-wint/158361921.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "The Guardian Europe",
+      "title": "Marine Le Pen’s political future at stake with ruling on electoral ban imminent",
+      "reason": "The article discusses a political figure's potential electoral ban, which is inherently negative and related to political conflict, not uplifting.",
+      "category": "political-conflict",
+      "url": "https://www.theguardian.com/world/2026/jul/07/marine-le-pen-political-future-waits-electoral-ban-upheld",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "The Guardian Europe",
+      "title": "Nato braces for difficult summit as Trump puts pressure on spending",
+      "reason": "The article discusses political tensions and pressures related to NATO and spending, which falls under political conflict and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://www.theguardian.com/world/2026/jul/07/nato-braces-for-difficult-summit-as-trump-puts-pressure-on-spending",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "The Guardian",
+      "title": "US airman accused of exposing himself to 16-year-old girl avoided British trial",
+      "reason": "The article discusses a serious crime involving indecent exposure, which is negative and not uplifting.",
+      "category": "crime-violence",
+      "url": "https://www.theguardian.com/uk-news/2026/jul/07/us-airman-accused-of-exposing-himself-to-16-year-old-girl-court-martial",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Wired",
+      "title": "Pura Promo Codes: $20 Off July 2026",
+      "reason": "The article is focused on promotional codes for a product, which falls under corporate PR and does not provide uplifting content.",
+      "category": "soft-news-filler",
+      "url": "https://www.wired.com/story/pura-promo-code/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "BBC Top Stories",
+      "title": "Watch: Belgium make light work of US to set up quarter-final tie with Spain",
+      "reason": "The article focuses on a sports match with controversy and does not provide uplifting content, making it unsuitable for positive news.",
+      "category": "sports-negative",
+      "url": "https://www.bbc.co.uk/sport/football/videos/cj0gg55613do?at_medium=RSS&at_campaign=rss",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "BBC Top Stories",
+      "title": "MI5 knew agent was misogynist 'obsessed' with violence, watchdog finds",
+      "reason": "The article discusses serious failings in MI5's management of an agent with misogynistic and violent tendencies, which is a negative and concerning topic.",
+      "category": "political-conflict",
+      "url": "https://www.bbc.co.uk/news/articles/cj9gggjekyjo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "De Standaard Buitenland",
+      "title": "Olietanker vat vuur na aanval nabij Straat van Hormuz, Amerikaanse bronnen wijzen naar Teheran",
+      "reason": "The article discusses a violent incident in the Middle East, which is negative and does not uplift the reader.",
+      "category": "war-conflict",
+      "url": "https://www.standaard.be/buitenland/olietanker-vat-vuur-na-aanval-nabij-straat-van-hormuz-amerikaanse-bronnen-wijzen-naar-teheran/35173881.html",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "70 miljard euro per jaar voor Oekraïne en investeringsbank voor defensie: wat kan NAVO-top brengen?",
+      "reason": "The article discusses NATO's financial support for Ukraine and defense investments, which falls under political conflict and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://vrtnws.be/p.kQm5ykLqA",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "Monumentale topwerken uit Antwerpse Sint-Pauluskerk voor het eerst buiten België te zien",
+      "reason": "The article focuses on a local event showcasing artworks from a specific church in Belgium, which may not have broad relevance or interest to readers outside the region.",
+      "category": "soft-news-filler",
+      "url": "https://vrtnws.be/p.OvQKW0vLJ",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "VRT Nws",
+      "title": "AZ Rivierenland en Vitaz bundelen kennis en expertise rond borstkankerzorg voor ruime regio",
+      "reason": "The article focuses on a regional collaboration in breast cancer care, which may not have broad human relevance outside the specific area it addresses.",
+      "category": "health-scare",
+      "url": "https://vrtnws.be/p.11d6ZV3Bp",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Affaire Balogun : «On ajoute le volet politique, manipulation, on parle d’éthique, d’intégrité et on veut tout mélanger», peste Mauricio Pochettino",
+      "reason": "The article discusses a controversy in sports related to a coach's comments on a player's situation, which does not provide uplifting content and is focused on negative aspects of sports politics.",
+      "category": "sports-negative",
+      "url": "https://www.lefigaro.fr/sports/football/coupe-du-monde/affaire-balogun-on-ajoute-le-volet-politique-manipulation-on-parle-d-ethique-d-integrite-et-on-veut-tout-melanger-peste-mauricio-pochettino-20260707",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "De geschiedenis herhaalt zich: Dylan Vanholme, zoon Wendy Van Wanten, verdedigt verloofde Amber na grove beledigingen",
+      "reason": "The article focuses on negative comments and bullying directed at a celebrity's family member, which is not uplifting and centers on personal conflict rather than a positive story.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.hln.be/bv/de-geschiedenis-herhaalt-zich-dylan-vanholme-zoon-wendy-van-wanten-verdedigt-verloofde-amber-na-grove-beledigingen~a08a34f8/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "EXCLUSIEF. Bart Somers na ophef over jobstudenten die boetes geven en verhoogde GAS-tarieven: “Mijn ontslag? Dat is absoluut niet aan de orde”",
+      "reason": "The article discusses political controversy and criticism surrounding a mayor's actions, which does not align with positive news standards.",
+      "category": "political-conflict",
+      "url": "https://www.hln.be/binnenland/exclusief-bart-somers-na-ophef-over-jobstudenten-die-boetes-geven-en-verhoogde-gas-tarieven-mijn-ontslag-dat-is-absoluut-niet-aan-de-orde~ae9e5fd3/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Rudi Garcia na de overtuigende kwalificatie: “Ik was deze ochtend nog niet zeker van mijn opstelling”",
+      "reason": "The article focuses on a sports coach discussing a match outcome and future expectations, which falls under routine sports content without exceptional emotional or human-interest elements.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/rode-duivels/rudi-garcia-na-de-overtuigende-kwalificatie-ik-was-deze-ochtend-nog-niet-zeker-van-mijn-opstelling~a8bd4016/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Omstreden AI-actrice Tilly Norwood scoort eerste filmrol",
+      "reason": "The article focuses on an AI actress and her first film role, which falls under celebrity and entertainment news, lacking broader human relevance.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.hln.be/film/omstreden-ai-actrice-tilly-norwood-scoort-eerste-filmrol~ab08a569/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "KMI verlengt code geel voor hitte tot en met zaterdag: “De warmte bouwt zich gedurende de week op”",
+      "reason": "The article discusses weather warnings related to heat, which is not uplifting and primarily serves as a routine update rather than a positive story.",
+      "category": "climate-environment",
+      "url": "https://www.hln.be/weernieuws/weerbericht~ac484c3e/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "En nu een topaffiche tegen Lamine Yamal en co: Rode Duivels spelen vrijdag om 21 uur in kwartfinale tegen Spanje",
+      "reason": "The article discusses a sports event, specifically a football match, which falls under the category of non-exceptional sports content and does not provide a universally uplifting story.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/wk-voetbal/en-nu-een-topaffiche-tegen-lamine-yamal-en-co-rode-duivels-spelen-vrijdag-om-21-uur-in-kwartfinale-tegen-spanje~a55ca921/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Wat is er aan de hand in La Rigue, de Knokse luxebrasserie van Marc Coucke en Bart Versluys? “Zó slecht, alsof er verborgen camera’s hangen voor een tv-programma”",
+      "reason": "The article focuses on a negative review of a restaurant, highlighting poor food and service, which does not uplift or inspire readers.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/binnenland/wat-is-er-aan-de-hand-in-la-rigue-de-knokse-luxebrasserie-van-marc-coucke-en-bart-versluys-zo-slecht-alsof-er-verborgen-cameras-hangen-voor-een-tv-programma~ab17ae77/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "🎧 Je nieuwe auto houdt je vanaf vandaag in de gaten, maar wat met privacy?",
+      "reason": "The article discusses a podcast that covers various news topics, including politics and sports, which does not align with the positive-news editorial standard.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/nieuws/je-nieuwe-auto-houdt-je-vanaf-vandaag-in-de-gaten-maar-wat-met-privacy~aa62c5fd/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Daarom verdien je haast niets aan je zonnepanelen, ook nu ze op volle toeren draaien (en zo keer je dat om)",
+      "reason": "The article discusses the low financial returns from solar panels, which is a negative economic perspective rather than uplifting news.",
+      "category": "economic-doom",
+      "url": "https://www.hln.be/mijn-geld/daarom-verdien-je-haast-niets-aan-je-zonnepanelen-ook-nu-ze-op-volle-toeren-draaien-en-zo-keer-je-dat-om~a8cd3903/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Stormweer in China maakt tien dodelijke slachtoffers",
+      "reason": "The article reports on a storm in China that resulted in fatalities, which is a negative event and does not uplift the reader.",
+      "category": "disaster-accident",
+      "url": "https://www.demorgen.be/snelnieuws/stormweer-in-china-maakt-tien-dodelijke-slachtoffers~b10975b47/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Dodentol in Kiev loopt verder op tot 24 slachtoffers • Dode bij Oekraïense raketaanval in Belgorod, Russen onderscheppen honderden drones",
+      "reason": "The article discusses casualties from a conflict, which is inherently negative and does not uplift the reader.",
+      "category": "war-conflict",
+      "url": "https://www.demorgen.be/oorlog-in-oekraine/live-dodentol-in-kiev-loopt-verder-op-tot-24-slachtoffers-dode-bij-oekraiense-raketaanval-in-belgorod-russen-onderscheppen-honderden-drones~b38bed0a/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "De Morgen",
+      "title": "Live - Tanker bij Straat van Hormuz aangevallen door ‘onbekend projectiel’ • Lichaam van Ali Khamenei is aangekomen in Qom",
+      "reason": "The article discusses an attack on a tanker and the arrival of a political figure's body, which are both negative and concerning events.",
+      "category": "war-conflict",
+      "url": "https://www.demorgen.be/snelnieuws/live-vier-doden-bij-israelische-luchtaanval-in-zuiden-van-libanon~be9c4f82/",
+      "date": "2026-07-07 07:13"
+    },
+    {
+      "source": "De Standaard Binnenland",
+      "title": "Supporters in Kalmthout offeren slaap op om Rode Duivels te zien winnen: “Garcia is geniaal, dit was bangelijk”",
+      "reason": "The article focuses on a sports event and includes commentary on a controversial moment in the game, which does not meet the positive-news criteria.",
+      "category": "sports-negative",
+      "url": "https://www.standaard.be/binnenland/supporters-in-kalmthout-offeren-slaap-op-om-rode-duivels-te-zien-winnen-garcia-is-geniaal-dit-was-bangelijk/158360519.html",
+      "date": "2026-07-07 07:13"
+    },
     {
       "source": "Upworthy",
       "title": "‘America is great’: German soccer fan scared of the U.S. weeps after seeing so much kindness",
@@ -7791,510 +8295,6 @@
       "category": "political-conflict",
       "url": "https://www.nytimes.com/2026/06/09/world/europe/world-cup-infantino-trump.html",
       "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "The New York Times",
-      "title": "Trump Asked FIFA to Review U.S. Player’s Suspension. Now He’s Eligible to Play.",
-      "reason": "The article focuses on a sports-related event concerning a player's suspension, which does not meet the criteria for exceptional or universally uplifting content.",
-      "category": "sports-negative",
-      "url": "https://www.nytimes.com/2026/07/05/us/trump-fifa-balogun-world-cup.html",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“KBVB onderzoekt alle mogelijke opties”: Belgische voetbalbond reageert “verbaasd” op opschorting rode kaart Folarin Balogun, waarvoor Donald Trump zelfs de FIFA bedankt",
-      "reason": "The article focuses on a sports-related event involving a player and a political figure, which does not meet the positive-news criteria due to its connection to professional sports and political commentary.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/wk-voetbal/kbvb-onderzoekt-alle-mogelijke-opties-belgische-voetbalbond-reageert-verbaasd-op-opschorting-rode-kaart-folarin-balogun-waarvoor-donald-trump-zelfs-de-fifa-bedankt~a4822b6d0/",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Karen Damen, Jens Dendoncker, Theo Francken en Annelies Verlinden: deze BV’s en politici tekenen present op Rock Werchter",
-      "reason": "The article focuses on the attendance of celebrities and politicians at a music festival, which falls under the category of entertainment news rather than uplifting content with broad human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.hln.be/muziek/karen-damen-jens-dendoncker-theo-francken-en-annelies-verlinden-deze-bvs-en-politici-tekenen-present-op-rock-werchter~a3e6a001/",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Pentagon door megalomaan ‘Octagon’ van de troon gestoten als grootste militair hoofdkwartier",
-      "reason": "The article discusses a military command center, which is related to military competition and does not provide an uplifting or positive narrative. It focuses on a shift in military power rather than a positive human-interest story.",
-      "category": "political-conflict",
-      "url": "https://www.hln.be/buitenland/pentagon-door-megalomaan-octagon-van-de-troon-gestoten-als-grootste-militair-hoofdkwartier~add54a20/",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Zelensky verwacht voor NAVO-top “grootschalige Russische aanvallen”",
-      "reason": "The article discusses anticipated Russian attacks in the context of the war in Ukraine, which is a negative and concerning topic.",
-      "category": "war-conflict",
-      "url": "https://www.hln.be/buitenland/zelensky-verwacht-voor-navo-top-grootschalige-russische-aanvallen~a93df6b5/",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Voetgangster in levensgevaar na aanrijding door bus van MIVB in Schaarbeek",
-      "reason": "The article reports on a serious traffic accident involving a pedestrian, which is a negative event and does not uplift the reader.",
-      "category": "disaster-accident",
-      "url": "https://www.hln.be/brussel/voetgangster-in-levensgevaar-na-aanrijding-door-bus-van-mivb-in-schaarbeek~a98f3982/",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Pruik op, bril op en Werchter plat: Jonas Van Geel debuteert als de Jordy op Rock Werchter: “Mijn manager heeft me echt moeten overtuigen”",
-      "reason": "The article focuses on a celebrity's performance at a music festival, which falls under entertainment news and does not have broad human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.hln.be/muziek/pruik-op-bril-op-en-werchter-plat-jonas-van-geel-debuteert-als-de-jordy-op-rock-werchter-mijn-manager-heeft-me-echt-moeten-overtuigen~accb5a99/",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "LIVE. Noorwegen heeft de bal, Brazilië de kansen: nog steeds 0-0 in New Jersey nadat Bruno penalty miste",
-      "reason": "The article focuses on a sports event with no exceptional or uplifting elements, discussing a match between Norway and Brazil without any inspiring human-interest angle.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/wk-voetbal/live-noorwegen-heeft-de-bal-brazilie-de-kansen-nog-steeds-0-0-in-new-jersey-nadat-bruno-penalty-miste~ac0d1231/",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Rock Werchter live - ★★★★★ voor een indrukwekkende David Byrne • Moby (★★★☆☆) was niet gewéldig •",
-      "reason": "The article focuses on a music festival review, which falls under entertainment and does not provide universally uplifting content. It also includes mixed reviews of performances, which detracts from a strictly positive narrative.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.demorgen.be/festivals/rock-werchter-live-voor-een-indrukwekkende-david-byrne-moby-was-niet-geweldig~b99a9f0c/",
-      "date": "2026-07-05 22:37"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Flyaflysninger efter askesøjle over Etna-vulkan ",
-      "reason": "The article discusses flight cancellations due to volcanic activity, which is a negative event affecting travel and safety.",
-      "category": "disaster-accident",
-      "url": "https://www.dr.dk/nyheder/seneste/flyaflysninger-efter-askesoejle-over-etna-vulkan",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "„Dracula. Klątwa wampira”: Na tropie wampira",
-      "reason": "The article focuses on a fictional narrative involving Dracula, which does not provide uplifting or universally relevant content, and is more aligned with entertainment than positive news.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.rp.pl/plus-minus/art44756351-dracula-klatwa-wampira-na-tropie-wampira",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Polskie firmy mają wyjątkową szansę w Ukrainie",
-      "reason": "The article discusses the economic opportunities for Polish companies in the context of Ukraine's reconstruction, which is a significant topic but primarily focuses on corporate and economic aspects rather than uplifting human-interest stories.",
-      "category": "economic-doom",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art44774041-polskie-firmy-maja-wyjatkowa-szanse-w-ukrainie",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "PAIH nawiązała współpracę z UkraineInvest",
-      "reason": "The article discusses a partnership between Polish and Ukrainian agencies, which may not have broad human relevance outside of the specific countries involved, making it more of a local interest story.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art44774061-paih-nawiazala-wspolprace-z-ukraineinvest",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Jak zwiększyć liczbę projektów dual-use",
-      "reason": "The article discusses dual-use technologies and cooperation between Poland and Ukraine, which may not have broad human relevance outside of these countries and lacks an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art44774081-jak-zwiekszyc-liczbe-projektow-dual-use",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Wspieramy polskie firmy w Ukrainie",
-      "reason": "The article focuses on supporting Polish companies in Ukraine, which may be seen as a local economic initiative rather than a universally uplifting story. It lacks broad human relevance and may not engage readers outside the specific context of Poland and Ukraine.",
-      "category": "economic-doom",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art44774101-wspieramy-polskie-firmy-w-ukrainie",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Uruchamiamy nowe instrumenty wsparcia",
-      "reason": "The article discusses support mechanisms for local governments and businesses, which may not have broad human relevance outside of Poland and lacks a truly uplifting or inspiring angle.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art44774121-uruchamiamy-nowe-instrumenty-wsparcia",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Arkadiusz Tarnowski: W kontekście odbudowy Ukrainy Japonia stawia na Polskę",
-      "reason": "The article discusses Japan's partnership with Poland in the context of Ukraine's reconstruction, which is a political and economic topic rather than a strictly uplifting human-interest story.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art44774151-arkadiusz-tarnowski-w-kontekscie-odbudowy-ukrainy-japonia-stawia-na-polske",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Strefy ekonomiczne na granicy z Ukrainą to szansa na bezpieczną ekspansję",
-      "reason": "The article discusses economic zones and investment opportunities related to Ukraine, which may not have broad human relevance outside of the specific context of Poland and Ukraine, making it less uplifting for a global audience.",
-      "category": "economic-doom",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art44774191-strefy-ekonomiczne-na-granicy-z-ukraina-to-szansa-na-bezpieczna-ekspansje",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Polska oferuje wsparcie dla firm wchodzących na ukraiński rynek",
-      "reason": "The article discusses Polish businesses entering the Ukrainian market amidst ongoing conflict, which, while potentially positive for those businesses, is overshadowed by the context of war and economic challenges.",
-      "category": "war-conflict",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art44774211-polska-oferuje-wsparcie-dla-firm-wchodzacych-na-ukrainski-rynek",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "„Grom z jasnego nieba. Opowieść o sztuce, życiu i nagłej śmierci”: Z miłości do sztuki",
-      "reason": "The article focuses on a book about Dutch painting, which may not have broad human relevance and is more of a cultural critique than a positive news story.",
-      "category": "soft-news-filler",
-      "url": "https://www.rp.pl/plus-minus/art44756361-grom-z-jasnego-nieba-opowiesc-o-sztuce-zyciu-i-naglej-smierci-z-milosci-do-sztuki",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Elias Rosell: Det går att vara miljöpartist och kärnkraftskramare – se på Finland",
-      "reason": "The article discusses political views on environmentalism and nuclear power, which falls under political commentary and does not meet the positive-news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/ledare/elias-rosell-det-gar-att-vara-miljopartist-och-karnkraftskramare-se-pa-finland/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Mystiska metallklot uppspolade på strand i Australien",
-      "reason": "The article discusses unusual metallic spheres washing up on a beach, which raises concerns and prompts an investigation, making it more of a mystery or potential health scare rather than a positive story.",
-      "category": "health-scare",
-      "url": "https://www.dn.se/varlden/mystiska-metallklot-uppspolade-pa-strand-i-australien/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "16-åriga superlöftet inför svensk EM-semi: ”Vi förtjänar att vara här”",
-      "reason": "The article focuses on a young athlete's participation in a sports event, which falls under the category of non-exceptional sports content and does not provide a universally uplifting story.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/16-ariga-superloftet-infor-svensk-em-semi-vi-fortjanar-att-vara-har/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "DN Debatt. ”Titta i backspegeln, karensavdraget finns av ett skäl”",
-      "reason": "The article discusses a political topic related to welfare and sick leave, which does not meet the positive-news criteria and is too focused on a specific policy debate.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/debatt/titta-i-backspegeln-karensavdraget-finns-av-ett-skal/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Blodröta, del 16 av 57",
-      "reason": "The title and snippet do not provide any uplifting content and seem to be part of a series, lacking a clear positive message or relevance to a broader audience.",
-      "category": "soft-news-filler",
-      "url": "https://www.dn.se/kultur/blodrota-del-16-av-57/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Så kunde Taylor Swift hålla megabröllopet hemligt",
-      "reason": "The article focuses on a celebrity wedding, which falls under the category of entertainment news and does not provide uplifting or universally relevant content.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.dn.se/kultur/sa-kunde-taylor-swift-halla-megabrollopet-hemligt/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "5 juli: Missa inte dagens nyheter",
-      "reason": "The article discusses negative events such as storm chaos and shootings, which do not align with a positive news standard.",
-      "category": "crime-violence",
-      "url": "https://www.dn.se/varlden/5-juli-missa-inte-dagens-nyheter/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "ÖB: När sätter man etiketten tredje världskriget?",
-      "reason": "The article discusses potential global conflict and military warnings, which is a negative and concerning topic rather than uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/sverige/ob-nar-satter-man-etiketten-tredje-varldskriget/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Trump efter hävda avstängningen: ”Tack Fifa”",
-      "reason": "The article discusses a sports-related event involving a player suspension and a statement from Donald Trump, which does not meet the positive-news criteria and is primarily of interest within the sports context.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/trump-efter-havda-avstangningen-tack-fifa/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Skådespelaren Weiron Holmberg är död",
-      "reason": "The article reports on the death of an actor, which is inherently a negative event and does not uplift the reader.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.dn.se/kultur/skadespelaren-weiron-holmberg-ar-dod/",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Nyt stjerneskud på den danske musikscene: »Jeg fik gentagne gange at vide, at det ikke var så godt«",
-      "reason": "The article focuses on a rising musician in Denmark, which may not have broad international appeal and is primarily of local interest.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/kultur/musik/art10800086/%C2%BBJeg-fik-gentagne-gange-at-vide-at-det-ikke-var-s%C3%A5-godt%C2%AB",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Tyren og chefen var suveræne, da Vingegaard fik et smølfespark",
-      "reason": "The article focuses on a sports event with a non-exceptional result, which does not meet the positive-news editorial standard.",
-      "category": "sports-negative",
-      "url": "https://politiken.dk/sport/cykling/touren/art10896885/Tyren-og-chefen-var-suver%C3%A6ne-da-Vingegaard-fik-et-sm%C3%B8lfespark",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "IOC afviser at anerkende Grønland og Færøerne",
-      "reason": "The article discusses the IOC's refusal to allow Greenland and the Faroe Islands to compete under their own flags at the Olympics, which is a negative political decision.",
-      "category": "political-conflict",
-      "url": "https://politiken.dk/sport/art10907889/IOC-afviser-at-anerkende-Gr%C3%B8nland-og-F%C3%A6r%C3%B8erne",
-      "date": "2026-07-05 21:23"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Professor: Flere parametre taler for, at Normal markedsfører potentielt ulovlige produkter til børn",
-      "reason": "The article discusses potential legal issues regarding a company's marketing practices towards children, which is a negative topic and not uplifting.",
-      "category": "other-negative",
-      "url": "https://politiken.dk/danmark/art10889550/Professor-Flere-parametre-taler-for-at-Normal-markedsf%C3%B8rer-potentielt-ulovlige-produkter-til-b%C3%B8rn",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Sarah mistede sin tre-årige søn og har skrevet en bog om børns sorg: »Træd tættere på«",
-      "reason": "The article discusses the death of a child and the resulting grief, which is a deeply negative and sensitive topic, making it not uplifting enough for positive news standards.",
-      "category": "other-negative",
-      "url": "https://politiken.dk/danmark/art10869496/Sarah-mistede-sin-tre-%C3%A5rige-s%C3%B8n-og-har-skrevet-en-bog-om-b%C3%B8rns-sorg-%C2%BBTr%C3%A6d-t%C3%A6ttere-p%C3%A5%C2%AB",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Eksambassadør før topmøde: Nato befinder sig i den største krise i alliancens historie",
-      "reason": "The article discusses a significant crisis within NATO and the potential geopolitical implications, which is inherently negative and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://politiken.dk/internationalt/art10893835/Eksambassad%C3%B8r-f%C3%B8r-topm%C3%B8de-Nato-befinder-sig-i-den-st%C3%B8rste-krise-i-alliancens-historie",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Odysseus, der ewige Held: Was wir noch heute von ihm lernen können",
-      "reason": "The article discusses a character from mythology and its relevance today, which may not resonate broadly and lacks a clear uplifting message.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.nzz.ch/feuilleton/meine-odyssee-ld.10013474",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Microsoft ist das Sinnbild einer gefährlichen Abhängigkeit von amerikanischer Technologie. Das schadet dem Unternehmen kein bisschen",
-      "reason": "The article discusses the dependency on American technology and its implications, which leans towards a negative perspective on corporate influence rather than providing uplifting content.",
-      "category": "economic-doom",
-      "url": "https://www.nzz.ch/wirtschaft/microsoft-ist-das-sinnbild-einer-gefaehrlichen-abhaengigkeit-von-us-technologie-das-schadet-dem-unternehmen-kein-bisschen-ld.10013749",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "LIVE-TICKER - Brasilien gegen Norwegen: Wie geht das Duell zwischen Erling Haaland und Vinícius Junior aus?",
-      "reason": "The article focuses on a sports event, specifically a match preview between two teams, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.nzz.ch/sport/brasilien-gegen-norwegen-wie-geht-das-duell-zwischen-erling-haaland-und-vinicius-junior-aus-ld.10013870",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "« Se toucher, c’est atrophier son cerveau » : #NoFap, le challenge qui démonise la masturbation",
-      "reason": "The article discusses a controversial challenge that promotes abstaining from masturbation, which is framed in a negative light and involves pseudo-scientific beliefs, making it divisive and not uplifting.",
-      "category": "divisive-social",
-      "url": "https://www.lemonde.fr/m-perso/article/2026/07/05/se-toucher-c-est-atrophier-son-cerveau-nofap-le-challenge-qui-demonise-la-masturbation_6720902_4497916.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Alexandra de Hoop Scheffer, politiste : « Les Etats-Unis sont dans une logique de saturation stratégique »",
-      "reason": "The article discusses political strategies and challenges, which falls under political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/international/article/2026/07/05/alexandra-de-hoop-scheffer-politiste-les-etats-unis-sont-dans-une-logique-de-saturation-strategique_6720907_3210.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "« La justice administrative française a gâché la fête américaine à la gloire de Bernard Arnault »",
-      "reason": "The article discusses a tax issue involving a prominent businessman, which falls under corporate PR and has a negative connotation.",
-      "category": "economic-doom",
-      "url": "https://www.lemonde.fr/economie/article/2026/07/05/la-justice-administrative-francaise-a-gache-la-fete-americaine-a-la-gloire-de-bernard-arnault_6720912_3234.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, guerre en Ukraine : la Russie prépare « une nouvelle attaque massive », alerte Volodymyr Zelensky",
-      "reason": "The article discusses ongoing conflict and military actions in Ukraine, which is inherently negative and does not uplift the reader.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/international/live/2026/07/05/en-direct-guerre-en-ukraine-la-russie-prepare-une-nouvelle-attaque-massive-alerte-volodymyr-zelensky_6720832_3210.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Les contrôleurs aériens dans le viseur de la Cour des comptes, qui propose de les sortir de la fonction publique d’Etat",
-      "reason": "The article discusses a negative assessment of air traffic control in France, which is not uplifting and focuses on economic performance issues.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/economie/article/2026/07/05/les-controleurs-aeriens-dans-le-viseur-de-la-cour-des-comptes-qui-propose-de-les-sortir-de-la-fonction-publique-d-etat_6720908_3234.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "France-Paraguay : le « sale football », c’est encore du football",
-      "reason": "The article discusses a negative aspect of football, focusing on unsportsmanlike behavior, which does not uplift or inspire readers.",
-      "category": "sports-negative",
-      "url": "https://www.lemonde.fr/une-balle-dans-le-pied/article/2026/07/05/france-paraguay-le-sale-football-c-est-encore-du-football_6720904_6606027.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "« Si on m’attrape, c’est la fin pour moi » : au Sénégal, l’effroi quotidien des homosexuels sous le coup de la répression",
-      "reason": "The article discusses the fear and repression faced by the LGBTQ+ community in Senegal, which is a negative and distressing topic rather than uplifting.",
-      "category": "lgbtq-rights",
-      "url": "https://www.lemonde.fr/international/article/2026/07/05/si-on-m-attrape-c-est-la-fin-pour-moi-au-senegal-l-effroi-quotidien-des-homosexuels-sous-le-coup-de-la-repression_6720901_3210.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Derrière la rivalité entre Pékin et Washington, l’essor de l’IA chinoise aux Etats-Unis",
-      "reason": "The article discusses the competitive landscape of AI between China and the US, which falls under political and economic conflict rather than uplifting news.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/economie/article/2026/07/05/derriere-la-rivalite-entre-pekin-et-washington-l-essor-de-l-ia-chinoise-aux-etats-unis_6720820_3234.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, incendies : Pyrénées-Orientales, Gard, Drôme… le point sur la situation",
-      "reason": "The article discusses ongoing wildfires in France, which is a negative situation involving evacuations and environmental disaster, lacking uplifting content.",
-      "category": "disaster-accident",
-      "url": "https://www.lemonde.fr/planete/live/2026/07/05/en-direct-incendies-pyrenees-orientales-gard-drome-le-point-sur-la-situation_6720911_3244.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Präsidentenwahlen: Frankreich will wieder an sich glauben",
-      "reason": "The article discusses the political landscape in France and the upcoming presidential elections, which falls under political content and does not provide uplifting or universally positive news.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/politik/ausland/edouard-philippe-frankreichs-alternative-zu-den-populisten-201000158.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Liveblog Ukrainekrieg: Selenskyj rechnet vor NATO-Gipfel mit massiven russischen Angriffen",
-      "reason": "The article discusses ongoing military conflict and political interactions, which are inherently negative and do not uplift the reader.",
-      "category": "war-conflict",
-      "url": "https://www.faz.net/aktuell/politik/ukraine/ukraine-liveticker-vor-nato-gipfel-in-ankara-selenskyj-rechnet-mit-massiven-russischen-angriffen-faz-110683325.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Liveblog Fußball-WM 2026: Balogun darf spielen – Trump dankt FIFA",
-      "reason": "The article focuses on a liveblog of a sports event, which does not meet the positive-news editorial standard due to its routine nature and lack of exceptional human interest.",
-      "category": "sports-negative",
-      "url": "https://www.faz.net/aktuell/sport/fussball-wm/liveblog-zur-fussball-wm-2026-balogun-darf-spielen-trump-dankt-fifa-faz-200749933.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Ticketpreise in Mexiko: Der weiße Elefant dieser WM",
-      "reason": "The article discusses the exclusivity of ticket prices for the World Cup in Mexico, highlighting economic disparity rather than a positive aspect of the event.",
-      "category": "economic-doom",
-      "url": "https://www.faz.net/aktuell/sport/fussball-wm/fussball-wm-2026-in-mexiko-nur-reiche-ins-aztekenstadion-200987062.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Paket der Koalition: Die Mär von der Reformmüdigkeit",
-      "reason": "The article discusses economic reform in Germany, which falls under political commentary and does not provide a universally uplifting story.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/wirtschaft/wirtschaftswissen/mancur-olsons-theorie-im-faktencheck-der-mythos-von-der-reformmuedigkeit-200983847.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "ARD-Sommerinterview: Klingbeil lobt eine Steuer, die es nicht gibt",
-      "reason": "The article discusses a political interview and the state of a political party, which does not provide uplifting content and falls under political commentary.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/feuilleton/medien-und-film/talkshow/klingbeil-wird-im-ard-sommerinterview-vom-faktencheck-demontiert-201000162.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Kaat Van Stralen op Rock Werchter: \"Ik ben er voor de girls, de queers en de bondgenoten\"",
-      "reason": "The article focuses on a music festival performance by Kaat Van Stralen, which falls under celebrity and entertainment news, lacking broader human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.gva.be/media-en-cultuur/muziek/kaat-van-stralen-op-rock-werchter-ik-ben-er-voor-de-girls-de-queers-en-de-bondgenoten/158303126.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Harry Styles bedankt ex-collega’s van One Direction: “Zonder jullie stond ik hier niet”",
-      "reason": "The article focuses on a celebrity's farewell show and includes elements of celebrity entertainment, which does not meet the positive-news editorial standard.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.gva.be/media-en-cultuur/tv-en-radio/harry-styles-bedankt-ex-collegas-van-one-direction-zonder-jullie-stond-ik-hier-niet/158303998.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Voor miljoenen euro aan juwelen gestolen uit Lalique-museum in Elzas",
-      "reason": "The article reports on a theft of valuable jewelry, which is a negative event and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.gva.be/buitenland/voor-miljoenen-euro-aan-juwelen-gestolen-uit-lalique-museum-in-elzas/158301917.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Straffe Henk (60) fietst 24 uur non-stop in Wortel-Kolonie: 8.000 euro voor De Laars",
-      "reason": "The article focuses on a local cycling event that raises funds, which may not interest readers outside the local context.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/kempen/hoogstraten/straffe-henk-60-fietst-24-uur-non-stop-in-wortel-kolonie-8.000-euro-voor-de-laars/158302043.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "KOERSPROFESSOR. “Ik zag een barstje bij Jonas Vingegaard. Hij kreeg het gaatje met Isaac Del Toro niet gedicht”",
-      "reason": "The article discusses a professional sports event with a focus on a specific athlete's performance, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/wielrennen/wegwielrennen/koersprofessor.-ik-zag-een-barstje-bij-jonas-vingegaard.-hij-kreeg-het-gaatje-met-isaac-del-toro-niet-gedicht/158302584.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Dakbrand in Antwerpse gevangenis, brandweer ter plaatse",
-      "reason": "The article reports on a fire in a prison, which is a negative event, even though there were no injuries. It does not uplift or inspire.",
-      "category": "disaster-accident",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/dakbrand-in-antwerpse-gevangenis-brandweer-ter-plaatse/158303437.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Organisatie Rock Werchter blikt tevreden terug: “Editie zonder noemenswaardige incidenten”",
-      "reason": "The article discusses a music festival's conclusion without any exceptional or inspiring elements, making it more of a routine event recap rather than uplifting news.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/media-en-cultuur/bv-en-co/organisatie-rock-werchter-blikt-tevreden-terug-editie-zonder-noemenswaardige-incidenten/158303551.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "LIVE HITTE.  Nu al tienduizend inwoners in de regio Perpignan worden geëvacueerd - Brandweerman in levensgevaar",
-      "reason": "The article discusses evacuations due to a heatwave, which is a negative situation and not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://www.gva.be/weer/live-hitte.-nu-al-tienduizend-inwoners-in-de-regio-perpignan-worden-geevacueerd-brandweerman-in-levensgevaar/152288454.html",
-      "date": "2026-07-05 21:22"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "“Gianni Infantino maakt het voetbal kapot”: onze chef voetbal is gedegouteerd door zaak-Balogun",
-      "reason": "The article discusses negative aspects of FIFA and its president, which does not align with positive news standards.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/voetbal/gianni-infantino-maakt-het-voetbal-kapot-onze-chef-voetbal-is-gedegouteerd-door-zaak-balogun/158303828.html",
-      "date": "2026-07-05 21:22"
     }
   ]
 }
