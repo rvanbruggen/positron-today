@@ -13,6 +13,7 @@ import { runUnifiedPipeline } from "@/lib/unified-pipeline";
 import { syncTimersFromDb, cancelAllTimers } from "@/lib/publish-timer";
 import { syncEditorialTimersFromDb, cancelAllEditorialTimers } from "@/lib/editorial-publish-timer";
 import { runDigest } from "@/lib/digest-core";
+import { runScoreTracker } from "@/lib/score-tracker";
 
 let activeJobs: ReturnType<typeof cron.schedule>[] = [];
 let initialized = false;
@@ -124,6 +125,38 @@ export async function reloadScheduler(): Promise<void> {
 
     activeJobs.push(job);
     console.log(`[scheduler] Digest scheduled: ${time} (${cronExpr}) TZ=${tz}`);
+  }
+
+  // ─── Score tracker cron jobs ───────────────────────────────────────────────
+
+  let scoreTimes: string[];
+  try {
+    scoreTimes = JSON.parse(settings.score_run_times ?? "[]");
+  } catch {
+    scoreTimes = [];
+  }
+
+  for (const time of scoreTimes) {
+    const cronExpr = timeToCron(time);
+    if (!cronExpr) {
+      console.warn(`[scheduler] Invalid score time format: ${time}, skipping`);
+      continue;
+    }
+
+    const job = cron.schedule(cronExpr, async () => {
+      console.log(`[scheduler] Score tracker triggered by ${time} slot`);
+      try {
+        const result = await runScoreTracker();
+        console.log(`[scheduler] Score tracker done: ${result.scored} scored, ${result.failed} failed`);
+      } catch (err) {
+        console.error(`[scheduler] Score tracker error:`, err instanceof Error ? err.message : err);
+      }
+    }, {
+      timezone: tz,
+    });
+
+    activeJobs.push(job);
+    console.log(`[scheduler] Score tracker scheduled: ${time} (${cronExpr}) TZ=${tz}`);
   }
 
   // Sync publish timers from the database
