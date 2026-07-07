@@ -223,9 +223,9 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
           try {
             await db.execute({
               sql: `INSERT OR IGNORE INTO rejected_articles
-                    (source_id, source_name, url, title, snippet, rejection_reason, rejection_category, source_pub_date)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-              args: [sourceId, sourceName, itemUrl, title, snippet.slice(0, 500), result.reason, safeCategory, sourcePubDate],
+                    (source_id, source_name, url, title, snippet, rejection_reason, rejection_category, source_pub_date, positivity_score)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+              args: [sourceId, sourceName, itemUrl, title, snippet.slice(0, 500), result.reason, safeCategory, sourcePubDate, result.score ?? null],
             });
           } catch { /* duplicate */ }
           totalFiltered++;
@@ -361,6 +361,15 @@ export async function runUnifiedPipeline(options?: { isManual?: boolean }): Prom
       await appendLog(runId, { type: "exported", count: expResult?.exported ?? 0 });
     } catch (err) {
       await appendLog(runId, { type: "export_error", message: String(err) });
+    }
+
+    // Update positivity score chart
+    try {
+      const { runScoreTracker } = await import("@/lib/score-tracker");
+      const scoreResult = await runScoreTracker();
+      await appendLog(runId, { type: "scores", scored: scoreResult.scored, skipped: scoreResult.failed });
+    } catch (err) {
+      console.warn("[unified] Score tracker error:", err instanceof Error ? err.message : err);
     }
 
     await finishRun(runId, "done");

@@ -274,6 +274,9 @@ export async function initSchema() {
   // v2.24: claim column so concurrent classify batches don't process the same rows
   try { await db.execute("ALTER TABLE pending_items ADD COLUMN claimed_at TEXT"); } catch { /* already applied */ }
 
+  // v3.3: positivity score on rejected articles (matches raw_articles column)
+  try { await db.execute("ALTER TABLE rejected_articles ADD COLUMN positivity_score REAL"); } catch { /* already applied */ }
+
   // One-time data migration: promote existing topic_id → article_tags
   try {
     await db.execute(`

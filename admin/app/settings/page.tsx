@@ -44,8 +44,6 @@ interface LLMSettings {
   positronitron_count: string;
   positronitron_run_times: string;
   digest_run_times: string;
-  score_run_times: string;
-  score_tracked_sources: string;
 }
 
 const ANTHROPIC_MODELS = [
@@ -127,14 +125,6 @@ export default function SettingsPage() {
   const [digestResult,     setDigestResult]     = useState<string | null>(null);
   const [digestPending,    setDigestPending]    = useState<number | null>(null);
 
-  // Score tracker state
-  type DbSource = { id: number; name: string; url: string; feed_url: string; language: string };
-  const [dbSources,           setDbSources]           = useState<DbSource[]>([]);
-  const [scoreTimes,          setScoreTimes]           = useState<string[]>([]);
-  const [scoreTrackedSources, setScoreTrackedSources] = useState<{ name: string; url: string }[]>([]);
-  const [scoreRunning,        setScoreRunning]        = useState(false);
-  const [scoreResult,         setScoreResult]         = useState<string | null>(null);
-
   // Auth state
   const [loggingOut,   setLoggingOut]   = useState(false);
 
@@ -152,12 +142,6 @@ export default function SettingsPage() {
     fetch("/api/post-social-digest")
       .then(r => r.json())
       .then(data => setDigestPending(data.pending ?? null))
-      .catch(() => {});
-
-    // Load sources for score tracker
-    fetch("/api/sources")
-      .then(r => r.json())
-      .then(data => setDbSources(Array.isArray(data) ? data : []))
       .catch(() => {});
 
     // Check Substack connectivity
@@ -205,12 +189,8 @@ export default function SettingsPage() {
         if (!data.positronitron_count)     data.positronitron_count     = "3";
         if (!data.positronitron_run_times) data.positronitron_run_times = '["08:00","15:00"]';
         if (!data.digest_run_times) data.digest_run_times = '[]';
-        if (!data.score_run_times) data.score_run_times = '["09:00","21:00"]';
-        if (!data.score_tracked_sources) data.score_tracked_sources = '[]';
         try { setRunTimes(JSON.parse(data.positronitron_run_times)); } catch {}
         try { setDigestTimes(JSON.parse(data.digest_run_times)); } catch {}
-        try { setScoreTimes(JSON.parse(data.score_run_times)); } catch {}
-        try { setScoreTrackedSources(JSON.parse(data.score_tracked_sources)); } catch {}
         setSettings(data);
       })
       .catch(err => setLoadError(err.message));
@@ -343,14 +323,10 @@ export default function SettingsPage() {
       setRunTimes(sortedRunTimes);
       const sortedDigestTimes = [...digestTimes].sort();
       setDigestTimes(sortedDigestTimes);
-      const sortedScoreTimes = [...scoreTimes].sort();
-      setScoreTimes(sortedScoreTimes);
       const toSave = {
         ...settings,
         positronitron_run_times: JSON.stringify(sortedRunTimes),
         digest_run_times: JSON.stringify(sortedDigestTimes),
-        score_run_times: JSON.stringify(sortedScoreTimes),
-        score_tracked_sources: JSON.stringify(scoreTrackedSources),
       };
       const res = await fetch("/api/llm-settings", {
         method: "PUT",
@@ -1029,135 +1005,6 @@ export default function SettingsPage() {
             </button>
             {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
             {digestResult && <p className="text-sm text-teal-700">{digestResult}</p>}
-          </div>
-        </div>
-      </div>
-
-      {/* ── Score tracker ── */}
-      <div className="mt-8">
-        <h2 className="text-base font-semibold text-amber-900 mb-0.5">Positivity Score Tracker</h2>
-        <p className="text-xs text-amber-600 mb-3">
-          Periodically scores tracked news sources for positivity and publishes the results to the public site chart.
-          Select which sources to track and set the schedule below.
-        </p>
-        <div className={`border rounded-xl p-5 transition-colors ${scoreTimes.length > 0 ? "bg-indigo-50 border-indigo-300" : "bg-white border-yellow-200"}`}>
-          {/* Source selection */}
-          <div className="mb-4">
-            <label className="text-xs text-amber-700 font-medium block mb-2">
-              Tracked sources ({scoreTrackedSources.length} selected)
-            </label>
-            {dbSources.length === 0 ? (
-              <p className="text-xs text-amber-500">Loading sources…</p>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 max-h-64 overflow-y-auto border border-yellow-200 rounded-lg p-3 bg-white">
-                {dbSources.map((src) => {
-                  const tracked = scoreTrackedSources.some(t => t.url === src.url);
-                  const langColor: Record<string, string> = {
-                    en: "bg-blue-100 text-blue-700",
-                    nl: "bg-orange-100 text-orange-700",
-                    fr: "bg-purple-100 text-purple-700",
-                  };
-                  return (
-                    <label
-                      key={src.id}
-                      className={`flex items-center gap-2 px-2 py-1.5 rounded cursor-pointer transition-colors ${
-                        tracked ? "bg-indigo-50" : "hover:bg-amber-50/50"
-                      }`}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={tracked}
-                        onChange={() => {
-                          if (tracked) {
-                            setScoreTrackedSources(prev => prev.filter(t => t.url !== src.url));
-                          } else {
-                            setScoreTrackedSources(prev => [...prev, { name: src.name, url: src.url }]);
-                          }
-                        }}
-                        className="accent-indigo-600 w-3.5 h-3.5 shrink-0"
-                      />
-                      <span className="text-sm text-amber-800 truncate flex-1">{src.name}</span>
-                      <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${langColor[src.language] ?? "bg-gray-100 text-gray-600"}`}>
-                        {src.language.toUpperCase()}
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
-            )}
-            <p className="text-[11px] text-amber-400 mt-1">
-              Select the news sources whose positivity scores should be tracked over time. If none are selected, a default list is used.
-            </p>
-          </div>
-
-          {/* Schedule */}
-          <div className="mb-4">
-            <label className="text-xs text-amber-700 font-medium">Score schedule:</label>
-            <div className="flex flex-wrap items-center gap-2 mt-1.5">
-              {scoreTimes.map((time, i) => (
-                <div key={i} className="flex items-center gap-1">
-                  <input
-                    type="time"
-                    value={time}
-                    onChange={(e) => {
-                      const updated = [...scoreTimes];
-                      updated[i] = e.target.value;
-                      setScoreTimes(updated);
-                    }}
-                    className="border border-yellow-200 rounded px-2 py-1 text-sm text-amber-800 focus:outline-none focus:border-yellow-400"
-                  />
-                  {scoreTimes.length > 1 && (
-                    <button
-                      onClick={() => setScoreTimes(scoreTimes.filter((_, j) => j !== i))}
-                      className="text-red-400 hover:text-red-600 text-sm px-1"
-                      title="Remove this time"
-                    >✕</button>
-                  )}
-                </div>
-              ))}
-              <button
-                onClick={() => setScoreTimes([...scoreTimes, "12:00"])}
-                className="text-xs text-amber-600 hover:text-amber-800 border border-dashed border-yellow-300 rounded px-2 py-1"
-              >+ Add time</button>
-            </div>
-            <p className="text-[11px] text-amber-400 mt-1">
-              Scores are collected at these times daily and committed to the public site. Save to apply.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3 pt-3 border-t border-yellow-100">
-            <button
-              onClick={save}
-              disabled={saving}
-              className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
-            >
-              {saving ? "Saving…" : "Save"}
-            </button>
-            <button
-              onClick={async () => {
-                setScoreRunning(true);
-                setScoreResult(null);
-                try {
-                  const res = await fetch("/api/score-tracker", { method: "POST" });
-                  const data = await res.json();
-                  if (res.ok) {
-                    setScoreResult(`Done — ${data.scored ?? 0} source(s) scored, ${data.failed ?? 0} failed.`);
-                  } else {
-                    setScoreResult(`Error: ${data.error ?? res.statusText}`);
-                  }
-                } catch (err) {
-                  setScoreResult(`Error: ${err instanceof Error ? err.message : String(err)}`);
-                } finally {
-                  setScoreRunning(false);
-                }
-              }}
-              disabled={scoreRunning}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
-            >
-              {scoreRunning ? "Scoring…" : "▶ Score now"}
-            </button>
-            {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
-            {scoreResult && <p className="text-sm text-indigo-700">{scoreResult}</p>}
           </div>
         </div>
       </div>

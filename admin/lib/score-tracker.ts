@@ -1,43 +1,23 @@
 /**
  * Positivity Score Tracker.
  *
- * Calls the scoring API for a curated list of news sources,
- * appends results to a historical JSON file, and commits it
- * to GitHub so the static site can render a chart.
+ * Derives positivity scores from existing pipeline data (raw_articles
+ * and rejected_articles) — no external API calls needed. Runs
+ * automatically after each pipeline run and commits results to GitHub
+ * so the static site can render a trend chart.
+ *
+ * Scoring: positivity_score 7-10 = positive, 4-6 = neutral, 1-3 = negative.
+ * For legacy data where rejected articles have no score: accepted = positive,
+ * rejected = negative.
  */
 
 import { commitToGitHub } from "@/lib/publish-core";
-import { getSettings } from "@/lib/settings";
+import db from "@/lib/db";
 
-const SCORE_API = process.env.SCORE_API_URL ?? "https://api.positron.today/api/score";
 const GITHUB_REPO = process.env.GITHUB_REPO ?? "";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN ?? "";
 
 const DATA_PATH = "site/src/_data/scores.json";
-
-const DEFAULT_TRACKED_SOURCES: { name: string; url: string }[] = [
-  { name: "BBC", url: "https://www.bbc.com" },
-  { name: "CNN", url: "https://www.cnn.com" },
-  { name: "The Guardian", url: "https://www.theguardian.com" },
-  { name: "Reuters", url: "https://www.reuters.com" },
-  { name: "NY Times", url: "https://www.nytimes.com" },
-  { name: "Le Monde", url: "https://www.lemonde.fr" },
-  { name: "De Standaard", url: "https://www.standaard.be" },
-  { name: "VRT NWS", url: "https://www.vrt.be/vrtnws/nl/" },
-  { name: "De Morgen", url: "https://www.demorgen.be" },
-  { name: "Le Soir", url: "https://www.lesoir.be" },
-  { name: "Positron Today", url: "https://positron.today" },
-];
-
-async function getTrackedSources(): Promise<{ name: string; url: string }[]> {
-  try {
-    const settings = await getSettings();
-    const parsed = JSON.parse(settings.score_tracked_sources);
-    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-  } catch {}
-  return DEFAULT_TRACKED_SOURCES;
-}
-
 const MAX_DAYS = 90;
 
 interface ScoreEntry {
@@ -52,6 +32,65 @@ interface ScoreEntry {
 interface ScoresData {
   updated_at: string;
   entries: ScoreEntry[];
+}
+
+function classify(score: number | null, hasScore: boolean, isAccepted: boolean): "positive" | "negative" | "neutral" {
+  if (hasScore && score != null) {
+    if (score >= 7) return "positive";
+    if (score >= 4) return "neutral";
+    return "negative";
+  }
+  return isAccepted ? "positive" : "negative";
+}
+
+async function scoreSourceFromDb(source: { id: number; name: string; url: string }): Promise<ScoreEntry | null> {
+  const today = new Date().toISOString().slice(0, 10);
+
+  const accepted = await db.execute({
+    sql: `SELECT positivity_score FROM raw_articles
+          WHERE source_id = ? AND date(fetched_at) = ?`,
+    args: [source.id, today],
+  });
+
+  const rejected = await db.execute({
+    sql: `SELECT positivity_score FROM rejected_articles
+          WHERE source_id = ? AND date(fetched_at) = ?`,
+    args: [source.id, today],
+  });
+
+  const total = accepted.rows.length + rejected.rows.length;
+  if (total === 0) return null;
+
+  let positive = 0;
+  let negative = 0;
+  let neutral = 0;
+
+  for (const row of accepted.rows) {
+    const score = row.positivity_score != null ? Number(row.positivity_score) : null;
+    const cat = classify(score, score != null, true);
+    if (cat === "positive") positive++;
+    else if (cat === "neutral") neutral++;
+    else negative++;
+  }
+
+  for (const row of rejected.rows) {
+    const score = row.positivity_score != null ? Number(row.positivity_score) : null;
+    const cat = classify(score, score != null, false);
+    if (cat === "positive") positive++;
+    else if (cat === "neutral") neutral++;
+    else negative++;
+  }
+
+  const pct = Math.round((positive / total) * 100);
+
+  return {
+    date: today,
+    source: source.name,
+    url: source.url,
+    score: pct,
+    total,
+    breakdown: { positive, negative, neutral },
+  };
 }
 
 async function fetchExistingScores(): Promise<ScoresData> {
@@ -80,61 +119,39 @@ function pruneOldEntries(entries: ScoreEntry[]): ScoreEntry[] {
   return entries.filter((e) => e.date >= cutoffStr);
 }
 
-async function scoreSource(
-  source: { name: string; url: string }
-): Promise<ScoreEntry | null> {
-  try {
-    const res = await fetch(
-      `${SCORE_API}?url=${encodeURIComponent(source.url)}`,
-      { signal: AbortSignal.timeout(30_000) }
-    );
-    if (!res.ok) return null;
-
-    const data = await res.json();
-    if (data.error) return null;
-
-    return {
-      date: new Date().toISOString().slice(0, 10),
-      source: source.name,
-      url: source.url,
-      score: data.score,
-      total: data.total,
-      breakdown: data.breakdown,
-    };
-  } catch {
-    return null;
-  }
-}
-
 export async function runScoreTracker(): Promise<{
   ok: boolean;
   scored: number;
   failed: number;
 }> {
-  console.log("[score-tracker] Starting score collection…");
+  console.log("[score-tracker] Starting score collection from pipeline data…");
 
-  const trackedSources = await getTrackedSources();
+  const result = await db.execute("SELECT id, name, url FROM sources WHERE active = 1 ORDER BY name");
+  const allSources = result.rows.map((r) => ({
+    id: Number(r.id),
+    name: String(r.name),
+    url: String(r.url),
+  }));
+
   const existing = await fetchExistingScores();
   const today = new Date().toISOString().slice(0, 10);
   const now = new Date().toISOString();
 
   const results: ScoreEntry[] = [];
-  let failed = 0;
+  let skipped = 0;
 
-  for (const source of trackedSources) {
-    console.log(`[score-tracker] Scoring ${source.name}…`);
-    const entry = await scoreSource(source);
+  for (const source of allSources) {
+    const entry = await scoreSourceFromDb(source);
     if (entry) {
       results.push(entry);
     } else {
-      console.warn(`[score-tracker] Failed to score ${source.name}`);
-      failed++;
+      skipped++;
     }
   }
 
   if (results.length === 0) {
     console.log("[score-tracker] No scores collected, skipping commit");
-    return { ok: false, scored: 0, failed };
+    return { ok: false, scored: 0, failed: skipped };
   }
 
   const allEntries = pruneOldEntries([...existing.entries, ...results]);
@@ -147,6 +164,6 @@ export async function runScoreTracker(): Promise<{
   const content = JSON.stringify(data, null, 2);
   await commitToGitHub(DATA_PATH, content, `Update positivity scores (${today})`);
 
-  console.log(`[score-tracker] Committed ${results.length} scores (${failed} failed)`);
-  return { ok: true, scored: results.length, failed };
+  console.log(`[score-tracker] Committed ${results.length} scores (${skipped} sources had no articles today)`);
+  return { ok: true, scored: results.length, failed: skipped };
 }
