@@ -118,13 +118,14 @@ async function fetchExistingScores(): Promise<ScoresData> {
   };
 
   try {
-    const res = await fetch(url, { headers });
+    const res = await fetch(url, { headers, signal: AbortSignal.timeout(30_000) });
     if (!res.ok) return { updated_at: "", entries: [] };
 
     const json = await res.json();
     const content = Buffer.from(json.content, "base64").toString("utf-8");
     return JSON.parse(content) as ScoresData;
-  } catch {
+  } catch (err) {
+    console.warn("[score-tracker] Could not fetch existing scores:", err instanceof Error ? err.message : err);
     return { updated_at: "", entries: [] };
   }
 }
@@ -196,8 +197,15 @@ export async function runScoreTracker(): Promise<{
   };
 
   const content = JSON.stringify(data, null, 2);
-  await commitToGitHub(DATA_PATH, content, `Update positivity scores (${now.slice(0, 10)})`);
+  console.log(`[score-tracker] Committing ${allEntries.length} entries (${Math.round(content.length / 1024)} KB)…`);
 
-  console.log(`[score-tracker] Committed ${results.length} new scores across ${dates.length} dates`);
+  try {
+    await commitToGitHub(DATA_PATH, content, `Update positivity scores (${now.slice(0, 10)})`);
+    console.log(`[score-tracker] Committed ${results.length} new scores across ${dates.length} dates`);
+  } catch (err) {
+    const cause = err instanceof Error && "cause" in err ? ` cause=${(err as { cause?: unknown }).cause}` : "";
+    console.error(`[score-tracker] Commit failed: ${err instanceof Error ? err.message : err}${cause}`);
+    throw err;
+  }
   return { ok: true, scored: results.length, failed: skipped };
 }
