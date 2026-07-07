@@ -1,23 +1,23 @@
 {
-  "exported_at": "2026-07-07T09:52:22.920Z",
-  "total_rejected": 75650,
+  "exported_at": "2026-07-07T10:02:25.387Z",
+  "total_rejected": 75664,
   "sources_count": 45,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 20720
+      "count": 20726
     },
     {
       "category": "soft-news-filler",
-      "count": 9169
+      "count": 9173
     },
     {
       "category": "sports-negative",
-      "count": 9119
+      "count": 9120
     },
     {
       "category": "crime-violence",
-      "count": 6126
+      "count": 6128
     },
     {
       "category": "celebrity-entertainment",
@@ -33,7 +33,7 @@
     },
     {
       "category": "war-conflict",
-      "count": 3487
+      "count": 3488
     },
     {
       "category": "other-negative",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 8743,
-      "total": 8959
+      "negative": 8745,
+      "total": 8961
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 8729,
-      "total": 9113
+      "negative": 8732,
+      "total": 9116
     },
     {
       "source": "VRT Nws",
@@ -86,18 +86,18 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 4751,
-      "total": 4807
+      "negative": 4755,
+      "total": 4812
     },
     {
       "source": "Le Figaro",
-      "negative": 4125,
-      "total": 4165
+      "negative": 4126,
+      "total": 4166
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 3450,
-      "total": 3476
+      "negative": 3451,
+      "total": 3477
     },
     {
       "source": "De Morgen",
@@ -106,8 +106,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 3274,
-      "total": 3300
+      "negative": 3275,
+      "total": 3301
     },
     {
       "source": "NRC",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 3132,
-      "total": 3141
+      "negative": 3133,
+      "total": 3142
     },
     {
       "source": "The New York Times",
@@ -166,8 +166,8 @@
     },
     {
       "source": "The Guardian Europe",
-      "negative": 1199,
-      "total": 1258
+      "negative": 1200,
+      "total": 1259
     },
     {
       "source": "Euronews",
@@ -296,6 +296,118 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Brak decyzji urzędu to milcząca zgoda. Przełomowa zmiana w prawie",
+      "reason": "This is a political/legislative story about a government decision and law change. While the law may benefit citizens procedurally, it remains a political-legislative announcement that falls under Rule 6 (Politics). It lacks the exceptional breakthrough character needed for an exception.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/prawo-dla-ciebie/art44776221-brak-decyzji-urzedu-to-milczaca-zgoda-przelomowa-zmiana-w-prawie",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Meta zablokowała profil Ogólnopolskiego Strajku Kobiet. Ruszył Sztab kontaktowy OSK",
+      "reason": "This article documents a political organization's account being blocked and their response — a political conflict story involving platform moderation of activist content. It lacks universal positive uplift and falls under political/divisive social tension.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/spoleczenstwo/art44782381-meta-zablokowala-profil-ogolnopolskiego-strajku-kobiet-ruszyl-sztab-kontaktowy-osk",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Bogusław Chrabota: Pięć powodów dla których Karol Nawrocki powinien się spotkać z Wołodymyrem Zełenskim",
+      "reason": "This is political commentary arguing that a Polish presidential candidate should meet with the Ukrainian president. It falls squarely under Rule 6 (Politics) as partisan political analysis and government-figure relations, with no exception applying.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/komentarze/art44782341-boguslaw-chrabota-piec-powodow-dla-ktorych-karol-nawrocki-powinien-sie-spotkac-z-wolodymyrem-zelenskim",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Jak nie dać się wojnie i innym kryzysom. Lekcja z Finlandii",
+      "reason": "The article frames education through the lens of war, crisis, and Russian propaganda threats. While critical thinking education is positive, the framing centers on conflict and geopolitical anxiety rather than an uplifting human story. This reads as political/conflict commentary rather than genuinely positive news.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/plus-minus/art44756451-jak-nie-dac-sie-wojnie-i-innym-kryzysom-lekcja-z-finlandii",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Konstverk vandaliserade under Open art i Örebro",
+      "reason": "This article reports on vandalism and destruction of public art at a local art biennial in Örebro, Sweden. It is fundamentally negative news (criminal damage) with only local relevance, violating rules 2 and the core positivity requirement.",
+      "category": "crime-violence",
+      "url": "https://www.dn.se/kultur/konstverk-vandaliserade-under-open-art-i-orebro/",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Le Monde",
+      "title": "En Hongrie, Péter Magyar lance une procédure contestée pour destituer le président",
+      "reason": "This is a political story about constitutional amendments and presidential impeachment proceedings in Hungary, involving partisan conflict and concerns about rule of law. It falls squarely under Rule 6 (Politics) and contains no breakthrough or exceptional agreement—only contested procedural action.",
+      "category": "political-conflict",
+      "url": "https://www.lemonde.fr/international/article/2026/07/07/en-hongrie-peter-magyar-lance-une-procedure-contestee-pour-destituer-le-president_6721450_3210.html",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Elternkolumne „Schlaflos“: Als alleinerziehende Mutter bin ich im Urlaub eine Exotin",
+      "reason": "This is a local-interest parenting column about one person's vacation experience as a single mother. While it touches on a relatable topic, it lacks broad human relevance, is primarily a personal essay about local travel decisions, and does not document a genuinely uplifting story that would resonate across countries and cultures.",
+      "category": "soft-news-filler",
+      "url": "https://www.faz.net/aktuell/feuilleton/kolumnen/schlaflos/urlaub-mit-kindern-als-alleinerziehende-mutter-bin-ich-eine-exotin-accg-200982365.html",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Onbekende plaatst flesjes water aan kabels die daklozen moeten weren aan Centraal Station",
+      "reason": "This is local-only news about a specific protest at Amsterdam's Central Station regarding homelessness policy. While the act of solidarity is positive, the story's relevance is limited to the local context and would not meaningfully interest readers outside the Netherlands or Amsterdam.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/onbekende-plaatst-flesjes-water-aan-kabels-die-daklozen-moeten-weren-aan-centraal-station/158372365.html",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Proefopstelling met wegversmalling in Terbeeksestraat krijgt positieve evaluatie",
+      "reason": "This is local-only municipal content about a street narrowing trial in a specific Dutch town (Meer, Hoogstraten). It has no relevance beyond the local community and would not interest international readers.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/regio/antwerpen/kempen/hoogstraten/proefopstelling-met-wegversmalling-in-terbeeksestraat-krijgt-positieve-evaluatie/158372362.html",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Na wolvenaanval op kudde schapen in Ardense gemeente Léglise: burgemeester verbiedt jeugdbewegingen hele zomer lang om ’s nachts het bos in te gaan",
+      "reason": "This is local-only municipal news about a single Ardennes commune's decision affecting youth groups. It lacks broad international relevance and is primarily a regional governance/safety matter, not a universally uplifting human-interest story.",
+      "category": "soft-news-filler",
+      "url": "https://www.gva.be/binnenland/na-wolvenaanval-op-kudde-schapen-in-ardense-gemeente-leglise-burgemeester-verbiedt-jeugdbewegingen-hele-zomer-lang-om-s-nachts-het-bos-in-te-gaan/158373688.html",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "The Guardian Europe",
+      "title": "‘Serious consequences’: Farage attacks Sky News after question about George Cottrell",
+      "reason": "This is a political conflict story involving allegations of financial impropriety, confrontation between a political figure and media, and partisan controversy. It violates rule 6 (politics) as it covers a political figure's conduct and government-adjacent scandal without marking any breakthrough or exceptional agreement.",
+      "category": "political-conflict",
+      "url": "https://www.theguardian.com/politics/2026/jul/07/serious-consequences-farage-attacks-sky-news-after-question-about-george-cottrell",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Le Figaro",
+      "title": "«Elles visaient à faire du bruit» : malgré les explosions près de son hôtel à Damas, Emmanuel Macron maintient son programme en Syrie",
+      "reason": "This article covers bomb attacks and violence near a political figure during an official visit. It combines geopolitical conflict, security threats, and political content—none of which align with positive-news standards.",
+      "category": "war-conflict",
+      "url": "https://www.lefigaro.fr/international/elles-visaient-a-faire-du-bruit-malgre-les-explosions-pres-de-son-hotel-a-damas-emmanuel-macron-maintient-son-programme-en-syrie-20260707",
+      "date": "2026-07-07 12:02"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Karel Snoeckx (53) niet langer in coma, verdachte van verkeersagressie voor raadkamer in Turnhout: “Hij is enorm bezorgd om zijn toestand”",
+      "reason": "This article centers on a violent crime (assault causing coma), legal proceedings, and ongoing serious injury. While the victim regaining consciousness is a minor positive element, the core narrative is fundamentally negative and crime-focused.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/turnhout/karel-snoeckx-53-niet-langer-in-coma-verdachte-van-verkeersagressie-voor-raadkamer-in-turnhout-hij-is-enorm-bezorgd-om-zijn-toestand~a7a273ec/",
+      "date": "2026-07-07 12:01"
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Het heeft ons emotioneel geraakt”: hoe niet alleen Balogun-gate (en het bijhorende Trump-dansje) de Rode Duivels vooruitstuwde tegen VS",
+      "reason": "This is sports content about a national team match result and performance, which falls under Rule 1. While framed positively, it focuses on league/competition outcomes rather than a truly exceptional, once-in-a-lifetime human-interest story.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/rode-duivels/het-heeft-ons-emotioneel-geraakt-hoe-niet-alleen-balogun-gate-en-het-bijhorende-trump-dansje-de-rode-duivels-vooruitstuwde-tegen-vs~a47a7405/",
+      "date": "2026-07-07 12:01"
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Zamach na ukraińskiego oligarchę w Monako. Pod Kijowem znaleziono ciało podejrzanej",
@@ -8183,118 +8295,6 @@
       "category": "economic-doom",
       "url": "https://www.rp.pl/ochrona-zdrowia/art44774891-300-tys-zl-za-dzien-pracy-tyle-mieli-zarabiac-neurochirurdzy-w-szpitalach",
       "date": "2026-07-06 10:29"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Paryska wystawa na stulecie urodzin Marylin Monroe. Akty z sesji „Golden Dreams\"",
-      "reason": "The article focuses on a celebrity exhibition, which falls under the category of entertainment and does not provide broad human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.rp.pl/film/art44764651-paryska-wystawa-na-stulecie-urodzin-marylin-monroe-akty-z-sesji-golden-dreams",
-      "date": "2026-07-06 10:29"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Afera billboardowa polityczek PiS. Kancelaria Premiera żąda zwrotu 3,4 mln zł",
-      "reason": "The article discusses a political financial dispute involving a government request for funds, which is not uplifting and falls under political conflict.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/polityka/art44775201-afera-billboardowa-polityczek-pis-kancelaria-premiera-zada-zwrotu-3-4-mln-zl",
-      "date": "2026-07-06 10:29"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Jerzy Surdykowski: Ameryka, Ameryka. 250-lecie Stanów Zjednoczonych",
-      "reason": "The article focuses on the 250th anniversary of the United States' Independence Day, which is a historical event but does not provide a universally uplifting or inspiring narrative that transcends local interest.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/komentarze/art44775091-jerzy-surdykowski-ameryka-ameryka-250-lecie-stanow-zjednoczonych",
-      "date": "2026-07-06 10:29"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Sąd Najwyższy uchylił wyrok w sprawie zabójstwa na Nowym Świecie. Proces ruszy od nowa",
-      "reason": "The article discusses a legal case involving a violent crime, which is inherently negative and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.rp.pl/prawo-karne/art44775211-sad-najwyzszy-uchylil-wyrok-w-sprawie-zabojstwa-na-nowym-swiecie-proces-ruszy-od-nowa",
-      "date": "2026-07-06 10:29"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Były minister: System ochrony zdrowia w Polsce może być kwitnący",
-      "reason": "The article discusses issues within the Polish healthcare system and presents a critical view of the current state, which is not uplifting or positive.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/plus-minus/art44756381-byly-minister-system-ochrony-zdrowia-w-polsce-moze-byc-kwitnacy",
-      "date": "2026-07-06 10:29"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Wspieramy polskie firmy w Ukrainie",
-      "reason": "The article focuses on supporting Polish companies in Ukraine, which may be seen as a positive initiative, but it primarily discusses logistical and business challenges rather than uplifting human stories or breakthroughs.",
-      "category": "economic-doom",
-      "url": "https://www.rp.pl/ukraine-recovery-conference-2026/art44766191-wspieramy-polskie-firmy-w-ukrainie",
-      "date": "2026-07-06 10:29"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Sondaż: Polacy nie wierzą, że wyższa składka poprawi sytuację ochrony zdrowia w Polsce",
-      "reason": "The article discusses a survey indicating a lack of belief among Poles that higher health insurance contributions would improve the healthcare situation, which is a negative perspective on a critical issue.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/spoleczenstwo/art44775231-sondaz-polacy-nie-wierza-ze-wyzsza-skladka-poprawi-sytuacje-ochrony-zdrowia-w-polsce",
-      "date": "2026-07-06 10:28"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Kryzys w relacjach polsko-ukraińskich. Sondaż: Część Polaków wini prezydenta Karola Nawrockiego",
-      "reason": "The article discusses a political conflict and public opinion regarding the crisis in Polish-Ukrainian relations, which is divisive and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/spoleczenstwo/art44774971-kryzys-w-relacjach-polsko-ukrainskich-sondaz-czesc-polakow-wini-prezydenta-karola-nawrockiego",
-      "date": "2026-07-06 10:28"
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Kijów był w nocy celem intensywnego ataku powietrznego Rosji. Polska poderwała myśliwce",
-      "reason": "The article discusses a military attack and its consequences, which is inherently negative and not uplifting.",
-      "category": "war-conflict",
-      "url": "https://www.rp.pl/konflikty-zbrojne/art44774701-kijow-byl-w-nocy-celem-intensywnego-ataku-powietrznego-rosji-polska-poderwala-mysliwce",
-      "date": "2026-07-06 10:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Rakel Chukri: Länge levde jag ett dubbelliv under namnet Lena",
-      "reason": "The article discusses the struggles of living a double life and the emotional toll it took, which is not uplifting and focuses on personal conflict rather than a positive resolution.",
-      "category": "lgbtq-rights",
-      "url": "https://www.dn.se/ledare/rakel-chukri-lange-levde-jag-ett-dubbelliv-under-namnet-lena/",
-      "date": "2026-07-06 10:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "England vidare efter seger mot Mexiko",
-      "reason": "The article discusses a sports event, specifically a football match result, which falls under the category of non-exceptional sports content and does not provide a universally uplifting story.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/england-vidare-efter-seger-mot-mexiko/",
-      "date": "2026-07-06 10:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Total eufori i Oslo: ”Det blir VM-medalj”",
-      "reason": "The article focuses on a sports event, specifically a football match result, which falls under the category of non-exceptional sports content and does not meet the positive-news editorial standard.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/total-eufori-i-oslo-det-blir-vm-medalj/",
-      "date": "2026-07-06 10:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Nu avgörs framtiden för de franska högernationalisterna",
-      "reason": "The article discusses political developments and potential candidates in France, which falls under political news and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/varlden/nu-avgors-framtiden-for-de-franska-hogernationalisterna/",
-      "date": "2026-07-06 10:28"
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Birgitta Rubin: Erika Bjerström ser samband mellan klimatets och demokratins kris",
-      "reason": "The article discusses the connection between climate change and the weakening of democracy, which is a serious and concerning topic rather than uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/kultur/birgitta-rubin-erika-bjerstrom-ser-samband-mellan-klimatets-och-demokratins-kris/",
-      "date": "2026-07-06 10:28"
     }
   ]
 }
