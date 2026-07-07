@@ -2,7 +2,7 @@
 title: "Giving a compliment may feel awkward, but research shows it has unexpected health benefits"
 title_nl: "Een compliment geven kan ongemakkelijk aanvoelen, maar onderzoek toont aan dat het onverwachte gezondheidsvoordelen heeft"
 title_fr: "Faire un compliment peut sembler gênant, mais des recherches montrent qu'il a des bienfaits inattendus pour la santé"
-date: 2026-07-07T04:20:07
+date: 2026-07-07T04:20:09
 source_pub_date: 2026-07-06
 fetched_date: 2026-07-06
 source_url: "https://www.upworthy.com/giving-a-compliment-may-feel-awkward-but-research-shows-it-has-unexpected-health-benefits/"
