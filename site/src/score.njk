@@ -362,10 +362,15 @@ title: Positivity Score
 
     ctx.clearRect(0, 0, W, H);
 
+    // Theme-aware colors for chart axes
+    var theme = document.documentElement.getAttribute('data-theme') || 'classic';
+    var gridColor = theme === 'mono' ? '#e5e5e5' : theme === 'mondrian' ? '#e5e5e5' : '#fde68a';
+    var labelColor = theme === 'mono' ? '#555555' : theme === 'mondrian' ? '#111111' : '#b45309';
+
     // Y axis (0-100%)
-    ctx.strokeStyle = '#fde68a';
+    ctx.strokeStyle = gridColor;
     ctx.lineWidth = 1;
-    ctx.fillStyle = '#b45309';
+    ctx.fillStyle = labelColor;
     ctx.font = '11px system-ui, sans-serif';
     ctx.textAlign = 'right';
     for (var y = 0; y <= 100; y += 20) {

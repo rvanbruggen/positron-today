@@ -7,6 +7,7 @@
  */
 
 import { commitToGitHub } from "@/lib/publish-core";
+import { getSettings } from "@/lib/settings";
 
 const SCORE_API = process.env.SCORE_API_URL ?? "https://api.positron.today/api/score";
 const GITHUB_REPO = process.env.GITHUB_REPO ?? "";
@@ -14,7 +15,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN ?? "";
 
 const DATA_PATH = "site/src/_data/scores.json";
 
-const TRACKED_SOURCES: { name: string; url: string }[] = [
+const DEFAULT_TRACKED_SOURCES: { name: string; url: string }[] = [
   { name: "BBC", url: "https://www.bbc.com" },
   { name: "CNN", url: "https://www.cnn.com" },
   { name: "The Guardian", url: "https://www.theguardian.com" },
@@ -27,6 +28,15 @@ const TRACKED_SOURCES: { name: string; url: string }[] = [
   { name: "Le Soir", url: "https://www.lesoir.be" },
   { name: "Positron Today", url: "https://positron.today" },
 ];
+
+async function getTrackedSources(): Promise<{ name: string; url: string }[]> {
+  try {
+    const settings = await getSettings();
+    const parsed = JSON.parse(settings.score_tracked_sources);
+    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+  } catch {}
+  return DEFAULT_TRACKED_SOURCES;
+}
 
 const MAX_DAYS = 90;
 
@@ -103,6 +113,7 @@ export async function runScoreTracker(): Promise<{
 }> {
   console.log("[score-tracker] Starting score collection…");
 
+  const trackedSources = await getTrackedSources();
   const existing = await fetchExistingScores();
   const today = new Date().toISOString().slice(0, 10);
   const now = new Date().toISOString();
@@ -110,7 +121,7 @@ export async function runScoreTracker(): Promise<{
   const results: ScoreEntry[] = [];
   let failed = 0;
 
-  for (const source of TRACKED_SOURCES) {
+  for (const source of trackedSources) {
     console.log(`[score-tracker] Scoring ${source.name}…`);
     const entry = await scoreSource(source);
     if (entry) {

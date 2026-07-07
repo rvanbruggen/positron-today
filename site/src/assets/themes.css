@@ -1016,6 +1016,234 @@ html:not([data-theme]) .nav-select:hover,
 html[data-theme="classic"] .nav-select:hover { background-color: rgba(120,53,15,0.1); }
 
 /* ============================================================================
+   /score page — theme overrides
+   ============================================================================ */
+
+/* ── MONO ── */
+html[data-theme="mono"] .how-section {
+  background: #ffffff;
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+}
+html[data-theme="mono"] .how-title { color: var(--mono-fg); }
+html[data-theme="mono"] .how-steps li { color: var(--mono-fg); }
+html[data-theme="mono"] .how-steps li::before { color: var(--mono-fg); }
+
+html[data-theme="mono"] .score-input {
+  background: #ffffff;
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+  color: var(--mono-fg);
+}
+html[data-theme="mono"] .score-input:focus { border-color: var(--mono-fg); }
+html[data-theme="mono"] .score-input::placeholder { color: var(--mono-muted); }
+html[data-theme="mono"] .score-btn {
+  background: var(--mono-fg);
+  color: #ffffff;
+  border-radius: 0;
+}
+html[data-theme="mono"] .score-btn:hover { background: #000000; }
+
+html[data-theme="mono"] .loading { color: var(--mono-muted); }
+html[data-theme="mono"] .loading-spinner { border-color: var(--mono-hairline); border-top-color: var(--mono-fg); }
+
+html[data-theme="mono"] .error-msg {
+  background: #ffffff;
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+  color: var(--mono-fg);
+}
+
+html[data-theme="mono"] .gauge-label { color: var(--mono-muted); }
+
+html[data-theme="mono"] .score-page .stat-card,
+html[data-theme="mono"] .stat-card {
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+  background: #ffffff !important;
+}
+html[data-theme="mono"] .stat-num.positive { color: var(--mono-fg); }
+html[data-theme="mono"] .stat-num.negative { color: var(--mono-fg); }
+html[data-theme="mono"] .stat-num.neutral  { color: var(--mono-muted); }
+
+html[data-theme="mono"] .section-heading {
+  color: var(--mono-fg);
+  border-bottom-color: var(--mono-hairline-strong);
+}
+
+html[data-theme="mono"] .headline-item {
+  border-radius: 0;
+}
+html[data-theme="mono"] .headline-item.positive {
+  background: #ffffff;
+  border-left-color: var(--mono-fg);
+  color: var(--mono-fg);
+}
+html[data-theme="mono"] .headline-item.negative {
+  background: #ffffff;
+  border-left-color: var(--mono-muted);
+  color: var(--mono-fg);
+}
+html[data-theme="mono"] .headline-item.neutral {
+  background: #ffffff;
+  border-left-color: var(--mono-hairline);
+  color: var(--mono-muted);
+}
+html[data-theme="mono"] .sentiment-tag {
+  border-radius: 0;
+}
+html[data-theme="mono"] .sentiment-tag.positive { background: var(--mono-hairline); color: var(--mono-fg); }
+html[data-theme="mono"] .sentiment-tag.negative { background: var(--mono-hairline); color: var(--mono-fg); }
+html[data-theme="mono"] .sentiment-tag.neutral  { background: var(--mono-hairline); color: var(--mono-muted); }
+
+html[data-theme="mono"] .scored-url { color: var(--mono-muted); }
+html[data-theme="mono"] .scored-url a { color: var(--mono-fg); }
+
+html[data-theme="mono"] .chart-section {
+  background: #ffffff;
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+}
+html[data-theme="mono"] .chart-title { color: var(--mono-fg); }
+html[data-theme="mono"] .chart-updated { color: var(--mono-muted); }
+html[data-theme="mono"] .chart-legend-item { color: var(--mono-fg); }
+html[data-theme="mono"] .chart-legend-swatch { border-radius: 0; }
+html[data-theme="mono"] .chart-empty { color: var(--mono-muted); }
+
+html[data-theme="mono"] .presets-label { color: var(--mono-muted); }
+html[data-theme="mono"] .preset-pill {
+  background: #ffffff;
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+  color: var(--mono-fg);
+}
+html[data-theme="mono"] .preset-pill:hover {
+  background: var(--mono-fg);
+  color: #ffffff;
+}
+
+/* ── MONDRIAN ── */
+html[data-theme="mondrian"] .how-section {
+  background: #ffffff;
+  border: 3px solid var(--md-blue);
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .how-title { color: var(--md-black); font-weight: 800; }
+html[data-theme="mondrian"] .how-steps li { color: var(--md-black); }
+html[data-theme="mondrian"] .how-steps li::before { color: var(--md-red); font-weight: 900; }
+
+html[data-theme="mondrian"] .score-input {
+  background: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  color: var(--md-black);
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .score-input:focus { border-color: var(--md-blue); }
+html[data-theme="mondrian"] .score-input::placeholder { color: var(--md-muted); }
+html[data-theme="mondrian"] .score-btn {
+  background: var(--md-red);
+  color: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  font-weight: 800;
+  box-shadow: 4px 4px 0 var(--md-black);
+}
+html[data-theme="mondrian"] .score-btn:hover {
+  background: var(--md-blue);
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--md-black);
+}
+
+html[data-theme="mondrian"] .loading { color: var(--md-muted); }
+html[data-theme="mondrian"] .loading-spinner { border-color: var(--md-yellow); border-top-color: var(--md-red); }
+
+html[data-theme="mondrian"] .error-msg {
+  background: #ffffff;
+  border: 3px solid var(--md-red);
+  border-radius: 0;
+  color: var(--md-black);
+}
+
+html[data-theme="mondrian"] .gauge-label { color: var(--md-muted); }
+
+html[data-theme="mondrian"] .score-page .stat-card,
+html[data-theme="mondrian"] .stat-card {
+  border: 5px solid var(--md-black) !important;
+  border-radius: 0;
+  background: #ffffff !important;
+}
+html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+1) { border-color: var(--md-red) !important; }
+html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+2) { border-color: var(--md-blue) !important; }
+html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
+html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+4) { border-color: var(--md-black) !important; }
+html[data-theme="mondrian"] .stat-num.positive { color: var(--md-black); font-weight: 900; }
+html[data-theme="mondrian"] .stat-num.negative { color: var(--md-red); font-weight: 900; }
+html[data-theme="mondrian"] .stat-num.neutral  { color: var(--md-muted); font-weight: 900; }
+html[data-theme="mondrian"] .stat-lbl { color: var(--md-muted); }
+
+html[data-theme="mondrian"] .section-heading {
+  color: var(--md-black);
+  border-bottom: 5px solid var(--md-black);
+  font-weight: 900;
+}
+
+html[data-theme="mondrian"] .headline-item {
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .headline-item.positive {
+  background: #ffffff;
+  border-left: 5px solid var(--md-blue);
+  color: var(--md-black);
+}
+html[data-theme="mondrian"] .headline-item.negative {
+  background: #ffffff;
+  border-left: 5px solid var(--md-red);
+  color: var(--md-black);
+}
+html[data-theme="mondrian"] .headline-item.neutral {
+  background: #ffffff;
+  border-left: 5px solid var(--md-yellow);
+  color: var(--md-muted);
+}
+html[data-theme="mondrian"] .sentiment-tag {
+  border-radius: 0;
+  font-weight: 800;
+  border: 2px solid var(--md-black);
+}
+html[data-theme="mondrian"] .sentiment-tag.positive { background: #ffffff; color: var(--md-blue); }
+html[data-theme="mondrian"] .sentiment-tag.negative { background: #ffffff; color: var(--md-red); }
+html[data-theme="mondrian"] .sentiment-tag.neutral  { background: var(--md-yellow); color: var(--md-black); }
+
+html[data-theme="mondrian"] .scored-url { color: var(--md-muted); }
+html[data-theme="mondrian"] .scored-url a { color: var(--md-blue); border-bottom: 2px solid var(--md-blue); text-decoration: none; }
+html[data-theme="mondrian"] .scored-url a:hover { color: var(--md-red); border-color: var(--md-red); }
+
+html[data-theme="mondrian"] .chart-section {
+  background: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .chart-title { color: var(--md-black); font-weight: 800; }
+html[data-theme="mondrian"] .chart-updated { color: var(--md-muted); }
+html[data-theme="mondrian"] .chart-legend-item { color: var(--md-black); font-weight: 700; }
+html[data-theme="mondrian"] .chart-legend-swatch { border-radius: 0; border: 1px solid var(--md-black); }
+html[data-theme="mondrian"] .chart-empty { color: var(--md-muted); }
+
+html[data-theme="mondrian"] .presets-label { color: var(--md-muted); font-weight: 800; }
+html[data-theme="mondrian"] .preset-pill {
+  background: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  color: var(--md-black);
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .preset-pill:hover {
+  background: var(--md-yellow);
+}
+
+
+/* ============================================================================
    /install page — theme overrides
    The page's own CSS uses the classic amber palette; these rules flip it
    to the mono and mondrian palettes. Structure mirrors how card and

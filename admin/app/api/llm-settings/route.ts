@@ -29,6 +29,8 @@ export async function PUT(request: NextRequest) {
       "positronitron_count",
       "positronitron_run_times",
       "digest_run_times",
+      "score_run_times",
+      "score_tracked_sources",
     ];
     const patch: Partial<LLMSettings> = {};
     for (const key of allowed) {
@@ -42,7 +44,7 @@ export async function PUT(request: NextRequest) {
     await setSettings(patch);
 
     // Reload the scheduler if run times changed
-    if (patch.positronitron_run_times || patch.digest_run_times) {
+    if (patch.positronitron_run_times || patch.digest_run_times || patch.score_run_times) {
       try {
         const { reloadScheduler } = await import("@/lib/scheduler");
         await reloadScheduler();
