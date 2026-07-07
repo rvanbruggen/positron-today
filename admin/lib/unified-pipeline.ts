@@ -25,14 +25,22 @@ import { postPendingSocial } from "@/lib/social-post-core";
 import RSSParser from "rss-parser";
 import { withRetry } from "@/lib/retry";
 
-const parser = new RSSParser({
-  timeout: 15_000,
-  headers: {
-    "User-Agent": "Mozilla/5.0 (compatible; Positron/3.4; +https://positron.today)",
-    "Accept": "application/rss+xml, application/xml, text/xml, */*",
-    "Accept-Encoding": "gzip, deflate",
-  },
-});
+const parser = new RSSParser();
+
+const RSS_HEADERS: Record<string, string> = {
+  "User-Agent": "Mozilla/5.0 (compatible; Positron/3.4; +https://positron.today)",
+  "Accept": "application/rss+xml, application/xml, text/xml, */*",
+  "Accept-Encoding": "gzip, deflate",
+};
+
+async function fetchAndParseFeed(url: string): Promise<ReturnType<typeof parser.parseString>> {
+  const res = await fetch(url, { headers: RSS_HEADERS, signal: AbortSignal.timeout(15_000) });
+  if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+  let text = await res.text();
+  // Strip BOM and leading whitespace — some feeds emit \r\n or a UTF-8 BOM before the XML
+  text = text.replace(/^﻿/, "").trimStart();
+  return parser.parseString(text);
+}
 
 let running = false;
 let activeRunId: number | null = null;
@@ -110,7 +118,7 @@ async function fetchOneFeed(
   await appendLog(runId, { type: "source", name: sourceName, url: feedUrl });
 
   try {
-    const feed = await withRetry(() => parser.parseURL(feedUrl), { label: `RSS ${sourceName}` });
+    const feed = await withRetry(() => fetchAndParseFeed(feedUrl), { label: `RSS ${sourceName}` });
     const items = feed.items.slice(0, 10).filter(i => i.link && i.title);
 
     for (const item of items) {
