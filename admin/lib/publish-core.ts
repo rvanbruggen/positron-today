@@ -69,31 +69,45 @@ export async function commitToGitHub(path: string, content: string, message: str
   const encoded = Buffer.from(content).toString("base64");
   const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
   const headers = { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" };
+  const payloadKB = Math.round(encoded.length / 1024);
 
   const MAX_RETRIES = 3;
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
-    let sha: string | undefined;
-    const existing = await fetch(url, { headers });
-    if (existing.ok) sha = (await existing.json()).sha;
+    try {
+      let sha: string | undefined;
+      const existing = await fetch(url, { headers, signal: AbortSignal.timeout(30_000) });
+      if (existing.ok) sha = (await existing.json()).sha;
 
-    const body: Record<string, unknown> = { message, content: encoded, branch: GITHUB_BRANCH };
-    if (sha) body.sha = sha;
+      const body: Record<string, unknown> = { message, content: encoded, branch: GITHUB_BRANCH };
+      if (sha) body.sha = sha;
 
-    const res = await fetch(url, {
-      method: "PUT",
-      headers: { ...headers, "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+      console.log(`[commitToGitHub] PUT ${path} (${payloadKB} KB, attempt ${attempt + 1}/${MAX_RETRIES})`);
 
-    if (res.ok) return;
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: { ...headers, "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(60_000),
+      });
 
-    if (res.status === 409 && attempt < MAX_RETRIES - 1) {
-      console.warn(`[commitToGitHub] SHA conflict on ${path}, attempt ${attempt + 1}, retrying…`);
-      await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
-      continue;
+      if (res.ok) return;
+
+      if (res.status === 409 && attempt < MAX_RETRIES - 1) {
+        console.warn(`[commitToGitHub] SHA conflict on ${path}, attempt ${attempt + 1}, retrying…`);
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+        continue;
+      }
+
+      throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
+    } catch (err) {
+      const cause = err instanceof Error && "cause" in err ? ` (cause: ${(err as { cause?: unknown }).cause})` : "";
+      if (attempt < MAX_RETRIES - 1) {
+        console.warn(`[commitToGitHub] ${path} attempt ${attempt + 1} failed: ${err instanceof Error ? err.message : err}${cause}, retrying…`);
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+        continue;
+      }
+      throw new Error(`commitToGitHub ${path} failed after ${MAX_RETRIES} attempts: ${err instanceof Error ? err.message : err}${cause}`);
     }
-
-    throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
   }
 }
 
