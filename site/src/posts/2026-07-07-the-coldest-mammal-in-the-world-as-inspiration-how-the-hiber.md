@@ -2,7 +2,7 @@
 title: "The coldest mammal in the world as inspiration: how the hibernation of the Arctic ground squirrel can save lives in heart attacks and strokes"
 title_nl: "Het koudste zoogdier ter wereld als inspiratiebron: zo kan de winterslaap van de Arctische grondeekhoorn levens redden bij hartinfarcten en beroertes"
 title_fr: "Le mammifère le plus froid du monde comme source d'inspiration : comment l'hibernation de l'écureuil terrestre arctique peut sauver des vies lors d'infarctus et d'accidents vasculaires cérébraux"
-date: 2026-07-07T04:20:06
+date: 2026-07-07T04:20:15
 source_pub_date: 2026-07-06
 fetched_date: 2026-07-06
 source_url: "https://www.demorgen.be/tech-wetenschap/het-koudste-zoogdier-ter-wereld-als-inspiratiebron-zo-kan-de-winterslaap-van-de-arctische-grondeekhoorn-levens-redden-bij-hartinfarcten-en-beroertes~ba20845f/"
