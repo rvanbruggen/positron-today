@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-07T14:56:32.010Z",
-  "total_rejected": 76102,
+  "exported_at": "2026-07-07T14:56:43.483Z",
+  "total_rejected": 76103,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1111
+      "count": 1112
     },
     {
       "category": "divisive-racism",
@@ -370,6 +370,11 @@
       "total": 10
     },
     {
+      "source": "The Better India",
+      "negative": 5,
+      "total": 11
+    },
+    {
       "source": "Quanta Magazine",
       "negative": 4,
       "total": 5
@@ -380,17 +385,20 @@
       "total": 10
     },
     {
-      "source": "The Better India",
-      "negative": 4,
-      "total": 10
-    },
-    {
       "source": "Manual",
       "negative": 1,
       "total": 6
     }
   ],
   "articles": [
+    {
+      "source": "The Better India",
+      "title": "His Mother's Death Inspired Him to Treat 40,000 Patients for Free ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/videos/society/his-mothers-death-inspired-him-to-treat-40000-patients-for-free-12140784",
+      "date": "2026-07-07 16:56"
+    },
     {
       "source": "The Progress Network (What Could Go Right?)",
       "title": "What Could Go Right? American Dads’ Quiet Revolution",
@@ -8381,14 +8389,6 @@
       "reason": "The article discusses ongoing violence and casualties in the Ukraine conflict, which is inherently negative and does not uplift the reader.",
       "category": "war-conflict",
       "url": "https://www.lemonde.fr/international/live/2026/07/06/en-direct-guerre-en-ukraine-mark-rutte-le-secretaire-general-de-l-otan-denonce-des-attaques-russes-indiscriminees_6720832_3210.html",
-      "date": "2026-07-06 21:23"
-    },
-    {
-      "source": "Le Monde",
-      "title": "Pourquoi la cour d’appel de Versailles a décidé de relaxer Dominique Boutonnat, jugé pour agression sexuelle",
-      "reason": "The article discusses a legal case involving a sexual assault charge, which is inherently negative and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.lemonde.fr/societe/article/2026/07/06/pourquoi-la-cour-d-appel-de-versailles-a-decide-de-relaxer-dominique-boutonnat-juge-pour-agression-sexuelle_6721226_3224.html",
       "date": "2026-07-06 21:23"
     }
   ]
