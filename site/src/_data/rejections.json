@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-07-07T14:01:28.400Z",
-  "total_rejected": 75822,
+  "exported_at": "2026-07-07T14:08:25.132Z",
+  "total_rejected": 75827,
   "sources_count": 48,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 20769
+      "count": 20770
     },
     {
       "category": "soft-news-filler",
-      "count": 9208
+      "count": 9210
     },
     {
       "category": "sports-negative",
@@ -21,7 +21,7 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 5591
+      "count": 5593
     },
     {
       "category": "economic-doom",
@@ -86,8 +86,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 4787,
-      "total": 4844
+      "negative": 4789,
+      "total": 4846
     },
     {
       "source": "Le Figaro",
@@ -96,8 +96,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 3457,
-      "total": 3483
+      "negative": 3458,
+      "total": 3484
     },
     {
       "source": "De Morgen",
@@ -116,8 +116,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 3158,
-      "total": 3168
+      "negative": 3159,
+      "total": 3169
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -201,8 +201,8 @@
     },
     {
       "source": "Nature",
-      "negative": 544,
-      "total": 626
+      "negative": 545,
+      "total": 627
     },
     {
       "source": "Euroactiv",
@@ -311,6 +311,46 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Jan Maciejewski: Odpoczywać jak Tomasz Mann w filmie Pawła Pawlikowskiego",
+      "reason": "This article appears to be a celebrity/entertainment profile or commentary piece about a public figure (Jan Maciejewski) in relation to a film director (Paweł Pawlikowski). It falls under celebrity and entertainment industry coverage, which is excluded regardless of positive framing.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.rp.pl/plus-minus/art44756441-jan-maciejewski-odpoczywac-jak-tomasz-mann-w-filmie-pawla-pawlikowskiego",
+      "date": "2026-07-07 16:08"
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Notariusze będą więcej zarabiać. Nowy projekt Ministerstwa Sprawiedliwości",
+      "reason": "This is government/regulatory news about fee increases for notaries in Poland. It falls under politics/government decisions (Rule 6) and has local-only relevance to Poland (Rule 2). The story is not about a breakthrough or exceptional agreement, just a domestic policy adjustment.",
+      "category": "political-conflict",
+      "url": "https://www.rp.pl/prawo-w-polsce/art44784201-notariusze-beda-wiecej-zarabiac-nowy-projekt-ministerstwa-sprawiedliwosci",
+      "date": "2026-07-07 16:08"
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Robyn tidigarelägger Oslo-konsert: ”Nu får ni banne mig vinna det här Norge!”",
+      "reason": "This is celebrity entertainment content about a pop star adjusting her concert schedule. It falls under celebrity/entertainment industry coverage (Rule 3), which is rejected regardless of the positive framing.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dn.se/kultur/robyn-tidigarelagger-oslo-konsert-nu-far-ni-banne-mig-vinna-det-har-norge/",
+      "date": "2026-07-07 16:08"
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Så meget mere skal du sætte ind på pensionen, hvis du vil have fri før tid",
+      "reason": "This is financial/retirement planning advice content with local-only relevance (Danish pension system). It's instructional rather than genuinely uplifting, and would not interest readers outside Denmark.",
+      "category": "soft-news-filler",
+      "url": "https://politiken.dk/danmark/art10903050/S%C3%A5-meget-mere-skal-du-s%C3%A6tte-ind-p%C3%A5-pensionen-hvis-du-vil-have-fri-f%C3%B8r-tid",
+      "date": "2026-07-07 16:08"
+    },
+    {
+      "source": "Nature",
+      "title": "Say hello to hard helium",
+      "reason": "This appears to be a routine tech/industry update about a scientific or materials discovery. Without the full article, it reads as a product or research announcement rather than a proven, civilisation-scale breakthrough that would meet the exception criteria.",
+      "category": "soft-news-filler",
+      "url": "https://www.nature.com/articles/d41586-026-02101-7",
+      "date": "2026-07-07 16:08"
+    },
     {
       "source": "The Journal (Ireland)",
       "title": "Man charged after alleged assault of three gardaí in Newbridge",
@@ -8270,46 +8310,6 @@
       "category": "political-conflict",
       "url": "https://www.demorgen.be/snelnieuws/live-voorlopig-rapport-monitoringcomite-regering-de-wever-moet-komende-weken-op-zoek-naar-7-9-miljard-euro~bf7e76f4/",
       "date": "2026-07-06 14:25"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Dansk fotojournalist løsladt efter fem dages fængsel i Uganda ",
-      "reason": "The article discusses the release of a Danish photojournalist after five days in prison in Uganda, which is a negative situation involving imprisonment and conflict, rather than a strictly positive story.",
-      "category": "war-conflict",
-      "url": "https://www.dr.dk/nyheder/seneste/dansk-fotojournalist-loesladt-efter-fem-dages-faengsel-i-uganda",
-      "date": "2026-07-06 14:06"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Mette Frederiksen reagerer på dødelig episode ved VM-arrangement ",
-      "reason": "The article discusses a deadly incident at a sports event, which is inherently negative and does not uplift the reader.",
-      "category": "disaster-accident",
-      "url": "https://www.dr.dk/nyheder/seneste/mette-frederiksen-reagerer-paa-doedelig-episode-ved-vm-arrangement",
-      "date": "2026-07-06 14:06"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Skadedyrsbekæmpere 'lagt ned' af hvepserelaterede opgaver på grund af varmen",
-      "reason": "The article discusses pest control workers being overwhelmed by wasp-related tasks due to heat, which is not uplifting and focuses on a negative aspect of their work environment.",
-      "category": "other-negative",
-      "url": "https://www.dr.dk/nyheder/seneste/skadedyrsbekaempere-lagt-ned-af-hvepserelaterede-opgaver-paa-grund-af-varmen",
-      "date": "2026-07-06 14:06"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "21-årig kvinde indrømmer bedrageri for millioner",
-      "reason": "The article discusses a young woman admitting to fraud involving millions, which is a negative and concerning topic rather than uplifting.",
-      "category": "crime-violence",
-      "url": "https://www.dr.dk/nyheder/seneste/21-aarig-kvinde-indroemmer-bedrageri-millioner",
-      "date": "2026-07-06 14:06"
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Odense Kommune vil afsætte millioner til at bekæmpe larven fra helvede ",
-      "reason": "The article discusses a local government's financial allocation to combat a pest, which may not be of interest to readers outside the region and lacks broader human relevance.",
-      "category": "soft-news-filler",
-      "url": "https://www.dr.dk/nyheder/seneste/odense-kommune-vil-afsaette-millioner-til-bekaempe-larven-fra-helvede",
-      "date": "2026-07-06 14:05"
     }
   ]
 }
