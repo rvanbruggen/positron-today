@@ -1,0 +1,30 @@
+<svg viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three research findings on what spreads online: negative words lift clicks by 2.3 percent each, moral-emotional words lift shares by 20 percent each, and posts attacking political opponents are the single strongest driver of sharing">
+  <rect width="1200" height="640" fill="#fdfaf4"/>
+
+  <text x="80" y="88" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#2b2b2b">what actually spreads</text>
+  <text x="80" y="128" font-family="Georgia, serif" font-size="21" fill="#7d7568">three large-scale studies of online sharing</text>
+
+  <!-- Row 1 -->
+  <g font-family="Georgia, serif">
+    <rect x="80" y="165" width="1040" height="130" rx="14" fill="#ffffff" stroke="#ecd9b4" stroke-width="1.5"/>
+    <text x="120" y="222" font-size="52" fill="#f59e0b">+2.3%</text>
+    <text x="360" y="212" font-size="24" fill="#2b2b2b">clicks, per extra negative word in a headline</text>
+    <text x="360" y="250" font-size="19" fill="#7d7568">Robertson et al., 2023 · ~105,000 headline variants · 5.7M clicks</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g font-family="Georgia, serif">
+    <rect x="80" y="315" width="1040" height="130" rx="14" fill="#ffffff" stroke="#ecd9b4" stroke-width="1.5"/>
+    <text x="120" y="372" font-size="52" fill="#f59e0b">+20%</text>
+    <text x="360" y="362" font-size="24" fill="#2b2b2b">shares, per extra moral-emotional word</text>
+    <text x="360" y="400" font-size="19" fill="#7d7568">Brady et al., 2017 · 563,000 tweets · "moral contagion"</text>
+  </g>
+
+  <!-- Row 3 -->
+  <g font-family="Georgia, serif">
+    <rect x="80" y="465" width="1040" height="130" rx="14" fill="#3f3a31"/>
+    <text x="120" y="522" font-size="42" fill="#f7b13f">#1</text>
+    <text x="360" y="512" font-size="24" fill="#fdfaf4">attacking the political out-group: the strongest driver of all</text>
+    <text x="360" y="550" font-size="19" fill="#c9c1b1">Rathje, Van Bavel &amp; van der Linden, 2021 · 2.7M posts</text>
+  </g>
+</svg>
