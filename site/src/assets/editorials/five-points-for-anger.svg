@@ -1,0 +1,31 @@
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A comparison of two social media reaction weightings: a like counted as one point next to an angry reaction counted as five points in the ranking algorithm">
+  <rect width="1200" height="600" fill="#fdfaf4"/>
+
+  <text x="80" y="88" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#2b2b2b">what the feed was scoring</text>
+  <text x="80" y="128" font-family="Georgia, serif" font-size="21" fill="#7d7568">how Facebook weighted reactions in its ranking, from 2017</text>
+
+  <!-- LEFT: a like = 1 point -->
+  <g font-family="Georgia, serif" text-anchor="middle">
+    <rect x="140" y="200" width="360" height="240" rx="16" fill="#ffffff" stroke="#ecd9b4" stroke-width="1.5"/>
+    <circle cx="320" cy="285" r="42" fill="#f7b13f"/>
+    <text x="320" y="299" font-size="40" fill="#fffdf8">+</text>
+    <text x="320" y="368" font-size="26" fill="#2b2b2b">a "like"</text>
+    <text x="320" y="410" font-size="40" fill="#5b5347">1 point</text>
+  </g>
+
+  <!-- vs -->
+  <text x="600" y="335" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#a59d8d">vs</text>
+
+  <!-- RIGHT: an angry reaction = 5 points -->
+  <g font-family="Georgia, serif" text-anchor="middle">
+    <rect x="700" y="200" width="360" height="240" rx="16" fill="#3f3a31"/>
+    <circle cx="880" cy="285" r="42" fill="#f59e0b"/>
+    <text x="880" y="299" font-size="40" fill="#fffdf8">–</text>
+    <text x="880" y="368" font-size="26" fill="#fdfaf4">an "angry" reaction</text>
+    <text x="880" y="410" font-size="40" fill="#f7b13f">5 points</text>
+  </g>
+
+  <text x="600" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#5b5347" font-style="italic">you don't tap "angry" on a puppy photo</text>
+
+  <text x="80" y="560" font-family="Georgia, serif" font-size="17" fill="#a59d8d" font-style="italic">Source: internal Facebook documents (Haugen disclosures), reported by the Washington Post, Oct 2021</text>
+</svg>
