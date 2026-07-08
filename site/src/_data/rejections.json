@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-08T05:22:31.677Z",
-  "total_rejected": 76781,
+  "exported_at": "2026-07-08T05:22:44.628Z",
+  "total_rejected": 76782,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1125
+      "count": 1126
     },
     {
       "category": "divisive-racism",
@@ -355,6 +355,11 @@
       "total": 10
     },
     {
+      "source": "The Better India",
+      "negative": 9,
+      "total": 17
+    },
+    {
       "source": "ScienceDaily",
       "negative": 8,
       "total": 16
@@ -363,11 +368,6 @@
       "source": "Scientific American",
       "negative": 8,
       "total": 12
-    },
-    {
-      "source": "The Better India",
-      "negative": 8,
-      "total": 16
     },
     {
       "source": "Reasons to be Cheerful",
@@ -391,6 +391,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Better India",
+      "title": "How a Tamil Backpacker's 10-Day Kashmir Trip Turned Into a Thriving Dosa Business ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/culture/tamil-woman-brings-authentic-dosas-to-kashmir-12142089",
+      "date": "2026-07-08 07:22"
+    },
     {
       "source": "Le Monde",
       "title": "Baisse marquée des émissions de gaz à effet de serre en France au premier trimestre, en raison d’un hiver très chaud",
@@ -8381,14 +8389,6 @@
       "reason": "This article covers military conflict and warfare (Ukrainian drone attacks on Russian infrastructure), which is inherently negative content focused on destruction and escalation, not uplifting human stories.",
       "category": "war-conflict",
       "url": "https://www.demorgen.be/niet-te-missen/bijna-heel-rusland-kan-nu-een-doelwit-worden-oorlogsbloggers-trekken-aan-alarmbel-na-oekraiense-droneaanval-op-grootste-olieraffinaderij-van-het-land~b94ce2f1/",
-      "date": "2026-07-07 15:59"
-    },
-    {
-      "source": "De Morgen",
-      "title": "Na financieel schandaal: Nigel Farage treedt af als parlementslid en wil zijn naam zuiveren via tussentijdse verkiezingen",
-      "reason": "This article covers a political figure responding to a financial scandal and stepping down — a political controversy story that falls squarely under Rule 6 (Politics). It involves partisan political figures and government/parliamentary decisions, not a breakthrough or exceptional agreement.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/na-financieel-schandaal-nigel-farage-treedt-af-als-parlementslid-en-wil-zijn-naam-zuiveren-via-tussentijdse-verkiezingen~bbad2cda/",
       "date": "2026-07-07 15:59"
     }
   ]
