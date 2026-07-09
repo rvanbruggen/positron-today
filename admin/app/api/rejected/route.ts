@@ -9,7 +9,7 @@ export async function GET() {
   // totals, not whatever the capped sample happens to hold.
   const [items, totalResult, topSourcesResult, byCategoryResult, uncategorisedResult] = await Promise.all([
     db.execute(`
-      SELECT id, source_name, url, title, snippet, rejection_reason, rejection_category, fetched_at, source_pub_date
+      SELECT id, source_name, url, title, snippet, rejection_reason, rejection_category, fetched_at, source_pub_date, positivity_score
       FROM rejected_articles
       ORDER BY fetched_at DESC
       LIMIT 1000

@@ -39,7 +39,7 @@ export async function exportRejections(): Promise<{ exported: number }> {
   // Stats (total count, category breakdown) are always computed across the full dataset.
   const [articles, stats] = await Promise.all([
     db.execute(`
-      SELECT source_name, url, title, rejection_reason, rejection_category, fetched_at
+      SELECT source_name, url, title, rejection_reason, rejection_category, fetched_at, positivity_score
       FROM rejected_articles
       ORDER BY fetched_at DESC
       LIMIT 1000
@@ -104,6 +104,7 @@ export async function exportRejections(): Promise<{ exported: number }> {
       category: (r.rejection_category as string) || null,
       url:      r.url as string,
       date:     formatRejectionTimestamp(String(r.fetched_at)),
+      positivity_score: r.positivity_score != null ? Number(r.positivity_score) : null,
     })),
   };
 

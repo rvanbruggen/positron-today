@@ -382,8 +382,15 @@ title: The News That Gets Skipped
         + '<span class="t-nl"' + (lang!=='nl'?' style="display:none"':'') + '>past niet bij positief nieuws</span>'
         + '<span class="t-fr"' + (lang!=='fr'?' style="display:none"':'') + '>ne correspond pas aux critères de l\'actualité positive</span>';
 
+      var scoreBadge = '';
+      if (item.positivity_score != null) {
+        var s = item.positivity_score;
+        var scoreColor = s <= 3 ? '#dc2626' : s <= 6 ? '#d97706' : '#16a34a';
+        scoreBadge = '<span style="display:inline-block;font-size:0.7em;font-weight:bold;padding:1px 5px;border-radius:3px;color:#fff;background:' + scoreColor + ';margin-left:6px;" title="Positivity score">' + s + '/10</span>';
+      }
+
       return '<div class="rejection-card" data-cat="' + escHtml(item.category) + '" style="' + borderStyle + '">'
-        + '<p class="rejection-title"><a href="' + escHtml(item.url) + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">' + escHtml(item.title) + '</a></p>'
+        + '<p class="rejection-title"><a href="' + escHtml(item.url) + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">' + escHtml(item.title) + '</a>' + scoreBadge + '</p>'
         + '<div class="rejection-meta"><span>' + escHtml(item.source) + '</span><span>' + escHtml(item.date) + '</span>' + badge + '</div>'
         + '<p class="rejection-reason">' + (item.reason ? escHtml(item.reason) : fallbackReason) + '</p>'
         + '</div>';

@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useMemo } from "react";
 import { REJECTION_CATEGORIES, CATEGORY_MAP } from "@/lib/rejection-categories";
 import { formatRejectionTimestamp } from "@/lib/schedule-time";
 
-type SortKey = "title" | "source" | "category" | "date";
+type SortKey = "title" | "source" | "category" | "score" | "date";
 type SortDir = "asc" | "desc";
 
 type Rejection = {
@@ -17,6 +17,7 @@ type Rejection = {
   rejection_category: string | null;
   fetched_at: string;
   source_pub_date: string | null;
+  positivity_score: number | null;
 };
 
 type BackfillEvent =
@@ -235,6 +236,7 @@ export default function RejectionsPage() {
       if (sortKey === "title")    cmp = a.title.localeCompare(b.title);
       else if (sortKey === "source")   cmp = a.source_name.localeCompare(b.source_name);
       else if (sortKey === "category") cmp = (a.rejection_category ?? "").localeCompare(b.rejection_category ?? "");
+      else if (sortKey === "score") cmp = (a.positivity_score ?? 0) - (b.positivity_score ?? 0);
       else cmp = a.fetched_at.localeCompare(b.fetched_at); // date
       return sortDir === "asc" ? cmp : -cmp;
     });
@@ -414,6 +416,11 @@ export default function RejectionsPage() {
                     Category<SortIcon col="category" />
                   </button>
                 </th>
+                <th className="text-center px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden lg:table-cell">
+                  <button onClick={() => handleSort("score")} className="flex items-center justify-center hover:text-amber-900 transition-colors">
+                    Score<SortIcon col="score" />
+                  </button>
+                </th>
                 <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide whitespace-nowrap">
                   <button onClick={() => handleSort("date")} className="flex items-center hover:text-amber-900 transition-colors">
                     Date<SortIcon col="date" />
@@ -447,6 +454,21 @@ export default function RejectionsPage() {
                     {/* Category */}
                     <td className="px-4 py-2.5 hidden lg:table-cell">
                       <CategoryBadge slug={item.rejection_category} />
+                    </td>
+
+                    {/* Score */}
+                    <td className="px-4 py-2.5 text-center hidden lg:table-cell">
+                      {item.positivity_score != null ? (
+                        <span className={`inline-block text-xs font-bold px-1.5 py-0.5 rounded ${
+                          item.positivity_score <= 3 ? "bg-red-100 text-red-700" :
+                          item.positivity_score <= 6 ? "bg-amber-100 text-amber-700" :
+                          "bg-green-100 text-green-700"
+                        }`}>
+                          {item.positivity_score}
+                        </span>
+                      ) : (
+                        <span className="text-amber-300 text-xs">—</span>
+                      )}
                     </td>
 
                     {/* Date */}
