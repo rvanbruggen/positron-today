@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-09T04:19:26.484Z",
-  "total_rejected": 77836,
+  "exported_at": "2026-07-09T05:17:41.185Z",
+  "total_rejected": 77837,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1133
+      "count": 1134
     },
     {
       "category": "divisive-racism",
@@ -345,14 +345,14 @@
       "total": 21
     },
     {
+      "source": "ScienceDaily",
+      "negative": 12,
+      "total": 25
+    },
+    {
       "source": "MIT Technology Review",
       "negative": 11,
       "total": 12
-    },
-    {
-      "source": "ScienceDaily",
-      "negative": 11,
-      "total": 24
     },
     {
       "source": "De Tijd",
@@ -391,6 +391,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Harvard scientists turn a silicon chip into a DNA writing machine",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/07/260708022202.htm",
+      "date": "2026-07-09 07:17"
+    },
     {
       "source": "MercoPress",
       "title": "UK/Netherlands navies partnership with eight next-generation amphibious transport ships",
@@ -8381,14 +8389,6 @@
       "reason": "The article discusses a tragic fire caused by an accident, which is not uplifting and focuses on a negative event.",
       "category": "disaster-accident",
       "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/parket-bevestigt-oorzaak-van-brand-op-linkeroever-waterleiding-geraakt-tijdens-plaatsing-elektriciteitskast/158422471.html",
-      "date": "2026-07-08 10:26"
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Argentiniens Comeback: „Gott ist auferstanden“",
-      "reason": "The article discusses a sports event with a focus on a comeback in a match, which falls under the category of non-exceptional sports content and does not provide a universally uplifting story.",
-      "category": "sports-negative",
-      "url": "https://www.faz.net/aktuell/sport/fussball-wm/pressestimmen-zu-lionel-messi-bei-fussball-wm-2026-gott-ist-auferstanden-accg-201008813.html",
       "date": "2026-07-08 10:26"
     }
   ]
