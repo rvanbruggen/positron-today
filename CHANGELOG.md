@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.5.2** | Add positivity score distribution chart to public "What gets skipped" page — stacked horizontal bars per source showing negative/neutral/positive breakdown, sortable by most negative or most positive |
 | **3.5.1** | Show positivity score (1-10) on admin rejections page (sortable column with color-coded badges) and public "What gets skipped" page (inline score badge per article). Include score in rejection log export |
 | **3.5.0** | Parallel RSS fetching (10 concurrent), cascade guard (skip failure increments when >30% of sources fail in one run), raise auto-pause threshold from 3 to 5 consecutive failures. Show scheduled publication date on editorials list page |
 | **3.4.1** | Fix RSS fetch failures for Washington Post, Nature, Le Soir, Euronews — set browser-like User-Agent/Accept/Accept-Encoding headers on the RSS parser and increase timeout from 8s to 15s |
