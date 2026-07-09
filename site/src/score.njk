@@ -196,7 +196,7 @@ title: Positivity Score
   <div class="chart-canvas-wrap">
     <canvas id="trend-chart"></canvas>
   </div>
-  <div class="chart-controls" id="chart-controls" style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+  <div class="chart-controls" id="chart-controls" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem;">
     <button class="preset-pill" onclick="chartSelectAll()" style="font-size:0.65rem;padding:0.2rem 0.6rem;">
       <span class="t-en">Select all</span>
       <span class="t-nl" style="display:none">Alles selecteren</span>
@@ -207,6 +207,15 @@ title: Positivity Score
       <span class="t-nl" style="display:none">Alles deselecteren</span>
       <span class="t-fr" style="display:none">Tout désélectionner</span>
     </button>
+    <span style="border-left:1px solid #fde68a;margin:0 0.15rem;"></span>
+    <button class="preset-pill" onclick="chartSelectCountry('BE')" style="font-size:0.65rem;padding:0.2rem 0.6rem;">🇧🇪 Belgium</button>
+    <button class="preset-pill" onclick="chartSelectCountry('US')" style="font-size:0.65rem;padding:0.2rem 0.6rem;">🇺🇸 USA</button>
+    <button class="preset-pill" onclick="chartSelectCountry('UK')" style="font-size:0.65rem;padding:0.2rem 0.6rem;">🇬🇧 UK</button>
+    <button class="preset-pill" onclick="chartSelectCountry('FR')" style="font-size:0.65rem;padding:0.2rem 0.6rem;">🇫🇷 France</button>
+    <button class="preset-pill" onclick="chartSelectCountry('DE')" style="font-size:0.65rem;padding:0.2rem 0.6rem;">🇩🇪 DACH</button>
+    <button class="preset-pill" onclick="chartSelectCountry('NL')" style="font-size:0.65rem;padding:0.2rem 0.6rem;">🇳🇱 Netherlands</button>
+    <button class="preset-pill" onclick="chartSelectCountry('SCAN')" style="font-size:0.65rem;padding:0.2rem 0.6rem;">🇩🇰 Scandinavia</button>
+    <button class="preset-pill" onclick="chartSelectCountry('EU')" style="font-size:0.65rem;padding:0.2rem 0.6rem;">🇪🇺 EU/Intl</button>
   </div>
   <div class="chart-legend" id="chart-legend"></div>
 </div>
@@ -479,6 +488,24 @@ title: Positivity Score
     renderTrendChart();
   }
 
+  var SOURCE_COUNTRY = {
+    'BBC': 'UK', 'BBC Top Stories': 'UK', 'The Guardian': 'UK', 'The Guardian Europe': 'UK',
+    'Nature': 'UK', 'Positive News': 'UK',
+    'CNN': 'US', 'NY Times': 'US', 'The New York Times': 'US', 'The Washington Post': 'US',
+    'Good News Network': 'US', 'Upworthy': 'US', 'The Verge': 'US', 'Wired': 'US',
+    'Popular Science': 'US', 'Microsoft Research': 'US', 'Chain of thought': 'US',
+    'Scientific American': 'US', 'Science.org news': 'US',
+    'De Morgen': 'BE', 'De Standaard Binnenland': 'BE', 'De Standaard Buitenland': 'BE',
+    'De Standaard Economie': 'BE', 'Gazet van Antwerpen': 'BE', 'Het Laatste Nieuws': 'BE',
+    'Humo': 'BE', 'Knack': 'BE', 'VRT Nws': 'BE',
+    'Le Figaro': 'FR', 'Le Monde': 'FR',
+    'Frankfurter Allgemeine Zeitung': 'DE', 'Neue Zürcher Zeitung': 'DE',
+    'NRC': 'NL',
+    'DR (Danish Public broadcaster)': 'SCAN', 'Politiken.dk': 'SCAN', 'Dagens Nyheter': 'SCAN',
+    'El pais': 'EU', 'Euroactiv': 'EU', 'Euronews': 'EU',
+    'Rzeczpospolita Poland': 'EU', 'The Journal (Ireland)': 'EU'
+  };
+
   function chartSelectAll() {
     window._chartHidden = {};
     renderTrendChart();
@@ -488,6 +515,15 @@ title: Positivity Score
     var seen = {};
     SCORE_DATA.forEach(function(e) { seen[e.source] = true; });
     Object.keys(seen).forEach(function(src) { window._chartHidden[src] = true; });
+    renderTrendChart();
+  }
+
+  function chartSelectCountry(country) {
+    var seen = {};
+    SCORE_DATA.forEach(function(e) { seen[e.source] = true; });
+    Object.keys(seen).forEach(function(src) {
+      window._chartHidden[src] = (SOURCE_COUNTRY[src] || '') !== country;
+    });
     renderTrendChart();
   }
 
