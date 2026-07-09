@@ -130,6 +130,26 @@ title: Positivity Score
     transition:background 0.15s; white-space:nowrap;
   }
   .preset-pill:hover { background:#fef3c7; }
+
+  /* ── Score distribution chart ── */
+  .dist-section { background:#fff; border:1.5px solid #fde68a; border-radius:1rem; padding:1.25rem 1.5rem; margin-bottom:2rem; }
+  .dist-row { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.45rem; }
+  .dist-label { font-size:0.78rem; color:#78350f; width:200px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .dist-bar-wrap { flex:1; height:14px; background:#fef3c7; border-radius:99px; overflow:hidden; display:flex; }
+  .dist-bar-seg { height:100%; transition:width 0.3s; }
+  .dist-bar-neg { background:#dc2626; }
+  .dist-bar-neu { background:#d97706; }
+  .dist-bar-pos { background:#16a34a; }
+  .dist-pct { font-size:0.72rem; color:#b45309; width:140px; text-align:right; flex-shrink:0; white-space:nowrap; }
+  .dist-legend { display:flex; gap:1.2rem; margin-bottom:1rem; flex-wrap:wrap; }
+  .dist-legend-item { display:flex; align-items:center; gap:0.3rem; font-size:0.72rem; color:#78350f; }
+  .dist-legend-swatch { width:10px; height:10px; border-radius:2px; }
+  .dist-sort-toggle { display:flex; gap:0; border:1.5px solid #fde68a; border-radius:99px; overflow:hidden; }
+  .dist-sort-btn {
+    padding:0.25rem 0.75rem; font-size:0.7rem; font-weight:600; cursor:pointer;
+    background:#fff; color:#78350f; border:none; font-family:inherit; transition:background 0.15s;
+  }
+  .dist-sort-btn.active { background:#facc15; }
 </style>
 
 <div class="page-header">
@@ -226,6 +246,49 @@ title: Positivity Score
     <span class="t-nl" style="display:none">Score-tracking is net gestart — de trendgrafiek verschijnt hier zodra er data is verzameld.</span>
     <span class="t-fr" style="display:none">Le suivi des scores vient de commencer — le graphique de tendances apparaîtra ici une fois les données collectées.</span>
   </div>
+</div>
+{% endif %}
+
+<!-- Score distribution by source -->
+{% if scores.entries and scores.entries.length > 0 %}
+<div class="dist-section">
+  <div class="chart-header">
+    <div class="chart-title">
+      <span class="t-en">Positivity score distribution by source</span>
+      <span class="t-nl" style="display:none">Positiviteitsscore per bron</span>
+      <span class="t-fr" style="display:none">Distribution du score de positivité par source</span>
+    </div>
+    <div class="dist-sort-toggle">
+      <button class="dist-sort-btn active" id="dist-sort-neg-btn" onclick="sortDistChart('negative')">
+        <span class="t-en">Most negative</span>
+        <span class="t-nl" style="display:none">Meest negatief</span>
+        <span class="t-fr" style="display:none">Plus négatif</span>
+      </button>
+      <button class="dist-sort-btn" id="dist-sort-pos-btn" onclick="sortDistChart('positive')">
+        <span class="t-en">Most positive</span>
+        <span class="t-nl" style="display:none">Meest positief</span>
+        <span class="t-fr" style="display:none">Plus positif</span>
+      </button>
+    </div>
+  </div>
+  <div class="dist-legend">
+    <div class="dist-legend-item"><div class="dist-legend-swatch" style="background:#dc2626;"></div>
+      <span class="t-en">Negative (1-3)</span>
+      <span class="t-nl" style="display:none">Negatief (1-3)</span>
+      <span class="t-fr" style="display:none">Négatif (1-3)</span>
+    </div>
+    <div class="dist-legend-item"><div class="dist-legend-swatch" style="background:#d97706;"></div>
+      <span class="t-en">Neutral (4-6)</span>
+      <span class="t-nl" style="display:none">Neutraal (4-6)</span>
+      <span class="t-fr" style="display:none">Neutre (4-6)</span>
+    </div>
+    <div class="dist-legend-item"><div class="dist-legend-swatch" style="background:#16a34a;"></div>
+      <span class="t-en">Positive (7-10)</span>
+      <span class="t-nl" style="display:none">Positief (7-10)</span>
+      <span class="t-fr" style="display:none">Positif (7-10)</span>
+    </div>
+  </div>
+  <div id="dist-chart-list"></div>
 </div>
 {% endif %}
 
@@ -632,4 +695,59 @@ title: Positivity Score
   document.getElementById('url-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') runScore();
   });
+
+  // ─── Score distribution chart ─────────────────────────────────────────────
+  var distSort = 'negative';
+
+  function renderDistChart() {
+    var el = document.getElementById('dist-chart-list');
+    if (!el || !SCORE_DATA.length) return;
+
+    var bySource = {};
+    SCORE_DATA.forEach(function(e) {
+      if (!e.breakdown) return;
+      if (!bySource[e.source]) bySource[e.source] = { neg: 0, neu: 0, pos: 0, total: 0 };
+      var b = bySource[e.source];
+      b.neg += (e.breakdown.negative || 0);
+      b.neu += (e.breakdown.neutral || 0);
+      b.pos += (e.breakdown.positive || 0);
+      b.total += (e.breakdown.negative || 0) + (e.breakdown.neutral || 0) + (e.breakdown.positive || 0);
+    });
+
+    var data = [];
+    for (var src in bySource) {
+      var d = bySource[src];
+      if (d.total >= 5) data.push({ source: src, neg: d.neg, neu: d.neu, pos: d.pos, total: d.total });
+    }
+
+    if (distSort === 'negative') {
+      data.sort(function(a, b) { return (b.neg / b.total) - (a.neg / a.total); });
+    } else {
+      data.sort(function(a, b) { return (b.pos / b.total) - (a.pos / a.total); });
+    }
+
+    el.innerHTML = data.map(function(d) {
+      var pNeg = Math.round(d.neg / d.total * 100);
+      var pNeu = Math.round(d.neu / d.total * 100);
+      var pPos = Math.max(0, 100 - pNeg - pNeu);
+      return '<div class="dist-row">'
+        + '<div class="dist-label">' + escHtml(d.source) + '</div>'
+        + '<div class="dist-bar-wrap">'
+        + (pNeg > 0 ? '<div class="dist-bar-seg dist-bar-neg" style="width:' + pNeg + '%;"></div>' : '')
+        + (pNeu > 0 ? '<div class="dist-bar-seg dist-bar-neu" style="width:' + pNeu + '%;"></div>' : '')
+        + (pPos > 0 ? '<div class="dist-bar-seg dist-bar-pos" style="width:' + pPos + '%;"></div>' : '')
+        + '</div>'
+        + '<div class="dist-pct">' + pNeg + '% / ' + pNeu + '% / ' + pPos + '%</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  function sortDistChart(mode) {
+    distSort = mode;
+    document.getElementById('dist-sort-neg-btn').classList.toggle('active', mode === 'negative');
+    document.getElementById('dist-sort-pos-btn').classList.toggle('active', mode === 'positive');
+    renderDistChart();
+  }
+
+  renderDistChart();
 </script>

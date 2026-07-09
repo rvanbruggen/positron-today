@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.5.3** | Move positivity score distribution chart from "What gets skipped" to the Score page, using full-picture data (accepted + rejected articles) from scores.json instead of rejected-only |
 | **3.5.2** | Add positivity score distribution chart to public "What gets skipped" page — stacked horizontal bars per source showing negative/neutral/positive breakdown, sortable by most negative or most positive |
 | **3.5.1** | Show positivity score (1-10) on admin rejections page (sortable column with color-coded badges) and public "What gets skipped" page (inline score badge per article). Include score in rejection log export |
 | **3.5.0** | Parallel RSS fetching (10 concurrent), cascade guard (skip failure increments when >30% of sources fail in one run), raise auto-pause threshold from 3 to 5 consecutive failures. Show scheduled publication date on editorials list page |
