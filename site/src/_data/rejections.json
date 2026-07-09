@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-09T05:18:36.048Z",
-  "total_rejected": 77841,
+  "exported_at": "2026-07-09T05:18:43.865Z",
+  "total_rejected": 77842,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1138
+      "count": 1139
     },
     {
       "category": "divisive-racism",
@@ -330,6 +330,11 @@
       "total": 18
     },
     {
+      "source": "Good Good Good",
+      "negative": 14,
+      "total": 23
+    },
+    {
       "source": "Scientific American",
       "negative": 14,
       "total": 20
@@ -338,11 +343,6 @@
       "source": "The Better India",
       "negative": 14,
       "total": 28
-    },
-    {
-      "source": "Good Good Good",
-      "negative": 13,
-      "total": 22
     },
     {
       "source": "ScienceDaily",
@@ -391,6 +391,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good Good Good",
+      "title": "Fishermen save 220-pound loggerhead sea turtle from strangling ropes",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodgoodgood.co/articles/sea-turtle-rescue-australia-strangled-ropes",
+      "date": "2026-07-09 07:18"
+    },
     {
       "source": "Good Good Good",
       "title": "NYC church where Alexander Hamilton is buried to build 120 affordable apartments",
@@ -8381,14 +8389,6 @@
       "reason": "The article discusses a sports event with a focus on a specific match result, which does not meet the criteria for exceptional or universally uplifting content.",
       "category": "sports-negative",
       "url": "https://www.gva.be/sport/zaalsporten/volleybal/strijdvaardige-yellow-tigers-openen-derde-nations-league-week-met-zege-tegen-dominicaanse-republiek/158422155.html",
-      "date": "2026-07-08 10:27"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Waarom het gras van Wimbledon veel  langer groen blijft dan vroeger ",
-      "reason": "The article discusses the maintenance of Wimbledon grass, which falls under routine sports content and lacks broad human relevance.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/tennis/waarom-het-gras-van-wimbledon-veel-langer-groen-blijft-dan-vroeger/158413436.html",
       "date": "2026-07-08 10:27"
     }
   ]
