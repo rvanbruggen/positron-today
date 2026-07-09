@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-09T20:58:01.968Z",
-  "total_rejected": 78728,
+  "exported_at": "2026-07-09T20:58:12.965Z",
+  "total_rejected": 78729,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1157
+      "count": 1158
     },
     {
       "category": "divisive-racism",
@@ -345,14 +345,14 @@
       "total": 24
     },
     {
+      "source": "ScienceDaily",
+      "negative": 14,
+      "total": 30
+    },
+    {
       "source": "MIT Technology Review",
       "negative": 13,
       "total": 14
-    },
-    {
-      "source": "ScienceDaily",
-      "negative": 13,
-      "total": 29
     },
     {
       "source": "De Tijd",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Scientists finally solved a 150-year-old gallium mystery",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/07/260707054119.htm",
+      "date": "2026-07-09 22:58",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "\"You Can Keep Instagram and Still Save the Planet — Here's What Ladakh Taught Me\" ",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses political conflict and division within the Democratic Party, which is inherently negative and does not uplift the reader.",
       "category": "political-conflict",
       "url": "https://www.bbc.co.uk/news/articles/c20ylnn8wqgo?at_medium=RSS&at_campaign=rss",
-      "date": "2026-07-09 06:16",
-      "positivity_score": 2
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "Democrat Graham Platner suspends campaign for key US Senate race in Maine ",
-      "reason": "The article discusses a political figure's campaign suspension following serious allegations, which is inherently negative and does not uplift the reader.",
-      "category": "political-conflict",
-      "url": "https://www.bbc.co.uk/news/articles/c9v229434p2o?at_medium=RSS&at_campaign=rss",
       "date": "2026-07-09 06:16",
       "positivity_score": 2
     }
