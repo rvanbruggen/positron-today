@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-09T05:17:41.185Z",
-  "total_rejected": 77837,
+  "exported_at": "2026-07-09T05:17:45.770Z",
+  "total_rejected": 77838,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1134
+      "count": 1135
     },
     {
       "category": "divisive-racism",
@@ -340,14 +340,14 @@
       "total": 28
     },
     {
+      "source": "ScienceDaily",
+      "negative": 13,
+      "total": 26
+    },
+    {
       "source": "Good Good Good",
       "negative": 12,
       "total": 21
-    },
-    {
-      "source": "ScienceDaily",
-      "negative": 12,
-      "total": 25
     },
     {
       "source": "MIT Technology Review",
@@ -391,6 +391,14 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Rare goblin shark filmed alive for the first time in the deep sea",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/07/260708022208.htm",
+      "date": "2026-07-09 07:17"
+    },
     {
       "source": "ScienceDaily",
       "title": "Harvard scientists turn a silicon chip into a DNA writing machine",
@@ -8381,14 +8389,6 @@
       "reason": "The article focuses on a light-hearted moment involving a royal figure and her pet, which falls under celebrity and entertainment news, lacking broader human relevance.",
       "category": "celebrity-entertainment",
       "url": "https://www.gva.be/opmerkelijk/poedel-mambo-steelt-de-show-tijdens-fotoshoot-van-nederlandse-koningin-maxima/158423127.html",
-      "date": "2026-07-08 10:26"
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Parket bevestigt oorzaak van brand op Linkeroever: waterleiding geraakt tijdens plaatsing elektriciteitskast",
-      "reason": "The article discusses a tragic fire caused by an accident, which is not uplifting and focuses on a negative event.",
-      "category": "disaster-accident",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/parket-bevestigt-oorzaak-van-brand-op-linkeroever-waterleiding-geraakt-tijdens-plaatsing-elektriciteitskast/158422471.html",
       "date": "2026-07-08 10:26"
     }
   ]
