@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-10T06:51:44.823Z",
-  "total_rejected": 78895,
+  "exported_at": "2026-07-10T06:51:53.099Z",
+  "total_rejected": 78896,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1160
+      "count": 1161
     },
     {
       "category": "divisive-racism",
@@ -236,8 +236,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 135,
-      "total": 137
+      "negative": 136,
+      "total": 138
     },
     {
       "source": "La Libre Belgique",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "‘Extraordinarily rare’ dolphin sightings reported in B.C.’s waters",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/11960531/extraordinarily-rare-dolphin-sightings-bc-waters/",
+      "date": "2026-07-10 08:51",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "Matariki's message for the Pacific: 'We need each other more than we understand'",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses a political candidate withdrawing due to serious allegations, which is a negative and divisive topic.",
       "category": "political-conflict",
       "url": "https://www.standaard.be/buitenland/oesterkweker-platner-trekt-zich-terug-als-democratische-kandidaat-voor-midterms-na-beschuldigingen-van-seksueel-misbruik/35131945.html",
-      "date": "2026-07-09 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Oekraïne valt opnieuw tankers aan in Zee van Azov nabij door Rusland bezette Krim",
-      "reason": "The article discusses military actions in the ongoing conflict in Ukraine, which is a negative and distressing topic.",
-      "category": "war-conflict",
-      "url": "https://www.standaard.be/buitenland/oekrane-valt-opnieuw-tankers-aan-in-zee-van-azov-nabij-door-rusland-bezette-krim/35173633.html",
       "date": "2026-07-09 10:26",
       "positivity_score": 2
     }
