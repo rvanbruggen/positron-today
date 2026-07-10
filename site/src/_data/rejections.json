@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-10T13:37:28.489Z",
-  "total_rejected": 79294,
+  "exported_at": "2026-07-10T13:37:33.775Z",
+  "total_rejected": 79295,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1173
+      "count": 1174
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 4224,
-      "total": 4265
+      "negative": 4225,
+      "total": 4266
     },
     {
       "source": "Dagens Nyheter",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "Arrivé de Russie sans parler français, il décroche son bac avec mention «très bien»",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://etudiant.lefigaro.fr/article/bac/arrive-de-russie-sans-parler-francais-il-decroche-son-bac-avec-20-20-a-toutes-les-epreuves-20260709/",
+      "date": "2026-07-10 15:37",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "Daily briefing: Mutation lets octopuses make proteins with precision",
@@ -9379,15 +9388,6 @@
       "reason": "The article is a preview of a sports event, which falls under the category of non-exceptional sports content and does not provide a universally uplifting story.",
       "category": "sports-negative",
       "url": "https://www.knack.be/sport/wielrennen/voorbeschouwing-rit-7-tour-de-france-sprinters-krijgen-nieuwe-kans-in-bordeaux/",
-      "date": "2026-07-09 18:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Knack",
-      "title": "Het absurde WK van de Rode Duivels",
-      "reason": "The article discusses the performance of a national sports team in a way that lacks exceptional positivity and focuses on a lack of enthusiasm, which does not uplift the reader.",
-      "category": "sports-negative",
-      "url": "https://www.knack.be/sport/voetbal/het-absurde-wk-van-de-rode-duivels/",
       "date": "2026-07-09 18:27",
       "positivity_score": 3
     }
