@@ -18,6 +18,7 @@ type Editorial = {
   content_fr: string | null;
   article_emoji: string | null;
   image_filename: string | null;
+  article_id: number | null;
   post_to_substack: number;
   substack_posted_at: string | null;
   publish_date: string | null;
@@ -278,6 +279,26 @@ export default function EditorialsPage() {
     }
   }
 
+  async function handlePostSocial(editorialId: number, articleId: number | null) {
+    if (!articleId) { setError("No linked article found — cannot post to social media"); return; }
+    setError(""); setSuccess("");
+    setBusy("Posting to social media…");
+    try {
+      const res = await fetch("/api/post-social", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: articleId }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError(data.error ?? "Social post failed"); return; }
+      const platforms = data.platforms?.join(", ") ?? "all";
+      setSuccess(`Posted to social media (${platforms})`);
+      if (data.warning) setError(data.warning);
+    } finally {
+      setBusy("");
+    }
+  }
+
   async function handleUnpublish(id: number) {
     if (!confirm("Remove this editorial from the live site? It will return to 'Ready' status so you can re-publish later.")) return;
     setBusy("Unpublishing…");
@@ -485,6 +506,10 @@ export default function EditorialsPage() {
               <button onClick={() => handlePostSubstack(selected.id)} disabled={!!busy}
                 className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
                 📨 Post to Substack
+              </button>
+              <button onClick={() => handlePostSocial(selected.id, selected.article_id)} disabled={!!busy}
+                className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+                📣 Post to Social
               </button>
               <button onClick={() => handleUnpublish(selected.id)} disabled={!!busy}
                 className="bg-orange-100 hover:bg-orange-200 text-orange-700 font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
