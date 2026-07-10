@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-10T13:37:44.208Z",
-  "total_rejected": 79297,
+  "exported_at": "2026-07-10T13:37:50.750Z",
+  "total_rejected": 79298,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1176
+      "count": 1177
     },
     {
       "category": "divisive-racism",
@@ -290,14 +290,14 @@
       "total": 32
     },
     {
+      "source": "The Better India",
+      "negative": 31,
+      "total": 60
+    },
+    {
       "source": "AI news",
       "negative": 30,
       "total": 30
-    },
-    {
-      "source": "The Better India",
-      "negative": 30,
-      "total": 59
     },
     {
       "source": "Het beste van Humo",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Better India",
+      "title": "The Man Who Turned Dacoits Into Protectors of History ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/videos/knowledge/the-man-who-turned-dacoits-into-protectors-of-history-12150627",
+      "date": "2026-07-10 15:37",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "How 16 Women Drove From India to Thailand & Took Charge of Every Mile Themselves ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.knack.be/nieuws/gezondheid/onze-blootstelling-aan-chemicalien-in-alledaagse-producten-loopt-op-zo-kun-je-ze-beperken/",
       "date": "2026-07-09 18:27",
       "positivity_score": 4
-    },
-    {
-      "source": "Knack",
-      "title": "Ebola: epidemie eist in Congo al 600 doden",
-      "reason": "The article reports on a deadly Ebola outbreak in Congo, which is a negative health crisis and does not uplift the reader.",
-      "category": "health-scare",
-      "url": "https://www.knack.be/nieuws/gezondheid/ebola-epidemie-eist-in-congo-al-600-doden/",
-      "date": "2026-07-09 18:27",
-      "positivity_score": 2
     }
   ]
 }
