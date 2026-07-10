@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-10T13:37:24.227Z",
-  "total_rejected": 79293,
+  "exported_at": "2026-07-10T13:37:28.489Z",
+  "total_rejected": 79294,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1172
+      "count": 1173
     },
     {
       "category": "divisive-racism",
@@ -206,8 +206,8 @@
     },
     {
       "source": "Nature",
-      "negative": 566,
-      "total": 651
+      "negative": 567,
+      "total": 652
     },
     {
       "source": "Popular Science",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Daily briefing: Mutation lets octopuses make proteins with precision",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02177-1",
+      "date": "2026-07-10 15:37",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Ikona modernizmu wraca do życia. Powstaje jedna z największych bibliotek w Europie",
@@ -9380,15 +9389,6 @@
       "category": "sports-negative",
       "url": "https://www.knack.be/sport/voetbal/het-absurde-wk-van-de-rode-duivels/",
       "date": "2026-07-09 18:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Knack",
-      "title": "Bonnie Tyler, de Welshe zangeres die met een kapotte stem wereldhits als ‘Heartache’ en ‘Total Eclipse of the Heart’ scoorde",
-      "reason": "The article discusses the death of Bonnie Tyler, a well-known singer, which is a negative event and does not uplift the reader.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.knack.be/nieuws/cultuur/bonnie-tyler-de-welshe-zangeres-die-met-een-kapotte-stem-wereldhits-als-heartache-en-total-eclipse-of-the-heart-scoorde/",
-      "date": "2026-07-09 18:26",
       "positivity_score": 3
     }
   ]
