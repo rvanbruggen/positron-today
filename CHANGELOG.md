@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.5.4** | Post editorials to social media on publish. Set `post_to_social_on_publish = 1` on the linked articles row and call `postPendingSocial()` after GitHub Pages deploy |
 | **3.5.3** | Move positivity score distribution chart from "What gets skipped" to the Score page, using full-picture data (accepted + rejected articles) from scores.json instead of rejected-only |
 | **3.5.2** | Add positivity score distribution chart to public "What gets skipped" page — stacked horizontal bars per source showing negative/neutral/positive breakdown, sortable by most negative or most positive |
 | **3.5.1** | Show positivity score (1-10) on admin rejections page (sortable column with color-coded badges) and public "What gets skipped" page (inline score badge per article). Include score in rejection log export |
@@ -15,6 +16,7 @@ All notable changes to Positron Today. Newest first.
 | **3.3.1** | Score tracker derives positivity scores from existing pipeline data instead of external API — eliminates API cost and separate schedule. Scores stored on rejected_articles (1-3 negative, 4-6 neutral, 7-10 positive). Score tracker runs automatically after each pipeline run. Admin score settings section removed |
 | **3.3.0** | Add Positivity Score feature — public scoring page at `/score/` with interactive URL scorer (Claude Haiku classifies headlines as positive/negative/neutral), trend chart for tracked sources, and Vercel serverless API at `api.positron.today`. Admin settings section for configuring which sources to track (selectable from existing sources list) and scoring schedule. Mono and Mondrian theme support for the score page. Score tracker runs on admin cron schedule and commits results to GitHub for static site rendering |
 | **3.2.4** | Fix deploy workflow crash on push-triggered runs: use `github.event.inputs` instead of bare `inputs` context in retry-on-failure job (bare `inputs` is only valid for `workflow_dispatch`, causing GitHub to reject the entire YAML on every push since the auto-retry was added) |
+| **3.2.4** | Post editorials to social media on publish. Set `post_to_social_on_publish = 1` on the linked articles row and call `postPendingSocial()` after GitHub Pages deploy |
 | **3.2.3** | Fix editorial images missing on Substack: upload images to Substack CDN directly from DB base64 data before clearing `image_data`, instead of fetching from the public site (which may not have deployed yet). Eliminates the race condition between GitHub Pages deploy and Substack posting |
 | **3.2.2** | Fix GitHub Pages deploy queue: set `cancel-in-progress: true` so newer pushes cancel stuck/queued deployments instead of timing out behind them |
 | **3.2.1** | Fix SQLITE_CONSTRAINT on editorial scheduling: recreate editorials table to widen CHECK constraint to include `scheduled` status (SQLite cannot ALTER a CHECK in place) |

@@ -3,6 +3,7 @@ import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { slugify, yamlStr, commitToGitHub, deleteFromGitHub } from "@/lib/publish-core";
 import { postEditorialToSubstack, uploadImageToSubstack, convertSvgToPng } from "@/lib/editorial-substack";
+import { postPendingSocial } from "@/lib/social-post-core";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",
@@ -299,8 +300,9 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
       sql: `INSERT INTO articles (
         source_url, source_name, status, title_en, title_nl, title_fr,
         summary_en, summary_nl, summary_fr, article_emoji, image_url,
-        featured, published_at, published_path, post_to_substack
-      ) VALUES (?, ?, 'published', ?, ?, ?, ?, ?, ?, ?, ?, 1, datetime('now'), ?, ?)
+        featured, published_at, published_path, post_to_substack,
+        post_to_social_on_publish
+      ) VALUES (?, ?, 'published', ?, ?, ?, ?, ?, ?, ?, ?, 1, datetime('now'), ?, ?, 1)
       RETURNING id`,
       args: [
         `/editorials/${slug}/`,
@@ -403,6 +405,11 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
         }
       }, delayMs);
     }
+
+    // 9. Post to social media (waits for GitHub Pages deploy)
+    postPendingSocial({ waitForLive: true, maxWaitSeconds: 300 })
+      .then(r => console.log(`[editorial] Social: ${r.posted} posted, ${r.skipped} skipped`))
+      .catch(err => console.error(`[editorial] Social post error:`, err));
 
     console.log(`[editorial] Published editorial ${id}: "${title}" → ${editorialPath}`);
     return { ok: true, editorialPath, cardPath };
