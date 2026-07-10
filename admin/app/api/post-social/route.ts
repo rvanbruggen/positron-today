@@ -25,15 +25,21 @@ import {
 
 const SITE_BASE = "https://positron.today";
 
+function articlePublicUrl(article: Record<string, unknown>): string {
+  const sourceUrl = article.source_url ? String(article.source_url) : null;
+  if (sourceUrl?.startsWith("/editorials/")) return `${SITE_BASE}${sourceUrl}`;
+  const slug = article.published_path
+    ? String(article.published_path).split("/").pop()?.replace(/\.md$/, "")
+    : null;
+  return slug ? `${SITE_BASE}/posts/${slug}/` : SITE_BASE;
+}
+
 function buildCaption(article: Record<string, unknown>): string {
   const emoji   = String(article.article_emoji ?? "✨");
   const title   = String(article.title_en ?? article.title_nl ?? "");
   const summary = String(article.summary_en ?? "");
 
-  const slug = article.published_path
-    ? String(article.published_path).split("/").pop()?.replace(/\.md$/, "")
-    : null;
-  const url = slug ? `${SITE_BASE}/posts/${slug}/` : SITE_BASE;
+  const url = articlePublicUrl(article);
 
   const prefix = `${emoji} ${title}\n\n`;
   const suffix = `\n\n${url}`;
@@ -100,11 +106,8 @@ export async function postArticleToSocial(id: number, platforms?: string[]): Pro
   const textAccounts      = enabledAccounts.filter((a) => a.platform !== "instagram");
 
   const caption = buildCaption(article as Record<string, unknown>);
-  const slug = article.published_path
-    ? String(article.published_path).split("/").pop()?.replace(/\.md$/, "")
-    : null;
-  const articleUrl = slug ? `${SITE_BASE}/posts/${slug}/` : null;
-  const urlWarning = articleUrl && !(await isUrlLive(articleUrl))
+  const articleUrl = articlePublicUrl(article as Record<string, unknown>);
+  const urlWarning = articleUrl !== SITE_BASE && !(await isUrlLive(articleUrl))
     ? `Article URL is not yet live (GitHub Pages is still rebuilding). The link in the post will return a 404 until the site rebuilds (~2–3 min). URL: ${articleUrl}`
     : undefined;
 
