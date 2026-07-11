@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-11T05:53:54.499Z",
-  "total_rejected": 79925,
+  "exported_at": "2026-07-11T05:54:09.471Z",
+  "total_rejected": 79926,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1186
+      "count": 1187
     },
     {
       "category": "divisive-racism",
@@ -330,14 +330,14 @@
       "total": 20
     },
     {
+      "source": "Good Good Good",
+      "negative": 20,
+      "total": 36
+    },
+    {
       "source": "CNN",
       "negative": 19,
       "total": 20
-    },
-    {
-      "source": "Good Good Good",
-      "negative": 19,
-      "total": 35
     },
     {
       "source": "Dansende Beren",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good Good Good",
+      "title": "This cafe is run by robots. They're operated by actual disabled humans working from home — not AI",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodgoodgood.co/articles/tokyo-dawn-robot-cafe-disabled-workers",
+      "date": "2026-07-11 07:54",
+      "positivity_score": null
+    },
     {
       "source": "Good Good Good",
       "title": "A rare sea turtle was found 'lifeless' on a beach. Now, it's flying 1500 miles to be released back into the ocean",
@@ -9381,15 +9390,6 @@
       "url": "https://www.hln.be/royalty/koning-charles-onderzoekt-pinguin-tijdens-bezoek-aan-london-zoo~a75d41e5/",
       "date": "2026-07-10 10:25",
       "positivity_score": 4
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“Vlammen tot in onze tuin”: Vlaamse Isabelle getuigt emotioneel over dodelijke bosbranden in Zuid-Spanje",
-      "reason": "The article discusses a tragic event involving deadly wildfires, which is inherently negative and focuses on loss and panic rather than uplifting content.",
-      "category": "disaster-accident",
-      "url": "https://www.hln.be/buitenland/vlammen-tot-in-onze-tuin-vlaamse-isabelle-getuigt-emotioneel-over-dodelijke-bosbranden-in-zuid-spanje~va2ed0122/",
-      "date": "2026-07-10 10:25",
-      "positivity_score": 2
     }
   ]
 }
