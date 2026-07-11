@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-11T14:01:36.218Z",
-  "total_rejected": 80257,
+  "exported_at": "2026-07-11T14:01:43.905Z",
+  "total_rejected": 80258,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1194
+      "count": 1195
     },
     {
       "category": "divisive-racism",
@@ -281,8 +281,8 @@
     },
     {
       "source": "The Better India",
-      "negative": 38,
-      "total": 70
+      "negative": 39,
+      "total": 71
     },
     {
       "source": "Hugging Face",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Better India",
+      "title": "Family Takes Hand Block Printing Across The World, Earns Rs 1.5 Crore/Year ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/290730/gujarat-couple-build-sustainable-hand-block-printing-brand-earn-crores/",
+      "date": "2026-07-11 16:01",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "How a Bengaluru Community Turned a Dumping Ground Into a Daily Water Source ",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on routine tech updates regarding AI models, which does not meet the positive-news criteria and lacks broad human relevance.",
       "category": "tech-ai-concern",
       "url": "https://www.technologyreview.com/2026/07/10/1140316/the-download-anthropic-claude-hidden-space-openai-super-app/",
-      "date": "2026-07-10 14:30",
-      "positivity_score": 3
-    },
-    {
-      "source": "Scientific American",
-      "title": "Is Earth the only planet with total solar eclipses?",
-      "reason": "The article discusses a scientific question about eclipses on other planets, which lacks a clear positive or uplifting angle and does not engage a broad audience.",
-      "category": "soft-news-filler",
-      "url": "https://www.scientificamerican.com/article/is-earth-the-only-planet-with-total-solar-eclipses/",
       "date": "2026-07-10 14:30",
       "positivity_score": 3
     }
