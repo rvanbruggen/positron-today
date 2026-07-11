@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-11T05:55:13.849Z",
-  "total_rejected": 79929,
+  "exported_at": "2026-07-11T05:55:23.537Z",
+  "total_rejected": 79930,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1190
+      "count": 1191
     },
     {
       "category": "divisive-racism",
@@ -315,14 +315,14 @@
       "total": 23
     },
     {
+      "source": "Good Good Good",
+      "negative": 23,
+      "total": 39
+    },
+    {
       "source": "Chain of thought",
       "negative": 22,
       "total": 22
-    },
-    {
-      "source": "Good Good Good",
-      "negative": 22,
-      "total": 38
     },
     {
       "source": "Scientific American",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good Good Good",
+      "title": "California is releasing 500,000 mosquitoes. Here's why that's a good thing",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodgoodgood.co/articles/california-releases-mosquitoes-san-gabriel-valley",
+      "date": "2026-07-11 07:55",
+      "positivity_score": null
+    },
     {
       "source": "Good Good Good",
       "title": "This food mobile provides free meals to hundreds of kids who would otherwise go without all summer",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on viewership numbers related to a sports event, which falls under the category of non-exceptional sports content and does not provide a universally uplifting story.",
       "category": "sports-negative",
       "url": "https://tvmag.lefigaro.fr/programme-tv/audiences-tv/audiences-16-1-millions-de-telespectateurs-devant-la-victoire-de-la-france-face-au-maroc-en-coupe-du-monde-20260710",
-      "date": "2026-07-10 10:26",
-      "positivity_score": 3
-    },
-    {
-      "source": "Le Figaro",
-      "title": "«D’un autre monde», «impossibles à arrêter», «irrésistibles»... la presse internationale conquise par les Bleus après la victoire face au Maroc",
-      "reason": "The article focuses on a sports event, specifically a match result in the World Cup, which does not meet the positive-news editorial standards due to its routine nature and lack of exceptional human-interest elements.",
-      "category": "sports-negative",
-      "url": "https://www.lefigaro.fr/sports/football/coupe-du-monde/d-un-autre-monde-impossibles-a-arreter-irresistibles-la-presse-internationale-conquise-par-les-bleus-apres-la-victoire-face-au-maroc-20260710",
       "date": "2026-07-10 10:26",
       "positivity_score": 3
     }
