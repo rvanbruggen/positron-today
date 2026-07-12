@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-12T04:18:42.964Z",
-  "total_rejected": 80679,
+  "exported_at": "2026-07-12T05:23:02.335Z",
+  "total_rejected": 80681,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1196
+      "count": 1198
     },
     {
       "category": "divisive-racism",
@@ -281,8 +281,8 @@
     },
     {
       "source": "The Better India",
-      "negative": 40,
-      "total": 73
+      "negative": 41,
+      "total": 74
     },
     {
       "source": "Hugging Face",
@@ -335,14 +335,14 @@
       "total": 20
     },
     {
+      "source": "ScienceDaily",
+      "negative": 20,
+      "total": 50
+    },
+    {
       "source": "CNN",
       "negative": 19,
       "total": 20
-    },
-    {
-      "source": "ScienceDaily",
-      "negative": 19,
-      "total": 49
     },
     {
       "source": "Dansende Beren",
@@ -391,6 +391,24 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Better India",
+      "title": "Good News This Week: An Engineer, an HR Manager & a Royal Family All Saving India’s Dying Crafts ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/culture/indian-crafts-revival-ganjifa-wuguv-mats-folk-art-endangered-artisans-weekly-good-news-12155959",
+      "date": "2026-07-12 07:23",
+      "positivity_score": null
+    },
+    {
+      "source": "ScienceDaily",
+      "title": "Yale scientists may have found how Parkinson's disease spreads through the brain",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/07/260710003529.htm",
+      "date": "2026-07-12 07:22",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "US judge dismisses January 6 case against Proud Boys after Trump order",
@@ -9372,24 +9390,6 @@
       "url": "https://www.thejournal.ie/uisce-eireann-urgently-calls-on-public-not-to-use-garden-hose-during-hot-weather-7098097-Jul2026/",
       "date": "2026-07-10 21:24",
       "positivity_score": 4
-    },
-    {
-      "source": "The Journal (Ireland)",
-      "title": "Women in danger: The everyday safety rituals that men rarely have to think about",
-      "reason": "The article discusses the fears and safety rituals of women, which, while important, focuses on a negative aspect of society rather than uplifting content.",
-      "category": "divisive-social",
-      "url": "https://www.thejournal.ie/readme/ashling-murphy-7094417-Jul2026/",
-      "date": "2026-07-10 21:24",
-      "positivity_score": 4
-    },
-    {
-      "source": "The Journal (Ireland)",
-      "title": "Ireland is in danger of becoming less culturally sovereign. Here's why.",
-      "reason": "The article discusses concerns about cultural sovereignty in Ireland, which is a political issue and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.thejournal.ie/netflix-amazon-rte-media-steve-dempsey-7097798-Jul2026/",
-      "date": "2026-07-10 21:24",
-      "positivity_score": 3
     }
   ]
 }
