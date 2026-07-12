@@ -2,7 +2,7 @@
 title: "At last, a proper excuse for monoglots to learn another language: it helps keep your brain young"
 title_nl: "Eindelijk een goede reden voor monoglots om een andere taal te leren: het houdt je hersenen jong"
 title_fr: "Enfin une bonne excuse pour les monolingues d'apprendre une autre langue : cela aide à garder votre cerveau jeune"
-date: 2026-07-12T12:30:57
+date: 2026-07-12T12:30:54
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://www.theguardian.com/commentisfree/2026/jul/12/learn-another-language-french-restaurant-service-multilingual"
