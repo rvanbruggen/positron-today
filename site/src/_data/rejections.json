@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-12T05:23:24.965Z",
-  "total_rejected": 80683,
+  "exported_at": "2026-07-12T05:23:50.713Z",
+  "total_rejected": 80685,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1200
+      "count": 1202
     },
     {
       "category": "divisive-racism",
@@ -236,8 +236,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 198,
-      "total": 202
+      "negative": 200,
+      "total": 204
     },
     {
       "source": "Science.org news",
@@ -391,6 +391,24 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "New gene technology could help Canadian canola cope with extreme weather",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/11961832/new-gene-technology-canola/",
+      "date": "2026-07-12 07:23",
+      "positivity_score": null
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "Toronto hockey camp celebrates BIPOC women on the ice",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/11961750/toronto-hockey-camp-celebrates-bipoc-women/",
+      "date": "2026-07-12 07:23",
+      "positivity_score": null
+    },
     {
       "source": "Good News Network",
       "title": "‘Game-Changing’ Saliva Test Can Diagnose Endometriosis in Days Rather Than Years",
@@ -9370,24 +9388,6 @@
       "reason": "The article focuses on a specific economic initiative in Namibia, which may not have broad relevance outside the region and does not present a universally uplifting story.",
       "category": "economic-doom",
       "url": "https://allafrica.com/stories/202607100479.html",
-      "date": "2026-07-10 21:24",
-      "positivity_score": 4
-    },
-    {
-      "source": "AllAfrica",
-      "title": "Namibia: ECN Divides MPs",
-      "reason": "The article discusses a political dispute regarding the Electoral Commission of Namibia, which falls under political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://allafrica.com/stories/202607100480.html",
-      "date": "2026-07-10 21:24",
-      "positivity_score": 2
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Education professor pans 'simplistic' school reforms",
-      "reason": "The article critiques school reforms, which falls under political commentary and does not provide an uplifting or positive perspective.",
-      "category": "political-conflict",
-      "url": "https://www.rnz.co.nz/news/education/698992/education-professor-pans-simplistic-school-reforms",
       "date": "2026-07-10 21:24",
       "positivity_score": 4
     }
