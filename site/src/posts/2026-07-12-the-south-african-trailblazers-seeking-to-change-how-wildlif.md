@@ -2,7 +2,7 @@
 title: "The South African trailblazers seeking to change how wildlife documentaries are made"
 title_nl: "De Zuid-Afrikaanse pioniers die de manier waarop natuurdocumentaires worden gemaakt willen veranderen"
 title_fr: "Les pionniers sud-africains cherchant à changer la façon dont les documentaires sur la faune sont réalisés"
-date: 2026-07-12T12:30:52
+date: 2026-07-12T12:30:55
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://www.theguardian.com/tv-and-radio/2026/jul/12/south-africa-documentaries-nature-environment-wildlife-conservation-trust-national-geographic"
