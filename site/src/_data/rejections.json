@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-07-13T16:28:21.022Z",
-  "total_rejected": 82017,
+  "exported_at": "2026-07-13T16:28:30.194Z",
+  "total_rejected": 82023,
   "sources_count": 64,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 22532
+      "count": 22533
     },
     {
       "category": "sports-negative",
@@ -13,7 +13,7 @@
     },
     {
       "category": "soft-news-filler",
-      "count": 9898
+      "count": 9899
     },
     {
       "category": "crime-violence",
@@ -33,7 +33,7 @@
     },
     {
       "category": "war-conflict",
-      "count": 3770
+      "count": 3772
     },
     {
       "category": "other-negative",
@@ -45,7 +45,7 @@
     },
     {
       "category": "divisive-social",
-      "count": 2126
+      "count": 2127
     },
     {
       "category": "tech-ai-concern",
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1218
+      "count": 1219
     },
     {
       "category": "divisive-racism",
@@ -151,8 +151,8 @@
     },
     {
       "source": "Neue Zürcher Zeitung",
-      "negative": 1649,
-      "total": 1654
+      "negative": 1652,
+      "total": 1657
     },
     {
       "source": "The Verge",
@@ -171,8 +171,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1120,
-      "total": 1152
+      "negative": 1122,
+      "total": 1154
     },
     {
       "source": "De Standaard Binnenland",
@@ -206,8 +206,8 @@
     },
     {
       "source": "Nature",
-      "negative": 578,
-      "total": 665
+      "negative": 579,
+      "total": 667
     },
     {
       "source": "Popular Science",
@@ -391,6 +391,60 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "First ‘true sugar’ molecule found in space — offering hints to life’s origins",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02173-5",
+      "date": "2026-07-13 18:28",
+      "positivity_score": null
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "Heftige Luftangriffe in Jemen: Droht in Südarabien eine zweite Front?",
+      "reason": "The article discusses heavy airstrikes in Yemen, which is a negative and violent situation, lacking uplifting content.",
+      "category": "war-conflict",
+      "url": "https://www.nzz.ch/international/heftige-luftangriffen-in-jemen-droht-in-suedarabien-eine-zweite-front-ld.10015290",
+      "date": "2026-07-13 18:28",
+      "positivity_score": 2
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "Nach dreijährigen Verhandlungen: Die Schweiz und Grossbritannien einigen sich auf ein neues Freihandelsabkommen",
+      "reason": "The article discusses a trade agreement between Switzerland and the UK, which, while potentially beneficial, falls under political and economic news rather than uplifting human interest stories.",
+      "category": "political-conflict",
+      "url": "https://www.nzz.ch/wirtschaft/nach-dreijaehrigen-verhandlungen-die-schweiz-und-grossbritannien-einigen-sich-auf-ein-neues-freihandelsabkommen-ld.10015205",
+      "date": "2026-07-13 18:28",
+      "positivity_score": 4
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "An der WM wurde er nur halblaut gesungen – am 1. August ist er wieder Pflicht: Warum tun wir uns so schwer mit dem Schweizerpsalm?",
+      "reason": "The article discusses criticism of a national anthem, which may not be uplifting and could be seen as divisive. It focuses on a specific cultural issue that may not resonate broadly outside of Switzerland.",
+      "category": "divisive-social",
+      "url": "https://www.nzz.ch/schweiz/an-der-wm-wurde-er-nur-halblaut-gesungen-am-1-august-ist-er-wieder-pflicht-warum-tun-wir-uns-so-schwer-mit-dem-schweizerpsalm-ld.10015228",
+      "date": "2026-07-13 18:28",
+      "positivity_score": 4
+    },
+    {
+      "source": "Euronews",
+      "title": "Video shows civilians taking cover during Russian strike on Sumy",
+      "reason": "The article reports on a violent event involving a Russian strike, which is inherently negative and not uplifting.",
+      "category": "war-conflict",
+      "url": "http://www.euronews.com/video/2026/07/13/video-shows-civilians-taking-cover-during-russian-strike-on-sumy",
+      "date": "2026-07-13 18:28",
+      "positivity_score": 2
+    },
+    {
+      "source": "Euronews",
+      "title": "Latest news bulletin | July 13th, 2026 – Evening",
+      "reason": "The article is a general news bulletin that covers various topics including politics and entertainment, which do not meet the positive-news editorial standard.",
+      "category": "soft-news-filler",
+      "url": "http://www.euronews.com/video/2026/07/13/latest-news-bulletin-july-13th-2026-evening",
+      "date": "2026-07-13 18:28",
+      "positivity_score": 2
+    },
     {
       "source": "Good News Network",
       "title": "This Extraordinary Desert Mouse Defies Aging–and it Could Change Human Longevity",
@@ -9336,60 +9390,6 @@
       "url": "https://www.lefigaro.fr/sports/football/coupe-du-monde/racisme-crasseux-haine-banalisee-derapages-repetes-des-politiques-francais-repondent-a-la-sortie-de-l-ancien-premier-ministre-espagnol-sur-les-bleus-20260712",
       "date": "2026-07-12 18:26",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Fermeture du détroit d’Ormuz : craignez-vous une nouvelle hausse du prix du pétrole ?",
-      "reason": "The article discusses a geopolitical issue that could lead to economic consequences, specifically a potential rise in oil prices, which is not uplifting and may induce concern.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/conjoncture/fermeture-du-detroit-d-ormuz-craignez-vous-une-nouvelle-hausse-du-prix-du-petrole-20260712",
-      "date": "2026-07-12 18:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Reprise des hostilités au Moyen-Orient: «Ces dernières 24 heures, un seuil a été franchi entre les États-Unis et l’Iran»",
-      "reason": "The article discusses the escalation of hostilities in the Middle East, which is a negative and concerning topic, lacking uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/international/reprise-des-hostilites-au-moyen-orient-ces-24-dernieres-heures-un-seuil-a-ete-franchi-entre-les-etats-unis-et-l-iran-20260712",
-      "date": "2026-07-12 18:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Sarcelles : le parquet antiterroriste se saisit après la découverte d’armes dans une voiture",
-      "reason": "The article discusses a serious security threat involving weapons and potential violence against a community, which is inherently negative and alarming.",
-      "category": "crime-violence",
-      "url": "https://www.lefigaro.fr/flash-actu/sarcelles-300-personnes-evacuees-pour-deminer-un-vehicule-suspect-20260712",
-      "date": "2026-07-12 18:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Chocolat, thé, café, sucre... Ces produits dont les ventes ont chuté à cause de la canicule",
-      "reason": "The article discusses a decline in sales of certain products due to extreme heat, which is a negative economic impact rather than a positive story.",
-      "category": "economic-doom",
-      "url": "https://www.lefigaro.fr/conso/chocolat-the-cafe-sucre-ces-produits-dont-les-ventes-ont-chute-a-cause-de-la-canicule-20260712",
-      "date": "2026-07-12 18:26",
-      "positivity_score": 4
-    },
-    {
-      "source": "Le Figaro",
-      "title": "«Pendant mes appels, je leur demandais d’être très silencieuses» : quand les enfants accompagnent leurs parents au travail pour être au frais",
-      "reason": "The article focuses on a local practice of parents bringing their children to work during heatwaves, which may not have broad relevance outside of specific communities and lacks a universally uplifting aspect.",
-      "category": "soft-news-filler",
-      "url": "https://www.lefigaro.fr/actualite-france/pendant-mes-appels-je-leur-demandais-d-etre-tres-silencieuses-quand-les-enfants-accompagnent-leurs-parents-au-travail-pour-etre-au-frais-20260712",
-      "date": "2026-07-12 18:26",
-      "positivity_score": 4
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Canicule : trois réacteurs nucléaires à l'arrêt et huit à puissance réduite en France, indique EDF",
-      "reason": "The article discusses the shutdown of nuclear reactors in France due to environmental concerns, which is a negative situation related to energy production and climate impact.",
-      "category": "climate-environment",
-      "url": "https://www.lefigaro.fr/societes/canicule-trois-reacteurs-nucleaires-a-l-arret-et-huit-a-puissance-reduite-en-france-indique-edf-20260712",
-      "date": "2026-07-12 18:26",
-      "positivity_score": 4
     }
   ]
 }
