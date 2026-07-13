@@ -2,7 +2,7 @@
 title: "Physicists recreate black hole energy extraction in the lab"
 title_nl: "Fysici recreëren energie-extractie uit zwarte gaten in het lab"
 title_fr: "Des physiciens recréent l'extraction d'énergie des trous noirs en laboratoire"
-date: 2026-07-13T04:22:13
+date: 2026-07-13T04:22:11
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://www.sciencedaily.com/releases/2026/07/260711010120.htm"
