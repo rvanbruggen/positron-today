@@ -2,7 +2,7 @@
 title: "Scientists’ side hustle? Using AI and quantum computing to generate new peptides"
 title_nl: "De nevenactiviteit van wetenschappers? AI en quantumcomputing gebruiken om nieuwe peptiden te genereren"
 title_fr: "Le passe-temps des scientifiques ? Utiliser l'IA et l'informatique quantique pour générer de nouveaux peptides"
-date: 2026-07-13T04:22:40
+date: 2026-07-13T04:22:46
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://www.wired.com/story/scientists-using-ai-and-quantum-computing-to-generate-new-peptides/"
