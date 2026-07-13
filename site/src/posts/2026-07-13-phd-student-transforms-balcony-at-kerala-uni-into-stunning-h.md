@@ -2,7 +2,7 @@
 title: "PhD student transforms balcony at Kerala Uni into stunning, ‘healing’ vertical garden"
 title_nl: "Promotieonderzoeker transformeert balkon aan de Kerala Universiteit in een prachtige, 'genezende' verticale tuin"
 title_fr: "Un doctorant transforme un balcon à l'université du Kerala en un magnifique jardin vertical 'thérapeutique'"
-date: 2026-07-13T04:21:58
+date: 2026-07-13T04:22:06
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://thebetterindia.com/290929/kerala-university-student-turns-balcony-into-healing-vertical-garden-with-purifying-plants/"
