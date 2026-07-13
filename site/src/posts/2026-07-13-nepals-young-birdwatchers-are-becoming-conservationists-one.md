@@ -2,7 +2,7 @@
 title: "Nepal's young birdwatchers are becoming conservationists one sighting at a time"
 title_nl: "De jonge vogelspotters van Nepal worden één waarneming tegelijk natuurbeschermers"
 title_fr: "Les jeunes ornithologues népalais deviennent des conservateurs un aperçu à la fois"
-date: 2026-07-13T04:22:45
+date: 2026-07-13T04:22:50
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://www.goodgoodgood.co/articles/nepal-birdwatching-conservation-tourism"
