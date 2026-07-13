@@ -2,7 +2,7 @@
 title: "My dad just walked the equivalent of earth’s circumference"
 title_nl: "Mijn vader heeft net de omtrek van de aarde gewandeld"
 title_fr: "Mon père vient de marcher l'équivalent de la circonférence de la terre"
-date: 2026-07-13T04:21:52
+date: 2026-07-13T04:21:56
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://www.goodnewsnetwork.org/my-dad-just-walked-the-equivalent-of-earths-circumference-it-took-him-14-years-and-49-pairs-of-new-balance/"
