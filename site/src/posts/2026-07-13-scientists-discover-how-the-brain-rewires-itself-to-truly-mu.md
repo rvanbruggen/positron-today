@@ -2,7 +2,7 @@
 title: "Scientists discover how the brain rewires itself to truly multitask"
 title_nl: "Wetenschappers ontdekken hoe de hersenen zichzelf opnieuw bedraden om echt multitasken"
 title_fr: "Des scientifiques découvrent comment le cerveau se reconfigure pour multitâcher véritablement"
-date: 2026-07-13T04:22:17
+date: 2026-07-13T04:22:15
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://www.sciencedaily.com/releases/2026/07/260712011912.htm"
