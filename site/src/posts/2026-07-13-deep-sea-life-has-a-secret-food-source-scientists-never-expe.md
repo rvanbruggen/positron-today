@@ -2,7 +2,7 @@
 title: "Deep-sea life has a secret food source scientists never expected"
 title_nl: "Diepzeeleven heeft een geheime voedselbron die wetenschappers nooit verwachtten"
 title_fr: "La vie en profondeur a une source de nourriture secrète que les scientifiques n'ont jamais attendue"
-date: 2026-07-13T04:22:15
+date: 2026-07-13T04:22:33
 source_pub_date: 2026-07-12
 fetched_date: 2026-07-12
 source_url: "https://www.sciencedaily.com/releases/2026/07/260711010127.htm"
