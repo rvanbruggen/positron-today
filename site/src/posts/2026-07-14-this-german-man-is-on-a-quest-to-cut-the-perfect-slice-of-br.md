@@ -2,7 +2,7 @@
 title: "This German man is on a quest to cut the perfect slice of bread"
 title_nl: "Deze Duitse man is op een zoektocht naar de perfecte snede brood"
 title_fr: "Cet Allemand est en quête de la tranche de pain parfaite"
-date: 2026-07-14T16:33:13
+date: 2026-07-14T16:33:17
 source_pub_date: 2026-07-14
 fetched_date: 2026-07-14
 source_url: "https://www.wired.com/story/this-german-man-is-on-a-mad-quest-to-cut-the-perfect-slice-of-bread/"
