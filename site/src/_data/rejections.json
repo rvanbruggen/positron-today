@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-14T05:25:45.831Z",
-  "total_rejected": 82543,
+  "exported_at": "2026-07-14T05:26:00.398Z",
+  "total_rejected": 82544,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1223
+      "count": 1224
     },
     {
       "category": "divisive-racism",
@@ -251,8 +251,8 @@
     },
     {
       "source": "Science.org news",
-      "negative": 194,
-      "total": 236
+      "negative": 195,
+      "total": 237
     },
     {
       "source": "Knack",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Science.org news",
+      "title": "Scrawled signature names a Maya astronomer for the first time",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.science.org/content/article/scrawled-signature-names-maya-astronomer-first-time",
+      "date": "2026-07-14 07:25",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "Kashmiri Mother Didn’t Land a Govt Job, Founded a 500-Sheep Farm Earning Rs 1 Lakh a Month ",
@@ -9381,15 +9390,6 @@
       "url": "https://allafrica.com/stories/202607130104.html",
       "date": "2026-07-13 07:16",
       "positivity_score": 2
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Primary school returns to pen and paper after ditching iPads",
-      "reason": "The article focuses on a local educational decision that may not resonate with a broader audience, making it less relevant to readers outside the specific community.",
-      "category": "soft-news-filler",
-      "url": "https://www.rnz.co.nz/news/education/708131/primary-school-returns-to-pen-and-paper-after-ditching-ipads",
-      "date": "2026-07-13 07:16",
-      "positivity_score": 4
     }
   ]
 }
