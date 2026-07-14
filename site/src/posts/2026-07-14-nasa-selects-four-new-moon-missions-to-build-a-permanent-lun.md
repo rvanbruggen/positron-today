@@ -2,7 +2,7 @@
 title: "NASA selects four new Moon missions to build a permanent lunar base"
 title_nl: "NASA selecteert vier nieuwe maanmissies voor de bouw van een permanente maanbasis"
 title_fr: "NASA sélectionne quatre nouvelles missions lunaires pour construire une base lunaire permanente"
-date: 2026-07-14T12:30:28
+date: 2026-07-14T12:30:31
 source_pub_date: 2026-07-14
 fetched_date: 2026-07-14
 source_url: "https://www.sciencedaily.com/releases/2026/07/260713084853.htm"
