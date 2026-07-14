@@ -2,7 +2,7 @@
 title: "Yale scientists found a hidden network inside the eye"
 title_nl: "Yale-wetenschappers vonden een verborgen netwerk in het oog"
 title_fr: "Des scientifiques de Yale ont découvert un réseau caché dans l'œil"
-date: 2026-07-14T12:30:29
+date: 2026-07-14T12:30:35
 source_pub_date: 2026-07-14
 fetched_date: 2026-07-14
 source_url: "https://www.sciencedaily.com/releases/2026/07/260713000804.htm"
