@@ -2,7 +2,7 @@
 title: "Raising rice and fish together cuts disease from snails while boosting crop yields by 25%"
 title_nl: "Rijst en vis samen kweken vermindert ziekten door slakken en verhoogt de opbrengst met 25%"
 title_fr: "Élever du riz et du poisson ensemble réduit les maladies causées par les escargots tout en augmentant les rendements de 25%"
-date: 2026-07-14T16:33:15
+date: 2026-07-14T16:33:19
 source_pub_date: 2026-07-14
 fetched_date: 2026-07-14
 source_url: "https://www.goodnewsnetwork.org/raising-rice-and-fish-together-cuts-disease-from-snails-while-boosting-crop-yields-by-25/"
