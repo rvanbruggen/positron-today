@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-15T11:47:45.950Z",
-  "total_rejected": 83850,
+  "exported_at": "2026-07-15T11:47:49.145Z",
+  "total_rejected": 83851,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1254
+      "count": 1255
     },
     {
       "category": "divisive-racism",
@@ -236,8 +236,8 @@
     },
     {
       "source": "Good News Network",
-      "negative": 291,
-      "total": 589
+      "negative": 292,
+      "total": 590
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good News Network",
+      "title": "Good News in History, July 15",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodnewsnetwork.org/events060715/",
+      "date": "2026-07-15 13:47",
+      "positivity_score": null
+    },
     {
       "source": "Reasons to be Cheerful",
       "title": "What We’re Reading: In Europe, Clothing Waste Is Unfashionable — and Illegal",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses the negative impact of deepfakes and the challenges in addressing them, which is not uplifting and focuses on a serious societal issue.",
       "category": "tech-ai-concern",
       "url": "https://www.nzz.ch/gesellschaft/koennen-behoerden-einmal-verbreitete-deepfakes-nachhaltig-loeschen-chancenlos-sagt-eine-datenschutzexpertin-ld.10014534",
-      "date": "2026-07-14 12:58",
-      "positivity_score": 3
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "LIVE-TICKER - Die Schweizer Nationalmannschaft wird in Zürich empfangen – Embolo wird gefeiert",
-      "reason": "The article focuses on a sports event, specifically the arrival of the Swiss national football team after a World Cup loss, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.nzz.ch/sport/fussball/wm-2026/die-schweizer-nati-helden-werden-in-zuerich-von-ihren-fans-empfangen-ld.10015357",
       "date": "2026-07-14 12:58",
       "positivity_score": 3
     }
