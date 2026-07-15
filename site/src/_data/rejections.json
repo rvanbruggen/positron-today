@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-15T05:18:59.921Z",
-  "total_rejected": 83665,
+  "exported_at": "2026-07-15T05:19:06.167Z",
+  "total_rejected": 83666,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1250
+      "count": 1251
     },
     {
       "category": "divisive-racism",
@@ -101,8 +101,8 @@
     },
     {
       "source": "De Morgen",
-      "negative": 3645,
-      "total": 3699
+      "negative": 3646,
+      "total": 3700
     },
     {
       "source": "NRC",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "De Morgen",
+      "title": "Voor het eerst gespot: astronomen ontdekken frambozensuiker in stofwolk tussen sterren in de Melkweg",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.demorgen.be/tech-wetenschap/voor-het-eerst-gespot-astronomen-ontdekken-frambozensuiker-in-stofwolk-tussen-sterren-in-de-melkweg~b4709a5f/",
+      "date": "2026-07-15 07:19",
+      "positivity_score": null
+    },
     {
       "source": "Good News Network",
       "title": "Bloomberg Donates $260 Million to Ensure New High Seas Treaty Translates to Lasting Ocean Protections",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rp.pl/finanse/art44820131-knf-cofnela-zezwolenie-mpay-prawnicy-radza-by-szybko-wyplacic-pieniadze",
       "date": "2026-07-14 10:28",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "„Czyste Powietrze” w nowej odsłonie. Rośnie rola samorządów",
-      "reason": "The article discusses local government engagement in a specific environmental program, which may not be of interest to readers outside the region, making it too localized.",
-      "category": "soft-news-filler",
-      "url": "https://regiony.rp.pl/ekologia/art44818051-czyste-powietrze-w-nowej-odslonie-rosnie-rola-samorzadow",
-      "date": "2026-07-14 10:28",
-      "positivity_score": 4
     }
   ]
 }
