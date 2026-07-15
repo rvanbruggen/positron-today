@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-15T21:46:04.241Z",
-  "total_rejected": 84540,
+  "exported_at": "2026-07-15T21:46:21.868Z",
+  "total_rejected": 84541,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1266
+      "count": 1267
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 39,
-      "total": 56
+      "negative": 40,
+      "total": 57
     },
     {
       "source": "Hugging Face",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "See the first x-rays of humans taken in space",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/see-the-first-x-rays-of-humans-taken-in-space/",
+      "date": "2026-07-15 23:46",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "Archaeologists found Homer's Iliad inside a 1,600-year-old Egyptian mummy",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on a specific event related to classic film projectors, which may not have broad human relevance and could be considered local or niche content.",
       "category": "soft-news-filler",
       "url": "https://vrtnws.be/p.dLej7vX73",
-      "date": "2026-07-15 06:16",
-      "positivity_score": 4
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Bredene droogste plek van België, ook elders viel er dit jaar heel weinig regen: hoe zit het in jouw regio?",
-      "reason": "The article discusses a lack of rainfall in Belgium and its implications, which is not uplifting and has local-only relevance.",
-      "category": "climate-environment",
-      "url": "https://vrtnws.be/p.5wRmmdE08",
       "date": "2026-07-15 06:16",
       "positivity_score": 4
     }
