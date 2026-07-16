@@ -2,7 +2,7 @@
 title: "The hidden skeleton “gatekeeper” inside brain cells could help fight Alzheimer's"
 title_nl: "De verborgen skelet 'poortwachter' in hersencellen kan helpen bij de strijd tegen Alzheimer"
 title_fr: "Le gardien caché du squelette dans les cellules cérébrales pourrait aider à lutter contre Alzheimer"
-date: 2026-07-16T04:21:15
+date: 2026-07-16T04:21:25
 source_pub_date: 2026-07-15
 fetched_date: 2026-07-15
 source_url: "https://www.sciencedaily.com/releases/2026/07/260714225542.htm"
