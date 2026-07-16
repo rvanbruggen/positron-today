@@ -2,7 +2,7 @@
 title: "Worldwide 'skinny dip day' boosts body positivity and raises thousands for charity"
 title_nl: "Wereldwijde 'skinny dip dag' bevordert lichaamspositiviteit en haalt duizenden op voor het goede doel"
 title_fr: "La journée mondiale du 'skinny dip' renforce la positivité corporelle et collecte des milliers pour la charité"
-date: 2026-07-16T04:21:12
+date: 2026-07-16T04:21:17
 source_pub_date: 2026-07-15
 fetched_date: 2026-07-15
 source_url: "https://www.goodgoodgood.co/articles/skinny-dip-day-charity"
