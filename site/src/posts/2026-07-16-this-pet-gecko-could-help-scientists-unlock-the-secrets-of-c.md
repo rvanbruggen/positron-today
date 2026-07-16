@@ -2,7 +2,7 @@
 title: "This pet gecko could help scientists unlock the secrets of cancer"
 title_nl: "Deze huisgenoot gekko kan wetenschappers helpen de geheimen van kanker te ontrafelen"
 title_fr: "Ce gecko de compagnie pourrait aider les scientifiques à percer les secrets du cancer"
-date: 2026-07-16T04:21:24
+date: 2026-07-16T04:21:20
 source_pub_date: 2026-07-15
 fetched_date: 2026-07-15
 source_url: "https://www.sciencedaily.com/releases/2026/07/260714225525.htm"
