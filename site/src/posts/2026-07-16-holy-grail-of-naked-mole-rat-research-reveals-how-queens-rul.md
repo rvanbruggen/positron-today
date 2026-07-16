@@ -2,7 +2,7 @@
 title: "Holy grail of naked mole-rat research reveals how queens rule"
 title_nl: "Heilige graal van onderzoek naar blinde molratten onthult hoe koninginnen regeren"
 title_fr: "Saint Graal de la recherche sur les rats-taupes nus révèle comment les reines règnent"
-date: 2026-07-16T04:21:34
+date: 2026-07-16T04:21:39
 source_pub_date: 2026-07-15
 fetched_date: 2026-07-15
 source_url: "https://www.nature.com/articles/d41586-026-02221-0"
