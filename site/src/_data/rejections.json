@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-16T05:24:14.054Z",
-  "total_rejected": 84721,
+  "exported_at": "2026-07-16T05:24:17.407Z",
+  "total_rejected": 84722,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1275
+      "count": 1276
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 2974,
-      "total": 3058
+      "negative": 2975,
+      "total": 3059
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "New monkey species with orange lips found 'hiding' in DR Congo forest",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c15y5wgj4x8o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-07-16 07:24",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "Elderly rescue dog can’t stop putting random items in his bed, keeping his family entertained",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses a sports match outcome and the end of a coach's era, which is not uplifting and falls under routine sports reporting.",
       "category": "sports-negative",
       "url": "https://www.faz.net/aktuell/sport/fussball-wm/frankreich-aus-bei-fussball-wm-2026-analyse-vom-halbfinale-gegen-spanien-accg-201031035.html",
-      "date": "2026-07-15 10:26",
-      "positivity_score": 3
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Liveblog Fußball-WM 2026: Halbzeit im Finale soll offenbar länger als 15 Minuten dauern",
-      "reason": "The article focuses on a specific aspect of a sports event, which does not meet the criteria for positive news due to its routine nature and lack of exceptional human interest.",
-      "category": "sports-negative",
-      "url": "https://www.faz.net/aktuell/sport/fussball-wm/liveblog-zur-fussball-wm-2026-wegen-halftime-show-halbzeit-im-finale-soll-wohl-laenger-dauern-faz-200749933.html",
       "date": "2026-07-15 10:26",
       "positivity_score": 3
     }
