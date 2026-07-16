@@ -2,7 +2,7 @@
 title: "Mysterious orange-lipped monkey discovered deep in the Congo rainforest is a new species"
 title_nl: "Mysterieuze oranje-lipapen ontdekt diep in het Congobos is een nieuwe soort"
 title_fr: "Un mystérieux singe à lèvres orange découvert au cœur de la forêt tropicale du Congo est une nouvelle espèce"
-date: 2026-07-16T04:21:18
+date: 2026-07-16T04:21:21
 source_pub_date: 2026-07-15
 fetched_date: 2026-07-15
 source_url: "https://www.science.org/content/article/mysterious-orange-lipped-monkey-discovered-deep-congo-rainforest-new-species"
