@@ -2,7 +2,7 @@
 title: "Mathematicians are closing in on the hidden order inside chaos"
 title_nl: "Wiskundigen komen dichterbij de verborgen orde in chaos"
 title_fr: "Les mathématiciens se rapprochent de l'ordre caché dans le chaos"
-date: 2026-07-16T04:20:58
+date: 2026-07-16T04:21:01
 source_pub_date: 2026-07-15
 fetched_date: 2026-07-15
 source_url: "https://www.scientificamerican.com/article/mathematicians-are-closing-in-on-the-hidden-order-inside-chaos/"
