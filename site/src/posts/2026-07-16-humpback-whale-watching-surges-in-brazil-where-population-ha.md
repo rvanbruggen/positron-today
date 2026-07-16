@@ -2,7 +2,7 @@
 title: "Humpback whale watching surges in Brazil where population has grown 27-fold since whaling ended"
 title_nl: "De walvissen kijken in Brazilië neemt toe waar de populatie met 27-voud is gegroeid sinds de walvisvaart eindigde"
 title_fr: "L'observation des baleines à bosse augmente au Brésil où la population a augmenté de 27 fois depuis la fin de la chasse à la baleine"
-date: 2026-07-16T04:21:31
+date: 2026-07-16T04:21:37
 source_pub_date: 2026-07-15
 fetched_date: 2026-07-15
 source_url: "https://www.goodnewsnetwork.org/humpback-whale-watching-surges-in-brazil-where-population-has-grown-27-fold-since-whaling-ended/"
