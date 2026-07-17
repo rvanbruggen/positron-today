@@ -2,7 +2,7 @@
 title: "Astronomers find an atmosphere on a nearby earthlike planet"
 title_nl: "Astronomen vinden een atmosfeer op een nabijgelegen aardachtige planeet"
 title_fr: "Les astronomes découvrent une atmosphère sur une planète semblable à la Terre à proximité"
-date: 2026-07-17T08:31:53
+date: 2026-07-17T08:31:58
 source_pub_date: 2026-07-16
 fetched_date: 2026-07-17
 source_url: "https://www.nytimes.com/2026/07/16/science/astronomy-exoplanet-atmosphere.html"
