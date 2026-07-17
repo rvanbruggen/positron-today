@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-17T06:02:09.598Z",
-  "total_rejected": 85928,
+  "exported_at": "2026-07-17T06:02:14.447Z",
+  "total_rejected": 85929,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1294
+      "count": 1295
     },
     {
       "category": "divisive-racism",
@@ -226,8 +226,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 397,
-      "total": 405
+      "negative": 398,
+      "total": 406
     },
     {
       "source": "Le Soir",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Montreal-area family hopes daughter’s cancer journey inspires blood donors",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/11968920/montreal-area-family-hopes-daughters-cancer-journey-inspires-blood-donors/",
+      "date": "2026-07-17 08:02",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Goa’s forgotten orchata drink lives on in family kitchens",
@@ -9381,15 +9390,6 @@
       "url": "https://www.nzz.ch/international/der-druck-von-trump-wirkt-ein-land-nach-dem-anderen-wirft-die-kubanischen-aerzte-raus-ld.10015003",
       "date": "2026-07-16 10:28",
       "positivity_score": 2
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Eine Auswertung zeigt: In Zürichs städtischen Wohnungen leben oft zu wenige Bewohner, und jeder fünfte Haushalt verdient mehr Geld als erlaubt",
-      "reason": "The article discusses strict regulations on urban housing in Zurich and the potential for stricter rules, which is a political issue and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.nzz.ch/zuerich/staedtische-wohnungen-in-zuerich-jeder-fuenfte-haushalt-verdient-zu-viel-ld.10015511",
-      "date": "2026-07-16 10:28",
-      "positivity_score": 3
     }
   ]
 }
