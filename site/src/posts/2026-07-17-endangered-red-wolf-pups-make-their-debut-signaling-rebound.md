@@ -2,7 +2,7 @@
 title: "Endangered red wolf pups make their debut, signaling rebound for species"
 title_nl: "Bedreigde rode wolfwelpen maken hun debuut, wat een herstel voor de soort aangeeft"
 title_fr: "Des chiots de loups rouges en danger font leurs débuts, signalant un rebond pour l'espèce"
-date: 2026-07-17T08:31:56
+date: 2026-07-17T08:32:01
 source_pub_date: 2026-07-16
 fetched_date: 2026-07-16
 source_url: "https://www.goodgoodgood.co/articles/endangered-red-wolves-north-carolina-conservation"
