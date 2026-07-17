@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-17T06:03:34.015Z",
-  "total_rejected": 85935,
+  "exported_at": "2026-07-17T06:03:43.547Z",
+  "total_rejected": 85936,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1301
+      "count": 1302
     },
     {
       "category": "divisive-racism",
@@ -251,8 +251,8 @@
     },
     {
       "source": "Science.org news",
-      "negative": 208,
-      "total": 254
+      "negative": 209,
+      "total": 255
     },
     {
       "source": "RNZ (New Zealand)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Science.org news",
+      "title": "Astronomers spot first atmosphere around a potentially habitable alien world",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.science.org/content/article/astronomers-spot-first-atmosphere-around-potentially-habitable-alien-world",
+      "date": "2026-07-17 08:03",
+      "positivity_score": null
+    },
     {
       "source": "Dagens Nyheter",
       "title": "Första jordlika planeten med atmosfär – rätt förhållanden för liv",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rp.pl/handel/art44835321-usa-nakladaja-25-procentowe-clo-na-brazylie-szykuje-sie-wojna-handlowa",
       "date": "2026-07-16 10:28",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Dawid Kacprzyk chciał przejąć SOR w kolejnym szpitalu. Temat upadł z powodu finansowych oczekiwań",
-      "reason": "The article discusses failed negotiations for a medical team to take over an emergency room, focusing on financial disputes and complaints, which is not uplifting.",
-      "category": "economic-doom",
-      "url": "https://www.rp.pl/ochrona-zdrowia/art44835581-dawid-kacprzyk-chcial-przejac-sor-w-kolejnym-szpitalu-temat-upadl-z-powodu-finansowych-oczekiwan",
-      "date": "2026-07-16 10:28",
-      "positivity_score": 3
     }
   ]
 }
