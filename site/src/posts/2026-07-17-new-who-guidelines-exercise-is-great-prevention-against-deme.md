@@ -2,7 +2,7 @@
 title: "New WHO guidelines: exercise is great prevention against dementia, hormone therapy and vitamins not"
 title_nl: "Nieuwe richtlijnen WHO: bewegen is prima preventie tegen dementie, hormoontherapie en vitaminen niet"
 title_fr: "Nouvelles directives de l'OMS : l'exercice est un excellent moyen de prévention contre la démence, l'hormonothérapie et les vitamines non"
-date: 2026-07-17T08:31:51
+date: 2026-07-17T08:31:55
 source_pub_date: 2026-07-16
 fetched_date: 2026-07-17
 source_url: "https://www.standaard.be/binnenland/nieuwe-richtlijnen-who-bewegen-is-prima-preventie-tegen-dementie-hormoontherapie-en-vitaminen-niet/158797234.html"
