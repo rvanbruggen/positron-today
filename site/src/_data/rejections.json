@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-17T19:51:12.690Z",
-  "total_rejected": 86718,
+  "exported_at": "2026-07-17T19:51:43.481Z",
+  "total_rejected": 86719,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1321
+      "count": 1322
     },
     {
       "category": "divisive-racism",
@@ -206,8 +206,8 @@
     },
     {
       "source": "Nature",
-      "negative": 610,
-      "total": 707
+      "negative": 611,
+      "total": 708
     },
     {
       "source": "Al Jazeera English",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Found: a rocky exoplanet with an atmosphere — could it host life?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02200-5",
+      "date": "2026-07-17 21:51",
+      "positivity_score": null
+    },
     {
       "source": "Euronews",
       "title": "India launches first hydrogen-powered passenger train to cut emissions",
@@ -9381,15 +9390,6 @@
       "url": "https://www.aljazeera.com/news/2026/7/16/nicaragua-severs-diplomatic-ties-with-italy-over-1978-murder-case?traffic_source=rss",
       "date": "2026-07-16 22:37",
       "positivity_score": 2
-    },
-    {
-      "source": "The Journal (Ireland)",
-      "title": "This photo of Lionel Messi and Lamine Yamal has gone viral again (and no, it's not AI)",
-      "reason": "The article focuses on a sports event involving well-known athletes, which does not meet the criteria for exceptional human-interest stories.",
-      "category": "sports-negative",
-      "url": "https://www.thejournal.ie/lionel-messi-lamine-yamal-world-cup-photo-baby-viral-7104232-Jul2026/",
-      "date": "2026-07-16 22:37",
-      "positivity_score": 3
     }
   ]
 }
