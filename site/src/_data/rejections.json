@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-18T17:20:20.005Z",
-  "total_rejected": 87447,
+  "exported_at": "2026-07-18T17:20:23.399Z",
+  "total_rejected": 87448,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1337
+      "count": 1338
     },
     {
       "category": "divisive-racism",
@@ -181,8 +181,8 @@
     },
     {
       "source": "De Standaard Economie",
-      "negative": 1057,
-      "total": 1070
+      "negative": 1058,
+      "total": 1071
     },
     {
       "source": "Upworthy",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "De Standaard Economie",
+      "title": "India lanceert eerste particuliere raket",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.standaard.be/economie/india-lanceert-eerste-particuliere-raket/158904240.html",
+      "date": "2026-07-18 19:20",
+      "positivity_score": null
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "Jongetje (5) in Batman kostuum verricht echte heldendaad en helpt man te redden van verdrinking",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rp.pl/ekonomia/art44806121-100-tys-dolarow-za-noc-tak-wyglada-jeden-z-najbardziej-luksusowych-hoteli-swiata",
       "date": "2026-07-17 18:28",
       "positivity_score": 3
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Sędzia, który skazał Łukasza Żaka: Nie ma specjalnych spraw, każda jest indywidualna",
-      "reason": "The article discusses a court case and a lengthy prison sentence, which is inherently negative and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.rp.pl/prawo-karne/art44844071-sedzia-ktory-skazal-lukasza-zaka-nie-ma-specjalnych-spraw-kazda-jest-indywidualna",
-      "date": "2026-07-17 18:28",
-      "positivity_score": 2
     }
   ]
 }
