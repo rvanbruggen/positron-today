@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-19T16:59:17.922Z",
-  "total_rejected": 88246,
+  "exported_at": "2026-07-19T16:59:32.392Z",
+  "total_rejected": 88247,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1350
+      "count": 1351
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 9480,
-      "total": 9875
+      "negative": 9481,
+      "total": 9876
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Mike (45) vindt dankzij metaaldetector trouwring van Duitse toeristen terug: “Dit verhaal raakte me”",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/binnenland/mike-45-vindt-dankzij-metaaldetector-trouwring-van-duitse-toeristen-terug-dit-verhaal-raakte-me/158920969.html",
+      "date": "2026-07-19 18:59",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "This Farmer in Uttar Pradesh Grew 350 Mango Varieties on a Single Tree ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rp.pl/biznes/art44847771-rosnace-koszty-pracy-zatapiaja-kolejna-branze",
       "date": "2026-07-18 14:28",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Rekordowa rekrutacja na medycynę. Nawet 49 chętnych na jedno miejsce",
-      "reason": "The article discusses record recruitment numbers for medical studies, which is positive but primarily of local relevance and does not have broad human interest beyond the specific context of medical education in Poland.",
-      "category": "soft-news-filler",
-      "url": "https://www.rp.pl/spoleczenstwo/art44848111-rekordowa-rekrutacja-na-medycyne-nawet-49-chetnych-na-jedno-miejsce",
-      "date": "2026-07-18 14:27",
-      "positivity_score": 4
     }
   ]
 }
