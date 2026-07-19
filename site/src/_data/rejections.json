@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-19T20:24:08.660Z",
-  "total_rejected": 88401,
+  "exported_at": "2026-07-19T20:24:23.935Z",
+  "total_rejected": 88402,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1354
+      "count": 1355
     },
     {
       "category": "divisive-racism",
@@ -241,8 +241,8 @@
     },
     {
       "source": "Good News Network",
-      "negative": 309,
-      "total": 621
+      "negative": 310,
+      "total": 622
     },
     {
       "source": "The Washington Post",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good News Network",
+      "title": "Kansas City Cop Won’t Stop Until He Finds Stolen E-Bike for Cancer Patient One Month Later",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodnewsnetwork.org/kansas-city-cop-wont-stop-until-he-finds-stolen-e-bike-for-cancer-patient/",
+      "date": "2026-07-19 22:24",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "A beautifully simple Korean phrase said to loved ones having a hard day is bringing people to tears",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses a British runner breaking a 27-year-old world record, which falls under the category of sports news that is not exceptional enough to meet the positive-news standards.",
       "category": "sports-negative",
       "url": "https://www.dr.dk/sporten/seneste-sport/britisk-loebestjerne-slaar-27-aar-gammel-verdensrekord",
-      "date": "2026-07-18 18:28",
-      "positivity_score": 3
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Vi er alle en omgang skumfødte barbarer",
-      "reason": "The article appears to focus on a cultural portrait of coastal people in Denmark, which may not have broad human relevance outside of its local context, making it less interesting to an international audience.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/kultur/art10859491/Vi-er-alle-en-omgang-skumf%C3%B8dte-barbarer",
       "date": "2026-07-18 18:28",
       "positivity_score": 3
     }
