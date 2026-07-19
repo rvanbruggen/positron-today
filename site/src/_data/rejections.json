@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-19T05:29:15.146Z",
-  "total_rejected": 87744,
+  "exported_at": "2026-07-19T05:29:36.123Z",
+  "total_rejected": 87745,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1342
+      "count": 1343
     },
     {
       "category": "divisive-racism",
@@ -296,8 +296,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 43,
-      "total": 98
+      "negative": 44,
+      "total": 99
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Common antidepressant may ease long COVID’s crushing fatigue",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/07/260718010158.htm",
+      "date": "2026-07-19 07:29",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "At 60, He Left Filmmaking to Build a No-Internet Homestay Bringing Income to Local Women ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.hln.be/buitenland/trump-boos-op-canada-vanwege-luchtvervuiling-door-grote-bosbranden-dit-is-opzettelijke-nalatigheid~a79c6d94/",
       "date": "2026-07-17 22:36",
       "positivity_score": 3
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Grandes fortunes, cadres dirigeants, retraités : pourquoi les Français s’expatrient en Italie",
-      "reason": "The article discusses the reasons why French citizens are moving to Italy for tax benefits, which may not be uplifting and could be seen as a commentary on economic conditions.",
-      "category": "economic-doom",
-      "url": "https://www.lefigaro.fr/economie/grandes-fortunes-cadres-dirigeants-retraites-pourquoi-les-francais-s-expatrient-en-italie-20260717",
-      "date": "2026-07-17 22:36",
-      "positivity_score": 4
     }
   ]
 }
