@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-07-19T20:25:45.660Z",
-  "total_rejected": 88444,
+  "exported_at": "2026-07-19T20:36:36.579Z",
+  "total_rejected": 88456,
   "sources_count": 64,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 24312
+      "count": 24315
     },
     {
       "category": "sports-negative",
-      "count": 10966
+      "count": 10970
     },
     {
       "category": "soft-news-filler",
@@ -17,11 +17,11 @@
     },
     {
       "category": "crime-violence",
-      "count": 7061
+      "count": 7062
     },
     {
       "category": "celebrity-entertainment",
-      "count": 6287
+      "count": 6290
     },
     {
       "category": "economic-doom",
@@ -29,7 +29,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 4814
+      "count": 4815
     },
     {
       "category": "war-conflict",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 9530,
-      "total": 9751
+      "negative": 9532,
+      "total": 9753
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 9499,
-      "total": 9894
+      "negative": 9500,
+      "total": 9895
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -91,13 +91,13 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 4572,
-      "total": 4615
+      "negative": 4573,
+      "total": 4616
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 4013,
-      "total": 4043
+      "negative": 4015,
+      "total": 4045
     },
     {
       "source": "De Morgen",
@@ -106,13 +106,13 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 3687,
-      "total": 3699
+      "negative": 3689,
+      "total": 3701
     },
     {
       "source": "NRC",
-      "negative": 3671,
-      "total": 3730
+      "negative": 3672,
+      "total": 3731
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -201,8 +201,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 677,
-      "total": 688
+      "negative": 679,
+      "total": 690
     },
     {
       "source": "Euroactiv",
@@ -226,8 +226,8 @@
     },
     {
       "source": "Le Soir",
-      "negative": 491,
-      "total": 492
+      "negative": 492,
+      "total": 493
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,114 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Twin earthquakes strike Peru killing at least five",
+      "reason": "The article reports on twin earthquakes in Peru that resulted in fatalities, which is a negative event and not uplifting.",
+      "category": "disaster-accident",
+      "url": "https://www.aljazeera.com/news/2026/7/19/twin-earthquakes-strike-peru-killing-at-least-five?traffic_source=rss",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 2
+    },
+    {
+      "source": "Al Jazeera English",
+      "title": "Andy Burnham’s in-tray: The challenges facing the new UK PM",
+      "reason": "The article discusses the challenges facing a political figure, which falls under political content and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://www.aljazeera.com/economy/2026/7/19/andy-burnhams-in-tray-the-challenges-facing-the-new-uk-pm?traffic_source=rss",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 3
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Dansk kvinde vinder ismaraton ved Nordpolen",
+      "reason": "The article focuses on a sports event, specifically a marathon win, which does not meet the criteria for exceptional sports stories that are universally uplifting.",
+      "category": "sports-negative",
+      "url": "https://politiken.dk/sport/art10922575/Dansk-kvinde-vinder-ismaraton-ved-Nordpolen",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 3
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "ICE-betjente skal bære kameraer efter dødelige skud",
+      "reason": "The article discusses police shootings, which is a negative and violent topic that does not uplift or inspire readers.",
+      "category": "crime-violence",
+      "url": "https://politiken.dk/internationalt/art10922576/ICE-betjente-skal-b%C3%A6re-kameraer-efter-d%C3%B8delige-skud",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 2
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Pennan räddade historiska månfärden – såld för miljoner",
+      "reason": "The article discusses a historical item related to the moon landing, but it primarily focuses on the sale of a pen, which falls into the realm of celebrity and entertainment rather than being a universally uplifting story.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.dn.se/varlden/pennan-raddade-historiska-manfarden-sald-for-miljoner/",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 4
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Viktor Karlsson: Sveriges försvar är viktigare än statlig rea på blodpudding",
+      "reason": "The article discusses political priorities in Sweden, which falls under political commentary and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/ledare/viktor-karlsson-sveriges-forsvar-ar-viktigare-an-statlig-rea-pa-blodpudding/",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 3
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Schrikmoment bij Ferrari: Lewis Hamilton raakt monteur tijdens pitstop bij GP van België",
+      "reason": "The article describes a potentially dangerous incident during a Formula 1 race, which is not uplifting and focuses on a negative moment in sports.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/racesporten/formule-1/schrikmoment-bij-ferrari-lewis-hamilton-raakt-monteur-tijdens-pitstop-bij-gp-van-belgie/158943517.html",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 3
+    },
+    {
+      "source": "NRC",
+      "title": "Halftime show in beeld: Justin Bieber, Shakira en BTS in actie ",
+      "reason": "The article focuses on a halftime show featuring celebrities, which falls under the category of entertainment industry news and does not provide uplifting content that resonates broadly across cultures.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.nrc.nl/nieuws/2026/07/19/halftime-show-in-beeld-justin-bieber-shakira-en-bts-in-actie-a4932824",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 3
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Hollande et Cazeneuve passent leur tour, Glucksmann temporise… Au PS, la primaire cherche ses candidats",
+      "reason": "The article discusses political figures and their decisions regarding a primary selection, which falls under political news and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/politique/hollande-et-cazeneuve-passent-leur-tour-glucksmann-temporise-au-ps-la-primaire-cherche-ses-candidats-20260719",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 3
+    },
+    {
+      "source": "Le Soir",
+      "title": "Madonna, BTS, Shakira... le show de la mi-temps de la finale du Mondial 2026 en images",
+      "reason": "The article focuses on a halftime show featuring celebrities, which falls under entertainment industry coverage and does not provide uplifting content that resonates broadly across cultures.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.lesoir.be/760342/article/2026-07-19/madonna-bts-shakira-le-show-de-la-mi-temps-de-la-finale-du-mondial-2026-en",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 3
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Totale chaos” aan ingang stadion WK-finale: sommige fans staan uren in de rij om binnen te raken",
+      "reason": "The article discusses chaos and long wait times at a major sporting event, which is negative and does not uplift the reader.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/buitenland/totale-chaos-aan-ingang-stadion-wk-finale-sommige-fans-staan-uren-in-de-rij-om-binnen-te-raken~a1ef7490/",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 2
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "LIVE. Spanje drukt Argentinië terug, volgt ook de openingsgoal?",
+      "reason": "The article focuses on a sports event, specifically the World Cup final, which does not meet the positive-news editorial standard due to its routine sports content.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/wk-voetbal/live-spanje-drukt-argentinie-terug-volgt-ook-de-openingsgoal~ae4ab2c1/",
+      "date": "2026-07-19 22:36",
+      "positivity_score": 3
+    },
     {
       "source": "Al Jazeera English",
       "title": "Fans light up NYC’s Little Argentina ahead of Spain World Cup final clash",
@@ -9282,114 +9390,6 @@
       "url": "https://www.hln.be/buitenland/waarom-de-nederlandse-natasja-51-niet-alleen-met-erik-51-trouwt-maar-ook-met-berlinda-55~a691c576/",
       "date": "2026-07-18 21:20",
       "positivity_score": 4
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Zware brand in Ruiselede: zeker drie woningen onbewoonbaar, één slachtoffer naar het ziekenhuis",
-      "reason": "The article reports on a fire that has made several homes uninhabitable and resulted in a hospital visit, which is a negative event and not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://www.hln.be/wingene/zware-brand-in-ruiselede-zeker-drie-woningen-onbewoonbaar-een-slachtoffer-naar-het-ziekenhuis~a1a4664b/",
-      "date": "2026-07-18 21:20",
-      "positivity_score": 2
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“Villarreal duwt door voor Rode Duivel Nicolas Raskin” - Club Brugge-target Yannik Engelhardt trekt naar Freiburg",
-      "reason": "The article focuses on sports transfer news, which does not meet the positive-news editorial standard as it relates to routine sports updates without exceptional or inspiring elements.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/voetbal/villarreal-duwt-door-voor-rode-duivel-nicolas-raskin-club-brugge-target-yannik-engelhardt-trekt-naar-freiburg~a320a706/",
-      "date": "2026-07-18 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "“Mensen hebben jouw grootsheid niet altijd naar waarde geschat”: Kylian Mbappé zwaait bondscoach Didier Deschamps uit met mooie woorden",
-      "reason": "The article focuses on a sports event and the farewell of a coach, which does not meet the positive-news criteria as it relates to routine sports content without exceptional emotional or human-interest elements.",
-      "category": "sports-negative",
-      "url": "https://www.hln.be/wk-voetbal/mensen-hebben-jouw-grootsheid-niet-altijd-naar-waarde-geschat-kylian-mbappe-zwaait-bondscoach-didier-deschamps-uit-met-mooie-woorden~a8d6a910/",
-      "date": "2026-07-18 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Morgen",
-      "title": "Hans Vandeweghe over de verkoop van Antwerp: ‘Ze moeten Gheysens nu ook niet met pek en veren buitendragen’",
-      "reason": "The article discusses the sale of a sports team, which falls under the category of professional sports content that is not exceptional or uplifting.",
-      "category": "sports-negative",
-      "url": "https://www.demorgen.be/sport/hans-vandeweghe-over-de-verkoop-van-antwerp-ze-moeten-gheysens-nu-ook-niet-met-pek-en-veren-buitendragen~ba9916b2/",
-      "date": "2026-07-18 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Morgen",
-      "title": "Regering wil minimale bezetting in gevangenissen sneller afdwingen, vakbonden reageren scherp en sluiten acties niet uit",
-      "reason": "The article discusses political actions regarding prison staffing, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/regering-wil-minimale-bezetting-in-gevangenissen-sneller-afdwingen-vakbonden-reageren-scherp-en-sluiten-acties-niet-uit~b190f8a2/",
-      "date": "2026-07-18 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Morgen",
-      "title": "‘Als Antwerp opnieuw presteert, zal Vandenhaute met open armen ontvangen worden’: bekende supporters over de Antwerp-overname",
-      "reason": "The article discusses a sports-related topic about the Antwerp takeover and its implications, which falls under the category of non-exceptional sports news.",
-      "category": "sports-negative",
-      "url": "https://www.demorgen.be/nieuws/als-antwerp-opnieuw-presteert-zal-vandenhaute-met-open-armen-ontvangen-worden-bekende-supporters-over-de-antwerp-overname~b307cd02/",
-      "date": "2026-07-18 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Morgen",
-      "title": "Live - Iraans leider waarschuwt VS voor ‘onvergetelijke lessen’ als aanvallen doorgaan • Twee Amerikaanse militairen omgekomen in Jordanië",
-      "reason": "The article discusses military casualties and warnings related to conflict, which is inherently negative and does not uplift the reader.",
-      "category": "war-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/live-iraans-leider-waarschuwt-vs-voor-onvergetelijke-lessen-als-aanvallen-doorgaan-twee-amerikaanse-militairen-omgekomen-in-jordanie~be9c4f82/",
-      "date": "2026-07-18 21:20",
-      "positivity_score": 2
-    },
-    {
-      "source": "De Morgen",
-      "title": "Hongaarse president ondertekent wet die eigen ambtstermijn beëindigt",
-      "reason": "The article discusses a political decision regarding the president of Hungary ending their own term, which falls under political news and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/hongaarse-president-ondertekent-wet-die-eigen-ambtstermijn-beeindigt~b04c6be3/",
-      "date": "2026-07-18 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Standaard Economie",
-      "title": "India lanceert eerste particuliere raket",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.standaard.be/economie/india-lanceert-eerste-particuliere-raket/158904240.html",
-      "date": "2026-07-18 19:20",
-      "positivity_score": null
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Jongetje (5) in Batman kostuum verricht echte heldendaad en helpt man te redden van verdrinking",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.gva.be/buitenland/jongetje-5-in-batman-kostuum-verricht-echte-heldendaad-en-helpt-man-te-redden-van-verdrinking/158907655.html",
-      "date": "2026-07-18 19:20",
-      "positivity_score": null
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Indisk virksomhed skriver sig ind i rumhistorien med raket med 3D-printet motor",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://politiken.dk/internationalt/art10922010/Indisk-virksomhed-skriver-sig-ind-i-rumhistorien-med-raket-med-3D-printet-motor",
-      "date": "2026-07-18 19:20",
-      "positivity_score": null
-    },
-    {
-      "source": "The Better India",
-      "title": "Meet the Artist Using Jagannath Raths to Change Lives ",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://thebetterindia.com/videos/hobby/meet-the-artist-using-jagannath-raths-to-change-lives-12176575",
-      "date": "2026-07-18 19:20",
-      "positivity_score": null
     }
   ]
 }
