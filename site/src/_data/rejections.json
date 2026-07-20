@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-20T19:48:29.710Z",
-  "total_rejected": 89352,
+  "exported_at": "2026-07-20T19:48:36.840Z",
+  "total_rejected": 89353,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1375
+      "count": 1376
     },
     {
       "category": "divisive-racism",
@@ -186,8 +186,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1012,
-      "total": 1368
+      "negative": 1013,
+      "total": 1369
     },
     {
       "source": "Humo",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Psychologist explains why praising people’s efforts instead of their results leads to better outcomes",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/psychologist-explains-why-praising-peoples-efforts-instead-of-their-results-actually-lead-to-better-outcomes-ex1/",
+      "date": "2026-07-20 21:48",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "Research shows one simple action can change someone’s entire perception of you",
@@ -9381,15 +9390,6 @@
       "url": "https://politiken.dk/internationalt/art10922430/Hans-h%C3%A5rdh%C3%A6ndede-hovedreng%C3%B8ring-overrasker-ekspert-Jeg-har-ikke-set-noget-lignende-men-det-virker",
       "date": "2026-07-19 21:22",
       "positivity_score": 2
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Vingegaard vil ikke spekulere efter exit: »Vi skal have vores egen dømmekraft«",
-      "reason": "The article discusses Jonas Vingegaard's crash and subsequent exit from the Tour, which is a negative event in sports and does not provide an uplifting narrative.",
-      "category": "sports-negative",
-      "url": "https://politiken.dk/sport/cykling/touren/art10922563/Vingegaard-vil-ikke-spekulere-efter-exit-%C2%BBVi-skal-have-vores-egen-d%C3%B8mmekraft%C2%AB",
-      "date": "2026-07-19 21:22",
-      "positivity_score": 3
     }
   ]
 }
