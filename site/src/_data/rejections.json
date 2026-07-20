@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-20T19:48:36.840Z",
-  "total_rejected": 89353,
+  "exported_at": "2026-07-20T19:48:45.477Z",
+  "total_rejected": 89354,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1376
+      "count": 1377
     },
     {
       "category": "divisive-racism",
@@ -186,8 +186,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1013,
-      "total": 1369
+      "negative": 1014,
+      "total": 1370
     },
     {
       "source": "Humo",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Her groundbreaking sea floor discovery was dismissed as ‘girl talk.’ But science proved her right.",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/marie-tharp-tectonic-discovery-ex1/",
+      "date": "2026-07-20 21:48",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "Psychologist explains why praising people’s efforts instead of their results leads to better outcomes",
@@ -9381,15 +9390,6 @@
       "url": "https://politiken.dk/danmark/art10922534/Tre-biler-og-et-skur-er-br%C3%A6ndt-ved-s%C3%B8nderjysk-plejehjem",
       "date": "2026-07-19 21:23",
       "positivity_score": 3
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Hans hårdhændede hovedrengøring overrasker ekspert: Jeg har ikke set noget lignende, men det virker",
-      "reason": "The article discusses political protests and the resignation of a president, which is inherently negative and does not uplift the reader.",
-      "category": "political-conflict",
-      "url": "https://politiken.dk/internationalt/art10922430/Hans-h%C3%A5rdh%C3%A6ndede-hovedreng%C3%B8ring-overrasker-ekspert-Jeg-har-ikke-set-noget-lignende-men-det-virker",
-      "date": "2026-07-19 21:22",
-      "positivity_score": 2
     }
   ]
 }
