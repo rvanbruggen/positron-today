@@ -2,7 +2,7 @@
 title: "A hidden “switch-off” signal could predict solar storms seven years early"
 title_nl: "Een verborgen 'uitschakel'-signaal kan zonne-stormen zeven jaar van tevoren voorspellen"
 title_fr: "Un signal caché de 'désactivation' pourrait prédire les tempêtes solaires sept ans à l'avance"
-date: 2026-07-21T19:26:24
+date: 2026-07-21T19:26:28
 source_pub_date: 2026-07-21
 fetched_date: 2026-07-21
 source_url: "https://www.sciencedaily.com/releases/2026/07/260721000818.htm"
