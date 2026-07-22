@@ -2,7 +2,7 @@
 title: "How a Futurama plotline led to a totally new math proof"
 title_nl: "Hoe een plotlijn van Futurama leidde tot een totaal nieuwe wiskundige bewijs"
 title_fr: "Comment une intrigue de Futurama a conduit à une preuve mathématique totalement nouvelle"
-date: 2026-07-22T04:21:03
+date: 2026-07-22T04:21:09
 source_pub_date: 2026-07-21
 fetched_date: 2026-07-21
 source_url: "https://www.scientificamerican.com/article/how-a-futurama-plotline-led-to-a-totally-new-math-proof/"
