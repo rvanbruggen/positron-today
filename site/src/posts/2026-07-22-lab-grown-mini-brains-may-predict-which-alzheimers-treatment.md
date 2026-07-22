@@ -2,7 +2,7 @@
 title: "Lab-grown mini brains may predict which Alzheimer’s treatments will work"
 title_nl: "In het laboratorium gekweekte mini-hersenen kunnen voorspellen welke Alzheimer-behandelingen zullen werken"
 title_fr: "Des mini-cerveaux cultivés en laboratoire pourraient prédire quels traitements pour Alzheimer fonctionneront"
-date: 2026-07-22T19:26:14
+date: 2026-07-22T19:26:13
 source_pub_date: 2026-07-22
 fetched_date: 2026-07-22
 source_url: "https://www.sciencedaily.com/releases/2026/07/260721000844.htm"
