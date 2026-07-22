@@ -2,7 +2,7 @@
 title: "Canada’s first ‘dementia-inclusive’ park set to open in Calgary in fall 2026"
 title_nl: "Canada's eerste 'dementie-inclusieve' park opent in de herfst van 2026 in Calgary"
 title_fr: "Le premier parc 'inclusif pour les démences' du Canada ouvrira à Calgary à l'automne 2026"
-date: 2026-07-22T04:20:53
+date: 2026-07-22T04:20:59
 source_pub_date: 2026-07-21
 fetched_date: 2026-07-21
 source_url: "https://globalnews.ca/news/11974229/canadas-first-dementia-inclusive-park-calgary/"
