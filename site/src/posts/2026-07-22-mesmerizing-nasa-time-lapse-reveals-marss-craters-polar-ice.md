@@ -2,7 +2,7 @@
 title: "Mesmerizing NASA time-lapse reveals Mars’s craters, polar ice caps and deserts"
 title_nl: "Betoverende NASA-tijdverloop onthult kraters, poolijskap en woestijnen op Mars"
 title_fr: "Un fascinant timelapse de la NASA révèle les cratères, les calottes glaciaires et les déserts de Mars"
-date: 2026-07-22T04:20:56
+date: 2026-07-22T04:21:04
 source_pub_date: 2026-07-21
 fetched_date: 2026-07-21
 source_url: "https://www.scientificamerican.com/article/mesmerizing-nasa-timelapse-reveals-mars-craters-polar-ice-caps-and-deserts/"
