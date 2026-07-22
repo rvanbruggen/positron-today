@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-22T04:59:21.488Z",
-  "total_rejected": 90624,
+  "exported_at": "2026-07-22T04:59:29.010Z",
+  "total_rejected": 90625,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1414
+      "count": 1415
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 3143,
-      "total": 3232
+      "negative": 3144,
+      "total": 3233
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Great Apes kiss and cuddle to keep the peace, says study",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c5y045vprg5o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-07-22 06:59",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "An atheist poet wrote about her Muslim husband’s faith. It’s bringing people to tears.",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses military conflict and attacks, which is inherently negative and does not uplift the reader.",
       "category": "war-conflict",
       "url": "https://www.lefigaro.fr/international/en-direct-guerre-au-moyen-orient-les-gardiens-de-la-revolution-affirment-avoir-vise-des-cibles-militaires-americaines-a-bahrein-et-au-koweit-20260721",
-      "date": "2026-07-21 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Les 50 décisions qui ont coulé la France : le grand renoncement sécuritaire et judiciaire",
-      "reason": "The article discusses major decisions related to security and justice in France, which falls under political analysis and is not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/actualite-france/les-50-decisions-qui-ont-coule-la-france-le-grand-renoncement-securitaire-et-judiciaire-20260721",
       "date": "2026-07-21 10:26",
       "positivity_score": 2
     }
