@@ -2,7 +2,7 @@
 title: "Brazil's Amazon sees sharp decline in size of area burned in 2025"
 title_nl: "Brazilië's Amazone ziet scherpe daling in verbrand gebied in 2025"
 title_fr: "L'Amazonie du Brésil connaît une forte baisse de la superficie brûlée en 2025"
-date: 2026-07-22T04:21:33
+date: 2026-07-22T04:21:27
 source_pub_date: 2026-07-21
 fetched_date: 2026-07-21
 source_url: "https://www.bbc.co.uk/news/articles/cqx78eplqqlo?at_medium=RSS&at_campaign=rss"
