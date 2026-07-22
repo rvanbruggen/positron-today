@@ -2,7 +2,7 @@
 title: "A huge cosmic object could force astronomers to rethink what a moon is"
 title_nl: "Een enorm kosmisch object kan astronomen dwingen om na te denken over wat een maan is"
 title_fr: "Un énorme objet cosmique pourrait obliger les astronomes à repenser ce qu'est une lune"
-date: 2026-07-22T19:26:14
+date: 2026-07-22T19:26:18
 source_pub_date: 2026-07-22
 fetched_date: 2026-07-22
 source_url: "https://www.scientificamerican.com/article/a-huge-cosmic-object-could-force-astronomers-to-rethink-what-a-moon-is/"
