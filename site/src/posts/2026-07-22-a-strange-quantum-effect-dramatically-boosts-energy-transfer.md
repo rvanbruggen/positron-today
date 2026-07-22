@@ -2,7 +2,7 @@
 title: "A strange quantum effect dramatically boosts energy transfer"
 title_nl: "Een vreemde kwantumwerking verhoogt dramatisch de energieoverdracht"
 title_fr: "Un étrange effet quantique augmente considérablement le transfert d'énergie"
-date: 2026-07-22T19:26:09
+date: 2026-07-22T19:26:12
 source_pub_date: 2026-07-22
 fetched_date: 2026-07-22
 source_url: "https://www.sciencedaily.com/releases/2026/07/260722032130.htm"
