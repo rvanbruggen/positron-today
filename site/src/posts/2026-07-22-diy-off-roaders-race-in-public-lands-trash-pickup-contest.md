@@ -2,7 +2,7 @@
 title: "DIY off-roaders race in public lands trash pickup contest"
 title_nl: "Doe-het-zelf off-roaders racen in afvalopruimwedstrijd op openbare gronden"
 title_fr: "Des amateurs de tout-terrain participent à un concours de ramassage des déchets dans les espaces publics"
-date: 2026-07-22T04:20:54
+date: 2026-07-22T04:21:01
 source_pub_date: 2026-07-21
 fetched_date: 2026-07-21
 source_url: "https://www.goodgoodgood.co/articles/gambler-500-trash-pickup-rally"
