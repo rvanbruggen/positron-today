@@ -2,7 +2,7 @@
 title: "Scientists revive a powerful antibiotic that superbugs had defeated"
 title_nl: "Wetenschappers wekken een krachtig antibioticum tot leven dat superbugs hadden verslagen"
 title_fr: "Des scientifiques ressuscitent un puissant antibiotique que les super-bactéries avaient vaincu"
-date: 2026-07-22T19:26:19
+date: 2026-07-22T19:26:18
 source_pub_date: 2026-07-22
 fetched_date: 2026-07-22
 source_url: "https://www.sciencedaily.com/releases/2026/07/260722032108.htm"
