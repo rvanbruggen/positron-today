@@ -2,7 +2,7 @@
 title: "Faintest planet ever spotted from Earth has been hiding in plain sight"
 title_nl: "Zwakste planeet ooit vanaf de aarde gezien, heeft in het openbaar verborgen gezeten"
 title_fr: "La planète la plus faible jamais observée depuis la Terre était cachée à la vue de tous"
-date: 2026-07-22T04:21:16
+date: 2026-07-22T04:21:21
 source_pub_date: 2026-07-21
 fetched_date: 2026-07-21
 source_url: "https://www.nature.com/articles/d41586-026-02210-3"
