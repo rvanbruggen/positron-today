@@ -2,7 +2,7 @@
 title: "Grandma takes action to bring happy hour to her nursing home and wins"
 title_nl: "Grootmoeder onderneemt actie om happy hour naar haar verpleeghuis te brengen en wint"
 title_fr: "Grand-mère agit pour instaurer l'heure joyeuse dans sa maison de retraite et gagne"
-date: 2026-07-22T04:21:05
+date: 2026-07-22T04:21:14
 source_pub_date: 2026-07-21
 fetched_date: 2026-07-21
 source_url: "https://www.upworthy.com/grandma-takes-legal-action-to-have-happy-hour-instated-in-her-nursing-home-and-wins/"
