@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-22T22:07:20.546Z",
-  "total_rejected": 91560,
+  "exported_at": "2026-07-22T22:07:39.985Z",
+  "total_rejected": 91562,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1437
+      "count": 1439
     },
     {
       "category": "divisive-racism",
@@ -136,8 +136,8 @@
     },
     {
       "source": "The Guardian",
-      "negative": 2852,
-      "total": 2973
+      "negative": 2853,
+      "total": 2974
     },
     {
       "source": "DR (Danish Public broadcaster)",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 61,
-      "total": 93
+      "negative": 62,
+      "total": 94
     },
     {
       "source": "Positive News",
@@ -391,6 +391,24 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Guardian",
+      "title": "From posh egg cups to secondhand lamps: 22 cheap ways to make your home look more expensive",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.theguardian.com/thefilter/2026/jul/22/cheap-ways-make-your-home-look-more-expensive",
+      "date": "2026-07-23 00:07",
+      "positivity_score": null
+    },
+    {
+      "source": "Scientific American",
+      "title": "Long-lost coral reefs rediscovered off the coast of Africa",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/long-lost-coral-reefs-rediscovered-off-the-coast-of-africa/",
+      "date": "2026-07-23 00:07",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "One Man's Dream Is Changing 12,000 Childhoods ",
@@ -9372,24 +9390,6 @@
       "url": "https://www.dn.se/sverige/fastingplaga-tbe-fallen-skjuter-i-hojden/",
       "date": "2026-07-22 06:17",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Drożyzna? Niekoniecznie. Oto prawdziwe ceny nowych mieszkań",
-      "reason": "The article discusses housing prices, which may not be uplifting for a broad audience and focuses on economic conditions that could be perceived negatively.",
-      "category": "economic-doom",
-      "url": "https://pro.rp.pl/raporty-ekonomiczne/art44853591-drozyzna-niekoniecznie-oto-prawdziwe-ceny-nowych-mieszkan",
-      "date": "2026-07-22 06:17",
-      "positivity_score": 4
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Adam Roguski: Ceny mieszkań. Szok, statystyka i zdumiewająca bezradność",
-      "reason": "The article discusses the lack of reliable public data on housing prices, which reflects a negative situation rather than an uplifting story.",
-      "category": "economic-doom",
-      "url": "https://www.rp.pl/opinie-ekonomiczne/art44861071-adam-roguski-ceny-mieszkan-szok-statystyka-i-zdumiewajaca-bezradnosc",
-      "date": "2026-07-22 06:17",
-      "positivity_score": 3
     }
   ]
 }
