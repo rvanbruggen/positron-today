@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-23T17:07:27.515Z",
-  "total_rejected": 92484,
+  "exported_at": "2026-07-23T17:07:51.979Z",
+  "total_rejected": 92485,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1462
+      "count": 1463
     },
     {
       "category": "divisive-racism",
@@ -211,8 +211,8 @@
     },
     {
       "source": "Nature",
-      "negative": 640,
-      "total": 743
+      "negative": 641,
+      "total": 744
     },
     {
       "source": "Le Soir",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "What <i>The Odyssey</i> reveals about ancient science – from botany to psychiatry",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02275-0",
+      "date": "2026-07-23 19:07",
+      "positivity_score": null
+    },
     {
       "source": "Quanta Magazine",
       "title": "Living Fully in the Math World Means Threading the Needle",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rnz.co.nz/news/health/773457/cause-of-major-it-outage-across-waikato-s-hospitals-remains-unclear",
       "date": "2026-07-22 21:24",
       "positivity_score": 2
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Whakatāne's loss, Masterton's gain: The musical chairs of medical scanning",
-      "reason": "The article focuses on local medical scanning services and the inconvenience faced by residents, which may not be of interest to a broader audience outside the region.",
-      "category": "soft-news-filler",
-      "url": "https://www.rnz.co.nz/news/health/773465/whakatane-s-loss-masterton-s-gain-the-musical-chairs-of-medical-scanning",
-      "date": "2026-07-22 21:24",
-      "positivity_score": 4
     }
   ]
 }
