@@ -2,7 +2,7 @@
 title: "Did Belgian researchers find the secret weapon against type 1 diabetes? “We hope to better slow down the disease or even prevent it”"
 title_nl: "Vonden Belgische onderzoekers het geheime wapen tegen type 1-diabetes? “We hopen de ziekte beter af te remmen of zelfs te voorkomen”"
 title_fr: "Les chercheurs belges ont-ils trouvé l'arme secrète contre le diabète de type 1 ? “Nous espérons mieux ralentir la maladie ou même la prévenir”"
-date: 2026-07-23T04:20:35
+date: 2026-07-23T04:20:40
 source_pub_date: 2026-07-22
 fetched_date: 2026-07-22
 source_url: "https://www.hln.be/gezondheid/vonden-belgische-onderzoekers-het-geheime-wapen-tegen-type-1-diabetes-we-hopen-de-ziekte-beter-af-te-remmen-of-zelfs-te-voorkomen~a65ea160/"
