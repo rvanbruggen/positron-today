@@ -2,7 +2,7 @@
 title: "Scientists discover the hidden brain switch that assigns bees their jobs"
 title_nl: "Wetenschappers ontdekken de verborgen hersenswitch die bijen hun taken toewijst"
 title_fr: "Des scientifiques découvrent l'interrupteur cérébral caché qui attribue des tâches aux abeilles"
-date: 2026-07-23T19:26:29
+date: 2026-07-23T19:26:33
 source_pub_date: 2026-07-23
 fetched_date: 2026-07-23
 source_url: "https://www.sciencedaily.com/releases/2026/07/260722032117.htm"
