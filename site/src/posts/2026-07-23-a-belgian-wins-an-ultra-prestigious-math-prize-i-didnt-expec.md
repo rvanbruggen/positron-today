@@ -2,7 +2,7 @@
 title: "A Belgian wins an ultra-prestigious math prize: “I didn’t expect it, because pure mathematicians are a bit snobbish!”"
 title_nl: "Een Belg wint een ultra-prestigieuze wiskundeprijs: “Ik verwachtte het niet, omdat pure wiskundigen een beetje snobistisch zijn!”"
 title_fr: "Un Belge remporte un prix de mathématiques ultra-préstigieux : “Je ne m’y attendais pas, car les mathématiciens purs sont un peu snobs !”"
-date: 2026-07-23T19:26:41
+date: 2026-07-23T19:26:44
 source_pub_date: 2026-07-23
 fetched_date: 2026-07-23
 source_url: "https://www.lalibre.be/planete/sciences-espace/2026/07/23/un-belge-laureat-dun-prix-de-math-ultra-prestigieux-je-ne-my-attendais-pas-car-les-mathematiciens-purs-sont-un-peu-snobs-UT54KUXPYBAARMB4WGAI6JKYQU/"
