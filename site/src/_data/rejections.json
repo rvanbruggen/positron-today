@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-23T16:31:08.567Z",
-  "total_rejected": 92478,
+  "exported_at": "2026-07-23T17:06:20.838Z",
+  "total_rejected": 92479,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1456
+      "count": 1457
     },
     {
       "category": "divisive-racism",
@@ -250,14 +250,14 @@
       "total": 298
     },
     {
+      "source": "AllAfrica",
+      "negative": 276,
+      "total": 284
+    },
+    {
       "source": "Knack",
       "negative": 276,
       "total": 279
-    },
-    {
-      "source": "AllAfrica",
-      "negative": 275,
-      "total": 283
     },
     {
       "source": "The Washington Post",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "AllAfrica",
+      "title": "Lesotho: Stitching Lesotho into the Global Economy",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://allafrica.com/stories/202607230472.html",
+      "date": "2026-07-23 19:06",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Ebola death toll in DR Congo surpasses 1,000",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on a protest related to a shooting incident, which is a negative event and does not uplift the reader.",
       "category": "political-conflict",
       "url": "https://www.aljazeera.com/video/newsfeed/2026/7/22/justice-for-lorenzo-protests-disrupt-houston-council-meeting?traffic_source=rss",
-      "date": "2026-07-22 21:24",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Iran’s judiciary warns against ‘infiltrators’, announces new executions",
-      "reason": "The article discusses executions and security offences, which are highly negative and concerning topics, failing to provide any uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/news/2026/7/22/irans-judiciary-warns-against-infiltrators-announces-new-executions?traffic_source=rss",
       "date": "2026-07-22 21:24",
       "positivity_score": 2
     }
