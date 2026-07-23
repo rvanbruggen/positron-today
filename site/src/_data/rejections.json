@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-23T12:19:53.741Z",
-  "total_rejected": 92157,
+  "exported_at": "2026-07-23T12:20:11.985Z",
+  "total_rejected": 92158,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1450
+      "count": 1451
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 9748,
-      "total": 9972
+      "negative": 9749,
+      "total": 9973
     },
     {
       "source": "Gazet van Antwerpen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Stad in Nieuw-Zeeland maakt zich op voor totale zonsverduistering in 2028: hotels nu al volgeboekt",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/buitenland/stad-in-nieuw-zeeland-maakt-zich-op-voor-totale-zonsverduistering-in-2028-hotels-nu-al-volgeboekt~a624b3cb/",
+      "date": "2026-07-23 14:20",
+      "positivity_score": null
+    },
     {
       "source": "Frankfurter Allgemeine Zeitung",
       "title": "Medizinische Wunder: Wie neue Therapien bei Autoimmunleiden helfen",
@@ -9381,15 +9390,6 @@
       "url": "https://www.nrc.nl/nieuws/2026/07/22/clash-coach-mark-van-bommel-won-eindelijk-prijzen-bij-antwerp-fc-maar-kan-hij-ook-de-belgische-nationale-ploeg-succesvol-verjongen-a4933027",
       "date": "2026-07-22 18:26",
       "positivity_score": 3
-    },
-    {
-      "source": "NRC",
-      "title": "China’s ‘open source’ AI-strategie werkt. ‘Achttien maanden geleden kende niemand Moonshot – nu staan ze op de voorpagina van The New York Times’ ",
-      "reason": "The article discusses a new Chinese AI model and the competitive landscape with Silicon Valley, which may evoke concerns about economic competition and geopolitical tensions rather than uplifting themes.",
-      "category": "economic-doom",
-      "url": "https://www.nrc.nl/nieuws/2026/07/22/chinas-open-source-ai-strategie-werkt-achttien-maanden-geleden-kende-niemand-moonshot-nu-staan-ze-op-de-voorpagina-van-the-new-york-times-a4933044",
-      "date": "2026-07-22 18:26",
-      "positivity_score": 4
     }
   ]
 }
