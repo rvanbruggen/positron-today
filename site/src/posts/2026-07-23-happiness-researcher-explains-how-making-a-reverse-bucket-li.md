@@ -2,7 +2,7 @@
 title: "Happiness researcher explains how making a ‘reverse bucket list’ can change your life"
 title_nl: "Geluksonderzoeker legt uit hoe het maken van een 'reverse bucket list' je leven kan veranderen"
 title_fr: "Un chercheur en bonheur explique comment faire une 'liste de souhaits inversée' peut changer votre vie"
-date: 2026-07-23T04:20:41
+date: 2026-07-23T04:20:44
 source_pub_date: 2026-07-22
 fetched_date: 2026-07-22
 source_url: "https://www.upworthy.com/arthur-brooks-reverse-bucket-list-ex1/"
