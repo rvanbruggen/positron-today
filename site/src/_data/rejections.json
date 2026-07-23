@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-23T20:40:04.533Z",
-  "total_rejected": 92740,
+  "exported_at": "2026-07-23T20:40:13.533Z",
+  "total_rejected": 92741,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1468
+      "count": 1469
     },
     {
       "category": "divisive-racism",
@@ -216,8 +216,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 641,
-      "total": 654
+      "negative": 642,
+      "total": 655
     },
     {
       "source": "Le Soir",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "William Shatner and daughter Melanie diagnosed with Stage 4 cancer at same time",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/11985193/william-shatner-daughter-melanie-diagnosed-cancer-same-time/",
+      "date": "2026-07-23 22:40",
+      "positivity_score": null
+    },
     {
       "source": "Popular Science",
       "title": "Pancake the rescued sea turtle released on Coney Island beach",
@@ -9381,15 +9390,6 @@
       "url": "https://www.demorgen.be/nieuws/vs-ondertekenen-nucleair-akkoord-met-saudi-arabie-maar-zonder-klassieke-waarborgen-tegen-kernwapens~bee489fa/",
       "date": "2026-07-23 07:33",
       "positivity_score": 2
-    },
-    {
-      "source": "De Morgen",
-      "title": "‘Vlaamse eretekens kunnen ook weer worden ingetrokken’, zegt Diependaele na onthullingen over Seppe Nobels",
-      "reason": "The article discusses the withdrawal of honors related to a public figure, which is a negative political issue rather than a positive story.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/vlaamse-eretekens-kunnen-ook-weer-worden-ingetrokken-zegt-diependaele-na-onthullingen-over-seppe-nobels~b58cece4/",
-      "date": "2026-07-23 07:33",
-      "positivity_score": 3
     }
   ]
 }
