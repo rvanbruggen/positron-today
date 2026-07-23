@@ -2,7 +2,7 @@
 title: "Super weird object may be space’s first confirmed exomoon"
 title_nl: "‘Super vreemd’ object kan de eerste bevestigde exomaans zijn"
 title_fr: "Objet ‘super étrange’ pourrait être le premier exomoon confirmé de l'espace"
-date: 2026-07-23T04:20:37
+date: 2026-07-23T04:20:38
 source_pub_date: 2026-07-22
 fetched_date: 2026-07-22
 source_url: "https://www.popsci.com/science/first-confirmed-exomoon/"
