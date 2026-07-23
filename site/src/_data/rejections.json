@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-23T17:07:51.979Z",
-  "total_rejected": 92485,
+  "exported_at": "2026-07-23T17:08:12.266Z",
+  "total_rejected": 92486,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1463
+      "count": 1464
     },
     {
       "category": "divisive-racism",
@@ -186,8 +186,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1051,
-      "total": 1422
+      "negative": 1052,
+      "total": 1423
     },
     {
       "source": "Humo",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "It’s not brains or talent. Expert says high achievers have two traits anyone can learn.",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/not-brains-or-talent-expert-says-high-achievers-have-two-traits-that-anyone-can-learn-ex1/",
+      "date": "2026-07-23 19:08",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "What <i>The Odyssey</i> reveals about ancient science – from botany to psychiatry",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rnz.co.nz/news/business/773456/ai-is-changing-the-way-consumers-shop-and-businesses-need-to-get-ready",
       "date": "2026-07-22 21:24",
       "positivity_score": 4
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Cause of major IT outage across Waikato's hospitals remains unclear",
-      "reason": "The article discusses a major IT outage in hospitals, which led to negative consequences such as longer wait times and delayed surgeries, making it too negative and not uplifting.",
-      "category": "health-scare",
-      "url": "https://www.rnz.co.nz/news/health/773457/cause-of-major-it-outage-across-waikato-s-hospitals-remains-unclear",
-      "date": "2026-07-22 21:24",
-      "positivity_score": 2
     }
   ]
 }
