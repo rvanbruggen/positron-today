@@ -2,7 +2,7 @@
 title: "2026 Fields Medals go to four young mathematicians"
 title_nl: "2026 Fields Medals gaan naar vier jonge wiskundigen"
 title_fr: "Les médailles Fields 2026 décernées à quatre jeunes mathématiciens"
-date: 2026-07-23T19:26:31
+date: 2026-07-23T19:26:40
 source_pub_date: 2026-07-23
 fetched_date: 2026-07-23
 source_url: "https://www.scientificamerican.com/article/2026-fields-medals-go-to-four-young-mathematicians/"
