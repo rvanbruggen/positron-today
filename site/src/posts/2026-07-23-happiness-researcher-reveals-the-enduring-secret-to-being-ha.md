@@ -2,7 +2,7 @@
 title: "Happiness researcher reveals the ‘enduring’ secret to being happy in the second half of life"
 title_nl: "Geluksonderzoeker onthult het 'blijvende' geheim voor geluk in de tweede helft van het leven"
 title_fr: "Un chercheur sur le bonheur révèle le secret 'durable' pour être heureux dans la seconde moitié de la vie"
-date: 2026-07-23T04:20:30
+date: 2026-07-23T04:20:33
 source_pub_date: 2026-07-22
 fetched_date: 2026-07-22
 source_url: "https://www.upworthy.com/happiness-researcher-reveals-enduring-secret-to-being-happy-in-the-second-half-of-life-ex1/"
