@@ -1,0 +1,19 @@
+---
+title: "If you want good news, read the science pages"
+title_nl: "Wil je goed nieuws lezen, kijk dan op de wetenschapspagina's"
+title_fr: "Si vous voulez des bonnes nouvelles, lisez les pages science"
+date: 2026-07-24T16:01:04
+source_url: "/editorials/if-you-want-good-news-read-the-science-pages/"
+source_name: "Positron Today"
+topic: "Editorial"
+tags: ["Editorial"]
+emoji: "📊"
+summary: "I've been digging through 91 days of data from 37 news sources, using a positivity score to see which stories actually feel hopeful - and the results surprised me. General news hovers around 1 to 2 percent positive articles, but science publications are ten to fifteen times higher: Popular Science at 24 percent, Science.org at 17 percent, Nature at 15 percent. So here's the thing - science reporting covers discovery and progress, which genuinely *is* good news, while consumer-tech coverage scores nearly as low as hard news because it focuses on industry troubles rather than human breakthroughs. If you've given up on the news feeling flat, steering toward the science pages is concrete and actionable - that's where the hope actually lives."
+summary_nl: "Ik heb 91 dagen aan data van 37 nieuwsbronnen geanalyseerd met behulp van een positivityscore, en de resultaten verraste me enorm. Algemeen nieuws haalt ongeveer 1 tot 2 procent positieve artikelen, maar wetenschapspublicaties scoren tien tot vijftien keer hoger: Popular Science haalt 24 procent, Science.org 17 procent en Nature 15 procent. Het grappige is dat wetenschapsverslaggeving vooral gaat over ontdekking en vooruitgang, wat echt goed nieuws *is*, terwijl consumententech-coverage bijna net zo laag scoort als hardnekkig nieuws omdat het gaat over problemen in de industrie in plaats van menselijke doorbraken. Als je het nieuws beu bent omdat het je down maakt, is naar de wetenschapspagina's sturen concreet en praktisch - daar woont de hoop echt."
+summary_fr: "J'ai analysé 91 jours de données de 37 sources d'actualités en utilisant un score de positivité, et les résultats m'ont vraiment surpris. Les actualités générales plafonnent autour de 1 à 2 pour cent d'articles positifs, mais les publications scientifiques scorent dix à quinze fois plus haut : Popular Science atteint 24 pour cent, Science.org 17 pour cent et Nature 15 pour cent. Voici le truc - la couverture scientifique parle surtout de découverte et de progrès, ce qui est vraiment du bon travail, tandis que la couverture de la technologie grand public score presque aussi bas que les informations dures parce qu'elle se concentre sur les problèmes de l'industrie plutôt que sur les avancées humaines. Si vous en avez marre des actualités qui vous rendent morose, diriger votre attention vers les pages science est concret et praticable - c'est là que l'espoir habite vraiment."
+image_url: "/assets/editorials/illustration.png"
+featured: true
+layout: post.njk
+---
+
+I've been digging through 91 days of data from 37 news sources, using a positivity score to see which stories actually feel hopeful - and the results surprised me. General news hovers around 1 to 2 percent positive articles, but science publications are ten to fifteen times higher: Popular Science at 24 percent, Science.org at 17 percent, Nature at 15 percent. So here's the thing - science reporting covers discovery and progress, which genuinely *is* good news, while consumer-tech coverage scores nearly as low as hard news because it focuses on industry troubles rather than human breakthroughs. If you've given up on the news feeling flat, steering toward the science pages is concrete and actionable - that's where the hope actually lives.
