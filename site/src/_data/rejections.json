@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-25T06:19:33.233Z",
-  "total_rejected": 93910,
+  "exported_at": "2026-07-25T06:19:43.402Z",
+  "total_rejected": 93911,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1505
+      "count": 1506
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 76,
-      "total": 118
+      "negative": 77,
+      "total": 119
     },
     {
       "source": "ScienceDaily",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "How a 99-year-old mathematician unraveled a century-old braid mystery",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/how-a-99-year-old-mathematician-unraveled-a-century-old-braid-mystery/",
+      "date": "2026-07-25 08:19",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "The Rubin Observatory’s greatest legacy will be this ‘movie’ of the sky",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses violence and humanitarian issues in Gaza, which is too negative and not uplifting.",
       "category": "war-conflict",
       "url": "https://www.aljazeera.com/news/2026/7/24/israel-bombs-gaza-after-displacement-orders-kills-two-palestinians?traffic_source=rss",
-      "date": "2026-07-24 06:18",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Trump imposes new double-digit tariffs on dozens of countries",
-      "reason": "The article discusses new tariffs imposed by Trump, which is a political and economic issue that is not uplifting and could have negative implications for international relations and trade.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/news/2026/7/24/trump-imposes-new-double-digit-tariffs-on-dozens-of-countries?traffic_source=rss",
       "date": "2026-07-24 06:18",
       "positivity_score": 2
     }
