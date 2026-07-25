@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-25T06:14:39.632Z",
-  "total_rejected": 93897,
+  "exported_at": "2026-07-25T06:15:16.849Z",
+  "total_rejected": 93898,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1492
+      "count": 1493
     },
     {
       "category": "divisive-racism",
@@ -211,8 +211,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 695,
-      "total": 710
+      "negative": 696,
+      "total": 711
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Man in Spider-Man suit helps wheelchair user cross busy intersection",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/11987775/spider-man-helps-wheelchair-user-cross-intersection-video/",
+      "date": "2026-07-25 08:15",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Des youtubeurs américains résolvent deux mystérieuses disparitions ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rnz.co.nz/news/chinese-english/785845/searching-for-clues-to-the-appeal-of-china-s-scripted-murder-mystery-games",
       "date": "2026-07-24 06:18",
       "positivity_score": 4
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Some students in Dunedin asked to self-isolate amid flu outbreak",
-      "reason": "The article discusses a flu outbreak and the need for self-isolation among students, which is a health scare and not uplifting.",
-      "category": "health-scare",
-      "url": "https://www.rnz.co.nz/news/health/785900/some-students-in-dunedin-asked-to-self-isolate-amid-flu-outbreak",
-      "date": "2026-07-24 06:18",
-      "positivity_score": 2
     }
   ]
 }
