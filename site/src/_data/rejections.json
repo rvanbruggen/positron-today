@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-25T06:15:30.052Z",
-  "total_rejected": 93899,
+  "exported_at": "2026-07-25T06:15:41.387Z",
+  "total_rejected": 93900,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1494
+      "count": 1495
     },
     {
       "category": "divisive-racism",
@@ -226,8 +226,8 @@
     },
     {
       "source": "Nature",
-      "negative": 647,
-      "total": 752
+      "negative": 648,
+      "total": 753
     },
     {
       "source": "Euroactiv",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Bizarre CRISPR enzyme kills cancer cells by shredding their DNA",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02268-z",
+      "date": "2026-07-25 08:15",
+      "positivity_score": null
+    },
     {
       "source": "Dagens Nyheter",
       "title": "Gustav: ”Det är väldigt sorgligt att se någon försvinna framför en”",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses a crime incident involving damage to railway signaling cables, which is negative and does not uplift the reader.",
       "category": "crime-violence",
       "url": "https://www.rnz.co.nz/news/crime-and-justice/785396/man-arrested-after-wellington-railway-signalling-cables-damaged",
-      "date": "2026-07-24 06:18",
-      "positivity_score": 2
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Body found in West Auckland's Swanson believed to be missing woman Wolvnie Ding",
-      "reason": "The article reports on a missing person case that has ended tragically, which is not uplifting and falls under crime and violence.",
-      "category": "crime-violence",
-      "url": "https://www.rnz.co.nz/news/regional/785787/body-found-in-west-auckland-s-swanson-believed-to-be-missing-woman-wolvnie-ding",
       "date": "2026-07-24 06:18",
       "positivity_score": 2
     }
