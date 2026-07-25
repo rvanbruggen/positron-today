@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-25T06:18:26.164Z",
-  "total_rejected": 93907,
+  "exported_at": "2026-07-25T06:18:41.975Z",
+  "total_rejected": 93906,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1502
+      "count": 1501
     },
     {
       "category": "divisive-racism",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 5511,
-      "total": 5694
+      "negative": 5510,
+      "total": 5693
     },
     {
       "source": "Le Figaro",
@@ -391,15 +391,6 @@
     }
   ],
   "articles": [
-    {
-      "source": "VRT Nws",
-      "title": "Vlaamse Zweethonden Groep bestaat 40 jaar en spoort jaarlijks 250 gewonde dieren op",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://vrtnws.be/p.qEv8E56ZK",
-      "date": "2026-07-25 08:18",
-      "positivity_score": null
-    },
     {
       "source": "Good News Network",
       "title": "The Real Way to Save Bees During a Drought: Expert Corrects Sugar–Water Myth",
@@ -9390,6 +9381,15 @@
       "url": "https://www.aljazeera.com/news/2026/7/24/us-court-affirms-release-of-pro-palestine-scholar-as-legal-battle-continues?traffic_source=rss",
       "date": "2026-07-24 06:18",
       "positivity_score": 4
+    },
+    {
+      "source": "Al Jazeera English",
+      "title": "‘There’s no salary’: DRC health workers tell of hardship as Ebola spreads",
+      "reason": "The article focuses on the hardships faced by health workers in the DRC during an Ebola outbreak, which is a negative and concerning situation rather than uplifting.",
+      "category": "health-scare",
+      "url": "https://www.aljazeera.com/features/2026/7/24/theres-no-salary-drc-health-workers-tell-of-hardship-as-ebola-spreads?traffic_source=rss",
+      "date": "2026-07-24 06:18",
+      "positivity_score": 2
     }
   ]
 }
