@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-25T06:15:16.849Z",
-  "total_rejected": 93898,
+  "exported_at": "2026-07-25T06:15:30.052Z",
+  "total_rejected": 93899,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1493
+      "count": 1494
     },
     {
       "category": "divisive-racism",
@@ -96,8 +96,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 4246,
-      "total": 4279
+      "negative": 4247,
+      "total": 4280
     },
     {
       "source": "De Morgen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "Gustav: ”Det är väldigt sorgligt att se någon försvinna framför en”",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dn.se/insidan/gustav-det-ar-valdigt-sorgligt-att-se-nagon-forsvinna-framfor-en/",
+      "date": "2026-07-25 08:15",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "Man in Spider-Man suit helps wheelchair user cross busy intersection",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rnz.co.nz/news/regional/785787/body-found-in-west-auckland-s-swanson-believed-to-be-missing-woman-wolvnie-ding",
       "date": "2026-07-24 06:18",
       "positivity_score": 2
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Searching for clues to the appeal of China's scripted murder-mystery games",
-      "reason": "The article focuses on a specific trend in scripted role-playing games in a particular location, which may not have broad appeal outside of that context, making it local-only relevant.",
-      "category": "soft-news-filler",
-      "url": "https://www.rnz.co.nz/news/chinese-english/785845/searching-for-clues-to-the-appeal-of-china-s-scripted-murder-mystery-games",
-      "date": "2026-07-24 06:18",
-      "positivity_score": 4
     }
   ]
 }
