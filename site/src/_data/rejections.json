@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-26T18:16:12.862Z",
-  "total_rejected": 95152,
+  "exported_at": "2026-07-26T18:16:17.789Z",
+  "total_rejected": 95153,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1532
+      "count": 1533
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 3913,
-      "total": 3925
+      "negative": 3914,
+      "total": 3926
     },
     {
       "source": "NRC",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Unesco-Welterbe: Waldsiedlung in Berlin-Zehlendorf wird Welterbe",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.faz.net/aktuell/feuilleton/kunst-und-architektur/unesco-waldsiedlung-in-berlin-zehlendorf-ist-welterbe-accg-201065807.html",
+      "date": "2026-07-26 20:16",
+      "positivity_score": null
+    },
     {
       "source": "The Journal (Ireland)",
       "title": "'Rare' discovery of adjacent tombs in Co Galway offers insight into prehistoric burials",
@@ -9381,15 +9390,6 @@
       "url": "https://www.gva.be/regio/geen-gewonden-bij-brand-in-appartement-in-sint-antonius/159190084.html",
       "date": "2026-07-25 14:26",
       "positivity_score": 4
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Ouderenraad krijgt gehoor: zitbank aan shuttlehalte op Grote Markt verhoogt comfort ",
-      "reason": "The article focuses on a local improvement in Mechelen, which may not interest readers outside the area, making it too localized for a broader audience.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/rivierenland/mechelen/ouderenraad-krijgt-gehoor-zitbank-aan-shuttlehalte-op-grote-markt-verhoogt-comfort/159190583.html",
-      "date": "2026-07-25 14:26",
-      "positivity_score": 3
     }
   ]
 }
