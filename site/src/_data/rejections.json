@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-26T18:14:15.946Z",
-  "total_rejected": 95148,
+  "exported_at": "2026-07-26T18:14:52.506Z",
+  "total_rejected": 95149,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1528
+      "count": 1529
     },
     {
       "category": "divisive-racism",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 5560,
-      "total": 5744
+      "negative": 5561,
+      "total": 5745
     },
     {
       "source": "Le Figaro",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "VRT Nws",
+      "title": "Mechelen krijgt volgend jaar een 2e editie van de Canal Pride, en die wordt groter",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://vrtnws.be/p.vL4GPaX6x",
+      "date": "2026-07-26 20:14",
+      "positivity_score": null
+    },
     {
       "source": "The Journal (Ireland)",
       "title": "Unesco adds D-Day landing beaches and Mount Olympus to world heritage list",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on a local sports camp for children, which may not have broad relevance outside the specific community, thus falling under local-only relevance.",
       "category": "soft-news-filler",
       "url": "https://www.gva.be/regio/antwerpen/rivierenland/lier/gratis-voetbalkamp-laat-vijftig-lierse-kinderen-zorgeloos-sporten/159190881.html",
-      "date": "2026-07-25 14:26",
-      "positivity_score": 3
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Max Verstappen op grote achterstand in laatste training op Hungaroring, Lando Norris rijdt snelste tijd",
-      "reason": "The article discusses a professional sports event with a focus on training results and standings, which does not meet the positive-news criteria.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/racesporten/formule-1/max-verstappen-op-grote-achterstand-in-laatste-training-op-hungaroring-lando-norris-rijdt-snelste-tijd/159191025.html",
       "date": "2026-07-25 14:26",
       "positivity_score": 3
     }
