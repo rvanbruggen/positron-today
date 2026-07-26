@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-26T10:54:28.243Z",
-  "total_rejected": 94806,
+  "exported_at": "2026-07-26T10:54:44.221Z",
+  "total_rejected": 94807,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1524
+      "count": 1525
     },
     {
       "category": "divisive-racism",
@@ -246,8 +246,8 @@
     },
     {
       "source": "Good News Network",
-      "negative": 338,
-      "total": 670
+      "negative": 339,
+      "total": 671
     },
     {
       "source": "Knack",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good News Network",
+      "title": "Good News in History, July 26",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodnewsnetwork.org/events060726/",
+      "date": "2026-07-26 12:54",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Rowerem przez pływający most środkiem jeziora. Atrakcja zachwyca turystów",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theguardian.com/world/2026/jul/24/poland-rightwing-opposition-splits-loyalty-pledge-ultimatum-mateusz-morawiecki",
       "date": "2026-07-25 06:16",
       "positivity_score": 2
-    },
-    {
-      "source": "The Verge",
-      "title": "After backlash, Meta pauses plan to ‘rate limit’ its smart glasses",
-      "reason": "The article discusses Meta's plans for subscription fees related to smart glasses, which falls under corporate PR and does not provide uplifting content.",
-      "category": "soft-news-filler",
-      "url": "https://www.theverge.com/tech/970970/after-backlash-meta-pauses-plan-to-rate-limit-its-smart-glasses",
-      "date": "2026-07-25 06:16",
-      "positivity_score": 3
     }
   ]
 }
