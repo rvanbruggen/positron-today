@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-26T19:15:38.761Z",
-  "total_rejected": 95275,
+  "exported_at": "2026-07-26T19:20:31.956Z",
+  "total_rejected": 95281,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -9,15 +9,15 @@
     },
     {
       "category": "sports-negative",
-      "count": 11717
+      "count": 11719
     },
     {
       "category": "soft-news-filler",
-      "count": 11259
+      "count": 11260
     },
     {
       "category": "crime-violence",
-      "count": 7699
+      "count": 7702
     },
     {
       "category": "celebrity-entertainment",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 9956,
-      "total": 10182
+      "negative": 9958,
+      "total": 10184
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 9925,
-      "total": 10323
+      "negative": 9926,
+      "total": 10324
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 5565,
-      "total": 5749
+      "negative": 5566,
+      "total": 5750
     },
     {
       "source": "Le Figaro",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 3982,
-      "total": 3999
+      "negative": 3983,
+      "total": 4000
     },
     {
       "source": "De Morgen",
@@ -191,8 +191,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 1064,
-      "total": 1077
+      "negative": 1065,
+      "total": 1078
     },
     {
       "source": "Humo",
@@ -212,7 +212,7 @@
     {
       "source": "Le Soir",
       "negative": 740,
-      "total": 742
+      "total": 743
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,60 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Israeli settlers burn two mosques in occupied West Bank",
+      "reason": "The article reports on violent acts that are damaging and divisive, which does not align with positive news standards.",
+      "category": "crime-violence",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/7/26/israeli-settlers-burn-two-mosques-in-occupied-west-bank?traffic_source=rss",
+      "date": "2026-07-26 21:20",
+      "positivity_score": 2
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "18-årig flugtbilist anholdt efter ulykke og formodet ræs i København",
+      "reason": "The article discusses a traffic accident involving a young driver and potential racing, which is negative and related to crime and violence.",
+      "category": "crime-violence",
+      "url": "https://politiken.dk/danmark/art10927944/18-%C3%A5rig-flugtbilist-anholdt-efter-ulykke-og-formodet-r%C3%A6s-i-K%C3%B8benhavn",
+      "date": "2026-07-26 21:20",
+      "positivity_score": 2
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Alexander Blockx grijpt net naast eerste ATP-zege na zenuwslopende finale tegen Fransman met Belgische roots Luca Van Assche",
+      "reason": "The article focuses on a professional sports event where a player narrowly missed winning his first ATP title, which is not uplifting and falls under the category of routine sports coverage.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/sport/tennis/alexander-blockx-grijpt-net-naast-eerste-atp-zege-na-zenuwslopende-finale-tegen-fransman-met-belgische-roots-luca-van-assche/159225886.html",
+      "date": "2026-07-26 21:20",
+      "positivity_score": 3
+    },
+    {
+      "source": "VRT Nws",
+      "title": "Politie controleert aan station Gent-Sint-Pieters na incidenten Gentse Feesten: \"Veel mensen met gebruikershoeveelheden drugs aangetroffen\"",
+      "reason": "The article discusses police actions related to drug use at a public event, which is negative and focuses on crime rather than uplifting news.",
+      "category": "crime-violence",
+      "url": "https://vrtnws.be/p.vL4G5QLaB",
+      "date": "2026-07-26 21:20",
+      "positivity_score": 2
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Storm blaast tenten van KSA meters de lucht in in Lommel: “En morgen komen zo’n zeventig kinderen...”",
+      "reason": "The article focuses on a local event where a storm disrupted a camp, which may not be of interest to readers outside the area, and while it has a positive resolution, it primarily discusses a negative event.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/lommel/storm-blaast-tenten-van-ksa-meters-de-lucht-in-in-lommel-en-morgen-komen-zon-zeventig-kinderen~aee7a32a/",
+      "date": "2026-07-26 21:20",
+      "positivity_score": 4
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Geen eerste ATP-titel voor Alexander Blockx: jonge Belg moet na spannende finale in Estoril meerdere erkennen in Luca Van Assche",
+      "reason": "The article discusses a young Belgian tennis player losing in a final, which is not uplifting and falls under routine sports coverage without exceptional elements.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/tennis/geen-eerste-atp-titel-voor-alexander-blockx-jonge-belg-moet-na-spannende-finale-in-estoril-meerdere-erkennen-in-luca-van-assche~a12ac3b3/",
+      "date": "2026-07-26 21:20",
+      "positivity_score": 3
+    },
     {
       "source": "AllAfrica",
       "title": "Burundi: 'A Doctor Told Me to Buy My Coffin' - How Eric Turned an HIV Diagnosis Into Activism",
@@ -9336,60 +9390,6 @@
       "url": "https://vrtnws.be/p.ewopPb1Pq",
       "date": "2026-07-25 18:25",
       "positivity_score": 2
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Hoe schadelijk zijn bosbranden voor de gezondheid? \"Dag na de blootstelling kunnen al acute effecten optreden\"",
-      "reason": "The article discusses the harmful effects of wildfires on health, which is a negative topic and does not uplift the reader.",
-      "category": "health-scare",
-      "url": "https://vrtnws.be/p.93mEX4LD3",
-      "date": "2026-07-25 18:25",
-      "positivity_score": 2
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Voor 1 keer in de put van de kerstboom: 53e Leuvense Meyboomplanting komt eraan",
-      "reason": "The article focuses on a local event, the Meyboom planting in Leuven, which may not have broad relevance or interest outside of the local area.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.7n8VXPqmy",
-      "date": "2026-07-25 18:25",
-      "positivity_score": 4
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Baby van 1,5 maand overleden in Ichtegem: parket start onderzoek",
-      "reason": "The article discusses the death of a baby and an investigation, which is a tragic event and not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://vrtnws.be/p.0YM4J5oOl",
-      "date": "2026-07-25 18:25",
-      "positivity_score": 2
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Voetbal brengt culturen samen in Leuven: \"Niveau speelt geen rol, iedereen is welkom\"",
-      "reason": "The article focuses on a local sports event that may not have broad relevance outside of its immediate community, which does not meet the positive-news editorial standard.",
-      "category": "sports-negative",
-      "url": "https://vrtnws.be/p.ewopXAJZq",
-      "date": "2026-07-25 18:25",
-      "positivity_score": 4
-    },
-    {
-      "source": "VRT Nws",
-      "title": "11 doden en 16 gewonden bij aanvallen op vakantiekampen in bezet Zaporizja, zegt Rusland",
-      "reason": "The article reports on violent attacks resulting in deaths and injuries, which is highly negative and not uplifting.",
-      "category": "war-conflict",
-      "url": "https://vrtnws.be/p.Yb6eyZ0PD",
-      "date": "2026-07-25 18:25",
-      "positivity_score": 1
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Feesten op bijzondere plek: fietstunnel in Hasselt is unieke locatie voor rave",
-      "reason": "The article focuses on a local rave event in a specific location, which may not have broad appeal or relevance to readers outside that area.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.11dW4NR99",
-      "date": "2026-07-25 18:25",
-      "positivity_score": 4
     }
   ]
 }
