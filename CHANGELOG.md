@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.6.0** | ElevenLabs text-to-speech integration — generate spoken MP3 versions of editorials using a cloned voice. Audio player with download link on each editorial page (trilingual). Audio generated automatically on publish; "Generate Audio" button in admin for backfilling existing editorials |
 | **3.5.6** | Fix social media posts linking to the article card (`/posts/...`) instead of the editorial page (`/editorials/...`). Social URL now uses `source_url` for editorials |
 | **3.5.5** | Add "Post to Social" button on published editorial detail page — calls the existing `/api/post-social` endpoint using the editorial's linked article ID |
 | **3.5.4** | Post editorials to social media on publish. Set `post_to_social_on_publish = 1` on the linked articles row and call `postPendingSocial()` after GitHub Pages deploy |

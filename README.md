@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
 
-**Version:** 3.5.6 · **Live site:** [positron.today](https://positron.today)
+**Version:** 3.6.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -485,6 +485,8 @@ Run the admin directly with Node.js — no Docker needed. See the [Setup](#setup
 | `SOCIAL_POST_TOKEN` | If using auto-post-on-publish | Shared secret for the deploy-time callback to `/api/post-pending-social`. Must match a repo secret of the same name on GitHub |
 | `BLUESKY_HANDLE` | If using direct Bluesky | Handle for the legacy direct Bluesky posting route |
 | `BLUESKY_APP_PASSWORD` | If using direct Bluesky | App password for the legacy direct Bluesky posting route |
+| `ELEVENLABS_API_KEY` | If using editorial audio | API key from [elevenlabs.io](https://elevenlabs.io) for text-to-speech |
+| `ELEVENLABS_VOICE_ID` | If using editorial audio | Voice ID of the cloned voice to use for TTS generation |
 
 > **Note:** If you use Ollama for both tasks, neither `ANTHROPIC_API_KEY` nor `OPENAI_API_KEY` is needed. Social account IDs for Post for Me are managed through the Settings UI and stored in the database — no env vars needed.
 

@@ -4,6 +4,7 @@ import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { slugify, yamlStr, commitToGitHub, deleteFromGitHub } from "@/lib/publish-core";
 import { postEditorialToSubstack, uploadImageToSubstack, convertSvgToPng } from "@/lib/editorial-substack";
 import { postPendingSocial } from "@/lib/social-post-core";
+import { generateAllAudio } from "@/lib/elevenlabs";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",
@@ -173,6 +174,7 @@ ${sourceContent}`;
 
 export function generateEditorialPageMarkdown(editorial: Record<string, unknown>): string {
   const title = String(editorial.title_en ?? "Untitled");
+  const slug = String(editorial.slug ?? "");
   const date = new Date().toISOString().slice(0, 19);
   const emoji = String(editorial.article_emoji ?? "✍️");
   const filenames = parseImageFilenames(editorial.image_filename);
@@ -191,6 +193,12 @@ export function generateEditorialPageMarkdown(editorial: Record<string, unknown>
 
   if (filenames.length > 0) {
     lines.push(`image_url: ${yamlStr(`/assets/editorials/${filenames[0]}`)}`);
+  }
+
+  if (editorial.audio_generated_at) {
+    lines.push(`audio_en: ${yamlStr(`/assets/editorials/audio/${slug}-en.mp3`)}`);
+    lines.push(`audio_nl: ${yamlStr(`/assets/editorials/audio/${slug}-nl.mp3`)}`);
+    lines.push(`audio_fr: ${yamlStr(`/assets/editorials/audio/${slug}-fr.mp3`)}`);
   }
 
   // Store NL/FR content in frontmatter for the trilingual template
@@ -282,6 +290,29 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
       if (filenames[i] && datas[i]) {
         const imagePath = `site/src/assets/editorials/${filenames[i]}`;
         await commitImageToGitHub(imagePath, datas[i], `Add editorial image: ${filenames[i]}`);
+      }
+    }
+
+    // 1b. Generate and commit audio files (best-effort — publish continues on failure)
+    if (process.env.ELEVENLABS_API_KEY && process.env.ELEVENLABS_VOICE_ID) {
+      try {
+        const audioResults = await generateAllAudio(editorial as Record<string, unknown>);
+        for (const audio of audioResults) {
+          const audioPath = `site/src/assets/editorials/audio/${audio.filename}`;
+          await commitImageToGitHub(audioPath, audio.buffer.toString("base64"), `Add editorial audio: ${audio.filename}`);
+          console.log(`[editorial] Committed audio ${audio.filename} (${audio.sizeKB} KB)`);
+        }
+        if (audioResults.length > 0) {
+          await db.execute({
+            sql: "UPDATE editorials SET audio_generated_at = datetime('now') WHERE id = ?",
+            args: [id],
+          });
+          // Re-fetch so the markdown generation picks up audio_generated_at
+          const refreshed = await db.execute({ sql: "SELECT * FROM editorials WHERE id = ?", args: [id] });
+          Object.assign(editorial, refreshed.rows[0]);
+        }
+      } catch (err) {
+        console.warn(`[editorial] Audio generation failed (non-fatal):`, err instanceof Error ? err.message : err);
       }
     }
 
@@ -451,11 +482,19 @@ export async function unpublishEditorial(id: number): Promise<{ ok: boolean; err
       await deleteFromGitHub(`site/src/assets/editorials/${filename}`, `Remove editorial image: ${filename}`);
     }
 
+    // 3b. Delete audio files from GitHub
+    if (editorial.audio_generated_at) {
+      for (const lang of ["en", "nl", "fr"]) {
+        await deleteFromGitHub(`site/src/assets/editorials/audio/${slug}-${lang}.mp3`, `Remove editorial audio: ${slug}-${lang}.mp3`);
+      }
+    }
+
     // 4. Clear editorial foreign key first, then delete the linked articles row
     await db.execute({
       sql: `UPDATE editorials SET
         status = 'ready', article_id = NULL, published_path = NULL,
-        published_at = NULL, substack_posted_at = NULL, updated_at = datetime('now')
+        published_at = NULL, substack_posted_at = NULL, audio_generated_at = NULL,
+        updated_at = datetime('now')
         WHERE id = ?`,
       args: [id],
     });

@@ -60,10 +60,29 @@ layout: base.njk
   .share-btn-facebook { background:#1877f2; color:#fff; border-color:#1877f2; }
   .share-btn-copy     { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent-border); }
 
+  .audio-player {
+    background: #faf5ff; border: 2px solid var(--accent-border);
+    border-radius: 1rem; padding: 1rem 1.1rem; margin-bottom: 1.25rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .audio-player-label {
+    font-size: 0.8rem; font-weight: 600; color: var(--accent-text);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .audio-player audio {
+    width: 100%; height: 40px; border-radius: 0.5rem;
+  }
+  .audio-download {
+    font-size: 0.75rem; color: var(--accent-muted); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+  }
+  .audio-download:hover { color: var(--accent-text); text-decoration: underline; }
+
   @media (min-width: 640px) {
     .post-header { padding: 1.5rem; }
     .post-emoji { font-size: 2.5rem; }
     .post-body { padding: 1.5rem; }
+    .audio-player { padding: 1rem 1.5rem; }
   }
 </style>
 
@@ -86,6 +105,38 @@ layout: base.njk
     <span class="t-fr" style="display:none"><span class="post-author">Par Rik Van Bruggen</span> · {{ page.date | dateTimeDisplay }}</span>
   </p>
 </div>
+
+{% if audio_en %}
+<div class="audio-player">
+  <span class="audio-player-label">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    <span class="t-en">Listen to this editorial</span>
+    <span class="t-nl" style="display:none">Luister naar deze column</span>
+    <span class="t-fr" style="display:none">Écouter cet éditorial</span>
+  </span>
+  <span class="t-en">
+    <audio controls preload="none" src="{{ audio_en }}">Your browser does not support the audio element.</audio>
+    <a class="audio-download" href="{{ audio_en }}" download>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download MP3
+    </a>
+  </span>
+  <span class="t-nl" style="display:none">
+    <audio controls preload="none" src="{{ audio_nl }}">Your browser does not support the audio element.</audio>
+    <a class="audio-download" href="{{ audio_nl }}" download>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download MP3
+    </a>
+  </span>
+  <span class="t-fr" style="display:none">
+    <audio controls preload="none" src="{{ audio_fr }}">Your browser does not support the audio element.</audio>
+    <a class="audio-download" href="{{ audio_fr }}" download>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Télécharger MP3
+    </a>
+  </span>
+</div>
+{% endif %}
 
 <div class="post-body">
   <span class="t-en">{{ content | safe }}</span>

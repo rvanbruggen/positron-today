@@ -23,6 +23,7 @@ type Editorial = {
   substack_posted_at: string | null;
   publish_date: string | null;
   published_at: string | null;
+  audio_generated_at: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -299,6 +300,22 @@ export default function EditorialsPage() {
     }
   }
 
+  async function handleGenerateAudio(id: number) {
+    setError(""); setSuccess("");
+    setBusy("Generating audio — this may take a few minutes...");
+    try {
+      const res = await fetch(`/api/editorials/${id}/generate-audio`, { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) { setError(data.error ?? "Audio generation failed"); return; }
+      const files = data.files?.map((f: { filename: string; sizeKB: number }) => `${f.filename} (${f.sizeKB} KB)`).join(", ") ?? "";
+      setSuccess(`Audio generated: ${files}`);
+      await fetchDetail(id);
+      await fetchList();
+    } finally {
+      setBusy("");
+    }
+  }
+
   async function handleUnpublish(id: number) {
     if (!confirm("Remove this editorial from the live site? It will return to 'Ready' status so you can re-publish later.")) return;
     setBusy("Unpublishing…");
@@ -503,6 +520,10 @@ export default function EditorialsPage() {
           )}
           {isPublished && (
             <>
+              <button onClick={() => handleGenerateAudio(selected.id)} disabled={!!busy}
+                className={`${selected.audio_generated_at ? "bg-teal-100 hover:bg-teal-200 text-teal-700" : "bg-teal-500 hover:bg-teal-600 text-white"} font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50`}>
+                {selected.audio_generated_at ? "🔄 Regenerate Audio" : "🎙 Generate Audio"}
+              </button>
               <button onClick={() => handlePostSubstack(selected.id)} disabled={!!busy}
                 className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
                 📨 Post to Substack
@@ -550,6 +571,7 @@ export default function EditorialsPage() {
             {selected.publish_date && <div><span className="text-amber-500">Scheduled:</span> {new Date(selected.publish_date).toLocaleString()}</div>}
             {selected.published_at && <div><span className="text-amber-500">Published:</span> {new Date(selected.published_at).toLocaleString()}</div>}
             {selected.substack_posted_at && <div><span className="text-amber-500">Substack:</span> {new Date(selected.substack_posted_at).toLocaleString()}</div>}
+            {selected.audio_generated_at && <div><span className="text-amber-500">Audio:</span> {new Date(selected.audio_generated_at).toLocaleString()}</div>}
             {selected.image_filename && (() => {
               let names: string[] = [];
               try { const arr = JSON.parse(selected.image_filename); names = Array.isArray(arr) ? arr : [selected.image_filename]; } catch { names = [selected.image_filename]; }

@@ -266,7 +266,10 @@ export async function initSchema() {
     "DROP TABLE IF EXISTS editorials",
     "ALTER TABLE editorials_new RENAME TO editorials",
 
-    // v3.4: per-source health tracking — record fetch outcomes so the admin
+    // v3.6: ElevenLabs audio generation tracking
+  "ALTER TABLE editorials ADD COLUMN audio_generated_at TEXT",
+
+  // v3.4: per-source health tracking — record fetch outcomes so the admin
     // UI can surface broken feeds and auto-pause repeat offenders.
     "ALTER TABLE sources ADD COLUMN last_fetch_status TEXT",
     "ALTER TABLE sources ADD COLUMN last_fetch_error TEXT",
