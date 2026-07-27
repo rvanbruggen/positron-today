@@ -2,7 +2,7 @@
 title: "At Ark Capture Solutions in Waals Haspengouw: “We have an affordable solution for half of the world's CO2 emissions”"
 title_nl: "Bij Ark Capture Solutions in Waals Haspengouw: “Wij hebben een betaalbare oplossing voor de helft van de wereldwijde CO2-uitstoot”"
 title_fr: "Chez Ark Capture Solutions à Waals Haspengouw : “Nous avons une solution abordable pour la moitié des émissions mondiales de CO2”"
-date: 2026-07-27T08:31:28
+date: 2026-07-27T08:31:32
 source_pub_date: 2026-07-26
 fetched_date: 2026-07-27
 source_url: "https://www.standaard.be/economie/bij-ark-capture-solutions-in-waals-haspengouw-wij-hebben-een-betaalbare-oplossing-voor-de-helft-van-de-wereldwijde-co2-uitstoot/158858841.html"
