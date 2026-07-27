@@ -12,21 +12,35 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
     const editorial = result.rows[0];
     if (!editorial) return Response.json({ error: "Editorial not found" }, { status: 404 });
 
-    if (!editorial.content_en && !editorial.content_nl && !editorial.content_fr) {
-      return Response.json({ error: "Editorial has no content to generate audio from" }, { status: 400 });
+    if (!editorial.content_en) {
+      return Response.json({ error: "Editorial has no English content to generate audio from" }, { status: 400 });
     }
 
-    const audioResults = await generateAllAudio(editorial as Record<string, unknown>);
-
-    if (audioResults.length === 0) {
-      return Response.json({ error: "No audio could be generated" }, { status: 500 });
-    }
-
-    // Commit audio files to GitHub
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const GITHUB_REPO = process.env.GITHUB_REPO;
     if (!GITHUB_TOKEN || !GITHUB_REPO) {
       return Response.json({ error: "GITHUB_TOKEN and GITHUB_REPO must be set" }, { status: 500 });
+    }
+
+    // Run generation in the background
+    runAudioGeneration(Number(id), editorial as Record<string, unknown>);
+
+    return Response.json({ ok: true, status: "generating" });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error(`[generate-audio] Failed for editorial ${id}:`, message);
+    return Response.json({ error: message }, { status: 500 });
+  }
+}
+
+async function runAudioGeneration(id: number, editorial: Record<string, unknown>) {
+  try {
+    console.log(`[generate-audio] Starting background generation for editorial ${id}`);
+    const audioResults = await generateAllAudio(editorial);
+
+    if (audioResults.length === 0) {
+      console.error(`[generate-audio] No audio generated for editorial ${id}`);
+      return;
     }
 
     for (const audio of audioResults) {
@@ -36,13 +50,11 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
       console.log(`[generate-audio] Committed ${path} (${audio.sizeKB} KB)`);
     }
 
-    // Update the editorial's audio_generated_at timestamp
     await db.execute({
       sql: "UPDATE editorials SET audio_generated_at = datetime('now'), updated_at = datetime('now') WHERE id = ?",
       args: [id],
     });
 
-    // If published, re-commit the editorial markdown with audio frontmatter
     if (editorial.status === "published" && editorial.published_path) {
       const updated = await db.execute({ sql: "SELECT * FROM editorials WHERE id = ?", args: [id] });
       const updatedEditorial = updated.rows[0];
@@ -53,18 +65,12 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
           editorialMd,
           `Add audio to editorial: ${editorial.title_en ?? editorial.slug}`,
         );
-        console.log(`[generate-audio] Re-committed editorial markdown with audio frontmatter`);
       }
     }
 
-    return Response.json({
-      ok: true,
-      files: audioResults.map(a => ({ lang: a.lang, filename: a.filename, sizeKB: a.sizeKB })),
-    });
+    console.log(`[generate-audio] Completed for editorial ${id}`);
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    console.error(`[generate-audio] Failed for editorial ${id}:`, message);
-    return Response.json({ error: message }, { status: 500 });
+    console.error(`[generate-audio] Background generation failed for editorial ${id}:`, err instanceof Error ? err.message : err);
   }
 }
 
