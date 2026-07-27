@@ -2,7 +2,7 @@
 title: "Hyundai partners with Healthy Seas to turn scourge ‘ghost nets’ into floor mats for cars"
 title_nl: "Hyundai werkt samen met Healthy Seas om de plaag 'ghost nets' om te zetten in vloermatten voor auto's"
 title_fr: "Hyundai s'associe à Healthy Seas pour transformer le fléau des 'ghost nets' en tapis de voiture"
-date: 2026-07-27T08:31:27
+date: 2026-07-27T08:31:30
 source_pub_date: 2026-07-26
 fetched_date: 2026-07-27
 source_url: "https://www.goodnewsnetwork.org/hyundai-partners-with-healthy-seas-to-turn-ghostnets-into-car-floor-mats/"
