@@ -225,6 +225,10 @@ export async function initSchema() {
     // v3.2: Scheduled editorial publishing
     "ALTER TABLE editorials ADD COLUMN publish_date TEXT",
 
+    // v3.6: ElevenLabs audio generation tracking
+    // Must come BEFORE the table recreation so the column is copied across.
+    "ALTER TABLE editorials ADD COLUMN audio_generated_at TEXT",
+
     // v3.2.1: Widen the CHECK constraint to include 'scheduled' status.
     // SQLite cannot ALTER a CHECK, so recreate the table.
     `CREATE TABLE IF NOT EXISTS editorials_new (
@@ -251,7 +255,8 @@ export async function initSchema() {
       substack_posted_at TEXT,
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now')),
-      publish_date TEXT
+      publish_date TEXT,
+      audio_generated_at TEXT
     )`,
     `INSERT OR IGNORE INTO editorials_new
        SELECT id, slug, status, source_language,
@@ -261,13 +266,11 @@ export async function initSchema() {
               article_emoji, image_filename, image_data,
               article_id, published_path, published_at,
               post_to_substack, substack_posted_at,
-              created_at, updated_at, publish_date
+              created_at, updated_at, publish_date,
+              audio_generated_at
        FROM editorials`,
     "DROP TABLE IF EXISTS editorials",
     "ALTER TABLE editorials_new RENAME TO editorials",
-
-    // v3.6: ElevenLabs audio generation tracking
-  "ALTER TABLE editorials ADD COLUMN audio_generated_at TEXT",
 
   // v3.4: per-source health tracking — record fetch outcomes so the admin
     // UI can surface broken feeds and auto-pause repeat offenders.
@@ -295,4 +298,47 @@ export async function initSchema() {
       SELECT id, topic_id FROM articles WHERE topic_id IS NOT NULL
     `);
   } catch { /* already migrated */ }
+
+  // Backfill audio_generated_at for editorials that have audio files on
+  // GitHub but lost their DB timestamp due to the table-recreation bug
+  // (editorials_new didn't include the column prior to v3.6.7).
+  backfillAudioTimestamps().catch(() => {});
+}
+
+async function backfillAudioTimestamps() {
+  const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+  const GITHUB_REPO = process.env.GITHUB_REPO;
+  if (!GITHUB_TOKEN || !GITHUB_REPO) return;
+
+  const missing = await db.execute(
+    "SELECT id, slug FROM editorials WHERE audio_generated_at IS NULL AND status = 'published'"
+  );
+  if (missing.rows.length === 0) return;
+
+  const headers = { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" };
+  let audioFiles: string[];
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/contents/site/src/assets/editorials/audio`,
+      { headers, signal: AbortSignal.timeout(10_000) }
+    );
+    if (!res.ok) return;
+    const entries = await res.json() as { name: string }[];
+    audioFiles = entries.map((e) => e.name);
+  } catch { return; }
+
+  let backfilled = 0;
+  for (const row of missing.rows) {
+    const slug = String(row.slug);
+    if (audioFiles.includes(`${slug}-en.mp3`)) {
+      await db.execute({
+        sql: "UPDATE editorials SET audio_generated_at = datetime('now') WHERE id = ?",
+        args: [row.id],
+      });
+      backfilled++;
+    }
+  }
+  if (backfilled > 0) {
+    console.log(`[schema] Backfilled audio_generated_at for ${backfilled} editorial(s)`);
+  }
 }

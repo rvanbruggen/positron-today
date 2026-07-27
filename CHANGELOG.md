@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.6.8** | Fix schema migration wiping audio_generated_at on every restart — include column in editorials table recreation, backfill from GitHub on startup |
 | **3.6.7** | Sequential audio generation queue — prevents Git commit race conditions when generating audio for multiple editorials |
 | **3.6.6** | Fix admin not showing audio state — add audio_generated_at to editorial list query |
 | **3.6.5** | Fix audio player not rendering on live site — combine MP3 and markdown into a single atomic commit to prevent deploy race condition |
