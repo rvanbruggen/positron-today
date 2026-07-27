@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.6.1** | Limit editorial audio to English only — cloned voice doesn't support Flemish accent for Dutch. NL/FR pages show the English audio player with a language note |
 | **3.6.0** | ElevenLabs text-to-speech integration — generate spoken MP3 versions of editorials using a cloned voice. Audio player with download link on each editorial page (trilingual). Audio generated automatically on publish; "Generate Audio" button in admin for backfilling existing editorials |
 | **3.5.6** | Fix social media posts linking to the article card (`/posts/...`) instead of the editorial page (`/editorials/...`). Social URL now uses `source_url` for editorials |
 | **3.5.5** | Add "Post to Social" button on published editorial detail page — calls the existing `/api/post-social` endpoint using the editorial's linked article ID |
