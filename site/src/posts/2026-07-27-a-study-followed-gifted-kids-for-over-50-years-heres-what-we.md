@@ -2,7 +2,7 @@
 title: "A study followed ‘gifted’ kids for over 50 years. Here’s what we’ve learned about them."
 title_nl: "Een studie volgde 'getalenteerde' kinderen meer dan 50 jaar. Dit hebben we over hen geleerd."
 title_fr: "Une étude a suivi des enfants 'doués' pendant plus de 50 ans. Voici ce que nous avons appris sur eux."
-date: 2026-07-27T08:31:25
+date: 2026-07-27T08:31:26
 source_pub_date: 2026-07-26
 fetched_date: 2026-07-27
 source_url: "https://www.upworthy.com/study-genius-students-ex1/"
