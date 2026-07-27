@@ -1,0 +1,69 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A journalism syllabus page listing news values, with the word negativity highlighted in amber.">
+  <defs>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#3a3323" flood-opacity="0.18"/>
+    </filter>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdfcf8"/>
+      <stop offset="1" stop-color="#f7f2e8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- paper card -->
+  <rect x="90" y="45" width="820" height="510" rx="7" fill="url(#paper)" filter="url(#cardShadow)"/>
+
+  <!-- faint ruled lines -->
+  <g stroke="#ece4d3" stroke-width="1">
+    <line x1="120" y1="226" x2="880" y2="226"/>
+    <line x1="120" y1="288" x2="880" y2="288"/>
+    <line x1="120" y1="350" x2="880" y2="350"/>
+    <line x1="120" y1="412" x2="880" y2="412"/>
+    <line x1="120" y1="486" x2="880" y2="486"/>
+  </g>
+
+  <!-- red margin line -->
+  <line x1="205" y1="60" x2="205" y2="540" stroke="#e2a09a" stroke-width="1.5"/>
+
+  <!-- header -->
+  <text x="232" y="120" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" letter-spacing="1.5" fill="#2c2a24">News values</text>
+  <text x="234" y="150" font-family="Georgia, serif" font-size="16" font-style="italic" fill="#98907e">the criteria by which a story is judged worth telling</text>
+
+  <!-- checklist -->
+  <g font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" fill="#3a372f">
+    <!-- row: Unexpectedness -->
+    <rect x="234" y="196" width="23" height="23" rx="5" fill="none" stroke="#b6ad98" stroke-width="2.2"/>
+    <path d="M239 208 l5 6 l9 -12" fill="none" stroke="#9a917c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="274" y="216">Unexpectedness</text>
+
+    <!-- row: Proximity -->
+    <rect x="234" y="258" width="23" height="23" rx="5" fill="none" stroke="#b6ad98" stroke-width="2.2"/>
+    <path d="M239 270 l5 6 l9 -12" fill="none" stroke="#9a917c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="274" y="278">Proximity</text>
+
+    <!-- row: Prominence -->
+    <rect x="234" y="320" width="23" height="23" rx="5" fill="none" stroke="#b6ad98" stroke-width="2.2"/>
+    <path d="M239 332 l5 6 l9 -12" fill="none" stroke="#9a917c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="274" y="340">Prominence</text>
+
+    <!-- row: Magnitude -->
+    <rect x="234" y="382" width="23" height="23" rx="5" fill="none" stroke="#b6ad98" stroke-width="2.2"/>
+    <path d="M239 394 l5 6 l9 -12" fill="none" stroke="#9a917c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="274" y="402">Magnitude</text>
+
+    <!-- row: Negativity (highlighted) -->
+    <!-- highlighter swipe -->
+    <rect x="226" y="446" width="360" height="42" rx="4" fill="#f59e0b" opacity="0.32" transform="rotate(-0.7 406 467)"/>
+    <rect x="234" y="456" width="23" height="23" rx="5" fill="none" stroke="#b5730f" stroke-width="2.6"/>
+    <path d="M239 468 l5 6 l9 -12" fill="none" stroke="#b5730f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="274" y="476" font-weight="700" fill="#7a4a00">Negativity</text>
+    <!-- hand-drawn circle around the word -->
+    <path d="M272 452 C 300 442, 470 443, 470 468 C 470 492, 300 494, 268 484 C 252 479, 258 456, 286 450"
+          fill="none" stroke="#c07c12" stroke-width="2.8" stroke-linecap="round" opacity="0.9" transform="rotate(-1 370 468)"/>
+  </g>
+
+  <!-- newsroom mantra -->
+  <text x="234" y="524" font-family="Georgia, serif" font-size="19" font-style="italic" fill="#b5730f">&#8220;if it bleeds, it leads&#8221;</text>
+
+  <!-- source nod -->
+  <text x="878" y="540" text-anchor="end" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#b3aa96">after Galtung &amp; Ruge, 1965</text>
+</svg>
