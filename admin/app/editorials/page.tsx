@@ -302,16 +302,30 @@ export default function EditorialsPage() {
 
   async function handleGenerateAudio(id: number) {
     setError(""); setSuccess("");
-    setBusy("Generating audio — this may take a few minutes...");
+    setBusy("Starting audio generation...");
     try {
       const res = await fetch(`/api/editorials/${id}/generate-audio`, { method: "POST" });
       const data = await res.json();
-      if (!res.ok) { setError(data.error ?? "Audio generation failed"); return; }
-      const files = data.files?.map((f: { filename: string; sizeKB: number }) => `${f.filename} (${f.sizeKB} KB)`).join(", ") ?? "";
-      setSuccess(`Audio generated: ${files}`);
-      await fetchDetail(id);
-      await fetchList();
-    } finally {
+      if (!res.ok) { setError(data.error ?? "Audio generation failed"); setBusy(""); return; }
+      setSuccess("Audio generation started — this runs in the background. You can leave this page.");
+      setBusy("");
+      // Poll for completion
+      const poll = setInterval(async () => {
+        const check = await fetch(`/api/editorials/${id}`);
+        if (check.ok) {
+          const ed = await check.json();
+          if (ed.audio_generated_at && (!selected?.audio_generated_at || ed.audio_generated_at !== selected.audio_generated_at)) {
+            clearInterval(poll);
+            setSuccess("Audio generation complete.");
+            await fetchDetail(id);
+            await fetchList();
+          }
+        }
+      }, 5000);
+      // Stop polling after 10 minutes
+      setTimeout(() => clearInterval(poll), 600_000);
+    } catch {
+      setError("Failed to start audio generation");
       setBusy("");
     }
   }
