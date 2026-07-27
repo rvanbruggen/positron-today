@@ -2,7 +2,7 @@
 title: "A new start after 60: stuck in a hospital bed, I decided to retire. Now I’m a tap dancer"
 title_nl: "Een nieuwe start na 60: vast in een ziekenhuisbed, besloot ik met pensioen te gaan. Nu ben ik een tapdanser"
 title_fr: "Un nouveau départ après 60 ans : coincé dans un lit d'hôpital, j'ai décidé de prendre ma retraite. Maintenant, je suis danseur de claquettes"
-date: 2026-07-27T12:30:40
+date: 2026-07-27T12:30:43
 source_pub_date: 2026-07-27
 fetched_date: 2026-07-27
 source_url: "https://www.theguardian.com/lifeandstyle/2026/jul/27/a-new-start-after-60-tap-dancer-stephen-walsh"
