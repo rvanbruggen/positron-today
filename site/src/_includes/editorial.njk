@@ -111,30 +111,16 @@ layout: base.njk
   <span class="audio-player-label">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
     <span class="t-en">Listen to this editorial</span>
-    <span class="t-nl" style="display:none">Luister naar deze column</span>
-    <span class="t-fr" style="display:none">Écouter cet éditorial</span>
+    <span class="t-nl" style="display:none">Luister naar deze column (Engels)</span>
+    <span class="t-fr" style="display:none">Écouter cet éditorial (en anglais)</span>
   </span>
-  <span class="t-en">
-    <audio controls preload="none" src="{{ audio_en }}">Your browser does not support the audio element.</audio>
-    <a class="audio-download" href="{{ audio_en }}" download>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download MP3
-    </a>
-  </span>
-  <span class="t-nl" style="display:none">
-    <audio controls preload="none" src="{{ audio_nl }}">Your browser does not support the audio element.</audio>
-    <a class="audio-download" href="{{ audio_nl }}" download>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download MP3
-    </a>
-  </span>
-  <span class="t-fr" style="display:none">
-    <audio controls preload="none" src="{{ audio_fr }}">Your browser does not support the audio element.</audio>
-    <a class="audio-download" href="{{ audio_fr }}" download>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Télécharger MP3
-    </a>
-  </span>
+  <audio controls preload="none" src="{{ audio_en }}">Your browser does not support the audio element.</audio>
+  <a class="audio-download" href="{{ audio_en }}" download>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span class="t-en">Download MP3</span>
+    <span class="t-nl" style="display:none">Download MP3</span>
+    <span class="t-fr" style="display:none">Télécharger MP3</span>
+  </a>
 </div>
 {% endif %}
 

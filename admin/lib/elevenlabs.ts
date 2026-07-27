@@ -1,13 +1,7 @@
 import { ElevenLabsClient } from "@elevenlabs/elevenlabs-js";
 
-const LANGS = ["en", "nl", "fr"] as const;
+const LANGS = ["en"] as const;
 type Lang = (typeof LANGS)[number];
-
-const LANGUAGE_CODES: Record<Lang, string> = {
-  en: "en",
-  nl: "nl",
-  fr: "fr",
-};
 
 function getClient(): ElevenLabsClient {
   const apiKey = process.env.ELEVENLABS_API_KEY;
@@ -65,7 +59,7 @@ export async function generateAudio(
   const response = await client.textToSpeech.convert(voiceId, {
     text: plainText,
     modelId: "eleven_multilingual_v2",
-    languageCode: LANGUAGE_CODES[lang],
+    languageCode: "en",
     outputFormat: "mp3_44100_128",
   });
 

@@ -197,8 +197,6 @@ export function generateEditorialPageMarkdown(editorial: Record<string, unknown>
 
   if (editorial.audio_generated_at) {
     lines.push(`audio_en: ${yamlStr(`/assets/editorials/audio/${slug}-en.mp3`)}`);
-    lines.push(`audio_nl: ${yamlStr(`/assets/editorials/audio/${slug}-nl.mp3`)}`);
-    lines.push(`audio_fr: ${yamlStr(`/assets/editorials/audio/${slug}-fr.mp3`)}`);
   }
 
   // Store NL/FR content in frontmatter for the trilingual template
@@ -482,11 +480,9 @@ export async function unpublishEditorial(id: number): Promise<{ ok: boolean; err
       await deleteFromGitHub(`site/src/assets/editorials/${filename}`, `Remove editorial image: ${filename}`);
     }
 
-    // 3b. Delete audio files from GitHub
+    // 3b. Delete audio file from GitHub
     if (editorial.audio_generated_at) {
-      for (const lang of ["en", "nl", "fr"]) {
-        await deleteFromGitHub(`site/src/assets/editorials/audio/${slug}-${lang}.mp3`, `Remove editorial audio: ${slug}-${lang}.mp3`);
-      }
+      await deleteFromGitHub(`site/src/assets/editorials/audio/${slug}-en.mp3`, `Remove editorial audio: ${slug}-en.mp3`);
     }
 
     // 4. Clear editorial foreign key first, then delete the linked articles row
