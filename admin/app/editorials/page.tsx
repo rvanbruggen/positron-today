@@ -585,7 +585,16 @@ export default function EditorialsPage() {
             {selected.publish_date && <div><span className="text-amber-500">Scheduled:</span> {new Date(selected.publish_date).toLocaleString()}</div>}
             {selected.published_at && <div><span className="text-amber-500">Published:</span> {new Date(selected.published_at).toLocaleString()}</div>}
             {selected.substack_posted_at && <div><span className="text-amber-500">Substack:</span> {new Date(selected.substack_posted_at).toLocaleString()}</div>}
-            {selected.audio_generated_at && <div><span className="text-amber-500">Audio:</span> {new Date(selected.audio_generated_at).toLocaleString()}</div>}
+            {selected.audio_generated_at && (
+              <div className="col-span-2 md:col-span-4 flex flex-wrap items-center gap-3">
+                <span className="text-amber-500">Audio:</span> {new Date(selected.audio_generated_at).toLocaleString()}
+                <audio controls preload="none" src={`https://positron.today/assets/editorials/audio/${selected.slug}-en.mp3`} className="h-8" />
+                <a href={`https://positron.today/assets/editorials/audio/${selected.slug}-en.mp3`} download
+                  className="text-xs text-teal-600 hover:text-teal-800 underline">
+                  Download MP3
+                </a>
+              </div>
+            )}
             {selected.image_filename && (() => {
               let names: string[] = [];
               try { const arr = JSON.parse(selected.image_filename); names = Array.isArray(arr) ? arr : [selected.image_filename]; } catch { names = [selected.image_filename]; }

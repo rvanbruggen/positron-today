@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.6.4** | Add audio player and MP3 download link to editorial detail page in admin |
 | **3.6.3** | Run audio generation in the background — API returns immediately, admin UI polls for completion. No need to stay on the page |
 | **3.6.2** | Fix editorial date: preserve original publish date when re-committing markdown (e.g. adding audio), preventing sort order changes on the site |
 | **3.6.1** | Limit editorial audio to English only — cloned voice doesn't support Flemish accent for Dutch. NL/FR pages show the English audio player with a language note |
