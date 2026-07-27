@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { generateAllAudio } from "@/lib/elevenlabs";
-import { commitToGitHub } from "@/lib/publish-core";
+import { commitMultipleToGitHub, type GitHubFileEntry } from "@/lib/publish-core";
 import { generateEditorialPageMarkdown } from "@/lib/editorial-core";
 
 export async function POST(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
@@ -43,57 +43,37 @@ async function runAudioGeneration(id: number, editorial: Record<string, unknown>
       return;
     }
 
-    for (const audio of audioResults) {
-      const path = `site/src/assets/editorials/audio/${audio.filename}`;
-      const base64 = audio.buffer.toString("base64");
-      await commitBinaryToGitHub(path, base64, `Add editorial audio: ${audio.filename}`);
-      console.log(`[generate-audio] Committed ${path} (${audio.sizeKB} KB)`);
-    }
-
     await db.execute({
       sql: "UPDATE editorials SET audio_generated_at = datetime('now'), updated_at = datetime('now') WHERE id = ?",
       args: [id],
     });
+
+    const files: GitHubFileEntry[] = audioResults.map((audio) => ({
+      path: `site/src/assets/editorials/audio/${audio.filename}`,
+      content: audio.buffer.toString("base64"),
+      encoding: "base64" as const,
+    }));
 
     if (editorial.status === "published" && editorial.published_path) {
       const updated = await db.execute({ sql: "SELECT * FROM editorials WHERE id = ?", args: [id] });
       const updatedEditorial = updated.rows[0];
       if (updatedEditorial) {
         const editorialMd = generateEditorialPageMarkdown(updatedEditorial as Record<string, unknown>);
-        await commitToGitHub(
-          String(editorial.published_path),
-          editorialMd,
-          `Add audio to editorial: ${editorial.title_en ?? editorial.slug}`,
-        );
+        files.push({
+          path: String(editorial.published_path),
+          content: editorialMd,
+        });
       }
+    }
+
+    const title = String(editorial.title_en ?? editorial.slug);
+    await commitMultipleToGitHub(files, `Add audio to editorial: ${title}`);
+    for (const audio of audioResults) {
+      console.log(`[generate-audio] Committed audio: ${audio.filename} (${audio.sizeKB} KB)`);
     }
 
     console.log(`[generate-audio] Completed for editorial ${id}`);
   } catch (err) {
     console.error(`[generate-audio] Background generation failed for editorial ${id}:`, err instanceof Error ? err.message : err);
   }
-}
-
-async function commitBinaryToGitHub(path: string, base64Data: string, message: string) {
-  const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
-  const GITHUB_REPO = process.env.GITHUB_REPO!;
-  const GITHUB_BRANCH = process.env.GITHUB_BRANCH ?? "main";
-
-  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
-  const headers = { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" };
-
-  let sha: string | undefined;
-  const existing = await fetch(url, { headers });
-  if (existing.ok) sha = (await existing.json()).sha;
-
-  const body: Record<string, unknown> = { message, content: base64Data, branch: GITHUB_BRANCH };
-  if (sha) body.sha = sha;
-
-  const res = await fetch(url, {
-    method: "PUT",
-    headers: { ...headers, "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-
-  if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
 }

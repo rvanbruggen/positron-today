@@ -111,6 +111,69 @@ export async function commitToGitHub(path: string, content: string, message: str
   }
 }
 
+export interface GitHubFileEntry {
+  path: string;
+  content: string;
+  encoding?: "utf-8" | "base64";
+}
+
+export async function commitMultipleToGitHub(files: GitHubFileEntry[], message: string) {
+  const apiBase = `https://api.github.com/repos/${GITHUB_REPO}`;
+  const headers: Record<string, string> = {
+    Authorization: `Bearer ${GITHUB_TOKEN}`,
+    Accept: "application/vnd.github+json",
+    "Content-Type": "application/json",
+  };
+
+  const refRes = await fetch(`${apiBase}/git/ref/heads/${GITHUB_BRANCH}`, { headers });
+  if (!refRes.ok) throw new Error(`Failed to get branch ref: ${refRes.status}`);
+  const latestSha = (await refRes.json()).object.sha;
+
+  const commitRes = await fetch(`${apiBase}/git/commits/${latestSha}`, { headers });
+  if (!commitRes.ok) throw new Error(`Failed to get commit: ${commitRes.status}`);
+  const baseTreeSha = (await commitRes.json()).tree.sha;
+
+  const treeEntries = [];
+  for (const file of files) {
+    const blobRes = await fetch(`${apiBase}/git/blobs`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        content: file.content,
+        encoding: file.encoding ?? "utf-8",
+      }),
+    });
+    if (!blobRes.ok) throw new Error(`Failed to create blob for ${file.path}: ${blobRes.status}`);
+    const blobSha = (await blobRes.json()).sha;
+    treeEntries.push({ path: file.path, mode: "100644", type: "blob", sha: blobSha });
+  }
+
+  const treeRes = await fetch(`${apiBase}/git/trees`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ base_tree: baseTreeSha, tree: treeEntries }),
+  });
+  if (!treeRes.ok) throw new Error(`Failed to create tree: ${treeRes.status}`);
+  const newTreeSha = (await treeRes.json()).sha;
+
+  const newCommitRes = await fetch(`${apiBase}/git/commits`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ message, tree: newTreeSha, parents: [latestSha] }),
+  });
+  if (!newCommitRes.ok) throw new Error(`Failed to create commit: ${newCommitRes.status}`);
+  const newCommitSha = (await newCommitRes.json()).sha;
+
+  const updateRefRes = await fetch(`${apiBase}/git/refs/heads/${GITHUB_BRANCH}`, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify({ sha: newCommitSha }),
+  });
+  if (!updateRefRes.ok) throw new Error(`Failed to update ref: ${updateRefRes.status}`);
+
+  console.log(`[commitMultipleToGitHub] Committed ${files.length} files in ${newCommitSha.slice(0, 8)}`);
+}
+
 export async function deleteFromGitHub(path: string, message: string) {
   const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
   const headers = { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" };

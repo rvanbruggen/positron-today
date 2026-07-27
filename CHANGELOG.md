@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.6.5** | Fix audio player not rendering on live site — combine MP3 and markdown into a single atomic commit to prevent deploy race condition |
 | **3.6.4** | Add audio player and MP3 download link to editorial detail page in admin |
 | **3.6.3** | Run audio generation in the background — API returns immediately, admin UI polls for completion. No need to stay on the page |
 | **3.6.2** | Fix editorial date: preserve original publish date when re-committing markdown (e.g. adding audio), preventing sort order changes on the site |
