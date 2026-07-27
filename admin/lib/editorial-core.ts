@@ -175,7 +175,9 @@ ${sourceContent}`;
 export function generateEditorialPageMarkdown(editorial: Record<string, unknown>): string {
   const title = String(editorial.title_en ?? "Untitled");
   const slug = String(editorial.slug ?? "");
-  const date = new Date().toISOString().slice(0, 19);
+  const date = editorial.published_at
+    ? String(editorial.published_at).slice(0, 19)
+    : new Date().toISOString().slice(0, 19);
   const emoji = String(editorial.article_emoji ?? "✍️");
   const filenames = parseImageFilenames(editorial.image_filename);
 
@@ -226,7 +228,9 @@ export function generateEditorialPageMarkdown(editorial: Record<string, unknown>
 
 export function generateEditorialCardMarkdown(editorial: Record<string, unknown>): string {
   const title = String(editorial.title_en ?? "Untitled");
-  const date = new Date().toISOString().slice(0, 19);
+  const date = editorial.published_at
+    ? String(editorial.published_at).slice(0, 19)
+    : new Date().toISOString().slice(0, 19);
   const emoji = String(editorial.article_emoji ?? "✍️");
   const slug = String(editorial.slug ?? "");
   const filenames = parseImageFilenames(editorial.image_filename);
