@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-28T04:26:04.838Z",
-  "total_rejected": 96539,
+  "exported_at": "2026-07-28T04:26:10.357Z",
+  "total_rejected": 96540,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1566
+      "count": 1567
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 10041,
-      "total": 10269
+      "negative": 10042,
+      "total": 10270
     },
     {
       "source": "Gazet van Antwerpen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Wereldprimeur in Italië: blinde vrouw kan na vijf jaar weer zien na transplantatie van centraal deel van netvlies",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/buitenland/wereldprimeur-in-italie-blinde-vrouw-kan-na-vijf-jaar-weer-zien-na-transplantatie-van-centraal-deel-van-netvlies~ab3b09c5/",
+      "date": "2026-07-28 06:26",
+      "positivity_score": null
+    },
     {
       "source": "VRT Nws",
       "title": "Wereldprimeur in Italië: blinde vrouw kan weer zien na transplantatie centraal deel netvlies",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses the challenges faced by the German transportation ministry, highlighting issues with infrastructure funding and political difficulties, which are not uplifting.",
       "category": "political-conflict",
       "url": "https://www.faz.net/aktuell/wirtschaft/von-schnieder-zu-bilger-warum-das-verkehrsministerium-so-schwierig-ist-accg-201065794.html",
-      "date": "2026-07-27 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Angriff auf CSD in Berlin: CDU-Politiker fordern härteren Kurs gegen Gefährder",
-      "reason": "The article discusses a violent incident related to a political response, which is not uplifting and focuses on crime and violence.",
-      "category": "crime-violence",
-      "url": "https://www.faz.net/aktuell/politik/inland/liveticker-zu-anschlag-auf-csd-cdu-politiker-fordern-haerteren-kurs-gegen-gefaehrder-faz-201065238.html",
       "date": "2026-07-27 10:26",
       "positivity_score": 2
     }
