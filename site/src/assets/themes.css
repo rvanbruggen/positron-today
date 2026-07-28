@@ -204,6 +204,16 @@ html[data-theme="mono"] .post-body blockquote {
 }
 html[data-theme="mono"] .post-body img { border-radius: 0; filter: grayscale(1) contrast(1.05); }
 
+/* --- editorial.njk audio player (mono) --- */
+html[data-theme="mono"] .audio-player {
+  background: #ffffff !important;
+  border: 1px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .audio-player-label { color: var(--mono-fg) !important; }
+html[data-theme="mono"] .audio-download { color: var(--mono-muted) !important; }
+html[data-theme="mono"] .audio-download:hover { color: var(--mono-fg) !important; }
+
 /* --- editorials/index.njk (mono) --- */
 html[data-theme="mono"] .editorials-header h1 { color: var(--mono-fg); }
 html[data-theme="mono"] .editorials-header p  { color: var(--mono-muted); }
@@ -673,6 +683,16 @@ html[data-theme="mondrian"] .post-body blockquote {
   color: var(--md-muted) !important;
 }
 html[data-theme="mondrian"] .post-body img { border-radius: 0; }
+
+/* --- editorial.njk audio player (mondrian) --- */
+html[data-theme="mondrian"] .audio-player {
+  background: #ffffff !important;
+  border: 3px solid var(--md-blue) !important;
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .audio-player-label { color: var(--md-black) !important; font-weight: 800; }
+html[data-theme="mondrian"] .audio-download { color: var(--md-blue) !important; text-decoration: none; border-bottom: 2px solid var(--md-blue); }
+html[data-theme="mondrian"] .audio-download:hover { color: var(--md-red) !important; border-color: var(--md-red); }
 
 /* --- editorials/index.njk (mondrian) --- */
 html[data-theme="mondrian"] .editorials-header h1 { color: var(--md-black); font-weight: 900; }

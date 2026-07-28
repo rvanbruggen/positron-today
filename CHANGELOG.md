@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.6.10** | Style audio player for all three colour schemes (classic, mono, mondrian) — use CSS variables instead of hardcoded colours, add theme-specific overrides in themes.css |
 | **3.6.9** | Allow audio pre-generation for ready and scheduled editorials — MP3 is committed but audio player only appears on the site after the editorial is published. Publish flow skips regeneration when audio already exists |
 | **3.6.8** | Fix schema migration wiping audio_generated_at on every restart — include column in editorials table recreation, backfill from GitHub on startup |
 | **3.6.7** | Sequential audio generation queue — prevents Git commit race conditions when generating audio for multiple editorials |
