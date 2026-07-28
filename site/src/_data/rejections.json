@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-28T16:04:59.505Z",
-  "total_rejected": 97257,
+  "exported_at": "2026-07-28T16:05:07.454Z",
+  "total_rejected": 97258,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1583
+      "count": 1584
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 10091,
-      "total": 10320
+      "negative": 10092,
+      "total": 10321
     },
     {
       "source": "Gazet van Antwerpen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "En plots landt een hoop vlindertjes samen op natte grond: waarom doen ze dit?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/dieren/en-plots-landt-een-hoop-vlindertjes-samen-op-natte-grond-waarom-doen-ze-dit~afaaa78c/",
+      "date": "2026-07-28 18:05",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Wiatrak w polu i panel na dachu. To może oszczędzić UE więcej gazu niż import z Kataru",
@@ -9381,15 +9390,6 @@
       "url": "https://www.thejournal.ie/small-car-reliable-recommendations-7107887-Jul2026/",
       "date": "2026-07-27 21:23",
       "positivity_score": 3
-    },
-    {
-      "source": "The Journal (Ireland)",
-      "title": "World will know George Gibney as 'convicted, serial paedophile', survivor tells court",
-      "reason": "The article discusses a convicted serial paedophile, which is a highly negative topic and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.thejournal.ie/george-gibney-sentence-hearing-court-7114422-Jul2026/",
-      "date": "2026-07-27 21:22",
-      "positivity_score": 2
     }
   ]
 }
