@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-28T11:25:33.955Z",
-  "total_rejected": 96987,
+  "exported_at": "2026-07-28T11:43:50.538Z",
+  "total_rejected": 96988,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1572
+      "count": 1573
     },
     {
       "category": "divisive-racism",
@@ -256,8 +256,8 @@
     },
     {
       "source": "AllAfrica",
-      "negative": 340,
-      "total": 356
+      "negative": 341,
+      "total": 357
     },
     {
       "source": "The Washington Post",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "AllAfrica",
+      "title": "Uganda: Uganda is Ebola-Free - Health Minister",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://allafrica.com/stories/202607280119.html",
+      "date": "2026-07-28 13:43",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "Fujimori's inauguration brings Southern Cone and Andean presidents together in Lima",
@@ -9381,15 +9390,6 @@
       "url": "https://vrtnws.be/p.pAMOX60bM",
       "date": "2026-07-27 19:02",
       "positivity_score": 4
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Prins Bernhard verkoopt al zijn zakelijke belangen ",
-      "reason": "The article discusses a business decision by a public figure, which falls under corporate PR and does not provide uplifting content that resonates broadly with readers.",
-      "category": "celebrity-entertainment",
-      "url": "https://vrtnws.be/p.DYX40e13m",
-      "date": "2026-07-27 19:02",
-      "positivity_score": 3
     }
   ]
 }
