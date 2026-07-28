@@ -296,7 +296,8 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
     }
 
     // 1b. Generate and commit audio files (best-effort — publish continues on failure)
-    if (process.env.ELEVENLABS_API_KEY && process.env.ELEVENLABS_VOICE_ID) {
+    // Skip if audio was already pre-generated via the "Generate Audio" button.
+    if (!editorial.audio_generated_at && process.env.ELEVENLABS_API_KEY && process.env.ELEVENLABS_VOICE_ID) {
       try {
         const audioResults = await generateAllAudio(editorial as Record<string, unknown>);
         for (const audio of audioResults) {

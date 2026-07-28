@@ -532,12 +532,14 @@ export default function EditorialsPage() {
               </button>
             </>
           )}
+          {(isReady || isScheduled || isPublished) && selected.content_en && (
+            <button onClick={() => handleGenerateAudio(selected.id)} disabled={!!busy}
+              className={`${selected.audio_generated_at ? "bg-teal-100 hover:bg-teal-200 text-teal-700" : "bg-teal-500 hover:bg-teal-600 text-white"} font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50`}>
+              {selected.audio_generated_at ? "🔄 Regenerate Audio" : "🎙 Generate Audio"}
+            </button>
+          )}
           {isPublished && (
             <>
-              <button onClick={() => handleGenerateAudio(selected.id)} disabled={!!busy}
-                className={`${selected.audio_generated_at ? "bg-teal-100 hover:bg-teal-200 text-teal-700" : "bg-teal-500 hover:bg-teal-600 text-white"} font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50`}>
-                {selected.audio_generated_at ? "🔄 Regenerate Audio" : "🎙 Generate Audio"}
-              </button>
               <button onClick={() => handlePostSubstack(selected.id)} disabled={!!busy}
                 className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
                 📨 Post to Substack
