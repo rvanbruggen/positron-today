@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-29T05:50:26.331Z",
-  "total_rejected": 97817,
+  "exported_at": "2026-07-29T05:50:39.301Z",
+  "total_rejected": 97818,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1599
+      "count": 1600
     },
     {
       "category": "divisive-racism",
@@ -141,8 +141,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 2051,
-      "total": 2059
+      "negative": 2052,
+      "total": 2060
     },
     {
       "source": "Neue Zürcher Zeitung",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Seks-årig dreng fundet i god behold",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dr.dk/nyheder/seneste/seks-aarig-dreng-efterlyses-paa-aeroe",
+      "date": "2026-07-29 07:50",
+      "positivity_score": null
+    },
     {
       "source": "Good Good Good",
       "title": "This rare 'bearcat' looks like he wants to ask you three riddles. Conservationists are racing to save his species",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lefigaro.fr/actualite-france/incendie-en-gironde-4000-touristes-evacues-preventivement-de-lacanau-20260728",
       "date": "2026-07-28 13:20",
       "positivity_score": 2
-    },
-    {
-      "source": "Humo",
-      "title": "Apollonia Sterckx (‘Thuis’): ‘Vroeger had ik wel een voetmassage willen krijgen van Mega Toby, vandaag ga ik voor Tom Holland of Charles Leclerc’",
-      "reason": "The article focuses on a celebrity's personal preferences and experiences, which falls under entertainment gossip and lacks broad human relevance.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.humo.be/nieuws/apollonia-sterckx-thuis-vroeger-had-ik-wel-een-voetmassage-willen-krijgen-van-mega-toby-vandaag-ga-ik-voor-tom-holland-of-charles-leclerc~bae0de92/",
-      "date": "2026-07-28 13:20",
-      "positivity_score": 3
     }
   ]
 }
