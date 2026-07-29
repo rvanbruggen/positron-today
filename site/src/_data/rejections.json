@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-29T05:49:50.132Z",
-  "total_rejected": 97815,
+  "exported_at": "2026-07-29T05:49:59.475Z",
+  "total_rejected": 97816,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1597
+      "count": 1598
     },
     {
       "category": "divisive-racism",
@@ -205,14 +205,14 @@
       "total": 974
     },
     {
+      "source": "Global News (Canada)",
+      "negative": 820,
+      "total": 836
+    },
+    {
       "source": "Le Soir",
       "negative": 820,
       "total": 823
-    },
-    {
-      "source": "Global News (Canada)",
-      "negative": 819,
-      "total": 835
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Online passport renewals now open for Canadians ‘whenever it is convenient’",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/11996946/online-passport-renewals-canada/",
+      "date": "2026-07-29 07:49",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "16-year-old lifeguard’s rescue skills stun as he pulls drowning child from violent waves",
@@ -9381,15 +9390,6 @@
       "url": "https://www.hln.be/leuven/veelbesproken-lijkwade-voor-omgevallen-boom-kost-leuven-2-650-euro-is-dit-dan-een-kerntaak~a5bb0b90/",
       "date": "2026-07-28 13:20",
       "positivity_score": 4
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Eén verdachte gearresteerd na brutale overval op Union-voetballer Mohammed Fuseini in Brussel: “Gestolen voorwerpen gevonden bij huiszoeking”",
-      "reason": "The article reports on a violent robbery involving a professional athlete, which is a negative event and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.hln.be/union/een-verdachte-gearresteerd-na-brutale-overval-op-union-voetballer-mohammed-fuseini-in-brussel-gestolen-voorwerpen-gevonden-bij-huiszoeking~vab00e38e/",
-      "date": "2026-07-28 13:20",
-      "positivity_score": 2
     }
   ]
 }
