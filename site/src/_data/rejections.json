@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-29T21:25:00.139Z",
-  "total_rejected": 98745,
+  "exported_at": "2026-07-29T21:25:09.763Z",
+  "total_rejected": 98746,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1622
+      "count": 1623
     },
     {
       "category": "divisive-racism",
@@ -206,8 +206,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 856,
-      "total": 874
+      "negative": 857,
+      "total": 875
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "New mussel detection dogs join Alberta’s fight against invasive species",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12001312/new-mussel-detection-dogs-alberta-invasive-species/",
+      "date": "2026-07-29 23:25",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "Lonely North Carolina 4-year-old brings neighborhood of strangers together with his friendly wave",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on local events in Stockholm, which may not interest readers from other countries, making it too localized for a broader audience.",
       "category": "soft-news-filler",
       "url": "https://www.dn.se/kultur/de-basta-stockholmstipsen-den-29-juli-hbtq-historia-och-tagmonolog/",
-      "date": "2026-07-29 06:18",
-      "positivity_score": 4
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "«Wenn sich die Menschen im Fernsehen umarmen, werde ich traurig», sagt die 85-Jährige. Kann man die Einsamkeit im Alter überwinden?",
-      "reason": "The article discusses loneliness in old age and rising suicide rates, which are serious and negative issues, making it not uplifting enough for a positive news site.",
-      "category": "health-scare",
-      "url": "https://www.nzz.ch/zuerich/einsamkeit-im-alter-vier-betroffene-erzaehlen-ld.10009854",
       "date": "2026-07-29 06:18",
       "positivity_score": 4
     }
