@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-29T05:52:00.562Z",
-  "total_rejected": 97820,
+  "exported_at": "2026-07-29T08:23:59.934Z",
+  "total_rejected": 97821,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1602
+      "count": 1603
     },
     {
       "category": "divisive-racism",
@@ -386,11 +386,20 @@
     },
     {
       "source": "Manual",
-      "negative": 1,
-      "total": 6
+      "negative": 2,
+      "total": 8
     }
   ],
   "articles": [
+    {
+      "source": "Manual",
+      "title": "Wandelaar spiest zichzelf met wandelstok, maar wandelt nog 16 kilometer naar ambulance: \"Wilde geen helikopter betalen\" | VRT NWS Nieuws",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.vrt.be/vrtnws/nl/2026/07/28/verenigde-staten-hiker-valt-op-wandelstok-in-monatana/",
+      "date": "2026-07-29 10:23",
+      "positivity_score": null
+    },
     {
       "source": "Good News Network",
       "title": "Internet Access Soars, Costs Plummet on Island Following the End its Federal Telecom Monopoly",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lefigaro.fr/actualite-france/incendies-citerne-volante-boules-antifeu-ces-drones-qui-pourraient-changer-la-bataille-du-feu-20260728",
       "date": "2026-07-28 13:20",
       "positivity_score": 4
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Incendie en Gironde : la préfète interdit toutes les manifestations sportives et culturelles jusqu’au 8 août",
-      "reason": "The article discusses the prohibition of sports and cultural events due to safety concerns, which is a negative situation and does not uplift the reader.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/bordeaux/incendie-en-gironde-la-prefete-interdit-toutes-les-manifestations-sportives-et-culturelles-jusqu-au-8-aout-20260728",
-      "date": "2026-07-28 13:20",
-      "positivity_score": 2
     }
   ]
 }
