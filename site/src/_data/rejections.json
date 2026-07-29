@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-29T14:17:41.279Z",
-  "total_rejected": 98224,
+  "exported_at": "2026-07-29T14:17:46.642Z",
+  "total_rejected": 98225,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1611
+      "count": 1612
     },
     {
       "category": "divisive-racism",
@@ -171,8 +171,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1360,
-      "total": 1401
+      "negative": 1361,
+      "total": 1402
     },
     {
       "source": "Al Jazeera English",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "Dramatic California beach rescue after powerful waves hit Santa Cruz",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/video/2026/07/29/dramatic-california-beach-rescue-after-powerful-waves-hit-santa-cruz",
+      "date": "2026-07-29 16:17",
+      "positivity_score": null
+    },
     {
       "source": "Dagens Nyheter",
       "title": "Spanien använder urgammal lösning för att förhindra bränder – åsnor",
@@ -9381,15 +9390,6 @@
       "url": "https://www.ansa.it/english/news/sports/2026/07/28/fencing-worlds-italy-stage-late-comeback-to-beat-hong-kong-in-team_f36a4ffa-c7ce-4a77-a62d-ac5b560864a2.html",
       "date": "2026-07-28 17:05",
       "positivity_score": 4
-    },
-    {
-      "source": "ANSA English (Italy)",
-      "title": "Mafia trying to buy drones like those used in Ukraine war - Palermo prosecutor",
-      "reason": "The article discusses the mafia's attempts to acquire drones, which is a negative and concerning topic related to crime and violence.",
-      "category": "crime-violence",
-      "url": "https://www.ansa.it/english/news/general_news/2026/07/28/mafia-trying-to-buy-drones-like-those-used-in-ukraine-war-palermo_b877dcff-a11a-4f59-a33d-b93b77a6182d.html",
-      "date": "2026-07-28 17:05",
-      "positivity_score": 2
     }
   ]
 }
