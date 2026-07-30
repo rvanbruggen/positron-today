@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-30T16:08:22.601Z",
-  "total_rejected": 99434,
+  "exported_at": "2026-07-30T16:08:28.504Z",
+  "total_rejected": 99435,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1643
+      "count": 1644
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 10219,
-      "total": 10450
+      "negative": 10220,
+      "total": 10451
     },
     {
       "source": "Gazet van Antwerpen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Staar gerust, maar dan omdat ik er een sympathieke kerel uitzie met een graaf shirt aan”: Stan (24) lanceert kledingmerk STARE",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/binnenland/staar-gerust-maar-dan-omdat-ik-er-een-sympathieke-kerel-uitzie-met-een-graaf-shirt-aan-stan-24-lanceert-kledingmerk-stare~a679734e/",
+      "date": "2026-07-30 18:08",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Première mondiale à Pairi Daiza : le parc connait deux naissances d'une espèce extrêmement rare - Clone",
@@ -9381,15 +9390,6 @@
       "url": "https://www.aljazeera.com/video/newsfeed/2026/7/29/29-07-sv-india-student-arrests-in?traffic_source=rss",
       "date": "2026-07-29 18:31",
       "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Why Saudi Arabia holds the key to Palestinian statehood",
-      "reason": "The article discusses political dynamics related to Palestinian statehood, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/opinions/2026/7/29/why-saudi-arabia-holds-the-key-to-palestinian-statehood?traffic_source=rss",
-      "date": "2026-07-29 18:31",
-      "positivity_score": 3
     }
   ]
 }
