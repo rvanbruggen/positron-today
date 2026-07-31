@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-31T05:08:27.791Z",
-  "total_rejected": 100144,
+  "exported_at": "2026-07-31T05:08:40.716Z",
+  "total_rejected": 100145,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1666
+      "count": 1667
     },
     {
       "category": "divisive-racism",
@@ -156,8 +156,8 @@
     },
     {
       "source": "The Verge",
-      "negative": 1875,
-      "total": 1886
+      "negative": 1876,
+      "total": 1887
     },
     {
       "source": "The Guardian Europe",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Verge",
+      "title": "NASA’s Curiosity rover found a ‘sea of polygons’ on Mars",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.theverge.com/science/973314/nasa-curiosity-rover-mars-polygons",
+      "date": "2026-07-31 07:08",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "They Called Her a Burden | Ankita's Inspiring Autism Journey ",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on real estate prices in Belgian cities, which is primarily of local interest and does not have broad human relevance.",
       "category": "soft-news-filler",
       "url": "https://www.lalibre.be/economie/immo/2026/07/30/prix-de-limmobilier-voici-les-quartiers-les-plus-chers-et-moins-chers-des-grandes-villes-belges-RZAQZQSTANF53H7NFOWISMVT44/",
-      "date": "2026-07-30 10:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "A Mons, le prix du mètre carré connaît de grandes variations selon le quartier: \"Des écarts de prix considérables\"",
-      "reason": "The article discusses real estate price variations in a specific locality, which is of local-only relevance and does not have broad human interest.",
-      "category": "soft-news-filler",
-      "url": "https://www.lalibre.be/belgique/societe/2026/07/30/a-mons-le-prix-du-metre-carre-connait-de-grandes-variations-selon-le-quartier-des-ecarts-de-prix-considerables-FWCB3QVRR5FWTFE3MR5SLRFSBE/",
       "date": "2026-07-30 10:27",
       "positivity_score": 3
     }
