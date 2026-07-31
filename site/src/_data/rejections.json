@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-31T14:19:32.603Z",
-  "total_rejected": 100555,
+  "exported_at": "2026-07-31T14:19:54.600Z",
+  "total_rejected": 100556,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1676
+      "count": 1677
     },
     {
       "category": "divisive-racism",
@@ -206,8 +206,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 925,
-      "total": 945
+      "negative": 926,
+      "total": 946
     },
     {
       "source": "Le Soir",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Alberta lets the dogs out, recruits more canine muscle in fight against mussels",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12004504/alberta-dogs-mussels-fight/",
+      "date": "2026-07-31 16:19",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "Kelowna artist uses centuries-old technique to explore today’s challenges",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses a government decision related to expelling foreigners, which is a politically charged topic and does not present a positive or uplifting narrative.",
       "category": "political-conflict",
       "url": "http://www.euronews.com/2026/07/30/milei-authorises-expulsion-of-foreigners-over-anti-argentina-hate-speech",
-      "date": "2026-07-30 18:12",
-      "positivity_score": 2
-    },
-    {
-      "source": "Euronews",
-      "title": "Latest news bulletin | July 30th, 2026 – Evening",
-      "reason": "The article is a general news bulletin that covers a wide range of topics, including politics and entertainment, which do not meet the positive-news editorial standard.",
-      "category": "soft-news-filler",
-      "url": "http://www.euronews.com/video/2026/07/30/latest-news-bulletin-july-30th-2026-evening",
       "date": "2026-07-30 18:12",
       "positivity_score": 2
     }
