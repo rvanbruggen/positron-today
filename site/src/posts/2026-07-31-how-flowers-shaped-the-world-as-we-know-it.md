@@ -2,7 +2,7 @@
 title: "How flowers shaped the world as we know it"
 title_nl: "Hoe bloemen de wereld hebben gevormd zoals we die kennen"
 title_fr: "Comment les fleurs ont façonné le monde tel que nous le connaissons"
-date: 2026-07-31T08:31:32
+date: 2026-07-31T08:31:37
 source_pub_date: 2026-07-30
 fetched_date: 2026-07-30
 source_url: "https://www.scientificamerican.com/article/how-flowers-shaped-the-world-as-we-know-it/"
