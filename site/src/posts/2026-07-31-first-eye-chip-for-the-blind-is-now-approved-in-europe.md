@@ -2,7 +2,7 @@
 title: "First eye chip for the blind is now approved in Europe"
 title_nl: "De eerste oogchip voor blinden is nu goedgekeurd in Europa"
 title_fr: "Le premier chip oculaire pour les aveugles est maintenant approuvé en Europe"
-date: 2026-07-31T08:31:27
+date: 2026-07-31T08:31:31
 source_pub_date: 2026-07-31
 fetched_date: 2026-07-31
 source_url: "https://www.faz.net/aktuell/wissen/medizin-ernaehrung/netzhautchip-prima-implantat-gegen-makuladegeneration-zugelassen-accg-201063136.html"
