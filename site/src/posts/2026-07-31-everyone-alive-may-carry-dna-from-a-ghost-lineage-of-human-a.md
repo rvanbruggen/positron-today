@@ -2,7 +2,7 @@
 title: "Everyone alive may carry DNA from a ‘ghost lineage’ of human ancestors"
 title_nl: "Iedereen die leeft kan DNA dragen van een 'spooklijn' van menselijke voorouders"
 title_fr: "Tout le monde vivant peut porter de l'ADN d'une 'lignée fantôme' d'ancêtres humains"
-date: 2026-07-31T08:31:33
+date: 2026-07-31T08:31:45
 source_pub_date: 2026-07-30
 fetched_date: 2026-07-30
 source_url: "https://www.scientificamerican.com/article/everyone-alive-may-carry-dna-from-a-ghost-lineage-of-human-ancestors/"
