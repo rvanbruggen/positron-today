@@ -2,7 +2,7 @@
 title: "The world’s first giant anteater reintroduction appears to be succeeding in Brazil"
 title_nl: "De eerste reintroducie van de reuzenanteater lijkt te slagen in Brazilië"
 title_fr: "La première réintroduction de l'anteater géant semble réussir au Brésil"
-date: 2026-07-31T08:31:38
+date: 2026-07-31T08:31:46
 source_pub_date: 2026-07-30
 fetched_date: 2026-07-30
 source_url: "https://www.goodnewsnetwork.org/the-worlds-first-giant-anteater-reintroduction-appears-to-be-succeeding-in-brazil/"
