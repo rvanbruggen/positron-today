@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-31T14:19:13.359Z",
-  "total_rejected": 100554,
+  "exported_at": "2026-07-31T14:19:32.603Z",
+  "total_rejected": 100555,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1675
+      "count": 1676
     },
     {
       "category": "divisive-racism",
@@ -206,8 +206,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 924,
-      "total": 944
+      "negative": 925,
+      "total": 945
     },
     {
       "source": "Le Soir",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Kelowna artist uses centuries-old technique to explore today’s challenges",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12004069/kelowna-artist-centuries-old-technique-todays-challenges/",
+      "date": "2026-07-31 16:19",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "For Under Rs 2,000, Your Bengaluru Balcony Can Catch 120 Litres of Rain in a Single Shower ",
@@ -9381,15 +9390,6 @@
       "url": "http://www.euronews.com/video/2026/07/30/latest-news-bulletin-july-30th-2026-evening",
       "date": "2026-07-30 18:12",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "Des os de mammouth découverts en Bulgarie, dans le lit du Danube, dont le niveau est exceptionnellement bas à cause de la sécheresse",
-      "reason": "The article discusses the discovery of mammoth bones due to exceptionally low water levels in the Danube, which is a result of drought, making it less uplifting and more focused on environmental issues.",
-      "category": "climate-environment",
-      "url": "https://www.lemonde.fr/planete/article/2026/07/30/des-os-de-mammouth-decouverts-en-bulgarie-dans-le-lit-du-danube-dont-le-niveau-est-exceptionnellement-bas-a-cause-de-la-secheresse_6737026_3244.html",
-      "date": "2026-07-30 18:12",
-      "positivity_score": 4
     }
   ]
 }
