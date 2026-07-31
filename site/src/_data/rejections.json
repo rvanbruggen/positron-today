@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-07-31T05:08:10.638Z",
-  "total_rejected": 100142,
+  "exported_at": "2026-07-31T05:08:19.584Z",
+  "total_rejected": 100143,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1664
+      "count": 1665
     },
     {
       "category": "divisive-racism",
@@ -241,8 +241,8 @@
     },
     {
       "source": "RNZ (New Zealand)",
-      "negative": 489,
-      "total": 503
+      "negative": 490,
+      "total": 504
     },
     {
       "source": "Knack",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "RNZ (New Zealand)",
+      "title": "Three countries asked for US$1 million. Then Saudi Arabia stepped in to offer free surgery for Fiji's rare conjoined twins",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rnz.co.nz/news/pacific/849116/three-countries-asked-for-us-1-million-then-saudi-arabia-stepped-in-to-offer-free-surgery-for-fiji-s-rare-conjoined-twins",
+      "date": "2026-07-31 07:08",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "South Island set for first direct international internet cable",
@@ -9381,15 +9390,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/ukrainsk-minister-objekt-i-polsk-luftrum-var-russisk-missil",
       "date": "2026-07-30 10:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "AI tworzy przyszłe „ja”. Naukowcy badają skutki",
-      "reason": "The article discusses the implications of AI technology, which raises concerns about manipulation and decision-making rather than providing a purely positive perspective.",
-      "category": "tech-ai-concern",
-      "url": "https://cyfrowa.rp.pl/ai/art44910741-ai-tworzy-przyszle-ja-naukowcy-badaja-skutki",
-      "date": "2026-07-30 10:27",
-      "positivity_score": 4
     }
   ]
 }
