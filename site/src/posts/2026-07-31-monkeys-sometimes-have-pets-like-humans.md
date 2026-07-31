@@ -2,7 +2,7 @@
 title: "Monkeys sometimes have ‘pets’ like humans"
 title_nl: "Apen hebben soms 'huisdieren' zoals mensen"
 title_fr: "Les singes ont parfois des 'animaux de compagnie' comme les humains"
-date: 2026-07-31T08:31:29
+date: 2026-07-31T08:31:35
 source_pub_date: 2026-07-30
 fetched_date: 2026-07-31
 source_url: "https://www.popsci.com/environment/monkeys-have-pets-evolution/"
