@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-01T05:33:23.008Z",
-  "total_rejected": 101184,
+  "exported_at": "2026-08-01T05:33:51.250Z",
+  "total_rejected": 101185,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1693
+      "count": 1694
     },
     {
       "category": "divisive-racism",
@@ -191,8 +191,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1142,
-      "total": 1560
+      "negative": 1143,
+      "total": 1561
     },
     {
       "source": "La Libre Belgique",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "‘Old Ladies’ are free-diving on Cape Cod. They’ve excavated 6,000 pounds of trash.",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/old-ladies-are-free-diving-on-cape-cod-theyve-excavated-6000-pounds-of-trash/",
+      "date": "2026-08-01 07:33",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "L’homme le plus riche d’Afrique va donner un tiers de sa fortune “à l’humanité”",
@@ -9381,15 +9390,6 @@
       "url": "https://www.nrc.nl/nieuws/2026/07/31/franco-baresi-het-brein-met-vooruitziende-blik-van-het-onverslaanbare-ac-milan-a4933569",
       "date": "2026-07-31 10:26",
       "positivity_score": 2
-    },
-    {
-      "source": "NRC",
-      "title": "&#8216;Zeker een boomer, die heeft niet eens door dat het nep is&#8217; ",
-      "reason": "The article focuses on a personal struggle in communication between a mother and her sons, which may not be uplifting or broadly relevant to a wider audience.",
-      "category": "divisive-social",
-      "url": "https://www.nrc.nl/nieuws/2026/07/31/zeker-een-boomer-die-heeft-niet-eens-door-dat-het-nep-is-a4932398",
-      "date": "2026-07-31 10:26",
-      "positivity_score": 4
     }
   ]
 }
