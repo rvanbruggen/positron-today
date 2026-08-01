@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-01T19:22:42.851Z",
-  "total_rejected": 101816,
+  "exported_at": "2026-08-01T19:25:22.332Z",
+  "total_rejected": 101817,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1702
+      "count": 1703
     },
     {
       "category": "divisive-racism",
@@ -236,8 +236,8 @@
     },
     {
       "source": "Popular Science",
-      "negative": 588,
-      "total": 754
+      "negative": 589,
+      "total": 755
     },
     {
       "source": "RNZ (New Zealand)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Popular Science",
+      "title": "Rare baby albino porcupine rescued in Maine",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.popsci.com/environment/albino-baby-porcupine-maine/",
+      "date": "2026-08-01 21:25",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Moroccan rapper Mehdi El Youbi temporarily released from prison",
@@ -9381,15 +9390,6 @@
       "url": "https://vrtnws.be/p.w78Rep13X",
       "date": "2026-07-31 21:21",
       "positivity_score": 3
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "AI firms must answer for rogue bots, says boss of hacked company",
-      "reason": "The article discusses concerns about cyber attacks and accountability in the AI industry, which is a negative topic related to tech and AI anxiety.",
-      "category": "tech-ai-concern",
-      "url": "https://www.bbc.co.uk/news/articles/cr7k49xjzzeo?at_medium=RSS&at_campaign=rss",
-      "date": "2026-07-31 21:21",
-      "positivity_score": 2
     }
   ]
 }
