@@ -2,7 +2,7 @@
 title: "Mapping the clitoris: ‘This enables better education about healthy and pleasurable sex’"
 title_nl: "De clitoris eindelijk in kaart gebracht: ‘Dit maakt betere voorlichting mogelijk over gezonde en plezierige seks’"
 title_fr: "La clitoris enfin cartographiée : ‘Cela permet une meilleure éducation sur la sexualité saine et agréable’"
-date: 2026-08-01T20:38:48
+date: 2026-08-01T20:38:50
 source_pub_date: 2026-08-01
 fetched_date: 2026-08-01
 source_url: "https://www.demorgen.be/beter-leven/de-clitoris-eindelijk-in-kaart-gebracht-dit-maakt-betere-voorlichting-mogelijk-over-gezonde-en-plezierige-seks~bd288387/"
