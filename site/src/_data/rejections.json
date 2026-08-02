@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-02T16:29:39.061Z",
-  "total_rejected": 102502,
+  "exported_at": "2026-08-02T19:01:22.771Z",
+  "total_rejected": 102503,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1714
+      "count": 1715
     },
     {
       "category": "divisive-racism",
@@ -296,8 +296,8 @@
     },
     {
       "source": "Good Good Good",
-      "negative": 81,
-      "total": 146
+      "negative": 82,
+      "total": 147
     },
     {
       "source": "Positive News",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good Good Good",
+      "title": "Man goes viral on TikTok for helping struggling baby sea turtle reach the ocean 'the right way'",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodgoodgood.co/articles/franklin-sea-turtle-baby-tiktok-video",
+      "date": "2026-08-02 21:01",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "No breakthrough on Strait of Hormuz as Trump halts attack on Iran",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lesoir.be/762662/article/2026-08-01/nirmal-purja-star-mondiale-de-lalpinisme-retrouve-mort-apres-une-avalanche",
       "date": "2026-08-01 14:25",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Soir",
-      "title": "Une semaine après le podium du Tour de France, Remco repart à la conquête de « sa » Clásica",
-      "reason": "The article focuses on a professional sports event and athlete performance, which does not meet the positive-news editorial standard due to its routine nature and lack of exceptional human interest.",
-      "category": "sports-negative",
-      "url": "https://www.lesoir.be/762615/article/2026-08-01/une-semaine-apres-le-podium-du-tour-de-france-remco-repart-la-conquete-de-sa",
-      "date": "2026-08-01 14:25",
-      "positivity_score": 3
     }
   ]
 }
