@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-02T05:54:44.259Z",
-  "total_rejected": 101986,
+  "exported_at": "2026-08-02T05:54:59.339Z",
+  "total_rejected": 101987,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1711
+      "count": 1712
     },
     {
       "category": "divisive-racism",
@@ -191,8 +191,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1154,
-      "total": 1575
+      "negative": 1155,
+      "total": 1576
     },
     {
       "source": "La Libre Belgique",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Dogs from 5 vastly different countries were found to express their loyalty with the same behavior",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/dogs-express-loyalty-same-behavior/",
+      "date": "2026-08-02 07:54",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "Man who raised and released an orphaned otter films her swimming to his kayak for cuddles",
@@ -9381,15 +9390,6 @@
       "url": "https://www.dn.se/varlden/unhcr-desinformation-kan-ligga-bakom-migrantvagen/",
       "date": "2026-07-31 22:37",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Nowe obowiązki dla przychodni i nowe możliwości dla pacjentów. Od 1 sierpnia rusza kolejny etap zmian",
-      "reason": "The article discusses changes in healthcare registration that are specific to a local system, which may not be of interest to readers outside of Poland.",
-      "category": "soft-news-filler",
-      "url": "https://www.rp.pl/ochrona-zdrowia/art44805481-nowe-obowiazki-dla-przychodni-i-nowe-mozliwosci-dla-pacjentow-od-1-sierpnia-rusza-kolejny-etap-zmian",
-      "date": "2026-07-31 22:37",
-      "positivity_score": 4
     }
   ]
 }
