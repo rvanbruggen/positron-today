@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-02T05:54:28.912Z",
-  "total_rejected": 101984,
+  "exported_at": "2026-08-02T05:54:37.931Z",
+  "total_rejected": 101985,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1709
+      "count": 1710
     },
     {
       "category": "divisive-racism",
@@ -256,8 +256,8 @@
     },
     {
       "source": "Good News Network",
-      "negative": 354,
-      "total": 712
+      "negative": 355,
+      "total": 713
     },
     {
       "source": "The Washington Post",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good News Network",
+      "title": "Mars Rover Discovers Mysterious Field of Honeycomb Textures on Red Planet: ‘Took Our Breath Away’",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodnewsnetwork.org/mars-rover-discovers-mysterious-field-of-honeycomb-textures-on-red-planet/",
+      "date": "2026-08-02 07:54",
+      "positivity_score": null
+    },
     {
       "source": "El pais",
       "title": "Jorge Pérez Gallego, astrophysicist: ‘A total eclipse creates an energy similar to a big concert, to the feeling of celebrating a goal’",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses new EU regulations on single-use packaging, which, while positive in intent, falls under corporate PR and routine updates rather than uplifting human interest stories.",
       "category": "other-negative",
       "url": "https://www.rp.pl/ekonomia/art44722681-od-12-sierpnia-ue-zaczyna-wycofywac-jednorazowe-saszetki-to-pierwszy-etap-duzych-zmian",
-      "date": "2026-07-31 22:37",
-      "positivity_score": 4
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Kolejki do endokrynologa sięgają nawet 426 dni. Od 1 sierpnia ruszają ważne zmiany",
-      "reason": "The article discusses long waiting times for endocrinologist appointments, which is a health concern rather than a positive story. While it mentions a new system to improve access, the overall context remains focused on a negative issue.",
-      "category": "health-scare",
-      "url": "https://www.rp.pl/ochrona-zdrowia/art44904741-kolejki-do-endokrynologa-siegaja-nawet-426-dni-od-1-sierpnia-ruszaja-wazne-zmiany",
       "date": "2026-07-31 22:37",
       "positivity_score": 4
     }
