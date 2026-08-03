@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-03T18:30:52.366Z",
-  "total_rejected": 103432,
+  "exported_at": "2026-08-03T18:31:28.356Z",
+  "total_rejected": 103433,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1728
+      "count": 1729
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 10474,
-      "total": 10710
+      "negative": 10475,
+      "total": 10711
     },
     {
       "source": "Gazet van Antwerpen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Goed nieuws uit het Natuurhulpcentrum: eerste nieuwe stekels zichtbaar bij egel die ‘kaal’ werd door huidschimmel",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/oudsbergen/goed-nieuws-uit-het-natuurhulpcentrum-eerste-nieuwe-stekels-zichtbaar-bij-egel-die-kaal-werd-door-huidschimmel~a7776d21/",
+      "date": "2026-08-03 20:31",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "Noida Gardener Shares 3 Easy Plants That Grow in Old Bottles & Make Any Corner Look Beautiful ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.dn.se/motor/bilarna-som-natt-vags-ande/",
       "date": "2026-08-02 18:27",
       "positivity_score": 3
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Expert: Attacker med nordkoreanska robotar ingen slump",
-      "reason": "The article discusses military actions and political decisions related to conflict, which is inherently negative and does not uplift the reader.",
-      "category": "war-conflict",
-      "url": "https://www.dn.se/varlden/expert-attacker-med-nordkoreanska-robotar-ingen-slump/",
-      "date": "2026-08-02 18:27",
-      "positivity_score": 2
     }
   ]
 }
