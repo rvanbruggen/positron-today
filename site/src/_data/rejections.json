@@ -1,23 +1,23 @@
 {
-  "exported_at": "2026-08-04T16:30:25.876Z",
-  "total_rejected": 104408,
+  "exported_at": "2026-08-04T16:30:34.551Z",
+  "total_rejected": 104415,
   "sources_count": 64,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 28563
+      "count": 28564
     },
     {
       "category": "sports-negative",
-      "count": 12452
+      "count": 12453
     },
     {
       "category": "soft-news-filler",
-      "count": 12265
+      "count": 12267
     },
     {
       "category": "crime-violence",
-      "count": 8519
+      "count": 8520
     },
     {
       "category": "celebrity-entertainment",
@@ -53,11 +53,11 @@
     },
     {
       "category": "climate-environment",
-      "count": 2041
+      "count": 2042
     },
     {
       "category": "human-discarded",
-      "count": 1758
+      "count": 1759
     },
     {
       "category": "divisive-racism",
@@ -211,8 +211,8 @@
     },
     {
       "source": "The Journal (Ireland)",
-      "negative": 1017,
-      "total": 1032
+      "negative": 1020,
+      "total": 1035
     },
     {
       "source": "Humo",
@@ -265,19 +265,19 @@
       "total": 283
     },
     {
+      "source": "ANSA English (Italy)",
+      "negative": 248,
+      "total": 251
+    },
+    {
       "source": "Science.org news",
       "negative": 248,
       "total": 301
     },
     {
-      "source": "ANSA English (Italy)",
-      "negative": 245,
-      "total": 248
-    },
-    {
       "source": "The Better India",
-      "negative": 233,
-      "total": 410
+      "negative": 234,
+      "total": 411
     },
     {
       "source": "MercoPress",
@@ -392,6 +392,60 @@
   ],
   "articles": [
     {
+      "source": "The Journal (Ireland)",
+      "title": "The 5 at 5: Tuesday",
+      "reason": "The article appears to be a generic news roundup without a specific uplifting story, making it unlikely to engage readers positively.",
+      "category": "soft-news-filler",
+      "url": "https://www.thejournal.ie/five-at-five-tuesday-37-7121368-Aug2026/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "The Better India",
+      "title": "‘I Lost Both Arms. The Better India’s Story Helped Raise Rs 82000 for My Bionic Arms’ ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/changemakers/nikhil-bharadwaj-bionic-arms-fundraiser-better-india-reader-support-12226901",
+      "date": "2026-08-04 18:30",
+      "positivity_score": null
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Cén fáth go mbíonn muid fós ag streachailt leis an síneadh fada?",
+      "reason": "The article discusses the challenges related to the use of the long accent in Ireland, which is a local issue and does not have broad human relevance outside of that context.",
+      "category": "soft-news-filler",
+      "url": "https://www.thejournal.ie/fada-3-7121114-Aug2026/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Top Fifa officials distance themselves from Infantino after failed World Cup sell-off plan",
+      "reason": "The article discusses a negative situation involving FIFA officials and a failed plan, which does not uplift or inspire readers.",
+      "category": "sports-negative",
+      "url": "https://www.thejournal.ie/gianni-infantino-fifa-support-world-cup-investment-7121410-Aug2026/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "ANSA English (Italy)",
+      "title": "All of Italy's 27 major cities to be on heatwave red alert on Thursday",
+      "reason": "The article discusses a heatwave alert, which is a negative situation affecting multiple cities, and does not provide uplifting content.",
+      "category": "climate-environment",
+      "url": "https://www.ansa.it/english/news/general_news/2026/08/04/all-of-italys-27-major-cities-to-be-on-heatwave-red-alert-on-thursday_f47a2693-244f-42fe-b01c-9188ea479251.html",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "ANSA English (Italy)",
+      "title": "Neo-Nazis try to storm hotel in Sofia hosting young Italian Jews",
+      "reason": "The article discusses a violent attempt by neo-Nazis to storm a hotel, which is a negative and alarming event, not uplifting or positive.",
+      "category": "crime-violence",
+      "url": "https://www.ansa.it/english/news/general_news/2026/08/04/neo-nazis-try-to-storm-hotel-in-sofia-hosting-young-italian-jews_3d254dc4-84bd-4a0f-8cff-2d88b27ee490.html",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
+    {
       "source": "De Morgen",
       "title": "Twee keer donker op één avond en daarna vallende sterren: Spaans gehucht maakt zich op voor uitzonderlijk spektakel",
       "reason": "Discarded on human review",
@@ -399,6 +453,15 @@
       "url": "https://www.demorgen.be/nieuws/twee-keer-donker-op-een-avond-en-daarna-vallende-sterren-spaans-gehucht-maakt-zich-op-voor-uitzonderlijk-spektakel~b0e1b0cb/",
       "date": "2026-08-04 18:30",
       "positivity_score": null
+    },
+    {
+      "source": "ANSA English (Italy)",
+      "title": "Madrid calls on Italy to stop border checks following Ceuta crisis",
+      "reason": "The article discusses a political issue regarding border checks, which falls under political conflict and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://www.ansa.it/english/news/politics/2026/08/04/madrid-calls-on-italy-to-stop-border-checks-following-ceuta-crisis_bf05f0f5-9d42-43db-9241-9f9256e850bd.html",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
     },
     {
       "source": "ANSA English (Italy)",
@@ -9327,69 +9390,6 @@
       "url": "https://www.aljazeera.com/opinions/2026/8/3/how-israel-and-the-european-far-right-tried-to-exploit-ceuta?traffic_source=rss",
       "date": "2026-08-03 18:32",
       "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Indian court acquits ex-wrestling chief in sexual harassment case",
-      "reason": "The article discusses a controversial acquittal in a sexual harassment case, which is a negative and divisive topic, lacking uplifting content.",
-      "category": "divisive-social",
-      "url": "https://www.aljazeera.com/news/2026/8/3/indian-court-acquits-ex-wrestling-chief-in-sexual-harassment-case?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Romanian navy blasts riverbed to protect nuclear plant",
-      "reason": "The article discusses military actions related to a nuclear power plant, which may raise concerns about safety and environmental impact, making it not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/3/romanian-navy-blasts-riverbed-to-protect-nuclear-plant?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 4
-    },
-    {
-      "source": "The Better India",
-      "title": "A Fire Destroyed the Second Home of 85 Disabled Children in Delhi. Help Rebuild It ",
-      "reason": "The article focuses on a tragic event where a fire destroyed a center for disabled children, detailing the loss and disruption to their lives, which is not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://thebetterindia.com/changemakers/donate-rebuild-astha-inclusive-education-centre-after-fire-12215796",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 3
-    },
-    {
-      "source": "MIT Technology Review",
-      "title": "The Download: reward hacking explained, and suspected Iranian cyberattacks",
-      "reason": "The article discusses negative aspects of AI behavior and potential cyberattacks, which does not align with a positive news standard.",
-      "category": "tech-ai-concern",
-      "url": "https://www.technologyreview.com/2026/08/03/1141039/the-download-reward-hacking-water-cyberattacks/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 2
-    },
-    {
-      "source": "ScienceDaily",
-      "title": "Some coastal cities are sinking faster than the ocean is rising",
-      "reason": "The article discusses the negative impact of land sinking on coastal communities, which is a concerning environmental issue rather than a positive story.",
-      "category": "climate-environment",
-      "url": "https://www.sciencedaily.com/releases/2026/08/260801042824.htm",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 2
-    },
-    {
-      "source": "ScienceDaily",
-      "title": "AI reveals a massive algae boom across the world’s oceans",
-      "reason": "The article discusses the negative impacts of algae blooms, including ecological damage and economic losses, which is not uplifting.",
-      "category": "climate-environment",
-      "url": "https://www.sciencedaily.com/releases/2026/08/260801042834.htm",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 2
-    },
-    {
-      "source": "ScienceDaily",
-      "title": "Ancient Arctic carbon is pouring into the sea, but the seabed captures most of it",
-      "reason": "The article discusses the negative impact of thawing permafrost and the release of carbon into the ocean, which raises concerns about climate change, making it too negative and not uplifting.",
-      "category": "climate-environment",
-      "url": "https://www.sciencedaily.com/releases/2026/08/260802223424.htm",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 3
     }
   ]
 }
