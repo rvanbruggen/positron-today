@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-08-04T16:30:10.660Z",
-  "total_rejected": 104399,
+  "exported_at": "2026-08-04T16:30:17.697Z",
+  "total_rejected": 104404,
   "sources_count": 64,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 28562
+      "count": 28563
     },
     {
       "category": "sports-negative",
@@ -13,7 +13,7 @@
     },
     {
       "category": "soft-news-filler",
-      "count": 12264
+      "count": 12265
     },
     {
       "category": "crime-violence",
@@ -21,7 +21,7 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 7102
+      "count": 7103
     },
     {
       "category": "economic-doom",
@@ -53,11 +53,11 @@
     },
     {
       "category": "climate-environment",
-      "count": 2040
+      "count": 2041
     },
     {
       "category": "human-discarded",
-      "count": 1756
+      "count": 1757
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 10525,
-      "total": 10763
+      "negative": 10526,
+      "total": 10764
     },
     {
       "source": "Gazet van Antwerpen",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 4346,
-      "total": 4365
+      "negative": 4350,
+      "total": 4369
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -391,6 +391,51 @@
     }
   ],
   "articles": [
+    {
+      "source": "Politiken.dk",
+      "title": "Østrig måler højeste temperatur nogensinde",
+      "reason": "The article reports on a record high temperature in Austria, which is a negative aspect of climate change rather than a positive story.",
+      "category": "climate-environment",
+      "url": "https://politiken.dk/klima/art10935964/%C3%98strig-m%C3%A5ler-h%C3%B8jeste-temperatur-nogensinde",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Vrouw gooit winnend lot van 1 miljoen euro weg, maar vuilnismannen redden haar fortuin",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/nieuws/vrouw-gooit-winnend-lot-van-1-miljoen-euro-weg-maar-vuilnismannen-redden-haar-fortuin~adb3033f/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": null
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "God udstilling forsømmer vigtig del af historien",
+      "reason": "The article discusses trends from the 1980s in a local exhibition, which may not have broad relevance or upliftment for a global audience.",
+      "category": "soft-news-filler",
+      "url": "https://politiken.dk/kultur/art10858496/God-udstilling-fors%C3%B8mmer-vigtig-del-af-historien",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Tidligere DR-vært Stig Krabbe Barfoed er død",
+      "reason": "The article reports on the death of a well-known television host, which is a negative event and does not uplift the reader.",
+      "category": "celebrity-entertainment",
+      "url": "https://politiken.dk/kultur/art10936054/Tidligere-DR-v%C3%A6rt-Stig-Krabbe-Barfoed-er-d%C3%B8d",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Dansk minister kobler Ceuta-krise til hybridkrig med Rusland",
+      "reason": "The article discusses a political issue related to the crisis in Ceuta and its connection to Russia, which falls under political conflict and does not provide uplifting content.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/danmark/politik/art10935254/Dansk-minister-kobler-Ceuta-krise-til-hybridkrig-med-Rusland",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
     {
       "source": "Good News Network",
       "title": "Longest Predator Exclusion Fence in the Pacific Protects Thousands of Ground-Nesting Seabirds",
@@ -9343,51 +9388,6 @@
       "reason": "The article discusses political tensions and potential military actions, which are not uplifting and focus on conflict rather than positive developments.",
       "category": "political-conflict",
       "url": "https://globalnews.ca/news/12007396/trump-iran-new-talks-tehran-denies-negotiations/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 2
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Ariana Grande pulls out of West End musical, to take break from public eye",
-      "reason": "The article focuses on a celebrity's decision to step back from public visibility, which falls under entertainment news and does not provide uplifting content.",
-      "category": "celebrity-entertainment",
-      "url": "https://globalnews.ca/news/12007418/ariana-grande-steps-back-public-eye/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 3
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Blanche confirms ‘anti-weaponization fund’ dead, clearing path to AG vote",
-      "reason": "The article discusses political maneuvering regarding a nomination, which falls under political conflict and does not provide an uplifting or universally positive message.",
-      "category": "political-conflict",
-      "url": "https://globalnews.ca/news/12007444/todd-blanche-ag-confirmation-fund-deal-respublicans/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 3
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "2 dead in Muskoka boating crash, OPP confirm",
-      "reason": "The article reports on a tragic boating accident resulting in fatalities, which is a negative event and does not uplift the reader.",
-      "category": "disaster-accident",
-      "url": "https://globalnews.ca/news/12007465/muskoka-boating-crash-deaths-opp/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 2
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "N.S. Liberal leadership hopefuls ready to rebuild during leadership campaign",
-      "reason": "The article focuses on a political leadership campaign, which falls under the category of political news and does not provide uplifting content that resonates broadly across cultures.",
-      "category": "political-conflict",
-      "url": "https://globalnews.ca/news/12007466/ns-liberals-leadership-rebuild/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 4
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Ukrainian drone hits Russian beach town as Moscow, Kyiv trade deadly strikes",
-      "reason": "The article reports on violence and casualties resulting from military actions, which is not uplifting and focuses on negative events.",
-      "category": "war-conflict",
-      "url": "https://globalnews.ca/news/12007464/ukraine-russia-strikes-beach-town-drone/",
       "date": "2026-08-03 18:31",
       "positivity_score": 2
     }
