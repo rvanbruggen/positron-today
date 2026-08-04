@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-08-04T16:30:34.551Z",
-  "total_rejected": 104415,
+  "exported_at": "2026-08-04T16:31:00.859Z",
+  "total_rejected": 104432,
   "sources_count": 64,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 28564
+      "count": 28566
     },
     {
       "category": "sports-negative",
@@ -13,7 +13,7 @@
     },
     {
       "category": "soft-news-filler",
-      "count": 12267
+      "count": 12270
     },
     {
       "category": "crime-violence",
@@ -21,15 +21,15 @@
     },
     {
       "category": "celebrity-entertainment",
-      "count": 7103
+      "count": 7107
     },
     {
       "category": "economic-doom",
-      "count": 6546
+      "count": 6548
     },
     {
       "category": "disaster-accident",
-      "count": 6433
+      "count": 6435
     },
     {
       "category": "war-conflict",
@@ -37,7 +37,7 @@
     },
     {
       "category": "other-negative",
-      "count": 4301
+      "count": 4303
     },
     {
       "category": "health-scare",
@@ -49,7 +49,7 @@
     },
     {
       "category": "tech-ai-concern",
-      "count": 2523
+      "count": 2524
     },
     {
       "category": "climate-environment",
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1759
+      "count": 1760
     },
     {
       "category": "divisive-racism",
@@ -206,13 +206,13 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 1022,
-      "total": 1045
+      "negative": 1032,
+      "total": 1055
     },
     {
       "source": "The Journal (Ireland)",
-      "negative": 1020,
-      "total": 1035
+      "negative": 1025,
+      "total": 1040
     },
     {
       "source": "Humo",
@@ -256,8 +256,8 @@
     },
     {
       "source": "Good News Network",
-      "negative": 367,
-      "total": 734
+      "negative": 368,
+      "total": 735
     },
     {
       "source": "The Washington Post",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 102,
-      "total": 207
+      "negative": 103,
+      "total": 212
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,159 @@
     }
   ],
   "articles": [
+    {
+      "source": "Good News Network",
+      "title": "New Images Capture the Oldest-Known Sunda Clouded Leopard–an 8-yo Huntress with All Her Teeth",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.goodnewsnetwork.org/new-images-capture-the-oldest-known-sunda-clouded-leopard-an-8-yo-huntress-with-all-her-teeth/",
+      "date": "2026-08-04 18:31",
+      "positivity_score": null
+    },
+    {
+      "source": "ScienceDaily",
+      "title": "DNA on the Shroud of Turin reveals centuries of hidden history",
+      "reason": "The article discusses the Shroud of Turin in a way that focuses on historical and scientific analysis rather than uplifting human stories or breakthroughs, making it less universally appealing.",
+      "category": "other-negative",
+      "url": "https://www.sciencedaily.com/releases/2026/08/260803080859.htm",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "The Curator: The ultimate guide to buying the perfect sofa",
+      "reason": "The article is focused on consumer advice for buying sofas, which does not provide uplifting content or broad human relevance.",
+      "category": "soft-news-filler",
+      "url": "https://globalnews.ca/the-curator/11315509/best-sofas-2025/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "U.S. State Department closing consulates in Canada, Japan and Indonesia",
+      "reason": "The article discusses the closure of U.S. consulates, which is a political decision and not uplifting or positive in nature.",
+      "category": "political-conflict",
+      "url": "https://globalnews.ca/news/12008187/us-state-department-closing-consulates/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "Spotify says monthly users and profits will likely fall below estimates",
+      "reason": "The article discusses Spotify's expected decline in monthly users and profits, which is a negative economic outlook and does not uplift the reader.",
+      "category": "economic-doom",
+      "url": "https://globalnews.ca/news/12008189/spotify-says-monthly-users-and-profits-will-likely-fall-below-estimates/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "U.S. doing ‘whatever it takes to support’ Japan as Yen plummets: Bessent",
+      "reason": "The article discusses economic issues related to currency valuation and potential problems, which is not uplifting and focuses on negative economic implications.",
+      "category": "economic-doom",
+      "url": "https://globalnews.ca/news/12008152/united-states-japan-yen-bessent/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "Ontario city declares state of emergency after ‘hurricane’s worth of rain’",
+      "reason": "The article discusses a state of emergency due to severe weather, which is a negative event and does not uplift the reader.",
+      "category": "disaster-accident",
+      "url": "https://globalnews.ca/news/12008150/st-catharines-state-of-emergency-hurricanes-worth-of-rain/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "An inside look at Calgary’s Saskatchewan-themed pub",
+      "reason": "The article focuses on a local pub in Calgary, which may not have broad relevance outside the region, making it less interesting to a global audience.",
+      "category": "soft-news-filler",
+      "url": "https://globalnews.ca/news/12008235/inside-look-at-saskatchewan-themed-pub-in-calgary/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "Ariana Grande says choice to step back comes from an ’empowered’ place",
+      "reason": "The article focuses on a celebrity's personal decision, which falls under the category of entertainment news and lacks broad human relevance.",
+      "category": "celebrity-entertainment",
+      "url": "https://globalnews.ca/news/12008165/ariana-grande-steps-back-from-public-eye/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "1 person dead after cooking-related fire at Toronto apartment building",
+      "reason": "The article reports on a tragic incident involving a death due to a cooking-related fire, which is a negative event and not uplifting.",
+      "category": "disaster-accident",
+      "url": "https://globalnews.ca/news/12008298/toronto-fire-wellesley-death/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "August 8 – City of Edmonton",
+      "reason": "The article focuses on a local initiative in Edmonton, which may not interest readers outside the area, making it too localized for a broader audience.",
+      "category": "soft-news-filler",
+      "url": "https://globalnews.ca/news/12008363/august-8-city-of-edmonton/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "Ottawa moves to list Alberta-backed West Coast pipeline as national interest project",
+      "reason": "The article discusses a political decision regarding a pipeline project, which falls under political content and does not provide an uplifting narrative.",
+      "category": "political-conflict",
+      "url": "https://globalnews.ca/news/12008358/ottawa-pipeline-national-interest-project-listing/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "'A pioneering figure': Former GAA president Liam O'Neill dies aged 70",
+      "reason": "The article discusses the death of a notable figure, which is inherently a negative event and does not uplift the reader.",
+      "category": "other-negative",
+      "url": "https://www.thejournal.ie/liam-oneill-gaa-president-3-2-7121198-Aug2026/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "More people bought electric cars last month than ever before",
+      "reason": "The article focuses on electric car sales, which, while positive, falls under routine industry updates and lacks a truly exceptional or uplifting angle.",
+      "category": "tech-ai-concern",
+      "url": "https://www.thejournal.ie/more-people-bought-electric-cars-last-month-than-ever-before-7121121-Aug2026/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Bono recites U2 song 'Beautiful Day' as a poem at Glen Hansard's funeral",
+      "reason": "The article focuses on a celebrity's performance at a funeral, which falls under the category of celebrity entertainment and does not provide uplifting content that resonates broadly across cultures.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.thejournal.ie/bono-glen-hansard-patti-smith-7121152-Aug2026/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "Markéta Irglová joins Eddie Vedder for cathartic rendition of Glen Hansard song at his funeral",
+      "reason": "The article focuses on a performance at a funeral, which, while potentially uplifting in a personal context, is inherently tied to loss and mourning, making it not strictly positive.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.thejournal.ie/vedder-irglova-glen-hansard-funeral-7121183-Aug2026/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "The Journal (Ireland)",
+      "title": "In pictures: Mourners and celebrities crowd St Patrick's Cathedral for the funeral of Glen Hansard",
+      "reason": "The article focuses on a funeral, which is inherently a somber event, and while it mentions friends and family gathering, it does not convey an uplifting message.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.thejournal.ie/glen-hansard-funeral-2-7120922-Aug2026/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
     {
       "source": "The Journal (Ireland)",
       "title": "The 5 at 5: Tuesday",
@@ -9237,159 +9390,6 @@
       "url": "https://www.hln.be/oudsbergen/goed-nieuws-uit-het-natuurhulpcentrum-eerste-nieuwe-stekels-zichtbaar-bij-egel-die-kaal-werd-door-huidschimmel~a7776d21/",
       "date": "2026-08-03 20:31",
       "positivity_score": null
-    },
-    {
-      "source": "The Better India",
-      "title": "Noida Gardener Shares 3 Easy Plants That Grow in Old Bottles & Make Any Corner Look Beautiful ",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://thebetterindia.com/gardening/budget-friendly-indoor-plants-dipalee-katre-noida-low-maintenance-garden-for-beginners-12216299",
-      "date": "2026-08-03 20:30",
-      "positivity_score": null
-    },
-    {
-      "source": "The Better India",
-      "title": "The Villages That Outsmarted Floods With Nature, Not Concrete ",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://thebetterindia.com/web-stories/sustainability/indian-villages-using-nature-to-reduce-flood-damage-mangrove-trees-ecological-balance-environment-12223477",
-      "date": "2026-08-03 20:30",
-      "positivity_score": null
-    },
-    {
-      "source": "Good News Network",
-      "title": "After Stranger Gives Boy a Piano, a ‘Mozart Level’ Is Revealed in Spite of Autism",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.goodnewsnetwork.org/after-stranger-gives-boy-a-piano-a-mozart-level-is-revealed-in-spite-of-autism/",
-      "date": "2026-08-03 20:30",
-      "positivity_score": null
-    },
-    {
-      "source": "The Better India",
-      "title": "Swiss Woman Left Her Dubai Career to Build a School for 500+ Rural Kids in West Bengal ",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://thebetterindia.com/web-stories/changemakers/sandra-lavie-india-school-project-rural-west-bengal-12224766",
-      "date": "2026-08-03 20:29",
-      "positivity_score": null
-    },
-    {
-      "source": "AllAfrica",
-      "title": "Malawi: Community-Led HIV Care Gives Malawi a Blueprint for Ending Mother-to-Child Transmission",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://allafrica.com/stories/202608030668.html",
-      "date": "2026-08-03 20:29",
-      "positivity_score": null
-    },
-    {
-      "source": "MercoPress",
-      "title": "Milei on Lula: released over a procedural flaw, not for being innocent",
-      "reason": "The article discusses political accusations and procedural flaws related to corruption convictions, which is negative and divisive in nature.",
-      "category": "political-conflict",
-      "url": "https://en.mercopress.com/2026/08/03/milei-on-lula-released-over-a-procedural-flaw-not-for-being-innocent?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "AllAfrica",
-      "title": "Morocco: EU Ministers Set to Meet Over Migrant Crossings in Ceuta",
-      "reason": "The article discusses a political meeting regarding migrant crossings, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://allafrica.com/stories/202608030661.html",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 3
-    },
-    {
-      "source": "AllAfrica",
-      "title": "Sudan: Sudan Army's Drone Attack On Court Kills 35 in Darfur - NGO",
-      "reason": "The article reports on a tragic drone attack resulting in loss of life, which is highly negative and not uplifting.",
-      "category": "war-conflict",
-      "url": "https://allafrica.com/stories/202608030663.html",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "AllAfrica",
-      "title": "Ethiopia: Hundreds Flee Ethiopia to War-Torn Sudan Following New Fighting in Tigray",
-      "reason": "The article discusses the negative impact of conflict in Ethiopia, highlighting the plight of refugees, which is not uplifting.",
-      "category": "war-conflict",
-      "url": "https://allafrica.com/stories/202608030664.html",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "FIFA’s Infantino sought Trump backing after World Cup selloff plan: Report",
-      "reason": "The article discusses FIFA's internal struggles and political maneuvering, which is negative and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/sports/2026/8/3/fifas-infantino-sought-trump-backing-after-failed-world-cup-stakes-sell-off-plan?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "More than 10 killed as Russia and Ukraine trade heavy attacks",
-      "reason": "The article discusses ongoing violence and casualties in the Russia-Ukraine conflict, which is inherently negative and not uplifting.",
-      "category": "war-conflict",
-      "url": "https://www.aljazeera.com/news/2026/8/3/more-than-10-killed-as-russia-and-ukraine-trade-heavy-attacks?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Pochettino agrees to new manager contract with US Soccer",
-      "reason": "The article focuses on a sports contract extension, which falls under the category of routine sports news without exceptional emotional or human-interest elements.",
-      "category": "sports-negative",
-      "url": "https://www.aljazeera.com/sports/2026/8/3/pochettino-agrees-to-new-us-coach-soccer-contract-through-to-2030-world-cup?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 4
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Trump slams Chevron CEO, demands immediate reduction in US fuel prices",
-      "reason": "The article focuses on a political figure's demands regarding fuel prices, which falls under political commentary and does not provide an uplifting or universally positive message.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/economy/2026/8/3/trump-slams-chevron-ceo-demands-immediate-reduction-in-us-fuel-prices?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Pentagon boosts Patriot, THAAD interceptor output amid stockpile strain",
-      "reason": "The article discusses military production and defense contracts, which is not uplifting and relates to war and conflict.",
-      "category": "war-conflict",
-      "url": "https://www.aljazeera.com/economy/2026/8/3/pentagon-boosts-patriot-thaad-interceptor-output-amid-stockpile-strain?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Tigray refugees flee into Sudan after deadly violence on Ethiopia border",
-      "reason": "The article discusses violence and conflict, focusing on refugees fleeing due to deadly violence, which is inherently negative and not uplifting.",
-      "category": "war-conflict",
-      "url": "https://www.aljazeera.com/news/2026/8/3/tigray-refugees-flee-into-sudan-after-deadly-violence-on-ethiopia-border?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Australia’s under-16 social media ban failing, study shows: What it means",
-      "reason": "The article discusses a study revealing that a social media ban for teenagers is failing, which highlights a negative aspect of youth behavior and regulatory challenges rather than uplifting news.",
-      "category": "divisive-social",
-      "url": "https://www.aljazeera.com/news/2026/8/3/australias-under-16-social-media-ban-failing-study-shows-what-it-means?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 4
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "How Israel and the European far right tried to exploit Ceuta",
-      "reason": "The article discusses political exploitation and anti-Semitism, which are divisive and negative topics, failing to uplift or inspire readers.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/opinions/2026/8/3/how-israel-and-the-european-far-right-tried-to-exploit-ceuta?traffic_source=rss",
-      "date": "2026-08-03 18:32",
-      "positivity_score": 2
     }
   ]
 }
