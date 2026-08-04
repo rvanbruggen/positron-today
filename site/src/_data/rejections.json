@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-04T16:36:54.513Z",
-  "total_rejected": 104452,
+  "exported_at": "2026-08-04T16:38:11.999Z",
+  "total_rejected": 104453,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1767
+      "count": 1768
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 105,
-      "total": 159
+      "negative": 106,
+      "total": 160
     },
     {
       "source": "ScienceDaily",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "Project backed by Leonardo DiCaprio and Jeff Bezos aims to save 100 critically endangered species",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/project-backed-by-leonardo-dicaprio-and-jeff-bezos-aims-to-save-100-critically-endangered-species/",
+      "date": "2026-08-04 18:38",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "This IIT Team Built an AI System That Can Predict Floods Before the First Drop Falls ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.hln.be/bv/meer-dan-tien-jaar-na-wauters-vs-waes-heeft-tom-waes-een-nieuwe-uitdager-op-het-oog-bring-it-on~a9aff666/",
       "date": "2026-08-03 21:20",
       "positivity_score": 4
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Belgische tiener (14) verdronken na fatale sprong in Franse steengroeve",
-      "reason": "The article reports on a tragic drowning incident involving a teenager, which is a deeply negative event and not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://www.hln.be/nieuws/belgische-tiener-14-verdronken-na-fatale-sprong-in-franse-steengroeve~aea4c4d4/",
-      "date": "2026-08-03 21:20",
-      "positivity_score": 2
     }
   ]
 }
