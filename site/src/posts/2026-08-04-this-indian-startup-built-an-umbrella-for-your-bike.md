@@ -2,7 +2,7 @@
 title: "This Indian startup built an umbrella for your bike"
 title_nl: "Deze Indiase startup bouwde een paraplu voor je fiets"
 title_fr: "Cette startup indienne a construit un parapluie pour votre moto"
-date: 2026-08-04T19:26:19
+date: 2026-08-04T19:26:23
 source_pub_date: 2026-08-04
 fetched_date: 2026-08-04
 source_url: "https://thebetterindia.com/videos/vehicle/this-indian-startup-built-an-umbrella-for-your-bike-12226706"
