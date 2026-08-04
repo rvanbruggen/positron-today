@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-08-04T16:31:15.919Z",
-  "total_rejected": 104440,
+  "exported_at": "2026-08-04T16:31:27.036Z",
+  "total_rejected": 104448,
   "sources_count": 64,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 28569
+      "count": 28571
     },
     {
       "category": "sports-negative",
@@ -25,15 +25,15 @@
     },
     {
       "category": "economic-doom",
-      "count": 6548
+      "count": 6549
     },
     {
       "category": "disaster-accident",
-      "count": 6437
+      "count": 6438
     },
     {
       "category": "war-conflict",
-      "count": 4828
+      "count": 4830
     },
     {
       "category": "other-negative",
@@ -41,7 +41,7 @@
     },
     {
       "category": "health-scare",
-      "count": 4033
+      "count": 4034
     },
     {
       "category": "divisive-social",
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1762
+      "count": 1763
     },
     {
       "category": "divisive-racism",
@@ -171,8 +171,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 1544,
-      "total": 1561
+      "negative": 1547,
+      "total": 1564
     },
     {
       "source": "Euronews",
@@ -241,8 +241,8 @@
     },
     {
       "source": "RNZ (New Zealand)",
-      "negative": 591,
-      "total": 607
+      "negative": 592,
+      "total": 608
     },
     {
       "source": "Knack",
@@ -251,8 +251,8 @@
     },
     {
       "source": "AllAfrica",
-      "negative": 445,
-      "total": 468
+      "negative": 447,
+      "total": 470
     },
     {
       "source": "Good News Network",
@@ -276,13 +276,13 @@
     },
     {
       "source": "The Better India",
-      "negative": 235,
-      "total": 414
+      "negative": 236,
+      "total": 415
     },
     {
       "source": "MercoPress",
-      "negative": 170,
-      "total": 174
+      "negative": 171,
+      "total": 175
     },
     {
       "source": "Scientific American",
@@ -392,6 +392,69 @@
   ],
   "articles": [
     {
+      "source": "AllAfrica",
+      "title": "Uganda: PFF Says Besigye Out of ICU but Remains in Critical Condition",
+      "reason": "The article discusses the critical health condition of a political figure, which is not uplifting and focuses on a negative situation.",
+      "category": "health-scare",
+      "url": "https://allafrica.com/stories/202608040511.html",
+      "date": "2026-08-04 18:31",
+      "positivity_score": 2
+    },
+    {
+      "source": "AllAfrica",
+      "title": "Somalia: Cabinet Officials Brace to Relinquish Kenyan Passports After Presidential Ultimatum",
+      "reason": "The article discusses a political ultimatum regarding citizenship and public office, which is inherently negative and does not uplift the reader.",
+      "category": "political-conflict",
+      "url": "https://allafrica.com/stories/202608040400.html",
+      "date": "2026-08-04 18:31",
+      "positivity_score": 3
+    },
+    {
+      "source": "MercoPress",
+      "title": "Uruguay: preliminary deal signed in construction to cut working hours",
+      "reason": "The article discusses a labor agreement related to working hours, which, while positive, is primarily of local relevance and may not engage a broader international audience.",
+      "category": "economic-doom",
+      "url": "https://en.mercopress.com/2026/08/04/uruguay-preliminary-deal-signed-in-construction-to-cut-working-hours?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+      "date": "2026-08-04 18:31",
+      "positivity_score": 4
+    },
+    {
+      "source": "RNZ (New Zealand)",
+      "title": "Concern for 6-year-old Auckland boy missing overnight",
+      "reason": "The article discusses a missing child, which is a serious and concerning situation, making it too negative and not uplifting.",
+      "category": "disaster-accident",
+      "url": "https://www.rnz.co.nz/news/regions_auckland/886815/concern-for-6-year-old-auckland-boy-missing-overnight",
+      "date": "2026-08-04 18:31",
+      "positivity_score": 2
+    },
+    {
+      "source": "The Better India",
+      "title": "2000 Litres of Safe Water for 30 Families: How a Tripura Startup Is Helping Flood-Hit Assam ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/innovation/mobile-water-purification-assam-flood-relief-insta-water-tripura-university-12226340",
+      "date": "2026-08-04 18:31",
+      "positivity_score": null
+    },
+    {
+      "source": "Al Jazeera English",
+      "title": "FIFA denies Infantino sought Trump backing after failed World Cup selloff",
+      "reason": "The article discusses a political figure and a sports organization in a negative context, which does not uplift or inspire readers.",
+      "category": "political-conflict",
+      "url": "https://www.aljazeera.com/sports/2026/8/4/fifa-deny-infantino-sought-trump-backing-after-failed-world-cup-sell-off?traffic_source=rss",
+      "date": "2026-08-04 18:31",
+      "positivity_score": 2
+    },
+    {
+      "source": "Al Jazeera English",
+      "title": "Beirut port blast anniversary overshadowed by new wave of destruction",
+      "reason": "The article discusses the ongoing destruction and struggles faced by residents in Lebanon, which is overwhelmingly negative and does not uplift the reader.",
+      "category": "war-conflict",
+      "url": "https://www.aljazeera.com/news/2026/8/4/beirut-port-blast-anniversary-overshadowed-by-new-wave-of-destruction?traffic_source=rss",
+      "date": "2026-08-04 18:31",
+      "positivity_score": 2
+    },
+    {
       "source": "The Better India",
       "title": "This 14-YO Flies Planes Without an Engine & Just Became Asia's Youngest Solo Glider Pilot ",
       "reason": "Discarded on human review",
@@ -399,6 +462,15 @@
       "url": "https://thebetterindia.com/young-achievers/chennai-boy-abhinav-sujith-youngest-solo-glider-pilot-asia-training-young-achiever-12224408",
       "date": "2026-08-04 18:31",
       "positivity_score": null
+    },
+    {
+      "source": "Al Jazeera English",
+      "title": "Photos: Thousands in Gaza City join mass funeral for 112 Palestinians",
+      "reason": "The article focuses on a mass funeral for victims of conflict, which is a deeply tragic event and does not convey a positive message.",
+      "category": "war-conflict",
+      "url": "https://www.aljazeera.com/gallery/2026/8/4/photos-thousands-in-gaza-city-join-mass-funeral-for-112-palestinians?traffic_source=rss",
+      "date": "2026-08-04 18:31",
+      "positivity_score": 2
     },
     {
       "source": "Al Jazeera English",
@@ -9318,78 +9390,6 @@
       "url": "https://www.lesoir.be/762999/article/2026-08-03/zelensky-limoge-lambassadrice-ukrainienne-aux-etats-unis",
       "date": "2026-08-03 21:20",
       "positivity_score": 2
-    },
-    {
-      "source": "De Morgen",
-      "title": "SpaceX-raket slaat woensdag in op de maan: stofwolk mogelijk zichtbaar vanaf de aarde",
-      "reason": "The article discusses a SpaceX rocket impacting the moon, which may not be uplifting and could be interpreted as a disaster or accident rather than a positive event.",
-      "category": "disaster-accident",
-      "url": "https://www.demorgen.be/nieuws/spacex-raket-slaat-woensdag-in-op-de-maan-stofwolk-mogelijk-zichtbaar-vanaf-de-aarde~ba0a4d4f/",
-      "date": "2026-08-03 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Morgen",
-      "title": "VS grijpen in om zwakke Japanse yen te stutten: welk belang hebben zij hierbij?",
-      "reason": "The article discusses economic measures related to the Japanese yen, which falls under corporate and economic news rather than uplifting human interest stories.",
-      "category": "economic-doom",
-      "url": "https://www.demorgen.be/snelnieuws/vs-grijpen-in-om-zwakke-japanse-yen-te-stutten-welk-belang-hebben-zij-hierbij~b06a1a43/",
-      "date": "2026-08-03 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Morgen",
-      "title": "Oppositiepoliticus Boris Nadezjdin ontsnapt uit Rusland en duikt op in Parijs",
-      "reason": "The article discusses a political figure escaping from Russia, which falls under political conflict and does not provide an uplifting narrative.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/nieuws/oppositiepoliticus-boris-nadezjdin-ontsnapt-uit-rusland-en-duikt-op-in-parijs~b609d2f5/",
-      "date": "2026-08-03 21:20",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Morgen",
-      "title": "Live - ‘Laatste kans’ voor Iran om ‘goed document’ te ondertekenen, zegt Trump",
-      "reason": "The article discusses political statements related to Iran and Trump, which falls under political conflict and does not provide uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/live-trump-benadrukt-gesprekken-met-iran-noemt-leiding-schijnheilig~be9c4f82/",
-      "date": "2026-08-03 21:20",
-      "positivity_score": 2
-    },
-    {
-      "source": "De Morgen",
-      "title": "Live - Zelensky ontslaat Oekraïense ambassadeur in VS • Poetin komt op bezoek, en plots dalen de benzineprijzen in Russische regio Krasnojarsk",
-      "reason": "The article discusses political events and decisions, which do not meet the positive-news criteria and may contribute to a negative perception of ongoing conflicts.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/oorlog-in-oekraine/live-oekraine-zelensky-ontslaat-oekraiense-ambassadeur-in-vs-poetin-komt-op-bezoek-en-plots-dalen-de-benzineprijzen-in-russische-regio-krasnojarsk-met-bijna-een-derde~b38bed0a/",
-      "date": "2026-08-03 21:20",
-      "positivity_score": 2
-    },
-    {
-      "source": "Good News Network",
-      "title": "Stranger Gives His Truck to Rock Band to Finish Their Tour, Driving 500 Miles and Back Again (WATCH)",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.goodnewsnetwork.org/midwest-stranger-lends-his-truck-to-band-with-broken-down-van/",
-      "date": "2026-08-03 20:34",
-      "positivity_score": null
-    },
-    {
-      "source": "Upworthy",
-      "title": "7 tips to keep your house smelling good without air fresheners",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.upworthy.com/7-tips-to-keep-your-house-smelling-good-without-air-fresheners-ex1-2/",
-      "date": "2026-08-03 20:33",
-      "positivity_score": null
-    },
-    {
-      "source": "Good News Network",
-      "title": "16-yo Rookie Lifeguard Leads Heroic Ocean Rescue–With Viral Video of Harrowing Effort",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.goodnewsnetwork.org/16-yo-rookie-lifeguard-leads-heroic-ocean-rescue-with-viral-video-of-harrowing-effort/",
-      "date": "2026-08-03 20:33",
-      "positivity_score": null
     }
   ]
 }
