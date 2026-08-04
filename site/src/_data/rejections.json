@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-04T16:30:17.697Z",
-  "total_rejected": 104404,
+  "exported_at": "2026-08-04T16:30:25.876Z",
+  "total_rejected": 104408,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "category": "sports-negative",
-      "count": 12451
+      "count": 12452
     },
     {
       "category": "soft-news-filler",
@@ -29,7 +29,7 @@
     },
     {
       "category": "disaster-accident",
-      "count": 6431
+      "count": 6433
     },
     {
       "category": "war-conflict",
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1757
+      "count": 1758
     },
     {
       "category": "divisive-racism",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 4350,
-      "total": 4369
+      "negative": 4351,
+      "total": 4370
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -111,8 +111,8 @@
     },
     {
       "source": "De Morgen",
-      "negative": 4236,
-      "total": 4297
+      "negative": 4237,
+      "total": 4298
     },
     {
       "source": "NRC",
@@ -271,8 +271,8 @@
     },
     {
       "source": "ANSA English (Italy)",
-      "negative": 244,
-      "total": 247
+      "negative": 245,
+      "total": 248
     },
     {
       "source": "The Better India",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 104,
-      "total": 157
+      "negative": 105,
+      "total": 159
     },
     {
       "source": "ScienceDaily",
@@ -297,7 +297,7 @@
     {
       "source": "Good Good Good",
       "negative": 89,
-      "total": 157
+      "total": 158
     },
     {
       "source": "Positive News",
@@ -391,6 +391,42 @@
     }
   ],
   "articles": [
+    {
+      "source": "De Morgen",
+      "title": "Twee keer donker op één avond en daarna vallende sterren: Spaans gehucht maakt zich op voor uitzonderlijk spektakel",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.demorgen.be/nieuws/twee-keer-donker-op-een-avond-en-daarna-vallende-sterren-spaans-gehucht-maakt-zich-op-voor-uitzonderlijk-spektakel~b0e1b0cb/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": null
+    },
+    {
+      "source": "ANSA English (Italy)",
+      "title": "Swimming: Taddeucci wins gold in women's 10km open water at Euros",
+      "reason": "The article focuses on a sports event with a non-exceptional result and includes a negative comment from the new champion, which detracts from the overall positivity.",
+      "category": "sports-negative",
+      "url": "https://www.ansa.it/english/news/sports/2026/08/04/swimming-taddeucci-wins-gold-in-womens-10km-open-water-at-euros_ac785930-6427-41a9-8132-81b80f26f3da.html",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "Scientific American",
+      "title": "A SpaceX rocket is about to hit the moon—these videos show what could happen",
+      "reason": "The article discusses a SpaceX rocket impacting the moon, which could be interpreted as a disaster or accident rather than a positive event. The focus on potential outcomes of the impact does not uplift the reader.",
+      "category": "disaster-accident",
+      "url": "https://www.scientificamerican.com/article/a-spacex-rocket-is-about-to-hit-the-moon-these-videos-show-what-could-happen/",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 4
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "DMI varsler skybrud og torden til næsten hele landet",
+      "reason": "The article discusses a weather warning for storms and heavy rain, which is a negative event and not uplifting.",
+      "category": "disaster-accident",
+      "url": "https://politiken.dk/danmark/art10935907/DMI-varsler-skybrud-og-torden-til-n%C3%A6sten-hele-landet",
+      "date": "2026-08-04 18:30",
+      "positivity_score": 2
+    },
     {
       "source": "Politiken.dk",
       "title": "Østrig måler højeste temperatur nogensinde",
@@ -9354,42 +9390,6 @@
       "url": "https://www.sciencedaily.com/releases/2026/08/260802223424.htm",
       "date": "2026-08-03 18:31",
       "positivity_score": 3
-    },
-    {
-      "source": "ScienceDaily",
-      "title": "Scientists may have found aging’s hidden trigger for brain disease",
-      "reason": "The article discusses a scientific finding related to aging and brain diseases, which, while informative, focuses on a negative aspect of aging and its implications for health, making it less uplifting.",
-      "category": "health-scare",
-      "url": "https://www.sciencedaily.com/releases/2026/08/260802223433.htm",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 4
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "WestJet strike ends after tentative deal reached",
-      "reason": "The article discusses a labor strike, which, while resolved positively, is primarily of local relevance and does not have broad human appeal.",
-      "category": "economic-doom",
-      "url": "https://globalnews.ca/news/12007100/westjet-strike-ends-after-tentative-deal-reached/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 4
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Alberta, Canada flags creating division ahead of referendum",
-      "reason": "The article discusses a political referendum that could create division in Alberta, which is inherently negative and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://globalnews.ca/news/12007387/alberta-canada-flags-referendum/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 2
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Trump says talks to end Iran war to begin Monday but Tehran says otherwise",
-      "reason": "The article discusses political tensions and potential military actions, which are not uplifting and focus on conflict rather than positive developments.",
-      "category": "political-conflict",
-      "url": "https://globalnews.ca/news/12007396/trump-iran-new-talks-tehran-denies-negotiations/",
-      "date": "2026-08-03 18:31",
-      "positivity_score": 2
     }
   ]
 }
