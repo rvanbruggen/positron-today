@@ -2,7 +2,7 @@
 title: "Engineered yeast that make cancer drugs could spare a rare flower"
 title_nl: "Gengineerde gist die kankermedicijnen maakt, kan een zeldzame bloem sparen"
 title_fr: "Des levures modifiées qui fabriquent des médicaments contre le cancer pourraient épargner une fleur rare"
-date: 2026-08-04T19:26:16
+date: 2026-08-04T19:26:17
 source_pub_date: 2026-08-04
 fetched_date: 2026-08-04
 source_url: "https://www.nature.com/articles/d41586-026-02428-1"
