@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-04T05:11:07.773Z",
-  "total_rejected": 103841,
+  "exported_at": "2026-08-04T05:11:13.854Z",
+  "total_rejected": 103842,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1749
+      "count": 1750
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 10496,
-      "total": 10733
+      "negative": 10497,
+      "total": 10734
     },
     {
       "source": "Gazet van Antwerpen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Een spuitje botox redde het leven van ongeboren Theo: hoe een Belgisch team meewerkte aan een medische wereldprimeur",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/binnenland/een-spuitje-botox-redde-het-leven-van-ongeboren-theo-hoe-een-belgisch-team-meewerkte-aan-een-medische-wereldprimeur~a2758a4e/",
+      "date": "2026-08-04 07:11",
+      "positivity_score": null
+    },
     {
       "source": "Good News Network",
       "title": "Do-Good Dogs Fight Invasive Mussels as ‘Conservation Canines’",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rnz.co.nz/news/crime-and-justice/872642/person-found-dead-police-cordon-off-property-in-palmerston-north",
       "date": "2026-08-03 06:18",
       "positivity_score": 2
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Fuel prices ease across several Pacific Island nations despite ongoing supply pressures",
-      "reason": "While the decrease in fuel prices is a positive development, the context of ongoing supply pressures and the fact that prices remain higher than before the crisis makes the overall tone less uplifting.",
-      "category": "economic-doom",
-      "url": "https://www.rnz.co.nz/news/pacific/874909/fuel-prices-ease-across-several-pacific-island-nations-despite-ongoing-supply-pressures",
-      "date": "2026-08-03 06:18",
-      "positivity_score": 4
     }
   ]
 }
