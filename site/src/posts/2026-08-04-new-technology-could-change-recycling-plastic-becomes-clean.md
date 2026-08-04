@@ -2,7 +2,7 @@
 title: "New technology could change recycling. Plastic becomes clean fuel"
 title_nl: "Nieuwe technologie kan recycling veranderen. Plastic wordt schoon brandstof"
 title_fr: "Une nouvelle technologie pourrait changer le recyclage. Le plastique devient un carburant propre"
-date: 2026-08-04T19:26:12
+date: 2026-08-04T19:26:24
 source_pub_date: 2026-08-04
 fetched_date: 2026-08-04
 source_url: "https://cyfrowa.rp.pl/technologie/art44936921-nowa-technologia-moze-zmienic-recykling-plastik-staje-sie-czystym-paliwem"
