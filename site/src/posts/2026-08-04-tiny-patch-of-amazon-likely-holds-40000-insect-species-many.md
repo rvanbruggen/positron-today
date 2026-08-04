@@ -2,7 +2,7 @@
 title: "Tiny patch of Amazon likely holds 40,000 insect species — many new to science"
 title_nl: "Klein stuk Amazone herbergt waarschijnlijk 40.000 insectensoorten - veel nieuw voor de wetenschap"
 title_fr: "Un petit coin de l'Amazonie abrite probablement 40 000 espèces d'insectes - beaucoup nouvelles pour la science"
-date: 2026-08-04T19:26:09
+date: 2026-08-04T19:26:16
 source_pub_date: 2026-08-04
 fetched_date: 2026-08-04
 source_url: "https://www.nature.com/articles/d41586-026-02350-6"
