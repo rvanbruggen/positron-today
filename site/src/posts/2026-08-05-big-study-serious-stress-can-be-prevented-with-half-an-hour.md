@@ -2,7 +2,7 @@
 title: "Big study: serious stress can be prevented with half an hour of exercise a day"
 title_nl: "Groot onderzoek: ernstige stress kan worden voorkomen met een half uur beweging per dag"
 title_fr: "Grande étude : le stress sérieux peut être prévenu par une demi-heure d'exercice par jour"
-date: 2026-08-05T16:32:54
+date: 2026-08-05T16:32:57
 source_pub_date: 2026-08-05
 fetched_date: 2026-08-05
 source_url: "https://www.dr.dk/nyheder/seneste/stort-studie-alvorlig-stress-kan-forebygges-med-halv-times-motion-om-dagen"
