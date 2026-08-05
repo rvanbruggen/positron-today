@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-05T19:00:15.741Z",
-  "total_rejected": 105492,
+  "exported_at": "2026-08-05T19:00:49.019Z",
+  "total_rejected": 105493,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1797
+      "count": 1798
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 3538,
-      "total": 3638
+      "negative": 3539,
+      "total": 3639
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "See the Sun like never before with most detailed images yet",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c36d4376nd2o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-05 21:00",
+      "positivity_score": null
+    },
     {
       "source": "Popular Science",
       "title": "Rescued sea turtle named Pancake swims to hot hangout for young turtles",
@@ -9381,15 +9390,6 @@
       "url": "https://www.nrc.nl/nieuws/2026/08/04/droogtemonitor-uitzonderlijke-situatie-van-langdurige-droogte-kwaliteit-van-water-neemt-af-a4933831",
       "date": "2026-08-04 21:21",
       "positivity_score": 2
-    },
-    {
-      "source": "NRC",
-      "title": "Brand in natuurgebied in Venray niet kleiner geworden, &#8216;maar gelukkig ook niet uitgebreid&#8217; ",
-      "reason": "The article discusses a nature fire that is still active, which is inherently negative and does not provide an uplifting narrative.",
-      "category": "disaster-accident",
-      "url": "https://www.nrc.nl/nieuws/2026/08/04/brand-in-natuurgebied-in-venray-niet-kleiner-geworden-maar-gelukkig-ook-niet-uitgebreid-a4933869",
-      "date": "2026-08-04 21:21",
-      "positivity_score": 4
     }
   ]
 }
