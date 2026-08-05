@@ -2,7 +2,7 @@
 title: "Reader Q&A: what have you always wanted to know about insects? Grill Patrick Barkham on the natural world"
 title_nl: "Lezers Q&A: wat wilde je altijd al weten over insecten? Stel Patrick Barkham vragen over de natuur"
 title_fr: "Questions-réponses des lecteurs : que voulez-vous toujours savoir sur les insectes ? Interrogez Patrick Barkham sur le monde naturel"
-date: 2026-08-05T16:32:59
+date: 2026-08-05T16:32:56
 source_pub_date: 2026-08-05
 fetched_date: 2026-08-05
 source_url: "https://www.theguardian.com/community/live/2026/aug/05/invertebrate-of-year-qa-discuss-our-countdown-with-patrick-barkham"
