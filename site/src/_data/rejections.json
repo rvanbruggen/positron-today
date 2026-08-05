@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-05T14:42:40.516Z",
-  "total_rejected": 105255,
+  "exported_at": "2026-08-05T14:43:15.186Z",
+  "total_rejected": 105256,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1787
+      "count": 1788
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 3532,
-      "total": 3631
+      "negative": 3533,
+      "total": 3632
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Waste workers help find binned €1m lottery ticket in Italy",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c62qvll0z94o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-05 16:43",
+      "positivity_score": null
+    },
     {
       "source": "ANSA English (Italy)",
       "title": "Trash company recovers one-million euro lottery ticket, returns it to winner",
@@ -9381,15 +9390,6 @@
       "url": "https://www.nytimes.com/2026/08/04/world/middleeast/strait-of-hormuz-deal-progress.html",
       "date": "2026-08-04 18:26",
       "positivity_score": 4
-    },
-    {
-      "source": "The New York Times",
-      "title": "U.S. Trade Deficit Dips in June Along With ‘World Cup Effect’",
-      "reason": "The article discusses economic data related to the U.S. trade deficit, which is not uplifting and falls under economic analysis rather than positive news.",
-      "category": "economic-doom",
-      "url": "https://www.nytimes.com/2026/08/04/business/economy/us-trade-deficit-june.html",
-      "date": "2026-08-04 18:26",
-      "positivity_score": 3
     }
   ]
 }
