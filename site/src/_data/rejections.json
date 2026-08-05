@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-05T14:42:34.603Z",
-  "total_rejected": 105254,
+  "exported_at": "2026-08-05T14:42:40.516Z",
+  "total_rejected": 105255,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1786
+      "count": 1787
     },
     {
       "category": "divisive-racism",
@@ -266,8 +266,8 @@
     },
     {
       "source": "ANSA English (Italy)",
-      "negative": 252,
-      "total": 256
+      "negative": 253,
+      "total": 257
     },
     {
       "source": "Science.org news",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ANSA English (Italy)",
+      "title": "Trash company recovers one-million euro lottery ticket, returns it to winner",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.ansa.it/english/news/general_news/2026/08/05/trash-company-recovers-one-million-euro-lottery-ticket-returns-it-to-winner_07fcf650-5fd1-4443-b36e-06c0aa42adf1.html",
+      "date": "2026-08-05 16:42",
+      "positivity_score": null
+    },
     {
       "source": "The Journal (Ireland)",
       "title": "Over €60k donated to homeless charity in memory of Glen Hansard",
@@ -9381,15 +9390,6 @@
       "url": "https://www.nytimes.com/2026/08/04/business/economy/us-trade-deficit-june.html",
       "date": "2026-08-04 18:26",
       "positivity_score": 3
-    },
-    {
-      "source": "The New York Times",
-      "title": "Warsh Wanted ‘Regime Change.’ Markets Are Demanding a Reset.",
-      "reason": "The article discusses market volatility and pressure on a Federal Reserve chairman, which is inherently negative and related to economic concerns.",
-      "category": "economic-doom",
-      "url": "https://www.nytimes.com/2026/08/04/business/kevin-warsh-federal-reserve-markets.html",
-      "date": "2026-08-04 18:26",
-      "positivity_score": 2
     }
   ]
 }
