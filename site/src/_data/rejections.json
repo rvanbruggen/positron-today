@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-06T14:59:01.149Z",
-  "total_rejected": 106348,
+  "exported_at": "2026-08-06T14:59:07.814Z",
+  "total_rejected": 106349,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1809
+      "count": 1810
     },
     {
       "category": "divisive-racism",
@@ -171,8 +171,8 @@
     },
     {
       "source": "Wired",
-      "negative": 1601,
-      "total": 1658
+      "negative": 1602,
+      "total": 1659
     },
     {
       "source": "Euronews",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Wired",
+      "title": "Meteor Showers, Eclipses, and More Are on the August 2026 Astronomical Calendar",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.wired.com/story/perseid-meteor-shower-eclipses-august-2026-astronomical-calendar/",
+      "date": "2026-08-06 16:59",
+      "positivity_score": null
+    },
     {
       "source": "Euronews",
       "title": "Moment rare Amur tiger is released into Kazakh wild",
@@ -9381,15 +9390,6 @@
       "url": "https://www.gva.be/sport/wielrennen/demi-vollering-wint-eerste-slag-tussen-klassementsvrouwen-titelverdedigster-ferrand-prevot-nu-al-uitgeteld-voor-eindwinst/159655852.html",
       "date": "2026-08-05 18:27",
       "positivity_score": 3
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Automobilisten vinden achter ruitenwisser boete van … agent Frikandel",
-      "reason": "The article discusses a fake parking ticket incident, which, while it has a humorous element, primarily focuses on a local issue that lacks broader human relevance.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/kempen/mol/automobilisten-vinden-achter-ruitenwisser-boete-van-...-agent-frikandel/159655995.html",
-      "date": "2026-08-05 18:27",
-      "positivity_score": 4
     }
   ]
 }
