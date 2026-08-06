@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-06T05:15:01.642Z",
-  "total_rejected": 105940,
+  "exported_at": "2026-08-06T05:15:09.199Z",
+  "total_rejected": 105941,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1802
+      "count": 1803
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 3550,
-      "total": 3652
+      "negative": 3551,
+      "total": 3653
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Walk-in mental health centres to open in banks and libraries across England",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/cpd76e737ljo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-06 07:15",
+      "positivity_score": null
+    },
     {
       "source": "The Guardian",
       "title": "Thar she blows! Hull Maritime Museum resurfaces with a walk-in whale and a ‘monkey mermaid’",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theguardian.com/music/2026/aug/05/phoebe-bridgers-lost-weekend-review-long-awaited-return-is-a-thrilling-daring-study-in-dislocation",
       "date": "2026-08-05 10:27",
       "positivity_score": 3
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "A moment that changed me: I found a forbidden novel – it led to a dangerous, lasting love",
-      "reason": "The story, while it has a romantic element, is rooted in a context of cultural repression and danger, which detracts from its overall positivity.",
-      "category": "divisive-social",
-      "url": "https://www.theguardian.com/lifeandstyle/2026/aug/05/a-moment-that-changed-me-i-found-a-forbidden-novel-it-led-to-a-dangerous-lasting-love",
-      "date": "2026-08-05 10:27",
-      "positivity_score": 4
     }
   ]
 }
