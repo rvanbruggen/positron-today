@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-06T14:58:56.730Z",
-  "total_rejected": 106347,
+  "exported_at": "2026-08-06T14:59:01.149Z",
+  "total_rejected": 106348,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1808
+      "count": 1809
     },
     {
       "category": "divisive-racism",
@@ -176,8 +176,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1473,
-      "total": 1519
+      "negative": 1474,
+      "total": 1520
     },
     {
       "source": "La Libre Belgique",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "Moment rare Amur tiger is released into Kazakh wild",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/video/2026/08/06/moment-rare-amur-tiger-is-released-into-kazakh-wild",
+      "date": "2026-08-06 16:59",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Le bestiaire des nations",
@@ -9381,15 +9390,6 @@
       "url": "https://www.gva.be/regio/antwerpen/kempen/mol/automobilisten-vinden-achter-ruitenwisser-boete-van-...-agent-frikandel/159655995.html",
       "date": "2026-08-05 18:27",
       "positivity_score": 4
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "“Dit is een nieuwe Raul”: hij speelt er al een jaar, maar toch lijkt Florucz de beste zomertransfer van Union ",
-      "reason": "The article focuses on a professional sports transfer and player performance, which does not meet the positive-news editorial standard due to its routine sports content.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/voetbal/dit-is-een-nieuwe-raul-hij-speelt-er-al-een-jaar-maar-toch-lijkt-florucz-de-beste-zomertransfer-van-union/159653305.html",
-      "date": "2026-08-05 18:27",
-      "positivity_score": 3
     }
   ]
 }
