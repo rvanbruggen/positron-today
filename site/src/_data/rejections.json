@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-07T20:29:26.101Z",
-  "total_rejected": 107817,
+  "exported_at": "2026-08-07T20:29:36.443Z",
+  "total_rejected": 107818,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1850
+      "count": 1851
     },
     {
       "category": "divisive-racism",
@@ -166,8 +166,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 1717,
-      "total": 1738
+      "negative": 1718,
+      "total": 1739
     },
     {
       "source": "Wired",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Imade",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.aljazeera.com/video/witness/2026/8/7/imade?traffic_source=rss",
+      "date": "2026-08-07 22:29",
+      "positivity_score": null
+    },
     {
       "source": "Good News Network",
       "title": "‘Like a Moody Punk Rocker,’ the Red Handfish is National Geographic’s 18,000th Species Photographed",
@@ -9381,15 +9390,6 @@
       "url": "https://politiken.dk/sport/art10938451/Infantino-har-forel%C3%B8big-reddet-sig-gennem-krisen-men-nye-sager-bliver-ved-med-at-dukke-op",
       "date": "2026-08-06 22:38",
       "positivity_score": 3
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Han var Cambridge-universitetets yngste professor. Var han også en svindler?",
-      "reason": "The article discusses allegations of academic fraud involving a prominent researcher, which is a negative and concerning topic.",
-      "category": "other-negative",
-      "url": "https://politiken.dk/internationalt/art10937798/Han-var-Cambridge-universitetets-yngste-professor.-Var-han-ogs%C3%A5-en-svindler",
-      "date": "2026-08-06 22:37",
-      "positivity_score": 2
     }
   ]
 }
