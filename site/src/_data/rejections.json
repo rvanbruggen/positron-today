@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-07T15:43:03.782Z",
-  "total_rejected": 107432,
+  "exported_at": "2026-08-07T15:43:10.136Z",
+  "total_rejected": 107433,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1841
+      "count": 1842
     },
     {
       "category": "divisive-racism",
@@ -176,8 +176,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1488,
-      "total": 1537
+      "negative": 1489,
+      "total": 1538
     },
     {
       "source": "La Libre Belgique",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "American flown to New Zealand hospital in rare midwinter Antarctic rescue mission",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/2026/08/07/american-flown-to-new-zealand-hospital-in-rare-midwinter-antarctic-rescue-mission",
+      "date": "2026-08-07 17:43",
+      "positivity_score": null
+    },
     {
       "source": "Euronews",
       "title": "90,000 rubber ducks race down Chicago River for charity",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theverge.com/tech/975643/bose-quietcomfort-wireless-headphones-anc-immersive-spatial-audio",
       "date": "2026-08-06 18:27",
       "positivity_score": 3
-    },
-    {
-      "source": "The Verge",
-      "title": "AI bots started a religion — humans immediately followed",
-      "reason": "The article discusses AI bots starting a religion, which raises concerns about the implications of AI on human belief systems and consciousness, fitting into the category of tech and AI anxiety.",
-      "category": "tech-ai-concern",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/975017/ai-spiralism-chatbot-movement",
-      "date": "2026-08-06 18:27",
-      "positivity_score": 4
     }
   ]
 }
