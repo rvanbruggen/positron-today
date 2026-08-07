@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-07T15:42:50.159Z",
-  "total_rejected": 107430,
+  "exported_at": "2026-08-07T15:42:58.341Z",
+  "total_rejected": 107431,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1839
+      "count": 1840
     },
     {
       "category": "divisive-racism",
@@ -176,8 +176,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1486,
-      "total": 1535
+      "negative": 1487,
+      "total": 1536
     },
     {
       "source": "La Libre Belgique",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "Australia grants citizenship to two Iranian women footballers who sought asylum",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/2026/08/07/australia-grants-citizenship-to-two-iranian-women-footballers-who-sought-asylum",
+      "date": "2026-08-07 17:42",
+      "positivity_score": null
+    },
     {
       "source": "Dagens Nyheter",
       "title": "Betty, 97, slog sitt eget högtflygande världsrekord",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on a routine tech update regarding Dolby Vision 2 and its availability on specific TV models, which does not meet the positive-news criteria.",
       "category": "tech-ai-concern",
       "url": "https://www.theverge.com/tech/974126/dolby-vision-2-rolls-out-to-hisense-tvs",
-      "date": "2026-08-06 18:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "The Verge",
-      "title": "The messy politics behind Google’s big AI shakeup",
-      "reason": "The article discusses internal issues and politics within Google's AI organization, which is not uplifting and focuses on potential problems rather than positive developments.",
-      "category": "political-conflict",
-      "url": "https://www.theverge.com/tech/976108/google-ai-leadership-shakeup-jeff-dean-demis-hassabis-deepmind",
       "date": "2026-08-06 18:27",
       "positivity_score": 3
     }
