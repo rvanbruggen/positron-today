@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-07T05:13:04.558Z",
-  "total_rejected": 107020,
+  "exported_at": "2026-08-07T05:13:24.659Z",
+  "total_rejected": 107021,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1825
+      "count": 1826
     },
     {
       "category": "divisive-racism",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 4457,
-      "total": 4477
+      "negative": 4458,
+      "total": 4478
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Politiken.dk",
+      "title": "Efterlyst 15-årig pige er fundet i live i Ungarn",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://politiken.dk/danmark/art10938831/Efterlyst-15-%C3%A5rig-pige-er-fundet-i-live-i-Ungarn",
+      "date": "2026-08-07 07:13",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "FDA approves Moderna’s mRNA-based vaccine for the flu",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses a sports match with historical context and negative connotations for the team involved, which does not meet the positive-news criteria.",
       "category": "sports-negative",
       "url": "https://www.gva.be/sport/voetbal/proberen-om-de-geschiedenis-om-te-draaien-waarom-de-buffalos-maar-beter-komaf-maken-met-hun-zweeds-trauma/159664137.html",
-      "date": "2026-08-06 10:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Kaypad aan Galgenweel wordt heraangelegd: hinder voor fietsers",
-      "reason": "The article discusses local roadworks and the inconvenience caused to cyclists, which is not uplifting and has limited relevance outside the local area.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/district-antwerpen/linkeroever/kaypad-aan-galgenweel-wordt-heraangelegd-hinder-voor-fietsers/159671127.html",
       "date": "2026-08-06 10:27",
       "positivity_score": 3
     }
