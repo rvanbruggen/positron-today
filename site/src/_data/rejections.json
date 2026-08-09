@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-09T04:50:49.539Z",
-  "total_rejected": 108866,
+  "exported_at": "2026-08-09T04:51:08.961Z",
+  "total_rejected": 108867,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1881
+      "count": 1882
     },
     {
       "category": "divisive-racism",
@@ -161,8 +161,8 @@
     },
     {
       "source": "The Guardian Europe",
-      "negative": 1810,
-      "total": 1894
+      "negative": 1811,
+      "total": 1895
     },
     {
       "source": "Al Jazeera English",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Guardian Europe",
+      "title": "Where in the UK will get the best view of the solar eclipse?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.theguardian.com/science/2026/aug/08/when-where-how-uk-best-view-of-the-solar-eclipse",
+      "date": "2026-08-09 06:51",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "The sun is covered in tiny whirlpools we’ve never seen before",
@@ -9381,15 +9390,6 @@
       "url": "https://globalnews.ca/news/12013345/3-arrested-firearms-charges-mississauga/",
       "date": "2026-08-07 22:37",
       "positivity_score": 2
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Stanford scientists just used AI to build a virus to target E. coli",
-      "reason": "The article discusses the creation of a virus, which may raise concerns about health implications and the ethical use of AI, making it less uplifting.",
-      "category": "health-scare",
-      "url": "https://globalnews.ca/news/12013346/stanford-ai-virus/",
-      "date": "2026-08-07 22:37",
-      "positivity_score": 4
     }
   ]
 }
