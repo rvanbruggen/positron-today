@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-09T04:50:41.897Z",
-  "total_rejected": 108865,
+  "exported_at": "2026-08-09T04:50:49.539Z",
+  "total_rejected": 108866,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1880
+      "count": 1881
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 116,
-      "total": 248
+      "negative": 117,
+      "total": 249
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "The sun is covered in tiny whirlpools we’ve never seen before",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/08/260807035142.htm",
+      "date": "2026-08-09 06:50",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Ivory Coast’s ‘talking drum’ returns to home village after 110 years",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses the creation of a virus, which may raise concerns about health implications and the ethical use of AI, making it less uplifting.",
       "category": "health-scare",
       "url": "https://globalnews.ca/news/12013346/stanford-ai-virus/",
-      "date": "2026-08-07 22:37",
-      "positivity_score": 4
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Abbot’s kneecap returned 70 years after it was taken from 13th century grave",
-      "reason": "The article discusses the return of a historical artifact taken from a grave, which may not be uplifting as it involves theft and the implications of that act. It lacks broad human relevance and is more of a local historical interest story.",
-      "category": "soft-news-filler",
-      "url": "https://globalnews.ca/news/12013246/stolen-kneecap-returned-glastonbury-abbey-uk/",
       "date": "2026-08-07 22:37",
       "positivity_score": 4
     }
