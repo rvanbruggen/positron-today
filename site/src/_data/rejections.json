@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-10T14:53:18.370Z",
-  "total_rejected": 110120,
+  "exported_at": "2026-08-10T14:54:08.133Z",
+  "total_rejected": 110122,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1923
+      "count": 1925
     },
     {
       "category": "divisive-racism",
@@ -201,13 +201,13 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 1238,
-      "total": 1267
+      "negative": 1239,
+      "total": 1268
     },
     {
       "source": "Le Soir",
-      "negative": 1235,
-      "total": 1246
+      "negative": 1236,
+      "total": 1247
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,24 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Soir",
+      "title": "Comment les éclipses solaires nous aident à mieux comprendre l’Univers",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lesoir.be/764186/article/2026-08-10/comment-les-eclipses-solaires-nous-aident-mieux-comprendre-lunivers",
+      "date": "2026-08-10 16:54",
+      "positivity_score": null
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "‘It’s for the kids, and his kids’: Affordable homes from $1 lots in Winnipeg",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12014964/affordable-homes-one-dollar-lots-winnipeg/",
+      "date": "2026-08-10 16:53",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "A Bihar Grainbank Idea Is Helping Farmers Earn Up to 35% More From Their Harvest ",
@@ -9372,24 +9390,6 @@
       "url": "https://www.dn.se/varlden/over-20-000-evakuerade-fran-kanadas-skogsbrander/",
       "date": "2026-08-09 14:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Ny generation skakar om världspingisen: ”Ett uppsving för sporten”",
-      "reason": "The article discusses professional sports and focuses on a specific event and players, which does not meet the positive-news criteria due to its limited appeal and focus on sports results.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/sport/ny-generation-skakar-om-varldspingisen-ett-uppsving-for-sporten/",
-      "date": "2026-08-09 14:27",
-      "positivity_score": 4
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Dykarna hittade den avlidna kvinnan efter Tjörnolyckan: ”Man vill få ett avslut”",
-      "reason": "The article discusses the recovery of a deceased woman after an accident, which is a tragic event and does not provide an uplifting narrative.",
-      "category": "disaster-accident",
-      "url": "https://www.dn.se/sverige/dykarna-hittade-den-avlidna-kvinnan-efter-tjornolyckan-man-vill-fa-ett-avslut/",
-      "date": "2026-08-09 14:27",
-      "positivity_score": 3
     }
   ]
 }
