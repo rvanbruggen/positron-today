@@ -2,7 +2,7 @@
 title: "Hundreds join Copenhagen kayak parade in support of Greenland"
 title_nl: "Honderden nemen deel aan kajakparade in Kopenhagen ter ondersteuning van Groenland"
 title_fr: "Des centaines participent à la parade en kayak de Copenhague en soutien au Groenland"
-date: 2026-08-10T19:26:06
+date: 2026-08-10T19:26:13
 source_pub_date: 2026-08-10
 fetched_date: 2026-08-10
 source_url: "http://www.euronews.com/video/2026/08/10/hundreds-join-copenhagen-kayak-parade-in-support-of-greenland"
