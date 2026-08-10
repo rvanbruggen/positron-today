@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-10T08:26:33.290Z",
-  "total_rejected": 109900,
+  "exported_at": "2026-08-10T10:24:03.482Z",
+  "total_rejected": 109901,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1914
+      "count": 1915
     },
     {
       "category": "divisive-racism",
@@ -350,14 +350,14 @@
       "total": 25
     },
     {
+      "source": "Reasons to be Cheerful",
+      "negative": 20,
+      "total": 37
+    },
+    {
       "source": "CNN",
       "negative": 19,
       "total": 20
-    },
-    {
-      "source": "Reasons to be Cheerful",
-      "negative": 19,
-      "total": 36
     },
     {
       "source": "Dansende Beren",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Reasons to be Cheerful",
+      "title": "Can This City Banish Single-Use Coffee Cups?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://reasonstobecheerful.world/can-this-city-banish-single-use-coffee-cups/",
+      "date": "2026-08-10 12:24",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Israeli forces kill one in Gaza as another body recovered from rubble",
@@ -9381,15 +9390,6 @@
       "url": "https://www.standaard.be/buitenland/het-drama-van-ceuta-was-al-lang-in-de-maak-in-marokko-is-het-vechten-om-te-overleven/159671921.html",
       "date": "2026-08-09 10:26",
       "positivity_score": 2
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Achter de crisis tussen Rome en Madrid schuilt veel propaganda over migratie",
-      "reason": "The article discusses a political conflict between Italy and Spain regarding migration policies, which is not uplifting and focuses on divisive issues.",
-      "category": "political-conflict",
-      "url": "https://www.standaard.be/buitenland/achter-de-crisis-tussen-rome-en-madrid-schuilt-veel-propaganda-over-migratie/159779042.html",
-      "date": "2026-08-09 10:26",
-      "positivity_score": 3
     }
   ]
 }
