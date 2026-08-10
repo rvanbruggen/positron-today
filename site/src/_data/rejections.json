@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-10T05:42:37.625Z",
-  "total_rejected": 109689,
+  "exported_at": "2026-08-10T05:42:43.955Z",
+  "total_rejected": 109690,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1907
+      "count": 1908
     },
     {
       "category": "divisive-racism",
@@ -196,8 +196,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1249,
-      "total": 1702
+      "negative": 1250,
+      "total": 1703
     },
     {
       "source": "Global News (Canada)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Her dog wouldn’t stop sniffing her breath. She thought it was weird but it saved her life.",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/her-dog-wouldnt-stop-sniffing-her-breath-she-thought-it-was-weird-but-it-saved-her-life-ex1/",
+      "date": "2026-08-10 07:42",
+      "positivity_score": null
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "Recordeditie Antwerp Pride trekt 170.000 bezoekers: “Hartverwarmend dat zoveel mensen onze boodschap willen uitdragen”",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lefigaro.fr/culture/disparition-de-michel-dejeneffe-createur-de-la-marionnette-tatayet-20260808",
       "date": "2026-08-08 22:36",
       "positivity_score": 3
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Hébergement d'urgence : l'État condamné à verser près de 540.000 euros à la ville de Strasbourg",
-      "reason": "The article discusses a legal ruling regarding financial reimbursement related to homelessness, which, while it may have a positive outcome, is primarily focused on a local government issue and lacks broad human relevance.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/actualite-france/hebergement-d-urgence-l-etat-condamne-a-verser-pres-de-540-000-euros-a-la-ville-de-strasbourg-20260808",
-      "date": "2026-08-08 22:36",
-      "positivity_score": 4
     }
   ]
 }
