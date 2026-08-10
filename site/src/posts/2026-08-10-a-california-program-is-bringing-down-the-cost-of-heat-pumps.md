@@ -2,7 +2,7 @@
 title: "A California program is bringing down the cost of heat pumps by buying bulk"
 title_nl: "Een programma in Californië verlaagt de kosten van warmtepompen door in bulk te kopen"
 title_fr: "Un programme en Californie réduit le coût des pompes à chaleur en achetant en gros"
-date: 2026-08-10T19:26:16
+date: 2026-08-10T19:26:24
 source_pub_date: 2026-08-10
 fetched_date: 2026-08-10
 source_url: "https://www.wired.com/story/california-group-buy-bringing-down-heat-pump-costs/"
