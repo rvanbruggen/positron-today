@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-10T05:40:34.823Z",
-  "total_rejected": 109682,
+  "exported_at": "2026-08-10T05:41:05.855Z",
+  "total_rejected": 109683,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1900
+      "count": 1901
     },
     {
       "category": "divisive-racism",
@@ -196,8 +196,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1247,
-      "total": 1700
+      "negative": 1248,
+      "total": 1701
     },
     {
       "source": "Global News (Canada)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Professor uses two balls and string to show how far the Moon actually is from Earth",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/professor-demonstrates-the-distance-to-the-moon-using-ball-and-string-ex1/",
+      "date": "2026-08-10 07:41",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "People share the ’10 second decisions’ that meaningfully improved their lives forever",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on a sports match preview and team performance, which does not meet the positive-news criteria.",
       "category": "sports-negative",
       "url": "https://www.hln.be/voetbal/live-1-5-olaru-maakt-de-afstraffing-van-union-tegen-westerlo-compleet~a537a68e/",
-      "date": "2026-08-08 22:36",
-      "positivity_score": 3
-    },
-    {
-      "source": "Le Soir",
-      "title": "Westerlo – Union Saint-Gilloise : Guilherme Smith participe à la tête et y va de son but (1-4, direct)",
-      "reason": "The article focuses on a sports match result, which does not meet the positive-news editorial standard due to its non-exceptional nature and lack of broader human relevance.",
-      "category": "sports-negative",
-      "url": "https://www.lesoir.be/763985/article/2026-08-08/westerlo-union-saint-gilloise-guilherme-smith-participe-la-tete-et-y-va-de-son-1",
       "date": "2026-08-08 22:36",
       "positivity_score": 3
     }
