@@ -2,7 +2,7 @@
 title: "Why each octopus arm has a mind of its own"
 title_nl: "Waarom elke octopusarm een eigen geest heeft"
 title_fr: "Pourquoi chaque bras de pieuvre a son propre esprit"
-date: 2026-08-10T19:26:05
+date: 2026-08-10T19:26:07
 source_pub_date: 2026-08-10
 fetched_date: 2026-08-10
 source_url: "https://www.wired.com/story/octopus-arms-distributed-intelligence-nine-brains/"
