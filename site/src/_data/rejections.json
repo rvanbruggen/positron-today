@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-11T05:12:23.873Z",
-  "total_rejected": 110776,
+  "exported_at": "2026-08-11T05:12:33.432Z",
+  "total_rejected": 110777,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1948
+      "count": 1949
     },
     {
       "category": "divisive-racism",
@@ -201,8 +201,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1262,
-      "total": 1723
+      "negative": 1263,
+      "total": 1724
     },
     {
       "source": "Le Soir",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "A Gen Z passenger demanded his delayed flight take off immediately. When the gate agent heard why, he bought the man a ticket on a different airline.",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/pn-gate-agent-pays-flight-passenger-mom-ex1/",
+      "date": "2026-08-11 07:12",
+      "positivity_score": null
+    },
     {
       "source": "Popular Science",
       "title": "Dogs can tell if you’re angry, scared, or sad",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/sport/article/2026/08/10/a-birmingham-les-championnats-d-europe-d-athletisme-cherchent-a-exister-au-c-ur-d-un-calendrier-charge_6743088_3242.html",
       "date": "2026-08-10 09:59",
       "positivity_score": 3
-    },
-    {
-      "source": "Le Monde",
-      "title": "En Grèce, un nouvel incendie se déclare au sud-est d’Athènes, attisé par de forts vents",
-      "reason": "The article reports on a fire in Greece, which is a negative event involving evacuations and emergency responses, lacking uplifting content.",
-      "category": "disaster-accident",
-      "url": "https://www.lemonde.fr/international/article/2026/08/10/en-grece-un-nouvel-incendie-se-declare-au-sud-est-d-athenes-attise-par-de-forts-vents_6743159_3210.html",
-      "date": "2026-08-10 09:59",
-      "positivity_score": 2
     }
   ]
 }
