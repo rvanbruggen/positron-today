@@ -96,6 +96,9 @@ export default function EditorialsPage() {
       summary_en: data.summary_en ?? "",
       summary_nl: data.summary_nl ?? "",
       summary_fr: data.summary_fr ?? "",
+      content_en: data.content_en ?? "",
+      content_nl: data.content_nl ?? "",
+      content_fr: data.content_fr ?? "",
     });
   }
 
@@ -644,19 +647,30 @@ export default function EditorialsPage() {
           <SubstackNote editorial={selected} />
         )}
 
-        {/* Content preview */}
+        {/* Content — editable when ready/scheduled, read-only otherwise */}
         {(["en", "nl", "fr"] as const).map(lang => {
-          const content = selected[`content_${lang}`];
+          const content = (isReady || isScheduled) ? editFields[`content_${lang}`] : selected[`content_${lang}`];
           if (!content) return null;
+          const charCount = content.length.toLocaleString();
+          const canEdit = isReady || isScheduled;
           return (
             <details key={lang} className="bg-white rounded-xl shadow-sm border border-yellow-200 mb-4">
               <summary className="px-5 py-3 text-sm font-medium text-amber-800 cursor-pointer hover:bg-yellow-50">
-                📄 Content — {lang.toUpperCase()} ({content.length.toLocaleString()} chars)
+                {canEdit ? "✏️" : "📄"} Content — {lang.toUpperCase()} ({charCount} chars)
               </summary>
               <div className="px-5 pb-4">
-                <pre className="whitespace-pre-wrap text-xs text-amber-700 font-mono max-h-96 overflow-y-auto bg-amber-50 rounded-lg p-3">
-                  {content}
-                </pre>
+                {canEdit ? (
+                  <textarea
+                    value={editFields[`content_${lang}`] ?? ""}
+                    onChange={e => setEditFields({ ...editFields, [`content_${lang}`]: e.target.value })}
+                    rows={20}
+                    className="w-full border border-yellow-200 rounded-lg px-3 py-2 text-xs text-amber-700 font-mono focus:outline-none focus:border-yellow-500 bg-amber-50"
+                  />
+                ) : (
+                  <pre className="whitespace-pre-wrap text-xs text-amber-700 font-mono max-h-96 overflow-y-auto bg-amber-50 rounded-lg p-3">
+                    {content}
+                  </pre>
+                )}
               </div>
             </details>
           );
