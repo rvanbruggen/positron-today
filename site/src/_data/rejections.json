@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-11T05:12:06.890Z",
-  "total_rejected": 110774,
+  "exported_at": "2026-08-11T05:12:13.571Z",
+  "total_rejected": 110775,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1946
+      "count": 1947
     },
     {
       "category": "divisive-racism",
@@ -81,8 +81,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 6678,
-      "total": 6779
+      "negative": 6679,
+      "total": 6780
     },
     {
       "source": "VRT Nws",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Badanie: Pies wie, kiedy się boisz, a kiedy jesteś smutny. Wyczyta to z twarzy",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rp.pl/nauka/art44969851-badanie-pies-wie-kiedy-sie-boisz-a-kiedy-jestes-smutny-wyczyta-to-z-twarzy",
+      "date": "2026-08-11 07:12",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "„Jedno z najważniejszych odkryć ostatnich lat”. Odnaleziono rzymski wrak sprzed tysięcy lat",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/politique/article/2026/08/10/presidentielle-2027-francois-bayrou-souhaite-une-grande-primaire-entre-tous-ceux-qui-rejettent-les-extremes-du-ps-jusqu-aux-gaullistes_6743156_823448.html",
       "date": "2026-08-10 09:59",
       "positivity_score": 3
-    },
-    {
-      "source": "Le Monde",
-      "title": "Radio M’s, la station qui met en valeur la Seine-Saint-Denis : « Ici, il existe un véritable vivre-ensemble qui passe complètement sous les radars »",
-      "reason": "The article focuses on a local radio station and its community impact, which may not interest readers outside the specific region of Seine-Saint-Denis, making it too localized for broader appeal.",
-      "category": "soft-news-filler",
-      "url": "https://www.lemonde.fr/series-d-ete/article/2026/08/10/radio-m-s-la-station-qui-met-en-valeur-la-seine-saint-denis-ici-il-existe-un-veritable-vivre-ensemble-qui-passe-completement-sous-les-radars_6743089_3451060.html",
-      "date": "2026-08-10 09:59",
-      "positivity_score": 4
     }
   ]
 }
