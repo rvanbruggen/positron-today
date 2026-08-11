@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-11T05:12:33.432Z",
-  "total_rejected": 110777,
+  "exported_at": "2026-08-11T05:12:38.933Z",
+  "total_rejected": 110778,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1949
+      "count": 1950
     },
     {
       "category": "divisive-racism",
@@ -201,8 +201,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1263,
-      "total": 1724
+      "negative": 1264,
+      "total": 1725
     },
     {
       "source": "Le Soir",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Struggling to make time for self-care? These 15 micro-habits take 2 minutes or less.",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/15-micro-habits-2-minutes-or-less-ex1/",
+      "date": "2026-08-11 07:12",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "A Gen Z passenger demanded his delayed flight take off immediately. When the gate agent heard why, he bought the man a ticket on a different airline.",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/economie/article/2026/08/10/revolut-annonce-l-obtention-d-une-licence-bancaire-en-france_6743157_3234.html",
       "date": "2026-08-10 09:59",
       "positivity_score": 4
-    },
-    {
-      "source": "Le Monde",
-      "title": "A Birmingham, les championnats d’Europe d’athlétisme cherchent à exister au cœur d’un calendrier chargé",
-      "reason": "The article focuses on a sports event, specifically the European Athletics Championships, which does not meet the criteria for exceptional or universally uplifting content.",
-      "category": "sports-negative",
-      "url": "https://www.lemonde.fr/sport/article/2026/08/10/a-birmingham-les-championnats-d-europe-d-athletisme-cherchent-a-exister-au-c-ur-d-un-calendrier-charge_6743088_3242.html",
-      "date": "2026-08-10 09:59",
-      "positivity_score": 3
     }
   ]
 }
