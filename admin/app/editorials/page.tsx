@@ -676,6 +676,16 @@ export default function EditorialsPage() {
           );
         })}
 
+        {/* Save button after content editors */}
+        {(isReady || isScheduled) && (
+          <div className="mb-4">
+            <button onClick={handleSaveEdits} disabled={!!busy}
+              className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50">
+              Save Changes
+            </button>
+          </div>
+        )}
+
         {/* Publish preview */}
         {preview && (
           <div ref={previewRef} className="bg-white rounded-xl shadow-sm border-2 border-purple-300 p-5 mb-4">

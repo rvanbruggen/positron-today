@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.6.12** | Add Save button below editorial content editors so it's visible without scrolling back to Titles & Summaries |
 | **3.6.11** | Make editorial markdown content editable after translation — content textareas for all three languages in Ready/Scheduled status, saved via existing PATCH endpoint |
 | **3.6.10** | Style audio player for all three colour schemes (classic, mono, mondrian) — use CSS variables instead of hardcoded colours, add theme-specific overrides in themes.css |
 | **3.6.9** | Allow audio pre-generation for ready and scheduled editorials — MP3 is committed but audio player only appears on the site after the editorial is published. Publish flow skips regeneration when audio already exists |
