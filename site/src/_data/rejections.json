@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-11T05:12:13.571Z",
-  "total_rejected": 110775,
+  "exported_at": "2026-08-11T05:12:23.873Z",
+  "total_rejected": 110776,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1947
+      "count": 1948
     },
     {
       "category": "divisive-racism",
@@ -236,8 +236,8 @@
     },
     {
       "source": "Popular Science",
-      "negative": 643,
-      "total": 825
+      "negative": 644,
+      "total": 826
     },
     {
       "source": "Euroactiv",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Popular Science",
+      "title": "Dogs can tell if you’re angry, scared, or sad",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.popsci.com/environment/dogs-can-tell-angry-sad-scared/",
+      "date": "2026-08-11 07:12",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Badanie: Pies wie, kiedy się boisz, a kiedy jesteś smutny. Wyczyta to z twarzy",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/international/article/2026/08/10/en-grece-un-nouvel-incendie-se-declare-au-sud-est-d-athenes-attise-par-de-forts-vents_6743159_3210.html",
       "date": "2026-08-10 09:59",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "Présidentielle 2027 : François Bayrou souhaite une grande primaire entre « tous ceux qui rejettent les extrêmes », « du PS jusqu’aux gaullistes »",
-      "reason": "The article discusses political strategies and concerns about extreme political outcomes, which is not uplifting and falls under political commentary.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/politique/article/2026/08/10/presidentielle-2027-francois-bayrou-souhaite-une-grande-primaire-entre-tous-ceux-qui-rejettent-les-extremes-du-ps-jusqu-aux-gaullistes_6743156_823448.html",
-      "date": "2026-08-10 09:59",
-      "positivity_score": 3
     }
   ]
 }
