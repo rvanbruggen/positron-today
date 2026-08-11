@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-11T05:10:41.176Z",
-  "total_rejected": 110768,
+  "exported_at": "2026-08-11T05:10:58.493Z",
+  "total_rejected": 110769,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1940
+      "count": 1941
     },
     {
       "category": "divisive-racism",
@@ -260,14 +260,14 @@
       "total": 779
     },
     {
+      "source": "The Better India",
+      "negative": 293,
+      "total": 508
+    },
+    {
       "source": "The Washington Post",
       "negative": 293,
       "total": 295
-    },
-    {
-      "source": "The Better India",
-      "negative": 292,
-      "total": 507
     },
     {
       "source": "ANSA English (Italy)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Better India",
+      "title": "No Engineering Degree, Yet He Built a Flying Car ! ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/videos/lifestyle/no-engineering-degree-yet-he-built-a-flying-car-12248567",
+      "date": "2026-08-11 07:10",
+      "positivity_score": null
+    },
     {
       "source": "Popular Science",
       "title": "The cute, tiny Texas kangaroo rat needs help",
@@ -9381,15 +9390,6 @@
       "url": "http://www.euronews.com/video/2026/08/10/latest-news-bulletin-august-10th-2026-morning",
       "date": "2026-08-10 09:59",
       "positivity_score": 2
-    },
-    {
-      "source": "Euronews",
-      "title": "Comic Con Astana brings global stars and thousands of cosplay fans to Kazakhstan",
-      "reason": "The article focuses on a local event, Comic Con Astana, which may not have broad relevance outside of Kazakhstan and is primarily related to entertainment and pop culture.",
-      "category": "celebrity-entertainment",
-      "url": "http://www.euronews.com/culture/2026/08/10/comic-con-astana-brings-global-stars-and-thousands-of-cosplay-fans-to-kazakhstan",
-      "date": "2026-08-10 09:59",
-      "positivity_score": 4
     }
   ]
 }
