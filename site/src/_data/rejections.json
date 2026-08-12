@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-12T20:11:41.488Z",
-  "total_rejected": 112697,
+  "exported_at": "2026-08-12T20:11:44.379Z",
+  "total_rejected": 112698,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1991
+      "count": 1992
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 4176,
-      "total": 4209
+      "negative": 4177,
+      "total": 4210
     },
     {
       "source": "The New York Times",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "EN DIRECT, éclipse solaire : applaudissements et exclamations en France métropolitaine et en Espagne, alors que la Lune se retire du disque solaire",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sciences/live/2026/08/12/en-direct-eclipse-solaire-d-ici-une-heure-le-phenomene-commence-en-france-metropolitaine-suivez-le-avec-nos-journalistes_6745061_1650684.html",
+      "date": "2026-08-12 22:11",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Les images spectaculaires de l’éclipse solaire",
@@ -9379,15 +9388,6 @@
       "reason": "The title 'Woordzoeker' does not provide enough context to determine if it is uplifting or relevant to a broad audience, and it may fall under local-only relevance or soft news filler.",
       "category": "soft-news-filler",
       "url": "https://www.nrc.nl/puzzels/woordzoeker/2026/08/12/",
-      "date": "2026-08-12 06:16",
-      "positivity_score": 3
-    },
-    {
-      "source": "NRC",
-      "title": "Cijferblok ",
-      "reason": "The title and snippet do not provide enough information to determine if the article is uplifting or positive, leading to uncertainty about its relevance and tone.",
-      "category": "soft-news-filler",
-      "url": "https://www.nrc.nl/puzzels/cijferblok/2026/08/12/",
       "date": "2026-08-12 06:16",
       "positivity_score": 3
     }
