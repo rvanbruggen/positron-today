@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-12T10:01:12.583Z",
-  "total_rejected": 112108,
+  "exported_at": "2026-08-12T10:41:43.847Z",
+  "total_rejected": 112109,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1980
+      "count": 1981
     },
     {
       "category": "divisive-racism",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1559,
-      "total": 1611
+      "negative": 1560,
+      "total": 1612
     },
     {
       "source": "De Standaard Binnenland",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "Colombia quake rescuers save woman after 36 hours trapped in rubble",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/video/2026/08/12/colombia-quake-rescuers-save-woman-after-36-hours-trapped-in-rubble",
+      "date": "2026-08-12 12:41",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Clacton by-election: Farage may win the town, but can he win the country?",
@@ -9381,15 +9390,6 @@
       "url": "https://logistyka.rp.pl/szynowy/art44973591-kolejowi-przewoznicy-ladunkow-maja-coraz-bardziej-pod-gorke",
       "date": "2026-08-11 14:29",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Zmarł Aleksander Milinkiewicz. Syn uczniów Korczaka, intelektualista i wielki przyjaciel Polski",
-      "reason": "The article discusses the death of a notable figure, which is inherently a negative event, and reflects on what could have been, rather than focusing on uplifting aspects.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/polityka/art44972311-zmarl-aleksander-milinkiewicz-syn-uczniow-korczaka-intelektualista-i-wielki-przyjaciel-polski",
-      "date": "2026-08-11 14:29",
-      "positivity_score": 3
     }
   ]
 }
