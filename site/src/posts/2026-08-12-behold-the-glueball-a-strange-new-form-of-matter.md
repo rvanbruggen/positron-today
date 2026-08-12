@@ -2,7 +2,7 @@
 title: "Behold the “glueball,” a strange new form of matter"
 title_nl: "Bekijk de “glueball,” een vreemde nieuwe vorm van materie"
 title_fr: "Voici la « glueball », une étrange nouvelle forme de matière"
-date: 2026-08-12T04:20:50
+date: 2026-08-12T04:20:49
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://www.science.org/content/article/behold-glueball-strange-new-form-matter"
