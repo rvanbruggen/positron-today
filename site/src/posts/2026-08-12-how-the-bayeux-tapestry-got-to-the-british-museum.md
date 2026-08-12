@@ -2,7 +2,7 @@
 title: "How the Bayeux Tapestry Got to the British Museum"
 title_nl: "Hoe het Bayeux-tapijt in het British Museum kwam"
 title_fr: "Comment la tapisserie de Bayeux est arrivée au British Museum"
-date: 2026-08-12T04:21:40
+date: 2026-08-12T04:21:47
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://www.nytimes.com/2026/08/11/arts/design/bayeux-tapestry-british-museum.html"
