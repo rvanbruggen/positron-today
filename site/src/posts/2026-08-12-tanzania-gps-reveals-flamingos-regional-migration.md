@@ -2,7 +2,7 @@
 title: "Tanzania: GPS reveals flamingos' regional migration"
 title_nl: "Tanzania: GPS onthult regionale migratie van flamingo's"
 title_fr: "Tanzanie : le GPS révèle la migration régionale des flamants"
-date: 2026-08-12T04:21:07
+date: 2026-08-12T04:21:12
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://allafrica.com/stories/202608110359.html"
