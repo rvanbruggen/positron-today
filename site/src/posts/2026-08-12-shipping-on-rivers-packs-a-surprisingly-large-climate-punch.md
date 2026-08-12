@@ -2,7 +2,7 @@
 title: "Shipping on rivers packs a surprisingly large climate punch"
 title_nl: "Scheepvaart op rivieren heeft een verrassend grote klimaatimpact"
 title_fr: "La navigation sur les rivières a un impact climatique surprenant"
-date: 2026-08-12T04:21:50
+date: 2026-08-12T04:21:54
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://www.nature.com/articles/d41586-026-02431-6"
