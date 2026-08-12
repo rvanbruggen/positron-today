@@ -2,7 +2,7 @@
 title: "How Singapore is fighting dengue with mosquitoes"
 title_nl: "Hoe Singapore dengue bestrijdt met muggen"
 title_fr: "Comment Singapour lutte contre la dengue avec des moustiques"
-date: 2026-08-12T04:20:47
+date: 2026-08-12T04:20:57
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://thebetterindia.com/videos/health/how-singapore-is-fighting-dengue-with-mosquitoes-12251785"
