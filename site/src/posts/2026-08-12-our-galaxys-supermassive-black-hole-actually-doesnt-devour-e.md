@@ -2,7 +2,7 @@
 title: "Our galaxy’s supermassive black hole actually doesn’t devour everything"
 title_nl: "De superzware zwarte gat in onze melkweg verslindt eigenlijk niet alles"
 title_fr: "Le trou noir supermassif de notre galaxie ne dévore en fait pas tout"
-date: 2026-08-12T04:20:42
+date: 2026-08-12T04:20:46
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://www.popsci.com/science/milky-way-black-hole-water-dust/"
