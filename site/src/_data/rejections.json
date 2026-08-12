@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-12T20:14:03.204Z",
-  "total_rejected": 112705,
+  "exported_at": "2026-08-12T20:14:06.716Z",
+  "total_rejected": 112706,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1999
+      "count": 2000
     },
     {
       "category": "divisive-racism",
@@ -265,14 +265,14 @@
       "total": 534
     },
     {
+      "source": "ANSA English (Italy)",
+      "negative": 306,
+      "total": 311
+    },
+    {
       "source": "The Washington Post",
       "negative": 306,
       "total": 308
-    },
-    {
-      "source": "ANSA English (Italy)",
-      "negative": 305,
-      "total": 310
     },
     {
       "source": "Science.org news",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ANSA English (Italy)",
+      "title": "Eclipse fever grips Italy",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.ansa.it/english/news/science_tecnology/2026/08/12/eclipse-fever-grips-italy_f9ca44d4-64b9-40a1-bcdd-24cc54bb3259.html",
+      "date": "2026-08-12 22:14",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "Stunning new images reveal cosmic cycle of death and rebirth",
@@ -9381,15 +9390,6 @@
       "url": "https://www.standaard.be/buitenland/met-een-tour-en-blitse-filmpjes-wil-burnham-de-premier-van-het-britse-volk-worden/159867188.html",
       "date": "2026-08-12 06:16",
       "positivity_score": 4
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Fatin (26) droomde van voetballen in Europa, maar overleefde tocht naar Ceuta niet: “Ze was stoer, strijdlustig en een tikje jongensachtig”",
-      "reason": "The article discusses a tragic event involving a young woman who did not survive a dangerous journey, which is not uplifting and focuses on loss rather than positivity.",
-      "category": "disaster-accident",
-      "url": "https://www.standaard.be/buitenland/fatin-26-droomde-van-voetballen-in-europa-maar-overleefde-tocht-naar-ceuta-niet-ze-was-stoer-strijdlustig-en-een-tikje-jongensachtig/159875181.html",
-      "date": "2026-08-12 06:16",
-      "positivity_score": 2
     }
   ]
 }
