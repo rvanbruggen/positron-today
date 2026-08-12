@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-12T20:12:09.283Z",
-  "total_rejected": 112700,
+  "exported_at": "2026-08-12T20:12:21.728Z",
+  "total_rejected": 112701,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1994
+      "count": 1995
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 5371,
-      "total": 5422
+      "negative": 5372,
+      "total": 5423
     },
     {
       "source": "Dagens Nyheter",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "Les spectaculaires images de l’éclipse solaire à travers le monde",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lefigaro.fr/sciences/les-spectaculaires-images-de-l-eclipse-solaire-a-travers-le-monde-20260812",
+      "date": "2026-08-12 22:12",
+      "positivity_score": null
+    },
     {
       "source": "NRC",
       "title": "Laatste voorbereidingen op de zeldzame totale eclips ",
@@ -9379,15 +9388,6 @@
       "reason": "The article snippet does not provide any uplifting content and appears to be a trivial mention of a Sudoku variant, lacking broad human relevance.",
       "category": "soft-news-filler",
       "url": "https://www.nrc.nl/puzzels/cinco/2026/08/12/",
-      "date": "2026-08-12 06:16",
-      "positivity_score": 3
-    },
-    {
-      "source": "NRC",
-      "title": "crux ",
-      "reason": "The article appears to be about a crossword puzzle, which is a local or niche interest and does not have broad human relevance.",
-      "category": "soft-news-filler",
-      "url": "https://www.nrc.nl/puzzels/crux/2026/08/12/",
       "date": "2026-08-12 06:16",
       "positivity_score": 3
     }
