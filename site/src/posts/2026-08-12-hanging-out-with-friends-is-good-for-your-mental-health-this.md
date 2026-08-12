@@ -2,7 +2,7 @@
 title: "Hanging out with friends is good for your mental health. This study calculated the 'perfect hang' down to the minute"
 title_nl: "Vrienden ontmoeten is goed voor je mentale gezondheid. Deze studie berekende de 'perfecte hang' tot op de minuut"
 title_fr: "Passer du temps avec des amis est bon pour votre santé mentale. Cette étude a calculé le 'moment parfait' jusqu'à la minute"
-date: 2026-08-12T04:21:02
+date: 2026-08-12T04:21:22
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://www.goodgoodgood.co/articles/new-study-perfect-amount-friend-hang-out"
