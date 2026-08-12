@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-12T10:41:43.847Z",
-  "total_rejected": 112109,
+  "exported_at": "2026-08-12T10:41:49.292Z",
+  "total_rejected": 112110,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1981
+      "count": 1982
     },
     {
       "category": "divisive-racism",
@@ -116,8 +116,8 @@
     },
     {
       "source": "NRC",
-      "negative": 4352,
-      "total": 4423
+      "negative": 4353,
+      "total": 4424
     },
     {
       "source": "Le Monde",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "NRC",
+      "title": "Voor het eerst in meer dan een kwart eeuw vindt in Nederland een bijna volledige zonsverduistering plaats ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nrc.nl/nieuws/2026/08/12/voor-het-eerst-in-meer-dan-een-kwart-eeuw-vindt-in-nederland-een-bijna-volledige-zonsverduistering-plaats-a4934233",
+      "date": "2026-08-12 12:41",
+      "positivity_score": null
+    },
     {
       "source": "Euronews",
       "title": "Colombia quake rescuers save woman after 36 hours trapped in rubble",
@@ -9381,15 +9390,6 @@
       "url": "https://cyfrowa.rp.pl/globalne-interesy/art44973261-google-testuje-rewolucje-na-stronie-glownej-ai-mocno-zmienia-wyszukiwarke",
       "date": "2026-08-11 14:29",
       "positivity_score": 4
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Kolejowi przewoźnicy ładunków mają coraz bardziej pod górkę",
-      "reason": "The article discusses declining margins and demand in the railway freight sector, which is a negative economic outlook.",
-      "category": "economic-doom",
-      "url": "https://logistyka.rp.pl/szynowy/art44973591-kolejowi-przewoznicy-ladunkow-maja-coraz-bardziej-pod-gorke",
-      "date": "2026-08-11 14:29",
-      "positivity_score": 2
     }
   ]
 }
