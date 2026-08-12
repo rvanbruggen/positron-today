@@ -2,7 +2,7 @@
 title: "Researchers use drones with suction cups to tag whales, allowing them to study the species from the sky"
 title_nl: "Onderzoekers gebruiken drones met zuignappen om walvissen te taggen, waardoor ze de soort vanuit de lucht kunnen bestuderen"
 title_fr: "Les chercheurs utilisent des drones avec des ventouses pour marquer les baleines, leur permettant d'étudier l'espèce depuis le ciel"
-date: 2026-08-12T04:21:20
+date: 2026-08-12T04:21:14
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://www.goodgoodgood.co/articles/hawaii-suction-cup-drone-tagging-whales"
