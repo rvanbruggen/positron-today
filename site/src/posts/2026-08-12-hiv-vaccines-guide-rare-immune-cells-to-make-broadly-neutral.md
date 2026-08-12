@@ -2,7 +2,7 @@
 title: "HIV vaccines guide rare immune cells to make broadly neutralizing antibodies"
 title_nl: "HIV-vaccins leiden zeldzame immuuncellen om breed neutrale antilichamen te maken"
 title_fr: "Les vaccins contre le VIH guident des cellules immunitaires rares pour produire des anticorps largement neutralisants"
-date: 2026-08-12T04:20:55
+date: 2026-08-12T04:21:04
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://www.nature.com/articles/d41586-026-02374-y"
