@@ -2,7 +2,7 @@
 title: "University of Michigan will ease up on grades for student mental health"
 title_nl: "Universiteit van Michigan versoepelt cijfers voor de mentale gezondheid van studenten"
 title_fr: "L'université du Michigan assouplit les notes pour la santé mentale des étudiants"
-date: 2026-08-12T04:21:48
+date: 2026-08-12T04:21:59
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://www.nytimes.com/2026/08/11/us/university-michigan-grades-freshmen-pass-fail.html"
