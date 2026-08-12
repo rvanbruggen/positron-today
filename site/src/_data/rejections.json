@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-12T15:02:10.459Z",
-  "total_rejected": 112273,
+  "exported_at": "2026-08-12T15:04:18.035Z",
+  "total_rejected": 112274,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1983
+      "count": 1984
     },
     {
       "category": "divisive-racism",
@@ -191,8 +191,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 1323,
-      "total": 1354
+      "negative": 1324,
+      "total": 1355
     },
     {
       "source": "Le Soir",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Ottawa announces $34M for climate resilience projects across Canada",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12018223/ottawa-climate-resilience-projects/",
+      "date": "2026-08-12 17:04",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "How Gujarat's 'Water Champion' Built Dams & Put Women in Charge of Village Water ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.gva.be/buitenland/grote-brand-op-parking-nabij-luchthaven-parijs-tientallen-wagens-in-brand-ook-vliegverkeer-gestoord/159900408.html",
       "date": "2026-08-11 18:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Tessa opent winkel voor gepersonaliseerde cadeaus en interieur : “Een leisteen met foto is populair als geschenk” ",
-      "reason": "The article focuses on a local business opening, which may not interest readers outside the immediate area, making it too localized for broader appeal.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/kempen/ravels/tessa-opent-winkel-voor-gepersonaliseerde-cadeaus-en-interieur-een-leisteen-met-foto-is-populair-als-geschenk/159889030.html",
-      "date": "2026-08-11 18:27",
-      "positivity_score": 4
     }
   ]
 }
