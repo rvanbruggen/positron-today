@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-12T09:57:11.810Z",
-  "total_rejected": 111996,
+  "exported_at": "2026-08-12T09:57:57.168Z",
+  "total_rejected": 111997,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 1977
+      "count": 1978
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 3704,
-      "total": 3811
+      "negative": 3705,
+      "total": 3812
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Three ways to watch the solar eclipse safely without glasses",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c4gdxyjnz3do?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-12 11:57",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "₹40 Lakh Stolen Daily | IPS Kiran Yadav's Cybercrime Crackdown 🚨 ",
@@ -9381,15 +9390,6 @@
       "url": "https://vrtnws.be/p.OvXOLj5ZO",
       "date": "2026-08-11 14:26",
       "positivity_score": 3
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Bpost en Oostende lanceren 'Bbox City Network' met slimme pakjesautomaten",
-      "reason": "The article focuses on a local initiative involving smart package lockers, which may not have broad human relevance outside the specific region.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.jGyDn8oVx",
-      "date": "2026-08-11 14:26",
-      "positivity_score": 4
     }
   ]
 }
