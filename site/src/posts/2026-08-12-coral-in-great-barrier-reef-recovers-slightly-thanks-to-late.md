@@ -2,7 +2,7 @@
 title: "Coral in Great Barrier Reef recovers slightly thanks to late summer monsoon"
 title_nl: "Koraal in Groot Barrièrerif herstelt licht dankzij late zomermoesson"
 title_fr: "Le corail de la Grande Barrière de Corail se rétablit légèrement grâce à la mousson d'été tardive"
-date: 2026-08-12T04:21:10
+date: 2026-08-12T04:21:05
 source_pub_date: 2026-08-11
 fetched_date: 2026-08-11
 source_url: "https://vrtnws.be/p.0YJWp6evL"
