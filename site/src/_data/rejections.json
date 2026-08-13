@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-13T11:54:16.462Z",
-  "total_rejected": 113163,
+  "exported_at": "2026-08-13T11:54:28.631Z",
+  "total_rejected": 113164,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2023
+      "count": 2024
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 3736,
-      "total": 3846
+      "negative": 3737,
+      "total": 3847
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Watch: Moment 'surreal' solar eclipse witnessed in UK and Europe",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/videos/c5yr891pp5eo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-13 13:54",
+      "positivity_score": null
+    },
     {
       "source": "Euronews",
       "title": "Timelapse of partial solar eclipse seen from Royal Observatory Greenwich",
@@ -9379,15 +9388,6 @@
       "reason": "The article is a product review, which falls under corporate PR and does not provide uplifting content that resonates broadly with human experiences.",
       "category": "soft-news-filler",
       "url": "https://www.wired.com/review/ego-1300-electric-lawn-mower/",
-      "date": "2026-08-12 14:26",
-      "positivity_score": 3
-    },
-    {
-      "source": "Wired",
-      "title": "How to Select the Office Chair That’s Right For You",
-      "reason": "The article focuses on selecting office chairs, which falls under routine advice and does not provide uplifting or universally relevant content.",
-      "category": "soft-news-filler",
-      "url": "https://www.wired.com/story/how-to-choose-the-right-office-chair/",
       "date": "2026-08-12 14:26",
       "positivity_score": 3
     }
