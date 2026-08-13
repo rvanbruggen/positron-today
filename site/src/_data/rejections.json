@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-13T06:49:16.429Z",
-  "total_rejected": 112980,
+  "exported_at": "2026-08-13T06:49:22.650Z",
+  "total_rejected": 112981,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2013
+      "count": 2014
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 5381,
-      "total": 5433
+      "negative": 5382,
+      "total": 5434
     },
     {
       "source": "Dagens Nyheter",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "«Il y avait une espèce de connexion cosmique !» : en Espagne, les observateurs émus par l’éclipse solaire totale",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lefigaro.fr/sciences/il-y-avait-une-espece-de-connexion-cosmique-a-segovie-les-contemplateurs-emus-par-l-eclipse-solaire-totale-20260812",
+      "date": "2026-08-13 08:49",
+      "positivity_score": null
+    },
     {
       "source": "BBC Top Stories",
       "title": "Once-in-a-generation solar eclipse wows millions in UK and Europe",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rnz.co.nz/news/chinese-english/975886/political-parties-eye-asian-mental-health-progress-in-bid-for-votes",
       "date": "2026-08-12 10:29",
       "positivity_score": 4
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "People 'unravelling': Fears a 'bad batch' of synthetic cannabis has hit Wellington's Newtown",
-      "reason": "The article discusses concerns about a 'bad batch' of synthetic cannabis affecting people in Wellington, highlighting issues of addiction and service failures, which is not uplifting.",
-      "category": "health-scare",
-      "url": "https://www.rnz.co.nz/news/regional/975614/people-unravelling-fears-a-bad-batch-of-synthetic-cannabis-has-hit-wellington-s-newtown",
-      "date": "2026-08-12 10:29",
-      "positivity_score": 2
     }
   ]
 }
