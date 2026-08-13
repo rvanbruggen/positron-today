@@ -10,6 +10,9 @@ import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
 import { parseArticle } from "@/lib/parse-html";
 import { nextSlot, parseScheduleWallString, scheduleNow, toScheduleWallString } from "@/lib/schedule-time";
+import { getStoredWeights, getWeight } from "@/lib/source-confidence";
+
+const DIGEST_PICK_COUNT = 2;
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -264,6 +267,13 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
   L(`Starting run (mode=${mode}${isManual ? ", manual" : ""}) — selecting top ${targetCount} articles from queue`);
 
   try {
+    const weights = await getStoredWeights();
+    if (weights) {
+      L(`Using source confidence weights (computed ${weights.computed_at}, ${Object.keys(weights.weights).length} sources, global confidence ${(weights.global_confidence * 100).toFixed(1)}%)`);
+    } else {
+      L("No source confidence weights found — ranking by raw positivity score");
+    }
+
     const queueResult = await db.execute(`
       SELECT r.id, r.source_id, r.url, r.title, r.content, r.source_pub_date,
              r.positivity_score, s.name as source_name
@@ -272,11 +282,23 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
       WHERE r.status = 'pending'
         AND r.positivity_score IS NOT NULL
       ORDER BY r.positivity_score DESC
-      LIMIT ?
-    `, [targetCount]);
+    `);
 
-    const candidates = queueResult.rows;
-    L(`Found ${candidates.length} candidates in queue (wanted ${targetCount})`);
+    const ranked = queueResult.rows.map(row => {
+      const score = Number(row.positivity_score ?? 7);
+      const w = getWeight(weights, Number(row.source_id));
+      return { row, composite_score: score * w, source_weight: w };
+    });
+    ranked.sort((a, b) => b.composite_score - a.composite_score);
+    const selected = ranked.slice(0, targetCount);
+
+    if (weights && selected.length > 0) {
+      for (const { row: c, composite_score, source_weight } of selected) {
+        L(`  → "${c.title}" (score ${Number(c.positivity_score).toFixed(0)} × ${source_weight.toFixed(2)}x = ${composite_score.toFixed(1)}) [${c.source_name}]`);
+      }
+    }
+    const candidates = selected.map(s => s.row);
+    L(`Found ${candidates.length} candidates in queue (wanted ${targetCount}, pool ${ranked.length})`);
 
     if (candidates.length === 0) {
       if (dueSlot) {
@@ -310,6 +332,7 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
       const c = candidates[i];
       const rawId = Number(c.id);
       const isFeatured = i === 0;
+      const isDigestPick = mode === "full" && i < DIGEST_PICK_COUNT;
       const score = Number(c.positivity_score ?? 7);
 
       try {
@@ -336,7 +359,8 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
                   article_emoji = ?, image_url = ?,
                   status = ?, publish_date = ?,
                   post_to_social_on_publish = 1,
-                  featured = ?
+                  featured = ?,
+                  digest_pick = ?
                 WHERE id = ?`,
           args: [
             summaries.title_nl, summaries.title_fr, summaries.title_en,
@@ -345,6 +369,7 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
             schedulePublish ? "scheduled" : "draft",
             dateStr,
             isFeatured ? 1 : 0,
+            isDigestPick ? 1 : 0,
             articleId,
           ],
         });
@@ -365,11 +390,16 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
           publish_date: dateStr ?? "", featured: isFeatured,
         });
 
+        const flags = [
+          isFeatured ? "⭐ FEATURED" : "",
+          isDigestPick ? "📰 DIGEST" : "",
+        ].filter(Boolean).join(" ");
+
         if (schedulePublish) {
-          L(`Scheduled: "${summaries.title_en}" at ${dateStr}${isFeatured ? " ⭐ FEATURED" : ""} (score: ${score})`);
+          L(`Scheduled: "${summaries.title_en}" at ${dateStr}${flags ? ` ${flags}` : ""} (score: ${score})`);
           scheduleCursor = nextSlot(scheduleCursor, intervalMinutes);
         } else {
-          L(`Drafted: "${summaries.title_en}"${isFeatured ? " ⭐ FEATURED" : ""} (score: ${score}) — awaiting review`);
+          L(`Drafted: "${summaries.title_en}"${flags ? ` ${flags}` : ""} (score: ${score}) — awaiting review`);
         }
       } catch (err) {
         L(`Error processing "${c.title}": ${err}`);

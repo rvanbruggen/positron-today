@@ -15,6 +15,7 @@ export async function GET() {
 
 export async function PUT(request: NextRequest) {
   try {
+    const currentSettings = await getSettings();
     const body = await request.json() as Partial<LLMSettings>;
     const allowed: (keyof LLMSettings)[] = [
       "filter_provider",
@@ -40,6 +41,16 @@ export async function PUT(request: NextRequest) {
       return Response.json({ error: "No valid fields provided" }, { status: 400 });
     }
     await setSettings(patch);
+
+    // Recompute source confidence weights when switching to full automation
+    if (patch.positronitron_mode === "full" && currentSettings.positronitron_mode !== "full") {
+      try {
+        const { computeAndStoreWeights } = await import("@/lib/source-confidence");
+        await computeAndStoreWeights();
+      } catch (err) {
+        console.warn("[llm-settings] Source confidence computation failed:", err);
+      }
+    }
 
     // Reload the scheduler if run times changed
     if (patch.positronitron_run_times || patch.digest_run_times) {
