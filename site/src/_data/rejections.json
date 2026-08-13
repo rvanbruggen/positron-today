@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-13T14:07:42.390Z",
-  "total_rejected": 113380,
+  "exported_at": "2026-08-13T14:07:56.046Z",
+  "total_rejected": 113381,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2032
+      "count": 2033
     },
     {
       "category": "divisive-racism",
@@ -196,8 +196,8 @@
     },
     {
       "source": "Le Soir",
-      "negative": 1342,
-      "total": 1356
+      "negative": 1343,
+      "total": 1357
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Soir",
+      "title": "Voici vos plus belles photos de l’éclipse",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lesoir.be/764786/article/2026-08-13/voici-vos-plus-belles-photos-de-leclipse",
+      "date": "2026-08-13 16:07",
+      "positivity_score": null
+    },
     {
       "source": "Euronews",
       "title": "Azerbaijan bets on the pomegranate as its next big export",
@@ -9379,15 +9388,6 @@
       "reason": "The article appears to focus on a technical scientific topic that lacks broad human relevance and does not present an uplifting narrative.",
       "category": "other-negative",
       "url": "https://www.nature.com/articles/s41586-026-10916-7",
-      "date": "2026-08-12 18:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Nature",
-      "title": "Glucose-responsive probiotics for glycaemic modulation in mice and monkeys",
-      "reason": "The article discusses a scientific study on probiotics and glycaemic modulation, which is too technical and specific to be broadly uplifting or relevant to a general audience.",
-      "category": "health-scare",
-      "url": "https://www.nature.com/articles/s41586-026-10909-6",
       "date": "2026-08-12 18:27",
       "positivity_score": 3
     }
