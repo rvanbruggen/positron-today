@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-13T11:54:06.211Z",
-  "total_rejected": 113160,
+  "exported_at": "2026-08-13T11:54:12.119Z",
+  "total_rejected": 113162,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2020
+      "count": 2022
     },
     {
       "category": "divisive-racism",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1574,
-      "total": 1629
+      "negative": 1576,
+      "total": 1631
     },
     {
       "source": "De Standaard Binnenland",
@@ -391,6 +391,24 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "Half a million visitors flock to Spain’s path of total solar eclipse",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/video/2026/08/13/half-a-million-visitors-flock-to-spains-path-of-total-solar-eclipse",
+      "date": "2026-08-13 13:54",
+      "positivity_score": null
+    },
+    {
+      "source": "Euronews",
+      "title": "Rare eclipse plunges parts of Europe into darkness",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/video/2026/08/13/rare-eclipse-plunges-parts-of-europe-into-darkness",
+      "date": "2026-08-13 13:54",
+      "positivity_score": null
+    },
     {
       "source": "Le Monde",
       "title": "Sophie Adenot sortira dans l’espace le 18 août, une première pour une astronaute française",
@@ -9372,24 +9390,6 @@
       "url": "https://www.wired.com/story/this-coin-sized-device-can-hack-a-boeing-737/",
       "date": "2026-08-12 14:26",
       "positivity_score": 2
-    },
-    {
-      "source": "Knack",
-      "title": "Grote belangstelling voor zonsverduistering: ‘Voor die van 2027 kun je het best nu al een kamer boeken’",
-      "reason": "The article focuses on a local astronomical event and its viewing recommendations, which may not have broad human relevance outside of Belgium.",
-      "category": "soft-news-filler",
-      "url": "https://www.knack.be/nieuws/wetenschap/grote-belangstelling-voor-zonsverduistering-voor-die-van-2027-kan-je-best-nu-al-een-kamer-boeken/",
-      "date": "2026-08-12 14:26",
-      "positivity_score": 4
-    },
-    {
-      "source": "Knack",
-      "title": "Factcheck: geen bewijs dat je beter slaapt door je mond met tape af te plakken",
-      "reason": "The article discusses a health claim regarding sleep that lacks scientific evidence, which is not uplifting and may cause concern about health practices.",
-      "category": "health-scare",
-      "url": "https://www.knack.be/factcheck/factcheck-geen-bewijs-dat-je-beter-slaapt-door-je-mond-met-tape-af-te-plakken-2/",
-      "date": "2026-08-12 14:26",
-      "positivity_score": 3
     }
   ]
 }
