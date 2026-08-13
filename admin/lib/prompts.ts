@@ -9,51 +9,44 @@ import { CATEGORY_PROMPT_LIST } from "./rejection-categories";
 
 // ── Positivity filter ─────────────────────────────────────────────────────────
 
-export const THRESHOLD_LABELS: Record<number, string> = {
-  1:  "1 — very lenient  (nearly everything positive-leaning passes)",
-  2:  "2 — lenient+",
-  3:  "3 — lenient",
-  4:  "4 — slightly lenient",
-  5:  "5 — balanced  (default)",
-  6:  "6 — slightly strict",
-  7:  "7 — strict",
-  8:  "8 — very strict",
-  9:  "9 — extremely strict",
-  10: "10 — maximum  (only clearly uplifting stories pass)",
-};
+export const DEFAULT_FILTER_INSTRUCTIONS = `You are a filter for Positron.today, a positive-news website. Decide whether the article fits a strict positive-news editorial standard.
 
-function thresholdInstruction(threshold: number): string {
-  if (threshold <= 2) {
-    return `Be generous. Accept any story that has a positive angle, even when mixed with some negative context. Neutral-positive stories about science, community, innovation, or human interest are welcome. Only reject stories that are clearly and predominantly negative — crime, war, major disasters, or acute health emergencies.`;
-  }
-  if (threshold <= 4) {
-    return `Apply a lenient filter. Accept stories that have a clear positive element, even if not exclusively uplifting. Mixed stories are acceptable if the net tone is positive or neutral-positive. Reject stories that lack any meaningful uplifting angle, as well as clearly negative stories about crime, war, disasters, economic doom, or health scares.`;
-  }
-  if (threshold <= 6) {
-    return `Apply a balanced filter. A good fit: genuinely good news, heartwarming stories, scientific breakthroughs, environmental wins, funny or lighthearted stories, inspiring achievements — anything that leaves the reader feeling better. NOT a good fit: crime, war, political conflict, disasters, economic doom, health scares, or predominantly negative stories — even with a small positive angle.`;
-  }
-  if (threshold <= 8) {
-    return `Apply a strict filter. Only accept stories that are clearly and unambiguously positive — stories that will leave readers feeling genuinely uplifted. Reject anything mixed, ambiguous, or merely interesting-but-neutral. Media industry news, corporate PR, purely informational tech updates, and political stories with a positive spin should all be rejected unless an unmistakable human-interest uplift is present.`;
-  }
-  return `Apply maximum strictness. Only truly exceptional positive stories qualify — the kind that would make most readers smile or feel genuinely moved. Reject anything that is not clearly and powerfully uplifting: mixed stories, neutral science, mildly positive news, media industry updates, corporate announcements, and political stories. When in doubt, reject.`;
-}
+REJECT the article (verdict: NO) if ANY of the rules below is true. These are hard rules - do not invent exceptions, do not weigh "but it's heartwarming" against them.
 
-/**
- * Returns the instructional/tone block for the positivity filter.
- * This is the part the slider controls and the user can override.
- * The article data and JSON format are always appended separately by buildFilterPrompt().
- */
-export function buildFilterInstructions(threshold: number): string {
-  return `You are a filter for "Positiviteiten", a positive-news website.
+1. Sports. Professional sports content that is related to non-exceptional results, league standings, transfers, injuries, match previews, comeback stories, charity matches, retirements, contracts, sports-business news that is not truly, once in a lifetime level exceptional. Only allow exceptions if the story is truly emotional, inspiring, or human-interest with a unique characteristic that can be universally appreciated.
 
-${thresholdInstruction(Math.max(1, Math.min(10, threshold)))}`;
-}
+2. Local-only relevance. The article would not interest a reader in another country. Single-village, single-town, single-neighbourhood, single-school, or municipal content: roadworks, community events, fundraisers, council decisions, regional weather, local crime or courts, neighbourhood disputes - even with a positive resolution. This includes: local festivals and markets ("Vijfde editie rommelmarkt"), neighbourhood revitalisation ("buurt herontdekt park"), local building or infrastructure projects, regional visitor/tourism statistics ("Paasvakantie lokte veel Duitsers"), local animal sightings, municipal investments, and any story whose main news value is "N people attended X" in a specific locality.
 
-export const DEFAULT_FILTER_INSTRUCTIONS = buildFilterInstructions(5);
+3. Celebrities and entertainment industry. Gossip, awards, premieres, casting, relationships, royal-family colour pieces, red-carpet coverage - local or global fame. This extends to: TV personality profiles, reality-show contestants, celebrity pregnancy or family announcements, fan-culture stories, personal milestones of known figures, and any story that only matters because a famous person is involved.
+
+4. Corporate PR. Product launches, funding rounds, earnings, partnership announcements, marketing news - even when pitched as benefiting users or society.
+
+5. Routine tech/industry updates. Software releases, version updates, industry reports, gadget reviews, AI-feature announcements - unless the article documents a clearly proven, civilisation-scale breakthrough (cure, major scientific discovery).
+
+6. Politics. Legislation, elections, partisan commentary, government decisions, political-figure profiles, geopolitical analysis - positive spin or not. The only exception would be political stories marking major breakthroughs in conflicts, exceptional agreements on long disputed or debated topics (e.g. about climate change, social media or AI adoption - topics that have believers and non-believers).
+
+7. Viral feel-good and emotional clickbait. Stories whose primary appeal is an emotional reaction - "aww", laughter, tears, or outrage-then-relief - rather than substance. Reject: cute animal antics, heartwarming-stranger encounters, viral social-media moments, "faith in humanity restored" anecdotes, family or parenting moments caught on camera, and personality quizzes or listicles. Test: strip the emotional hook - is there still a meaningful story? If not, reject. A rescued individual animal is not conservation news. A kind stranger at a checkout is not societal progress.
+
+8. Individual human-interest without universal significance. Personal profiles, career pivots, "this person did an amazing thing" stories - unless the achievement represents a genuine first, a replicable model, or a breakthrough with impact beyond one life. Reject: inspiring-individual stories where the takeaway is just "this person is great", entrepreneurial origin stories, personal health journeys, family reunion or relationship stories, and any story about one person's kindness or persistence that doesn't reveal a wider truth.
+
+9. Recovery-from-negative / silver linings. Stories that are only "positive" because they follow something bad: disaster clean-up progress, animals rescued from abuse or injury, buildings reopening after damage, people recovering from trauma. If the headline requires knowledge of the preceding negative event to make sense, the story is a negative-event update, not positive news.
+
+10. Event-coverage padding. When a newsworthy event happens (eclipse, meteor shower, milestone anniversary), only the most substantive article deserves consideration. Reject: photo roundups, "how to watch/see X", viewer-reaction compilations, timelapse videos, "N people gathered for X", and any article that reports on the coverage of an event rather than the event's significance itself. "Good News in History" daily roundups also fall here.
+
+11. Cultural reviews and lifestyle content. Reviews of concerts, films, exhibitions, restaurants, travel destinations. Recipe roundups, "new addresses", gift guides. These are entertainment or lifestyle journalism, not positive news - even when the tone is enthusiastic.
+
+ACCEPT (verdict: YES) only when all of these hold:
+
+- The story is unambiguously positive - a reader should feel genuinely uplifted, not just informed. Unexpected stories are a bonus.
+- It has broad human relevance and travels across countries/cultures.
+- None of rules 1-11 apply.
+- The story has substance beyond the emotional hook. Ask: does this article teach the reader something new about how the world works, or does it just make them briefly smile? Science, environment, medicine, technology, and human achievement that advances understanding all pass this test. Cute, warm, and touching do not, by themselves.
+
+When in doubt, reject. False negatives are acceptable; false positives are not.`;
 
 /**
  * Assembles the complete prompt sent to the LLM for a given article.
- * `instructions` is either the user's custom override or the output of buildFilterInstructions().
+ * `instructions` is either the user's custom override or DEFAULT_FILTER_INSTRUCTIONS.
  *
  * When `translateToEnglish` is true (sources with an input language outside
  * en/nl/fr, including auto-detect), the model is also asked for a short

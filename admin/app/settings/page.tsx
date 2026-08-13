@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { buildFilterInstructions, DEFAULT_SUMMARISE_STYLE, THRESHOLD_LABELS } from "@/lib/prompts";
+import { DEFAULT_FILTER_INSTRUCTIONS, DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 
 type Provider = "anthropic" | "ollama" | "openai";
 type PositronitronMode = "off" | "fetch" | "summarise" | "full";
@@ -37,7 +37,6 @@ interface LLMSettings {
   summarise_provider: Provider;
   summarise_model: string;
   ollama_base_url: string;
-  filter_threshold: string;
   filter_prompt_override: string;
   summarise_style_override: string;
   positronitron_mode: PositronitronMode;
@@ -195,7 +194,6 @@ export default function SettingsPage() {
           data.summarise_model = "gpt-4.1";
         }
         // Ensure new fields have defaults if not yet in DB
-        if (!data.filter_threshold)          data.filter_threshold          = "5";
         if (data.filter_prompt_override   == null) data.filter_prompt_override   = "";
         if (data.summarise_style_override == null) data.summarise_style_override = "";
         if (!data.positronitron_mode || !POSITRONITRON_MODES.includes(data.positronitron_mode)) data.positronitron_mode = "off";
@@ -388,14 +386,13 @@ export default function SettingsPage() {
     return <p className="text-amber-600 text-sm">Loading settings…</p>;
   }
 
-  const threshold = parseInt(settings.filter_threshold) || 5;
   const filterHasOverride = settings.filter_prompt_override !== "";
   const summariseHasOverride = settings.summarise_style_override !== "";
 
   // What the filter instructions textarea shows
   const filterInstructionsPreview = filterHasOverride
     ? settings.filter_prompt_override
-    : buildFilterInstructions(threshold);
+    : DEFAULT_FILTER_INSTRUCTIONS;
 
   // What the summarise style textarea shows
   const summariseStylePreview = summariseHasOverride
@@ -419,38 +416,21 @@ export default function SettingsPage() {
           onModelChange={v => patch("filter_model", v)}
         />
 
-        {/* Threshold slider */}
+        {/* Filter instructions */}
         <div className="mt-5 pt-4 border-t border-yellow-100">
           <div className="flex items-center justify-between mb-1">
-            <label className="text-xs font-medium text-amber-700">Positivity strictness</label>
+            <label className="block text-xs font-medium text-amber-700">
+              Filter instructions
+              {filterHasOverride ? " — custom" : " — default"}
+            </label>
             {filterHasOverride && (
               <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-medium">
-                custom override active — slider disabled
+                customised
               </span>
             )}
           </div>
-          <div className="flex items-center gap-3 mb-1">
-            <span className="text-xs text-amber-500 w-16 shrink-0">Very lenient</span>
-            <input
-              type="range" min={1} max={10} step={1}
-              value={threshold}
-              disabled={filterHasOverride}
-              onChange={e => patch("filter_threshold", e.target.value)}
-              className="flex-1 accent-amber-600 disabled:opacity-40 disabled:cursor-not-allowed"
-            />
-            <span className="text-xs text-amber-500 w-16 shrink-0 text-right">Very strict</span>
-          </div>
-          <p className="text-xs text-amber-600 mb-4">{THRESHOLD_LABELS[threshold]}</p>
-
-          {/* Filter instructions textarea */}
-          <label className="block text-xs font-medium text-amber-700 mb-1">
-            Filter instructions
-            {filterHasOverride
-              ? " — custom (editing enabled)"
-              : " — auto-generated from slider (read-only)"}
-          </label>
           <textarea
-            rows={6}
+            rows={10}
             readOnly={!filterHasOverride}
             value={filterInstructionsPreview}
             onChange={e => patch("filter_prompt_override", e.target.value)}
@@ -463,17 +443,17 @@ export default function SettingsPage() {
           <div className="flex gap-2 mt-2">
             {!filterHasOverride ? (
               <button
-                onClick={() => patch("filter_prompt_override", buildFilterInstructions(threshold))}
+                onClick={() => patch("filter_prompt_override", DEFAULT_FILTER_INSTRUCTIONS)}
                 className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-3 py-1.5 rounded-lg transition-colors"
               >
-                ✎ Customise instructions
+                Customise instructions
               </button>
             ) : (
               <button
                 onClick={() => patch("filter_prompt_override", "")}
                 className="text-xs bg-orange-100 hover:bg-orange-200 text-orange-800 font-medium px-3 py-1.5 rounded-lg transition-colors"
               >
-                ↩ Reset to auto (slider)
+                Reset to default
               </button>
             )}
           </div>
@@ -616,7 +596,7 @@ export default function SettingsPage() {
               label="Filter"
               provider={settings.filter_provider}
               model={settings.filter_model}
-              extra={filterHasOverride ? "custom prompt" : `threshold ${threshold}`}
+              extra={filterHasOverride ? "custom prompt" : "default prompt"}
             />
             <ConfigRow
               label="Summarise"
@@ -764,9 +744,7 @@ export default function SettingsPage() {
               <summary className="cursor-pointer px-3 py-2 text-xs select-none">
                 <span className="font-medium text-amber-800">Positivity filter:</span>{" "}
                 <span className="text-amber-600">
-                  {filterHasOverride
-                    ? "custom override"
-                    : `threshold ${threshold} — ${(THRESHOLD_LABELS[threshold] || "").split(" — ")[1] || ""}`}
+                  {filterHasOverride ? "custom override" : "default"}
                 </span>
               </summary>
               <pre className="px-3 py-2 text-[11px] text-amber-700 whitespace-pre-wrap font-mono leading-relaxed border-t border-yellow-200 bg-white rounded-b-lg overflow-x-auto">{filterInstructionsPreview}</pre>

@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.9.0** | Data-driven filter prompt with 11 rejection rules — replaces the positivity strictness slider with a detailed rules-based prompt tuned on 2,033 false positives. New rules for viral feel-good, individual human-interest, recovery-from-negative, event-coverage padding, and cultural reviews. Custom override still available |
 | **3.8.1** | Add "Recompute weights" button to Settings — recompute source confidence weights on demand after manual approvals/discards |
 | **3.8.0** | Smarter Positronitron auto-selection — Bayesian source confidence weights boost articles from historically reliable sources; top 2 articles per run auto-flagged as digest picks for Substack cross-posting in full automation mode |
 | **3.7.0** | Update AI model options — Anthropic: Sonnet 5 + Opus 5 (replacing 4.6/4.5); OpenAI: GPT-4.1 family + o4-mini (replacing GPT-4o/o3-mini). Future-proof o-series model detection |

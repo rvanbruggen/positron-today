@@ -16,7 +16,7 @@ import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
 import { exportRejections } from "@/lib/export-rejections";
 import { getFilterProvider } from "@/lib/llm";
-import { buildFilterInstructions, buildFilterPrompt } from "@/lib/prompts";
+import { buildFilterPrompt } from "@/lib/prompts";
 import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import { isNativeOutputLanguage } from "@/lib/languages";
 import { runPositronitron } from "@/lib/positronitron-core";
@@ -257,8 +257,8 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
   await updateRun(runId, { phase: "classify" });
 
   const settings = await getSettings();
-  const filterInstructions = settings.filter_prompt_override ||
-    buildFilterInstructions(parseInt(settings.filter_threshold) || 5);
+  const { DEFAULT_FILTER_INSTRUCTIONS } = await import("./prompts");
+  const filterInstructions = settings.filter_prompt_override || DEFAULT_FILTER_INSTRUCTIONS;
 
   let totalAdded = 0, totalFiltered = 0, totalErrors = 0;
 

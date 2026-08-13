@@ -23,7 +23,6 @@ export async function PUT(request: NextRequest) {
       "summarise_provider",
       "summarise_model",
       "ollama_base_url",
-      "filter_threshold",
       "filter_prompt_override",
       "summarise_style_override",
       "positronitron_mode",
