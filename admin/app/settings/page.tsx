@@ -48,15 +48,15 @@ interface LLMSettings {
 
 const ANTHROPIC_MODELS = [
   { value: "claude-haiku-4-5-20251001", label: "Claude Haiku 4.5 — fast & cheap" },
-  { value: "claude-sonnet-4-6",         label: "Claude Sonnet 4.6 — balanced" },
-  { value: "claude-opus-4-5",           label: "Claude Opus 4.5 — best quality" },
+  { value: "claude-sonnet-5",           label: "Claude Sonnet 5 — balanced" },
+  { value: "claude-opus-5",             label: "Claude Opus 5 — best quality" },
 ];
 
 const OPENAI_MODELS = [
-  { value: "gpt-4o-mini", label: "GPT-4o mini — fast & cheap" },
-  { value: "gpt-4o",      label: "GPT-4o — balanced" },
-  { value: "o3-mini",     label: "o3-mini — reasoning, fast" },
-  { value: "o3",          label: "o3 — reasoning, best quality" },
+  { value: "gpt-4.1-mini", label: "GPT-4.1 Mini — fast & cheap" },
+  { value: "gpt-4.1",      label: "GPT-4.1 — balanced" },
+  { value: "o4-mini",      label: "o4-mini — reasoning, fast" },
+  { value: "o3",           label: "o3 — reasoning, best quality" },
 ];
 
 const PLATFORM_META: Record<string, { label: string; emoji: string; color: string }> = {
@@ -168,7 +168,7 @@ export default function SettingsPage() {
         if (data.error) throw new Error(data.error);
         // Auto-correct mismatched provider/model pairs
         const isClaudeModel  = (m: string) => m?.startsWith("claude-");
-        const isOpenAIModel  = (m: string) => m?.startsWith("gpt-") || m?.startsWith("o1") || m?.startsWith("o3");
+        const isOpenAIModel  = (m: string) => m?.startsWith("gpt-") || /^o[1-9]/i.test(m ?? "");
         if (data.filter_provider === "ollama" && (isClaudeModel(data.filter_model) || isOpenAIModel(data.filter_model))) {
           data.filter_model = "";
         }
@@ -176,10 +176,10 @@ export default function SettingsPage() {
           data.summarise_model = "";
         }
         if (data.filter_provider === "openai" && isClaudeModel(data.filter_model)) {
-          data.filter_model = "gpt-4o-mini";
+          data.filter_model = "gpt-4.1-mini";
         }
         if (data.summarise_provider === "openai" && isClaudeModel(data.summarise_model)) {
-          data.summarise_model = "gpt-4o";
+          data.summarise_model = "gpt-4.1";
         }
         // Ensure new fields have defaults if not yet in DB
         if (!data.filter_threshold)          data.filter_threshold          = "5";
@@ -1123,7 +1123,7 @@ function ProviderRow({ provider, model, ollamaModels, onProviderChange, onModelC
             const p = e.target.value as Provider;
             onProviderChange(p);
             if (p === "anthropic") onModelChange("claude-haiku-4-5-20251001");
-            else if (p === "openai") onModelChange("gpt-4o-mini");
+            else if (p === "openai") onModelChange("gpt-4.1-mini");
             else if (ollamaModels.length > 0) onModelChange(ollamaModels[0]);
             else onModelChange("");
           }}

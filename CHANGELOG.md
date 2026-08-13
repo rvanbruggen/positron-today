@@ -4,6 +4,7 @@ All notable changes to Positron Today. Newest first.
 
 | Version | Highlights |
 |---------|-----------|
+| **3.7.0** | Update AI model options — Anthropic: Sonnet 5 + Opus 5 (replacing 4.6/4.5); OpenAI: GPT-4.1 family + o4-mini (replacing GPT-4o/o3-mini). Future-proof o-series model detection |
 | **3.6.12** | Add Save button below editorial content editors so it's visible without scrolling back to Titles & Summaries |
 | **3.6.11** | Make editorial markdown content editable after translation — content textareas for all three languages in Ready/Scheduled status, saved via existing PATCH endpoint |
 | **3.6.10** | Style audio player for all three colour schemes (classic, mono, mondrian) — use CSS variables instead of hardcoded colours, add theme-specific overrides in themes.css |

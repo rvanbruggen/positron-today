@@ -39,7 +39,7 @@ const DEFAULTS: LLMSettings = {
   filter_provider: "anthropic",
   filter_model: "claude-haiku-4-5-20251001",
   summarise_provider: "anthropic",
-  summarise_model: "claude-sonnet-4-6",
+  summarise_model: "claude-sonnet-5",
   ollama_base_url: "http://localhost:11434",
   filter_threshold: "5",
   filter_prompt_override: "",

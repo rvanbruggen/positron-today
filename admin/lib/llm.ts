@@ -45,8 +45,8 @@ const anthropic = new Anthropic();
 
 const ANTHROPIC_MODELS: Record<string, string> = {
   "claude-haiku-4-5-20251001": "claude-haiku-4-5-20251001",
-  "claude-sonnet-4-6": "claude-sonnet-4-6",
-  "claude-opus-4-5": "claude-opus-4-5",
+  "claude-sonnet-5": "claude-sonnet-5",
+  "claude-opus-5": "claude-opus-5",
 };
 
 class AnthropicProvider implements LLMProvider {
@@ -259,8 +259,8 @@ const OLLAMA_DEFAULT_MODELS: Record<"filter" | "summarise", string> = {
 };
 
 const OPENAI_DEFAULT_MODELS: Record<"filter" | "summarise", string> = {
-  filter: "gpt-4o-mini",
-  summarise: "gpt-4o",
+  filter: "gpt-4.1-mini",
+  summarise: "gpt-4.1",
 };
 
 function isAnthropicModelName(model: string): boolean {
@@ -268,7 +268,7 @@ function isAnthropicModelName(model: string): boolean {
 }
 
 function isOpenAIModelName(model: string): boolean {
-  return model.startsWith("gpt-") || model.startsWith("o1") || model.startsWith("o3");
+  return model.startsWith("gpt-") || /^o[1-9]/i.test(model);
 }
 
 function buildProvider(settings: LLMSettings, task: "filter" | "summarise"): LLMProvider {
@@ -295,7 +295,7 @@ function buildProvider(settings: LLMSettings, task: "filter" | "summarise"): LLM
   }
 
   // Default: anthropic
-  const model = rawModel || (task === "filter" ? "claude-haiku-4-5-20251001" : "claude-sonnet-4-6");
+  const model = rawModel || (task === "filter" ? "claude-haiku-4-5-20251001" : "claude-sonnet-5");
   return new AnthropicProvider(ANTHROPIC_MODELS[model] ?? model);
 }
 
@@ -305,13 +305,13 @@ function buildProvider(settings: LLMSettings, task: "filter" | "summarise"): LLM
 
 export const ANTHROPIC_MODEL_OPTIONS = [
   { value: "claude-haiku-4-5-20251001", label: "Claude Haiku 4.5 (fast, cheap)" },
-  { value: "claude-sonnet-4-6",         label: "Claude Sonnet 4.6 (balanced)" },
-  { value: "claude-opus-4-5",           label: "Claude Opus 4.5 (best quality)" },
+  { value: "claude-sonnet-5",           label: "Claude Sonnet 5 (balanced)" },
+  { value: "claude-opus-5",             label: "Claude Opus 5 (best quality)" },
 ];
 
 export const OPENAI_MODEL_OPTIONS = [
-  { value: "gpt-4o-mini", label: "GPT-4o mini (fast, cheap)" },
-  { value: "gpt-4o",      label: "GPT-4o (balanced)" },
-  { value: "o3-mini",     label: "o3-mini (reasoning, fast)" },
-  { value: "o3",          label: "o3 (reasoning, best quality)" },
+  { value: "gpt-4.1-mini", label: "GPT-4.1 Mini (fast, cheap)" },
+  { value: "gpt-4.1",      label: "GPT-4.1 (balanced)" },
+  { value: "o4-mini",      label: "o4-mini (reasoning, fast)" },
+  { value: "o3",           label: "o3 (reasoning, best quality)" },
 ];
