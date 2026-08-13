@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-13T11:54:34.152Z",
-  "total_rejected": 113165,
+  "exported_at": "2026-08-13T11:54:37.189Z",
+  "total_rejected": 113166,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2025
+      "count": 2026
     },
     {
       "category": "divisive-racism",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 6236,
-      "total": 6431
+      "negative": 6237,
+      "total": 6432
     },
     {
       "source": "Le Figaro",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "VRT Nws",
+      "title": "Van Stonehenge tot Parijs: zo keek Europa naar de zonsverduistering",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://vrtnws.be/p.dLyPb8Qp3",
+      "date": "2026-08-13 13:54",
+      "positivity_score": null
+    },
     {
       "source": "VRT Nws",
       "title": "\"Een kleine banaan aan de hemel\": Gedeeltelijke zonsverduistering brengt massa volk op de been in Limburg",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses AI reporters breaking news, which may raise concerns about the implications for journalism and media integrity, fitting into the category of tech and AI anxiety.",
       "category": "tech-ai-concern",
       "url": "https://www.wired.com/story/ai-newsrooms-are-breaking-news-now-haha-im-in-danger/",
-      "date": "2026-08-12 14:26",
-      "positivity_score": 4
-    },
-    {
-      "source": "Wired",
-      "title": "The Job-Interview Tattoo Guy Everyone Got Mad at Finally Explains Himself",
-      "reason": "The article focuses on a controversial figure in the startup world, which may not be uplifting and could be seen as divisive. It also falls under celebrity and entertainment due to the nature of the subject.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.wired.com/story/linkedin-grindset-tattoo-guy-explains-himself/",
       "date": "2026-08-12 14:26",
       "positivity_score": 4
     }
