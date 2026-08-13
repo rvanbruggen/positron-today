@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-13T14:07:34.178Z",
-  "total_rejected": 113378,
+  "exported_at": "2026-08-13T14:07:42.390Z",
+  "total_rejected": 113380,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2030
+      "count": 2032
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 4203,
-      "total": 4239
+      "negative": 4204,
+      "total": 4240
     },
     {
       "source": "The New York Times",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1582,
-      "total": 1638
+      "negative": 1583,
+      "total": 1639
     },
     {
       "source": "De Standaard Binnenland",
@@ -391,6 +391,24 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "Azerbaijan bets on the pomegranate as its next big export",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/business/2026/08/13/azerbaijan-bets-on-the-pomegranate-as-its-next-big-export",
+      "date": "2026-08-13 16:07",
+      "positivity_score": null
+    },
+    {
+      "source": "Le Monde",
+      "title": "VIDEO Éclipse solaire : revivez le phénomène exceptionnel à travers le monde",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sciences/video/2026/08/13/eclipse-solaire-revivez-le-phenomene-astronomique-dans-le-monde_6745746_1650684.html",
+      "date": "2026-08-13 16:07",
+      "positivity_score": null
+    },
     {
       "source": "The Journal (Ireland)",
       "title": "From confused birds to 'useless' colanders: Tales of eclipse-watching from across Ireland",
@@ -9372,24 +9390,6 @@
       "url": "https://www.nature.com/articles/s41586-026-10909-6",
       "date": "2026-08-12 18:27",
       "positivity_score": 3
-    },
-    {
-      "source": "Nature",
-      "title": "Agentic profiles for effective AI governance",
-      "reason": "The article discusses AI governance, which falls under routine tech/industry updates and does not provide uplifting content or broad human relevance.",
-      "category": "tech-ai-concern",
-      "url": "https://www.nature.com/articles/s41586-026-10805-z",
-      "date": "2026-08-12 18:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Nature",
-      "title": "Reply to: Dataset artefacts can partially drive the measured decline in disruption",
-      "reason": "The article discusses technical aspects of datasets and their impact on disruption, which is not uplifting or broadly relevant to a general audience.",
-      "category": "tech-ai-concern",
-      "url": "https://www.nature.com/articles/s41586-026-10788-x",
-      "date": "2026-08-12 18:27",
-      "positivity_score": 2
     }
   ]
 }
