@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-13T06:48:08.331Z",
-  "total_rejected": 112976,
+  "exported_at": "2026-08-13T06:48:14.899Z",
+  "total_rejected": 112977,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2009
+      "count": 2010
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 4187,
-      "total": 4221
+      "negative": 4188,
+      "total": 4222
     },
     {
       "source": "The New York Times",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "« J’étais au bord des larmes » : l’éclipse solaire, un bref moment de « communion » pour des millions de curieux, en Espagne et en France",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sciences/article/2026/08/13/j-etais-au-bord-des-larmes-l-eclipse-solaire-un-bref-moment-de-communion-pour-des-millions-de-curieux-en-espagne-et-en-france_6745468_1650684.html",
+      "date": "2026-08-13 08:48",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Pierwsza taka apteka w Europie. Działa w pełni autonomicznie",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rnz.co.nz/news/country/976162/kiwi-dairy-industry-rides-the-wegovy-wave-as-whey-protein-booms",
       "date": "2026-08-12 10:29",
       "positivity_score": 4
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Rotorua seeks four-week extension after Head Start proposal falls apart",
-      "reason": "The article discusses a local political issue regarding a proposal that has fallen apart, which does not provide uplifting content and is of local-only relevance.",
-      "category": "political-conflict",
-      "url": "https://www.rnz.co.nz/news/ldr/977424/rotorua-seeks-four-week-extension-after-head-start-proposal-falls-apart",
-      "date": "2026-08-12 10:29",
-      "positivity_score": 3
     }
   ]
 }
