@@ -125,6 +125,11 @@ export default function SettingsPage() {
   const [digestResult,     setDigestResult]     = useState<string | null>(null);
   const [digestPending,    setDigestPending]    = useState<number | null>(null);
 
+  // Source confidence weights state
+  const [weightsInfo,       setWeightsInfo]       = useState<{ computed_at: string; global_confidence: number; source_count: number } | null>(null);
+  const [weightsComputing,  setWeightsComputing]  = useState(false);
+  const [weightsMsg,        setWeightsMsg]        = useState<string | null>(null);
+
   // Auth state
   const [loggingOut,   setLoggingOut]   = useState(false);
 
@@ -142,6 +147,14 @@ export default function SettingsPage() {
     fetch("/api/post-social-digest")
       .then(r => r.json())
       .then(data => setDigestPending(data.pending ?? null))
+      .catch(() => {});
+
+    // Load source confidence weight status
+    fetch("/api/source-confidence")
+      .then(r => r.json())
+      .then(data => {
+        if (data.computed) setWeightsInfo({ computed_at: data.computed_at, global_confidence: data.global_confidence, source_count: data.source_count });
+      })
       .catch(() => {});
 
     // Check Substack connectivity
@@ -659,6 +672,51 @@ export default function SettingsPage() {
             />
             <span className="text-xs text-amber-500">most positive articles selected per run</span>
           </div>
+          <div className={`mt-4 pt-4 border-t border-yellow-100 ${settings?.positronitron_mode === "off" ? "opacity-50" : ""}`}>
+            <label className="text-xs text-amber-700 font-medium">Source confidence weights:</label>
+            <div className="flex items-center gap-3 mt-1.5 flex-wrap">
+              {weightsInfo ? (
+                <span className="text-xs text-amber-600">
+                  {weightsInfo.source_count} sources, {(weightsInfo.global_confidence * 100).toFixed(1)}% global confidence
+                  <span className="text-amber-400 ml-1">
+                    (computed {new Date(weightsInfo.computed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })})
+                  </span>
+                </span>
+              ) : (
+                <span className="text-xs text-amber-400">Not yet computed</span>
+              )}
+              <button
+                onClick={async () => {
+                  setWeightsComputing(true);
+                  setWeightsMsg(null);
+                  try {
+                    const res = await fetch("/api/source-confidence", { method: "POST" });
+                    const data = await res.json();
+                    if (res.ok) {
+                      setWeightsInfo({ computed_at: data.computed_at, global_confidence: data.global_confidence, source_count: data.source_count });
+                      setWeightsMsg("Weights recomputed.");
+                      setTimeout(() => setWeightsMsg(null), 3000);
+                    } else {
+                      setWeightsMsg(`Error: ${data.error ?? res.statusText}`);
+                    }
+                  } catch (err) {
+                    setWeightsMsg(`Error: ${err instanceof Error ? err.message : String(err)}`);
+                  } finally {
+                    setWeightsComputing(false);
+                  }
+                }}
+                disabled={weightsComputing}
+                className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50 whitespace-nowrap"
+              >
+                {weightsComputing ? "Computing…" : "Recompute weights"}
+              </button>
+              {weightsMsg && <span className="text-xs text-amber-600">{weightsMsg}</span>}
+            </div>
+            <p className="text-[11px] text-amber-400 mt-1">
+              Weights are auto-recomputed when switching to full automation. Recompute manually after a batch of approvals/discards.
+            </p>
+          </div>
+
           <div className={`mt-4 ${settings?.positronitron_mode === "off" ? "opacity-50" : ""}`}>
             <label className="text-xs text-amber-700 font-medium">Run schedule:</label>
             <div className="flex flex-wrap items-center gap-2 mt-1.5">
