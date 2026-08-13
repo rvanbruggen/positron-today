@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-13T11:54:12.119Z",
-  "total_rejected": 113162,
+  "exported_at": "2026-08-13T11:54:16.462Z",
+  "total_rejected": 113163,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2022
+      "count": 2023
     },
     {
       "category": "divisive-racism",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1576,
-      "total": 1631
+      "negative": 1577,
+      "total": 1632
     },
     {
       "source": "De Standaard Binnenland",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "Timelapse of partial solar eclipse seen from Royal Observatory Greenwich",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/video/2026/08/13/timelapse-of-partial-solar-eclipse-seen-from-royal-observatory-greenwich",
+      "date": "2026-08-13 13:54",
+      "positivity_score": null
+    },
     {
       "source": "Euronews",
       "title": "Half a million visitors flock to Spain’s path of total solar eclipse",
@@ -9381,15 +9390,6 @@
       "url": "https://www.wired.com/story/how-to-choose-the-right-office-chair/",
       "date": "2026-08-12 14:26",
       "positivity_score": 3
-    },
-    {
-      "source": "Wired",
-      "title": "This Coin-Sized Device Can Hack a Boeing 737",
-      "reason": "The article discusses a security vulnerability that poses a significant threat to aviation safety, which is inherently negative and alarming.",
-      "category": "tech-ai-concern",
-      "url": "https://www.wired.com/story/this-coin-sized-device-can-hack-a-boeing-737/",
-      "date": "2026-08-12 14:26",
-      "positivity_score": 2
     }
   ]
 }
