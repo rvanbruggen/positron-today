@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-14T17:26:11.997Z",
-  "total_rejected": 114798,
+  "exported_at": "2026-08-14T17:26:42.789Z",
+  "total_rejected": 114799,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2050
+      "count": 2051
     },
     {
       "category": "divisive-racism",
@@ -340,6 +340,11 @@
       "total": 22
     },
     {
+      "source": "Quanta Magazine",
+      "negative": 21,
+      "total": 29
+    },
+    {
       "source": "Reasons to be Cheerful",
       "negative": 21,
       "total": 40
@@ -348,11 +353,6 @@
       "source": "BBC Uplifting stories",
       "negative": 20,
       "total": 20
-    },
-    {
-      "source": "Quanta Magazine",
-      "negative": 20,
-      "total": 28
     },
     {
       "source": "CNN",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Quanta Magazine",
+      "title": "Why Aging May Be a Program, Not a Breakdown",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.quantamagazine.org/why-aging-may-be-a-program-not-a-breakdown-20260814/",
+      "date": "2026-08-14 19:26",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "Immune cells flood into the aging brain, Stanford scientists discover",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rnz.co.nz/news/political/999625/lng-document-should-not-have-been-hidden-ombudsman-says",
       "date": "2026-08-13 21:24",
       "positivity_score": 4
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Fog restrictions in place at Auckland Airport",
-      "reason": "The article discusses fog restrictions at an airport, which is a routine operational update and lacks uplifting content or broader human relevance.",
-      "category": "soft-news-filler",
-      "url": "https://www.rnz.co.nz/news/weather/999665/fog-restrictions-in-place-at-auckland-airport",
-      "date": "2026-08-13 21:24",
-      "positivity_score": 2
     }
   ]
 }
