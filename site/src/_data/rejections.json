@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-14T06:36:23.142Z",
-  "total_rejected": 114220,
+  "exported_at": "2026-08-14T06:36:32.747Z",
+  "total_rejected": 114221,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2037
+      "count": 2038
     },
     {
       "category": "divisive-racism",
@@ -306,8 +306,8 @@
     },
     {
       "source": "Positive News",
-      "negative": 70,
-      "total": 125
+      "negative": 71,
+      "total": 126
     },
     {
       "source": "Microsoft Research",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Positive News",
+      "title": "What went right this week: the good news that matters",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.positive.news/society/good-news-stories-from-week-33-of-2026/",
+      "date": "2026-08-14 08:36",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "New bidding round opens at site of declined Golden Bay mining permit",
@@ -9381,15 +9390,6 @@
       "url": "https://www.knack.be/nieuws/milieu/klimaat/hoe-kunnen-gezinnen-zonder-dikke-portemonnee-hun-woning-tijdens-hittegolven-leefbaar-houden/",
       "date": "2026-08-13 14:26",
       "positivity_score": 4
-    },
-    {
-      "source": "Knack",
-      "title": "Oorlog Oekraïne: ‘De kwaliteit van het Noord-Koreaanse leger gaat erop vooruit, en dat maakt het gevaarlijker’",
-      "reason": "The article discusses the potential dangers of North Korea's military involvement in the Ukraine conflict, which is a negative and concerning topic rather than uplifting.",
-      "category": "war-conflict",
-      "url": "https://www.knack.be/nieuws/wereld/oorlog-oekraine-de-kwaliteit-van-het-noord-koreaanse-leger-gaat-erop-vooruit-en-dat-maakt-het-gevaarlijker/",
-      "date": "2026-08-13 14:26",
-      "positivity_score": 2
     }
   ]
 }
