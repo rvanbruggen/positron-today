@@ -1,11 +1,11 @@
 {
-  "exported_at": "2026-08-14T16:21:32.121Z",
-  "total_rejected": 114780,
+  "exported_at": "2026-08-14T16:25:42.319Z",
+  "total_rejected": 114794,
   "sources_count": 64,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 31146
+      "count": 31150
     },
     {
       "category": "soft-news-filler",
@@ -13,11 +13,11 @@
     },
     {
       "category": "sports-negative",
-      "count": 13341
+      "count": 13343
     },
     {
       "category": "crime-violence",
-      "count": 9364
+      "count": 9367
     },
     {
       "category": "celebrity-entertainment",
@@ -25,23 +25,23 @@
     },
     {
       "category": "disaster-accident",
-      "count": 7334
+      "count": 7335
     },
     {
       "category": "economic-doom",
-      "count": 7239
+      "count": 7240
     },
     {
       "category": "war-conflict",
-      "count": 5314
+      "count": 5315
     },
     {
       "category": "other-negative",
-      "count": 4721
+      "count": 4722
     },
     {
       "category": "health-scare",
-      "count": 4493
+      "count": 4494
     },
     {
       "category": "divisive-social",
@@ -71,18 +71,18 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 11124,
-      "total": 11367
+      "negative": 11125,
+      "total": 11368
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 11103,
-      "total": 11516
+      "negative": 11106,
+      "total": 11519
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 6887,
-      "total": 6994
+      "negative": 6890,
+      "total": 6997
     },
     {
       "source": "VRT Nws",
@@ -96,8 +96,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 5188,
-      "total": 5229
+      "negative": 5189,
+      "total": 5230
     },
     {
       "source": "Politiken.dk",
@@ -151,8 +151,8 @@
     },
     {
       "source": "De Standaard Buitenland",
-      "negative": 2202,
-      "total": 2216
+      "negative": 2203,
+      "total": 2217
     },
     {
       "source": "The Verge",
@@ -161,8 +161,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 2080,
-      "total": 2109
+      "negative": 2083,
+      "total": 2112
     },
     {
       "source": "The Guardian Europe",
@@ -181,13 +181,13 @@
     },
     {
       "source": "Euronews",
-      "negative": 1608,
-      "total": 1666
+      "negative": 1609,
+      "total": 1667
     },
     {
       "source": "Global News (Canada)",
-      "negative": 1425,
-      "total": 1457
+      "negative": 1426,
+      "total": 1458
     },
     {
       "source": "De Standaard Binnenland",
@@ -391,6 +391,132 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Mangione pleads guilty to federal charges in UnitedHealthcare CEO killing",
+      "reason": "The article discusses a guilty plea in a violent crime, which is inherently negative and does not uplift the reader.",
+      "category": "crime-violence",
+      "url": "https://www.aljazeera.com/news/2026/8/14/mangione-pleads-guilty-to-federal-charges-in-unitedhealthcare-ceo-killing?traffic_source=rss",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 2
+    },
+    {
+      "source": "Al Jazeera English",
+      "title": "Top French court upholds assisted dying law, rejects teen social media ban",
+      "reason": "The article discusses political decisions regarding assisted dying and social media bans, which falls under political conflict and does not provide a strictly positive narrative.",
+      "category": "political-conflict",
+      "url": "https://www.aljazeera.com/news/2026/8/14/top-french-court-upholds-assisted-dying-law-rejects-teen-social-media-ban?traffic_source=rss",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 4
+    },
+    {
+      "source": "Al Jazeera English",
+      "title": "Philippines drug war victims seek justice through truth commission",
+      "reason": "The article focuses on victims of a violent drug war seeking justice, which is a serious and negative issue rather than uplifting news.",
+      "category": "crime-violence",
+      "url": "https://www.aljazeera.com/features/2026/8/14/philippines-drug-war-victims-seek-justice-through-truth-commission?traffic_source=rss",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 4
+    },
+    {
+      "source": "Global News (Canada)",
+      "title": "Luigi Mangione pleads guilty to federal stalking charges in Brian Thompson killing",
+      "reason": "The article discusses a federal stalking case, which is a negative legal issue and does not provide uplifting content.",
+      "category": "crime-violence",
+      "url": "https://globalnews.ca/news/12021641/luigi-mangione-guilty-plea-federal-trial/",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 2
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Experter: Säkerhetsläget motiverade ingripandet mot exilryssar",
+      "reason": "The article discusses a police intervention related to security concerns involving tourists, which reflects a negative situation rather than a positive development.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/ekonomi/experter-sakerhetslaget-motiverade-ingripandet-mot-exilryssar/",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 2
+    },
+    {
+      "source": "Euronews",
+      "title": "US backs Japanese sovereignty over disputed islands after Putin visit",
+      "reason": "The article discusses a political conflict regarding territorial sovereignty, which falls under political news rather than positive news.",
+      "category": "political-conflict",
+      "url": "http://www.euronews.com/2026/08/14/us-backs-japanese-sovereignty-over-disputed-islands-after-putin-visit",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 3
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Fundacje rodzinne od nowego roku na nowych zasadach",
+      "reason": "The article discusses changes in taxation for family foundations, which falls under political and economic news rather than uplifting content.",
+      "category": "political-conflict",
+      "url": "https://pro.rp.pl/cit/art44999011-fundacje-rodzinne-od-nowego-roku-na-nowych-zasadach",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 2
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Popyt wrócił na warszawską giełdę",
+      "reason": "The article discusses stock market performance, which falls under corporate PR and routine economic updates, lacking broader human relevance or uplifting substance.",
+      "category": "economic-doom",
+      "url": "https://www.rp.pl/gielda/art45000941-popyt-wrocil-na-warszawska-gielde",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 3
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Orzeczenie o niepełnosprawności. Ulgi i świadczenia dla 3 grup LISTA",
+      "reason": "The article focuses on disability benefits and entitlements, which, while informative, does not provide a universally uplifting or positive narrative. It lacks broader human relevance and is more of a practical guide than a story that inspires or uplifts.",
+      "category": "other-negative",
+      "url": "https://www.rp.pl/niepelnosprawni/art44973051-orzeczenie-o-niepelnosprawnosci-ulgi-i-swiadczenia-dla-3-grup-lista",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 3
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "“De afkoelende handdoekjes waren op een mum van tijd uitverkocht”",
+      "reason": "The article focuses on a local event and personal experiences related to a specific sports event, which does not have broad human relevance.",
+      "category": "sports-negative",
+      "url": "https://www.gva.be/regio/antwerpen/rivierenland/bornem/de-afkoelende-handdoekjes-waren-op-een-mum-van-tijd-uitverkocht/160054552.html",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 3
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Vier doden in amper twee dagen op Mont Blanc",
+      "reason": "The article reports on multiple fatalities in a mountain accident, which is a negative event and does not provide uplifting content.",
+      "category": "disaster-accident",
+      "url": "https://www.gva.be/buitenland/vier-doden-in-amper-twee-dagen-op-mont-blanc/160054601.html",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 2
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "“Wij zijn een speciale gemeenschap met veel machotypes”: waarom mentaal welzijn een issue blijft in het leger ",
+      "reason": "The article discusses mental health issues in the military, which is a serious topic that does not present a strictly positive narrative and lacks uplifting elements.",
+      "category": "health-scare",
+      "url": "https://www.gva.be/buitenland/wij-zijn-een-speciale-gemeenschap-met-veel-machotypes-waarom-mentaal-welzijn-een-issue-blijft-in-het-leger/160055090.html",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 4
+    },
+    {
+      "source": "De Standaard Buitenland",
+      "title": "Oekraïens-Russische oorlog in de Zwarte Zee barst weer los: niet alleen olie, maar ook graan is opnieuw een oorlogswapen",
+      "reason": "The article discusses the ongoing conflict between Ukraine and Russia, focusing on the negative implications of grain being used as a weapon, which is not uplifting and highlights economic concerns.",
+      "category": "war-conflict",
+      "url": "https://www.standaard.be/buitenland/oekraens-russische-oorlog-in-de-zwarte-zee-barst-weer-los-niet-alleen-olie-maar-ook-graan-is-opnieuw-een-oorlogswapen/159978511.html",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 2
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Veertig jaar na WK ‘86 keert Jean-Marie Pfaff naar Mexico om er voetbalvelden te openen: “Ik weet zelf hoe belangrijk het is om als kind kansen te krijgen”",
+      "reason": "The article focuses on a former athlete returning to a country to open football fields, which falls under sports content and lacks broader human relevance beyond the local context.",
+      "category": "sports-negative",
+      "url": "https://www.hln.be/beveren-kruibeke-zwijndrecht/veertig-jaar-na-wk-86-keert-jean-marie-pfaff-naar-mexico-om-er-voetbalvelden-te-openen-ik-weet-zelf-hoe-belangrijk-het-is-om-als-kind-kansen-te-krijgen~a4194995/",
+      "date": "2026-08-14 18:25",
+      "positivity_score": 4
+    },
     {
       "source": "AllAfrica",
       "title": "Nigeria: U.S. Flags Civilian Deaths, Funding Gaps As Nigeria Pushes for CPC Delisting",
@@ -9263,132 +9389,6 @@
       "category": "disaster-accident",
       "url": "https://www.rnz.co.nz/news/weather/999238/gisborne-residents-urged-to-be-ready-for-flooding-and-slips",
       "date": "2026-08-13 21:24",
-      "positivity_score": 2
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Buyer sought for unfinished Seascape tower on Auckland waterfront",
-      "reason": "The article discusses an unfinished construction project and the search for a buyer, which does not convey a positive or uplifting message. It primarily focuses on economic aspects rather than a broader human interest or achievement.",
-      "category": "economic-doom",
-      "url": "https://www.rnz.co.nz/news/business/999731/buyer-sought-for-unfinished-seascape-tower-on-auckland-waterfront",
-      "date": "2026-08-13 21:24",
-      "positivity_score": 3
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Is Russia’s economy cracking despite the Iran war windfall?",
-      "reason": "The article discusses the challenges facing Russia's economy amidst ongoing conflicts, which is inherently negative and does not provide uplifting content.",
-      "category": "economic-doom",
-      "url": "https://www.aljazeera.com/video/counting-the-cost/2026/8/13/is-russias-economy-cracking-despite-the-iran-war-windfall?traffic_source=rss",
-      "date": "2026-08-13 21:24",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Reports of US sailors in Middle East trying to jump ship spark outcry",
-      "reason": "The article discusses US sailors attempting to leave their ship amid a conflict, which highlights a negative situation rather than a positive one. It focuses on political and military tensions, making it unsuitable for a positive news platform.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/news/2026/8/13/reports-of-us-sailors-in-middle-east-trying-to-jump-ship-spark-outcry?traffic_source=rss",
-      "date": "2026-08-13 21:24",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "China and Indonesia’s joint naval drills anger Taiwan",
-      "reason": "The article discusses a military drill that has caused tension, which is inherently negative and does not uplift the reader.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/13/china-and-indonesias-joint-naval-drills-anger-taiwan?traffic_source=rss",
-      "date": "2026-08-13 21:24",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "DR Congo Ebola outbreak spreads to a sixth province",
-      "reason": "The article discusses the spread of an Ebola outbreak, which is a serious health crisis and not uplifting news.",
-      "category": "health-scare",
-      "url": "https://www.aljazeera.com/news/2026/8/13/dr-congo-ebola-outbreak-spreads-to-a-sixth-province?traffic_source=rss",
-      "date": "2026-08-13 21:24",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Trump administration ‘gutted’ federal civil rights enforcement, HRW says",
-      "reason": "The article discusses the negative impact of the Trump administration on federal civil rights enforcement, which is a political issue and not uplifting.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/news/2026/8/13/trump-administration-gutted-federal-civil-rights-enforcement-hrw-says?traffic_source=rss",
-      "date": "2026-08-13 21:23",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Gaza mural for Burger King worker fired for shouting ‘Free Palestine’",
-      "reason": "The article focuses on a mural honoring a fired employee in a politically charged context, which ties back to ongoing conflict and social tensions, making it less universally uplifting.",
-      "category": "divisive-social",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/13/gaza-mural-for-burger-king-worker-fired-for-shouting-free?traffic_source=rss",
-      "date": "2026-08-13 21:23",
-      "positivity_score": 4
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Poland arrests man who allegedly tried to kill Ukrainian American",
-      "reason": "The article discusses a violent crime involving a plot to kill, which is inherently negative and does not uplift the reader.",
-      "category": "crime-violence",
-      "url": "https://www.aljazeera.com/news/2026/8/13/poland-arrests-man-who-allegedly-tried-to-kill-ukrainian-american?traffic_source=rss",
-      "date": "2026-08-13 21:23",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Judge nixes Trump lawsuit alleging Harvard did not protect Jewish students",
-      "reason": "The article discusses a legal ruling related to a political conflict, which does not provide uplifting content and is primarily focused on a divisive issue.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/news/2026/8/13/judge-nixes-trump-lawsuit-alleging-harvard-did-not-protect-jewish-students?traffic_source=rss",
-      "date": "2026-08-13 21:23",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Carrick urges Manchester United to sign more transfers to boost title bid",
-      "reason": "The article focuses on Manchester United's need for more transfers to compete for the title, which is a routine sports update and lacks uplifting content.",
-      "category": "sports-negative",
-      "url": "https://www.aljazeera.com/sports/2026/8/13/carrick-urges-manchester-united-to-sign-more-transfers-to-boost-title-bid?traffic_source=rss",
-      "date": "2026-08-13 21:23",
-      "positivity_score": 3
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Europe swelters in latest wave of extreme heat",
-      "reason": "The article discusses extreme heat in Europe, which is a negative environmental issue rather than a positive news story.",
-      "category": "climate-environment",
-      "url": "https://www.aljazeera.com/news/2026/8/13/europe-swelters-in-latest-wave-of-extreme-heat?traffic_source=rss",
-      "date": "2026-08-13 21:23",
-      "positivity_score": 2
-    },
-    {
-      "source": "The Better India",
-      "title": "From Dehradun to Bollywood | Archana Puran Singh’s Journey ",
-      "reason": "The article focuses on the personal journey of a celebrity in the entertainment industry, which falls under the category of celebrity and entertainment news rather than broader positive news with universal significance.",
-      "category": "celebrity-entertainment",
-      "url": "https://thebetterindia.com/videos/film/from-dehradun-to-bollywood-archana-puran-singhs-journey-12258301",
-      "date": "2026-08-13 21:23",
-      "positivity_score": 3
-    },
-    {
-      "source": "MIT Technology Review",
-      "title": "Building a practical path to post-quantum cryptography",
-      "reason": "The article discusses the challenges posed by quantum computing to current cryptography, which leans towards a negative perspective on technology rather than a strictly positive narrative.",
-      "category": "tech-ai-concern",
-      "url": "https://www.technologyreview.com/2026/08/13/1141041/building-a-practical-path-to-post-quantum-cryptography/",
-      "date": "2026-08-13 21:23",
-      "positivity_score": 4
-    },
-    {
-      "source": "The Journal (Ireland)",
-      "title": "Families of sailors on US aircraft carrier say loved ones are despairing after 250 days at sea",
-      "reason": "The article discusses the despair of sailors' families after a prolonged deployment, which is a negative situation related to war and conflict.",
-      "category": "war-conflict",
-      "url": "https://www.thejournal.ie/us-sailors-suicide-iran-war-7129733-Aug2026/",
-      "date": "2026-08-13 21:23",
       "positivity_score": 2
     }
   ]
