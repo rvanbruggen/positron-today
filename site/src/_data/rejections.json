@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-14T13:46:26.863Z",
-  "total_rejected": 114572,
+  "exported_at": "2026-08-14T13:46:36.771Z",
+  "total_rejected": 114573,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2044
+      "count": 2045
     },
     {
       "category": "divisive-racism",
@@ -141,8 +141,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 2450,
-      "total": 2461
+      "negative": 2451,
+      "total": 2462
     },
     {
       "source": "Neue Zürcher Zeitung",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "For første gang har topskarven ynglet i Danmark",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dr.dk/nyheder/seneste/foerste-gang-har-topskarven-ynglet-i-danmark",
+      "date": "2026-08-14 15:46",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Nigeria: How Lagos Pioneers Built a Vibrant Yoruba Print Culture in the 1920s - At the Height of Colonialism",
@@ -9379,15 +9388,6 @@
       "reason": "The article reports on a homicide investigation, which is a negative event and does not provide uplifting content.",
       "category": "crime-violence",
       "url": "https://globalnews.ca/news/12019985/saskatoon-homicide-man-dead-apartment/",
-      "date": "2026-08-13 18:17",
-      "positivity_score": 2
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Vance asked Ukraine to not strike Russian energy infrastructure: reports",
-      "reason": "The article discusses military actions and their consequences, which are inherently negative and related to ongoing conflict, making it unsuitable for positive news.",
-      "category": "war-conflict",
-      "url": "https://globalnews.ca/news/12020009/vance-ukraine-strike-russian-energy-infrastructure/",
       "date": "2026-08-13 18:17",
       "positivity_score": 2
     }
