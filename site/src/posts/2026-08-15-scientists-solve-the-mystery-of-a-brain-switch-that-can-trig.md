@@ -2,7 +2,7 @@
 title: "Scientists solve the mystery of a brain “switch” that can trigger weight loss in opposite ways"
 title_nl: "Wetenschappers ontrafelen het mysterie van een hersenschakelaar die op verschillende manieren gewichtsverlies kan veroorzaken"
 title_fr: "Des scientifiques résolvent le mystère d'un « interrupteur » cérébral qui peut déclencher une perte de poids de différentes manières"
-date: 2026-08-15T16:31:45
+date: 2026-08-15T16:30:21
 source_pub_date: 2026-08-15
 fetched_date: 2026-08-15
 source_url: "https://www.sciencedaily.com/releases/2026/08/260814011039.htm"
