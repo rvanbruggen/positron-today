@@ -2,7 +2,7 @@
 title: "388 years ago, Galileo worked out why human giants can't exist—and explained a law of nature"
 title_nl: "388 jaar geleden ontdekte Galileo waarom menselijke reuzen niet kunnen bestaan - en legde een natuurwet uit"
 title_fr: "Il y a 388 ans, Galilée a compris pourquoi les géants humains ne peuvent pas exister - et a expliqué une loi de la nature"
-date: 2026-08-15T16:31:51
+date: 2026-08-15T16:31:54
 source_pub_date: 2026-08-15
 fetched_date: 2026-08-15
 source_url: "https://www.scientificamerican.com/article/388-years-ago-galileo-worked-out-why-human-giants-cant-exist-and-explained-a-law-of-nature/"
