@@ -2,7 +2,7 @@
 title: "This independence day, we're celebrating a different kind of hero"
 title_nl: "Deze onafhankelijkheidsdag vieren we een ander soort held"
 title_fr: "Ce jour de l'indépendance, nous célébrons un autre type de héros"
-date: 2026-08-15T08:34:37
+date: 2026-08-15T08:34:41
 source_pub_date: 2026-08-15
 fetched_date: 2026-08-15
 source_url: "https://thebetterindia.com/changemakers/civic-sense-heroes-india-patriotism-citizens-community-action-independence-day-12261678"
