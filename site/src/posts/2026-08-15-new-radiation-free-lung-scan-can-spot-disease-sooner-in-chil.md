@@ -2,7 +2,7 @@
 title: "New radiation-free lung scan can spot disease sooner in children – and it’s much safer"
 title_nl: "Nieuwe stralingsvrije longscan kan ziekten eerder opsporen bij kinderen - en het is veel veiliger"
 title_fr: "Nouvelle scan pulmonaire sans radiation peut détecter la maladie plus tôt chez les enfants - et c'est beaucoup plus sûr"
-date: 2026-08-15T08:34:46
+date: 2026-08-15T08:34:56
 source_pub_date: 2026-08-14
 fetched_date: 2026-08-15
 source_url: "https://www.goodnewsnetwork.org/new-radiation-free-lung-scan-could-help-doctors-spot-disease-in-children-earlier/"
