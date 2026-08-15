@@ -2,7 +2,7 @@
 title: "New discovery at Göbekli Tepe: archaeologists find houses from 11,000 years ago"
 title_nl: "Nieuwe ontdekking in Göbekli Tepe: archeologen vinden huizen van 11.000 jaar geleden"
 title_fr: "Nouvelle découverte à Göbekli Tepe : des archéologues trouvent des maisons datant de 11 000 ans"
-date: 2026-08-15T08:34:51
+date: 2026-08-15T08:34:58
 source_pub_date: 2026-08-14
 fetched_date: 2026-08-14
 source_url: "https://www.rp.pl/archeologia/art45001801-nowe-odkrycie-w-goebekli-tepe-archeolodzy-znalezli-domy-sprzed-11-tysiecy-lat"
