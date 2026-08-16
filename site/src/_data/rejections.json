@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-16T16:12:09.295Z",
-  "total_rejected": 116462,
+  "exported_at": "2026-08-16T16:12:23.991Z",
+  "total_rejected": 116463,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2078
+      "count": 2079
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 4327,
-      "total": 4368
+      "negative": 4328,
+      "total": 4369
     },
     {
       "source": "The New York Times",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Vidéo : quatre semaine à bord d’un brise-glace, ces navires à la technologie de plus en plus convoitée",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/videos/video/2026/08/16/video-quatre-semaine-a-bord-d-un-brise-glace-ces-navires-a-la-technologie-de-plus-en-plus-convoitee_6747469_1669088.html",
+      "date": "2026-08-16 18:12",
+      "positivity_score": null
+    },
     {
       "source": "Le Monde",
       "title": "En Sierra Leone, la cohabitation exemplaire des chrétiens et des musulmans, loin des tensions confessionnelles des pays de la région",
@@ -9381,15 +9390,6 @@
       "url": "https://www.gva.be/regio/oost-vlaanderen/waasland/sint-niklaas/politie-onderschept-dief-die-er-met-step-vandoor-wil-gaan/160068897.html",
       "date": "2026-08-15 14:26",
       "positivity_score": 3
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Vliegtuigjes niet op kermis dit jaar, wel andere attractie Fiesta del Dia",
-      "reason": "The article focuses on a local event and the absence of a specific attraction, which lacks broader human relevance and does not uplift readers outside the locality.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/zandhoven/vliegtuigjes-niet-op-kermis-dit-jaar-wel-andere-attractie-fiesta-del-dia/160068758.html",
-      "date": "2026-08-15 14:26",
-      "positivity_score": 4
     }
   ]
 }
