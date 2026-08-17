@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-17T11:03:56.921Z",
-  "total_rejected": 117104,
+  "exported_at": "2026-08-17T11:04:45.347Z",
+  "total_rejected": 117105,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2085
+      "count": 2086
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 11292,
-      "total": 11538
+      "negative": 11293,
+      "total": 11539
     },
     {
       "source": "Gazet van Antwerpen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Tot 10 extra gezonde levensjaren en goed voor je portemonnee”: waarom het ‘groene’ mediterrane dieet nóg beter is dan het klassieke",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/gezondheid/tot-10-extra-gezonde-levensjaren-en-goed-voor-je-portemonnee-waarom-het-groene-mediterrane-dieet-nog-beter-is-dan-het-klassieke~aeb9c265/",
+      "date": "2026-08-17 13:04",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "This Forester Spotted a Strange Crab on Patrol. It Led to the Discovery of a New Species in Karnataka ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lalibre.be/international/europe/2026/08/16/12-morts-et-au-moins-10-blesses-graves-un-bus-sest-renverse-en-hongrie-VG2OO7OMYRAW5BNUVZBHD6AHUI/",
       "date": "2026-08-16 10:27",
       "positivity_score": 2
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "Le patron de Bscovery, spécialisé dans le tourisme haut de gamme : “Nous visons d'ici 2028 un chiffre d’affaires de 100 millions d’euros”",
-      "reason": "The article focuses on corporate strategy and financial goals of a tourism company, which falls under corporate PR and lacks broader human relevance.",
-      "category": "soft-news-filler",
-      "url": "https://www.lalibre.be/economie/entreprises-startup/2026/08/16/le-patron-de-bscovery-specialise-dans-le-tourisme-haut-de-gamme-nous-visons-dici-2028-un-chiffre-daffaires-de-100-millions-deuros-AMMI6ELBAJB5DNIG4JQ7HN2XG4/",
-      "date": "2026-08-16 10:27",
-      "positivity_score": 4
     }
   ]
 }
