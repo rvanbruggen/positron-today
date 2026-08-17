@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-17T16:30:37.833Z",
-  "total_rejected": 117528,
+  "exported_at": "2026-08-17T17:14:33.093Z",
+  "total_rejected": 117530,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2087
+      "count": 2089
     },
     {
       "category": "divisive-racism",
@@ -186,8 +186,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 1503,
-      "total": 1538
+      "negative": 1504,
+      "total": 1539
     },
     {
       "source": "Le Soir",
@@ -260,14 +260,14 @@
       "total": 817
     },
     {
+      "source": "The Better India",
+      "negative": 342,
+      "total": 593
+    },
+    {
       "source": "ANSA English (Italy)",
       "negative": 341,
       "total": 346
-    },
-    {
-      "source": "The Better India",
-      "negative": 341,
-      "total": 592
     },
     {
       "source": "The Washington Post",
@@ -391,6 +391,24 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "RCMP help recover ancient Peruvian artifact in Montreal",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12023990/rcmp-peruvian-artifact-montreal/",
+      "date": "2026-08-17 19:14",
+      "positivity_score": null
+    },
+    {
+      "source": "The Better India",
+      "title": "Born Blind, He Fought a High Court Battle for Engineering. Today, He’s a Software Vice President ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://thebetterindia.com/changemakers/blind-engineer-nagababu-jannu-high-court-andhra-admission-fight-12296028",
+      "date": "2026-08-17 19:13",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Nigeria: CJID Deploys Observers, Fact-Checkers and Analysts Across Osun for 2026 Governorship Election",
@@ -9370,24 +9388,6 @@
       "reason": "The article reports on a significant military conflict event resulting in casualties, which is inherently negative and does not uplift the reader.",
       "category": "war-conflict",
       "url": "https://www.aljazeera.com/video/newsfeed/2026/8/16/16-08-sv-ukraine-largest-drone-attack-russia-ua?traffic_source=rss",
-      "date": "2026-08-16 18:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Moroccan migrants stage sit-in as thousands remain stranded in Ceuta",
-      "reason": "The article focuses on a protest by migrants, highlighting their struggles and demands, which is a reflection of a negative situation rather than a positive news story.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/16/moroccan-migrants-stage-sit-in-as-thousands-remain-stranded-in-ceuta?traffic_source=rss",
-      "date": "2026-08-16 18:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "The Journal (Ireland)",
-      "title": "Minister says 'informed decision' must be made on school transport policy after many children without place on bus",
-      "reason": "The article discusses a policy issue regarding school transport that affects children's access to bus services, which is a negative situation rather than a positive news story.",
-      "category": "political-conflict",
-      "url": "https://www.thejournal.ie/school-bus-places-7132647-Aug2026/",
       "date": "2026-08-16 18:26",
       "positivity_score": 2
     }
