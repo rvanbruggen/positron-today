@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-18T04:59:31.743Z",
-  "total_rejected": 117959,
+  "exported_at": "2026-08-18T05:01:05.111Z",
+  "total_rejected": 117960,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2090
+      "count": 2091
     },
     {
       "category": "divisive-racism",
@@ -126,8 +126,8 @@
     },
     {
       "source": "The New York Times",
-      "negative": 4077,
-      "total": 4124
+      "negative": 4078,
+      "total": 4125
     },
     {
       "source": "BBC Top Stories",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The New York Times",
+      "title": "How One Woman With a Very Rare Disease Secured a Clinical Trial",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nytimes.com/2026/08/17/science/clinical-trial-jansens-disease-nizar-nih.html",
+      "date": "2026-08-18 07:01",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "FAO World Food Prices edged up in April, mainly cereals, vegetable oils and sugar",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses the negative impact of wildfires on the viticulture industry in Canada, focusing on the struggles of winemakers, which is not uplifting and highlights a disaster situation.",
       "category": "disaster-accident",
       "url": "https://avis-vin.lefigaro.fr/terroir-viticulture/nous-avons-pour-45-000-dollars-canadiens-de-recolte-au-canada-la-viticulture-mise-a-mal-par-les-incendies-20260817",
-      "date": "2026-08-17 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Les incendies ont fait chuter la fréquentation touristique de 50% en Gironde, selon le Medef et la CCI",
-      "reason": "The article discusses a significant decline in tourist attendance due to wildfires, which is a negative event and does not provide uplifting content.",
-      "category": "disaster-accident",
-      "url": "https://www.lefigaro.fr/conjoncture/les-incendies-ont-fait-chuter-la-frequentation-touristique-de-50-en-gironde-selon-le-medef-et-la-cci-20260817",
       "date": "2026-08-17 10:26",
       "positivity_score": 2
     }
