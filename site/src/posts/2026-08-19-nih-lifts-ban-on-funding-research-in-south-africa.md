@@ -2,7 +2,7 @@
 title: "NIH lifts ban on funding research in South Africa"
 title_nl: "NIH heft verbod op financiering van onderzoek in Zuid-Afrika"
 title_fr: "Le NIH lève l'interdiction de financer la recherche en Afrique du Sud"
-date: 2026-08-19T08:36:21
+date: 2026-08-19T08:36:27
 source_pub_date: 2026-08-18
 fetched_date: 2026-08-19
 source_url: "https://www.science.org/content/article/nih-lifts-ban-funding-research-south-africa"
