@@ -2,7 +2,7 @@
 title: "NASA’s next flying lab readies for takeoff after new paint job"
 title_nl: "NASA’s volgende vliegende laboratorium is klaar voor vertrek na een nieuwe verfbeurt"
 title_fr: "Le prochain laboratoire volant de la NASA se prépare à décoller après une nouvelle peinture"
-date: 2026-08-19T08:36:41
+date: 2026-08-19T08:36:39
 source_pub_date: 2026-08-18
 fetched_date: 2026-08-18
 source_url: "https://www.popsci.com/science/nasa-plane-laboratory/"
