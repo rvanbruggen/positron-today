@@ -2,7 +2,7 @@
 title: "Scientists stunned by children's lung recovery in ultra low emission zone"
 title_nl: "Wetenschappers versteld van het herstel van de longen van kinderen in ultra lage-emissiezone"
 title_fr: "Les scientifiques stupéfaits par la récupération des poumons des enfants dans une zone à ultra faibles émissions"
-date: 2026-08-19T08:36:33
+date: 2026-08-19T08:36:38
 source_pub_date: 2026-08-18
 fetched_date: 2026-08-19
 source_url: "https://www.bbc.co.uk/news/articles/c1l1r1zne1ro?at_medium=RSS&at_campaign=rss"
