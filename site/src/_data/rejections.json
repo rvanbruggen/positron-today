@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-19T17:26:27.573Z",
-  "total_rejected": 119680,
+  "exported_at": "2026-08-19T17:26:41.689Z",
+  "total_rejected": 119681,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2107
+      "count": 2108
     },
     {
       "category": "divisive-racism",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 6481,
-      "total": 6684
+      "negative": 6482,
+      "total": 6685
     },
     {
       "source": "Le Figaro",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "VRT Nws",
+      "title": "25.000 kilometer per seconde: astronomen ontdekken snelste ster die rond zwarte gat in centrum van Melkweg draait",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://vrtnws.be/p.0YJbZ4Z0m",
+      "date": "2026-08-19 19:26",
+      "positivity_score": null
+    },
     {
       "source": "Good News Network",
       "title": "Italian Police Recover Stolen Renoir, Cézanne and Matisse Artworks Worth Millions",
@@ -9380,15 +9389,6 @@
       "category": "political-conflict",
       "url": "https://www.faz.net/aktuell/feuilleton/buecher/sachbuch/christiane-hoffmann-ueber-den-niedergang-der-deutsch-russischen-beziehungen-accg-201047205.html",
       "date": "2026-08-18 21:22",
-      "positivity_score": 2
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Sorgen um Gesundheit: Bayern-Nationalspieler Musiala bricht schon wieder zusammen",
-      "reason": "The article discusses a health scare involving a professional athlete, which is not uplifting and falls under sports-related negative news.",
-      "category": "sports-negative",
-      "url": "https://www.faz.net/aktuell/sport/fussball/bundesliga/jamal-musiala-fc-bayern-muenchen-star-bricht-in-heidenheim-zusammen-201138495.html",
-      "date": "2026-08-18 21:21",
       "positivity_score": 2
     }
   ]
