@@ -2,7 +2,7 @@
 title: "Prestigeproject voor Fernand Huts: waarom de Antwerpse ondernemer de grootste beiaard ter wereld bouwt"
 title_nl: "Prestigeproject voor Fernand Huts: waarom de Antwerpse ondernemer de grootste beiaard ter wereld bouwt"
 title_fr: "Projet prestigieux pour Fernand Huts : pourquoi l'entrepreneur anversois construit la plus grande carillonne du monde"
-date: 2026-08-19T08:36:32
+date: 2026-08-19T08:36:25
 source_pub_date: 2026-08-18
 fetched_date: 2026-08-18
 source_url: "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/prestigeproject-voor-fernand-huts-waarom-de-antwerpse-ondernemer-de-grootste-beiaard-ter-wereld-bouwt/160173498.html"
