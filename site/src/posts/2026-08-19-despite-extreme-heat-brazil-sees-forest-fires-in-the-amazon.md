@@ -2,7 +2,7 @@
 title: "Despite extreme heat, Brazil sees forest fires in the Amazon decline: “There are really solutions possible”"
 title_nl: "Ondanks extreme hitte ziet Brazilië bosbranden in het Amazonewoud dalen: “Er zijn echt wel oplossingen mogelijk”"
 title_fr: "Malgré la chaleur extrême, le Brésil voit les incendies de forêt en Amazonie diminuer : “Il y a vraiment des solutions possibles”"
-date: 2026-08-19T08:36:31
+date: 2026-08-19T08:36:37
 source_pub_date: 2026-08-18
 fetched_date: 2026-08-19
 source_url: "https://www.standaard.be/buitenland/ondanks-extreme-hitte-ziet-brazilie-bosbranden-in-het-amazonewoud-dalen-er-zijn-echt-wel-oplossingen-mogelijk/160087034.html"
