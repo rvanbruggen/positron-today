@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-19T17:27:26.612Z",
-  "total_rejected": 119684,
+  "exported_at": "2026-08-19T17:27:31.463Z",
+  "total_rejected": 119685,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2111
+      "count": 2112
     },
     {
       "category": "divisive-racism",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1684,
-      "total": 1743
+      "negative": 1685,
+      "total": 1744
     },
     {
       "source": "Global News (Canada)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "First jellyfish museum in the US opens in Pompano Beach",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/video/2026/08/19/first-jellyfish-museum-in-the-us-opens-in-pompano-beach",
+      "date": "2026-08-19 19:27",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Les scientifiques pensent avoir percé le tenace “mystère des petits points rouges” dans l’Univers : “C’est une étrange combinaison”",
@@ -9381,15 +9390,6 @@
       "url": "https://english.elpais.com/technology/2026-08-18/decisive-trial-against-meta-begins-they-knew-their-platforms-could-harm-young-people.html",
       "date": "2026-08-18 21:22",
       "positivity_score": 2
-    },
-    {
-      "source": "The Guardian",
-      "title": "Burnham declares almost £350,000 in donations in months before becoming PM",
-      "reason": "The article focuses on political donations and interests related to a political figure, which falls under the category of political news rather than uplifting content.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/politics/2026/aug/18/burnham-declares-almost-350000-in-donations-in-months-before-becoming-pm",
-      "date": "2026-08-18 21:22",
-      "positivity_score": 4
     }
   ]
 }
