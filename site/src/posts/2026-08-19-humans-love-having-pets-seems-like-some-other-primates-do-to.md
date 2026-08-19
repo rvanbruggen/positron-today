@@ -2,7 +2,7 @@
 title: "Humans love having pets. Seems like some other primates do, too."
 title_nl: "Mensen houden van huisdieren. Het lijkt erop dat sommige andere primaten dat ook doen."
 title_fr: "Les humains aiment avoir des animaux de compagnie. Il semble que certains autres primates aussi."
-date: 2026-08-19T08:36:43
+date: 2026-08-19T08:36:52
 source_pub_date: 2026-08-18
 fetched_date: 2026-08-19
 source_url: "https://www.nytimes.com/2026/08/18/science/primates-pets.html"
