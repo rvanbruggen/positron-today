@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-19T17:26:41.689Z",
-  "total_rejected": 119681,
+  "exported_at": "2026-08-19T17:26:47.123Z",
+  "total_rejected": 119682,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2108
+      "count": 2109
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 5623,
-      "total": 5680
+      "negative": 5624,
+      "total": 5681
     },
     {
       "source": "Dagens Nyheter",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "La Chine parvient à récupérer le premier étage d’une de ses fusées sur terre",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lefigaro.fr/flash-eco/la-chine-parvient-a-recuperer-le-premier-etage-d-une-de-ses-fusees-sur-terre-20260819",
+      "date": "2026-08-19 19:26",
+      "positivity_score": null
+    },
     {
       "source": "VRT Nws",
       "title": "25.000 kilometer per seconde: astronomen ontdekken snelste ster die rond zwarte gat in centrum van Melkweg draait",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theguardian.com/stage/2026/aug/18/endurance-extremists-edinburgh-fringe",
       "date": "2026-08-18 21:22",
       "positivity_score": 4
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Deutsches Russlandbild: Jelzins Träume waren auch unsere",
-      "reason": "The article discusses the decline of German-Russian relations and a personal tragedy, which are not uplifting topics and focus on negative aspects rather than positive news.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/feuilleton/buecher/sachbuch/christiane-hoffmann-ueber-den-niedergang-der-deutsch-russischen-beziehungen-accg-201047205.html",
-      "date": "2026-08-18 21:22",
-      "positivity_score": 2
     }
   ]
 }
