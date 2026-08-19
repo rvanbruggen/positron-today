@@ -2,7 +2,7 @@
 title: "Squeeze more juice out of a dead battery!"
 title_nl: "Haal meer energie uit een lege batterij!"
 title_fr: "Extraire plus de jus d'une batterie morte !"
-date: 2026-08-19T08:36:56
+date: 2026-08-19T08:36:51
 source_pub_date: 2026-08-18
 fetched_date: 2026-08-18
 source_url: "https://www.wired.com/story/squeeze-more-juice-out-of-a-dead-battery/"
