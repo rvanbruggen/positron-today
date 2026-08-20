@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-20T04:58:01.540Z",
-  "total_rejected": 120145,
+  "exported_at": "2026-08-20T04:58:11.446Z",
+  "total_rejected": 120146,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2121
+      "count": 2122
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Het Laatste Nieuws",
-      "negative": 11451,
-      "total": 11698
+      "negative": 11452,
+      "total": 11699
     },
     {
       "source": "Gazet van Antwerpen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "NIPT-test kan risico op ernstige zwangerschapscomplicaties bij auto-immuunziekte voorspellen",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/binnenland/nipt-test-kan-risico-op-ernstige-zwangerschapscomplicaties-bij-auto-immuunziekte-voorspellen~a3e29781/",
+      "date": "2026-08-20 06:58",
+      "positivity_score": null
+    },
     {
       "source": "Good Good Good",
       "title": "New report shows trans students thrive when their teachers support them: 'Higher grades and belonging'",
@@ -9381,15 +9390,6 @@
       "url": "https://www.dn.se/varlden/extrema-temperaturer-uppmatta-i-europas-hav/",
       "date": "2026-08-19 10:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Riskbomber i svenskarnas sparfavoriter",
-      "reason": "The article discusses the risks associated with popular investment funds, which could be seen as negative financial news rather than uplifting content.",
-      "category": "economic-doom",
-      "url": "https://www.dn.se/ekonomi/riskbomber-i-svenskarnas-sparfavoriter/",
-      "date": "2026-08-19 10:27",
-      "positivity_score": 4
     }
   ]
 }
