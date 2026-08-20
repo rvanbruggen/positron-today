@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-20T04:56:48.290Z",
-  "total_rejected": 120142,
+  "exported_at": "2026-08-20T04:57:01.414Z",
+  "total_rejected": 120143,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2118
+      "count": 2119
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Gazet van Antwerpen",
-      "negative": 11436,
-      "total": 11854
+      "negative": 11437,
+      "total": 11855
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Voor het eerst keert Chinese draagraket terug op land",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/economie/bedrijven/voor-het-eerst-keert-chinese-draagraket-terug-op-land/160257132.html",
+      "date": "2026-08-20 06:57",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "Moderna and Merck announce ‘landmark’ trial showing mRNA therapy significantly cuts odds of recurrent skin cancer",
@@ -9381,15 +9390,6 @@
       "url": "https://www.dn.se/varlden/uppgifter-iran-kan-anfalla-mal-i-sydostra-europa/",
       "date": "2026-08-19 10:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Nathan Shachar: Marocko vill snuva Madrid på VM-finalen 2030",
-      "reason": "The article focuses on Morocco's ambition to host the 2030 World Cup final, which falls under sports-related content and does not present a universally uplifting story.",
-      "category": "sports-negative",
-      "url": "https://www.dn.se/varlden/nathan-shachar-marocko-vill-snuva-madrid-pa-vm-finalen-2030/",
-      "date": "2026-08-19 10:27",
-      "positivity_score": 3
     }
   ]
 }
