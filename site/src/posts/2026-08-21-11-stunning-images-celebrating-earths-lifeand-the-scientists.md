@@ -2,7 +2,7 @@
 title: "11 stunning images celebrating Earth’s life—and the scientists who study it"
 title_nl: "11 verbluffende beelden ter ere van het leven op aarde - en de wetenschappers die het bestuderen"
 title_fr: "11 images époustouflantes célébrant la vie sur Terre - et les scientifiques qui l'étudient"
-date: 2026-08-21T00:31:01
+date: 2026-08-21T00:31:05
 source_pub_date: 2026-08-20
 fetched_date: 2026-08-20
 source_url: "https://www.popsci.com/science/2026-bmc-ecology-evolution-zoology-image-competition-winners/"
