@@ -131,6 +131,7 @@ export default function SettingsPage() {
   // Necessary Negativity state
   const [nsRunning, setNsRunning] = useState(false);
   const [nsResult,  setNsResult]  = useState<string | null>(null);
+  const [nsStatus,  setNsStatus]  = useState<{ week: string; published: boolean | null } | null>(null);
 
   // Source confidence weights state
   const [weightsInfo,       setWeightsInfo]       = useState<{ computed_at: string; global_confidence: number; source_count: number } | null>(null);
@@ -141,6 +142,12 @@ export default function SettingsPage() {
   const [loggingOut,   setLoggingOut]   = useState(false);
 
   useEffect(() => {
+    // Necessary Negativity: has last week already been published?
+    fetch("/api/never-skip")
+      .then(r => r.json())
+      .then(d => setNsStatus({ week: d.last_completed_week?.week ?? "?", published: d.already_generated ?? null }))
+      .catch(console.error);
+
     // Load social accounts and enabled IDs in parallel
     Promise.all([
       fetch("/api/social-accounts").then(r => r.json()),
@@ -1127,6 +1134,25 @@ export default function SettingsPage() {
             </p>
           </div>
 
+          {/* Last completed week — published or not */}
+          {nsStatus && (
+            <div className="flex items-center gap-2 flex-wrap pt-4 border-t border-yellow-100">
+              <span className="text-xs text-amber-700 font-medium">Last completed week ({nsStatus.week}):</span>
+              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                nsStatus.published === true  ? "bg-teal-100 text-teal-700"
+                : nsStatus.published === false ? "bg-amber-100 text-amber-700"
+                : "bg-gray-100 text-gray-600"
+              }`}>
+                {nsStatus.published === true ? "published"
+                  : nsStatus.published === false ? "not yet generated"
+                  : "unknown"}
+              </span>
+              <span className="text-xs text-amber-500">
+                A manual run takes a couple of minutes — you can navigate away, and this tells you afterwards whether it landed.
+              </span>
+            </div>
+          )}
+
           {/* Save + manual run */}
           <div className="flex items-center gap-3 flex-wrap pt-4 border-t border-yellow-100">
             <button
@@ -1149,7 +1175,10 @@ export default function SettingsPage() {
                   const data = await res.json();
                   if (!res.ok)        setNsResult(`Error: ${data.error ?? res.statusText}`);
                   else if (data.skipped) setNsResult(data.reason ?? "Nothing to do.");
-                  else                setNsResult(`Published ${data.week} — ${(data.themes ?? []).map((t: { theme: string; published: number }) => `${t.theme}: ${t.published}`).join(", ")}`);
+                  else {
+                    setNsResult(`Published ${data.week} — ${(data.themes ?? []).map((t: { theme: string; published: number }) => `${t.theme}: ${t.published}`).join(", ")}`);
+                    setNsStatus(prev => prev ? { ...prev, published: true } : prev);
+                  }
                 } catch (err) {
                   setNsResult(`Error: ${err instanceof Error ? err.message : String(err)}`);
                 } finally {

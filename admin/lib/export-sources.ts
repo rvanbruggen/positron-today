@@ -1,33 +1,13 @@
 import db from "./db";
+// Use the shared helper rather than a local copy: it retries and handles the
+// 409 SHA conflict that happens when another export commits between the read
+// and the write. A single unretried failure here used to lose the update
+// permanently, because nothing re-syncs sources.json on a schedule.
+import { commitToGitHub } from "./publish-core";
 
 const GITHUB_TOKEN  = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO   = process.env.GITHUB_REPO!;
-const GITHUB_BRANCH = process.env.GITHUB_BRANCH ?? "main";
 
-async function commitToGitHub(path: string, content: string, message: string) {
-  const encoded = Buffer.from(content).toString("base64");
-  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
-
-  let sha: string | undefined;
-  const existing = await fetch(url, {
-    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" },
-  });
-  if (existing.ok) sha = (await existing.json()).sha;
-
-  const body: Record<string, unknown> = { message, content: encoded, branch: GITHUB_BRANCH };
-  if (sha) body.sha = sha;
-
-  const res = await fetch(url, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
-}
 
 type SourceRow = {
   name: string;

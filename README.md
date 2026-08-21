@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips, and surfacing the consequential few that shouldn't be lost in the pile.
 
-**Version:** 4.0.2 · **Live site:** [positron.today](https://positron.today)
+**Version:** 4.0.3 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -302,6 +302,7 @@ Results are committed to `site/src/_data/neverskip.json` and rendered on the sec
 
 - **The publisher's headline is never displayed.** Every visible string is Positron's own prose, so each language version of the page is wholly in that language. The headline is used as ranking input and to link out, nothing more.
 - **A week is generated once and never regenerated.** The ranker is non-deterministic — the same method run twice reproduces only ~85% of picks — so recomputing a published week would silently rewrite the page's history. `generateWeek` refuses a week that already has an entry unless explicitly forced.
+- **The three themes are generated concurrently.** They are independent, and running them in sequence took ~100s per week — long enough that a manual run from the browser was awkward. Concurrent, it is ~37s. Results are re-ordered to the canonical theme order afterwards, so page order never depends on which finished first.
 - **The cron is a trigger, not the guard.** The real check is "does the last completed week have an entry?", run on the weekly tick *and* on server boot, so a missed slot (restart, downtime) self-heals.
 - **The RSS snippet is deliberately not used for ranking.** It was A/B tested over 11 weeks and produced a selection judged worse.
 
@@ -324,7 +325,7 @@ Results are committed to `site/src/_data/neverskip.json` and rendered on the sec
 {"action": "backfill", "weeks": 8}     # the last N weeks, oldest first
 ```
 
-Add `"force": true` to regenerate a week that already exists. `GET /api/never-skip` reports the current schedule and target week without calling the model.
+Add `"force": true` to regenerate a week that already exists. `GET /api/never-skip` reports the current schedule, the target week, and whether that week has **already been published** — without calling the model. The Settings card shows the same status, so an abandoned manual run can be checked afterwards rather than re-run to find out.
 
 ---
 

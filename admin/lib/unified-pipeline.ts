@@ -15,6 +15,7 @@
 import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
 import { exportRejections } from "@/lib/export-rejections";
+import { exportSources } from "@/lib/export-sources";
 import { getFilterProvider } from "@/lib/llm";
 import { buildFilterPrompt } from "@/lib/prompts";
 import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
@@ -444,6 +445,19 @@ export async function runUnifiedPipeline(options?: { isManual?: boolean }): Prom
       await appendLog(runId, { type: "exported", count: expResult?.exported ?? 0 });
     } catch (err) {
       await appendLog(runId, { type: "export_error", message: String(err) });
+    }
+
+    // Re-export the public source list.
+    //
+    // The add/edit/delete endpoints already fire this, but that call is
+    // fire-and-forget: one failed GitHub commit used to leave the About page
+    // permanently out of step with the database, because nothing re-synced it.
+    // Re-exporting each run makes the drift self-correcting.
+    try {
+      const srcResult = await exportSources();
+      await appendLog(runId, { type: "sources_exported", count: srcResult?.exported ?? 0 });
+    } catch (err) {
+      await appendLog(runId, { type: "sources_export_error", message: String(err) });
     }
 
     // Update positivity score chart

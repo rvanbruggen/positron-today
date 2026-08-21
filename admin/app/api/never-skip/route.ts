@@ -4,7 +4,8 @@
  * The weekly run is driven by the in-process scheduler, so this route is not
  * on the proxy's public path list: it stays behind the admin session cookie.
  *
- * GET  → what the generator would do right now (no LLM calls, no commit)
+ * GET  → what the generator would do right now (no LLM calls, no commit),
+ *        including whether the target week has already been published
  * POST → { action: "run" }                  generate the last completed week
  *        { action: "run", week: "2026-W33" } generate one specific week
  *        { action: "backfill", weeks: 8 }    generate the last N weeks, oldest first
@@ -18,6 +19,7 @@ import {
   backfillWeeks,
   lastCompletedWeek,
   isoWeekOf,
+  isWeekPublished,
 } from "@/lib/never-skip";
 import { getSettings } from "@/lib/settings";
 
@@ -45,8 +47,12 @@ function weekFromKey(key: string): { week: string; start: string; end: string } 
 export async function GET() {
   const settings = await getSettings();
   const wk = lastCompletedWeek();
+  const published = await isWeekPublished(wk.week);
   return NextResponse.json({
     last_completed_week: wk,
+    // true = published, false = not yet, null = the published file could not
+    // be read, so this is unknown rather than "no".
+    already_generated: published,
     schedule: settings.neverskip_run_time || "(disabled)",
     provider: settings.neverskip_provider,
     model: settings.neverskip_model,

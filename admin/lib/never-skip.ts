@@ -396,50 +396,68 @@ export async function generateWeek(
     const maxPicks = Math.max(1, Math.min(10, parseInt((await settings()).neverskip_count, 10) || 5));
     const weekLabel = `${wk.start} to ${wk.end}`;
 
-    const themes: NeverSkipThemeBlock[] = [];
-    const report: { theme: string; considered: number; published: number }[] = [];
+    // The three themes are independent, so they run concurrently — six
+    // sequential model calls took ~100s, which is a long time to hold a
+    // browser request open on a manual run. Results are re-ordered to match
+    // NEVER_SKIP_THEMES afterwards so the page order never depends on which
+    // theme happened to finish first.
+    const settled = await Promise.all(
+      NEVER_SKIP_THEMES.map(async (theme): Promise<{
+        theme: NeverSkipTheme;
+        considered: number;
+        block: NeverSkipThemeBlock | null;
+      }> => {
+        const candidates = await fetchCandidates(theme, wk.start, wk.end);
+        if (candidates.length === 0) {
+          console.log(`[never-skip] ${wk.week}/${theme.key}: no candidates, skipping theme`);
+          return { theme, considered: 0, block: null };
+        }
 
-    for (const theme of NEVER_SKIP_THEMES) {
-      const candidates = await fetchCandidates(theme, wk.start, wk.end);
-      if (candidates.length === 0) {
-        console.log(`[never-skip] ${wk.week}/${theme.key}: no candidates, skipping theme`);
-        report.push({ theme: theme.key, considered: 0, published: 0 });
-        continue;
-      }
+        const { picks } = await rankTheme(theme, weekLabel, candidates, maxPicks);
+        if (picks.length === 0) {
+          console.log(`[never-skip] ${wk.week}/${theme.key}: ${candidates.length} candidates, none judged consequential`);
+          return { theme, considered: candidates.length, block: null };
+        }
 
-      const { picks } = await rankTheme(theme, weekLabel, candidates, maxPicks);
-      if (picks.length === 0) {
-        console.log(`[never-skip] ${wk.week}/${theme.key}: ${candidates.length} candidates, none judged consequential`);
-        report.push({ theme: theme.key, considered: candidates.length, published: 0 });
-        continue;
-      }
+        const chosen = picks.map((p) => ({ ...candidates[p.index - 1], why: p.why }));
+        const rendered = await renderTheme(
+          theme, weekLabel,
+          chosen.map((c) => ({ title: c.title, sources: c.sources, why: c.why })),
+        );
 
-      const chosen = picks.map((p) => ({ ...candidates[p.index - 1], why: p.why }));
-      const rendered = await renderTheme(
-        theme, weekLabel,
-        chosen.map((c) => ({ title: c.title, sources: c.sources, why: c.why })),
-      );
+        console.log(`[never-skip] ${wk.week}/${theme.key}: ${chosen.length} of ${candidates.length}`);
+        return {
+          theme,
+          considered: candidates.length,
+          block: {
+            theme: theme.key,
+            summary_en: rendered.summary_en,
+            summary_nl: rendered.summary_nl,
+            summary_fr: rendered.summary_fr,
+            considered: candidates.length,
+            stories: chosen.map((c, i) => ({
+              line_en: rendered.lines[i].line_en,
+              line_nl: rendered.lines[i].line_nl,
+              line_fr: rendered.lines[i].line_fr,
+              why: c.why,
+              url: c.url,
+              source: c.source,
+              also_in: c.sources.filter((s) => s !== c.source),
+              date: c.date,
+            })),
+          },
+        };
+      }),
+    );
 
-      themes.push({
-        theme: theme.key,
-        summary_en: rendered.summary_en,
-        summary_nl: rendered.summary_nl,
-        summary_fr: rendered.summary_fr,
-        considered: candidates.length,
-        stories: chosen.map((c, i) => ({
-          line_en: rendered.lines[i].line_en,
-          line_nl: rendered.lines[i].line_nl,
-          line_fr: rendered.lines[i].line_fr,
-          why: c.why,
-          url: c.url,
-          source: c.source,
-          also_in: c.sources.filter((s) => s !== c.source),
-          date: c.date,
-        })),
-      });
-      report.push({ theme: theme.key, considered: candidates.length, published: chosen.length });
-      console.log(`[never-skip] ${wk.week}/${theme.key}: ${chosen.length} of ${candidates.length}`);
-    }
+    const themes: NeverSkipThemeBlock[] = settled
+      .map((r) => r.block)
+      .filter((b): b is NeverSkipThemeBlock => b !== null);
+    const report = settled.map((r) => ({
+      theme: r.theme.key,
+      considered: r.considered,
+      published: r.block?.stories.length ?? 0,
+    }));
 
     if (themes.length === 0) {
       return { ok: true, skipped: true, week: wk.week, reason: "No publishable stories in any theme", themes: report };
@@ -470,6 +488,24 @@ export async function generateWeek(
     const error = err instanceof Error ? err.message : String(err);
     console.error(`[never-skip] ${wk.week} failed: ${error}`);
     return { ok: false, week: wk.week, error };
+  }
+}
+
+/**
+ * Is a given week already published?
+ *
+ * Lets the admin answer "did my manual run land?" without re-running the
+ * generator — a manual run takes long enough that the browser request is
+ * often abandoned before it returns.
+ */
+export async function isWeekPublished(week: string): Promise<boolean | null> {
+  try {
+    const data = await loadExisting();
+    return data.weeks.some((w) => w.week === week);
+  } catch {
+    // Could not read the published file — report "unknown" rather than
+    // claiming the week is missing, which would invite a needless re-run.
+    return null;
   }
 }
 
