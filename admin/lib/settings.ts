@@ -31,6 +31,13 @@ export interface LLMSettings {
   positronitron_run_times: string;
   /** JSON array of "HH:MM" strings — daily run times for digest social posts */
   digest_run_times: string;
+  /** Provider + model for the weekly Necessary Negativity ranking and rendering */
+  neverskip_provider: LLMProvider;
+  neverskip_model: string;
+  /** "" disables the weekly run. Otherwise "D HH:MM" where D is 0-6, Sunday=0. */
+  neverskip_run_time: string;
+  /** Max stories published per theme per week (stringified integer) */
+  neverskip_count: string;
 }
 
 const DEFAULTS: LLMSettings = {
@@ -45,6 +52,15 @@ const DEFAULTS: LLMSettings = {
   positronitron_count: "3",
   positronitron_run_times: '["08:00","15:00"]',
   digest_run_times: '[]',
+  // Selecting the consequential few out of ~500 weekly candidates is an open
+  // judgement call, not a rule check — a weaker model measurably picks worse
+  // (it passed over a global AI moratorium in favour of a single lawsuit).
+  // Six calls a week keeps the cost of the strong default negligible; change
+  // it in Settings if that stops being true.
+  neverskip_provider: "anthropic",
+  neverskip_model: "claude-opus-5",
+  neverskip_run_time: "",
+  neverskip_count: "5",
 };
 
 export async function getSettings(): Promise<LLMSettings> {
@@ -77,6 +93,10 @@ export async function getSettings(): Promise<LLMSettings> {
       positronitron_count:      map.positronitron_count       || DEFAULTS.positronitron_count,
       positronitron_run_times:  map.positronitron_run_times   || DEFAULTS.positronitron_run_times,
       digest_run_times:         map.digest_run_times          || DEFAULTS.digest_run_times,
+      neverskip_provider:       ((map.neverskip_provider as LLMProvider) || DEFAULTS.neverskip_provider),
+      neverskip_model:          map.neverskip_model           || DEFAULTS.neverskip_model,
+      neverskip_run_time:       map.neverskip_run_time        ?? DEFAULTS.neverskip_run_time,
+      neverskip_count:          map.neverskip_count           || DEFAULTS.neverskip_count,
     };
   } catch {
     // Table may not exist yet (migration pending) — return defaults

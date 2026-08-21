@@ -29,6 +29,10 @@ export async function PUT(request: NextRequest) {
       "positronitron_count",
       "positronitron_run_times",
       "digest_run_times",
+      "neverskip_provider",
+      "neverskip_model",
+      "neverskip_run_time",
+      "neverskip_count",
     ];
     const patch: Partial<LLMSettings> = {};
     for (const key of allowed) {
@@ -52,7 +56,7 @@ export async function PUT(request: NextRequest) {
     }
 
     // Reload the scheduler if run times changed
-    if (patch.positronitron_run_times || patch.digest_run_times) {
+    if (patch.positronitron_run_times || patch.digest_run_times || patch.neverskip_run_time !== undefined) {
       try {
         const { reloadScheduler } = await import("@/lib/scheduler");
         await reloadScheduler();

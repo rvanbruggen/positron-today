@@ -13,6 +13,7 @@ import { runUnifiedPipeline } from "@/lib/unified-pipeline";
 import { syncTimersFromDb, cancelAllTimers } from "@/lib/publish-timer";
 import { syncEditorialTimersFromDb, cancelAllEditorialTimers } from "@/lib/editorial-publish-timer";
 import { runDigest } from "@/lib/digest-core";
+import { runNeverSkipIfDue } from "@/lib/never-skip";
 
 let activeJobs: ReturnType<typeof cron.schedule>[] = [];
 let initialized = false;
@@ -28,6 +29,20 @@ function timeToCron(time: string): string | null {
   const minute = parseInt(match[2], 10);
   if (hour < 0 || hour > 23 || minute < 0 || minute > 59) return null;
   return `${minute} ${hour} * * *`;
+}
+
+/**
+ * Parse "D HH:MM" into a weekly cron expression, where D is 0-6 with Sunday=0.
+ * "1 06:00" → "0 6 * * 1" (Mondays at 06:00)
+ */
+function weeklyTimeToCron(spec: string): string | null {
+  const match = spec.trim().match(/^([0-6])\s+(\d{1,2}):(\d{2})$/);
+  if (!match) return null;
+  const day = parseInt(match[1], 10);
+  const hour = parseInt(match[2], 10);
+  const minute = parseInt(match[3], 10);
+  if (hour < 0 || hour > 23 || minute < 0 || minute > 59) return null;
+  return `${minute} ${hour} * * ${day}`;
 }
 
 /**
@@ -124,6 +139,50 @@ export async function reloadScheduler(): Promise<void> {
 
     activeJobs.push(job);
     console.log(`[scheduler] Digest scheduled: ${time} (${cronExpr}) TZ=${tz}`);
+  }
+
+  // ─── Necessary Negativity weekly job ───────────────────────────────────────
+  //
+  // The cron is only a trigger. runNeverSkipIfDue() asks whether the last
+  // completed week already has an entry, so a missed firing (container
+  // restart, downtime) is picked up by the next tick or the next boot rather
+  // than losing the week entirely.
+  const neverSkipSpec = (settings.neverskip_run_time ?? "").trim();
+  if (neverSkipSpec) {
+    const cronExpr = weeklyTimeToCron(neverSkipSpec);
+    if (!cronExpr) {
+      console.warn(`[scheduler] Invalid neverskip_run_time "${neverSkipSpec}" (expected "D HH:MM", Sunday=0), skipping`);
+    } else {
+      const job = cron.schedule(cronExpr, async () => {
+        console.log(`[scheduler] Necessary Negativity triggered by ${neverSkipSpec} slot`);
+        try {
+          const result = await runNeverSkipIfDue();
+          if (result.skipped)   console.log(`[scheduler] Necessary Negativity skipped: ${result.reason}`);
+          else if (result.ok)   console.log(`[scheduler] Necessary Negativity published ${result.week}`);
+          else                  console.error(`[scheduler] Necessary Negativity failed: ${result.error}`);
+        } catch (err) {
+          console.error(`[scheduler] Necessary Negativity error:`, err instanceof Error ? err.message : err);
+        }
+      }, {
+        timezone: tz,
+      });
+
+      activeJobs.push(job);
+      console.log(`[scheduler] Necessary Negativity scheduled: ${neverSkipSpec} (${cronExpr}) TZ=${tz}`);
+
+      // Catch up on boot, in the background — a container that was down over
+      // the scheduled slot should still publish the week it missed. Deferred
+      // so a slow LLM round-trip never delays server start.
+      setTimeout(() => {
+        runNeverSkipIfDue()
+          .then((r) => {
+            if (r.skipped) console.log(`[scheduler] Necessary Negativity boot check: ${r.reason}`);
+            else if (r.ok) console.log(`[scheduler] Necessary Negativity boot catch-up published ${r.week}`);
+            else console.error(`[scheduler] Necessary Negativity boot catch-up failed: ${r.error}`);
+          })
+          .catch((err) => console.error("[scheduler] Necessary Negativity boot check error:", err));
+      }, 30_000).unref();
+    }
   }
 
   // Sync publish timers from the database

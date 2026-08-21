@@ -43,6 +43,10 @@ interface LLMSettings {
   positronitron_count: string;
   positronitron_run_times: string;
   digest_run_times: string;
+  neverskip_provider: Provider;
+  neverskip_model: string;
+  neverskip_run_time: string;
+  neverskip_count: string;
 }
 
 const ANTHROPIC_MODELS = [
@@ -124,6 +128,10 @@ export default function SettingsPage() {
   const [digestResult,     setDigestResult]     = useState<string | null>(null);
   const [digestPending,    setDigestPending]    = useState<number | null>(null);
 
+  // Necessary Negativity state
+  const [nsRunning, setNsRunning] = useState(false);
+  const [nsResult,  setNsResult]  = useState<string | null>(null);
+
   // Source confidence weights state
   const [weightsInfo,       setWeightsInfo]       = useState<{ computed_at: string; global_confidence: number; source_count: number } | null>(null);
   const [weightsComputing,  setWeightsComputing]  = useState(false);
@@ -200,6 +208,10 @@ export default function SettingsPage() {
         if (!data.positronitron_count)     data.positronitron_count     = "3";
         if (!data.positronitron_run_times) data.positronitron_run_times = '["08:00","15:00"]';
         if (!data.digest_run_times) data.digest_run_times = '[]';
+        if (!data.neverskip_provider) data.neverskip_provider = "anthropic";
+        if (!data.neverskip_model)    data.neverskip_model    = "claude-opus-5";
+        if (data.neverskip_run_time == null) data.neverskip_run_time = "";
+        if (!data.neverskip_count)    data.neverskip_count    = "5";
         try { setRunTimes(JSON.parse(data.positronitron_run_times)); } catch {}
         try { setDigestTimes(JSON.parse(data.digest_run_times)); } catch {}
         setSettings(data);
@@ -1041,6 +1053,108 @@ export default function SettingsPage() {
             </button>
             {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
             {digestResult && <p className="text-sm text-teal-700">{digestResult}</p>}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Necessary Negativity ── */}
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">⚠️ Necessary Negativity</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          Once a week, the consequential stories are pulled back out of the reject pile for climate,
+          tech &amp; AI, and division &amp; social tension — ranked by consequence rather than by tone,
+          then written up in English, Dutch and French. Six model calls per week.
+        </p>
+        <div className={`border rounded-xl p-5 space-y-5 transition-colors ${settings.neverskip_run_time ? "bg-teal-50 border-teal-300" : "bg-white border-yellow-200"}`}>
+
+          <ProviderRow
+            provider={settings.neverskip_provider}
+            model={settings.neverskip_model}
+            ollamaModels={ollamaModels}
+            onProviderChange={v => patch("neverskip_provider", v)}
+            onModelChange={v => patch("neverskip_model", v)}
+          />
+          <p className="text-xs text-amber-600 -mt-2">
+            Picking the few stories that still matter out of ~500 weekly candidates is an open
+            judgement call, not a rule check, so this defaults to the strongest model. A cheaper one
+            measurably picks worse — in testing it passed over a proposed global AI moratorium in
+            favour of a single lawsuit. At six calls a week the cost is small; lower it here if that changes.
+          </p>
+
+          {/* Schedule */}
+          <div className="pt-4 border-t border-yellow-100">
+            <label className="block text-xs text-amber-700 font-medium mb-1">Weekly schedule</label>
+            <div className="flex gap-2 flex-wrap items-center">
+              <select
+                className="border border-yellow-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:border-yellow-400"
+                value={settings.neverskip_run_time ? settings.neverskip_run_time.split(" ")[0] : ""}
+                onChange={e => {
+                  const day = e.target.value;
+                  if (!day) { patch("neverskip_run_time", ""); return; }
+                  const time = settings.neverskip_run_time.split(" ")[1] || "06:00";
+                  patch("neverskip_run_time", `${day} ${time}`);
+                }}
+              >
+                <option value="">Off</option>
+                {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((d, i) => (
+                  <option key={d} value={String(i)}>{d}</option>
+                ))}
+              </select>
+              <input
+                type="time"
+                disabled={!settings.neverskip_run_time}
+                className="border border-yellow-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:border-yellow-400 disabled:bg-amber-50 disabled:text-amber-400"
+                value={settings.neverskip_run_time.split(" ")[1] || "06:00"}
+                onChange={e => {
+                  const day = settings.neverskip_run_time.split(" ")[0] || "1";
+                  patch("neverskip_run_time", `${day} ${e.target.value}`);
+                }}
+              />
+              <label className="text-xs text-amber-700 font-medium ml-2">Max per theme:</label>
+              <input
+                type="number"
+                min={1}
+                max={10}
+                className="w-16 border border-yellow-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:border-yellow-400"
+                value={settings.neverskip_count}
+                onChange={e => patch("neverskip_count", e.target.value)}
+              />
+            </div>
+            <p className="text-xs text-amber-500 mt-2">
+              {settings.neverskip_run_time
+                ? "Covers the week that just ended. A missed run (restart, downtime) is picked up on the next tick or the next boot — a week is never generated twice. Save to apply."
+                : "Off — no weekly page is generated. Save to apply."}
+            </p>
+          </div>
+
+          {/* Manual run */}
+          <div className="flex items-center gap-3 flex-wrap pt-4 border-t border-yellow-100">
+            <button
+              onClick={async () => {
+                setNsRunning(true);
+                setNsResult(null);
+                try {
+                  const res = await fetch("/api/never-skip", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ action: "run" }),
+                  });
+                  const data = await res.json();
+                  if (!res.ok)        setNsResult(`Error: ${data.error ?? res.statusText}`);
+                  else if (data.skipped) setNsResult(data.reason ?? "Nothing to do.");
+                  else                setNsResult(`Published ${data.week} — ${(data.themes ?? []).map((t: { theme: string; published: number }) => `${t.theme}: ${t.published}`).join(", ")}`);
+                } catch (err) {
+                  setNsResult(`Error: ${err instanceof Error ? err.message : String(err)}`);
+                } finally {
+                  setNsRunning(false);
+                }
+              }}
+              disabled={nsRunning}
+              className="px-4 py-2 rounded-lg text-sm font-medium bg-amber-100 text-amber-800 border border-amber-300 hover:bg-amber-200 disabled:opacity-50 transition-colors"
+            >
+              {nsRunning ? "Generating…" : "⚠️ Generate last week now"}
+            </button>
+            {nsResult && <p className="text-sm text-teal-700">{nsResult}</p>}
           </div>
         </div>
       </div>

@@ -1369,3 +1369,115 @@ html[data-theme="mondrian"] .install-already {
   color: var(--md-black);
   border-radius: 0;
 }
+
+/* ============================================================================
+   negativity.njk — tab switcher + Necessary Negativity (mono / mondrian)
+   ============================================================================ */
+
+/* --- MONO --- */
+html[data-theme="mono"] .tab-btn {
+  background: var(--mono-bg);
+  color: var(--mono-fg);
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+  font-weight: 600;
+}
+html[data-theme="mono"] .tab-btn[aria-selected="true"] {
+  background: var(--mono-fg);
+  color: var(--mono-bg);
+}
+
+html[data-theme="mono"] .nn-intro { color: var(--mono-muted); }
+html[data-theme="mono"] .nn-intro strong { color: var(--mono-fg); }
+html[data-theme="mono"] .nn-intro a { color: var(--mono-fg) !important; }
+
+html[data-theme="mono"] .nn-theme-card {
+  background: var(--mono-bg);
+  border: 1px solid var(--mono-hairline);
+  /* The accent colour is inline per theme; in mono everything collapses to the
+     hairline so the three cards read as one system rather than three brands. */
+  border-left: 3px solid var(--mono-hairline-strong) !important;
+  border-radius: 0;
+}
+html[data-theme="mono"] .nn-theme-name { color: var(--mono-fg); }
+html[data-theme="mono"] .nn-theme-desc { color: var(--mono-muted); }
+
+html[data-theme="mono"] .nn-note {
+  background: var(--mono-bg);
+  border: 1px solid var(--mono-hairline-strong);
+  border-radius: 0;
+  color: var(--mono-muted);
+}
+html[data-theme="mono"] .nn-note strong { color: var(--mono-fg); }
+
+html[data-theme="mono"] .nn-week {
+  background: var(--mono-bg);
+  border: 1px solid var(--mono-hairline);
+  border-radius: 0;
+}
+html[data-theme="mono"] .nn-week > summary { color: var(--mono-fg); }
+html[data-theme="mono"] .nn-week > summary::before { color: var(--mono-muted); }
+html[data-theme="mono"] .nn-week > summary:hover { background: #fafafa; }
+html[data-theme="mono"] .nn-theme-block { border-top-color: var(--mono-hairline); }
+html[data-theme="mono"] .nn-theme-heading { color: var(--mono-fg); }
+html[data-theme="mono"] .nn-summary { color: var(--mono-muted); }
+html[data-theme="mono"] .nn-story {
+  border-left: 2px solid var(--mono-hairline-strong) !important;
+}
+html[data-theme="mono"] .nn-story a { color: var(--mono-fg); }
+html[data-theme="mono"] .nn-story-meta { color: var(--mono-muted); }
+html[data-theme="mono"] .nn-considered { color: var(--mono-muted); }
+
+/* --- MONDRIAN --- */
+html[data-theme="mondrian"] .tab-btn {
+  background: #ffffff;
+  color: var(--md-black);
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-theme="mondrian"] .tab-btn[aria-selected="true"] {
+  background: var(--md-yellow);
+}
+
+html[data-theme="mondrian"] .nn-intro { color: var(--md-fg); }
+html[data-theme="mondrian"] .nn-intro strong { color: var(--md-black); }
+html[data-theme="mondrian"] .nn-intro a { color: var(--md-red) !important; font-weight: 700; }
+
+/* Three cards, three primaries — the one place the Mondrian palette maps
+   naturally onto the content instead of being imposed on it. */
+html[data-theme="mondrian"] .nn-theme-card {
+  background: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .nn-theme-grid > .nn-theme-card:nth-child(1) { border-left: 10px solid var(--md-red) !important; }
+html[data-theme="mondrian"] .nn-theme-grid > .nn-theme-card:nth-child(2) { border-left: 10px solid var(--md-blue) !important; }
+html[data-theme="mondrian"] .nn-theme-grid > .nn-theme-card:nth-child(3) { border-left: 10px solid var(--md-yellow) !important; }
+html[data-theme="mondrian"] .nn-theme-name { color: var(--md-black); }
+html[data-theme="mondrian"] .nn-theme-desc { color: var(--md-muted); }
+
+html[data-theme="mondrian"] .nn-note {
+  background: #ffffff;
+  border: 3px solid var(--md-black);
+  border-left: 10px solid var(--md-blue);
+  border-radius: 0;
+  color: var(--md-fg);
+}
+html[data-theme="mondrian"] .nn-note strong { color: var(--md-black); }
+
+html[data-theme="mondrian"] .nn-week {
+  background: #ffffff;
+  border: 3px solid var(--md-black);
+  border-radius: 0;
+}
+html[data-theme="mondrian"] .nn-week > summary { color: var(--md-black); font-weight: 700; }
+html[data-theme="mondrian"] .nn-week > summary::before { color: var(--md-red); }
+html[data-theme="mondrian"] .nn-week > summary:hover { background: #f7f7f7; }
+html[data-theme="mondrian"] .nn-theme-block { border-top: 3px solid var(--md-black); }
+html[data-theme="mondrian"] .nn-theme-heading { color: var(--md-black); }
+html[data-theme="mondrian"] .nn-summary { color: var(--md-fg); }
+html[data-theme="mondrian"] .nn-story { border-left: 5px solid var(--md-black) !important; }
+html[data-theme="mondrian"] .nn-story a { color: var(--md-black); font-weight: 700; }
+html[data-theme="mondrian"] .nn-story-meta { color: var(--md-muted); }
+html[data-theme="mondrian"] .nn-considered { color: var(--md-muted); }

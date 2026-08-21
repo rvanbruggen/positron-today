@@ -43,6 +43,31 @@ export interface LLMProvider {
 
 const anthropic = new Anthropic();
 
+/**
+ * Claude models from the 4.6 generation onward reject `temperature` (and the
+ * other sampling parameters) with a 400. Older ones still accept it, and the
+ * filter relies on temperature 0 for stable verdicts, so it is sent only where
+ * it is valid rather than dropped everywhere.
+ */
+function acceptsSampling(model: string): boolean {
+  return !/^claude-(fable-5|mythos-5|opus-(5|4-[678])|sonnet-(5|4-6))/.test(model);
+}
+
+/**
+ * Pull the answer text out of a response.
+ *
+ * Thinking-enabled models put a `thinking` block first, so `content[0]` is not
+ * reliably the answer — on Claude Opus 5, where thinking is on by default,
+ * reading `content[0].text` yields undefined.
+ */
+function textOf(message: { content: Array<{ type: string; text?: string }> }): string {
+  return message.content
+    .filter((b) => b.type === "text" && typeof b.text === "string")
+    .map((b) => b.text as string)
+    .join("")
+    .trim();
+}
+
 const ANTHROPIC_MODELS: Record<string, string> = {
   "claude-haiku-4-5-20251001": "claude-haiku-4-5-20251001",
   "claude-sonnet-5": "claude-sonnet-5",
@@ -55,12 +80,13 @@ class AnthropicProvider implements LLMProvider {
   async classify(prompt: string): Promise<ClassifyResult> {
     const message = await anthropic.messages.create({
       model: this.model,
-      max_tokens: 200,
-      temperature: 0,
+      // Thinking models spend part of the budget before writing any text, so a
+      // 200-token cap would truncate the verdict away entirely.
+      max_tokens: acceptsSampling(this.model) ? 200 : 2000,
+      ...(acceptsSampling(this.model) ? { temperature: 0 } : {}),
       messages: [{ role: "user", content: prompt }],
     });
-    const raw = (message.content[0] as { type: string; text: string }).text.trim();
-    return parseClassifyResponse(raw);
+    return parseClassifyResponse(textOf(message));
   }
 
   async generate(prompt: string, systemPrompt?: string, maxTokens = 1200): Promise<string> {
@@ -70,7 +96,7 @@ class AnthropicProvider implements LLMProvider {
       ...(systemPrompt ? { system: systemPrompt } : {}),
       messages: [{ role: "user", content: prompt }],
     });
-    return (message.content[0] as { type: string; text: string }).text.trim();
+    return textOf(message);
   }
 }
 
@@ -253,14 +279,30 @@ export async function getSummariseProvider(): Promise<LLMProvider> {
   return buildProvider(settings, "summarise");
 }
 
-const OLLAMA_DEFAULT_MODELS: Record<"filter" | "summarise", string> = {
+/** Provider for the weekly Necessary Negativity ranking + rendering. */
+export async function getNeverSkipProvider(): Promise<LLMProvider> {
+  const settings = await getSettings();
+  return buildProvider(settings, "neverskip");
+}
+
+type LLMTask = "filter" | "summarise" | "neverskip";
+
+const OLLAMA_DEFAULT_MODELS: Record<LLMTask, string> = {
   filter: "llama3.2:3b",
   summarise: "gemma3:27b",
+  neverskip: "gemma3:27b",
 };
 
-const OPENAI_DEFAULT_MODELS: Record<"filter" | "summarise", string> = {
+const OPENAI_DEFAULT_MODELS: Record<LLMTask, string> = {
   filter: "gpt-4.1-mini",
   summarise: "gpt-4.1",
+  neverskip: "gpt-4.1",
+};
+
+const ANTHROPIC_DEFAULT_MODELS: Record<LLMTask, string> = {
+  filter: "claude-haiku-4-5-20251001",
+  summarise: "claude-sonnet-5",
+  neverskip: "claude-opus-5",
 };
 
 function isAnthropicModelName(model: string): boolean {
@@ -271,9 +313,15 @@ function isOpenAIModelName(model: string): boolean {
   return model.startsWith("gpt-") || /^o[1-9]/i.test(model);
 }
 
-function buildProvider(settings: LLMSettings, task: "filter" | "summarise"): LLMProvider {
-  const provider = task === "filter" ? settings.filter_provider : settings.summarise_provider;
-  const rawModel = task === "filter" ? settings.filter_model    : settings.summarise_model;
+function buildProvider(settings: LLMSettings, task: LLMTask): LLMProvider {
+  const provider =
+    task === "filter"    ? settings.filter_provider :
+    task === "neverskip" ? settings.neverskip_provider :
+                           settings.summarise_provider;
+  const rawModel =
+    task === "filter"    ? settings.filter_model :
+    task === "neverskip" ? settings.neverskip_model :
+                           settings.summarise_model;
 
   if (provider === "openai") {
     const model =
@@ -295,7 +343,7 @@ function buildProvider(settings: LLMSettings, task: "filter" | "summarise"): LLM
   }
 
   // Default: anthropic
-  const model = rawModel || (task === "filter" ? "claude-haiku-4-5-20251001" : "claude-sonnet-5");
+  const model = rawModel || ANTHROPIC_DEFAULT_MODELS[task];
   return new AnthropicProvider(ANTHROPIC_MODELS[model] ?? model);
 }
 

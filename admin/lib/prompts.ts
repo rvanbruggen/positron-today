@@ -112,3 +112,100 @@ LANGUAGE RULES — this is mandatory, never skip any language:
 - title_nl and summary_nl: write in DUTCH (Nederlands) - fully translate, do not copy the English
 - title_fr and summary_fr: write in FRENCH (Français) - fully translate, do not copy the English
 All six text fields are required. Never leave any field empty or copy text from another language field.`;
+
+// ── Necessary Negativity ──────────────────────────────────────────────────────
+
+/**
+ * Stage 1 — significance ranking.
+ *
+ * Deliberately kept narrow: the model sees the headline and which outlets ran
+ * it, and nothing else. Feeding it the publisher's RSS snippet as well was
+ * tested over 11 weeks and produced a selection judged worse, so it stays out.
+ * The filter's own `rejection_reason` is also withheld on purpose, so the
+ * significance judgement stays independent of the tone judgement that put the
+ * article in the reject pile in the first place.
+ */
+export const NEVER_SKIP_RANK_INSTRUCTIONS = `You rank news stories by CONSEQUENCE, not by how upsetting they are.
+
+Context: these are articles a positive-news filter rejected for being negative. The task is to find the few that are genuinely consequential — the ones whose absence from public attention would be a real loss — and separate them from the reflexively negative noise that shares the same topic tag.
+
+High significance: structural change, new evidence about a long-run risk, policy or legal shifts with wide reach, findings that alter how a problem is understood, harm at scale.
+
+LOW significance despite the tag: product launches and gadget reviews, corporate earnings or funding rounds, service outages, individual crimes or lawsuits with no wider precedent, celebrity or influencer disputes, local human-interest, opinion and comment pieces, sport, seasonal weather reports.
+
+Judge the story, not the headline's emotional charge. A calm headline about a policy change usually outranks an alarming headline about one incident. Titles appear in their original language — judge them as they are, do not translate.
+
+If fewer than three candidates are genuinely consequential, return fewer picks. Do not pad.`;
+
+/** Stage 1 prompt: numbered candidate list in, picks + rationale out. */
+export function buildNeverSkipRankPrompt(
+  instructions: string,
+  themeLabel: string,
+  weekLabel: string,
+  candidates: { title: string; sources: string[] }[],
+  maxPicks: number,
+): string {
+  const list = candidates
+    .map((c, i) => `${i + 1}. [${c.sources.length} outlet${c.sources.length > 1 ? "s" : ""}: ${c.sources.slice(0, 3).join(", ")}] ${c.title}`)
+    .join("\n");
+
+  return `${instructions}
+
+Theme: ${themeLabel}
+Week: ${weekLabel}
+
+${candidates.length} candidate stories:
+
+${list}
+
+Reply with JSON only — no other text, no markdown fences:
+{"picks":[{"index":1,"why":"one sentence, max 25 words, on why this is consequential"}],"discarded_note":"one short sentence naming the kind of low-significance material set aside"}
+
+Return at most ${maxPicks} picks, most significant first. "index" is the 1-based number from the list above.`;
+}
+
+/**
+ * Stage 2 — trilingual display text.
+ *
+ * The public page never shows the publisher's headline. Every visible string is
+ * Positron's own prose, produced in all three languages in a single pass so the
+ * versions are siblings rather than a translation chain (EN→NL→FR drifts).
+ */
+export function buildNeverSkipRenderPrompt(
+  themeLabel: string,
+  weekLabel: string,
+  picks: { title: string; sources: string[]; why: string }[],
+): string {
+  const list = picks
+    .map((p, i) => `${i + 1}. [${p.sources.join(", ")}] ${p.title}\n   Why it was selected: ${p.why}`)
+    .join("\n");
+
+  return `You write the display text for "Necessary Negativity" on Positron.today — a weekly page surfacing the consequential negative stories the site's positive-news filter set aside.
+
+Theme: ${themeLabel}
+Week: ${weekLabel}
+
+The ${picks.length} selected stories, with their original headlines and why each was chosen:
+
+${list}
+
+For EACH story, write a "line": one sentence, maximum 20 words, stating plainly what the story is. This REPLACES the headline on the page — the reader never sees the original. So it must stand alone, carry the concrete fact where there is one (a number, a place, a body that acted), and read as a statement rather than a teaser. Do not use a question, a colon-prefixed label, or quotation marks. Do not name the outlet.
+
+Also write a "summary" for the theme as a whole: 2 to 3 sentences on what this subject looked like this week across the selected stories.
+
+VOICE — this is site chrome, not an opinion column:
+- Passive or system voice. NEVER use "we", "us", "our" (or "wij", "ons", "onze" / "nous", "notre", "nos").
+- No hype, no alarm, no rhetorical questions. State what happened and what it bears on.
+- Do not address the reader or tell them how to feel.
+
+LANGUAGE RULES — mandatory, never skip any language:
+- line_en / summary_en: write in ENGLISH
+- line_nl / summary_nl: write in DUTCH (Nederlands) — fully translate, do not copy the English
+- line_fr / summary_fr: write in FRENCH (Français) — fully translate, do not copy the English
+Each language is written from the story itself, not translated word-for-word from the English.
+
+Reply with JSON only — no other text, no markdown fences:
+{"summary_en":"...","summary_nl":"...","summary_fr":"...","lines":[{"line_en":"...","line_nl":"...","line_fr":"..."}]}
+
+The "lines" array must have exactly ${picks.length} entries, in the same order as the list above. Every field is required and none may be empty or copied from another language.`;
+}

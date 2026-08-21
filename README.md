@@ -1,8 +1,8 @@
 # Positron Today
 
-> A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips.
+> A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips, and surfacing the consequential few that shouldn't be lost in the pile.
 
-**Version:** 3.9.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 4.0.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -38,14 +38,16 @@ A positron is the antimatter counterpart of an electron — positively charged, 
 │         GitHub Contents API                             │
 └──────────────────┬──────────────────┬───────────────────┘
                    │                  │
-         site/src/_data/          site/src/posts/
-         rejections.json          YYYY-MM-DD-slug.md
+     site/src/_data/              site/src/posts/
+     rejections.json              YYYY-MM-DD-slug.md
+     neverskip.json
                    │                  │
 ┌──────────────────▼──────────────────▼───────────────────┐
 │                SITE (Eleventy → GitHub Pages)            │
 │                                                         │
 │  index.njk       — card grid with tag + date-range filters │
-│  negativity.njk  — "What gets skipped" rejection log (EN/NL/FR) │
+│  negativity.njk  — two tabs: "What gets skipped" rejection  │
+│                    log + "Necessary Negativity" (EN/NL/FR)  │
 │  about.njk       — project description + RSS subscribe  │
 │  contact.njk     — contact page                        │
 └─────────────────────────────────────────────────────────┘
@@ -277,6 +279,55 @@ The public page shows:
 
 ---
 
+## Necessary Negativity
+
+The rejection log answers "what got filtered out?". This answers a harder question: **of the things that got filtered out, which ones actually mattered?**
+
+Three subjects in the reject pile are structurally consequential but crowded out by higher-volume negativity — together roughly 7.5% of everything filtered, against 27% for political conflict alone:
+
+| Theme | Rejection categories |
+|-------|----------------------|
+| 🌍 Climate & Environment | `climate-environment` |
+| 🤖 Technology & AI | `tech-ai-concern` |
+| ⚡ Division & Social Tension | `divisive-social`, `divisive-racism`, `lgbtq-rights` |
+
+Once a week the generator pulls those categories for the completed week, collapses near-duplicate headlines from different outlets, and runs two LLM passes per theme:
+
+1. **Rank** — judge the ~150–250 distinct stories by *consequence, not tone*, and keep the top few. The model sees only the headline and which outlets carried it.
+2. **Render** — write Positron's own one-line description of each pick plus a theme summary, in EN / NL / FR in a single pass.
+
+Results are committed to `site/src/_data/neverskip.json` and rendered on the second tab of `/negativity/`.
+
+### Design decisions worth knowing
+
+- **The publisher's headline is never displayed.** Every visible string is Positron's own prose, so each language version of the page is wholly in that language. The headline is used as ranking input and to link out, nothing more.
+- **A week is generated once and never regenerated.** The ranker is non-deterministic — the same method run twice reproduces only ~85% of picks — so recomputing a published week would silently rewrite the page's history. `generateWeek` refuses a week that already has an entry unless explicitly forced.
+- **The cron is a trigger, not the guard.** The real check is "does the last completed week have an entry?", run on the weekly tick *and* on server boot, so a missed slot (restart, downtime) self-heals.
+- **The RSS snippet is deliberately not used for ranking.** It was A/B tested over 11 weeks and produced a selection judged worse.
+
+### Configuration
+
+**Admin → Settings → ⚠️ Necessary Negativity**
+
+| Setting | Default | Notes |
+|---------|---------|-------|
+| Provider / model | Anthropic · Claude Opus 5 | Independent of the filter and summarise models. Selecting the consequential few is an open judgement call, and a weaker model measurably picks worse — but this is six calls a week, so change it here if the cost stops being worth it |
+| Weekly schedule | Off | Day + time, in `SCHEDULE_TZ`. Monday 06:00 is the suggested slot — the week is closed and it lands before the 08:00 pipeline run |
+| Max per theme | 5 | 1–10 |
+
+**Manual runs** — `POST /api/never-skip` (admin-authenticated):
+
+```
+{"action": "run"}                      # generate the last completed week
+{"action": "run", "week": "2026-W33"}  # a specific week
+{"action": "run", "dryRun": true}      # build and return it without committing
+{"action": "backfill", "weeks": 8}     # the last N weeks, oldest first
+```
+
+Add `"force": true` to regenerate a week that already exists. `GET /api/never-skip` reports the current schedule and target week without calling the model.
+
+---
+
 ## Social Publishing
 
 Positron Today posts to social media via [Post for Me](https://www.postforme.dev/). There are two paths to a social post — **manual** (one click on History) and **automatic** (opt-in per article when scheduling). Both paths produce the same post; they differ only in what triggers it.
@@ -387,7 +438,7 @@ This is the migration path between environments (e.g. local SQLite → Turso clo
 | Page | Purpose |
 |------|---------|
 | `/` | Home — card grid (round-robin columns, newest first) with topic tag + date-range filters |
-| `/negativity/` | "What gets skipped" — the rejection log with category breakdown (EN/NL/FR) |
+| `/negativity/` | Two tabs — "What gets skipped" (the rejection log with category breakdown) and "Necessary Negativity" (the weekly consequential-stories selection). `#necessary` deep-links to the second tab (EN/NL/FR) |
 | `/about/` | About the project, the positron metaphor, active sources, and RSS subscription links |
 | `/contact/` | Contact page with links to email, LinkedIn, and Instagram (@positron_today) |
 | `/archive/` | Full archive of all articles older than the 60 shown on the homepage |

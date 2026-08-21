@@ -76,6 +76,60 @@ title: The News That Gets Skipped
     border-bottom:2px solid #fde68a;
   }
 
+  /* ── Tab switcher ── */
+  .tab-bar { display:flex; gap:0.5rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+  .tab-btn {
+    padding:0.45rem 1rem; border-radius:99px; font-size:0.8rem; font-weight:700;
+    cursor:pointer; border:1.5px solid #fde68a; background:#fff; color:#78350f;
+    font-family:inherit; transition:background 0.15s; white-space:nowrap;
+  }
+  .tab-btn[aria-selected="true"] { background:#facc15; border-color:#f59e0b; }
+
+  /* ── Necessary Negativity ── */
+  .nn-intro { font-size:0.9rem; color:#92400e; line-height:1.65; margin-bottom:1rem; }
+  .nn-intro strong { color:#78350f; }
+  .nn-theme-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:0.75rem; margin:1.25rem 0;
+  }
+  .nn-theme-card {
+    background:#fff; border:1.5px solid #fde68a; border-left-width:5px;
+    border-radius:0.75rem; padding:0.9rem 1rem;
+  }
+  .nn-theme-name { font-size:0.85rem; font-weight:700; color:#78350f; margin-bottom:0.35rem; }
+  .nn-theme-desc { font-size:0.78rem; color:#92400e; line-height:1.5; }
+  .nn-note {
+    background:#fffbeb; border:1.5px solid #fde68a; border-radius:0.75rem;
+    padding:0.9rem 1.1rem; font-size:0.82rem; color:#92400e; line-height:1.6;
+    margin-bottom:2rem;
+  }
+  .nn-note strong { color:#78350f; }
+
+  .nn-week { margin-bottom:1rem; border:1.5px solid #fde68a; border-radius:0.75rem; background:#fff; overflow:hidden; }
+  .nn-week > summary {
+    cursor:pointer; padding:0.85rem 1.1rem; font-size:0.9rem; font-weight:700;
+    color:#78350f; list-style:none; display:flex; align-items:center; gap:0.5rem;
+  }
+  .nn-week > summary::-webkit-details-marker { display:none; }
+  .nn-week > summary::before { content:"▸"; color:#d97706; font-size:0.8rem; }
+  .nn-week[open] > summary::before { content:"▾"; }
+  .nn-week > summary:hover { background:#fffbeb; }
+  .nn-week-body { padding:0 1.1rem 1.1rem; }
+
+  .nn-theme-block { margin-top:1.25rem; padding-top:1rem; border-top:1px solid #fef3c7; }
+  .nn-theme-block:first-child { border-top:none; padding-top:0; }
+  .nn-theme-heading {
+    font-size:0.8rem; font-weight:700; color:#78350f;
+    text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem;
+  }
+  .nn-summary { font-size:0.85rem; color:#92400e; line-height:1.6; margin-bottom:0.85rem; }
+  .nn-stories { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; }
+  .nn-story { border-left:3px solid #fde68a; padding-left:0.75rem; }
+  .nn-story a { color:#78350f; font-weight:600; font-size:0.88rem; line-height:1.45; text-decoration:none; }
+  .nn-story a:hover { text-decoration:underline; }
+  .nn-story-meta { font-size:0.72rem; color:#b45309; margin-top:0.25rem; }
+  .nn-considered { font-size:0.72rem; color:#d97706; margin-top:0.6rem; font-style:italic; }
+
   /* ── Pagination controls ── */
   .pagination-bar {
     display:flex; align-items:center; gap:0.5rem;
@@ -115,6 +169,21 @@ title: The News That Gets Skipped
   "soft-news-filler":        { label_en: "Soft News & Filler",        label_nl: "Soft news & opvulling",        label_fr: "Info légère & remplissage",   emoji: "📰",  color: "#e2e8f0", border: "#94a3b8" },
   "other-negative":          { label_en: "Other Negative",            label_nl: "Overig Negatief",              label_fr: "Autre Négatif",               emoji: "😔",  color: "#d1d5db", border: "#9ca3af" }
 } %}
+
+<div class="tab-bar" role="tablist">
+  <button class="tab-btn" role="tab" id="tab-skipped" aria-selected="true" aria-controls="pane-skipped" onclick="showTab('skipped')">
+    <span class="t-en">What gets skipped</span>
+    <span class="t-nl" style="display:none">Wat wordt overgeslagen</span>
+    <span class="t-fr" style="display:none">Ce qui est ignoré</span>
+  </button>
+  <button class="tab-btn" role="tab" id="tab-necessary" aria-selected="false" aria-controls="pane-necessary" onclick="showTab('necessary')">
+    <span class="t-en">Necessary Negativity</span>
+    <span class="t-nl" style="display:none">Noodzakelijke negativiteit</span>
+    <span class="t-fr" style="display:none">La négativité nécessaire</span>
+  </button>
+</div>
+
+<div id="pane-skipped" role="tabpanel" aria-labelledby="tab-skipped">
 
 <div class="page-header">
   <h1>
@@ -295,6 +364,163 @@ title: The News That Gets Skipped
 
 {% endif %}
 
+</div><!-- /pane-skipped -->
+
+<div id="pane-necessary" role="tabpanel" aria-labelledby="tab-necessary" hidden>
+
+{% set nnThemes = {
+  "climate": { emoji: "🌍", accent: "#5eead4",
+    name_en: "Climate & Environment", name_nl: "Klimaat & Milieu", name_fr: "Climat & Environnement",
+    desc_en: "Droughts, heat records, collapsing species. The story barely changes week to week, which is exactly why it stops getting written.",
+    desc_nl: "Droogtes, hitterecords, soorten die verdwijnen. Het verhaal verandert amper van week tot week, en net daarom wordt het niet meer geschreven.",
+    desc_fr: "Sécheresses, records de chaleur, espèces qui s'effondrent. L'histoire change à peine d'une semaine à l'autre, et c'est précisément pour cela qu'on cesse de l'écrire." },
+  "tech": { emoji: "🤖", accent: "#67e8f9",
+    name_en: "Technology & AI", name_nl: "Technologie & AI", name_fr: "Technologie & IA",
+    desc_en: "Automated decisions, surveillance, work that quietly disappears. Covered as product news far more often than as consequence.",
+    desc_nl: "Geautomatiseerde beslissingen, surveillance, werk dat stilletjes verdwijnt. Veel vaker behandeld als productnieuws dan als gevolg.",
+    desc_fr: "Décisions automatisées, surveillance, emplois qui disparaissent discrètement. Traité bien plus souvent comme actualité produit que comme conséquence." },
+  "social": { emoji: "⚡", accent: "#fcd34d",
+    name_en: "Division & Social Tension", name_nl: "Verdeeldheid & Sociale spanning", name_fr: "Division & Tensions sociales",
+    desc_en: "Polarisation, racism, the slow fraying of what people are willing to assume about each other.",
+    desc_nl: "Polarisatie, racisme, het traag rafelen van wat mensen nog van elkaar durven aannemen.",
+    desc_fr: "Polarisation, racisme, l'effilochage lent de ce que les gens acceptent encore de présumer les uns des autres." }
+} %}
+
+{% set MONTHS = {
+  en: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+  nl: ["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"],
+  fr: ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"]
+} %}
+
+<div class="page-header">
+  <h1>
+    <span class="t-en">Necessary Negativity ⚠️</span>
+    <span class="t-nl" style="display:none">Noodzakelijke negativiteit ⚠️</span>
+    <span class="t-fr" style="display:none">La négativité nécessaire ⚠️</span>
+  </h1>
+</div>
+
+<p class="nn-intro">
+  <span class="t-en">Positron exists to filter negative news out. Every story it removes is logged openly on the other tab — <strong>{{ neverskipStats.totalFormatted }}</strong> of them so far. But that pile is not uniform, and treating it as one undifferentiated heap hides something worth seeing.</span>
+  <span class="t-nl" style="display:none">Positron bestaat om negatief nieuws eruit te filteren. Elk verhaal dat wordt weggelaten, staat openlijk gelogd op het andere tabblad — <strong>{{ neverskipStats.totalFormatted }}</strong> stuks tot nu toe. Maar die stapel is niet homogeen, en ze behandelen als één ongedifferentieerde hoop verbergt iets wat het bekijken waard is.</span>
+  <span class="t-fr" style="display:none">Positron existe pour filtrer les mauvaises nouvelles. Chaque article écarté est consigné ouvertement sur l'autre onglet — <strong>{{ neverskipStats.totalFormatted }}</strong> à ce jour. Mais cette pile n'est pas homogène, et la traiter comme un tas indifférencié dissimule quelque chose qui mérite d'être vu.</span>
+</p>
+
+<p class="nn-intro">
+  <span class="t-en">Three subjects in it are different in kind from the rest:</span>
+  <span class="t-nl" style="display:none">Drie onderwerpen erin zijn wezenlijk anders dan de rest:</span>
+  <span class="t-fr" style="display:none">Trois sujets y sont d'une nature différente du reste :</span>
+</p>
+
+<div class="nn-theme-grid">
+  {% for key, t in nnThemes %}
+  <div class="nn-theme-card" style="border-left-color:{{ t.accent }}">
+    <div class="nn-theme-name">
+      {{ t.emoji }}
+      <span class="t-en">{{ t.name_en }}</span>
+      <span class="t-nl" style="display:none">{{ t.name_nl }}</span>
+      <span class="t-fr" style="display:none">{{ t.name_fr }}</span>
+    </div>
+    <div class="nn-theme-desc">
+      <span class="t-en">{{ t.desc_en }}</span>
+      <span class="t-nl" style="display:none">{{ t.desc_nl }}</span>
+      <span class="t-fr" style="display:none">{{ t.desc_fr }}</span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<p class="nn-intro">
+  <span class="t-en">None of these are events that happen and then resolve. They are slow, structural, and still consequential ten years from now. A crime story is negative for an afternoon; these are negative for a generation.</span>
+  <span class="t-nl" style="display:none">Dit zijn geen gebeurtenissen die plaatsvinden en dan opgelost raken. Ze zijn traag, structureel, en over tien jaar nog altijd ingrijpend. Een misdaadverhaal is één namiddag negatief; dit is een generatie lang negatief.</span>
+  <span class="t-fr" style="display:none">Ce ne sont pas des événements qui surviennent puis se résolvent. Ils sont lents, structurels, et encore lourds de conséquences dans dix ans. Un fait divers est négatif le temps d'un après-midi ; ceci est négatif le temps d'une génération.</span>
+</p>
+
+<p class="nn-intro">
+  <span class="t-en">And they are being crowded out. Together, those three subjects account for <strong>{{ neverskipStats.themePct }}%</strong> of everything filtered. Political conflict alone accounts for <strong>{{ neverskipStats.comparisonPct }}%</strong> — more than {{ neverskipStats.ratio }} times as much. Add celebrity coverage, sport and disaster reporting, and the shape becomes clear: an ocean of low-stakes negativity, very good at drowning out the handful of stories that genuinely warrant the alarm.</span>
+  <span class="t-nl" style="display:none">En ze worden verdrongen. Samen zijn die drie onderwerpen goed voor <strong>{{ neverskipStats.themePct }}%</strong> van alles wat gefilterd wordt. Politiek conflict alleen al is goed voor <strong>{{ neverskipStats.comparisonPct }}%</strong> — meer dan {{ neverskipStats.ratio }} keer zoveel. Tel daar beroemdheden, sport en rampen bij op en de vorm wordt duidelijk: een oceaan van negativiteit met lage inzet, bijzonder goed in het verdrinken van die handvol verhalen die de bezorgdheid wél verdienen.</span>
+  <span class="t-fr" style="display:none">Et ces sujets sont étouffés. Ensemble, ils représentent <strong>{{ neverskipStats.themePct }} %</strong> de tout ce qui est filtré. Le conflit politique à lui seul en représente <strong>{{ neverskipStats.comparisonPct }} %</strong> — plus de {{ neverskipStats.ratio }} fois plus. Ajoutez les célébrités, le sport et les catastrophes, et la forme apparaît : un océan de négativité à faible enjeu, très efficace pour noyer la poignée d'articles qui méritent réellement l'inquiétude.</span>
+</p>
+
+<p class="nn-intro">
+  <span class="t-en">That argument is set out in full in the editorial <a href="{{ '/editorials/the-negativity-we-actually-need/' | url }}" style="color:#b45309;font-weight:600;">The negativity we actually need</a>.</span>
+  <span class="t-nl" style="display:none">Dat argument staat voluit in de column <a href="{{ '/editorials/the-negativity-we-actually-need/' | url }}" style="color:#b45309;font-weight:600;">De negativiteit die we echt nodig hebben</a>.</span>
+  <span class="t-fr" style="display:none">Cet argument est développé dans l'éditorial <a href="{{ '/editorials/the-negativity-we-actually-need/' | url }}" style="color:#b45309;font-weight:600;">La négativité dont nous avons réellement besoin</a>.</span>
+</p>
+
+<p class="nn-intro">
+  <span class="t-en">So once a week, the stories from those three subjects are pulled back out of the reject pile, near-duplicates from different outlets are merged, and an AI ranks what remains by consequence rather than by tone. The most significant are published below, newest week first.</span>
+  <span class="t-nl" style="display:none">Daarom worden elke week de verhalen uit die drie onderwerpen weer uit de afwijzingsstapel gehaald, worden bijna-duplicaten van verschillende media samengevoegd, en rangschikt een AI wat overblijft op gevolg in plaats van op toon. De belangrijkste staan hieronder, met de recentste week eerst.</span>
+  <span class="t-fr" style="display:none">Ainsi, chaque semaine, les articles de ces trois sujets sont ressortis de la pile des rejets, les quasi-doublons issus de médias différents sont fusionnés, et une IA classe ce qui reste selon la conséquence plutôt que selon le ton. Les plus significatifs sont publiés ci-dessous, la semaine la plus récente en premier.</span>
+</p>
+
+<div class="nn-note">
+  <span class="t-en"><strong>Two honest caveats.</strong> This is not a list of things you are obliged to care about — ranking importance was never this site's job, and the ranking here is done by a machine that can get it wrong. And these stories were filtered for a reason: they are genuinely bad news. They appear here because being unimportant was never the reason they were skipped.</span>
+  <span class="t-nl" style="display:none"><strong>Twee eerlijke kanttekeningen.</strong> Dit is geen lijst van dingen waar u zich zorgen over móét maken — belangrijkheid rangschikken was nooit de taak van deze site, en de rangschikking hier gebeurt door een machine die zich kan vergissen. En deze verhalen zijn niet zomaar gefilterd: het is echt slecht nieuws. Ze staan hier omdat onbelangrijkheid nooit de reden was waarom ze werden overgeslagen.</span>
+  <span class="t-fr" style="display:none"><strong>Deux réserves honnêtes.</strong> Ceci n'est pas une liste de sujets dont vous seriez tenu de vous soucier — hiérarchiser l'importance n'a jamais été le rôle de ce site, et le classement présenté ici est établi par une machine qui peut se tromper. Et ces articles ont été filtrés pour une raison : ce sont de vraies mauvaises nouvelles. Ils figurent ici parce que leur insignifiance n'a jamais été le motif de leur mise à l'écart.</span>
+</div>
+
+{% if not neverskip.weeks or neverskip.weeks.length == 0 %}
+  <p class="empty">
+    <span class="t-en">No weeks published yet — the first weekly selection will appear here once it has been generated.</span>
+    <span class="t-nl" style="display:none">Nog geen weken gepubliceerd — de eerste wekelijkse selectie verschijnt hier zodra ze is samengesteld.</span>
+    <span class="t-fr" style="display:none">Aucune semaine publiée pour l'instant — la première sélection hebdomadaire apparaîtra ici une fois établie.</span>
+  </p>
+{% else %}
+  {% for w in neverskip.weeks %}
+    <details class="nn-week" {% if loop.first %}open{% endif %}>
+      <summary>
+        {% set sd = w.start.split("-") %}
+        {% set ed = w.end.split("-") %}
+        <span class="t-en">Week of {% if sd[1] == ed[1] %}{{ sd[2] | int }}–{{ ed[2] | int }} {{ MONTHS.en[(ed[1] | int) - 1] }} {{ ed[0] }}{% else %}{{ sd[2] | int }} {{ MONTHS.en[(sd[1] | int) - 1] }} – {{ ed[2] | int }} {{ MONTHS.en[(ed[1] | int) - 1] }} {{ ed[0] }}{% endif %}</span>
+        <span class="t-nl" style="display:none">Week van {% if sd[1] == ed[1] %}{{ sd[2] | int }}–{{ ed[2] | int }} {{ MONTHS.nl[(ed[1] | int) - 1] }} {{ ed[0] }}{% else %}{{ sd[2] | int }} {{ MONTHS.nl[(sd[1] | int) - 1] }} – {{ ed[2] | int }} {{ MONTHS.nl[(ed[1] | int) - 1] }} {{ ed[0] }}{% endif %}</span>
+        <span class="t-fr" style="display:none">Semaine du {% if sd[1] == ed[1] %}{{ sd[2] | int }}–{{ ed[2] | int }} {{ MONTHS.fr[(ed[1] | int) - 1] }} {{ ed[0] }}{% else %}{{ sd[2] | int }} {{ MONTHS.fr[(sd[1] | int) - 1] }} – {{ ed[2] | int }} {{ MONTHS.fr[(ed[1] | int) - 1] }} {{ ed[0] }}{% endif %}</span>
+      </summary>
+      <div class="nn-week-body">
+        {% for block in w.themes %}
+          {% set t = nnThemes[block.theme] %}
+          <div class="nn-theme-block">
+            <div class="nn-theme-heading">
+              {{ t.emoji }}
+              <span class="t-en">{{ t.name_en }}</span>
+              <span class="t-nl" style="display:none">{{ t.name_nl }}</span>
+              <span class="t-fr" style="display:none">{{ t.name_fr }}</span>
+            </div>
+            <p class="nn-summary">
+              <span class="t-en">{{ block.summary_en }}</span>
+              <span class="t-nl" style="display:none">{{ block.summary_nl }}</span>
+              <span class="t-fr" style="display:none">{{ block.summary_fr }}</span>
+            </p>
+            <ul class="nn-stories">
+              {% for story in block.stories %}
+              <li class="nn-story" style="border-left-color:{{ t.accent }}">
+                <a href="{{ story.url }}" target="_blank" rel="noopener nofollow">
+                  <span class="t-en">{{ story.line_en }}</span>
+                  <span class="t-nl" style="display:none">{{ story.line_nl }}</span>
+                  <span class="t-fr" style="display:none">{{ story.line_fr }}</span>
+                </a>
+                <div class="nn-story-meta">
+                  {{ story.source }}{% if story.also_in.length %} +{{ story.also_in.length }}{% endif %} · {{ story.date }}
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+            {% if block.considered %}
+            <div class="nn-considered">
+              <span class="t-en">{{ block.considered }} distinct stories considered this week.</span>
+              <span class="t-nl" style="display:none">{{ block.considered }} afzonderlijke verhalen deze week bekeken.</span>
+              <span class="t-fr" style="display:none">{{ block.considered }} articles distincts examinés cette semaine.</span>
+            </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </details>
+  {% endfor %}
+{% endif %}
+
+</div><!-- /pane-necessary -->
+
 <script>
   var REJECTIONS = {{ rejections.articles | dump | safe }};
   var CAT_META   = {{ catMeta | dump | safe }};
@@ -435,6 +661,26 @@ title: The News That Gets Skipped
   // Initial render
   renderSourceBreakdown();
   renderPage();
+
+  // ── Tab switching ────────────────────────────────────────────────────────
+  // Two panes share this URL: the skip log and the weekly Necessary Negativity
+  // selection. The hash makes each linkable, so the editorial can point
+  // straight at /negativity/#necessary.
+  function showTab(name) {
+    ['skipped', 'necessary'].forEach(function(n) {
+      var pane = document.getElementById('pane-' + n);
+      var btn  = document.getElementById('tab-' + n);
+      if (!pane || !btn) return;
+      var on = (n === name);
+      pane.hidden = !on;
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (history.replaceState) {
+      history.replaceState(null, '', name === 'necessary' ? '#necessary' : location.pathname);
+    }
+  }
+
+  if (location.hash === '#necessary') showTab('necessary');
 
   // Restore saved language
   (function() {
