@@ -1,0 +1,42 @@
+# Build context exclusions.
+#
+# Without this file `COPY . .` ships ~1.1 GB to the Docker daemon on every
+# build — almost all of it node_modules and .next, both of which are rebuilt
+# inside the image anyway. Copying host node_modules in is also actively
+# harmful: native modules (sharp, libvips) are compiled for the host
+# architecture and would shadow the correctly-built ones from `npm ci`.
+
+node_modules
+.next
+out
+dist
+
+# Local state and secrets — must never enter the image
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Local tooling / editor noise
+.git
+.gitignore
+.DS_Store
+*.log
+npm-debug.log*
+.vscode
+.idea
+
+# Docs and deploy tooling aren't needed at runtime
+README.md
+AGENTS.md
+CLAUDE.md
+deploy.sh
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Type-check artefact
+tsconfig.tsbuildinfo

@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips, and surfacing the consequential few that shouldn't be lost in the pile.
 
-**Version:** 4.0.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 4.0.2 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
