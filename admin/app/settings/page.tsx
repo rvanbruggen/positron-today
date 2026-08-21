@@ -1127,8 +1127,15 @@ export default function SettingsPage() {
             </p>
           </div>
 
-          {/* Manual run */}
+          {/* Save + manual run */}
           <div className="flex items-center gap-3 flex-wrap pt-4 border-t border-yellow-100">
+            <button
+              onClick={save}
+              disabled={saving}
+              className="bg-amber-900 hover:bg-amber-800 text-yellow-300 font-medium px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            >
+              {saving ? "Saving…" : "Save"}
+            </button>
             <button
               onClick={async () => {
                 setNsRunning(true);
@@ -1154,6 +1161,7 @@ export default function SettingsPage() {
             >
               {nsRunning ? "Generating…" : "⚠️ Generate last week now"}
             </button>
+            {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
             {nsResult && <p className="text-sm text-teal-700">{nsResult}</p>}
           </div>
         </div>
