@@ -356,12 +356,91 @@ async function loadExisting(): Promise<NeverSkipData> {
   }
 }
 
+// ─── In-flight lock ─────────────────────────────────────────────────────────
+//
+// "Generate a week once" is a read-then-write: check whether the week is
+// already published, and if not, generate and commit. With nothing guarding
+// the gap, two runs that start while the first is still working both see
+// "not published" and both commit — which is exactly what happened on the
+// first live run, producing three different selections for 2026-W33 in
+// ninety seconds and wasting three times the model calls.
+//
+// The lock is a compare-and-swap on a single settings row, so the claim is
+// atomic in SQLite: only one concurrent UPDATE can match the predicate.
+
+const LOCK_KEY = "neverskip_lock";
+
+/** Sentinel for "free". A real JSON value so json_extract never sees garbage. */
+const LOCK_FREE = '{"at":0}';
+
+/**
+ * How long a claim stays valid. A run takes ~40s; well beyond that means the
+ * holder died (container restart mid-run), so the lock frees itself rather
+ * than wedging the weekly job forever.
+ */
+const LOCK_STALE_MS = 15 * 60_000;
+
+/** Claim the lock, or return null if another run holds it. */
+async function acquireLock(week: string): Promise<string | null> {
+  const token = `${week}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+
+  // Create the row if it has never existed. INSERT OR IGNORE cannot disturb a
+  // lock that is currently held.
+  await db.execute({
+    sql: "INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)",
+    args: [LOCK_KEY, LOCK_FREE],
+  });
+
+  const res = await db.execute({
+    sql: `UPDATE settings SET value = ?
+          WHERE key = ? AND json_extract(value, '$.at') < ?`,
+    args: [
+      JSON.stringify({ at: Date.now(), token, week }),
+      LOCK_KEY,
+      Date.now() - LOCK_STALE_MS,
+    ],
+  });
+
+  return res.rowsAffected > 0 ? token : null;
+}
+
+/** Release the lock, but only if this run still holds it. */
+async function releaseLock(token: string): Promise<void> {
+  try {
+    await db.execute({
+      // The token check matters: if this run overran LOCK_STALE_MS and another
+      // took over, releasing unconditionally would free a lock we no longer own.
+      sql: `UPDATE settings SET value = ?
+            WHERE key = ? AND json_extract(value, '$.token') = ?`,
+      args: [LOCK_FREE, LOCK_KEY, token],
+    });
+  } catch (err) {
+    console.error("[never-skip] releasing lock failed:", err instanceof Error ? err.message : err);
+  }
+}
+
+/** Which week the current holder is working on, if any. */
+async function lockHolder(): Promise<{ week: string; at: number } | null> {
+  try {
+    const res = await db.execute({ sql: "SELECT value FROM settings WHERE key = ?", args: [LOCK_KEY] });
+    const raw = res.rows[0]?.value;
+    if (!raw) return null;
+    const parsed = JSON.parse(String(raw)) as { at?: number; week?: string };
+    if (!parsed.at || parsed.at < Date.now() - LOCK_STALE_MS) return null;
+    return { week: parsed.week ?? "?", at: parsed.at };
+  } catch {
+    return null;
+  }
+}
+
 // ─── Public entry points ────────────────────────────────────────────────────
 
 export interface GenerateResult {
   ok: boolean;
   week?: string;
   skipped?: boolean;
+  /** True when another run already holds the lock. */
+  busy?: boolean;
   reason?: string;
   themes?: { theme: string; considered: number; published: number }[];
   /** Populated on a dry run — the week that would have been committed. */
@@ -385,7 +464,23 @@ export async function generateWeek(
 ): Promise<GenerateResult> {
   const wk = target ?? lastCompletedWeek();
 
+  // A dry run neither reads the published file nor commits, so it needs no lock.
+  let token: string | null = null;
+  if (!opts.dryRun) {
+    token = await acquireLock(wk.week);
+    if (!token) {
+      const holder = await lockHolder();
+      const reason = holder
+        ? `A run for ${holder.week} is already in progress (started ${Math.round((Date.now() - holder.at) / 1000)}s ago)`
+        : "Another run is already in progress";
+      console.log(`[never-skip] ${wk.week}: ${reason}`);
+      return { ok: true, skipped: true, busy: true, week: wk.week, reason };
+    }
+  }
+
   try {
+    // Re-check inside the lock. Without this a run that queued behind another
+    // would regenerate a week the first run had just published.
     const data = opts.dryRun ? { updated_at: "", weeks: [] } : await loadExisting();
 
     if (!opts.force && !opts.dryRun && data.weeks.some((w) => w.week === wk.week)) {
@@ -488,6 +583,8 @@ export async function generateWeek(
     const error = err instanceof Error ? err.message : String(err);
     console.error(`[never-skip] ${wk.week} failed: ${error}`);
     return { ok: false, week: wk.week, error };
+  } finally {
+    if (token) await releaseLock(token);
   }
 }
 

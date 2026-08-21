@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips, and surfacing the consequential few that shouldn't be lost in the pile.
 
-**Version:** 4.0.3 · **Live site:** [positron.today](https://positron.today)
+**Version:** 4.0.4 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -301,6 +301,7 @@ Results are committed to `site/src/_data/neverskip.json` and rendered on the sec
 ### Design decisions worth knowing
 
 - **The publisher's headline is never displayed.** Every visible string is Positron's own prose, so each language version of the page is wholly in that language. The headline is used as ranking input and to link out, nothing more.
+- **Only one run at a time.** Claiming a week is a compare-and-swap on a `settings` row, so concurrent runs — a boot catch-up racing the cron, or an impatient second click — cannot all decide the week is unpublished and all commit. A blocked run returns `busy: true` with the holder's age instead of starting over. A holder that dies mid-run frees the lock after 15 minutes.
 - **A week is generated once and never regenerated.** The ranker is non-deterministic — the same method run twice reproduces only ~85% of picks — so recomputing a published week would silently rewrite the page's history. `generateWeek` refuses a week that already has an entry unless explicitly forced.
 - **The three themes are generated concurrently.** They are independent, and running them in sequence took ~100s per week — long enough that a manual run from the browser was awkward. Concurrent, it is ~37s. Results are re-ordered to the canonical theme order afterwards, so page order never depends on which finished first.
 - **The cron is a trigger, not the guard.** The real check is "does the last completed week have an entry?", run on the weekly tick *and* on server boot, so a missed slot (restart, downtime) self-heals.
