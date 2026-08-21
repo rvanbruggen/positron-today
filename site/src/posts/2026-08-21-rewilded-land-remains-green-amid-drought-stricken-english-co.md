@@ -2,7 +2,7 @@
 title: "Rewilded land remains green amid drought-stricken English countryside, images show"
 title_nl: "Herwildering houdt land groen te midden van droogte in het Engelse platteland, beelden tonen"
 title_fr: "Terre rewildée reste verte au milieu de la campagne anglaise frappée par la sécheresse, les images montrent"
-date: 2026-08-21T09:40:20
+date: 2026-08-21T09:40:23
 source_pub_date: 2026-08-21
 fetched_date: 2026-08-21
 source_url: "https://www.theguardian.com/environment/2026/aug/21/somerset-rewilding-holnicote-estate-wetlands-rivers-resilience"
