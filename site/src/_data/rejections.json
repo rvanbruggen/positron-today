@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-21T20:31:02.927Z",
-  "total_rejected": 122111,
+  "exported_at": "2026-08-21T20:31:56.870Z",
+  "total_rejected": 122112,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2156
+      "count": 2157
     },
     {
       "category": "divisive-racism",
@@ -231,8 +231,8 @@
     },
     {
       "source": "Nature",
-      "negative": 809,
-      "total": 957
+      "negative": 810,
+      "total": 958
     },
     {
       "source": "Knack",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Briefing Chat: New narcolepsy drug could unlock host of novel brain therapies",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02626-x",
+      "date": "2026-08-21 22:31",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "À qui s’adresse le nouveau candidat vaccin contre le cancer de la peau ? “Ces dernières années, on a progressé remarquablement”",
@@ -9381,15 +9390,6 @@
       "url": "https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/manilas-nordfriedhof-leben-zwischen-graebern-und-toten-201138879.html",
       "date": "2026-08-20 22:37",
       "positivity_score": 2
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Philipsen wint, maar Milan én Merlier kennen absolute baaldag: “Echt een frustrerend dagje\"",
-      "reason": "The article focuses on a sports event where the winner's success is overshadowed by the misfortunes of other competitors, making it not uplifting.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/wielrennen/wegwielrennen/philipsen-wint-maar-milan-en-merlier-kennen-absolute-baaldag-echt-een-frustrerend-dagje/160307651.html",
-      "date": "2026-08-20 22:37",
-      "positivity_score": 3
     }
   ]
 }
