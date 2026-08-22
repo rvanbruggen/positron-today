@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-22T21:33:09.001Z",
-  "total_rejected": 123031,
+  "exported_at": "2026-08-22T21:34:13.258Z",
+  "total_rejected": 123032,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2178
+      "count": 2179
     },
     {
       "category": "divisive-racism",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 6594,
-      "total": 6800
+      "negative": 6595,
+      "total": 6801
     },
     {
       "source": "Le Figaro",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "VRT Nws",
+      "title": "Zuid-Korea stuurt voor het eerst containerschip via Noordpoolgebied naar Europa",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://vrtnws.be/p.43NOOppjQ",
+      "date": "2026-08-22 23:34",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Carney: Canada will enact retaliatory US tariffs starting September 8",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/m-le-mag/article/2026/08/21/dans-le-delta-du-po-l-invasion-du-crabe-tueur-de-palourdes-sans-vongole-plus-d-economie-tout-le-territoire-meurt_6751572_4500055.html",
       "date": "2026-08-21 21:22",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, guerre en Ukraine : à Kryvy Rih, une frappe russe visant un centre commercial fait au moins quatorze morts, dont plusieurs enfants",
-      "reason": "The article reports on a deadly Russian attack causing multiple deaths, including children, which is a tragic and negative event related to war and conflict.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/international/live/2026/08/21/en-direct-guerre-en-ukraine-une-frappe-russe-visant-un-centre-commercial-a-kryvy-rih-fait-six-morts-dont-des-enfants-volodymyr-zelensky-denonce-un-acte-ignoble_6746952_3210.html",
-      "date": "2026-08-21 21:22",
-      "positivity_score": 1
     }
   ]
 }
