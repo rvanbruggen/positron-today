@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-24T16:10:31.620Z",
-  "total_rejected": 124579,
+  "exported_at": "2026-08-24T16:10:42.531Z",
+  "total_rejected": 124580,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2206
+      "count": 2207
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 204,
-      "total": 302
+      "negative": 205,
+      "total": 303
     },
     {
       "source": "ScienceDaily",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "China delays ambitious Chang’e 7 moon mission until 2027",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/china-delays-ambitious-change-7-moon-mission-until-2027/",
+      "date": "2026-08-24 18:10",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "Trump to award Congressional Space Medal of Honor to Artemis II astronauts",
@@ -9381,15 +9390,6 @@
       "url": "https://politiken.dk/kultur/art10935272/Selv-om-hans-design-ligger-mange-%C3%A5rtier-tilbage-fremst%C3%A5r-m%C3%B8blerne-fuldkommen-moderne1",
       "date": "2026-08-23 18:27",
       "positivity_score": 3
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Kan en ny vane, der tager 60 sekunder, sænke mit mobilforbrug?",
-      "reason": "The article is a personal human-interest story about one individual's struggle to reduce mobile phone use, without broader universal significance or a replicable model. It mainly focuses on personal habits and willpower rather than a substantive breakthrough or widely applicable insight.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/danmark/art10930793/Kan-en-ny-vane-der-tager-60-sekunder-s%C3%A6nke-mit-mobilforbrug",
-      "date": "2026-08-23 18:27",
-      "positivity_score": 4
     }
   ]
 }
