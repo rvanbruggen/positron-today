@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-24T16:10:26.581Z",
-  "total_rejected": 124578,
+  "exported_at": "2026-08-24T16:10:31.620Z",
+  "total_rejected": 124579,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2205
+      "count": 2206
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 159,
-      "total": 378
+      "negative": 160,
+      "total": 379
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Trump to award Congressional Space Medal of Honor to Artemis II astronauts",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/08/260823094138.htm",
+      "date": "2026-08-24 18:10",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "NASA is about to launch a powerful new eye on the universe",
@@ -9381,15 +9390,6 @@
       "url": "https://politiken.dk/danmark/art10930793/Kan-en-ny-vane-der-tager-60-sekunder-s%C3%A6nke-mit-mobilforbrug",
       "date": "2026-08-23 18:27",
       "positivity_score": 4
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "»Man bliver rystet sammen på en anden måde, end man ville gøre halvstiv i Fælledparken«",
-      "reason": "The article focuses on a local school initiative to offer alternative social events to typical parties, which is of primarily local interest and does not have broad relevance beyond the community involved.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/danmark/art10950799/%C2%BBMan-bliver-rystet-sammen-p%C3%A5-en-anden-m%C3%A5de-end-man-ville-g%C3%B8re-halvstiv-i-F%C3%A6lledparken%C2%AB",
-      "date": "2026-08-23 18:27",
-      "positivity_score": 3
     }
   ]
 }
