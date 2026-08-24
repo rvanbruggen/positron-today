@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-24T19:25:04.227Z",
-  "total_rejected": 124800,
+  "exported_at": "2026-08-24T19:39:42.227Z",
+  "total_rejected": 124801,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2208
+      "count": 2209
     },
     {
       "category": "divisive-racism",
@@ -216,8 +216,8 @@
     },
     {
       "source": "RNZ (New Zealand)",
-      "negative": 1146,
-      "total": 1179
+      "negative": 1147,
+      "total": 1180
     },
     {
       "source": "El pais",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "RNZ (New Zealand)",
+      "title": "Neonatal nurse on why infant mental health matters",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rnz.co.nz/news/health/1110313/neonatal-nurse-on-why-infant-mental-health-matters",
+      "date": "2026-08-24 21:39",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "South Africa: Approved in the Dark - - the Hidden Environmental Toll of SA's Data Centre Boom",
@@ -9379,15 +9388,6 @@
       "reason": "The article is about a regional sports event with local-only relevance and does not have broad human interest beyond the specific community involved.",
       "category": "sports-negative",
       "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/brecht/regionaal-sportfeest-brengt-ruim-vijfhonderd-kljers-uit-provincie-antwerpen-samen-in-groot-veerle-het-lijkt-wel-een-gigantisch-klj-kamp/160409657.html",
-      "date": "2026-08-23 22:37",
-      "positivity_score": 3
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Debeka-Chef: „Privatpatienten sind nicht schuld an Terminproblemen beim Arzt“",
-      "reason": "The article is an interview with a corporate insurance executive discussing private health insurance issues and contributions, which falls under corporate PR and does not present a clearly positive or broadly relevant story.",
-      "category": "economic-doom",
-      "url": "https://www.faz.net/aktuell/finanzen/debeka-chef-thomas-brahm-warum-die-pkv-beitraege-steigen-accg-201066952.html",
       "date": "2026-08-23 22:37",
       "positivity_score": 3
     }
