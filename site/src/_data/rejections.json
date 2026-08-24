@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-24T16:03:08.156Z",
-  "total_rejected": 124577,
+  "exported_at": "2026-08-24T16:10:26.581Z",
+  "total_rejected": 124578,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2204
+      "count": 2205
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 158,
-      "total": 377
+      "negative": 159,
+      "total": 378
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "NASA is about to launch a powerful new eye on the universe",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/08/260823094140.htm",
+      "date": "2026-08-24 18:10",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Saudi Arabia’s MBS visits Macron in France: What to expect",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on a local school initiative to offer alternative social events to typical parties, which is of primarily local interest and does not have broad relevance beyond the community involved.",
       "category": "soft-news-filler",
       "url": "https://politiken.dk/danmark/art10950799/%C2%BBMan-bliver-rystet-sammen-p%C3%A5-en-anden-m%C3%A5de-end-man-ville-g%C3%B8re-halvstiv-i-F%C3%A6lledparken%C2%AB",
-      "date": "2026-08-23 18:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Bildspel: Klimatdemonstrationen i Stockholm",
-      "reason": "The article is local-only relevance, focusing on a climate demonstration in a single city with no broader analysis or unique insight beyond event coverage and photos, which does not meet the positive-news editorial standards.",
-      "category": "soft-news-filler",
-      "url": "https://www.dn.se/sverige/bildspel-stor-klimatdemonstration-i-stockholm/",
       "date": "2026-08-23 18:27",
       "positivity_score": 3
     }
