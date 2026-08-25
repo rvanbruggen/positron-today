@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-25T17:43:27.415Z",
-  "total_rejected": 125684,
+  "exported_at": "2026-08-25T17:43:44.445Z",
+  "total_rejected": 125685,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2227
+      "count": 2228
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 4669,
-      "total": 4716
+      "negative": 4670,
+      "total": 4717
     },
     {
       "source": "The New York Times",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Sophie Adenot a commencé sa deuxième sortie hors de l’ISS, pour terminer sa mission restée inachevée",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sciences/article/2026/08/25/sophie-adenot-suivez-en-direct-la-deuxieme-sortie-de-l-astronaute-francaise-hors-de-l-iss-pour-terminer-sa-mission-restee-inachevee_6755922_1650685.html",
+      "date": "2026-08-25 19:43",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Polsat Plus wchodzi w autobusy elektryczne. Jest pierwsze duże zamówienie",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on political and social opposition to robotaxis, involving legislation and labor disputes, which falls under political conflict and divisive social tension rather than positive news.",
       "category": "political-conflict",
       "url": "https://www.theverge.com/transportation/983765/robotaxi-waymo-zoox-tesla-rules-pushback-nhtsa",
-      "date": "2026-08-24 21:21",
-      "positivity_score": 3
-    },
-    {
-      "source": "The Verge",
-      "title": "Zillow and Redfin settle FTC antitrust case over their rental listings partnership",
-      "reason": "The article is primarily about a corporate legal settlement and antitrust case, which falls under corporate PR and legal dispute coverage rather than positive news with broad uplifting impact.",
-      "category": "economic-doom",
-      "url": "https://www.theverge.com/policy/983864/zillow-redfin-ftc-settlement",
       "date": "2026-08-24 21:21",
       "positivity_score": 3
     }
