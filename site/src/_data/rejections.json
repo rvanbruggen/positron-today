@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-25T19:44:32.823Z",
-  "total_rejected": 125892,
+  "exported_at": "2026-08-25T19:44:47.608Z",
+  "total_rejected": 125893,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2231
+      "count": 2232
     },
     {
       "category": "divisive-racism",
@@ -146,8 +146,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 2688,
-      "total": 2700
+      "negative": 2689,
+      "total": 2701
     },
     {
       "source": "Neue Zürcher Zeitung",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "SpaceX vil bygge ny base for raketopsendelser",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dr.dk/nyheder/seneste/spacex-vil-bygge-ny-base-raketopsendelser",
+      "date": "2026-08-25 21:44",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "7,000+ People Built a Zero-Waste Housing Society ",
@@ -9379,15 +9388,6 @@
       "reason": "The article discusses violent attacks and conflict in a politically sensitive region, which is inherently negative and does not meet the uplifting or positive news criteria.",
       "category": "political-conflict",
       "url": "https://www.aljazeera.com/video/newsfeed/2026/8/24/why-pogrom-best-describes-whats-happening-in-the-occupied-west-bank?traffic_source=rss",
-      "date": "2026-08-24 22:38",
-      "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Israeli restrictions cause fuel shortage in occupied West Bank",
-      "reason": "The article reports on fuel shortages caused by Israeli restrictions in the occupied West Bank, which is a negative political and humanitarian issue without a positive or uplifting angle.",
-      "category": "political-conflict",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/24/israeli-restrictions-cause-fuel-shortage-in-occupied-west-bank?traffic_source=rss",
       "date": "2026-08-24 22:38",
       "positivity_score": 2
     }
