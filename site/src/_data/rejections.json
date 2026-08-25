@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-25T20:38:42.281Z",
-  "total_rejected": 125984,
+  "exported_at": "2026-08-25T20:42:52.211Z",
+  "total_rejected": 125985,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2235
+      "count": 2236
     },
     {
       "category": "divisive-racism",
@@ -276,8 +276,8 @@
     },
     {
       "source": "Science.org news",
-      "negative": 293,
-      "total": 363
+      "negative": 294,
+      "total": 364
     },
     {
       "source": "MercoPress",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Science.org news",
+      "title": "In a global first, Mexico approves use of RNA-based fungicide",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.science.org/content/article/global-first-mexico-approves-use-rna-based-fungicide",
+      "date": "2026-08-25 22:42",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Africa: Heresy Press Acquires Misadventures on K Street by KRL International CEO K. Riva Levinson",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/culture/article/2026/08/25/nos-idees-de-series-blood-sacrifice-le-rouge-et-le-noir-lanterns-the-shards_6756055_3246.html",
       "date": "2026-08-25 06:17",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "Handicap : « Des milliers d’élèves n’ont pas l’accompagnement dont ils ont besoin », déplore l’Unapei",
-      "reason": "The article highlights a significant ongoing problem of insufficient support for students with disabilities, focusing on a negative social issue without presenting a positive breakthrough or solution.",
-      "category": "divisive-social",
-      "url": "https://www.lemonde.fr/education/article/2026/08/25/handicap-des-milliers-d-eleves-n-ont-pas-l-accompagnement-dont-ils-ont-besoin-deplore-l-unapei_6755823_1473685.html",
-      "date": "2026-08-25 06:17",
-      "positivity_score": 3
     }
   ]
 }
