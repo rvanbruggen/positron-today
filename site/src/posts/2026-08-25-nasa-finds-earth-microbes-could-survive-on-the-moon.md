@@ -2,7 +2,7 @@
 title: "NASA finds Earth microbes could survive on the Moon"
 title_nl: "NASA ontdekt dat aardmicroben op de maan kunnen overleven"
 title_fr: "NASA découvre que des microbes terrestres pourraient survivre sur la Lune"
-date: 2026-08-25T19:29:35
+date: 2026-08-25T19:29:39
 source_pub_date: 2026-08-25
 fetched_date: 2026-08-25
 source_url: "https://www.sciencedaily.com/releases/2026/08/260823094142.htm"
