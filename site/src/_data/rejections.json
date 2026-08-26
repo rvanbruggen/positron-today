@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-26T04:19:51.861Z",
-  "total_rejected": 126169,
+  "exported_at": "2026-08-26T04:58:43.400Z",
+  "total_rejected": 126170,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2240
+      "count": 2241
     },
     {
       "category": "divisive-racism",
@@ -301,8 +301,8 @@
     },
     {
       "source": "MIT Technology Review",
-      "negative": 110,
-      "total": 124
+      "negative": 111,
+      "total": 125
     },
     {
       "source": "Positive News",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "MIT Technology Review",
+      "title": "MIT tech powered the Artemis II livestreams",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.technologyreview.com/2026/08/25/1140961/mit-tech-powered-the-artemis-ii-livestreams/",
+      "date": "2026-08-26 06:58",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "Argentina acknowledges the Magellan treaties and seeks to defuse friction with Chile",
@@ -9381,15 +9390,6 @@
       "url": "https://politiken.dk/danmark/art10957827/Politiet-udelukker-ikke-forbrydelse-efter-fund-af-d%C3%B8d-mand-i-Guden%C3%A5en-ved-Silkeborg",
       "date": "2026-08-25 10:28",
       "positivity_score": 2
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Canada forbereder svar på USA's nye told",
-      "reason": "The article concerns economic measures in response to new US tariffs, which is primarily political and economic news without a clear positive or uplifting angle. It falls under political and economic conflict rather than positive news.",
-      "category": "economic-doom",
-      "url": "https://politiken.dk/internationalt/art10957822/Canada-forbereder-svar-p%C3%A5-USAs-nye-told",
-      "date": "2026-08-25 10:28",
-      "positivity_score": 3
     }
   ]
 }
