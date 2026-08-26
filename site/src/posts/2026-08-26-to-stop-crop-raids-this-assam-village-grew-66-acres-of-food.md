@@ -2,7 +2,7 @@
 title: "To stop crop raids, this assam village grew 66 acres of food for wild elephants"
 title_nl: "Om oogstrampen te stoppen, verbouwde dit Assam-dorp 66 hectare voedsel voor wilde olifanten"
 title_fr: "Pour arrêter les raids de cultures, ce village d'Assam a cultivé 66 acres de nourriture pour les éléphants sauvages"
-date: 2026-08-26T08:34:27
+date: 2026-08-26T08:34:26
 source_pub_date: 2026-08-26
 fetched_date: 2026-08-26
 source_url: "https://thebetterindia.com/web-stories/environment/assam-village-grows-food-for-elephants-hatikhuli-hati-bondhu-12434408"
