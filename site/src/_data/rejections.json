@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-26T04:58:43.400Z",
-  "total_rejected": 126170,
+  "exported_at": "2026-08-26T04:59:40.392Z",
+  "total_rejected": 126171,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2241
+      "count": 2242
     },
     {
       "category": "divisive-racism",
@@ -206,8 +206,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1424,
-      "total": 1901
+      "negative": 1425,
+      "total": 1902
     },
     {
       "source": "De Standaard Economie",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "U.K. heatwaves are baking the grass and revealing 300-year-old secret gardens",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/pn-uk-heatwave-reveals-hidden-historical-gardens-villages/",
+      "date": "2026-08-26 06:59",
+      "positivity_score": null
+    },
     {
       "source": "MIT Technology Review",
       "title": "MIT tech powered the Artemis II livestreams",
@@ -9379,15 +9388,6 @@
       "reason": "The article reports on a natural disaster causing injuries and damage, which is inherently negative and does not meet the positive news criteria.",
       "category": "disaster-accident",
       "url": "http://www.euronews.com/video/2026/08/25/tornado-rips-through-french-village-injuring-at-least-31",
-      "date": "2026-08-25 10:28",
-      "positivity_score": 2
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Politiet udelukker ikke forbrydelse efter fund af død mand i Gudenåen ved Silkeborg",
-      "reason": "The article reports on a possible crime investigation involving a dead man, which is negative news about a potential violent event and does not meet positive news standards.",
-      "category": "crime-violence",
-      "url": "https://politiken.dk/danmark/art10957827/Politiet-udelukker-ikke-forbrydelse-efter-fund-af-d%C3%B8d-mand-i-Guden%C3%A5en-ved-Silkeborg",
       "date": "2026-08-25 10:28",
       "positivity_score": 2
     }
