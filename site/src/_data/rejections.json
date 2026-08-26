@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-26T08:30:44.846Z",
-  "total_rejected": 126363,
+  "exported_at": "2026-08-26T11:15:32.573Z",
+  "total_rejected": 126364,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2243
+      "count": 2244
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 4059,
-      "total": 4181
+      "negative": 4060,
+      "total": 4182
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Nicotine vapes better for quitting smoking than gum or patches, major review finds",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c1e5p51n2p2o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-26 13:15",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Equatorial Guinea: Survivors of Guinea's Deadly Landfill Collapse Say Authorities Ignored Warnings",
@@ -9381,15 +9390,6 @@
       "url": "http://www.euronews.com/video/2026/08/25/video-shows-tornado-forming-over-village-in-france",
       "date": "2026-08-25 14:28",
       "positivity_score": 2
-    },
-    {
-      "source": "Euronews",
-      "title": "Watch: Viking Age anchor recreated with hammer and bellows in Denmark",
-      "reason": "The story is primarily of local historical and cultural interest without broad relevance beyond the specific region, making it local-only relevance.",
-      "category": "soft-news-filler",
-      "url": "http://www.euronews.com/video/2026/08/25/watch-viking-age-anchor-recreated-with-hammer-and-bellows-in-denmark",
-      "date": "2026-08-25 14:28",
-      "positivity_score": 4
     }
   ]
 }
