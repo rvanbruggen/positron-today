@@ -2,7 +2,7 @@
 title: "African agriculture offers key pathway to economic development and jobs"
 title_nl: "Afrikaanse landbouw biedt belangrijke weg naar economische ontwikkeling en banen"
 title_fr: "L'agriculture africaine offre un chemin clé vers le développement économique et l'emploi"
-date: 2026-08-26T08:34:25
+date: 2026-08-26T08:34:24
 source_pub_date: 2026-08-26
 fetched_date: 2026-08-26
 source_url: "https://allafrica.com/stories/202608260002.html"
