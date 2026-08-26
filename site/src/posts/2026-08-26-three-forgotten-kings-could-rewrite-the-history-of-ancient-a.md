@@ -2,7 +2,7 @@
 title: "Three forgotten kings could rewrite the history of ancient Assyria"
 title_nl: "Drie vergeten koningen kunnen de geschiedenis van het oude Assyrië herschrijven"
 title_fr: "Trois rois oubliés pourraient réécrire l'histoire de l'ancienne Assyrie"
-date: 2026-08-26T08:34:47
+date: 2026-08-26T08:34:50
 source_pub_date: 2026-08-26
 fetched_date: 2026-08-26
 source_url: "https://www.sciencedaily.com/releases/2026/08/260824065549.htm"
