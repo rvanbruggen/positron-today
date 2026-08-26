@@ -2,7 +2,7 @@
 title: "Seeing through murky waters"
 title_nl: "Zien door troebel water"
 title_fr: "Voir à travers des eaux troubles"
-date: 2026-08-26T08:35:06
+date: 2026-08-26T08:35:17
 source_pub_date: 2026-08-25
 fetched_date: 2026-08-26
 source_url: "https://www.technologyreview.com/2026/08/25/1140955/seeing-through-murky-waters/"
