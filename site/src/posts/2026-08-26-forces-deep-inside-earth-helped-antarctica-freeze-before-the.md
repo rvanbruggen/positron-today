@@ -2,7 +2,7 @@
 title: "Forces deep inside Earth helped Antarctica freeze before the Arctic"
 title_nl: "Krachten diep in de aarde hielpen Antarctica eerder bevriezen dan het Arctisch gebied"
 title_fr: "Des forces profondes dans la Terre ont aidé l'Antarctique à geler avant l'Arctique"
-date: 2026-08-26T08:34:51
+date: 2026-08-26T08:34:55
 source_pub_date: 2026-08-25
 fetched_date: 2026-08-26
 source_url: "https://www.sciencedaily.com/releases/2026/08/260823094154.htm"
