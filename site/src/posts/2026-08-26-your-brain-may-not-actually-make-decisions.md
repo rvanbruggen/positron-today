@@ -2,7 +2,7 @@
 title: "Your brain may not actually “make” decisions"
 title_nl: "Je brein maakt misschien geen 'beslissingen'"
 title_fr: "Votre cerveau ne 'prend' peut-être pas réellement de décisions"
-date: 2026-08-26T08:34:45
+date: 2026-08-26T08:34:46
 source_pub_date: 2026-08-25
 fetched_date: 2026-08-26
 source_url: "https://www.sciencedaily.com/releases/2026/08/260823094148.htm"
