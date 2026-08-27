@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-27T09:16:56.713Z",
-  "total_rejected": 127453,
+  "exported_at": "2026-08-27T09:17:04.241Z",
+  "total_rejected": 127454,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2270
+      "count": 2271
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 163,
-      "total": 394
+      "negative": 164,
+      "total": 395
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "190-year-old DNA reveals a hidden pangolin species",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/08/260826055500.htm",
+      "date": "2026-08-27 11:17",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "NASA’s Roman Space Telescope is ready to hunt thousands of alien worlds",
@@ -9379,15 +9388,6 @@
       "reason": "The article is primarily about a celebrity comedian and his show, which falls under entertainment industry content.",
       "category": "celebrity-entertainment",
       "url": "https://www.theguardian.com/culture/2026/aug/26/i-remember-going-oh-hello-dara-o-briain-on-comedy-coolness-cruelty-and-finding-his-parents",
-      "date": "2026-08-26 14:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Business-Ticker: Bill Gates nennt KI-Angriffe „schockierend“ und will globale Regeln wie für Atomwaffen",
-      "reason": "The article is a corporate/business news ticker with routine updates and no clear positive-news substance. It includes corporate leadership visits and tax revenue notes without a truly uplifting or universally relevant story.",
-      "category": "soft-news-filler",
-      "url": "https://www.faz.net/aktuell/wirtschaft/unternehmen/business-liveticker-bill-gates-nennt-ki-angriffe-von-openai-schockierend-und-will-globale-regeln-wie-fuer-atomwaffen-faz-200452404.html",
       "date": "2026-08-26 14:27",
       "positivity_score": 3
     }
