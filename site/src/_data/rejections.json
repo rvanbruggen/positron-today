@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-27T19:34:03.245Z",
-  "total_rejected": 128105,
+  "exported_at": "2026-08-27T19:34:20.017Z",
+  "total_rejected": 128106,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2285
+      "count": 2286
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 227,
-      "total": 333
+      "negative": 228,
+      "total": 334
     },
     {
       "source": "ScienceDaily",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "NASA’s Roman Space Telescope will rewrite how we study the universe",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/nasas-roman-space-telescope-will-rewrite-how-we-study-the-universe/",
+      "date": "2026-08-27 21:34",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "A mysterious cosmic hum may come from 13-billion-year-old dark stars",
@@ -9380,15 +9389,6 @@
       "category": "political-conflict",
       "url": "https://www.lefigaro.fr/elections/presidentielles/candidats/presidentielle-2027-une-primaire-socialiste-taillee-pour-raphael-glucksmann-mais-sous-la-menace-d-accords-avec-lfi-20260826",
       "date": "2026-08-27 06:16",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Présidentielle 2027 : au Parti socialiste, la perspective d’un match « fratricide » entre Olivier Faure et Raphaël Glucksmann",
-      "reason": "The article is about internal political competition within a party, which falls under political conflict and does not meet the positive news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/elections/presidentielles/primaires-gauche/presidentielle-2027-au-parti-socialiste-la-perspective-d-un-match-fratricide-entre-olivier-faure-et-raphael-glucksmann-20260826",
-      "date": "2026-08-27 06:15",
       "positivity_score": 2
     }
   ]
