@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-27T19:32:01.064Z",
-  "total_rejected": 128103,
+  "exported_at": "2026-08-27T19:32:05.376Z",
+  "total_rejected": 128104,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2283
+      "count": 2284
     },
     {
       "category": "divisive-racism",
@@ -231,8 +231,8 @@
     },
     {
       "source": "Nature",
-      "negative": 833,
-      "total": 1000
+      "negative": 834,
+      "total": 1001
     },
     {
       "source": "Knack",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "The Roman telescope is about to take planet-hunting to the next level",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02662-7",
+      "date": "2026-08-27 21:32",
+      "positivity_score": null
+    },
     {
       "source": "Science.org news",
       "title": "Climate change is strengthening El Niño, coral records suggest",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lefigaro.fr/elections/presidentielles/retraites-francois-hollande-propose-de-fixer-l-age-de-depart-a-63-ans-et-un-allongement-progressif-de-la-duree-de-cotisation-20260826",
       "date": "2026-08-27 06:15",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Yayoi Kusama, l’artiste avant-gardiste japonaise et folle reine des pois, est morte à l’âge de 97 ans",
-      "reason": "The article is an obituary about a famous artist, which falls under celebrity and entertainment industry content and does not meet the positive news criteria.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.lefigaro.fr/arts-expositions/yayoi-kusama-l-artiste-avant-gardiste-japonaise-et-folle-reine-des-pois-est-morte-a-l-age-de-97-ans-20260827",
-      "date": "2026-08-27 06:15",
-      "positivity_score": 3
     }
   ]
 }
