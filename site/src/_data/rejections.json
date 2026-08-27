@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-27T14:03:34.311Z",
-  "total_rejected": 127662,
+  "exported_at": "2026-08-27T14:04:20.593Z",
+  "total_rejected": 127663,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2275
+      "count": 2276
     },
     {
       "category": "divisive-racism",
@@ -186,8 +186,8 @@
     },
     {
       "source": "Le Soir",
-      "negative": 1860,
-      "total": 1876
+      "negative": 1861,
+      "total": 1877
     },
     {
       "source": "Euronews",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Soir",
+      "title": "Un nouveau satellite « à la belge » va être lancé ce jeudi",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lesoir.be/767399/article/2026-08-27/un-nouveau-satellite-la-belge-va-etre-lance-ce-jeudi",
+      "date": "2026-08-27 16:04",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Kenya: AI Is Already in Kenya's Classrooms. Is the Education System Ready?",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theverge.com/tech/984838/ring-take-encryption-throw-away-the-key-law-enforcement",
       "date": "2026-08-26 18:27",
       "positivity_score": 4
-    },
-    {
-      "source": "The Verge",
-      "title": "Meta agrees to heavy restrictions on teen users in major lawsuit settlement",
-      "reason": "The article covers a legal settlement involving a major corporation and regulatory authorities, focusing on restrictions and safety measures for teens online. It is primarily a political and corporate regulatory story with a negative framing rather than uplifting positive news.",
-      "category": "political-conflict",
-      "url": "https://www.theverge.com/policy/985032/meta-state-ag-kids-online-safety-settlement",
-      "date": "2026-08-26 18:27",
-      "positivity_score": 3
     }
   ]
 }
