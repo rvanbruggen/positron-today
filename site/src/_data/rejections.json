@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-27T19:32:05.376Z",
-  "total_rejected": 128104,
+  "exported_at": "2026-08-27T19:34:03.245Z",
+  "total_rejected": 128105,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2284
+      "count": 2285
     },
     {
       "category": "divisive-racism",
@@ -290,14 +290,14 @@
       "total": 333
     },
     {
+      "source": "ScienceDaily",
+      "negative": 166,
+      "total": 403
+    },
+    {
       "source": "Good Good Good",
       "negative": 165,
       "total": 279
-    },
-    {
-      "source": "ScienceDaily",
-      "negative": 165,
-      "total": 402
     },
     {
       "source": "MIT Technology Review",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "A mysterious cosmic hum may come from 13-billion-year-old dark stars",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/08/260827010457.htm",
+      "date": "2026-08-27 21:34",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "The Roman telescope is about to take planet-hunting to the next level",
@@ -9379,15 +9388,6 @@
       "reason": "The article is about internal political competition within a party, which falls under political conflict and does not meet the positive news criteria.",
       "category": "political-conflict",
       "url": "https://www.lefigaro.fr/elections/presidentielles/primaires-gauche/presidentielle-2027-au-parti-socialiste-la-perspective-d-un-match-fratricide-entre-olivier-faure-et-raphael-glucksmann-20260826",
-      "date": "2026-08-27 06:15",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Retraites : François Hollande propose de fixer l’âge de départ à 63 ans et un allongement progressif de la durée de cotisation",
-      "reason": "The article is about a political proposal on retirement age and tax changes, which falls under political news and does not meet the positive-news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/elections/presidentielles/retraites-francois-hollande-propose-de-fixer-l-age-de-depart-a-63-ans-et-un-allongement-progressif-de-la-duree-de-cotisation-20260826",
       "date": "2026-08-27 06:15",
       "positivity_score": 2
     }
