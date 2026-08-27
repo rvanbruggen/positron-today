@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-27T09:15:22.512Z",
-  "total_rejected": 127450,
+  "exported_at": "2026-08-27T09:15:28.018Z",
+  "total_rejected": 127451,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2267
+      "count": 2268
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 4091,
-      "total": 4215
+      "negative": 4092,
+      "total": 4216
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "World's first patient to undergo live AI-assisted brain surgery has tumour removed",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/cjwg5n7y68xo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-27 11:15",
+      "positivity_score": null
+    },
     {
       "source": "NRC",
       "title": "In een warmer Nederland leven allerlei nieuwe soorten. Maar niet elke soort komt hier voor de warmte ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.faz.net/aktuell/feuilleton/debatten/desinformation-und-boeswilligkeit-gegenueber-merz-bei-markus-lanz-accg-201160291.html",
       "date": "2026-08-26 14:27",
       "positivity_score": 3
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Deutschland-Liveblog: Merz: „Wir müssen raus aus diesem Klima der Verdrießlichkeit und des Verdrusses“",
-      "reason": "The article is a political liveblog covering government meetings and party events, which falls under politics and does not meet the positive-news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/politik/inland/liveblog-bundespolitik-merz-wir-muessen-raus-aus-diesem-klima-der-verdriesslichkeit-und-des-verdrusses-faz-110093143.html",
-      "date": "2026-08-26 14:27",
-      "positivity_score": 2
     }
   ]
 }
