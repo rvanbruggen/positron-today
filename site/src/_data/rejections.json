@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-28T04:19:32.037Z",
-  "total_rejected": 128396,
+  "exported_at": "2026-08-28T04:53:24.954Z",
+  "total_rejected": 128397,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2290
+      "count": 2291
     },
     {
       "category": "divisive-racism",
@@ -176,8 +176,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 1903,
-      "total": 1946
+      "negative": 1904,
+      "total": 1947
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Alberta expands access to cancer treatment with Calgary radiopharmaceutical facility",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12037823/alberta-cancer-treatment-calgary-cyclotron/",
+      "date": "2026-08-28 06:53",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "More than 390 bodies recovered and nearly 1,500 unaccounted for after the Nepal Himalaya flood",
@@ -9379,15 +9388,6 @@
       "reason": "The article is about a professional sports team and their performance in a tournament, which falls under routine sports coverage without a unique, exceptional human-interest angle.",
       "category": "sports-negative",
       "url": "https://www.lalibre.be/sports/hockey/2026/08/27/nous-avons-la-meilleure-defense-au-monde-decryptage-du-jeu-des-red-panthers-avant-la-demi-face-aux-pays-bas-RIRNSXWGCJAXZBHYAUB6MYZPG4/",
-      "date": "2026-08-27 10:28",
-      "positivity_score": 3
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "Légende de l’art, Yayoi Kusama, “un pois c’est tout”",
-      "reason": "The article is an obituary focused on the death of a famous artist, which falls under celebrity news and does not meet the positive-news criteria.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.lalibre.be/culture/arts/2026/08/27/legende-de-lart-yayoi-kusama-un-pois-cest-tout-GRHCEXJINVGELGYQJOZA65ZUMI/",
       "date": "2026-08-27 10:28",
       "positivity_score": 3
     }
