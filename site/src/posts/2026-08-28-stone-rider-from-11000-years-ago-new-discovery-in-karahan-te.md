@@ -2,7 +2,7 @@
 title: "Stone rider from 11,000 years ago. New discovery in Karahan Tepe surprises scientists"
 title_nl: "Steenrijder van 11.000 jaar geleden. Nieuwe ontdekking in Karahan Tepe verrast wetenschappers"
 title_fr: "Cavalier de pierre datant de 11 000 ans. Nouvelle découverte à Karahan Tepe surprend les scientifiques"
-date: 2026-08-28T08:33:40
+date: 2026-08-28T08:33:43
 source_pub_date: 2026-08-27
 fetched_date: 2026-08-27
 source_url: "https://www.rp.pl/archeologia/art45065771-kamienny-jezdziec-sprzed-11-000-lat-nowe-odkrycie-w-karahan-tepe-zaskakuje-naukowcow"
