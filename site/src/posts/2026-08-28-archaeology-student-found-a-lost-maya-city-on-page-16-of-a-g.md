@@ -2,7 +2,7 @@
 title: "Archaeology student found a lost Maya city on page 16 of a Google search"
 title_nl: "Archeologiestudent vond een verloren Maya-stad op pagina 16 van een Google-zoekopdracht"
 title_fr: "Un étudiant en archéologie a trouvé une ville maya perdue à la page 16 d'une recherche Google"
-date: 2026-08-28T08:33:19
+date: 2026-08-28T08:33:22
 source_pub_date: 2026-08-27
 fetched_date: 2026-08-28
 source_url: "https://www.upworthy.com/pn-archaeology-student-lost-maya-city-google-search-ex1/"
