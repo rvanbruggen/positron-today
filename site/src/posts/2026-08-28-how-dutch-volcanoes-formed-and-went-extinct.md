@@ -2,7 +2,7 @@
 title: "How Dutch volcanoes formed (and went extinct)"
 title_nl: "Hoe Nederlandse vulkanen ontstonden (en weer uitdoofden)"
 title_fr: "Comment les volcans néerlandais se sont formés (et se sont éteints)"
-date: 2026-08-28T08:33:30
+date: 2026-08-28T08:33:33
 source_pub_date: 2026-08-28
 fetched_date: 2026-08-28
 source_url: "https://www.nrc.nl/nieuws/2026/08/28/hoe-nederlandse-vulkanen-ontstonden-en-weer-uitdoofden-a4931897"
