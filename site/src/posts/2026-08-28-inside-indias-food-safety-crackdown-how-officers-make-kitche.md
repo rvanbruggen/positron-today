@@ -2,7 +2,7 @@
 title: "Inside India’s food-safety crackdown: how officers make kitchens, dairies & warehouses accountable"
 title_nl: "Binnen de voedselveiligheidscrackdown in India: hoe ambtenaren keukens, zuivelfabrieken en magazijnen verantwoordelijk houden"
 title_fr: "À l'intérieur de la répression de la sécurité alimentaire en Inde : comment les agents rendent les cuisines, les laiteries et les entrepôts responsables"
-date: 2026-08-28T08:33:18
+date: 2026-08-28T08:33:17
 source_pub_date: 2026-08-28
 fetched_date: 2026-08-28
 source_url: "https://thebetterindia.com/changemakers/food-adulteration-india-ias-officers-tukaram-mundhe-food-safety-crackdown-12433449"
