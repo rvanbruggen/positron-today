@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-28T04:53:49.068Z",
-  "total_rejected": 128398,
+  "exported_at": "2026-08-28T04:53:57.262Z",
+  "total_rejected": 128399,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2292
+      "count": 2293
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 4771,
-      "total": 4820
+      "negative": 4772,
+      "total": 4821
     },
     {
       "source": "The New York Times",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "La fusée Ariane-6 réussit le lancement du satellite météorologique MTG-I2",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sciences/article/2026/08/28/la-fusee-ariane-6-reussit-le-lancement-du-satellite-meteo-mtg-i2_6758604_1650684.html",
+      "date": "2026-08-28 06:53",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "NZ-backed climate mobility initiative launched across Pacific",
@@ -9379,15 +9388,6 @@
       "reason": "The article reports on a fire causing injury and evacuation in a local nursing home, which is a negative event without broader positive significance.",
       "category": "disaster-accident",
       "url": "https://www.lalibre.be/regions/bruxelles/2026/08/27/dix-residents-dune-maison-de-repos-a-evere-intoxiques-apres-un-feu-dans-un-couloir-6NERNEGSJBFGLMCSGNUMLIW4AQ/",
-      "date": "2026-08-27 10:28",
-      "positivity_score": 2
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "L'artiste avant-gardiste japonaise Yayoi Kusama est morte à 97 ans",
-      "reason": "The article reports the death of a famous artist, which is a negative event and does not meet the positive news criteria.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.lalibre.be/culture/arts/2026/08/27/lartiste-avant-gardiste-japonaise-yayoi-kusama-est-morte-a-97-ans-GWW46ELQQRDBVNTWEHQ7ZJREPM/",
       "date": "2026-08-27 10:28",
       "positivity_score": 2
     }
