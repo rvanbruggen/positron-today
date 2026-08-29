@@ -2,7 +2,7 @@
 title: "How journalists are winning back the trust of marginalized communities"
 title_nl: "Hoe journalisten het vertrouwen van gemarginaliseerde gemeenschappen terugwinnen"
 title_fr: "Comment les journalistes regagnent la confiance des communautés marginalisées"
-date: 2026-08-29T08:30:57
+date: 2026-08-29T08:32:39
 source_pub_date: 2026-08-28
 fetched_date: 2026-08-29
 source_url: "https://www.goodgoodgood.co/articles/distrust-in-journalism-marginalized-communities"
