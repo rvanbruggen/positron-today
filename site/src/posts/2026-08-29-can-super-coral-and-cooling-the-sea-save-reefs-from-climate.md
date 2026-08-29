@@ -2,7 +2,7 @@
 title: "Can super coral and cooling the sea save reefs from climate change?"
 title_nl: "Kan superkoraal en het afkoelen van de zee de riffen redden van klimaatverandering?"
 title_fr: "Le super corail et le refroidissement de la mer peuvent-ils sauver les récifs du changement climatique?"
-date: 2026-08-29T16:30:44
+date: 2026-08-29T16:32:29
 source_pub_date: 2026-08-29
 fetched_date: 2026-08-29
 source_url: "https://www.aljazeera.com/video/101-east/2026/8/29/can-super-coral-and-cooling-the-sea-save-reefs-from-climate-change?traffic_source=rss"
