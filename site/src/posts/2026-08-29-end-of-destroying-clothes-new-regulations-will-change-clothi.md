@@ -2,7 +2,7 @@
 title: "End of destroying clothes. New regulations will change clothing brands' strategies"
 title_nl: "Einde aan het vernietigen van kleding. Nieuwe regels zullen de strategieën van kledingmerken veranderen"
 title_fr: "Fin de la destruction des vêtements. De nouvelles réglementations changeront les stratégies des marques de vêtements"
-date: 2026-08-29T08:32:54
+date: 2026-08-29T08:32:53
 source_pub_date: 2026-08-29
 fetched_date: 2026-08-29
 source_url: "https://www.rp.pl/ekonomia/art45062881-koniec-z-niszczeniem-ubran-nowe-przepisy-zmienia-strategie-marek-odziezowych"
