@@ -2,7 +2,7 @@
 title: "Scientists debunk the main argument of employers. The myth of remote work has fallen"
 title_nl: "Wetenschappers ontkrachten het belangrijkste argument van werkgevers. De mythe van thuiswerken is gevallen"
 title_fr: "Les scientifiques réfutent l'argument principal des employeurs. Le mythe du travail à distance est tombé"
-date: 2026-08-29T08:32:42
+date: 2026-08-29T08:32:49
 source_pub_date: 2026-08-29
 fetched_date: 2026-08-29
 source_url: "https://www.rp.pl/nauka/art45063391-naukowcy-obalili-koronny-argument-pracodawcow-upadl-mit-o-pracy-zdalnej"
