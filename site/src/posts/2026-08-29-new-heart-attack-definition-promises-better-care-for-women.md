@@ -2,7 +2,7 @@
 title: "New heart attack definition promises better care for women"
 title_nl: "Nieuwe definitie van een hartaanval belooft betere zorg voor vrouwen"
 title_fr: "Une nouvelle définition de l'infarctus promet de meilleurs soins pour les femmes"
-date: 2026-08-29T08:32:57
+date: 2026-08-29T08:32:59
 source_pub_date: 2026-08-28
 fetched_date: 2026-08-28
 source_url: "https://www.theguardian.com/society/2026/aug/28/doctors-care-revolution-agree-first-universal-definition-heart-attack"
