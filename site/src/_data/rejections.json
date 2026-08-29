@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-29T05:28:00.292Z",
-  "total_rejected": 129404,
+  "exported_at": "2026-08-29T05:28:15.725Z",
+  "total_rejected": 129405,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2309
+      "count": 2310
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 4146,
-      "total": 4271
+      "negative": 4147,
+      "total": 4272
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "The race to stop England running out of water",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/clyrv84yd9ko?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-29 07:28",
+      "positivity_score": null
+    },
     {
       "source": "Upworthy",
       "title": "Jeannette Rankin was elected to Congress 4 years before the 19th Amendment. A Montana law made it work.",
@@ -9379,15 +9388,6 @@
       "reason": "The article reports on the death and autopsy of a missing tourist, which is a negative event without positive news value.",
       "category": "crime-violence",
       "url": "https://www.lesoir.be/767595/article/2026-08-28/deces-de-celine-cremer-les-premieres-informations-revelees-par-lautopsie",
-      "date": "2026-08-28 10:25",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Soir",
-      "title": "La police népalaise lance une alerte aux inondations après la rupture d’un lac au Tibet",
-      "reason": "The article reports a deadly natural disaster with many casualties and missing persons, which is inherently negative and not uplifting.",
-      "category": "disaster-accident",
-      "url": "https://www.lesoir.be/767573/article/2026-08-28/la-police-nepalaise-lance-une-alerte-aux-inondations-apres-la-rupture-dun-lac-au",
       "date": "2026-08-28 10:25",
       "positivity_score": 2
     }
