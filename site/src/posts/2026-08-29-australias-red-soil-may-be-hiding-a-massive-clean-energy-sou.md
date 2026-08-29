@@ -2,7 +2,7 @@
 title: "Australia’s red soil may be hiding a massive clean energy source"
 title_nl: "De rode grond van Australië kan een enorme bron van schone energie verbergen"
 title_fr: "Le sol rouge de l'Australie pourrait cacher une énorme source d'énergie propre"
-date: 2026-08-29T16:30:45
+date: 2026-08-29T16:32:31
 source_pub_date: 2026-08-29
 fetched_date: 2026-08-29
 source_url: "https://www.sciencedaily.com/releases/2026/08/260829035214.htm"
