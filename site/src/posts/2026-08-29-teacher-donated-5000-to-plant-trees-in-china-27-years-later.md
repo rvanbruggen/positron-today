@@ -2,7 +2,7 @@
 title: "Teacher donated $5,000 to plant trees in China. 27 years later, he’s moved to tears by the results."
 title_nl: "Docent doneerde $5.000 om bomen te planten in China. 27 jaar later is hij ontroerd door de resultaten."
 title_fr: "Un enseignant a fait un don de 5 000 $ pour planter des arbres en Chine. 27 ans plus tard, il est ému par les résultats."
-date: 2026-08-29T08:32:59
+date: 2026-08-29T08:33:03
 source_pub_date: 2026-08-28
 fetched_date: 2026-08-29
 source_url: "https://www.upworthy.com/teacher-donated-5000-to-plant-trees-in-china-27-years-later-hes-moved-to-tears-by-the-results/"
