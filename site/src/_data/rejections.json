@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-29T05:31:07.821Z",
-  "total_rejected": 129407,
+  "exported_at": "2026-08-29T05:31:16.702Z",
+  "total_rejected": 129408,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2312
+      "count": 2313
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 233,
-      "total": 343
+      "negative": 234,
+      "total": 344
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "Where are all the aliens? A new book explores possible answers",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/where-are-all-the-aliens-a-new-book-explores-possible-answers/",
+      "date": "2026-08-29 07:31",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Ghana: Ghana's Kente Protection Opens New Economic Possibilities",
@@ -9381,15 +9390,6 @@
       "url": "https://www.demorgen.be/nieuws/live-onrust-over-breuk-in-meer-met-2-miljoen-kubieke-meter-water-in-tibet-overstroming-voorlopig-gestopt-reddingswerken-aan-chinese-kant-gaan-voort~be20b0c7/",
       "date": "2026-08-28 10:25",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Soir",
-      "title": "Une chaîne de prêt-à-porter fait son grand retour en Wallonie",
-      "reason": "The article is about a local business relaunching in a specific region, which has primarily local relevance and does not offer broad human interest or substantive positive news beyond a regional commercial update.",
-      "category": "soft-news-filler",
-      "url": "https://www.lesoir.be/767584/article/2026-08-28/une-chaine-de-pret-porter-fait-son-grand-retour-en-wallonie",
-      "date": "2026-08-28 10:25",
-      "positivity_score": 3
     }
   ]
 }
