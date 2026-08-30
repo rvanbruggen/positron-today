@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-30T15:45:44.268Z",
-  "total_rejected": 130481,
+  "exported_at": "2026-08-30T15:45:53.000Z",
+  "total_rejected": 130482,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2343
+      "count": 2344
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 4861,
-      "total": 4913
+      "negative": 4862,
+      "total": 4914
     },
     {
       "source": "The New York Times",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Roman, nouveau télescope spatial de la NASA, s’est envolé à la recherche de l’énergie noire et des exoplanètes",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sciences/article/2026/08/30/roman-le-nouveau-telescope-spatial-de-la-nasa-part-a-la-recherche-de-l-energie-noire-et-des-exoplanetes_6760674_1650684.html",
+      "date": "2026-08-30 17:45",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "NASA’s Nancy Grace Roman Telescope launches to space",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theguardian.com/music/2026/aug/29/dolly-parton-rotherham-visit-imagination-library-launch",
       "date": "2026-08-29 10:26",
       "positivity_score": 3
-    },
-    {
-      "source": "Le Monde",
-      "title": "Pourquoi l’avenir de la tour Montparnasse est-il en jeu dans les prochaines semaines ? Comprendre en trois minutes",
-      "reason": "The article focuses on local issues regarding the Montparnasse tower renovation delays due to conflicts among co-owners, which has primarily local relevance and lacks broad human interest or positive substance.",
-      "category": "soft-news-filler",
-      "url": "https://www.lemonde.fr/comprendre-en-3-minutes/video/2026/08/29/pourquoi-l-avenir-de-la-tour-montparnasse-est-il-en-jeu-dans-les-prochaines-semaines-comprendre-en-trois-minutes_6759543_6176282.html",
-      "date": "2026-08-29 10:26",
-      "positivity_score": 2
     }
   ]
 }
