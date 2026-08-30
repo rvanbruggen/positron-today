@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-30T20:27:12.808Z",
-  "total_rejected": 130781,
+  "exported_at": "2026-08-30T20:27:18.538Z",
+  "total_rejected": 130782,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2350
+      "count": 2351
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 4179,
-      "total": 4305
+      "negative": 4180,
+      "total": 4306
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "'A giant leap forward': Nasa launches powerful new space telescope to explore mysteries of the Universe",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/ce87e55vgpjo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-08-30 22:27",
+      "positivity_score": null
+    },
     {
       "source": "The Verge",
       "title": "The Nancy Grace Roman Space Telescope launches to study dark matter and dark energy",
@@ -9379,15 +9388,6 @@
       "reason": "The article covers a recent attack in the ongoing war in Ukraine, which is inherently negative and related to conflict and violence, not positive news.",
       "category": "war-conflict",
       "url": "https://www.standaard.be/buitenland/zelensky-vol-onbegrip-na-russische-aanval-op-wapenmagazijn-verschrikkelijk-nalatig-om-explosieven-naast-woonzones-op-te-slaan/35173633.html",
-      "date": "2026-08-29 18:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Gemaskerde Israëlische kolonisten voeren opnieuw aanvallen uit in belegerd dorp Qusra op bezette Westoever",
-      "reason": "The article reports on violent attacks in a conflict zone, which is inherently negative and does not meet the positive news criteria.",
-      "category": "war-conflict",
-      "url": "https://www.standaard.be/buitenland/gemaskerde-israelische-kolonisten-voeren-opnieuw-aanvallen-uit-in-belegerd-dorp-qusra-op-bezette-westoever/35173881.html",
       "date": "2026-08-29 18:26",
       "positivity_score": 2
     }
