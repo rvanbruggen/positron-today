@@ -2,7 +2,7 @@
 title: "NASA launches Roman space telescope: what Hubble sees in 100 years, she can observe in one month"
 title_nl: "NASA lanceert ruimtetelescoop Roman: wat Hubble in 100 jaar ziet, kan zij in één maand observeren"
 title_fr: "NASA lance le télescope spatial Roman : ce que Hubble voit en 100 ans, elle peut l'observer en un mois"
-date: 2026-08-30T08:32:40
+date: 2026-08-30T08:32:43
 source_pub_date: 2026-08-30
 fetched_date: 2026-08-30
 source_url: "https://vrtnws.be/p.RayXKDn90"
