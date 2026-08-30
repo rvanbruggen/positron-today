@@ -2,7 +2,7 @@
 title: "Why are we right-handed or left-handed? A study offers a new perspective"
 title_nl: "Waarom zijn we rechtshandig of linkshandig? Een studie biedt een nieuwe kijk"
 title_fr: "Pourquoi sommes-nous droitiers ou gauchers ? Une étude propose une nouvelle lecture"
-date: 2026-08-30T08:32:41
+date: 2026-08-30T08:32:45
 source_pub_date: 2026-08-29
 fetched_date: 2026-08-29
 source_url: "https://www.lalibre.be/planete/2026/08/29/pourquoi-sommes-nous-droitiers-ou-gauchers-une-etude-propose-une-nouvelle-lecture-QMGLIIV42JCWVOJRCK3HNTEXOQ/"
