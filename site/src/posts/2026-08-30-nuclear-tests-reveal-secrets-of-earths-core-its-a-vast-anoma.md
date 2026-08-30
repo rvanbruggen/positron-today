@@ -2,7 +2,7 @@
 title: "Nuclear tests reveal secrets of Earth's core. It's a vast anomaly"
 title_nl: "Nucleaire tests onthullen geheimen van de kern van de aarde. Het is een uitgestrekte anomalie"
 title_fr: "Des tests nucléaires révèlent les secrets du noyau de la Terre. C'est une vaste anomalie"
-date: 2026-08-30T08:32:42
+date: 2026-08-30T08:32:47
 source_pub_date: 2026-08-30
 fetched_date: 2026-08-30
 source_url: "https://www.rp.pl/nauka/art45063931-proby-jadrowe-ujawnily-tajemnice-jadra-ziemi-to-rozlegla-anomalia"
