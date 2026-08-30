@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-30T15:45:53.000Z",
-  "total_rejected": 130482,
+  "exported_at": "2026-08-30T15:46:05.784Z",
+  "total_rejected": 130483,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2344
+      "count": 2345
     },
     {
       "category": "divisive-racism",
@@ -246,8 +246,8 @@
     },
     {
       "source": "Popular Science",
-      "negative": 730,
-      "total": 951
+      "negative": 731,
+      "total": 952
     },
     {
       "source": "Euroactiv",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Popular Science",
+      "title": "NASA’s Nancy Grace Roman space telescope launches",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.popsci.com/science/nancy-grace-roman-space-telescope-launch/",
+      "date": "2026-08-30 17:46",
+      "positivity_score": null
+    },
     {
       "source": "Le Monde",
       "title": "Roman, nouveau télescope spatial de la NASA, s’est envolé à la recherche de l’énergie noire et des exoplanètes",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theguardian.com/technology/2026/aug/29/sharp-rise-in-incidents-of-ai-escaping-users-control-research-finds",
       "date": "2026-08-29 10:26",
       "positivity_score": 2
-    },
-    {
-      "source": "The Guardian",
-      "title": "‘In walked this big bundle of energy’: the day Dolly Parton came to Rotherham",
-      "reason": "The article is primarily about a celebrity visit and focuses on Dolly Parton, fitting the category of celebrity and entertainment news without broader universal significance or substantive positive impact.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.theguardian.com/music/2026/aug/29/dolly-parton-rotherham-visit-imagination-library-launch",
-      "date": "2026-08-29 10:26",
-      "positivity_score": 3
     }
   ]
 }
