@@ -2,7 +2,7 @@
 title: "Scientists read entire scroll from Herculaneum for the first time. Artificial intelligence helped"
 title_nl: "Wetenschappers lezen voor het eerst een hele rol uit Herculaneum. Kunstmatige intelligentie hielp"
 title_fr: "Des scientifiques lisent pour la première fois un rouleau entier d'Herculanum. L'intelligence artificielle a aidé"
-date: 2026-08-30T00:37:01
+date: 2026-08-30T00:37:05
 source_pub_date: 2026-08-29
 fetched_date: 2026-08-29
 source_url: "https://www.rp.pl/archeologia/art44713661-naukowcy-po-raz-pierwszy-odczytali-caly-zwoj-z-herkulanum-pomogla-sztuczna-inteligencja"
