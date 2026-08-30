@@ -2,7 +2,7 @@
 title: "Philippe Rahm, architect: building cactus cities to combat droughts and heatwaves"
 title_nl: "Philippe Rahm, architect: cactussteden bouwen tegen droogtes en hittegolven"
 title_fr: "Philippe Rahm, architecte : construire des villes cactus face aux sécheresses et aux canicules"
-date: 2026-08-30T08:33:00
+date: 2026-08-30T08:33:03
 source_pub_date: 2026-08-29
 fetched_date: 2026-08-29
 source_url: "https://www.lemonde.fr/idees/article/2026/08/29/philippe-rahm-architecte-face-aux-secheresses-et-aux-canicules-il-faut-aujourd-hui-construire-des-villes-cactus_6760301_3232.html"
