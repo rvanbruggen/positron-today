@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-08-31T16:30:24.657Z",
-  "total_rejected": 131598,
+  "exported_at": "2026-08-31T18:06:11.220Z",
+  "total_rejected": 131599,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2369
+      "count": 2370
     },
     {
       "category": "divisive-racism",
@@ -141,8 +141,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 3017,
-      "total": 3059
+      "negative": 3018,
+      "total": 3060
     },
     {
       "source": "DR (Danish Public broadcaster)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Sleeping in on weekends is good for the heart: What research has shown",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.aljazeera.com/news/2026/8/31/sleeping-in-on-weekends-is-good-for-the-heart-what-research-has-shown?traffic_source=rss",
+      "date": "2026-08-31 20:06",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Algeria: Algeria Sends Fighter Jets to Niger After a Failed Military Coup",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lalibre.be/culture/2026/08/30/the-whisper-man-un-tele-film-moyen-de-plus-pour-de-niro-VVWXAQC3F5HLTO66O3WFTNA7AY/",
       "date": "2026-08-30 18:27",
       "positivity_score": 2
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "L'Allemagne remporte à nouveau la Coupe du monde de hockey quatre ans après avoir battu les Belges",
-      "reason": "The article is about a professional sports result without exceptional or universally inspiring characteristics, fitting the exclusion for routine sports news.",
-      "category": "sports-negative",
-      "url": "https://www.lalibre.be/sports/hockey/2026/08/30/lallemagne-remporte-a-nouveau-la-coupe-du-monde-de-hockey-quatre-ans-apres-avoir-battu-les-belges-SMM4K4O2OFFJ3B24W2WOPTMCPA/",
-      "date": "2026-08-30 18:27",
-      "positivity_score": 3
     }
   ]
 }
