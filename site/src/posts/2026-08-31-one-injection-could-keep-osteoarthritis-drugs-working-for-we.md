@@ -2,7 +2,7 @@
 title: "One injection could keep osteoarthritis drugs working for weeks"
 title_nl: "Één injectie kan osteoartritis medicijnen wekenlang laten werken"
 title_fr: "Une injection pourrait maintenir les médicaments contre l'arthrose efficaces pendant des semaines"
-date: 2026-08-31T19:28:31
+date: 2026-08-31T19:28:35
 source_pub_date: 2026-08-31
 fetched_date: 2026-08-31
 source_url: "https://www.sciencedaily.com/releases/2026/08/260829235947.htm"
