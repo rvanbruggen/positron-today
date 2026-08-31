@@ -2,7 +2,7 @@
 title: "It started with one man and a Rs 30 bowl. Today, 6,450 are keeping Tamil Nadu's birds from dying of thirst"
 title_nl: "Het begon met één man en een Rs 30 kom. Vandaag de dag houden 6.450 de vogels in Tamil Nadu van de dorst om te komen."
 title_fr: "Cela a commencé avec un homme et un bol à 30 Rs. Aujourd'hui, 6 450 oiseaux du Tamil Nadu sont sauvés de la soif."
-date: 2026-08-31T19:28:30
+date: 2026-08-31T19:28:29
 source_pub_date: 2026-08-31
 fetched_date: 2026-08-31
 source_url: "https://thebetterindia.com/changemakers/tamil-nadu-bird-water-troughs-low-cost-summer-12459548"
