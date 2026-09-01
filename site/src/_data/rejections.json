@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-01T17:41:49.746Z",
-  "total_rejected": 132729,
+  "exported_at": "2026-09-01T17:42:12.363Z",
+  "total_rejected": 132728,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2390
+      "count": 2389
     },
     {
       "category": "divisive-racism",
@@ -281,8 +281,8 @@
     },
     {
       "source": "Science.org news",
-      "negative": 308,
-      "total": 389
+      "negative": 307,
+      "total": 388
     },
     {
       "source": "Scientific American",
@@ -391,15 +391,6 @@
     }
   ],
   "articles": [
-    {
-      "source": "Science.org news",
-      "title": "Scientists identify early signal of dangerous pregnancy complications",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.science.org/content/article/scientists-identify-early-signal-dangerous-pregnancy-complications",
-      "date": "2026-09-01 19:41",
-      "positivity_score": null
-    },
     {
       "source": "Scientific American",
       "title": "Where is the Roman Telescope in space?",
@@ -9388,6 +9379,15 @@
       "reason": "The article is a routine industry update about telecom operators competing with promotions for students, which falls under routine tech/industry updates without a major breakthrough or broad positive impact.",
       "category": "soft-news-filler",
       "url": "https://www.rp.pl/biznes/art45067461-wielka-bitwa-o-studentow-operatorzy-kusza-tanszym-internetem-i-promocjami",
+      "date": "2026-08-31 21:23",
+      "positivity_score": 3
+    },
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Siatkarki w ćwierćfinale Mistrzostw Europy. W walce o półfinał spotkają się z Holenderkami",
+      "reason": "The article is about a routine professional sports result without exceptional or universally inspiring characteristics, falling under standard sports coverage.",
+      "category": "sports-negative",
+      "url": "https://sport.rp.pl/siatkowka/art45078931-siatkarki-w-cwiercfinale-mistrzostw-europy-w-walce-o-polfinal-spotkaja-sie-z-holenderkami",
       "date": "2026-08-31 21:23",
       "positivity_score": 3
     }
