@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-01T04:31:44.130Z",
-  "total_rejected": 132085,
+  "exported_at": "2026-09-01T04:31:56.366Z",
+  "total_rejected": 132086,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2378
+      "count": 2379
     },
     {
       "category": "divisive-racism",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 5469,
-      "total": 5505
+      "negative": 5470,
+      "total": 5506
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Politiken.dk",
+      "title": "Snart kan vi se 100 gange mere af rummet. Måske også usynlige ting",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://politiken.dk/viden/viden/art10964494/Snart-kan-vi-se-100-gange-mere-af-rummet.-M%C3%A5ske-ogs%C3%A5-usynlige-ting",
+      "date": "2026-09-01 06:31",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "What’s next for NASA’s new Roman Space Telescope?",
@@ -9381,15 +9390,6 @@
       "url": "https://www.faz.net/aktuell/politik/ausland/mathias-corvinus-collegium-orbans-netzwerk-unter-staatskontrolle-accg-201171926.html",
       "date": "2026-08-31 10:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "SPD-Kommunalpolitiker: Für ihn stimmen sogar AfD-Wähler",
-      "reason": "The article focuses on local political success in a single city and party dynamics, which is local-only relevance and political content not meeting the exception criteria.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/politik/inland/felix-schwenke-wie-die-spd-in-offenbach-die-afd-schlaegt-accg-201090847.html",
-      "date": "2026-08-31 10:27",
-      "positivity_score": 3
     }
   ]
 }
