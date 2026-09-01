@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-01T04:19:57.680Z",
-  "total_rejected": 132081,
+  "exported_at": "2026-09-01T04:30:57.901Z",
+  "total_rejected": 132082,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2374
+      "count": 2375
     },
     {
       "category": "divisive-racism",
@@ -335,14 +335,14 @@
       "total": 51
     },
     {
+      "source": "Quanta Magazine",
+      "negative": 24,
+      "total": 39
+    },
+    {
       "source": "Dwarkesh",
       "negative": 23,
       "total": 23
-    },
-    {
-      "source": "Quanta Magazine",
-      "negative": 23,
-      "total": 38
     },
     {
       "source": "Chain of thought",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Quanta Magazine",
+      "title": "‘Stunning’ Percolation Proof Solves Decades-Old Puzzle About Phase Transitions",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.quantamagazine.org/stunning-percolation-proof-solves-decades-old-puzzle-about-phase-transitions-20260831/",
+      "date": "2026-09-01 06:30",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "“I gave everything, I have nothing left”: Messi ends twenty years with Argentina",
@@ -9379,15 +9388,6 @@
       "reason": "This is a routine professional sports transfer story without exceptional or universally inspiring elements.",
       "category": "sports-negative",
       "url": "https://www.gva.be/sport/voetbal/hij-is-zelfs-al-in-brazilie-antwerp-winger-anthony-valencia-dicht-bij-overgang-naar-flamengo/160677901.html",
-      "date": "2026-08-31 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Tientallen mensen wonen begrafenis Tyméo (5) bij: “Bij zo’n drama wordt iedereen geraakt”",
-      "reason": "The article reports on the funeral of a deceased child, which is a tragic event and not uplifting or positive news.",
-      "category": "disaster-accident",
-      "url": "https://www.gva.be/binnenland/tientallen-mensen-wonen-begrafenis-tymeo-5-bij-bij-zon-drama-wordt-iedereen-geraakt/160735357.html",
       "date": "2026-08-31 10:26",
       "positivity_score": 2
     }
