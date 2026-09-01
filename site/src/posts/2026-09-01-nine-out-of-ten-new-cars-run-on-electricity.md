@@ -2,7 +2,7 @@
 title: "Nine out of ten new cars run on electricity"
 title_nl: "Negen op de tien nieuwe auto's rijden op elektriciteit"
 title_fr: "Neuf voitures neuves sur dix fonctionnent à l'électricité"
-date: 2026-09-01T12:34:48
+date: 2026-09-01T12:34:50
 source_pub_date: 2026-09-01
 fetched_date: 2026-09-01
 source_url: "https://www.dr.dk/nyheder/seneste/ni-ud-af-ti-nye-biler-koerer-paa-el"
