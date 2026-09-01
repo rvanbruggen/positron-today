@@ -2,7 +2,7 @@
 title: "Once it was pugmarks. Now it’s AI: how technology is helping protect India’s tigers"
 title_nl: "Eens waren het pootafdrukken. Nu is het AI: hoe technologie helpt om de tijgers van India te beschermen"
 title_fr: "Autrefois, c'étaient des empreintes. Maintenant, c'est l'IA : comment la technologie aide à protéger les tigres d'Inde"
-date: 2026-09-01T12:34:28
+date: 2026-09-01T12:34:35
 source_pub_date: 2026-09-01
 fetched_date: 2026-09-01
 source_url: "https://thebetterindia.com/technology/tiger-conservation-pugmarks-gps-ai-alerts-forest-protection-technology-12459101"
