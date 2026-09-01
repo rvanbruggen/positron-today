@@ -2,7 +2,7 @@
 title: "Homesick silicon valley techies rebuilt a flood-wrecked karnataka school — and 150+ others"
 title_nl: "Verlangen naar huis: techneuten uit Silicon Valley herbouwden een door overstromingen verwoeste school in Karnataka — en 150+ andere"
 title_fr: "Des techniciens de la Silicon Valley, nostalgiques, ont reconstruit une école détruite par les inondations au Karnataka — et plus de 150 autres"
-date: 2026-09-01T12:34:26
+date: 2026-09-01T12:32:43
 source_pub_date: 2026-09-01
 fetched_date: 2026-09-01
 source_url: "https://thebetterindia.com/changemakers/flood-hit-karnataka-school-920-students-150-schools-12459660"
