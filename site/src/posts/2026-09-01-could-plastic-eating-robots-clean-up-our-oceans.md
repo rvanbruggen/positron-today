@@ -2,7 +2,7 @@
 title: "Could plastic-eating robots clean up our oceans?"
 title_nl: "Kunnen plastic-etende robots onze oceanen opruimen?"
 title_fr: "Des robots mangeurs de plastique peuvent-ils nettoyer nos océans?"
-date: 2026-09-01T12:34:42
+date: 2026-09-01T12:34:40
 source_pub_date: 2026-09-01
 fetched_date: 2026-09-01
 source_url: "https://reasonstobecheerful.world/could-plastic-eating-robots-clean-up-our-oceans/"
