@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-01T04:31:56.366Z",
-  "total_rejected": 132086,
+  "exported_at": "2026-09-01T04:32:01.708Z",
+  "total_rejected": 132087,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2379
+      "count": 2380
     },
     {
       "category": "divisive-racism",
@@ -221,8 +221,8 @@
     },
     {
       "source": "El pais",
-      "negative": 1063,
-      "total": 1081
+      "negative": 1064,
+      "total": 1082
     },
     {
       "source": "Humo",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "El pais",
+      "title": "A billion galaxies, two cosmic mysteries: Inside NASA’s Nancy Grace Roman telescope",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://english.elpais.com/science-tech/2026-08-31/nancy-grace-roman-the-telescope-that-will-survey-a-billion-galaxies-in-a-bid-to-solve-the-universes-two-greatest-mysteries.html",
+      "date": "2026-09-01 06:32",
+      "positivity_score": null
+    },
     {
       "source": "Politiken.dk",
       "title": "Snart kan vi se 100 gange mere af rummet. Måske også usynlige ting",
@@ -9381,15 +9390,6 @@
       "url": "https://www.faz.net/aktuell/karriere-hochschule/die-karrierefrage/pendeln-und-stress-wie-pendler-den-weg-zur-arbeit-besser-gestalten-koennen-accg-201165366.html",
       "date": "2026-08-31 10:27",
       "positivity_score": 4
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Budapester MCC: Orbáns Netzwerk wird abgewickelt",
-      "reason": "The article concerns political control and financial flows within a politically affiliated institution, which falls under political news and does not meet the positive news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/politik/ausland/mathias-corvinus-collegium-orbans-netzwerk-unter-staatskontrolle-accg-201171926.html",
-      "date": "2026-08-31 10:27",
-      "positivity_score": 2
     }
   ]
 }
