@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-01T17:39:32.028Z",
-  "total_rejected": 132723,
+  "exported_at": "2026-09-01T17:40:08.274Z",
+  "total_rejected": 132724,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2384
+      "count": 2385
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 179,
-      "total": 445
+      "negative": 180,
+      "total": 446
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Scientists discover why snake embryos twist into spirals",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260901070516.htm",
+      "date": "2026-09-01 19:40",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "Childhood Landfill Memory Inspires Woman to Build Rs 1 Crore Brand From Plastic Waste ",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rp.pl/gospodarka/art45079051-domanski-na-sesji-g20-wskazal-nadrzedny-cel-polityczny-polski",
       "date": "2026-08-31 21:23",
       "positivity_score": 3
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Susanne Nyström: Bakom Kristerssons ord döljer sig en krass verklighet",
-      "reason": "The article is a political commentary on statements by a political leader, which falls under politics and does not meet the positive news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/ledare/susanne-nystrom-bakom-kristerssons-ord-doljer-sig-en-krass-verklighet/",
-      "date": "2026-08-31 21:23",
-      "positivity_score": 2
     }
   ]
 }
