@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-01T04:31:27.543Z",
-  "total_rejected": 132084,
+  "exported_at": "2026-09-01T04:31:44.130Z",
+  "total_rejected": 132085,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2377
+      "count": 2378
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 238,
-      "total": 354
+      "negative": 239,
+      "total": 355
     },
     {
       "source": "ScienceDaily",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "What’s next for NASA’s new Roman Space Telescope?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/whats-next-for-nasas-new-roman-space-telescope/",
+      "date": "2026-09-01 06:31",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "Can we de-extinct the moa and more importantly, should we?",
@@ -9380,15 +9389,6 @@
       "category": "political-conflict",
       "url": "https://www.faz.net/aktuell/politik/inland/felix-schwenke-wie-die-spd-in-offenbach-die-afd-schlaegt-accg-201090847.html",
       "date": "2026-08-31 10:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Streitthema Windkraft: Wenn die Heimatliebe zum Problem wird",
-      "reason": "The article discusses local political and social conflict around wind power in a specific town, involving opposing political groups. It is primarily about a divisive local issue without broad positive significance or uplifting content.",
-      "category": "divisive-social",
-      "url": "https://www.faz.net/aktuell/feuilleton/debatten/wahl-sachsen-anhalt-2026-wenn-die-heimatliebe-zum-problem-wird-accg-201116387.html",
-      "date": "2026-08-31 10:26",
       "positivity_score": 3
     }
   ]
