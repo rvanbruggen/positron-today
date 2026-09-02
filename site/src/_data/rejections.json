@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-02T17:18:26.090Z",
-  "total_rejected": 133797,
+  "exported_at": "2026-09-02T17:19:04.768Z",
+  "total_rejected": 133798,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2396
+      "count": 2397
     },
     {
       "category": "divisive-racism",
@@ -236,8 +236,8 @@
     },
     {
       "source": "Nature",
-      "negative": 861,
-      "total": 1045
+      "negative": 862,
+      "total": 1046
     },
     {
       "source": "AllAfrica",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Audio long read: Could mending damaged DNA prolong life?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02762-4",
+      "date": "2026-09-02 19:19",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Palestinians in fear as Israeli forces mount pogroms on West Bank mosques",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theverge.com/tech/987339/google-september-android-drop-motion-assist-gemini-find-hub",
       "date": "2026-09-01 21:21",
       "positivity_score": 4
-    },
-    {
-      "source": "The Verge",
-      "title": "Apple accuses OpenAI of destroying evidence",
-      "reason": "The article covers a legal dispute and allegations of evidence destruction between two corporations, which is negative and not uplifting news.",
-      "category": "tech-ai-concern",
-      "url": "https://www.theverge.com/tech/987575/apple-openai-destroying-evidence-trade-secrets-lawsuit",
-      "date": "2026-09-01 21:21",
-      "positivity_score": 2
     }
   ]
 }
