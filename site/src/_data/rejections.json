@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-03T19:49:32.669Z",
-  "total_rejected": 135110,
+  "exported_at": "2026-09-03T19:49:40.422Z",
+  "total_rejected": 135111,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2417
+      "count": 2418
     },
     {
       "category": "divisive-racism",
@@ -196,8 +196,8 @@
     },
     {
       "source": "Wired",
-      "negative": 1889,
-      "total": 1969
+      "negative": 1890,
+      "total": 1970
     },
     {
       "source": "De Standaard Binnenland",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Wired",
+      "title": "GPT-6 Astra Is Here—and OpenAI Thinks It May Kick Off the AGI Era",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.wired.com/story/openai-says-gpt-6-can-use-a-computer-better-than-a-human/",
+      "date": "2026-09-03 21:49",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "”Ce fut la plus grande surprise de ma vie\": un Danois fait une surprenante découverte datant de l'époque viking",
@@ -9381,15 +9390,6 @@
       "url": "https://www.bbc.co.uk/news/articles/c70de1ny92wo?at_medium=RSS&at_campaign=rss",
       "date": "2026-09-03 06:16",
       "positivity_score": 3
-    },
-    {
-      "source": "De Standaard Binnenland",
-      "title": "Hoe gevaarlijk is een steek van Aziatische hoornaars?",
-      "reason": "The article focuses on a health scare involving a man in a coma due to Asian hornet stings, which is negative and alarming rather than uplifting.",
-      "category": "health-scare",
-      "url": "https://www.standaard.be/binnenland/hoe-gevaarlijk-is-een-steek-van-aziatische-hoornaars/160853534.html",
-      "date": "2026-09-03 06:16",
-      "positivity_score": 2
     }
   ]
 }
