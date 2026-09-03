@@ -2,7 +2,7 @@
 title: "Trail cameras catch elusive, endangered ocelots using wildlife crossing in Texas"
 title_nl: "Trailcamera's vangen ongrijpbare, bedreigde ocelots die wildlife crossing in Texas gebruiken"
 title_fr: "Des caméras de surveillance capturent des ocelots rares et menacés utilisant un passage pour la faune au Texas"
-date: 2026-09-03T08:34:24
+date: 2026-09-03T08:34:33
 source_pub_date: 2026-09-02
 fetched_date: 2026-09-02
 source_url: "https://www.goodgoodgood.co/articles/texas-wildlife-crossing-ocelots"
