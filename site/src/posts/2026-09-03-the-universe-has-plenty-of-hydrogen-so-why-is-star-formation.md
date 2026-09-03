@@ -2,7 +2,7 @@
 title: "The universe has plenty of hydrogen. So why is star formation collapsing?"
 title_nl: "Het universum heeft veel waterstof. Waarom stort de stervorming in?"
 title_fr: "L'univers a beaucoup d'hydrogène. Pourquoi la formation d'étoiles s'effondre-t-elle?"
-date: 2026-09-03T12:34:34
+date: 2026-09-03T12:34:41
 source_pub_date: 2026-09-03
 fetched_date: 2026-09-03
 source_url: "https://www.sciencedaily.com/releases/2026/09/260902234442.htm"
