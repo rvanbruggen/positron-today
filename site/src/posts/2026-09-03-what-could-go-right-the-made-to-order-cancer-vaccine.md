@@ -2,7 +2,7 @@
 title: "What could go right? The made-to-order cancer vaccine"
 title_nl: "Wat kan goed gaan? Het op maat gemaakte kankervaccin"
 title_fr: "Que pourrait-il se passer de bien ? Le vaccin contre le cancer sur mesure"
-date: 2026-09-03T12:34:33
+date: 2026-09-03T12:34:40
 source_pub_date: 2026-09-03
 fetched_date: 2026-09-03
 source_url: "https://theprogressnetwork.org/mrna-cancer-vaccine/"
