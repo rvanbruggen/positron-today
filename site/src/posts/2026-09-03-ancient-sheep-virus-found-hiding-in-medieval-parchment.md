@@ -2,7 +2,7 @@
 title: "Ancient sheep virus found hiding in medieval parchment"
 title_nl: "Oude schapenvirus gevonden in middeleeuws perkament"
 title_fr: "Ancien virus des moutons trouvé caché dans un parchemin médiéval"
-date: 2026-09-03T08:34:27
+date: 2026-09-03T08:34:31
 source_pub_date: 2026-09-02
 fetched_date: 2026-09-02
 source_url: "https://www.science.org/content/article/ancient-sheep-virus-found-hiding-medieval-parchment"
