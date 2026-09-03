@@ -2,7 +2,7 @@
 title: "Functional chimeric mRNAs encode proteins in mammalian immunity"
 title_nl: "Functionele chimerische mRNA's coderen voor eiwitten in de zoogdierimmuniteit"
 title_fr: "Les ARN chimériques fonctionnels codent des protéines dans l'immunité des mammifères"
-date: 2026-09-03T08:34:15
+date: 2026-09-03T08:34:17
 source_pub_date: 2026-09-02
 fetched_date: 2026-09-02
 source_url: "https://www.nature.com/articles/s41586-026-10982-x"
