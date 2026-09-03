@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-03T19:51:52.575Z",
-  "total_rejected": 135116,
+  "exported_at": "2026-09-03T19:52:01.064Z",
+  "total_rejected": 135117,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2423
+      "count": 2424
     },
     {
       "category": "divisive-racism",
@@ -281,8 +281,8 @@
     },
     {
       "source": "Science.org news",
-      "negative": 314,
-      "total": 402
+      "negative": 315,
+      "total": 403
     },
     {
       "source": "Scientific American",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Science.org news",
+      "title": "New ‘connectome’ shows all 124 million contact points in the fruit fly’s nervous system",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.science.org/content/article/new-connectome-shows-all-124-million-contact-points-fruit-fly-s-nervous-system",
+      "date": "2026-09-03 21:52",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "Immune therapy engineered inside the body eases multiple sclerosis",
@@ -9379,15 +9388,6 @@
       "reason": "The article is about celebrity reactions to Meghan Markle reports and a Netflix premiere, which falls under entertainment industry gossip and celebrity news.",
       "category": "celebrity-entertainment",
       "url": "https://www.bbc.co.uk/news/articles/c05rg7mj2p1o?at_medium=RSS&at_campaign=rss",
-      "date": "2026-09-03 06:16",
-      "positivity_score": 2
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "Protests in Spain against government's handling of Ceuta migrant crisis",
-      "reason": "The article covers political protests and criticism of government handling of a migrant crisis, which is inherently negative and political in nature, not uplifting or positive news.",
-      "category": "political-conflict",
-      "url": "https://www.bbc.co.uk/news/articles/c1mvn2yp9n2o?at_medium=RSS&at_campaign=rss",
       "date": "2026-09-03 06:16",
       "positivity_score": 2
     }
