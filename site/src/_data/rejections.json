@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-03T19:49:49.564Z",
-  "total_rejected": 135112,
+  "exported_at": "2026-09-03T19:50:10.435Z",
+  "total_rejected": 135113,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2419
+      "count": 2420
     },
     {
       "category": "divisive-racism",
@@ -236,8 +236,8 @@
     },
     {
       "source": "Nature",
-      "negative": 865,
-      "total": 1053
+      "negative": 866,
+      "total": 1054
     },
     {
       "source": "AllAfrica",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Magic-mushroom compound blocks a severe side effect of chemotherapy, in mice",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02744-6",
+      "date": "2026-09-03 21:50",
+      "positivity_score": null
+    },
     {
       "source": "Science.org news",
       "title": "Magic mushroom compound may prevent chemotherapy pain",
@@ -9381,15 +9390,6 @@
       "url": "https://www.bbc.co.uk/news/articles/cgk5m42z1vpo?at_medium=RSS&at_campaign=rss",
       "date": "2026-09-03 06:16",
       "positivity_score": 2
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "Uber launches UK's first robotaxis with a driver - here's what it's like to ride in one",
-      "reason": "The article is a routine tech update about robotaxis with safety drivers, lacking a major breakthrough or broad positive impact beyond a tech novelty.",
-      "category": "soft-news-filler",
-      "url": "https://www.bbc.co.uk/news/articles/ce9e838jzpzo?at_medium=RSS&at_campaign=rss",
-      "date": "2026-09-03 06:16",
-      "positivity_score": 4
     }
   ]
 }
