@@ -2,7 +2,7 @@
 title: "Scientists measured campfire light and discovered its incredible role in shaping human language"
 title_nl: "Wetenschappers maten het kampvuurlicht en ontdekten de ongelooflijke rol ervan in het vormen van menselijke taal"
 title_fr: "Des scientifiques ont mesuré la lumière du feu de camp et découvert son rôle incroyable dans la formation du langage humain"
-date: 2026-09-03T08:34:04
+date: 2026-09-03T08:34:07
 source_pub_date: 2026-09-03
 fetched_date: 2026-09-03
 source_url: "https://www.upworthy.com/scientists-measured-campfire-light-and-discovered-its-incredible-role-in-shaping-human-language/"
