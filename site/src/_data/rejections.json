@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-03T04:40:14.642Z",
-  "total_rejected": 134262,
+  "exported_at": "2026-09-03T04:40:54.061Z",
+  "total_rejected": 134263,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2408
+      "count": 2409
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 5007,
-      "total": 5065
+      "negative": 5008,
+      "total": 5066
     },
     {
       "source": "The New York Times",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Transition écologique : le Haut-Commissariat au plan appelle à un « changement de paradigme »",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/planete/article/2026/09/02/transition-ecologique-le-haut-commissariat-au-plan-appelle-a-un-changement-de-paradigme_6764475_3244.html",
+      "date": "2026-09-03 06:40",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "'Young people aren't drinking anything like we used to': Alcohol intake at record lows",
@@ -9379,15 +9388,6 @@
       "reason": "The article is a local-interest interview focused on a German jurist's personal views and aspirations, lacking broad international relevance or substantive positive news beyond individual opinion.",
       "category": "soft-news-filler",
       "url": "https://www.faz.net/aktuell/deutschland-spricht/deutschland-spricht-mich-aergert-die-behauptung-deutsche-arbeiteten-zu-wenig-accg-201007631.html",
-      "date": "2026-09-02 10:27",
-      "positivity_score": 3
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Probleme in der Ausbildung: Warum fast jeder dritte Azubi hinwirft",
-      "reason": "The article focuses on a rising negative trend—high dropout rates in vocational training—which highlights economic and social problems rather than positive developments. It does not meet the uplifting or universally positive news criteria.",
-      "category": "economic-doom",
-      "url": "https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/ausbildungsabbruch-warum-fast-jeder-dritte-azubi-aufgibt-accg-201178795.html",
       "date": "2026-09-02 10:27",
       "positivity_score": 3
     }
