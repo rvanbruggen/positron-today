@@ -2,7 +2,7 @@
 title: "Scientists discover a mysterious wave shaped like a decagon in Saturn's atmosphere"
 title_nl: "Wetenschappers ontdekken een mysterieuze golf in de vorm van een decagon in de atmosfeer van Saturnus"
 title_fr: "Des scientifiques découvrent une vague mystérieuse en forme de décagone dans l'atmosphère de Saturne"
-date: 2026-09-03T08:34:18
+date: 2026-09-03T08:34:14
 source_pub_date: 2026-09-02
 fetched_date: 2026-09-02
 source_url: "https://www.scientificamerican.com/article/scientists-discover-a-mysterious-wave-shaped-like-a-decagon-in-saturns-atmosphere/"
