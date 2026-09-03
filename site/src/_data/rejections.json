@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-03T10:24:30.293Z",
-  "total_rejected": 134465,
+  "exported_at": "2026-09-03T10:24:36.556Z",
+  "total_rejected": 134466,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2411
+      "count": 2412
     },
     {
       "category": "divisive-racism",
@@ -191,8 +191,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 1922,
-      "total": 1985
+      "negative": 1923,
+      "total": 1986
     },
     {
       "source": "Wired",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Euronews",
+      "title": "AI-powered robots showcased at European Parliament in Brussels",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "http://www.euronews.com/video/2026/09/03/ai-powered-robots-showcased-at-european-parliament-in-brussels",
+      "date": "2026-09-03 12:24",
+      "positivity_score": null
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "Taxakørsel i selvkørende bil bliver muligt i London",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/idees/article/2026/09/02/penaliser-le-port-du-voile-le-piege-tendu-par-marine-le-pen_6764326_3232.html",
       "date": "2026-09-02 14:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "Le réseau électrique européen face aux menaces de sabotage et de cyberattaques : « Le scénario du pire n’a rien d’inéluctable, mais il faut s’y préparer »",
-      "reason": "The article focuses on the threat of sabotage and cyberattacks on the European power grid amid geopolitical tensions, which is a negative and anxiety-inducing topic without a clear positive breakthrough.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/economie/article/2026/09/02/le-reseau-electrique-europeen-face-aux-menaces-de-sabotage-et-de-cyberattaques-le-scenario-du-pire-n-a-rien-d-ineluctable-mais-il-faut-s-y-preparer_6763909_3234.html",
-      "date": "2026-09-02 14:27",
-      "positivity_score": 3
     }
   ]
 }
