@@ -2,7 +2,7 @@
 title: "46 years ago, Carl Sagan beautifully explained the fourth dimension using a sliced apple"
 title_nl: "46 jaar geleden legde Carl Sagan prachtig de vierde dimensie uit met een gesneden appel"
 title_fr: "Il y a 46 ans, Carl Sagan a magnifiquement expliqué la quatrième dimension en utilisant une pomme tranchée"
-date: 2026-09-03T08:33:53
+date: 2026-09-03T08:34:02
 source_pub_date: 2026-09-02
 fetched_date: 2026-09-03
 source_url: "https://www.upworthy.com/carl-sagan-beautifully-explained-fourth-dimension-using-a-sliced-apple-ex1/"
