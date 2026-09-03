@@ -2,7 +2,7 @@
 title: "IIT Guwahati finds a new way to remove harmful toxins from water"
 title_nl: "IIT Guwahati vindt een nieuwe manier om schadelijke toxines uit water te verwijderen"
 title_fr: "IIT Guwahati trouve une nouvelle façon d'éliminer les toxines nocives de l'eau"
-date: 2026-09-03T12:34:35
+date: 2026-09-03T12:34:40
 source_pub_date: 2026-09-03
 fetched_date: 2026-09-03
 source_url: "https://thebetterindia.com/innovation/iit-guwahati-research-arsenic-fluoride-removal-technology-groundwater-indian-innovation-12483523"
