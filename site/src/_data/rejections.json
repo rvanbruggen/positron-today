@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-03T19:49:40.422Z",
-  "total_rejected": 135111,
+  "exported_at": "2026-09-03T19:49:49.564Z",
+  "total_rejected": 135112,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2418
+      "count": 2419
     },
     {
       "category": "divisive-racism",
@@ -281,8 +281,8 @@
     },
     {
       "source": "Science.org news",
-      "negative": 313,
-      "total": 401
+      "negative": 314,
+      "total": 402
     },
     {
       "source": "Scientific American",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Science.org news",
+      "title": "Magic mushroom compound may prevent chemotherapy pain",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.science.org/content/article/magic-mushroom-compound-may-prevent-chemotherapy-pain",
+      "date": "2026-09-03 21:49",
+      "positivity_score": null
+    },
     {
       "source": "Wired",
       "title": "GPT-6 Astra Is Here—and OpenAI Thinks It May Kick Off the AGI Era",
@@ -9381,15 +9390,6 @@
       "url": "https://www.bbc.co.uk/news/articles/ce9e838jzpzo?at_medium=RSS&at_campaign=rss",
       "date": "2026-09-03 06:16",
       "positivity_score": 4
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "The overlooked factor driving the childhood obesity crisis",
-      "reason": "The article addresses a serious health issue (childhood obesity) with a negative framing and does not present a clear positive breakthrough or uplifting angle.",
-      "category": "health-scare",
-      "url": "https://www.bbc.co.uk/news/articles/c70de1ny92wo?at_medium=RSS&at_campaign=rss",
-      "date": "2026-09-03 06:16",
-      "positivity_score": 3
     }
   ]
 }
