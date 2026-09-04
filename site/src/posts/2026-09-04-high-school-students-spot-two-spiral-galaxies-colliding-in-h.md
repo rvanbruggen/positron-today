@@ -2,7 +2,7 @@
 title: "High school students spot two spiral galaxies colliding in Hawaiian constellation"
 title_nl: "Hogeschoolstudenten spotten twee spiraalgalaxies die botsen in Hawaïaanse constellatie"
 title_fr: "Des lycéens repèrent deux galaxies spirales en collision dans une constellation hawaïenne"
-date: 2026-09-04T00:21:01
+date: 2026-09-04T00:21:05
 source_pub_date: 2026-09-03
 fetched_date: 2026-09-03
 source_url: "https://www.popsci.com/science/spiral-galaxy-collision-hawaii/"
