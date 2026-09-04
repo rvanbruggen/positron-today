@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-04T11:09:04.091Z",
-  "total_rejected": 135595,
+  "exported_at": "2026-09-04T11:09:07.991Z",
+  "total_rejected": 135596,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2439
+      "count": 2440
     },
     {
       "category": "divisive-racism",
@@ -306,8 +306,8 @@
     },
     {
       "source": "Positive News",
-      "negative": 78,
-      "total": 144
+      "negative": 79,
+      "total": 145
     },
     {
       "source": "Microsoft Research",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Positive News",
+      "title": "What went right this week: the good news that matters",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.positive.news/society/good-news-stories-from-week-36-of-2026/",
+      "date": "2026-09-04 13:09",
+      "positivity_score": null
+    },
     {
       "source": "De Standaard Binnenland",
       "title": "Klimaatwetenschappers ruilen Amerikaanse universiteiten voor België in: “Het is bijna onmogelijk om daar nog onderzoekers aan te nemen”",
@@ -9381,15 +9390,6 @@
       "url": "https://sukces.rp.pl/styl-zycia/art44872791-task-switching-to-autosabotaz-ekspertka-zmeczeni-jak-po-maratonie-efekt-jak-po-spacerze",
       "date": "2026-09-03 14:28",
       "positivity_score": 4
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Marianna Schreiber odwołuje start w wyborach na prezydenta Krakowa. Wskazała, kogo poprze",
-      "reason": "The article is about a local political candidate withdrawing from a municipal election and endorsing another candidate, which is a political news story with local-only relevance and does not meet the positive news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/polityka/art45092231-marianna-schreiber-odwoluje-start-w-wyborach-na-prezydenta-krakowa-wskazala-kogo-poprze",
-      "date": "2026-09-03 14:28",
-      "positivity_score": 2
     }
   ]
 }
