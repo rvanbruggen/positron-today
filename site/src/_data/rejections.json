@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-04T04:54:16.489Z",
-  "total_rejected": 135401,
+  "exported_at": "2026-09-04T04:54:36.116Z",
+  "total_rejected": 135402,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2433
+      "count": 2434
     },
     {
       "category": "divisive-racism",
@@ -116,8 +116,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 5051,
-      "total": 5110
+      "negative": 5052,
+      "total": 5111
     },
     {
       "source": "De Morgen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "L’économie allemande amorce sa reprise, portée par les exportations vers l’Europe et l’IA",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/economie/article/2026/09/03/l-economie-allemande-amorce-sa-reprise-portee-par-les-exportations-vers-l-europe-et-l-ia_6765196_3234.html",
+      "date": "2026-09-04 06:54",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Africa: A Harvest That Employs the Century - Yields, Value Chains, and the 2050 Workforce",
@@ -9379,15 +9388,6 @@
       "reason": "The article is a local-language software promotion and spelling test that lacks broad human relevance and substantive positive news value beyond a product description.",
       "category": "other-negative",
       "url": "https://www.lalibre.be/belgique/enseignement/epreuve-revision/2026/08/28/epreuve-de-revision-antidote-n251-testez-votre-orthographe-en-retrouvant-les-5-fautes-3VAWJ2FXBVF6ZCC2R7QFVZM4F4/",
-      "date": "2026-09-03 10:28",
-      "positivity_score": 2
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "La planète, en alerte, se dirige bien vers un El Niño d’une puissance record : “Les effets sont déjà visibles”",
-      "reason": "The article reports on an impending El Niño event with potentially severe negative impacts on agriculture and food security, which is not uplifting news.",
-      "category": "climate-environment",
-      "url": "https://www.lalibre.be/planete/environnement/2026/09/03/la-planete-en-alerte-se-dirige-bien-vers-un-el-nino-dune-puissance-record-les-effets-sont-deja-visibles-N5SVOBBNTBCL5FUJSEXW2GNI5E/",
       "date": "2026-09-03 10:28",
       "positivity_score": 2
     }
