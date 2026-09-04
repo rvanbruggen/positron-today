@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-04T08:30:06.541Z",
-  "total_rejected": 135592,
+  "exported_at": "2026-09-04T11:08:46.815Z",
+  "total_rejected": 135593,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2436
+      "count": 2437
     },
     {
       "category": "divisive-racism",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 5596,
-      "total": 5636
+      "negative": 5597,
+      "total": 5637
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Politiken.dk",
+      "title": "Medicinrådet godkender middel, der bremser sjælden hjernekræft",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://politiken.dk/danmark/sundhed/art10970294/Medicinr%C3%A5det-godkender-middel-der-bremser-sj%C3%A6lden-hjernekr%C3%A6ft",
+      "date": "2026-09-04 13:08",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "\"We are watching\": Argentine intelligence posts message on Falklands after Milei address",
@@ -9381,15 +9390,6 @@
       "url": "https://sukces.rp.pl/styl-zycia/art45092171-luksusowe-wille-zrobili-z-ziemi-wydobytej-na-dzialce-wyrosly-w-srodku-dzungli",
       "date": "2026-09-03 14:28",
       "positivity_score": 4
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Rosyjski Ił-20 w pobliżu Ustki. Polska poderwała myśliwce",
-      "reason": "The article reports on a military interception incident involving Russian and Polish aircraft, which relates to geopolitical tensions and potential conflict. It is not unambiguously positive news and falls under political/military conflict coverage.",
-      "category": "war-conflict",
-      "url": "https://radar.rp.pl/wojsko-polskie/art45092411-rosyjski-il-20-w-poblizu-ustki-polska-poderwala-mysliwce",
-      "date": "2026-09-03 14:28",
-      "positivity_score": 2
     }
   ]
 }
