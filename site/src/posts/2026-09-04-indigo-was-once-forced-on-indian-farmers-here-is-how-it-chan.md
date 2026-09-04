@@ -2,7 +2,7 @@
 title: "Indigo was once forced on Indian farmers. Here is how it changed the course of India’s freedom struggle"
 title_nl: "Indigo werd ooit opgelegd aan Indiase boeren. Hier is hoe het de loop van de Indiase vrijheidsstrijd veranderde"
 title_fr: "L'indigo a été autrefois imposé aux agriculteurs indiens. Voici comment cela a changé le cours de la lutte pour la liberté en Inde"
-date: 2026-09-04T12:34:25
+date: 2026-09-04T12:34:29
 source_pub_date: 2026-09-04
 fetched_date: 2026-09-04
 source_url: "https://thebetterindia.com/culture/india-blue-gold-indigo-symbol-of-resistance-12488067"
