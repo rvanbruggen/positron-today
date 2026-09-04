@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-04T11:08:46.815Z",
-  "total_rejected": 135593,
+  "exported_at": "2026-09-04T11:08:59.301Z",
+  "total_rejected": 135594,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2437
+      "count": 2438
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "NRC",
-      "negative": 5066,
-      "total": 5150
+      "negative": 5067,
+      "total": 5151
     },
     {
       "source": "Le Monde",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "NRC",
+      "title": "Een fotocamera ter grootte van een bestelbus ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nrc.nl/nieuws/2026/09/04/een-fotocamera-ter-grootte-van-een-bestelbus-a4935783",
+      "date": "2026-09-04 13:08",
+      "positivity_score": null
+    },
     {
       "source": "Politiken.dk",
       "title": "Medicinrådet godkender middel, der bremser sjælden hjernekræft",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rp.pl/handel/art45092201-paragony-trafia-do-prokuratury-solidarnosc-chce-scigac-handel-w-niedziele",
       "date": "2026-09-03 14:28",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Luksusowe wille zrobili z ziemi wydobytej na działce. Wyrosły w środku dżungli",
-      "reason": "The article focuses on luxury villas built using local soil, which is a local-only relevance story about a specific construction project in Costa Rica without broader universal significance or a clear positive breakthrough.",
-      "category": "soft-news-filler",
-      "url": "https://sukces.rp.pl/styl-zycia/art45092171-luksusowe-wille-zrobili-z-ziemi-wydobytej-na-dzialce-wyrosly-w-srodku-dzungli",
-      "date": "2026-09-03 14:28",
-      "positivity_score": 4
     }
   ]
 }
