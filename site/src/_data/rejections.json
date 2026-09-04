@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-04T04:53:40.490Z",
-  "total_rejected": 135399,
+  "exported_at": "2026-09-04T04:53:57.185Z",
+  "total_rejected": 135400,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2431
+      "count": 2432
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 4304,
-      "total": 4433
+      "negative": 4305,
+      "total": 4434
     },
     {
       "source": "The Guardian",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Transplanted pig kidney works in US man's body for record 271 days",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c305qn2jeggo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-09-04 06:53",
+      "positivity_score": null
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "Genetisch aangepaste varkensnier houdt Amerikaanse patiënt 271 dagen van dialysemachine weg",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lalibre.be/culture/livres-bd/2026/09/03/adoube-par-patti-smith-et-dua-lipa-rencontre-avec-le-nouveau-prodige-litteraire-nelio-biedermann-NIWUV3O65BDTHDGORAIKBMXGSA/",
       "date": "2026-09-03 10:28",
       "positivity_score": 3
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "Son cauchemar a commencé quand son restaurant a décroché de prestigieuses récompenses: \"Je ne suis pas un singe\"",
-      "reason": "The article focuses on a personal story of a restaurant owner facing racist hate after receiving awards, which is primarily about negative social conflict and harassment rather than positive news.",
-      "category": "divisive-racism",
-      "url": "https://www.lalibre.be/international/europe/2026/09/03/son-cauchemar-a-commence-quand-son-restaurant-a-decroche-de-prestigieuses-recompenses-je-ne-suis-pas-un-singe-3CISL33OTFH6DBUM3VRAI7XF44/",
-      "date": "2026-09-03 10:28",
-      "positivity_score": 2
     }
   ]
 }
