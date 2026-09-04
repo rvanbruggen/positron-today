@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-04T04:19:36.901Z",
-  "total_rejected": 135397,
+  "exported_at": "2026-09-04T04:53:23.821Z",
+  "total_rejected": 135398,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2429
+      "count": 2430
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 12333,
-      "total": 12757
+      "negative": 12334,
+      "total": 12758
     },
     {
       "source": "Het Laatste Nieuws",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "3 tips om een energiezuinige woning te vinden ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/partners/shop-en-partners/zimmo/3-tips-om-een-energiezuinige-woning-te-vinden/160900576.html",
+      "date": "2026-09-04 06:53",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "Eight Months After Maduro's Capture, Venezuela's Oil Boom Has Outrun Latin America's Sovereignty Debate",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rp.pl/prawo-karne/art45090831-waldemar-zurek-mamy-tasmy-w-prokuraturze-w-sprawie-zondacrypto",
       "date": "2026-09-03 10:28",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Krach cen diamentów. Kamienie tanieją, ale jubilerzy nie obniżają cen",
-      "reason": "The article discusses falling diamond prices due to lab-grown stones but focuses on jewelers not lowering prices, which is an economic issue without a clearly positive or uplifting angle. It does not meet the positive-news standard and is primarily economic news with local or niche relevance.",
-      "category": "economic-doom",
-      "url": "https://pro.rp.pl/raporty-ekonomiczne/art45083481-krach-cen-diamentow-kamienie-tanieja-ale-jubilerzy-nie-obnizaja-cen",
-      "date": "2026-09-03 10:28",
-      "positivity_score": 3
     }
   ]
 }
