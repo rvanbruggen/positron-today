@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-05T19:28:23.424Z",
-  "total_rejected": 137088,
+  "exported_at": "2026-09-05T19:28:35.270Z",
+  "total_rejected": 137087,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2473
+      "count": 2472
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 4350,
-      "total": 4481
+      "negative": 4349,
+      "total": 4480
     },
     {
       "source": "The Guardian",
@@ -391,15 +391,6 @@
     }
   ],
   "articles": [
-    {
-      "source": "BBC Top Stories",
-      "title": "The centuries-old problem of mapping the world",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.bbc.co.uk/news/articles/cly5r60v4mro?at_medium=RSS&at_campaign=rss",
-      "date": "2026-09-05 21:28",
-      "positivity_score": null
-    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Mapy oszukują nas od wieków. Afryka „kurczy się”, Grenlandia „rośnie”",
@@ -9390,6 +9381,15 @@
       "url": "https://www.theverge.com/podcast/990323/agi-is-whatever-you-want-it-to-be",
       "date": "2026-09-04 21:21",
       "positivity_score": 3
+    },
+    {
+      "source": "The Verge",
+      "title": "Roland is getting into generative AI music with Melody Flip",
+      "reason": "The article is a routine tech update about a new generative AI music tool without a demonstrated breakthrough or broad positive impact beyond product news.",
+      "category": "soft-news-filler",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/990197/roland-ai-music-melody-flip",
+      "date": "2026-09-04 21:21",
+      "positivity_score": 4
     }
   ]
 }
