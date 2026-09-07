@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-07T12:38:58.339Z",
-  "total_rejected": 138460,
+  "exported_at": "2026-09-07T12:40:25.159Z",
+  "total_rejected": 138461,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2499
+      "count": 2500
     },
     {
       "category": "divisive-racism",
@@ -241,8 +241,8 @@
     },
     {
       "source": "Nature",
-      "negative": 874,
-      "total": 1070
+      "negative": 875,
+      "total": 1071
     },
     {
       "source": "Popular Science",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Probing the proteome at cellular scale",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02805-w",
+      "date": "2026-09-07 14:40",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "De la Espriella completes his first month with a full reversal of Petro's diplomacy",
@@ -9380,15 +9389,6 @@
       "category": "soft-news-filler",
       "url": "https://vrtnws.be/p.PqX5OBQAR",
       "date": "2026-09-06 14:26",
-      "positivity_score": 4
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Aannemer duwt 1.000 ton zware fietstunnel in 1 keer onder spoorweg in Wilsele",
-      "reason": "The story is about a local infrastructure project with relevance limited to a specific area, lacking broader human interest or universal significance.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.RaynqY9J0",
-      "date": "2026-09-06 14:25",
       "positivity_score": 4
     }
   ]
