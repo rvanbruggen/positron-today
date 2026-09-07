@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-07T12:42:11.138Z",
-  "total_rejected": 138466,
+  "exported_at": "2026-09-07T12:42:19.412Z",
+  "total_rejected": 138467,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2505
+      "count": 2506
     },
     {
       "category": "divisive-racism",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 5722,
-      "total": 5763
+      "negative": 5723,
+      "total": 5764
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Politiken.dk",
+      "title": "Vilde billeder: Første raket affyret fra Vesteuropa i kredsløb",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://politiken.dk/internationalt/art10972346/Vilde-billeder-F%C3%B8rste-raket-affyret-fra-Vesteuropa-i-kredsl%C3%B8b",
+      "date": "2026-09-07 14:42",
+      "positivity_score": null
+    },
     {
       "source": "De Morgen",
       "title": "Man overleeft negen maanden met varkensnier: ‘Uitzonderlijke doorbraak’",
@@ -9381,15 +9390,6 @@
       "url": "https://www.bbc.co.uk/news/articles/c87vpg1yvxzo?at_medium=RSS&at_campaign=rss",
       "date": "2026-09-06 14:26",
       "positivity_score": 3
-    },
-    {
-      "source": "BBC Top Stories",
-      "title": "Minister to meet Jaguar Land Rover boss as thousands of job cuts expected",
-      "reason": "The article focuses on expected job cuts and corporate struggles, which is negative economic news without a positive or uplifting angle.",
-      "category": "economic-doom",
-      "url": "https://www.bbc.co.uk/news/articles/crer948xq00o?at_medium=RSS&at_campaign=rss",
-      "date": "2026-09-06 14:26",
-      "positivity_score": 2
     }
   ]
 }
