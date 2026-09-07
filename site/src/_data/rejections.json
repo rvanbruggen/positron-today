@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-07T12:43:13.971Z",
-  "total_rejected": 138469,
+  "exported_at": "2026-09-07T12:43:27.601Z",
+  "total_rejected": 138470,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2508
+      "count": 2509
     },
     {
       "category": "divisive-racism",
@@ -176,8 +176,8 @@
     },
     {
       "source": "Le Soir",
-      "negative": 2282,
-      "total": 2302
+      "negative": 2283,
+      "total": 2303
     },
     {
       "source": "The Journal (Ireland)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Soir",
+      "title": "Avec la fusée Spectrum, l’Europe se lance à la conquête de SpaceX",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lesoir.be/769342/article/2026-09-06/avec-la-fusee-spectrum-leurope-se-lance-la-conquete-de-spacex",
+      "date": "2026-09-07 14:43",
+      "positivity_score": null
+    },
     {
       "source": "Le Monde",
       "title": "En lançant sa fusée en orbite, la start-up bavaroise Isar Aerospace bouleverse l’écosystème spatial européen",
@@ -9379,15 +9388,6 @@
       "reason": "The article reports on deaths and military attacks, which is inherently negative and related to ongoing conflict, not positive news.",
       "category": "war-conflict",
       "url": "https://www.standaard.be/buitenland/vier-doden-bij-israelische-luchtaanvallen-op-libanon-vs-raken-drie-iraanse-olietankers/35173881.html",
-      "date": "2026-09-06 14:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Amerikaanse onderhandelaars Kushner en Witkoff in Kiev na “constructief” gesprek met Poetin – Lavrov: “In feite verklaart Merz ons de oorlog”",
-      "reason": "The article focuses on ongoing political and military developments in the Ukraine war, which is inherently negative and does not meet the positive news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.standaard.be/buitenland/amerikaanse-onderhandelaars-kushner-en-witkoff-in-kiev-na-constructief-gesprek-met-poetin-lavrov-in-feite-verklaart-merz-ons-de-oorlog/35173633.html",
       "date": "2026-09-06 14:26",
       "positivity_score": 2
     }
