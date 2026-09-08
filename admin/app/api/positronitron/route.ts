@@ -29,5 +29,10 @@ export async function POST(request: Request) {
   if (result.error) {
     return Response.json(result, { status: 500 });
   }
+  // 409 so an overlapping cron tick is visibly a no-op rather than looking like
+  // a run that found nothing to do. Matches /api/pipeline/start.
+  if (result.busy) {
+    return Response.json(result, { status: 409 });
+  }
   return Response.json(result);
 }

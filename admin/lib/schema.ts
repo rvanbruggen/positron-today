@@ -299,6 +299,31 @@ export async function initSchema() {
     `);
   } catch { /* already migrated */ }
 
+  // v4.0.5: one article row per source article. Positronitron already used
+  // INSERT OR IGNORE on raw_article_id, but with no unique index there was
+  // nothing to conflict on, so the statement could never actually ignore and
+  // two concurrent runs each inserted their own row for the same story.
+  //
+  // Unlike the migrations above this is NOT swallowed silently: if duplicates
+  // already exist the index cannot be created, and a silent failure would
+  // leave the guard permanently absent while looking installed.
+  try {
+    await db.execute(
+      "CREATE UNIQUE INDEX IF NOT EXISTS idx_articles_raw_article_id ON articles(raw_article_id) WHERE raw_article_id IS NOT NULL"
+    );
+  } catch (err) {
+    const dupes = await db.execute(`
+      SELECT raw_article_id, COUNT(*) AS n FROM articles
+      WHERE raw_article_id IS NOT NULL
+      GROUP BY raw_article_id HAVING n > 1
+    `).catch(() => null);
+    console.error(
+      `[schema] Could not create idx_articles_raw_article_id: ${err instanceof Error ? err.message : err}. ` +
+      `${dupes ? dupes.rows.length : "?"} source article(s) have more than one article row — ` +
+      `de-duplicate them and restart to install the guard.`
+    );
+  }
+
   // Backfill audio_generated_at for editorials that have audio files on
   // GitHub but lost their DB timestamp due to the table-recreation bug
   // (editorials_new didn't include the column prior to v3.6.7).

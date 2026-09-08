@@ -9,10 +9,29 @@ import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
 import { parseArticle } from "@/lib/parse-html";
+import { acquireLock, lockHolder, releaseLock } from "@/lib/run-lock";
 import { nextSlot, parseScheduleWallString, scheduleNow, toScheduleWallString } from "@/lib/schedule-time";
 import { getStoredWeights, getWeight } from "@/lib/source-confidence";
+import {
+  findDuplicateHint,
+  normaliseTitleTokens,
+  type DuplicateCandidate,
+} from "@/lib/title-similarity";
 
 const DIGEST_PICK_COUNT = 2;
+
+/** Settings row used as the Positronitron run lock. */
+const LOCK_KEY = "positronitron_lock";
+
+/**
+ * How long a claim stays valid. A run summarises `positronitron_count`
+ * articles through the LLM, so a few minutes is normal; 20 minutes is well
+ * beyond that, and past it we assume the holder died mid-run.
+ */
+const LOCK_STALE_MS = 20 * 60_000;
+
+/** How far back to look for already-published stories when de-duplicating. */
+const DEDUP_WINDOW_DAYS = 14;
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -23,6 +42,8 @@ export interface PositronitronResult {
   selected: number;
   candidates?: number;
   results?: Array<{ id: number; title: string; score: number; publish_date: string; featured: boolean }>;
+  /** True when another run holds the lock and this invocation did nothing. */
+  busy?: boolean;
   message?: string;
   error?: string;
   log: string[];
@@ -228,6 +249,58 @@ export async function markSlotCompleted(slot: string): Promise<void> {
   });
 }
 
+// ─── Near-duplicate pool ─────────────────────────────────────────────────────
+
+type DedupItem = { title: string; origin: string };
+
+/**
+ * Titles of everything recently drafted, scheduled or published, for comparing
+ * candidates against. All three translations go in: a candidate's raw title is
+ * in its source language, so a Dutch headline only matches if the pool carries
+ * the Dutch title of the story that already went out. Tokens from different
+ * languages simply do not overlap, so the extra entries cost recall nothing.
+ */
+async function buildDedupPool(): Promise<DuplicateCandidate<DedupItem>[]> {
+  const res = await db.execute(`
+    SELECT title_en, title_nl, title_fr, status
+    FROM articles
+    WHERE status IN ('draft', 'scheduled', 'published')
+      AND (created_at   >= datetime('now', '-${DEDUP_WINDOW_DAYS} days')
+        OR published_at >= datetime('now', '-${DEDUP_WINDOW_DAYS} days'))
+  `);
+
+  const pool: DuplicateCandidate<DedupItem>[] = [];
+  for (const row of res.rows) {
+    const origin = String(row.status ?? "recent");
+    for (const key of ["title_en", "title_nl", "title_fr"] as const) {
+      const title = String(row[key] ?? "").trim();
+      if (!title) continue;
+      pool.push({ item: { title, origin }, tokens: normaliseTitleTokens(title) });
+    }
+  }
+
+  // Also the original publisher headlines of everything already taken off the
+  // queue. The titles above are LLM rewrites, so a candidate's raw headline
+  // does not reliably match them; raw-against-raw is the strongest comparison
+  // available, and it is what catches the same story arriving from two feeds
+  // across consecutive runs rather than within one.
+  const raws = await db.execute(`
+    SELECT title, preview_title_en
+    FROM raw_articles
+    WHERE status = 'approved'
+      AND fetched_at >= datetime('now', '-${DEDUP_WINDOW_DAYS} days')
+  `);
+  for (const row of raws.rows) {
+    for (const key of ["title", "preview_title_en"] as const) {
+      const title = String(row[key] ?? "").trim();
+      if (!title) continue;
+      pool.push({ item: { title, origin: "already picked" }, tokens: normaliseTitleTokens(title) });
+    }
+  }
+
+  return pool;
+}
+
 // ─── Main pipeline logic ─────────────────────────────────────────────────────
 
 export async function runPositronitron(options: { isManual: boolean }): Promise<PositronitronResult> {
@@ -242,16 +315,55 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
     };
   }
 
+  // The lock is taken BEFORE the due-slot check, because that check is the read
+  // half of the read-then-write this guards: the slot is only marked completed
+  // once the run finishes, so without the lock every invocation during a run
+  // still sees the slot as due, re-selects the same top-N pending rows, and
+  // publishes them again. An in-process flag is not enough — `/api/positronitron`
+  // (cron) and the unified pipeline are separate trigger paths, and the flag
+  // does not survive a container restart.
+  const lock = await acquireLock(LOCK_KEY, isManual ? "manual" : "scheduled", LOCK_STALE_MS);
+  if (!lock) {
+    const holder = await lockHolder(LOCK_KEY, LOCK_STALE_MS);
+    const message = holder
+      ? `A ${holder.label} run is already in progress (started ${Math.round((Date.now() - holder.at) / 1000)}s ago)`
+      : "Another Positronitron run is already in progress";
+    console.log(`[positronitron] ${message}`);
+    return { ok: true, selected: 0, busy: true, log: [], message };
+  }
+
+  try {
+    return await runPositronitronLocked(options, settings, mode);
+  } finally {
+    await releaseLock(LOCK_KEY, lock.token);
+  }
+}
+
+/** The actual run. Only ever called with the run lock held. */
+async function runPositronitronLocked(
+  options: { isManual: boolean },
+  settings: Awaited<ReturnType<typeof getSettings>>,
+  mode: string,
+): Promise<PositronitronResult> {
+  const { isManual } = options;
   const schedulePublish = isManual || mode === "full";
 
   let dueSlot = "";
   if (!isManual) {
+    // Re-checked inside the lock. A run that queued behind another must not
+    // redo the slot that run just completed.
     const schedule = await findDueSlot(settings.positronitron_run_times ?? '["08:00","15:00"]');
     console.log(`[positronitron] ${schedule.reason}`);
     if (!schedule.due) {
       return { ok: false, selected: 0, log: [], message: schedule.reason };
     }
     dueSlot = schedule.slot;
+
+    // Claim the slot up front rather than on the way out. The lock already
+    // serialises concurrent runs, but marking early also closes the window
+    // between this run releasing the lock and the next cron tick: the slot is
+    // spent whether or not the work below succeeds.
+    await markSlotCompleted(dueSlot);
   }
 
   const targetCount = parseInt(settings.positronitron_count) || 3;
@@ -290,21 +402,55 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
       return { row, composite_score: score * w, source_weight: w };
     });
     ranked.sort((a, b) => b.composite_score - a.composite_score);
-    const selected = ranked.slice(0, targetCount);
+
+    // Near-duplicate filter. Until now this ran only in the admin Preview queue
+    // (GET /api/articles), as a hint for a human reviewer to act on. In full
+    // automation nobody reads that hint, so the same story arriving via two
+    // feeds — distinct URLs, so raw_articles.url UNIQUE does not catch it, and
+    // near-identical scores, so they sort adjacent — went out twice.
+    const recentPool = await buildDedupPool();
+    const selected: typeof ranked = [];
+    for (const entry of ranked) {
+      if (selected.length >= targetCount) break;
+      const title = String(entry.row.preview_title_en || entry.row.title || "");
+      const tokens = normaliseTitleTokens(title);
+      const hint = findDuplicateHint(tokens, recentPool);
+      if (hint) {
+        L(`  ✕ skipped "${title}" — ${(hint.similarity * 100).toFixed(0)}% similar to "${hint.match.title}" (${hint.match.origin})`);
+        continue;
+      }
+      selected.push(entry);
+      // Add to the pool so the rest of this same batch is compared against it.
+      recentPool.push({ item: { title, origin: "this run" }, tokens });
+    }
 
     if (weights && selected.length > 0) {
       for (const { row: c, composite_score, source_weight } of selected) {
         L(`  → "${c.title}" (score ${Number(c.positivity_score).toFixed(0)} × ${source_weight.toFixed(2)}x = ${composite_score.toFixed(1)}) [${c.source_name}]`);
       }
     }
-    const candidates = selected.map(s => s.row);
+
+    // Claim the rows before doing any work on them. The UPDATE is atomic and
+    // conditional on the row still being 'pending', so if anything else has
+    // taken a candidate in the meantime, rowsAffected tells us and we drop it.
+    // Defence in depth: the lock above should already prevent this.
+    const candidates: typeof queueResult.rows = [];
+    for (const { row } of selected) {
+      const claim = await db.execute({
+        sql: "UPDATE raw_articles SET status = 'approved' WHERE id = ? AND status = 'pending'",
+        args: [Number(row.id)],
+      });
+      if (claim.rowsAffected > 0) {
+        candidates.push(row);
+      } else {
+        L(`  ✕ skipped "${row.title}" — already claimed by another run`);
+      }
+    }
+
     L(`Found ${candidates.length} candidates in queue (wanted ${targetCount}, pool ${ranked.length})`);
 
     if (candidates.length === 0) {
-      if (dueSlot) {
-        await markSlotCompleted(dueSlot);
-        L(`Marked slot ${dueSlot} as completed (no candidates available)`);
-      }
+      if (dueSlot) L(`Slot ${dueSlot} claimed (no candidates available)`);
       return { ok: true, selected: 0, log, message: "No articles in queue. Run the pipeline first to fetch and classify articles." };
     }
 
@@ -336,13 +482,22 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
       const score = Number(c.positivity_score ?? 7);
 
       try {
+        // INSERT OR IGNORE, and then trust rowsAffected rather than
+        // lastInsertRowid. Until the unique index on raw_article_id exists this
+        // statement cannot actually conflict, but once it can, lastInsertRowid
+        // would still hold the id of this connection's previous insert — and
+        // the UPDATE below would then overwrite an unrelated article.
         const articleInsert = await db.execute({
           sql: `INSERT OR IGNORE INTO articles (raw_article_id, source_url, source_name, status, positivity_score)
                 VALUES (?, ?, ?, 'draft', ?)`,
           args: [rawId, c.url, c.source_name, score],
         });
+        if (articleInsert.rowsAffected === 0) {
+          L(`Skipped "${c.title}" — an article row already exists for this source article`);
+          continue;
+        }
         const articleId = Number(articleInsert.lastInsertRowid);
-        await db.execute({ sql: "UPDATE raw_articles SET status = 'approved' WHERE id = ?", args: [rawId] });
+        // raw_articles was already claimed as 'approved' before this loop.
 
         L(`Summarising: "${c.title}"`);
         const { text: articleText, imageUrl } = await fetchArticleContent(String(c.url));
@@ -408,10 +563,7 @@ export async function runPositronitron(options: { isManual: boolean }): Promise<
 
     try { await exportRejections(); } catch { /* ok */ }
 
-    if (dueSlot) {
-      await markSlotCompleted(dueSlot);
-      L(`Marked slot ${dueSlot} as completed for today`);
-    }
+    if (dueSlot) L(`Slot ${dueSlot} completed for today`);
 
     L(`Done — ${results.length} articles ${schedulePublish ? "scheduled" : "drafted"}`);
 
