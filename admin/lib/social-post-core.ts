@@ -4,6 +4,7 @@
  */
 
 import db from "@/lib/db";
+import { acquireLock, lockHolder, releaseLock } from "@/lib/run-lock";
 import { postArticleToSocial } from "@/app/api/post-social/route";
 
 const SITE_BASE = "https://positron.today";
@@ -34,7 +35,36 @@ export interface SocialPostResult {
  * Find articles pending social posting and post them.
  * @param waitForLive If true, wait up to maxWaitSeconds for each URL to become live.
  */
+/** Settings row used as the social-post lock. */
+const SOCIAL_LOCK_KEY = "social_post_lock";
+
+/** Each post can wait up to maxWaitSeconds for the URL to go live, so allow generous headroom. */
+const SOCIAL_LOCK_STALE_MS = 30 * 60_000;
+
+/**
+ * Serialised for the same reason as publishScheduledArticles: four callers, and
+ * the guard is `social_posted_at IS NULL` read well before it is written, with
+ * a Post-for-Me call and an up-to-300s liveness wait in between. Two concurrent
+ * callers would both see the same article as unposted and both announce it.
+ */
 export async function postPendingSocial(options?: { waitForLive?: boolean; maxWaitSeconds?: number }): Promise<SocialPostResult> {
+  const lock = await acquireLock(SOCIAL_LOCK_KEY, "social", SOCIAL_LOCK_STALE_MS);
+  if (!lock) {
+    const holder = await lockHolder(SOCIAL_LOCK_KEY, SOCIAL_LOCK_STALE_MS);
+    console.log(
+      `[post-pending-social] Another social run is in progress` +
+      `${holder ? ` (started ${Math.round((Date.now() - holder.at) / 1000)}s ago)` : ""} — skipping`,
+    );
+    return { processed: 0, posted: 0, skipped: 0, results: [] };
+  }
+  try {
+    return await postPendingSocialLocked(options);
+  } finally {
+    await releaseLock(SOCIAL_LOCK_KEY, lock.token);
+  }
+}
+
+async function postPendingSocialLocked(options?: { waitForLive?: boolean; maxWaitSeconds?: number }): Promise<SocialPostResult> {
   const waitForLive = options?.waitForLive ?? false;
   const maxWaitMs = (options?.maxWaitSeconds ?? 120) * 1000;
 

@@ -4,6 +4,7 @@
  */
 
 import db from "@/lib/db";
+import { acquireLock, lockHolder, releaseLock } from "@/lib/run-lock";
 import { parseScheduleWallString } from "@/lib/schedule-time";
 
 const GITHUB_TOKEN  = process.env.GITHUB_TOKEN!;
@@ -236,13 +237,56 @@ export interface PublishResult {
   published: number;
   failed: number;
   results: Array<{ id: number; title: string; ok: boolean; path?: string; error?: string }>;
+  /** True when another publish run holds the lock and this call did nothing. */
+  busy?: boolean;
   error?: string;
 }
 
+/** Settings row used as the publish lock. */
+const PUBLISH_LOCK_KEY = "publish_lock";
+
+/** A publish is one GitHub commit per due article; 10 minutes is far beyond normal. */
+const PUBLISH_LOCK_STALE_MS = 10 * 60_000;
+
+/**
+ * Publish every scheduled article that is due.
+ *
+ * Serialised across all callers, because there are four of them and they
+ * overlap constantly: the NAS cron every 30 minutes, the per-article timers in
+ * publish-timer.ts (one setTimeout per scheduled article, each publishing the
+ * whole due set), and two call sites in the unified pipeline. Selecting the due
+ * rows and marking them published are separated by a GitHub round trip, so
+ * concurrent callers all saw the same rows as still 'scheduled' and all
+ * committed. That is what produced 494 redundant "Add post" commits between
+ * 2026-08-20 and 2026-09-08 — one story was committed twelve times.
+ *
+ * The commits were harmless to the site (same path, so each overwrote the last)
+ * but they burn GitHub API calls, and a duplicate social post is not harmless.
+ */
 export async function publishScheduledArticles(): Promise<PublishResult> {
   if (!GITHUB_TOKEN || !GITHUB_REPO) {
     return { published: 0, failed: 0, results: [], error: "GITHUB_TOKEN and GITHUB_REPO must be set" };
   }
+
+  const lock = await acquireLock(PUBLISH_LOCK_KEY, "publish", PUBLISH_LOCK_STALE_MS);
+  if (!lock) {
+    const holder = await lockHolder(PUBLISH_LOCK_KEY, PUBLISH_LOCK_STALE_MS);
+    console.log(
+      `[publish-scheduled] Another publish run is in progress` +
+      `${holder ? ` (started ${Math.round((Date.now() - holder.at) / 1000)}s ago)` : ""} — skipping`,
+    );
+    return { published: 0, failed: 0, results: [], busy: true };
+  }
+
+  try {
+    return await publishScheduledArticlesLocked();
+  } finally {
+    await releaseLock(PUBLISH_LOCK_KEY, lock.token);
+  }
+}
+
+/** The actual publish. Only ever called with the publish lock held. */
+async function publishScheduledArticlesLocked(): Promise<PublishResult> {
 
   const allScheduled = await db.execute(`
     SELECT a.*, r.source_pub_date, r.fetched_at
