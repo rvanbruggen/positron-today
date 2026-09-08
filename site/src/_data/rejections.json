@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-08T04:32:50.989Z",
-  "total_rejected": 139078,
+  "exported_at": "2026-09-08T04:33:33.733Z",
+  "total_rejected": 139079,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2520
+      "count": 2521
     },
     {
       "category": "divisive-racism",
@@ -231,8 +231,8 @@
     },
     {
       "source": "Knack",
-      "negative": 976,
-      "total": 989
+      "negative": 977,
+      "total": 990
     },
     {
       "source": "AllAfrica",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Knack",
+      "title": "BYD test ultrasnel laden: 30.000 km, 9 dagen en amper 1,3% slijtage",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.knack.be/nieuws/auto/byd-test-ultrasnel-laden-30-000-km-9-dagen-en-amper-13-slijtage/",
+      "date": "2026-09-08 06:33",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "Kiwi battery tech promises $2700 power bill cut",
@@ -9381,15 +9390,6 @@
       "url": "https://www.aljazeera.com/news/liveblog/2026/9/7/iran-war-live-tehran-to-announce-new-hormuz-shipping-route-in-coming-days?traffic_source=rss",
       "date": "2026-09-07 06:18",
       "positivity_score": 2
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "Serbia’s Red Star Belgrade honour Ratko Mladic with tifo",
-      "reason": "The article involves a controversial and divisive figure, Ratko Mladic, whose glorification is associated with war crimes and ethnic conflict, making the story negative and socially divisive rather than positive.",
-      "category": "divisive-social",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/9/7/aje-onl-nf_red-star-belgrade-fans-unveil-tifo-honouring-mladic-060926?traffic_source=rss",
-      "date": "2026-09-07 06:18",
-      "positivity_score": 1
     }
   ]
 }
