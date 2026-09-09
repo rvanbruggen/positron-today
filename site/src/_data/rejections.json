@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-09T18:05:20.398Z",
-  "total_rejected": 140780,
+  "exported_at": "2026-09-09T18:05:43.968Z",
+  "total_rejected": 140781,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2543
+      "count": 2544
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 5272,
-      "total": 5337
+      "negative": 5273,
+      "total": 5338
     },
     {
       "source": "NRC",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Le chercheur Emmanuel Mignot reçoit le prix Lasker pour ses travaux sur la narcolepsie",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sciences/article/2026/09/09/le-chercheur-emmanuel-mignot-recoit-le-prix-lasker-pour-ses-travaux-sur-la-narcolepsie_6768920_1650684.html",
+      "date": "2026-09-09 20:05",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Radosław Nielek: Polska potrzebuje własnych narzędzi cyfrowych",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/international/live/2026/09/08/en-direct-guerre-en-ukraine-cinq-personnes-sont-mortes-a-kiev-et-25-ont-ete-blessees-depuis-la-fin-de-la-treve-de-trois-jours_6766818_3210.html",
       "date": "2026-09-08 21:22",
       "positivity_score": 1
-    },
-    {
-      "source": "Le Monde",
-      "title": "Zohran Mamdani dénonce des dissimulations sur la toxicité de l’air à New York après le 11-Septembre : « Des gens sont tombés malades parce que les dirigeants leur ont menti »",
-      "reason": "The article focuses on the negative health impact and alleged cover-up related to the 9/11 attacks, which is a disaster and health scare update rather than positive news.",
-      "category": "disaster-accident",
-      "url": "https://www.lemonde.fr/international/article/2026/09/08/zohran-mamdani-denonce-des-dissimulations-sur-la-toxicite-de-l-air-a-new-york-apres-le-11-septembre-des-gens-sont-tombes-malades-parce-que-les-dirigeants-auxquels-ils-faisaient-confiance-leur-ont-menti_6768479_3210.html",
-      "date": "2026-09-08 21:22",
-      "positivity_score": 2
     }
   ]
 }
