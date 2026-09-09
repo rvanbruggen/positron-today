@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-09T18:06:39.291Z",
-  "total_rejected": 140785,
+  "exported_at": "2026-09-09T18:07:03.526Z",
+  "total_rejected": 140786,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2548
+      "count": 2549
     },
     {
       "category": "divisive-racism",
@@ -96,8 +96,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 6354,
-      "total": 6416
+      "negative": 6355,
+      "total": 6417
     },
     {
       "source": "Politiken.dk",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "OpenAI annonce avoir résolu un problème de maths crucial en quelques jours seulement",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lefigaro.fr/secteur/high-tech/openai-annonce-avoir-resolu-un-probleme-de-maths-crucial-en-quelques-jours-seulement-20260908",
+      "date": "2026-09-09 20:07",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "Highly efficient base editing at <i>PCSK9</i> and normal human embryo development",
@@ -9379,15 +9388,6 @@
       "reason": "The article focuses on political reactions to the success of a far-right party, which falls under political content and does not meet the positive news criteria.",
       "category": "political-conflict",
       "url": "https://www.faz.net/aktuell/feuilleton/debatten/wahl-sachsen-anhalt-2026-so-reagiert-die-italienische-presse-201205997.html",
-      "date": "2026-09-08 21:22",
-      "positivity_score": 2
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "GEfahR für die kreditwürdigkeit: 58 Milliarden Euro – so belasten die steigenden Zinsen den Bund",
-      "reason": "The article focuses on the negative economic impact of rising interest rates on government debt, which is not uplifting and falls under economic doom rather than positive news.",
-      "category": "economic-doom",
-      "url": "https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/steigende-zinsen-friedrich-heinemann-warnt-den-bund-accg-201203887.html",
       "date": "2026-09-08 21:22",
       "positivity_score": 2
     }
