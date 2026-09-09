@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-09T18:06:23.674Z",
-  "total_rejected": 140783,
+  "exported_at": "2026-09-09T18:06:31.736Z",
+  "total_rejected": 140784,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2546
+      "count": 2547
     },
     {
       "category": "divisive-racism",
@@ -241,8 +241,8 @@
     },
     {
       "source": "Nature",
-      "negative": 891,
-      "total": 1102
+      "negative": 892,
+      "total": 1103
     },
     {
       "source": "Popular Science",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Breaking timescales with generative sampling of conformational transitions",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/s41586-026-11025-1",
+      "date": "2026-09-09 20:06",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "PLA2G2D in tumour-draining lymph nodes regulates anti-tumour immunity",
@@ -9379,15 +9388,6 @@
       "reason": "The article is about a political budget debate and party dynamics, which falls under politics and does not meet the positive news criteria.",
       "category": "political-conflict",
       "url": "https://www.faz.net/aktuell/politik/inland/cdu-in-der-haushaltsdebatte-wer-muss-es-ausbaden-201206433.html",
-      "date": "2026-09-08 21:22",
-      "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "Les sapeurs-pompiers de nouveau déçus après la présentation du projet de loi sur la modernisation de la sécurité civile",
-      "reason": "The article reports on firefighters' disappointment with a government bill, which is a political and negative development without a positive outcome or broader uplifting significance.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/societe/article/2026/09/08/nouvelle-deception-pour-les-sapeurs-pompiers-apres-la-presentation-du-projet-de-loi-sur-la-modernisation-de-la-securite-civile_6768446_3224.html",
       "date": "2026-09-08 21:22",
       "positivity_score": 2
     }
