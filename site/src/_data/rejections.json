@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-09T18:04:02.493Z",
-  "total_rejected": 140775,
+  "exported_at": "2026-09-09T18:04:25.379Z",
+  "total_rejected": 140776,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2538
+      "count": 2539
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 200,
-      "total": 497
+      "negative": 201,
+      "total": 498
     },
     {
       "source": "Good Good Good",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Ozempic and Wegovy linked to nearly 40% fewer asthma attacks",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260909005155.htm",
+      "date": "2026-09-09 20:04",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "“Parachute science” is failing the tropics, home to more than 80% of insect species",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/politique/article/2026/09/08/pisa-2025-le-recit-du-declinisme-francais-de-retour-dans-la-presidentielle_6768438_823448.html",
       "date": "2026-09-08 21:21",
       "positivity_score": 2
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "SVH Waasmunster begint overtuigend aan het seizoen, Rune Thierens zit al aan zes goals: “Een mooi gemiddelde”",
-      "reason": "The article is about routine professional sports results without exceptional or universally inspiring elements, falling under routine sports coverage.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/sportregio/svh-waasmunster-begint-overtuigend-aan-het-seizoen-rune-thierens-zit-al-aan-zes-goals-een-mooi-gemiddelde/161173906.html",
-      "date": "2026-09-08 21:21",
-      "positivity_score": 3
     }
   ]
 }
