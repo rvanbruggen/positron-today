@@ -291,6 +291,10 @@ export async function initSchema() {
   // v3.3: positivity score on rejected articles (matches raw_articles column)
   try { await db.execute("ALTER TABLE rejected_articles ADD COLUMN positivity_score REAL"); } catch { /* already applied */ }
 
+  // v4.1: last audio-generation error, so a failed run is visible in the admin
+  // instead of only in the container logs.
+  try { await db.execute("ALTER TABLE editorials ADD COLUMN audio_error TEXT"); } catch { /* already applied */ }
+
   // One-time data migration: promote existing topic_id → article_tags
   try {
     await db.execute(`

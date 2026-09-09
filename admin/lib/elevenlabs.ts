@@ -40,6 +40,26 @@ function stripMarkdown(md: string): string {
     .trim();
 }
 
+/**
+ * ElevenLabs SDK errors stringify as "Status code: 403\nBody: {…}", which is
+ * unreadable once it reaches the admin UI. Pull the human-readable line out of
+ * the JSON body when there is one, and keep the status code for context.
+ */
+function readableError(err: unknown): Error {
+  const raw = err instanceof Error ? err.message : String(err);
+  const status = raw.match(/Status code:\s*(\d+)/)?.[1];
+  const bodyStart = raw.indexOf("{");
+  if (bodyStart !== -1) {
+    try {
+      const body = JSON.parse(raw.slice(bodyStart));
+      const detail = body?.detail;
+      const message = typeof detail === "string" ? detail : detail?.message;
+      if (message) return new Error(status ? `ElevenLabs ${status}: ${message}` : `ElevenLabs: ${message}`);
+    } catch { /* not JSON — fall through to the raw message */ }
+  }
+  return err instanceof Error ? err : new Error(raw);
+}
+
 export async function generateAudio(
   text: string,
   lang: Lang,
@@ -56,21 +76,25 @@ export async function generateAudio(
     `[elevenlabs] Generating audio for ${lang} (${plainText.length} chars)`,
   );
 
-  const response = await client.textToSpeech.convert(voiceId, {
-    text: plainText,
-    modelId: "eleven_multilingual_v2",
-    languageCode: "en",
-    outputFormat: "mp3_44100_128",
-  });
+  try {
+    const response = await client.textToSpeech.convert(voiceId, {
+      text: plainText,
+      modelId: "eleven_multilingual_v2",
+      languageCode: "en",
+      outputFormat: "mp3_44100_128",
+    });
 
-  const chunks: Uint8Array[] = [];
-  const reader = response.getReader();
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    if (value) chunks.push(value);
+    const chunks: Uint8Array[] = [];
+    const reader = response.getReader();
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (value) chunks.push(value);
+    }
+    return Buffer.concat(chunks);
+  } catch (err) {
+    throw readableError(err);
   }
-  return Buffer.concat(chunks);
 }
 
 export interface AudioGenerationResult {

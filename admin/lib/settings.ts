@@ -38,6 +38,12 @@ export interface LLMSettings {
   neverskip_run_time: string;
   /** Max stories published per theme per week (stringified integer) */
   neverskip_count: string;
+  /**
+   * "true" enables ElevenLabs text-to-speech for editorials. Off by default:
+   * the cloned voice needs a paid Creator-tier ElevenLabs plan, so leaving it
+   * on without one means every generation fails with a 403.
+   */
+  editorial_audio_enabled: string;
 }
 
 const DEFAULTS: LLMSettings = {
@@ -61,6 +67,7 @@ const DEFAULTS: LLMSettings = {
   neverskip_model: "claude-opus-5",
   neverskip_run_time: "",
   neverskip_count: "5",
+  editorial_audio_enabled: "false",
 };
 
 export async function getSettings(): Promise<LLMSettings> {
@@ -97,6 +104,7 @@ export async function getSettings(): Promise<LLMSettings> {
       neverskip_model:          map.neverskip_model           || DEFAULTS.neverskip_model,
       neverskip_run_time:       map.neverskip_run_time        ?? DEFAULTS.neverskip_run_time,
       neverskip_count:          map.neverskip_count           || DEFAULTS.neverskip_count,
+      editorial_audio_enabled:  map.editorial_audio_enabled   || DEFAULTS.editorial_audio_enabled,
     };
   } catch {
     // Table may not exist yet (migration pending) — return defaults
@@ -115,4 +123,18 @@ export async function setSettings(patch: Partial<LLMSettings>): Promise<void> {
   for (const [key, value] of Object.entries(patch)) {
     await setSetting(key as keyof LLMSettings, value as string);
   }
+}
+
+/**
+ * Editorial audio is only actually available when the operator has switched it
+ * on *and* the ElevenLabs credentials are present. Both callers (publish and
+ * the manual button) need the same answer, so resolve it in one place.
+ */
+export async function isEditorialAudioEnabled(): Promise<boolean> {
+  const settings = await getSettings();
+  return (
+    settings.editorial_audio_enabled === "true" &&
+    !!process.env.ELEVENLABS_API_KEY &&
+    !!process.env.ELEVENLABS_VOICE_ID
+  );
 }

@@ -5,6 +5,7 @@ import { slugify, yamlStr, commitToGitHub, deleteFromGitHub } from "@/lib/publis
 import { postEditorialToSubstack, uploadImageToSubstack, convertSvgToPng } from "@/lib/editorial-substack";
 import { postPendingSocial } from "@/lib/social-post-core";
 import { generateAllAudio } from "@/lib/elevenlabs";
+import { isEditorialAudioEnabled } from "@/lib/settings";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",
@@ -296,8 +297,9 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
     }
 
     // 1b. Generate and commit audio files (best-effort — publish continues on failure)
-    // Skip if audio was already pre-generated via the "Generate Audio" button.
-    if (!editorial.audio_generated_at && process.env.ELEVENLABS_API_KEY && process.env.ELEVENLABS_VOICE_ID) {
+    // Skip if audio was already pre-generated via the "Generate Audio" button,
+    // or if editorial audio is switched off in Settings (the default).
+    if (!editorial.audio_generated_at && (await isEditorialAudioEnabled())) {
       try {
         const audioResults = await generateAllAudio(editorial as Record<string, unknown>);
         for (const audio of audioResults) {
@@ -307,7 +309,7 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
         }
         if (audioResults.length > 0) {
           await db.execute({
-            sql: "UPDATE editorials SET audio_generated_at = datetime('now') WHERE id = ?",
+            sql: "UPDATE editorials SET audio_generated_at = datetime('now'), audio_error = NULL WHERE id = ?",
             args: [id],
           });
           // Re-fetch so the markdown generation picks up audio_generated_at
@@ -315,7 +317,14 @@ export async function publishEditorial(id: number): Promise<EditorialPublishResu
           Object.assign(editorial, refreshed.rows[0]);
         }
       } catch (err) {
-        console.warn(`[editorial] Audio generation failed (non-fatal):`, err instanceof Error ? err.message : err);
+        const message = err instanceof Error ? err.message : String(err);
+        console.warn(`[editorial] Audio generation failed (non-fatal):`, message);
+        try {
+          await db.execute({
+            sql: "UPDATE editorials SET audio_error = ? WHERE id = ?",
+            args: [message.slice(0, 500), id],
+          });
+        } catch { /* best-effort — never block the publish on this */ }
       }
     }
 
@@ -495,7 +504,7 @@ export async function unpublishEditorial(id: number): Promise<{ ok: boolean; err
       sql: `UPDATE editorials SET
         status = 'ready', article_id = NULL, published_path = NULL,
         published_at = NULL, substack_posted_at = NULL, audio_generated_at = NULL,
-        updated_at = datetime('now')
+        audio_error = NULL, updated_at = datetime('now')
         WHERE id = ?`,
       args: [id],
     });

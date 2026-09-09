@@ -24,6 +24,7 @@ type Editorial = {
   publish_date: string | null;
   published_at: string | null;
   audio_generated_at: string | null;
+  audio_error: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -61,6 +62,10 @@ export default function EditorialsPage() {
   const [busy, setBusy] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  // Whether editorial audio is switched on in Settings — the ElevenLabs
+  // cloned voice needs a paid plan, so the whole feature is opt-in.
+  const [audioEnabled, setAudioEnabled] = useState(false);
 
   // Schedule state
   const [scheduleDate, setScheduleDate] = useState("");
@@ -103,6 +108,13 @@ export default function EditorialsPage() {
   }
 
   useEffect(() => { fetchList(); }, []);
+
+  useEffect(() => {
+    fetch("/api/llm-settings")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => setAudioEnabled(d?.editorial_audio_enabled === "true"))
+      .catch(() => setAudioEnabled(false));
+  }, []);
 
   function openDetail(id: number) {
     setSelectedId(id);
@@ -312,11 +324,19 @@ export default function EditorialsPage() {
       if (!res.ok) { setError(data.error ?? "Audio generation failed"); setBusy(""); return; }
       setSuccess("Audio generation started — this runs in the background. You can leave this page.");
       setBusy("");
-      // Poll for completion
+      // Poll for completion. Generation happens after the response has gone
+      // out, so success and failure both arrive via the row, not the request.
       const poll = setInterval(async () => {
         const check = await fetch(`/api/editorials/${id}`);
         if (check.ok) {
           const ed = await check.json();
+          if (ed.audio_error) {
+            clearInterval(poll);
+            setSuccess("");
+            setError(`Audio generation failed: ${ed.audio_error}`);
+            await fetchDetail(id);
+            return;
+          }
           if (ed.audio_generated_at && (!selected?.audio_generated_at || ed.audio_generated_at !== selected.audio_generated_at)) {
             clearInterval(poll);
             setSuccess("Audio generation complete.");
@@ -535,7 +555,7 @@ export default function EditorialsPage() {
               </button>
             </>
           )}
-          {(isReady || isScheduled || isPublished) && selected.content_en && (
+          {audioEnabled && (isReady || isScheduled || isPublished) && selected.content_en && (
             <button onClick={() => handleGenerateAudio(selected.id)} disabled={!!busy}
               className={`${selected.audio_generated_at ? "bg-teal-100 hover:bg-teal-200 text-teal-700" : "bg-teal-500 hover:bg-teal-600 text-white"} font-medium px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50`}>
               {selected.audio_generated_at ? "🔄 Regenerate Audio" : "🎙 Generate Audio"}
@@ -598,6 +618,11 @@ export default function EditorialsPage() {
                   className="text-xs text-teal-600 hover:text-teal-800 underline">
                   Download MP3
                 </a>
+              </div>
+            )}
+            {selected.audio_error && (
+              <div className="col-span-2 md:col-span-4 text-red-700">
+                <span className="text-red-500">Audio error:</span> {selected.audio_error}
               </div>
             )}
             {selected.image_filename && (() => {

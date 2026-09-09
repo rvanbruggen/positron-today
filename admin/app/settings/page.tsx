@@ -47,6 +47,7 @@ interface LLMSettings {
   neverskip_model: string;
   neverskip_run_time: string;
   neverskip_count: string;
+  editorial_audio_enabled: string;
 }
 
 const ANTHROPIC_MODELS = [
@@ -1193,6 +1194,33 @@ export default function SettingsPage() {
             {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
             {nsResult && <p className="text-sm text-teal-700">{nsResult}</p>}
           </div>
+        </div>
+      </div>
+
+      {/* ── Editorial audio ── */}
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">🎙 Editorial audio</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          Reads each editorial aloud with ElevenLabs text-to-speech and commits the MP3 alongside
+          the article, so the page gets an audio player. Off by default: the cloned voice is a
+          professional voice, which ElevenLabs only serves on a paid Creator-tier plan or above.
+          Switching this on without one makes every generation fail with a 403.
+        </p>
+        <div className={`border rounded-xl p-5 space-y-3 transition-colors ${settings.editorial_audio_enabled === "true" ? "bg-teal-50 border-teal-300" : "bg-white border-yellow-200"}`}>
+          <label className="flex items-center gap-3 text-sm text-amber-800">
+            <input
+              type="checkbox"
+              checked={settings.editorial_audio_enabled === "true"}
+              onChange={e => patch("editorial_audio_enabled", e.target.checked ? "true" : "false")}
+              className="w-4 h-4 accent-teal-500"
+            />
+            <span className="font-medium">Generate audio for editorials</span>
+          </label>
+          <p className="text-xs text-amber-600">
+            {settings.editorial_audio_enabled === "true"
+              ? "On — publishing an editorial generates an MP3, and the 🎙 Generate Audio button is available on the editorial page. Requires ELEVENLABS_API_KEY and ELEVENLABS_VOICE_ID on the server."
+              : "Off — no ElevenLabs calls are made. Editorials publish without audio; MP3s generated earlier stay on the site and keep playing."}
+          </p>
         </div>
       </div>
 

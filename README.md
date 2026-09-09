@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips, and surfacing the consequential few that shouldn't be lost in the pile.
 
-**Version:** 4.0.6 · **Live site:** [positron.today](https://positron.today)
+**Version:** 4.1.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -540,6 +540,8 @@ Run the admin directly with Node.js — no Docker needed. See the [Setup](#setup
 | `BLUESKY_APP_PASSWORD` | If using direct Bluesky | App password for the legacy direct Bluesky posting route |
 | `ELEVENLABS_API_KEY` | If using editorial audio | API key from [elevenlabs.io](https://elevenlabs.io) for text-to-speech |
 | `ELEVENLABS_VOICE_ID` | If using editorial audio | Voice ID of the cloned voice to use for TTS generation |
+
+> **Editorial audio is off by default.** Setting the two `ELEVENLABS_*` vars is not enough — switch it on in **Admin → Settings → Editorial audio**. A cloned voice is a *professional voice*, which ElevenLabs only serves on a paid Creator-tier plan or above; with the feature on and no such plan, every generation fails with `403 subscription_required`. Editorials published while it is off simply have no audio player; MP3s generated earlier stay on the site and keep playing.
 
 > **Note:** If you use Ollama for both tasks, neither `ANTHROPIC_API_KEY` nor `OPENAI_API_KEY` is needed. Social account IDs for Post for Me are managed through the Settings UI and stored in the database — no env vars needed.
 

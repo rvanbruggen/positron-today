@@ -34,11 +34,12 @@ async function processItem({ id, editorial }: QueueItem) {
 
     if (audioResults.length === 0) {
       console.error(`[audio-queue] No audio generated for editorial ${id}`);
+      await recordError(id, "No audio was generated — the editorial has no English content.");
       return;
     }
 
     await db.execute({
-      sql: "UPDATE editorials SET audio_generated_at = datetime('now'), updated_at = datetime('now') WHERE id = ?",
+      sql: "UPDATE editorials SET audio_generated_at = datetime('now'), audio_error = NULL, updated_at = datetime('now') WHERE id = ?",
       args: [id],
     });
 
@@ -68,6 +69,24 @@ async function processItem({ id, editorial }: QueueItem) {
 
     console.log(`[audio-queue] Completed editorial ${id}`);
   } catch (err) {
-    console.error(`[audio-queue] Failed for editorial ${id}:`, err instanceof Error ? err.message : err);
+    const message = err instanceof Error ? err.message : String(err);
+    console.error(`[audio-queue] Failed for editorial ${id}:`, message);
+    await recordError(id, message);
+  }
+}
+
+/**
+ * Generation runs after the HTTP response has already gone out, so a failure
+ * has nowhere to surface. Park it on the row instead — the editorials page
+ * polls that column and shows it.
+ */
+async function recordError(id: number, message: string) {
+  try {
+    await db.execute({
+      sql: "UPDATE editorials SET audio_error = ?, updated_at = datetime('now') WHERE id = ?",
+      args: [message.slice(0, 500), id],
+    });
+  } catch (err) {
+    console.error(`[audio-queue] Could not record error for editorial ${id}:`, err);
   }
 }
