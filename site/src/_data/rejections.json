@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-09T18:06:03.579Z",
-  "total_rejected": 140782,
+  "exported_at": "2026-09-09T18:06:11.090Z",
+  "total_rejected": 140783,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2545
+      "count": 2546
     },
     {
       "category": "divisive-racism",
@@ -241,8 +241,8 @@
     },
     {
       "source": "Nature",
-      "negative": 890,
-      "total": 1101
+      "negative": 891,
+      "total": 1102
     },
     {
       "source": "Popular Science",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "PLA2G2D in tumour-draining lymph nodes regulates anti-tumour immunity",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/s41586-026-10954-1",
+      "date": "2026-09-09 20:06",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "Foaming photopolymers as a high-resolution biomimetic printing platform",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/societe/article/2026/09/08/nouvelle-deception-pour-les-sapeurs-pompiers-apres-la-presentation-du-projet-de-loi-sur-la-modernisation-de-la-securite-civile_6768446_3224.html",
       "date": "2026-09-08 21:22",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, Lille-Betis Séville : début de rencontre animée avec des Dogues offensifs",
-      "reason": "This is a routine professional sports match preview without exceptional or universally inspiring content.",
-      "category": "sports-negative",
-      "url": "https://www.lemonde.fr/sport/live/2026/09/08/en-direct-lille-betis-seville-suivez-la-premiere-journee-de-ligue-des-champions_6768433_3242.html",
-      "date": "2026-09-08 21:22",
-      "positivity_score": 3
     }
   ]
 }
