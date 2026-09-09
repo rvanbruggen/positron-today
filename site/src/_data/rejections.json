@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-09T04:19:21.059Z",
-  "total_rejected": 140143,
+  "exported_at": "2026-09-09T04:32:12.700Z",
+  "total_rejected": 140144,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2533
+      "count": 2534
     },
     {
       "category": "divisive-racism",
@@ -336,8 +336,8 @@
     },
     {
       "source": "Quanta Magazine",
-      "negative": 25,
-      "total": 43
+      "negative": 26,
+      "total": 44
     },
     {
       "source": "Dwarkesh",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Quanta Magazine",
+      "title": "AI Has Solved One of Math’s $1 Million Millennium Prize Problems",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/",
+      "date": "2026-09-09 06:32",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Anti-AfD protesters rally in Cologne after far-right election win",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lemonde.fr/economie/article/2026/09/08/mistral-ai-une-levee-de-fonds-a-3-milliards-d-euros-en-reponse-aux-doutes-sur-l-evolution-de-sa-strategie_6768110_3234.html",
       "date": "2026-09-08 10:26",
       "positivity_score": 3
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, guerre en Ukraine :  les attaques russes ont repris sur Kiev et sa région après trois jours de trêve",
-      "reason": "The article reports on renewed missile and drone attacks causing deaths and injuries in Ukraine, which is a negative war/conflict update without positive news.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/international/live/2026/09/08/en-direct-guerre-en-ukraine-les-attaques-russes-ont-repris-sur-kiev-et-sa-region-apres-trois-jours-de-treve_6766818_3210.html",
-      "date": "2026-09-08 10:26",
-      "positivity_score": 2
     }
   ]
 }
