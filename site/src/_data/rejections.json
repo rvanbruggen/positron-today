@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-10T05:33:49.852Z",
-  "total_rejected": 141282,
+  "exported_at": "2026-09-10T05:34:02.430Z",
+  "total_rejected": 141283,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2557
+      "count": 2558
     },
     {
       "category": "divisive-racism",
@@ -201,8 +201,8 @@
     },
     {
       "source": "De Standaard Binnenland",
-      "negative": 1696,
-      "total": 1740
+      "negative": 1697,
+      "total": 1741
     },
     {
       "source": "RNZ (New Zealand)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "De Standaard Binnenland",
+      "title": "Heeft OpenAI een wiskundeprobleem gekraakt dat geen mens al kon oplossen?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.standaard.be/natuur-en-wetenschap/heeft-openai-een-wiskundeprobleem-gekraakt-dat-geen-mens-al-kon-oplossen/161202338.html",
+      "date": "2026-09-10 07:34",
+      "positivity_score": null
+    },
     {
       "source": "Neue Zürcher Zeitung",
       "title": "KI hat eines der legendärsten Mathematikprobleme gelöst. Worum geht es bei den «Millennium-Problemen»? Und warum ist ihre Lösung bedeutsam?",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lalibre.be/debats/opinions/2026/09/09/jen-appelle-au-gouvernement-belge-ouvrez-leur-la-porte-P7VQ7X7IRVA27J5JIU2RIVILUI/",
       "date": "2026-09-09 10:28",
       "positivity_score": 4
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "Le prix du pétrole repasse au-dessus de 100 dollars",
-      "reason": "The article reports on rising oil prices due to geopolitical tensions, which is an economic concern and not uplifting news.",
-      "category": "economic-doom",
-      "url": "https://www.lalibre.be/economie/placements/2026/09/09/le-prix-du-petrole-repasse-au-dessus-de-100-dollars-YKZD5G6YT5GFJLBWYDWEVEKCJM/",
-      "date": "2026-09-09 10:28",
-      "positivity_score": 2
     }
   ]
 }
