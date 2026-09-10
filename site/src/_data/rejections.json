@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-10T04:21:34.752Z",
-  "total_rejected": 141281,
+  "exported_at": "2026-09-10T05:33:49.852Z",
+  "total_rejected": 141282,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2556
+      "count": 2557
     },
     {
       "category": "divisive-racism",
@@ -146,8 +146,8 @@
     },
     {
       "source": "Neue Zürcher Zeitung",
-      "negative": 2941,
-      "total": 2953
+      "negative": 2942,
+      "total": 2954
     },
     {
       "source": "DR (Danish Public broadcaster)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "KI hat eines der legendärsten Mathematikprobleme gelöst. Worum geht es bei den «Millennium-Problemen»? Und warum ist ihre Lösung bedeutsam?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nzz.ch/wissenschaft/ki-hat-eines-der-legendaersten-mathematik-probleme-geloest-was-sind-das-fuer-fragen-und-warum-ist-deren-loesung-bedeutsam-ld.10023039",
+      "date": "2026-09-10 07:33",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "Anthropic researcher resigns, warning that AI \"could kill us all\" before the decade ends",
@@ -9381,15 +9390,6 @@
       "url": "https://www.lalibre.be/economie/placements/2026/09/09/le-prix-du-petrole-repasse-au-dessus-de-100-dollars-YKZD5G6YT5GFJLBWYDWEVEKCJM/",
       "date": "2026-09-09 10:28",
       "positivity_score": 2
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "Carlos Alcaraz éliminé de l'US Open : Ben Shelton parvient à vaincre le tenant du titre au bout de la nuit",
-      "reason": "This is a routine professional sports result without exceptional or universally inspiring characteristics.",
-      "category": "sports-negative",
-      "url": "https://www.lalibre.be/sports/tennis/2026/09/09/carlos-alcaraz-elimine-de-lus-open-ben-shelton-parvient-a-vaincre-le-tenant-du-titre-au-bout-de-la-nuit-UJDZJR2TMBGUTOZKH7WSWYRAZY/",
-      "date": "2026-09-09 10:28",
-      "positivity_score": 3
     }
   ]
 }
