@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-10T11:01:07.320Z",
-  "total_rejected": 141485,
+  "exported_at": "2026-09-10T11:01:39.019Z",
+  "total_rejected": 141486,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2562
+      "count": 2563
     },
     {
       "category": "divisive-racism",
@@ -116,8 +116,8 @@
     },
     {
       "source": "NRC",
-      "negative": 5260,
-      "total": 5353
+      "negative": 5261,
+      "total": 5354
     },
     {
       "source": "De Morgen",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "NRC",
+      "title": "Opwinding in de wiskunde: OpenAI lost raadsel op waar een miljoen voor was uitgeloofd – in 88 uur ",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nrc.nl/nieuws/2026/09/10/opwinding-in-de-wiskunde-openai-lost-miljoendollarprobleem-op-in-88-uur-a4936274",
+      "date": "2026-09-10 13:01",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Zimbabwe: Akashinga's Women Rangers Take Zimbabwe to the Wildlife Ranger Challenge",
@@ -9381,15 +9390,6 @@
       "url": "https://pro.rp.pl/sady-i-prokuratura/art45109851-czy-lawnicy-i-sedziowie-pokoju-sa-potrzebni",
       "date": "2026-09-09 14:29",
       "positivity_score": 3
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Dr Mirosław Oczkoś: Afera Zondakrypto zaczyna uderzać w Karola Nawrockiego",
-      "reason": "The article is about a political scandal and commentary on political figures, which falls under political news and does not meet the positive news criteria.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/rzeczopolityce/art45116121-dr-miroslaw-oczkos-afera-zondakrypto-zaczyna-uderzac-w-karola-nawrockiego",
-      "date": "2026-09-09 14:29",
-      "positivity_score": 2
     }
   ]
 }
