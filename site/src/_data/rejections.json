@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-10T13:38:28.299Z",
-  "total_rejected": 141724,
+  "exported_at": "2026-09-10T13:38:47.754Z",
+  "total_rejected": 141725,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2564
+      "count": 2565
     },
     {
       "category": "divisive-racism",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Le Soir",
-      "negative": 2379,
-      "total": 2401
+      "negative": 2380,
+      "total": 2402
     },
     {
       "source": "Global News (Canada)",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Soir",
+      "title": "L’entreprise wallonne Aerospacelab décroche un contrat historique de plusieurs milliards d’euros",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lesoir.be/770136/article/2026-09-10/lentreprise-wallonne-aerospacelab-decroche-un-contrat-historique-de-plusieurs",
+      "date": "2026-09-10 15:38",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "What to Expect from the NFL in Brazil in September",
@@ -9381,15 +9390,6 @@
       "url": "https://www.rp.pl/prawo-drogowe/art45119491-sn-nieodebranie-ze-starostwa-prawa-jazdy-nie-oznacza-jazdy-bez-uprawnien",
       "date": "2026-09-09 18:30",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Michał Szułdrzyński: Wielki przełom AI czy wielki PR? Historia problemu Naviera-Stokesa",
-      "reason": "The article primarily discusses the hype and PR surrounding AI breakthroughs rather than a confirmed, substantive positive achievement, and it focuses on industry competition and marketing claims rather than a clear, uplifting advancement. It falls under routine tech/industry updates and tech anxiety rather than genuine positive news.",
-      "category": "tech-ai-concern",
-      "url": "https://www.rp.pl/komentarze/art45117901-michal-szuldrzynski-wielki-przelom-ai-czy-wielki-pr-historia-problemu-naviera-stokesa",
-      "date": "2026-09-09 18:30",
-      "positivity_score": 4
     }
   ]
 }
