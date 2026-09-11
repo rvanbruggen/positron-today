@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-11T04:42:44.078Z",
-  "total_rejected": 142384,
+  "exported_at": "2026-09-11T04:43:20.520Z",
+  "total_rejected": 142385,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2573
+      "count": 2574
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 12750,
-      "total": 13179
+      "negative": 12751,
+      "total": 13180
     },
     {
       "source": "Het Laatste Nieuws",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Waals ruimtevaartbedrijf Aerospacelab haalt grootste contract ooit uit Europese ruimtevaart binnen: 264 satellieten leveren voor Europees netwerk",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/economie/waals-ruimtevaartbedrijf-aerospacelab-haalt-grootste-contract-ooit-uit-europese-ruimtevaart-binnen-264-satellieten-leveren-voor-europees-netwerk/161289087.html",
+      "date": "2026-09-11 06:43",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "Gibraltar reaffirms British sovereignty on National Day, first since UK-EU treaty",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theguardian.com/world/2026/sep/10/sweden-muslims-challenge-far-right-election",
       "date": "2026-09-10 10:27",
       "positivity_score": 3
-    },
-    {
-      "source": "The Guardian",
-      "title": "‘Fundamentally unfair’: Burnham must overhaul migration reforms, says TUC general secretary",
-      "reason": "The article focuses on political criticism and potential social tensions related to migration reforms, which is not unambiguously positive news and falls under political discourse.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/politics/2026/sep/10/fundamentally-unfair-burnham-must-overhaul-migration-reforms-says-tuc-general-secretary",
-      "date": "2026-09-10 10:27",
-      "positivity_score": 2
     }
   ]
 }
