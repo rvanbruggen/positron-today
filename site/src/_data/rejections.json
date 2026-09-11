@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-11T04:43:48.152Z",
-  "total_rejected": 142386,
+  "exported_at": "2026-09-11T04:44:12.946Z",
+  "total_rejected": 142387,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2575
+      "count": 2576
     },
     {
       "category": "divisive-racism",
@@ -216,8 +216,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1567,
-      "total": 2059
+      "negative": 1568,
+      "total": 2060
     },
     {
       "source": "El pais",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Beavers were brought to the desert to save a dying river. 6 years later, here are the results.",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/beavers-brought-to-the-desert-to-save-dying-river-6-years-later-here-are-the-results-ex1/",
+      "date": "2026-09-11 06:44",
+      "positivity_score": null
+    },
     {
       "source": "Le Figaro",
       "title": "Comment OpenAI a réussi à résoudre en 10 jours un des sept problèmes du millénaire de mathématiques ?",
@@ -9381,15 +9390,6 @@
       "url": "http://www.euronews.com/2026/09/10/philippines-five-killed-and-86-missing-after-fire-on-ferry-near-tourist-hotspot",
       "date": "2026-09-10 10:27",
       "positivity_score": 1
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "Russian drones kill at least nine in strikes targeting warehouses and ports in Ukraine – Europe live",
-      "reason": "The article reports on deadly drone strikes and covert military plots, which are negative and related to ongoing war and conflict, not positive news.",
-      "category": "war-conflict",
-      "url": "https://www.theguardian.com/world/live/2026/sep/10/russian-drone-strike-ukraine-zelenskyy-macron-nato-rutte-latest-news-updates",
-      "date": "2026-09-10 10:27",
-      "positivity_score": 2
     }
   ]
 }
