@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-11T04:43:20.520Z",
-  "total_rejected": 142385,
+  "exported_at": "2026-09-11T04:43:48.152Z",
+  "total_rejected": 142386,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2574
+      "count": 2575
     },
     {
       "category": "divisive-racism",
@@ -96,8 +96,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 6411,
-      "total": 6474
+      "negative": 6412,
+      "total": 6475
     },
     {
       "source": "Politiken.dk",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "Comment OpenAI a réussi à résoudre en 10 jours un des sept problèmes du millénaire de mathématiques ?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lefigaro.fr/sciences/comment-openai-a-reussi-a-resoudre-en-10-jours-un-des-sept-problemes-du-millenaire-de-mathematiques-20260910",
+      "date": "2026-09-11 06:43",
+      "positivity_score": null
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "Waals ruimtevaartbedrijf Aerospacelab haalt grootste contract ooit uit Europese ruimtevaart binnen: 264 satellieten leveren voor Europees netwerk",
@@ -9381,15 +9390,6 @@
       "url": "https://www.theguardian.com/world/live/2026/sep/10/russian-drone-strike-ukraine-zelenskyy-macron-nato-rutte-latest-news-updates",
       "date": "2026-09-10 10:27",
       "positivity_score": 2
-    },
-    {
-      "source": "The Guardian Europe",
-      "title": "‘They poison the population’: Swedish Muslims challenge far right ahead of election",
-      "reason": "The article centers on political and social tensions related to far-right extremism and Islamophobia ahead of an election, which falls under political conflict and divisive social issues rather than positive news.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/world/2026/sep/10/sweden-muslims-challenge-far-right-election",
-      "date": "2026-09-10 10:27",
-      "positivity_score": 3
     }
   ]
 }
