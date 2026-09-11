@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-11T15:51:26.671Z",
-  "total_rejected": 142798,
+  "exported_at": "2026-09-11T15:52:29.927Z",
+  "total_rejected": 142799,
   "sources_count": 64,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2583
+      "count": 2584
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 5349,
-      "total": 5415
+      "negative": 5350,
+      "total": 5416
     },
     {
       "source": "NRC",
@@ -391,6 +391,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Au Sommet international sur l’espace, la France et l’UE à la rescousse d’Iris², la future constellation de satellites souveraine de l’Europe",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/economie/article/2026/09/11/au-sommet-international-sur-l-espace-la-france-et-l-ue-a-la-rescousse-d-iris-la-future-constellation-de-satellites-souveraine-de-l-europe_6770563_3234.html",
+      "date": "2026-09-11 17:52",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Africa: Africa's Factories Are Becoming Their Own Power Stations",
@@ -9381,15 +9390,6 @@
       "url": "https://www.goodnewsnetwork.org/a-hungry-cleaning-lady-bit-into-an-apple-and-solved-the-case-of-legendary-diamond-heist/",
       "date": "2026-09-10 18:27",
       "positivity_score": 4
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Groen licht voor beroepsproces van Marius Hoiby, zoon van Noorse koningin",
-      "reason": "The article concerns a criminal case involving a convicted individual and is primarily negative news about crime and legal proceedings, with no positive or uplifting aspect.",
-      "category": "crime-violence",
-      "url": "https://www.standaard.be/buitenland/groen-licht-voor-beroepsproces-van-marius-hoiby-zoon-van-noorse-koningin/161270960.html",
-      "date": "2026-09-10 18:26",
-      "positivity_score": 2
     }
   ]
 }
