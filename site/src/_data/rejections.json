@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-12T13:25:18.676Z",
-  "total_rejected": 143801,
+  "exported_at": "2026-09-12T13:25:40.059Z",
+  "total_rejected": 143803,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2598
+      "count": 2600
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 5391,
-      "total": 5458
+      "negative": 5392,
+      "total": 5459
     },
     {
       "source": "NRC",
@@ -236,8 +236,8 @@
     },
     {
       "source": "AllAfrica",
-      "negative": 978,
-      "total": 1040
+      "negative": 979,
+      "total": 1041
     },
     {
       "source": "Nature",
@@ -401,6 +401,24 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "L’IA Claude parvient à formaliser en onze jours la démonstration du dernier théorème de Fermat",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sciences/article/2026/09/11/l-ia-claude-parvient-a-formaliser-en-onze-jours-la-demonstration-du-dernier-theoreme-de-fermat_6770606_1650684.html",
+      "date": "2026-09-12 15:25",
+      "positivity_score": null
+    },
+    {
+      "source": "AllAfrica",
+      "title": "Nigeria: Lagos Fashion Week Looks Beyond The Catwalk To Fashion's Future",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://allafrica.com/stories/202609110657.html",
+      "date": "2026-09-12 15:25",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Kenya: Kenya Rebuilds The Cotton Chain From Field To Fabric",
@@ -9382,24 +9400,6 @@
       "url": "https://www.demorgen.be/nieuws/oud-gevangenisdirecteur-na-het-vonnis-over-de-gentse-gevangenis-men-zal-niet-anders-kunnen-dan-gratiemaatregelen-nemen~b03d1bc7/",
       "date": "2026-09-11 18:25",
       "positivity_score": 2
-    },
-    {
-      "source": "De Morgen",
-      "title": "Live - Minder bestuivende insecten in Vlaanderen door hete zomer: ‘De droogte en hitte hebben duidelijk effect’",
-      "reason": "The article focuses on the negative impact of heat and drought on pollinating insects, which is primarily a negative environmental update rather than a positive news story.",
-      "category": "climate-environment",
-      "url": "https://www.demorgen.be/snelnieuws/live-minder-bestuivende-insecten-in-vlaanderen-door-hete-zomer-de-droogte-en-hitte-hebben-duidelijk-effect~b9a760bb/",
-      "date": "2026-09-11 18:25",
-      "positivity_score": 3
-    },
-    {
-      "source": "De Morgen",
-      "title": "Woningen splitsen en meer landbouwgrond: na 30 jaar heeft Vlaanderen een nieuw ruimtelijk plan",
-      "reason": "The article is about a regional spatial planning update relevant only to Flanders, making it local-only relevance without broad international interest.",
-      "category": "other-negative",
-      "url": "https://www.demorgen.be/nieuws/woningen-splitsen-en-meer-landbouwgrond-na-30-jaar-heeft-vlaanderen-een-nieuw-ruimtelijk-plan~bc7b5be75/",
-      "date": "2026-09-11 18:25",
-      "positivity_score": 4
     }
   ]
 }
