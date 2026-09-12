@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-12T13:24:37.059Z",
-  "total_rejected": 143796,
+  "exported_at": "2026-09-12T13:24:43.201Z",
+  "total_rejected": 143797,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2593
+      "count": 2594
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 6571,
-      "total": 6619
+      "negative": 6572,
+      "total": 6620
     },
     {
       "source": "Le Figaro",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "Fjäder förklarar varför fåglarna överlevde asteroiden",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dn.se/varlden/fjader-forklarar-varfor-faglarna-overlevde-asteroiden/",
+      "date": "2026-09-12 15:24",
+      "positivity_score": null
+    },
     {
       "source": "VRT Nws",
       "title": "Leraar ontdekt bij toeval eerste voetsporen van wandelende T. rex in de VS",
@@ -9391,15 +9400,6 @@
       "url": "https://allafrica.com/stories/202609110070.html",
       "date": "2026-09-11 17:51",
       "positivity_score": null
-    },
-    {
-      "source": "MercoPress",
-      "title": "Vance positions himself for 2028 as the Republican convention closes in Dallas",
-      "reason": "The article is political coverage focused on a political figure positioning for a future election, which falls under political news and does not meet the positive-news criteria.",
-      "category": "political-conflict",
-      "url": "https://en.mercopress.com/2026/09/11/vance-positions-himself-for-2028-as-the-republican-convention-closes-in-dallas?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
-      "date": "2026-09-11 14:30",
-      "positivity_score": 2
     }
   ]
 }
