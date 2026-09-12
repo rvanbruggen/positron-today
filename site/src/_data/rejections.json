@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-12T13:27:21.007Z",
-  "total_rejected": 143810,
+  "exported_at": "2026-09-12T13:27:29.569Z",
+  "total_rejected": 143811,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2607
+      "count": 2608
     },
     {
       "category": "divisive-racism",
@@ -281,8 +281,8 @@
     },
     {
       "source": "Science.org news",
-      "negative": 328,
-      "total": 427
+      "negative": 329,
+      "total": 428
     },
     {
       "source": "Scientific American",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Science.org news",
+      "title": "Common gene variant that increases risk of lupus may protect against viruses",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.science.org/content/article/common-gene-variant-increases-risk-lupus-may-protect-against-viruses",
+      "date": "2026-09-12 15:27",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "Daily briefing: Text-message tutoring keeps kids learning when schools close",
@@ -9389,15 +9398,6 @@
       "reason": "The article concerns a corporate acquisition and regulatory approval, which falls under corporate PR and does not meet the positive-news editorial standards.",
       "category": "other-negative",
       "url": "https://www.lesoir.be/770402/article/2026-09-11/rachat-du-pukkelpop-par-live-nation-lautonomie-du-festival-preservee-pendant-dix",
-      "date": "2026-09-11 18:25",
-      "positivity_score": 3
-    },
-    {
-      "source": "Le Soir",
-      "title": "On aime Céline Dion, mais aime-t-on vraiment sa musique ?",
-      "reason": "The article focuses on a celebrity music figure and subjective opinions about her art, fitting the category of celebrity and entertainment content which is excluded.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.lesoir.be/770423/article/2026-09-11/aime-celine-dion-mais-aime-t-vraiment-sa-musique",
       "date": "2026-09-11 18:25",
       "positivity_score": 3
     }
