@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-13T04:55:08.207Z",
-  "total_rejected": 144283,
+  "exported_at": "2026-09-13T04:55:16.494Z",
+  "total_rejected": 144284,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2615
+      "count": 2616
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 212,
-      "total": 526
+      "negative": 213,
+      "total": 527
     },
     {
       "source": "Good Good Good",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "CERN finds gluons behaving strangely deep inside atomic nuclei",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260911214303.htm",
+      "date": "2026-09-13 06:55",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "No POP or Paper Mâché: This Family Celebrates Ganesh Chaturthi With Wheat, Mud & a Growing Idol ",
@@ -9389,15 +9398,6 @@
       "reason": "The article focuses on a political figure's resignation due to pressure from Donald Trump, which is a political conflict story and not unambiguously positive news.",
       "category": "political-conflict",
       "url": "https://politiken.dk/kultur/art10975441/Ekspert-%C2%BBHans-fratr%C3%A6delse-skyldes-pres-fra-Trump%C2%AB",
-      "date": "2026-09-11 22:37",
-      "positivity_score": 2
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "20 kvæstet ved togafsporing i Frankrig",
-      "reason": "The article reports on injuries caused by a train derailment, which is a negative event and does not meet the positive news criteria.",
-      "category": "disaster-accident",
-      "url": "https://www.dr.dk/nyheder/seneste/20-kvaestet-ved-togafsporing-i-frankrig",
       "date": "2026-09-11 22:37",
       "positivity_score": 2
     }
