@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-13T04:56:17.930Z",
-  "total_rejected": 144286,
+  "exported_at": "2026-09-13T04:56:25.579Z",
+  "total_rejected": 144287,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2618
+      "count": 2619
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 213,
-      "total": 527
+      "negative": 214,
+      "total": 528
     },
     {
       "source": "Good Good Good",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Mercury’s surface reveals a surprisingly fiery past",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260911003854.htm",
+      "date": "2026-09-13 06:56",
+      "positivity_score": null
+    },
     {
       "source": "Good News Network",
       "title": "Massive Footprints Reveal First Ever Adult T Rex Trackway, a 66-Million-Year-old Walk Through North Dakota",
@@ -9391,15 +9400,6 @@
       "url": "https://politiken.dk/danmark/forbrug/art10980191/LOr%C3%A9al-anklages-for-at-tie-om-kr%C3%A6ftrisiko-ved-h%C3%A5rprodukter",
       "date": "2026-09-11 22:37",
       "positivity_score": 2
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Katinka har vrede nok til alle. Og nu slår hun tilbage",
-      "reason": "The article appears to be a music or entertainment piece focused on song selections and emotional themes, fitting the category of celebrity and entertainment content, which is excluded by the editorial standards.",
-      "category": "celebrity-entertainment",
-      "url": "https://politiken.dk/kultur/musik/art10973367/Katinka-har-vrede-nok-til-alle.-Og-nu-sl%C3%A5r-hun-tilbage",
-      "date": "2026-09-11 22:37",
-      "positivity_score": 3
     }
   ]
 }
