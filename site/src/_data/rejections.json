@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-13T04:55:56.958Z",
-  "total_rejected": 144284,
+  "exported_at": "2026-09-13T04:56:13.603Z",
+  "total_rejected": 144285,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2616
+      "count": 2617
     },
     {
       "category": "divisive-racism",
@@ -141,8 +141,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 3708,
-      "total": 3756
+      "negative": 3709,
+      "total": 3757
     },
     {
       "source": "Neue Zürcher Zeitung",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Couple welcomes child from embryo frozen for 22 years",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/9/12/couple-welcomes-child-from-embryo-frozen-for-22-years?traffic_source=rss",
+      "date": "2026-09-13 06:56",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "CERN finds gluons behaving strangely deep inside atomic nuclei",
@@ -9389,15 +9398,6 @@
       "reason": "The article reports on a train derailment with injuries, which is a negative event and does not meet the positive news criteria.",
       "category": "disaster-accident",
       "url": "https://politiken.dk/rejser/art10980198/Tog-k%C3%B8rer-af-sporet-i-Frankrig-cirka-20-er-kommet-til-skade",
-      "date": "2026-09-11 22:37",
-      "positivity_score": 2
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Ekspert: »Hans fratrædelse skyldes pres fra Trump«",
-      "reason": "The article focuses on a political figure's resignation due to pressure from Donald Trump, which is a political conflict story and not unambiguously positive news.",
-      "category": "political-conflict",
-      "url": "https://politiken.dk/kultur/art10975441/Ekspert-%C2%BBHans-fratr%C3%A6delse-skyldes-pres-fra-Trump%C2%AB",
       "date": "2026-09-11 22:37",
       "positivity_score": 2
     }
