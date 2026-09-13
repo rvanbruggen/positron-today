@@ -1,0 +1,20 @@
+---
+title: "The bird that changed Ecuador: how one discovery sparked a conservation revolution"
+title_nl: "De vogel die Ecuador veranderde: hoe één ontdekking een conservatierevolutie startte"
+title_fr: "L'oiseau qui a changé l'Équateur : comment une découverte a déclenché une révolution conservationniste"
+date: 2026-09-13T21:03:00
+source_pub_date: 2026-09-13
+fetched_date: 2026-09-13
+source_url: "https://www.theguardian.com/environment/ng-interactive/2026/sep/13/bird-ecuador-rare-species-jocotoco-antpitta-foundation-conservation-biodiversity-aoe"
+source_name: "The Guardian Europe"
+topic: "Animals"
+tags: ["Animals","Environment","Nature"]
+emoji: "🐦"
+summary: "In 1997, ornithologist Robert Ridgely discovered an entirely new bird species in the Ecuadorian Andes - the jocotoco antpitta - a breakthrough so significant that it sparked a conservation movement. What makes this story special is how this single discovery led to the creation of the Jocotoco Foundation, which now protects 19 reserves across Ecuador covering about 50,000 hectares. Today these protected lands are home to more than 1,350 bird species - that's 80% of Ecuador's birds and one in eight of all bird species on the planet. The foundation also employs local rangers and supports communities through wildlife tourism, turning conservation into a vehicle for both nature protection and human wellbeing."
+summary_nl: "In 1997 ontdekte ornitholoog Robert Ridgely een volledig nieuwe vogelsoort in de Ecuadoraanse Andes - de jocotoco antpitta - een doorbraak zo significant dat het een conservatiebeweging startte. Wat dit verhaal bijzonder maakt is hoe deze enkele ontdekking leidde tot de oprichting van de Jocotoco Foundation, die nu 19 reservaten in Ecuador beschermt met ongeveer 50.000 hectare. Vandaag herbergen deze beschermde gebieden meer dan 1.350 vogelsoorten - dat is 80% van Ecuadors vogels en één op acht van alle vogelsoorten ter wereld. De stichting geeft ook werk aan lokale rangers en steunt gemeenschappen door wildliftoerisme, waardoor natuurbescherming een voertuig wordt voor zowel natuurbescherming als menselijk welzijn."
+summary_fr: "En 1997, l'ornithologue Robert Ridgely a découvert une espèce d'oiseau entièrement nouvelle dans les Andes équatoriennes - l'antpitta du Jocotoco - une percée si importante qu'elle a déclenché un mouvement de conservation. Ce qui rend cette histoire spéciale, c'est comment cette découverte unique a mené à la création de la Fondation Jocotoco, qui protège maintenant 19 réserves à travers l'Équateur couvrant environ 50 000 hectares. Aujourd'hui, ces terres protégées abritent plus de 1 350 espèces d'oiseaux - soit 80% des oiseaux de l'Équateur et un huitième de toutes les espèces d'oiseaux de la planète. La fondation emploie également des gardes forestiers locaux et soutient les communautés par l'écotourisme, transformant la conservation en un véhicule pour la protection de la nature et le bien-être humain."
+image_url: "https://i.guim.co.uk/img/media/2e85e93153c5c0947585fbd9271299128dbeb50a/1093_0_7200_5760/master/7200.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=13a37bc5c577345c9bc658cb980ec4ba"
+layout: post.njk
+---
+
+In 1997, ornithologist Robert Ridgely discovered an entirely new bird species in the Ecuadorian Andes - the jocotoco antpitta - a breakthrough so significant that it sparked a conservation movement. What makes this story special is how this single discovery led to the creation of the Jocotoco Foundation, which now protects 19 reserves across Ecuador covering about 50,000 hectares. Today these protected lands are home to more than 1,350 bird species - that's 80% of Ecuador's birds and one in eight of all bird species on the planet. The foundation also employs local rangers and supports communities through wildlife tourism, turning conservation into a vehicle for both nature protection and human wellbeing.
