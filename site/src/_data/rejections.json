@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-13T04:56:25.579Z",
-  "total_rejected": 144287,
+  "exported_at": "2026-09-13T04:56:52.760Z",
+  "total_rejected": 144288,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2619
+      "count": 2620
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 12869,
-      "total": 13299
+      "negative": 12870,
+      "total": 13300
     },
     {
       "source": "Het Laatste Nieuws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Leraar ontdekt per toeval eerste voetspoor van volwassen Tyrannosaurus rex: “Ontzettend zeldzaam”",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/natuur-en-wetenschap/leraar-ontdekt-per-toeval-eerste-voetspoor-van-volwassen-tyrannosaurus-rex-ontzettend-zeldzaam/161359675.html",
+      "date": "2026-09-13 06:56",
+      "positivity_score": null
+    },
     {
       "source": "ScienceDaily",
       "title": "Mercury’s surface reveals a surprisingly fiery past",
@@ -9391,15 +9400,6 @@
       "url": "https://politiken.dk/sport/fodbold/superligaen/art10980190/FCK-cementerer-f%C3%B8rstepladsen-med-fjerde-sejr-i-tr%C3%A6k",
       "date": "2026-09-11 22:37",
       "positivity_score": 3
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "L'Oréal anklages for at tie om kræftrisiko ved hårprodukter",
-      "reason": "The article reports on allegations of cancer risk linked to hair products by L'Oréal, which is a health scare and negative news without a positive or uplifting angle.",
-      "category": "health-scare",
-      "url": "https://politiken.dk/danmark/forbrug/art10980191/LOr%C3%A9al-anklages-for-at-tie-om-kr%C3%A6ftrisiko-ved-h%C3%A5rprodukter",
-      "date": "2026-09-11 22:37",
-      "positivity_score": 2
     }
   ]
 }
