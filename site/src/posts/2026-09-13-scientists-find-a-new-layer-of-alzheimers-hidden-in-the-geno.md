@@ -1,0 +1,19 @@
+---
+title: "Scientists find a new layer of Alzheimer's hidden in the genome"
+title_nl: "Wetenschappers ontdekken een verborgen laag van Alzheimer in het genoom"
+title_fr: "Des scientifiques découvrent une nouvelle couche d'Alzheimer cachée dans le génome"
+date: 2026-09-13T20:07:00
+source_pub_date: 2026-09-13
+fetched_date: 2026-09-13
+source_url: "https://www.sciencedaily.com/releases/2026/09/260912220051.htm"
+source_name: "ScienceDaily"
+topic: "Health"
+tags: ["Health","Science","Technology"]
+emoji: "🧬"
+summary: "Researchers from Carnegie Mellon, University of Pittsburgh, and University of Washington have discovered something fascinating - the three-dimensional structure of DNA in brain cells is actually different in people with Alzheimer's disease. So they combined cutting-edge single-cell technology, spatial brain mapping, and artificial intelligence to show how these changes in genome folding connect to shifts in gene activity. Now here's the thing: this goes beyond the usual story we tell about amyloid plaques and tau tangles. By understanding how the physical organization of DNA influences what genes turn on and off, scientists have found a whole new dimension of the disease that could open up entirely new treatment possibilities."
+summary_nl: "Onderzoekers van Carnegie Mellon, de Universiteit van Pittsburgh en de Universiteit van Washington hebben iets fascinerends ontdekt - de driedimensionale structuur van DNA in hersencellen is eigenlijk anders bij mensen met Alzheimer. Ze hebben geavanceerde single-cell-technologie, ruimtelijke hersenkaartering en kunstmatige intelligentie gecombineerd om aan te tonen hoe deze veranderingen in genoomvouwing verbonden zijn met verschuivingen in genactiviteit. En hier komt het interessante: dit gaat verder dan het gebruikelijke verhaal over amyloïde plaques en tau-tangels. Door te begrijpen hoe de fysieke organisatie van DNA beïnvloedt welke genen aan- en uitschakelen, hebben wetenschappers een geheel nieuwe dimensie van de ziekte gevonden die volledig nieuwe behandelmogelijkheden kan openen."
+summary_fr: "Des chercheurs de Carnegie Mellon, de l'Université de Pittsburgh et de l'Université de Washington ont découvert quelque chose de fascinant - la structure tridimensionnelle de l'ADN dans les cellules cérébrales est en fait différente chez les personnes atteintes de la maladie d'Alzheimer. Ils ont combiné une technologie monocellulaire de pointe, une cartographie spatiale du cerveau et l'intelligence artificielle pour montrer comment ces changements dans le repliement du génome se connectent aux changements dans l'activité génique. Voici ce qui est intéressant : cela va au-delà de l'histoire habituelle que nous racontons sur les plaques amyloïdes et les enchevêtrements tau. En comprenant comment l'organisation physique de l'ADN influence l'activation et la désactivation des gènes, les scientifiques ont découvert une dimension entièrement nouvelle de la maladie qui pourrait ouvrir des possibilités thérapeutiques totalement nouvelles."
+layout: post.njk
+---
+
+Researchers from Carnegie Mellon, University of Pittsburgh, and University of Washington have discovered something fascinating - the three-dimensional structure of DNA in brain cells is actually different in people with Alzheimer's disease. So they combined cutting-edge single-cell technology, spatial brain mapping, and artificial intelligence to show how these changes in genome folding connect to shifts in gene activity. Now here's the thing: this goes beyond the usual story we tell about amyloid plaques and tau tangles. By understanding how the physical organization of DNA influences what genes turn on and off, scientists have found a whole new dimension of the disease that could open up entirely new treatment possibilities.
