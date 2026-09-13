@@ -1,0 +1,19 @@
+---
+title: "Scientists are building a microscope powered by a quantum computer"
+title_nl: "Wetenschappers bouwen een microscoop aangedreven door een kwantumcomputer"
+title_fr: "Les scientifiques construisent un microscope alimenté par un ordinateur quantique"
+date: 2026-09-13T19:34:00
+source_pub_date: 2026-09-13
+fetched_date: 2026-09-13
+source_url: "https://www.sciencedaily.com/releases/2026/09/260912220038.htm"
+source_name: "ScienceDaily"
+topic: "Science"
+tags: ["Science","Technology"]
+emoji: "🔬"
+summary: "So here's what's fascinating - researchers in Austria have figured out that conventional electron microscopes are actually wasting valuable information that electrons carry with them. The team at TU Wien, working with colleagues from Vienna, Linz, and Innsbruck, is now connecting an electron microscope to a quantum computer to capture this unused quantum data. By creating quantum entanglement between electrons and trapped ions, they can combine information from multiple electrons and extract clearer images while exposing delicate samples to far fewer electrons. This is especially exciting for biological materials like individual proteins that get damaged easily - now scientists could get better images without harming their samples."
+summary_nl: "Hier is wat echt fascinerend is - onderzoekers in Oostenrijk hebben ontdekt dat conventionele elektronenmicroscopen eigenlijk waardevolle informatie verspillen die elektronen met zich meenemen. Het team aan de TU Wien werkt samen met collega's uit Wenen, Linz en Innsbruck en verbindt nu een elektronenmicroscoop met een kwantumcomputer om deze ongebruikte kwantumgegevens vast te leggen. Door kwantumverstrengeling tussen elektronen en opgesloten ionen te creëren, kunnen ze informatie van meerdere elektronen combineren en duidelijkere afbeeldingen extraheren terwijl ze kwetsbare monsters blootstellen aan veel minder elektronen. Dit is vooral opwindend voor biologische materialen zoals individuele eiwitten die gemakkelijk beschadigd worden - nu kunnen wetenschappers betere beelden krijgen zonder hun monsters te beschadigen."
+summary_fr: "Voici ce qui est vraiment fascinant - des chercheurs en Autriche ont découvert que les microscopes électroniques conventionnels gaspillent en réalité des informations précieuses que les électrons transportent avec eux. L'équipe de la TU Wien collabore avec des collègues de Vienne, Linz et Innsbruck et connecte maintenant un microscope électronique à un ordinateur quantique pour capturer ces données quantiques inutilisées. En créant un enchevêtrement quantique entre les électrons et les ions piégés, ils peuvent combiner les informations de plusieurs électrons et extraire des images plus claires tout en exposant les échantillons délicats à beaucoup moins d'électrons. C'est particulièrement passionnant pour les matériaux biologiques comme les protéines individuelles qui sont facilement endommagés - maintenant les scientifiques pourraient obtenir de meilleures images sans endommager leurs échantillons."
+layout: post.njk
+---
+
+So here's what's fascinating - researchers in Austria have figured out that conventional electron microscopes are actually wasting valuable information that electrons carry with them. The team at TU Wien, working with colleagues from Vienna, Linz, and Innsbruck, is now connecting an electron microscope to a quantum computer to capture this unused quantum data. By creating quantum entanglement between electrons and trapped ions, they can combine information from multiple electrons and extract clearer images while exposing delicate samples to far fewer electrons. This is especially exciting for biological materials like individual proteins that get damaged easily - now scientists could get better images without harming their samples.
