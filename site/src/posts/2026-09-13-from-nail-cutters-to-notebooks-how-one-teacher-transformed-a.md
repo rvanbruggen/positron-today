@@ -1,0 +1,21 @@
+---
+title: "From nail cutters to notebooks: how one teacher transformed a tribal hamlet with Saturday school"
+title_nl: "Van nagels knippen tot notitieboeken: hoe één lerares een tribal dorp transformeerde met zaterdag school"
+title_fr: "Des coupe-ongles aux cahiers: comment une enseignante a transformé un hameau tribal avec l'école du samedi"
+date: 2026-09-13T15:36:00
+source_pub_date: 2026-09-13
+fetched_date: 2026-09-13
+source_url: "https://thebetterindia.com/changemakers/kodaikanal-school-on-wheels-tribal-first-generation-students-12520658"
+source_name: "The Better India"
+topic: "Family life"
+tags: ["Family life","Society"]
+emoji: "📚"
+summary: "An 82-year-old educator named Padmini brought something revolutionary to a remote tribal settlement in Tamil Nadu - not fancy textbooks, but a belief that every child deserves quality education. What started as a Saturday school in the Kombai-Perungadu hamlet has grown into a thriving learning community where over 50 first-generation tribal children now attend school regularly, discovering joy in learning instead of being pulled toward farm work. Padmini's integrated approach weaves geography, history, and science into every lesson, making education feel alive and connected to real life. Today, children like 5-year-old Karnika dream of becoming police officers and can't wait to see their teacher - a stark transformation from years of dropping in and out of uninspiring classrooms."
+summary_nl: "Een 82-jarige onderwijzeres genaamd Padmini bracht iets revolutionairs naar een afgelegen tribal nederzetting in Tamil Nadu - niet ingewikkelde schoolboeken, maar het geloof dat elk kind recht heeft op kwaliteitsonderwijs. Wat begon als zaterdagschool in het dorp Kombai-Perungadu is gegroeid tot een bloeiende leerlingencommunity waar meer dan 50 kinderen van de eerste generatie nu regelmatig naar school gaan en plezier ontdekken in leren in plaats van naar het land te worden getrokken. Padmini's geïntegreerde aanpak weeft aardrijkskunde, geschiedenis en wetenschap in elk lesje, waardoor onderwijs levendig en met het echte leven verbonden voelt. Vandaag dromen kinderen als de 5-jarige Karnika ervan politieagent te worden en kunnen niet wachten om hun juf te zien - een enorme verandering ten opzichte van jaren waarin ze in- en uitvallen."
+summary_fr: "Une éducatrice de 82 ans nommée Padmini a apporté quelque chose de révolutionnaire dans un petit hameau tribal du Tamil Nadu - non pas des manuels sophistiqués, mais la conviction que chaque enfant mérite une éducation de qualité. Ce qui a commencé comme une école du samedi dans le hameau de Kombai-Perungadu s'est transformé en une communauté d'apprentissage florissante où plus de 50 enfants de première génération assistent régulièrement à l'école et découvrent la joie d'apprendre au lieu d'être attirés vers les champs. L'approche intégrée de Padmini tisse la géographie, l'histoire et les sciences dans chaque leçon, rendant l'éducation vivante et connectée à la vie réelle. Aujourd'hui, des enfants comme la petite Karnika, 5 ans, rêvent de devenir officier de police et ne peuvent pas attendre de voir leur maîtresse - une transformation radicale par rapport à des années d'abandon scolaire."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/2026/09/11/1-2026-09-11-18-45-18.png"
+featured: true
+layout: post.njk
+---
+
+An 82-year-old educator named Padmini brought something revolutionary to a remote tribal settlement in Tamil Nadu - not fancy textbooks, but a belief that every child deserves quality education. What started as a Saturday school in the Kombai-Perungadu hamlet has grown into a thriving learning community where over 50 first-generation tribal children now attend school regularly, discovering joy in learning instead of being pulled toward farm work. Padmini's integrated approach weaves geography, history, and science into every lesson, making education feel alive and connected to real life. Today, children like 5-year-old Karnika dream of becoming police officers and can't wait to see their teacher - a stark transformation from years of dropping in and out of uninspiring classrooms.
