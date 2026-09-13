@@ -1,0 +1,20 @@
+---
+title: "With better physics, we could predict volcanic eruptions like the weather"
+title_nl: "Met betere natuurkunde zouden we vulkaanuitbarstingen kunnen voorspellen zoals het weer"
+title_fr: "Avec une meilleure compréhension de la physique, nous pourrions prédire les éruptions volcaniques comme la météo"
+date: 2026-09-13T17:09:00
+source_pub_date: 2026-09-13
+fetched_date: 2026-09-13
+source_url: "https://www.wired.com/story/physics-predict-volcanic-eruptions/"
+source_name: "Wired"
+topic: "Environment"
+tags: ["Environment","Nature","Science"]
+emoji: "🌋"
+summary: "So here's what fascinates me - scientists are getting genuinely close to predicting volcanic eruptions with real precision, similar to how we forecast weather. The 1991 Pinatubo eruption in the Philippines killed over 800 people, but rapid detection and quick thinking saved countless lives by evacuating a quarter million people. Since then, volcanology has leaped forward with better instruments, machine learning, and a much deeper grasp of underground magmatic systems. And get this - experts like Diana Roman at Carnegie Science believe we're heading toward forecasts like \"80 percent chance of eruption in a particular way next week\" - which would be genuinely transformative for the millions of people living near active volcanoes."
+summary_nl: "Wat me fascineert is dat wetenschappers echt dicht bij het voorspellen van vulkaanuitbarstingen met echte precisie komen, vergelijkbaar met hoe we het weer voorspellen. De uitbarsting van Pinatubo in de Filippijnen in 1991 doodde meer dan 800 mensen, maar snelle detectie en snel handelen redden talloze levens door een kwart miljoen mensen te evacueren. Sinds die tijd heeft volcanologie enorme sprongen gemaakt met betere instrumenten, machine learning en veel dieper inzicht in ondergrondse magmatische systemen. En let op dit - experts als Diana Roman van Carnegie Science geloven dat we richting forecasts gaan als \"80 procent kans op uitbarsting volgende week\" - wat echt transformatief zou zijn voor de miljoenen mensen die dicht bij actieve vulkanen wonen."
+summary_fr: "Voici ce qui me fascine - les scientifiques se rapprochent vraiment de la prédiction des éruptions volcaniques avec une véritable précision, similaire à la façon dont nous prévoyons la météo. L'éruption du Pinatubo aux Philippines en 1991 a tué plus de 800 personnes, mais la détection rapide et l'action rapide ont sauvé d'innombrables vies en évacuant un quart de million de personnes. Depuis, la volcanologie a fait d'énormes progrès avec de meilleurs instruments, l'apprentissage automatique et une compréhension bien plus profonde des systèmes magmatiques souterrains. Et voilà - des experts comme Diana Roman de Carnegie Science croient que nous nous dirigeons vers des prévisions comme \"80 pour cent de chances d'éruption la semaine prochaine\" - ce qui serait véritablement transformateur pour les millions de personnes vivant près de volcans actifs."
+image_url: "https://media.wired.com/photos/6aa44cdc4de88ba2f8bc1c56/191:100/w_1280,c_limit/Qualia-Predicting-Volcanoes-cr-Celsius-Pictor-Social.jpg"
+layout: post.njk
+---
+
+So here's what fascinates me - scientists are getting genuinely close to predicting volcanic eruptions with real precision, similar to how we forecast weather. The 1991 Pinatubo eruption in the Philippines killed over 800 people, but rapid detection and quick thinking saved countless lives by evacuating a quarter million people. Since then, volcanology has leaped forward with better instruments, machine learning, and a much deeper grasp of underground magmatic systems. And get this - experts like Diana Roman at Carnegie Science believe we're heading toward forecasts like "80 percent chance of eruption in a particular way next week" - which would be genuinely transformative for the millions of people living near active volcanoes.
