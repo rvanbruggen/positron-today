@@ -1,0 +1,21 @@
+---
+title: "Elephants can think before they act and resist impulsive behavior, shows study"
+title_nl: "Olifanten kunnen nadenken voordat ze handelen en impulsief gedrag weerstaan, toont onderzoek"
+title_fr: "Les éléphants peuvent réfléchir avant d'agir et résister aux comportements impulsifs, selon une étude"
+date: 2026-09-13T17:37:00
+source_pub_date: 2026-09-13
+fetched_date: 2026-09-13
+source_url: "https://www.goodnewsnetwork.org/elephants-can-think-before-they-act-and-resist-impulsive-behavior/"
+source_name: "Good News Network"
+topic: "Animals"
+tags: ["Animals","Nature","Science"]
+emoji: "🧠"
+summary: "So here's what fascinates me - researchers at the National Elephant Institute in Thailand have discovered that Asian elephants can actually think before they act and resist their impulses to solve problems. They tested this using transparent boxes with food inside, and the elephants consistently chose the correct opening rather than attempting the obvious but ineffective path. Now, what's really interesting is that when the box was rotated, the elephants initially went for the old position but quickly corrected themselves - though older elephants took a bit longer to adjust. This inhibitory control, as scientists call it, appears to be a key part of elephants' remarkable problem-solving abilities and could help us design better strategies for human-elephant coexistence."
+summary_nl: "Wat me echt fascineert - onderzoekers aan het National Elephant Institute in Thailand hebben ontdekt dat Aziatische olifanten echt kunnen nadenken voordat ze handelen en hun impulsen kunnen weerstaan om problemen op te lossen. Ze testten dit met doorzichtige dozen vol voedsel, en de olifanten kozen consequent de juiste opening in plaats van de voor de hand liggende maar ineffectieve route. Nu is het echt interessant - toen de doos werd gedraaid, grepen de olifanten eerst naar de oude positie maar corrigeerden zichzelf snel, hoewel oudere olifanten daar wat langer over deden. Deze remming - zoals wetenschappers het noemen - blijkt een belangrijk onderdeel van de opmerkelijke probleemoplossende vaardigheden van olifanten en kan ons helpen betere strategieën voor menselijke-olifantsamenliving te ontwerpen."
+summary_fr: "Ce qui me fascine vraiment - des chercheurs de l'Institut national des éléphants en Thaïlande ont découvert que les éléphants asiatiques peuvent vraiment réfléchir avant d'agir et résister à leurs impulsions pour résoudre des problèmes. Ils ont testé cela avec des boîtes transparentes remplies de nourriture, et les éléphants ont systématiquement choisi la bonne ouverture plutôt que le chemin évident mais inefficace. Maintenant, ce qui est vraiment intéressant - quand la boîte a été tournée, les éléphants ont d'abord visé l'ancienne position mais se sont rapidement corrigés, bien que les éléphants plus âgés aient mis un peu plus de temps à s'adapter. Ce contrôle inhibiteur - comme l'appellent les scientifiques - semble être une partie clé des remarquables capacités de résolution de problèmes des éléphants et pourrait nous aider à concevoir de meilleures stratégies pour la coexistence homme-éléphant."
+image_url: "https://www.goodnewsnetwork.org/wp-content/uploads/2026/09/elephant-experiment-Hope-et-al-2026-PLOS-One-via-SWNS.jpeg"
+featured: true
+layout: post.njk
+---
+
+So here's what fascinates me - researchers at the National Elephant Institute in Thailand have discovered that Asian elephants can actually think before they act and resist their impulses to solve problems. They tested this using transparent boxes with food inside, and the elephants consistently chose the correct opening rather than attempting the obvious but ineffective path. Now, what's really interesting is that when the box was rotated, the elephants initially went for the old position but quickly corrected themselves - though older elephants took a bit longer to adjust. This inhibitory control, as scientists call it, appears to be a key part of elephants' remarkable problem-solving abilities and could help us design better strategies for human-elephant coexistence.
