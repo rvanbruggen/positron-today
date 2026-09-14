@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-14T16:29:10.890Z",
-  "total_rejected": 145812,
+  "exported_at": "2026-09-14T17:41:53.803Z",
+  "total_rejected": 145813,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2645
+      "count": 2646
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 219,
-      "total": 545
+      "negative": 220,
+      "total": 546
     },
     {
       "source": "Good Good Good",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Crocodiles are famous for finding their way home. These ones didn’t",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260913081913.htm",
+      "date": "2026-09-14 19:41",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Nigeria: Dangote Refinery Plans US Listing in Three to Four Years",
@@ -9391,15 +9400,6 @@
       "url": "https://www.nrc.nl/nieuws/2026/09/13/een-vlugge-koffie-to-go-een-afgezonderd-terras-en-boodschappen-laten-bezorgen-de-gepolijste-stad-bevordert-ongelijkheid-zegt-deze-hoogleraar-a4936076",
       "date": "2026-09-13 21:21",
       "positivity_score": 4
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Hasseltse pianowinkel verbreekt Europees record: 200 mensen spelen tegelijk hetzelfde stuk op 100 piano's",
-      "reason": "This is local-only relevance content about a specific piano shop in Hasselt breaking a regional record. The news value is entirely dependent on the local venue and municipal/regional context, with no universal significance beyond 'N people attended X in a specific locality.'",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.oL1bAnK3o",
-      "date": "2026-09-13 21:21",
-      "positivity_score": 3
     }
   ]
 }
