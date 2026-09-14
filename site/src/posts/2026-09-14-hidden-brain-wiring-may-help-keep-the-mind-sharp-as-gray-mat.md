@@ -1,0 +1,20 @@
+---
+title: "Hidden brain wiring may help keep the mind sharp as gray matter shrinks"
+title_nl: "Verborgen hersenverbindingen kunnen helpen om het brein scherp te houden als grijze stof krimpt"
+title_fr: "Le câblage cérébral caché pourrait aider à maintenir l'esprit vif malgré la contraction de la matière grise"
+date: 2026-09-14T21:09:00
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://www.sciencedaily.com/releases/2026/09/260913081921.htm"
+source_name: "ScienceDaily"
+topic: "Health"
+tags: ["Health","Science"]
+emoji: "🧠"
+summary: "Scientists at USC have discovered that two types of brain tissue work together to protect our thinking abilities as we age - which is genuinely fascinating stuff. They studied nearly 460 older adults in India using advanced brain imaging, finding that the quality of white matter connections beneath the brain's outer layer may cushion the effects of gray matter loss. So here's the thing: while gray matter shrinkage is still the strongest predictor of cognitive decline, healthy local brain wiring seems to act like a safety net, explaining why some people with similar brain changes experience very different levels of mental sharpness. The strongest connection appeared in language abilities, suggesting that the brain's local communication pathways play a crucial role in maintaining our cognitive resilience."
+summary_nl: "Wetenschappers van de USC hebben ontdekt dat twee soorten hersenweefsel samenwerken om onze denkvermogens beschermd te houden naarmate we ouder worden - dit is echt fascinerend. Ze bestudeerden bijna 460 oudere volwassenen in India met geavanceerde hersenbeeldvorming en vonden dat de kwaliteit van witte stofverbindingen onder de buitenlaag van de hersenen het verlies van grijze stof kan dempen. Dus hier is het interessante: hoewel krimp van grijze stof nog steeds de sterkste voorspeller van cognitieve achteruitgang is, lijken gezonde lokale hersenverbindingen als een veiligheidsnet te werken, wat verklaart waarom sommige mensen met vergelijkbare hersenveranderingen heel verschillende niveaus van mentale scherpte ervaren. De sterkste verbinding verscheen in taalvermogen, wat suggereert dat de lokale communicatiepaden van het brein een cruciale rol spelen bij het behoud van onze cognitieve veerkracht."
+summary_fr: "Des scientifiques de l'USC ont découvert que deux types de tissus cérébraux travaillent ensemble pour protéger nos capacités de réflexion en vieillissant - c'est vraiment fascinant. Ils ont étudié près de 460 adultes âgés en Inde en utilisant l'imagerie cérébrale avancée et ont découvert que la qualité des connexions de matière blanche sous la couche externe du cerveau pourrait amortir les effets de la perte de matière grise. Voici l'essentiel : bien que la contraction de la matière grise reste le prédicteur le plus fort du déclin cognitif, les connexions locales saines du cerveau semblent agir comme un filet de sécurité, expliquant pourquoi certaines personnes ayant des changements cérébraux similaires connaissent des niveaux très différents d'acuité mentale. La connexion la plus forte est apparue dans les capacités linguistiques, suggérant que les voies de communication locales du cerveau jouent un rôle crucial dans le maintien de notre résilience cognitive."
+featured: true
+layout: post.njk
+---
+
+Scientists at USC have discovered that two types of brain tissue work together to protect our thinking abilities as we age - which is genuinely fascinating stuff. They studied nearly 460 older adults in India using advanced brain imaging, finding that the quality of white matter connections beneath the brain's outer layer may cushion the effects of gray matter loss. So here's the thing: while gray matter shrinkage is still the strongest predictor of cognitive decline, healthy local brain wiring seems to act like a safety net, explaining why some people with similar brain changes experience very different levels of mental sharpness. The strongest connection appeared in language abilities, suggesting that the brain's local communication pathways play a crucial role in maintaining our cognitive resilience.
