@@ -1,0 +1,20 @@
+---
+title: "6,000 people, 27 villages & one zero-waste mission"
+title_nl: "6.000 mensen, 27 dorpen en één nulafvalmissie"
+title_fr: "6 000 personnes, 27 villages et une mission zéro déchet"
+date: 2026-09-14T10:03:00
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://thebetterindia.com/videos/6000-people-27-villages-one-zero-waste-mission-12530052"
+source_name: "The Better India"
+topic: "Environment"
+tags: ["Environment","Nature","Society"]
+emoji: "♻️"
+summary: "In the remote Himalayan village of Zemithang, Arunachal Pradesh, something really beautiful is happening - 6,000 people across 27 villages have united around a zero-waste mission that's simply stunning. Every Sunday, residents gather to wash, sort and segregate their waste into 22 categories, with each household contributing just ₹50 to keep things running. Women riders then collect all the sorted materials and deliver them to recycling centres, turning everyday rubbish into recovered resources. Since Merwyn Coutinho started the Himalayan Fringes Project in 2020, it's already impacted over 20,000 people and recovered nearly 90 tonnes of waste - no fancy tech required, just genuine community spirit and shared responsibility."
+summary_nl: "In het afgelegen Himalaya-dorp Zemithang in Arunachal Pradesh gebeurt iets werkelijk prachtig - 6.000 mensen verspreid over 27 dorpen hebben zich verenigd rond een nulafvalmissie die werkelijk indrukwekkend is. Elke zondag komen bewoners samen om hun afval te wassen, sorteren en scheiden in 22 categorieën, met elke huishouding die slechts ₹50 bijdraagt om dingen draaiende te houden. Vrouwelijke fietsers verzamelen vervolgens al het gesorteerde materiaal en brengen het naar recyclagcentra, waardoor alledaagse rommel wordt omgezet in teruggewonnen hulpbronnen. Sinds Merwyn Coutinho het Himalayan Fringes Project in 2020 startte, heeft het al meer dan 20.000 mensen beïnvloed en bijna 90 ton afval teruggewonnen - geen ingewikkelde technologie nodig, alleen echte gemeenschapszin en gedeelde verantwoordelijkheid."
+summary_fr: "Dans le village reculé de Zemithang en Arunachal Pradesh, quelque chose de vraiment magnifique se déroule - 6 000 personnes réparties sur 27 villages se sont unies autour d'une mission zéro déchet absolument remarquable. Chaque dimanche, les habitants se réunissent pour laver, trier et séparer leurs déchets en 22 catégories, chaque ménage contribuant seulement ₹50 pour maintenir le projet en marche. Des collectrices à vélo rassemblent ensuite l'ensemble des matériaux triés et les livrent à des centres de recyclage, transformant les ordures quotidiennes en ressources récupérées. Depuis que Merwyn Coutinho a lancé le Himalayan Fringes Project en 2020, il a déjà influencé plus de 20 000 personnes et récupéré près de 90 tonnes de déchets - aucune technologie sophistiquée requise, seulement un véritable esprit communautaire et une responsabilité partagée."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/youtube_thumbnails/vi/fynjIy1GLvA/maxresdefault.jpg"
+layout: post.njk
+---
+
+In the remote Himalayan village of Zemithang, Arunachal Pradesh, something really beautiful is happening - 6,000 people across 27 villages have united around a zero-waste mission that's simply stunning. Every Sunday, residents gather to wash, sort and segregate their waste into 22 categories, with each household contributing just ₹50 to keep things running. Women riders then collect all the sorted materials and deliver them to recycling centres, turning everyday rubbish into recovered resources. Since Merwyn Coutinho started the Himalayan Fringes Project in 2020, it's already impacted over 20,000 people and recovered nearly 90 tonnes of waste - no fancy tech required, just genuine community spirit and shared responsibility.
