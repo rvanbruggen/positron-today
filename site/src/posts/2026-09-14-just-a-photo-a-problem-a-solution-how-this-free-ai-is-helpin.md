@@ -1,0 +1,20 @@
+---
+title: "Just a photo, a problem & a solution: how this free AI is helping India's farmers identify crop diseases early"
+title_nl: "Gewoon een foto, een probleem & een oplossing: hoe deze gratis AI Indische boeren helpt ziekten vroeg op te sporen"
+title_fr: "Une simple photo, un problème & une solution: comment cette IA gratuite aide les agriculteurs indiens à détecter rapidement les maladies des cultures"
+date: 2026-09-14T08:33:22
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://thebetterindia.com/farming/farmerchat-ai-app-for-farmers-crop-disease-detection-agriculture-better-harvest-increased-income-12519075"
+source_name: "The Better India"
+topic: "Economy"
+tags: ["Economy","Science","Technology"]
+emoji: "📱"
+summary: "When Shiv Kumar Yadav's mango saplings started showing signs of disease, he turned to his smartphone instead of guessing which pesticide might work - and got instant answers. Digital Green India's new FarmerChat app, launched in October 2024, uses artificial intelligence to diagnose crop diseases from photos and provide farmers with actionable solutions in real time. So far the free application has reached nearly a million users across India, helping smallholder farmers make faster, smarter decisions when problems strike. It's a brilliant example of how technology can bridge the gap between the vast agricultural knowledge that exists in India and the farmers who desperately need it in their pockets."
+summary_nl: "Toen Shiv Kumar Yadav's mangoplantsoen zieke verschijnselen vertoonde, pakte hij zijn smartphone in plaats van naar gokwerk toe te grijpen - en kreeg direct antwoorden. De nieuwe FarmerChat-app van Digital Green India, gelanceerd in oktober 2024, gebruikt kunstmatige intelligentie om gewasziekten van foto's op te sporen en biedt boeren real-time oplossingen die direct bruikbaar zijn. Tot nu toe heeft de gratis applicatie bijna een miljoen gebruikers in India bereikt en helpt het kleinschalige boeren sneller en slimmer beslissingen te nemen wanneer problemen ontstaan. Het is een briljant voorbeeld van hoe technologie de kloof kan overbruggen tussen de enorme landbouwkennis die in India bestaat en de boeren die deze wanhopig in hun zak nodig hebben."
+summary_fr: "Quand les jeunes plants de mangue de Shiv Kumar Yadav ont montré des signes de maladie, il a sorti son téléphone au lieu de deviner quel pesticide pourrait fonctionner - et a reçu des réponses instantanées. La nouvelle application FarmerChat de Digital Green India, lancée en octobre 2024, utilise l'intelligence artificielle pour diagnostiquer les maladies des cultures à partir de photos et fournir aux agriculteurs des solutions concrètes en temps réel. Jusqu'à présent, l'application gratuite a atteint près d'un million d'utilisateurs en Inde, aidant les petits agriculteurs à prendre des décisions plus rapides et plus intelligentes lorsque des problèmes surgissent. C'est un exemple brillant de la manière dont la technologie peut combler le fossé entre les vastes connaissances agricoles qui existent en Inde et les agriculteurs qui en ont désespérément besoin dans leur poche."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/2026/09/11/farmerchat-ai-app-2026-09-11-14-16-44.jpeg"
+layout: post.njk
+---
+
+When Shiv Kumar Yadav's mango saplings started showing signs of disease, he turned to his smartphone instead of guessing which pesticide might work - and got instant answers. Digital Green India's new FarmerChat app, launched in October 2024, uses artificial intelligence to diagnose crop diseases from photos and provide farmers with actionable solutions in real time. So far the free application has reached nearly a million users across India, helping smallholder farmers make faster, smarter decisions when problems strike. It's a brilliant example of how technology can bridge the gap between the vast agricultural knowledge that exists in India and the farmers who desperately need it in their pockets.
