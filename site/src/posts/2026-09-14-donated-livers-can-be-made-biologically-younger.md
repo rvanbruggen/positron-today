@@ -1,0 +1,20 @@
+---
+title: "Donated livers can be made biologically younger"
+title_nl: "Gedoneerde levers kunnen biologisch jonger worden"
+title_fr: "Les foies donnés peuvent être rajeunis biologiquement"
+date: 2026-09-14T22:34:00
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://www.technologyreview.com/2026/09/14/1144010/donated-livers-can-be-made-biologically-younger/"
+source_name: "MIT Technology Review"
+topic: "Health"
+tags: ["Health","Science","Technology"]
+emoji: "🫀"
+summary: "Scientists at Mass General Brigham have discovered something remarkable - when donated livers are kept on perfusion machines instead of just packed in ice, they actually become biologically younger at the molecular level. The team used sophisticated 'aging clocks' to measure the epigenetic patterns in liver samples, finding that machine-perfused organs showed biological ages roughly 30% lower than their chronological age would suggest. This discovery helps explain why organs from younger donors have better transplant success rates, and why perfused organs are less likely to fail after transplantation. The research opens exciting possibilities for better assessing organ health and potentially saving organs that might otherwise be discarded."
+summary_nl: "Onderzoekers van Mass General Brigham hebben iets opmerkelijks ontdekt - wanneer gedoneerde levers op perfusiemachines worden bewaard in plaats van alleen op ijs te worden gelegd, worden zij biologisch jonger op het molecuulniveau. Het team gebruikte geavanceerde 'aging clocks' om epigenetische patronen in levermonsters te meten en vond dat met machine geperfundeerde organen biologische leeftijden hadden die ongeveer 30% lager waren dan hun chronologische leeftijd zou suggereren. Deze ontdekking verklaart waarom organen van jongere donoren betere transplantatie-succespercentages hebben en waarom geperfundeerde organen na transplantatie minder snel falen. Het onderzoek opent spannende mogelijkheden voor betere beoordeling van organengezondheid en mogelijk reddende organen die anders zouden worden verworpen."
+summary_fr: "Des chercheurs du Mass General Brigham ont découvert quelque chose de remarquable - lorsque les foies donnés sont conservés sur des machines de perfusion au lieu d'être simplement mis sous glace, ils deviennent en réalité biologiquement plus jeunes au niveau moléculaire. L'équipe a utilisé des 'horloges biologiques' sophistiquées pour mesurer les modèles épigénétiques dans les échantillons de foie, constatant que les organes perfusés par machine affichaient des âges biologiques environ 30% plus bas que leur âge chronologique ne le suggérerait. Cette découverte explique pourquoi les organes de donneurs plus jeunes ont de meilleurs taux de succès de transplantation et pourquoi les organes perfusés sont moins susceptibles d'échouer après la transplantation. La recherche ouvre des possibilités passionnantes pour mieux évaluer la santé des organes et potentiellement sauver les organes qui seraient autrement rejetés."
+image_url: "https://wp.technologyreview.com/wp-content/uploads/2026/09/liver-perfusion.jpg?resize=1200,600"
+layout: post.njk
+---
+
+Scientists at Mass General Brigham have discovered something remarkable - when donated livers are kept on perfusion machines instead of just packed in ice, they actually become biologically younger at the molecular level. The team used sophisticated 'aging clocks' to measure the epigenetic patterns in liver samples, finding that machine-perfused organs showed biological ages roughly 30% lower than their chronological age would suggest. This discovery helps explain why organs from younger donors have better transplant success rates, and why perfused organs are less likely to fail after transplantation. The research opens exciting possibilities for better assessing organ health and potentially saving organs that might otherwise be discarded.
