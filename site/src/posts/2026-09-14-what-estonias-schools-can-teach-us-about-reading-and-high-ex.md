@@ -1,0 +1,20 @@
+---
+title: "What Estonia's schools can teach us about reading and high expectations"
+title_nl: "Wat Estlandse scholen ons kunnen leren over lezen en hoge verwachtingen"
+title_fr: "Ce que les écoles estoniennes peuvent nous enseigner sur la lecture et les attentes élevées"
+date: 2026-09-14T12:36:00
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://www.faz.net/aktuell/feuilleton/debatten/interview-mit-lehrer-alexander-brand-ueber-drei-pisa-musterlaender-accg-201213706.html"
+source_name: "Frankfurter Allgemeine Zeitung"
+topic: "Arts"
+tags: ["Arts","Science","Society"]
+emoji: "📚"
+summary: "A German teacher and journalist explores why Estonia has become Europe's PISA champion while Finland has declined, despite both being considered education leaders. The key difference lies in how they approach struggling students - Estonia maintains high academic standards for all learners while providing targeted support, whereas Finland and Germany tend to lower expectations when students struggle. In Estonia, there's a cultural emphasis on reading challenging books monthly and offering weekly tutoring sessions to close learning gaps rather than simplifying coursework. This approach of combining rigorous expectations with robust support systems appears to be the secret behind Estonia's sustained educational success."
+summary_nl: "Een Duitse leraar en journalist onderzoekt waarom Estland Europees PISA-kampioen is geworden terwijl Finland is achteruitgegaan, ondanks dat beide landen als onderwijsleiders werden beschouwd. Het belangrijkste verschil zit in hoe zij zwakkere leerlingen benaderen - Estland stelt hoge academische normen voor alle leerlingen en biedt tegelijkertijd gerichte ondersteuning, terwijl Finland en Duitsland de verwachtingen eerder verlagen. In Estland ligt de nadruk op het maandelijks lezen van uitdagende boeken en het bieden van wekelijkse tutorsessies om leemtes te sluiten in plaats van taken te vereenvoudigen. Deze aanpak van het combineren van sterke verwachtingen met robuuste ondersteuning lijkt het geheim achter Estlands aanhoudende onderwijssucces te zijn."
+summary_fr: "Un enseignant et journaliste allemand explore pourquoi l'Estonie est devenue championne PISA de l'Europe tandis que la Finlande a décliné, malgré que les deux pays aient été considérés comme des leaders en éducation. La différence clé réside dans la façon dont ils abordent les élèves en difficulté - l'Estonie maintient des normes académiques élevées pour tous les apprenants tout en fournissant un soutien ciblé, tandis que la Finlande et l'Allemagne tendent à abaisser les attentes. En Estonie, il y a un accent culturel sur la lecture mensuelle de livres difficiles et l'offre de sessions de tutorat hebdomadaires pour combler les lacunes plutôt que de simplifier les tâches. Cette approche de combinaison d'attentes rigoureuses avec des systèmes de soutien robustes semble être le secret du succès éducatif soutenu de l'Estonie."
+image_url: "https://media0.faz.net/image/w1200h627/a56df736d110/w6000h3135x0y481o/202609/43601.0.2525712339/austauschschueler-aus-estland.webp"
+layout: post.njk
+---
+
+A German teacher and journalist explores why Estonia has become Europe's PISA champion while Finland has declined, despite both being considered education leaders. The key difference lies in how they approach struggling students - Estonia maintains high academic standards for all learners while providing targeted support, whereas Finland and Germany tend to lower expectations when students struggle. In Estonia, there's a cultural emphasis on reading challenging books monthly and offering weekly tutoring sessions to close learning gaps rather than simplifying coursework. This approach of combining rigorous expectations with robust support systems appears to be the secret behind Estonia's sustained educational success.
