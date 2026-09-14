@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-14T15:09:48.766Z",
-  "total_rejected": 145581,
+  "exported_at": "2026-09-14T15:10:11.457Z",
+  "total_rejected": 145582,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2642
+      "count": 2643
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 12960,
-      "total": 13392
+      "negative": 12961,
+      "total": 13393
     },
     {
       "source": "Het Laatste Nieuws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Lier en Nijlen houden Digibank overeind met eigen middelen: “Digitale ondersteuning blijft nodig”",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/regio/antwerpen/rivierenland/lier/lier-en-nijlen-houden-digibank-overeind-met-eigen-middelen-digitale-ondersteuning-blijft-nodig/161409814.html",
+      "date": "2026-09-14 17:10",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Le volume de l'épargne durable a doublé en 2025 ",
@@ -9391,15 +9400,6 @@
       "url": "https://www.aljazeera.com/news/2026/9/13/brics-summit-2026-what-are-the-key-takeaways?traffic_source=rss",
       "date": "2026-09-13 14:28",
       "positivity_score": 3
-    },
-    {
-      "source": "Al Jazeera English",
-      "title": "India vs Sri Lanka live: Asia Cup final",
-      "reason": "The article is about a professional sports event with routine coverage of team news, predictions, and live commentary, which does not meet the threshold for exceptional or universally inspiring sports content.",
-      "category": "sports-negative",
-      "url": "https://www.aljazeera.com/sports/liveblog/2026/9/13/india-vs-sri-lanka-live-asia-cup-final?traffic_source=rss",
-      "date": "2026-09-13 14:28",
-      "positivity_score": 2
     }
   ]
 }
