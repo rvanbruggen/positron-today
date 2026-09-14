@@ -1,0 +1,20 @@
+---
+title: "Breakthrough finding: popular psychotherapy slows aging in seniors"
+title_nl: "Doorbraakonderzoek: populaire psychotherapie vertraagt veroudering bij ouderen"
+title_fr: "Découverte révolutionnaire : une psychothérapie populaire ralentit le vieillissement chez les personnes âgées"
+date: 2026-09-14T12:28:47
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://www.rp.pl/nauka/art45135281-przelomowe-badanie-naukowcow-popularna-psychoterapia-spowalnia-starzenie"
+source_name: "Rzeczpospolita Poland"
+topic: "Health"
+tags: ["Health","Science"]
+emoji: "😴"
+summary: "Scientists at UCLA have made a fascinating discovery - cognitive behavioral therapy for insomnia doesn't just help people sleep better, it actually slows down biological aging in older adults. The research, published in The Lancet Healthy Longevity, measured this through epigenetic changes in DNA, which control how genes switch on and off. So here's the thing: insomnia in seniors is often dismissed as just a quality-of-life issue, but it turns out poor sleep can accelerate aging and increase risks of heart disease and diabetes. The study shows that structured cognitive behavioral therapy outperforms simple sleep education in combating both insomnia and the aging process itself - making it a powerful tool for healthy longevity."
+summary_nl: "Wetenschappers van de UCLA hebben een fascinerende ontdekking gedaan - cognitieve gedragstherapie voor slapeloosheid helpt niet alleen mensen beter te slapen, maar vertraagt ook de biologische veroudering bij ouderen. Het onderzoek, gepubliceerd in The Lancet Healthy Longevity, meet dit door epigenetische veranderingen in DNA, die bepalen hoe genen aan- en uitschakelen. En hier is het interessante: slapeloosheid bij ouderen wordt vaak afgedaan als alleen een kwaliteit-van-leven-probleem, maar het blijkt dat slechte slaap de veroudering kan versnellen en risico's op hartziekten en diabetes verhoogt. De studie toont aan dat gestructureerde cognitieve gedragstherapie zowel slapeloosheid als het verouderingsproces beter bestrijdt dan alleen slaapvoorlichting - wat het een krachtig instrument voor gezonde langlevigheid maakt."
+summary_fr: "Les scientifiques de l'UCLA ont fait une découverte fascinante - la thérapie cognitivo-comportementale pour l'insomnie ne aide pas seulement les gens à mieux dormir, elle ralentit également le vieillissement biologique chez les personnes âgées. La recherche, publiée dans The Lancet Healthy Longevity, mesure cela par des changements épigénétiques de l'ADN, qui contrôlent l'activation et la désactivation des gènes. Et voilà le point intéressant : l'insomnie chez les personnes âgées est souvent considérée comme un simple problème de qualité de vie, mais il s'avère que le manque de sommeil peut accélérer le vieillissement et augmenter les risques de maladies cardiaques et de diabète. L'étude montre que la thérapie cognitivo-comportementale structurée surpasse la simple éducation au sommeil dans la lutte contre l'insomnie et le processus de vieillissement - ce qui en fait un outil puissant pour une longévité saine."
+image_url: "https://i.gremicdn.pl/image/free/0ec1dabeb235531c3af6628553aff58a/?t=crop:6270:3888:nowe:0:296,resize:fill:2000:1250&ctx=preview"
+layout: post.njk
+---
+
+Scientists at UCLA have made a fascinating discovery - cognitive behavioral therapy for insomnia doesn't just help people sleep better, it actually slows down biological aging in older adults. The research, published in The Lancet Healthy Longevity, measured this through epigenetic changes in DNA, which control how genes switch on and off. So here's the thing: insomnia in seniors is often dismissed as just a quality-of-life issue, but it turns out poor sleep can accelerate aging and increase risks of heart disease and diabetes. The study shows that structured cognitive behavioral therapy outperforms simple sleep education in combating both insomnia and the aging process itself - making it a powerful tool for healthy longevity.
