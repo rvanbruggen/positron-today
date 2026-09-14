@@ -90,6 +90,50 @@ Valid category slugs (pick the single best match):
 ${CATEGORY_PROMPT_LIST}`;
 }
 
+/**
+ * Batch variant of buildFilterPrompt: judges several articles in one call.
+ *
+ * The instructions go in the system prompt once, instead of being repeated per
+ * article — they are ~2,000 tokens against ~100 for a headline and snippet, so
+ * sending one article per call spent most of the filter's budget re-sending
+ * the same rules. Each article is still judged independently against them.
+ *
+ * Output is one flat JSON object per article, keyed by the article's number,
+ * using exactly the fields of the single-article format so both paths share a
+ * parser (normaliseClassifyObject in llm.ts).
+ */
+export function buildFilterBatchPrompt(
+  instructions: string,
+  articles: { title: string; snippet: string; translateToEnglish: boolean }[],
+): { system: string; user: string } {
+  const system = `${instructions}
+
+You will receive several numbered articles. Judge EACH one on its own against the rules above - never let one article influence the verdict on another.
+
+Reply with a JSON array only — no other text, no markdown fences. One object per article, in the same order, each with:
+  - "id":      the article's number
+  - "verdict": "YES" if it fits, "NO" if it does not
+  - "score":   an integer from 1 (not positive at all) to 10 (exceptionally uplifting)
+  - "reason":   only when verdict is "NO" - 1 sentence on why the story does not fit
+  - "category": only when verdict is "NO" - the single best-matching slug from the list below
+Articles marked [translate] may be in a language other than English. For those ALSO include, regardless of verdict:
+  - "preview_title_en":   a faithful English translation of the title (one short line)
+  - "preview_snippet_en": a 1-2 sentence English rendering of what the article is about
+
+Example: [{"id":1,"verdict":"YES","score":7},{"id":2,"verdict":"NO","score":3,"reason":"...","category":"<slug>"}]
+
+Valid category slugs:
+${CATEGORY_PROMPT_LIST}`;
+
+  const user = articles
+    .map((a, i) => `### Article ${i + 1}${a.translateToEnglish ? " [translate]" : ""}
+Title: ${a.title}
+Snippet: ${a.snippet}`)
+    .join("\n\n");
+
+  return { system, user };
+}
+
 // ── Summarisation style / voice ───────────────────────────────────────────────
 
 /**

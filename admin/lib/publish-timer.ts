@@ -17,7 +17,11 @@ import { postPendingSocial } from "@/lib/social-post-core";
 import { postPendingSubstack } from "@/lib/substack";
 
 // Map of article ID → timer handle
-const activeTimers = new Map<number, ReturnType<typeof setTimeout>>();
+// On globalThis, not module scope: this module is loaded once per Next.js bundle
+// (instrumentation + each route), and a per-copy Map cannot cancel timers set by
+// another copy — see the note in scheduler.ts.
+const globalForTimers = globalThis as typeof globalThis & { __positronPublishTimers?: Map<number, ReturnType<typeof setTimeout>> };
+const activeTimers = (globalForTimers.__positronPublishTimers ??= new Map<number, ReturnType<typeof setTimeout>>());
 
 /**
  * Publish a single article by ID, then post to social.

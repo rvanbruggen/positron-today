@@ -33,8 +33,12 @@ export interface LLMProvider {
   /** Binary classification — used for the positivity filter. */
   classify(prompt: string, systemPrompt?: string): Promise<ClassifyResult>;
 
-  /** Free-form generation — used for summarisation. Returns raw text. */
-  generate(prompt: string, systemPrompt?: string, maxTokens?: number): Promise<string>;
+  /**
+   * Free-form generation — used for summarisation. Returns raw text.
+   * `temperature` is applied only where the model accepts it; omit it to keep
+   * each provider's default.
+   */
+  generate(prompt: string, systemPrompt?: string, maxTokens?: number, temperature?: number): Promise<string>;
 }
 
 // ---------------------------------------------------------------------------
@@ -89,10 +93,11 @@ class AnthropicProvider implements LLMProvider {
     return parseClassifyResponse(textOf(message));
   }
 
-  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200): Promise<string> {
+  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200, temperature?: number): Promise<string> {
     const message = await anthropic.messages.create({
       model: this.model,
       max_tokens: maxTokens,
+      ...(temperature !== undefined && acceptsSampling(this.model) ? { temperature } : {}),
       ...(systemPrompt ? { system: systemPrompt } : {}),
       messages: [{ role: "user", content: prompt }],
     });
@@ -119,8 +124,8 @@ class OllamaProvider implements LLMProvider {
     return parseClassifyResponse(raw);
   }
 
-  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200): Promise<string> {
-    return this.callOllama(prompt, systemPrompt, maxTokens, 0.3);
+  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200, temperature = 0.3): Promise<string> {
+    return this.callOllama(prompt, systemPrompt, maxTokens, temperature);
   }
 
   private async callOllama(
@@ -172,8 +177,8 @@ class OpenAIProvider implements LLMProvider {
     return parseClassifyResponse(raw);
   }
 
-  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200): Promise<string> {
-    return this.call(prompt, systemPrompt, maxTokens, 0.3);
+  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200, temperature = 0.3): Promise<string> {
+    return this.call(prompt, systemPrompt, maxTokens, temperature);
   }
 
   private async call(
@@ -236,33 +241,42 @@ function parseClassifyResponse(raw: string): ClassifyResult {
   const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
   const jsonStr = jsonMatch ? jsonMatch[0] : cleaned;
   try {
-    const parsed = JSON.parse(jsonStr);
-    const rawReason = parsed.reason;
-    const reason = typeof rawReason === "string" && rawReason.trim()
-      ? rawReason.trim()
-      : typeof rawReason === "object" && rawReason !== null
-        ? Object.values(rawReason).join("; ")   // flatten {"Health Scare": "desc"} → "desc"
-        : (parsed.verdict === "NO" ? "does not fit positive news criteria" : "");
-    const rawScore = Number(parsed.score);
-    const score = rawScore >= 1 && rawScore <= 10 ? rawScore : undefined;
-    const preview_title_en = typeof parsed.preview_title_en === "string" && parsed.preview_title_en.trim()
-      ? parsed.preview_title_en.trim()
-      : undefined;
-    const preview_snippet_en = typeof parsed.preview_snippet_en === "string" && parsed.preview_snippet_en.trim()
-      ? parsed.preview_snippet_en.trim()
-      : undefined;
-    return {
-      fits: parsed.verdict === "YES",
-      reason,
-      category: parsed.verdict === "NO" ? (parsed.category ?? "other-negative") : undefined,
-      score,
-      preview_title_en,
-      preview_snippet_en,
-    };
+    return normaliseClassifyObject(JSON.parse(jsonStr));
   } catch {
     const fits = raw.toUpperCase().includes('"YES"') || raw.toUpperCase().startsWith("YES");
     return { fits, reason: fits ? "" : "does not fit positive news criteria", category: fits ? undefined : "other-negative" };
   }
+}
+
+/**
+ * Turn one parsed verdict object into a ClassifyResult. Shared by the
+ * single-article parser above and the batch classifier (classify-batch.ts),
+ * so both paths read the model's JSON identically.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function normaliseClassifyObject(parsed: any): ClassifyResult {
+  const rawReason = parsed.reason;
+  const reason = typeof rawReason === "string" && rawReason.trim()
+    ? rawReason.trim()
+    : typeof rawReason === "object" && rawReason !== null
+      ? Object.values(rawReason).join("; ")   // flatten {"Health Scare": "desc"} → "desc"
+      : (parsed.verdict === "NO" ? "does not fit positive news criteria" : "");
+  const rawScore = Number(parsed.score);
+  const score = rawScore >= 1 && rawScore <= 10 ? rawScore : undefined;
+  const preview_title_en = typeof parsed.preview_title_en === "string" && parsed.preview_title_en.trim()
+    ? parsed.preview_title_en.trim()
+    : undefined;
+  const preview_snippet_en = typeof parsed.preview_snippet_en === "string" && parsed.preview_snippet_en.trim()
+    ? parsed.preview_snippet_en.trim()
+    : undefined;
+  return {
+    fits: parsed.verdict === "YES",
+    reason,
+    category: parsed.verdict === "NO" ? (parsed.category ?? "other-negative") : undefined,
+    score,
+    preview_title_en,
+    preview_snippet_en,
+  };
 }
 
 // ---------------------------------------------------------------------------

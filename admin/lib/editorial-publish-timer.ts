@@ -9,7 +9,11 @@ import db from "@/lib/db";
 import { parseScheduleWallString } from "@/lib/schedule-time";
 import { publishEditorial } from "@/lib/editorial-core";
 
-const activeTimers = new Map<number, ReturnType<typeof setTimeout>>();
+// On globalThis, not module scope: this module is loaded once per Next.js bundle
+// (instrumentation + each route), and a per-copy Map cannot cancel timers set by
+// another copy — see the note in scheduler.ts.
+const globalForTimers = globalThis as typeof globalThis & { __positronEditorialTimers?: Map<number, ReturnType<typeof setTimeout>> };
+const activeTimers = (globalForTimers.__positronEditorialTimers ??= new Map<number, ReturnType<typeof setTimeout>>());
 
 async function publishWhenDue(editorialId: number): Promise<void> {
   activeTimers.delete(editorialId);

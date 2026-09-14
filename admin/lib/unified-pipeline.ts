@@ -16,7 +16,7 @@ import db from "@/lib/db";
 import { getSettings } from "@/lib/settings";
 import { exportRejections } from "@/lib/export-rejections";
 import { exportSources } from "@/lib/export-sources";
-import { getFilterProvider } from "@/lib/llm";
+import { getFilterProvider, type ClassifyResult } from "@/lib/llm";
 import { buildFilterPrompt } from "@/lib/prompts";
 import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import { isNativeOutputLanguage } from "@/lib/languages";
@@ -25,6 +25,8 @@ import { publishScheduledArticles } from "@/lib/publish-core";
 import { postPendingSocial } from "@/lib/social-post-core";
 import RSSParser from "rss-parser";
 import { withRetry } from "@/lib/retry";
+import { classifyBatch, CLASSIFY_BATCH_SIZE } from "@/lib/classify-batch";
+import { acquireLock, lockHolder, releaseLock } from "@/lib/run-lock";
 
 const parser = new RSSParser();
 
@@ -43,20 +45,35 @@ async function fetchAndParseFeed(url: string): Promise<ReturnType<typeof parser.
   return parser.parseString(text);
 }
 
-let running = false;
-let activeRunId: number | null = null;
-let cancelRequested = false;
+// In-process run state lives on globalThis. This module is loaded once per
+// Next.js bundle (the scheduler via instrumentation, and each API route), so
+// module-level flags let a scheduled run and a manual one overlap, and let the
+// Stop button "cancel" a copy that was not running anything.
+type PipelineState = { running: boolean; activeRunId: number | null; cancelRequested: boolean };
+const globalForPipeline = globalThis as typeof globalThis & { __positronPipeline?: PipelineState };
+const state: PipelineState = (globalForPipeline.__positronPipeline ??= {
+  running: false, activeRunId: null, cancelRequested: false,
+});
+
+/**
+ * Cross-process run lock (see run-lock.ts). The in-process flag above covers
+ * the normal case; this one also holds if two triggers race past the flag or
+ * the process restarts mid-run. A run normally takes ~10 minutes; full mode
+ * can wait up to 5 more for the Pages deploy before posting to social.
+ */
+const LOCK_KEY = "pipeline_lock";
+const LOCK_STALE_MS = 60 * 60_000;
 
 export function isUnifiedPipelineRunning(): boolean {
-  return running;
+  return state.running;
 }
 
 export function getActiveRunId(): number | null {
-  return activeRunId;
+  return state.activeRunId;
 }
 
 export function requestCancel(): void {
-  cancelRequested = true;
+  state.cancelRequested = true;
 }
 
 type LogLine = object;
@@ -187,7 +204,7 @@ async function fetchAllSources(runId: number): Promise<{ queued: number; skipped
 
   // Process sources in batches of FETCH_CONCURRENCY
   for (let i = 0; i < allSources.rows.length; i += FETCH_CONCURRENCY) {
-    if (cancelRequested) break;
+    if (state.cancelRequested) break;
 
     const batch = allSources.rows.slice(i, i + FETCH_CONCURRENCY);
     const results = await Promise.allSettled(
@@ -264,7 +281,7 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
   let totalAdded = 0, totalFiltered = 0, totalErrors = 0;
 
   while (true) {
-    if (cancelRequested) break;
+    if (state.cancelRequested) break;
 
     const batchResult = await db.execute(`
       SELECT p.id, p.source_id, p.url, p.title, p.snippet, p.source_pub_date,
@@ -272,7 +289,7 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
       FROM pending_items p
       JOIN sources s ON p.source_id = s.id
       ORDER BY p.id ASC
-      LIMIT 50
+      LIMIT ${CLASSIFY_BATCH_SIZE}
     `);
 
     if (batchResult.rows.length === 0) break;
@@ -282,8 +299,32 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
 
     console.log(`[unified] Phase 2: Classifying batch of ${batchResult.rows.length} items`);
 
-    for (const row of batchResult.rows) {
-      if (cancelRequested) break;
+    // One call for the whole batch. Anything it did not answer cleanly — or the
+    // whole batch, if the call itself fails — goes through the single-article
+    // classify() below, exactly as before batching existed.
+    const provider = await getFilterProvider();
+    let batchVerdicts = new Map<number, ClassifyResult>();
+    try {
+      batchVerdicts = await classifyBatch(
+        provider,
+        filterInstructions,
+        batchResult.rows.map((r) => ({
+          title: String(r.title),
+          snippet: (r.snippet as string | null) ?? "",
+          translateToEnglish: !isNativeOutputLanguage(r.source_language as string | null),
+        })),
+      );
+    } catch (err) {
+      console.warn(`[unified] Batch classify failed, falling back to per-article calls: ${err}`);
+    }
+    const fallbacks = batchResult.rows.length - batchVerdicts.size;
+    if (fallbacks > 0) {
+      console.log(`[unified] Batch classify: ${batchVerdicts.size} answered, ${fallbacks} via per-article fallback`);
+      await appendLog(runId, { type: "batch_fallback", answered: batchVerdicts.size, fallback: fallbacks });
+    }
+
+    for (const [rowIndex, row] of batchResult.rows.entries()) {
+      if (state.cancelRequested) break;
 
       const id = Number(row.id);
       const sourceId = Number(row.source_id);
@@ -296,9 +337,8 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
 
       try {
         const needsTranslation = !isNativeOutputLanguage(sourceLanguage);
-        const provider = await getFilterProvider();
-        const prompt = buildFilterPrompt(filterInstructions, title, snippet, needsTranslation);
-        const result = await provider.classify(prompt);
+        const result = batchVerdicts.get(rowIndex)
+          ?? await provider.classify(buildFilterPrompt(filterInstructions, title, snippet, needsTranslation));
 
         if (!result.fits) {
           const safeCategory = CATEGORY_SLUGS.includes(result.category ?? "other-negative")
@@ -366,13 +406,41 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
 // ─── Main unified pipeline ───────────────────────────────────────────────────
 
 export async function runUnifiedPipeline(options?: { isManual?: boolean }): Promise<number | null> {
-  if (running) {
+  if (state.running) {
     console.log("[unified] Pipeline already running, skipping");
-    return activeRunId;
+    return state.activeRunId;
   }
 
-  running = true;
-  cancelRequested = false;
+  // Set synchronously, before the first await, so a second trigger in the same
+  // tick sees it.
+  state.running = true;
+  state.cancelRequested = false;
+
+  const lock = await acquireLock(LOCK_KEY, options?.isManual ? "manual" : "scheduled", LOCK_STALE_MS);
+  if (!lock) {
+    const holder = await lockHolder(LOCK_KEY, LOCK_STALE_MS);
+    console.log(
+      `[unified] Pipeline lock held` +
+      (holder ? ` by a ${holder.label} run started ${Math.round((Date.now() - holder.at) / 1000)}s ago` : "") +
+      ", skipping",
+    );
+    state.running = false;
+    return null;
+  }
+
+  try {
+    return await runUnifiedPipelineLocked(options);
+  } finally {
+    // Also covers a throw before the run row exists (getSettings, createRun),
+    // which previously left `running` stuck at true until restart.
+    state.running = false;
+    state.activeRunId = null;
+    await releaseLock(LOCK_KEY, lock.token);
+  }
+}
+
+/** The actual run. Only ever called with the pipeline lock held. */
+async function runUnifiedPipelineLocked(options?: { isManual?: boolean }): Promise<number | null> {
   const start = Date.now();
 
   const settings = await getSettings();
@@ -384,7 +452,7 @@ export async function runUnifiedPipeline(options?: { isManual?: boolean }): Prom
   );
 
   const runId = await createRun(sourceCount);
-  activeRunId = runId;
+  state.activeRunId = runId;
 
   try {
     console.log("[unified] ═══════════════════════════════════════════════════");
@@ -393,11 +461,11 @@ export async function runUnifiedPipeline(options?: { isManual?: boolean }): Prom
 
     // Phase 1: Fetch all sources
     const fetchResult = await fetchAllSources(runId);
-    if (cancelRequested) { await finishRun(runId, "error", "Cancelled by user"); return runId; }
+    if (state.cancelRequested) { await finishRun(runId, "error", "Cancelled by user"); return runId; }
 
     // Phase 2: Classify all pending
     const classifyResult = await classifyAllPending(runId);
-    if (cancelRequested) { await finishRun(runId, "error", "Cancelled by user"); return runId; }
+    if (state.cancelRequested) { await finishRun(runId, "error", "Cancelled by user"); return runId; }
 
     // Phases 3-5: Only in summarise/full mode
     if (mode === "summarise" || mode === "full") {
@@ -480,9 +548,6 @@ export async function runUnifiedPipeline(options?: { isManual?: boolean }): Prom
   } catch (err) {
     console.error("[unified] Pipeline error:", err instanceof Error ? err.message : err);
     await finishRun(runId, "error", err instanceof Error ? err.message : String(err));
-  } finally {
-    running = false;
-    activeRunId = null;
   }
 
   return runId;

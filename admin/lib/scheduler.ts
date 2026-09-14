@@ -15,8 +15,21 @@ import { syncEditorialTimersFromDb, cancelAllEditorialTimers } from "@/lib/edito
 import { runDigest } from "@/lib/digest-core";
 import { runNeverSkipIfDue } from "@/lib/never-skip";
 
-let activeJobs: ReturnType<typeof cron.schedule>[] = [];
-let initialized = false;
+// Scheduler state lives on globalThis, not in module variables.
+//
+// Next.js bundles instrumentation.ts and each route handler separately, so this
+// module is loaded more than once in the same process. With module-level state,
+// the Settings route's reloadScheduler() saw an empty job list, "stopped"
+// nothing, and registered a second full set of cron jobs beside the boot-time
+// set — every pipeline slot then fired twice, classifying every article twice
+// and doubling the Anthropic bill (2026-08-13 → 2026-09-14).
+type SchedulerState = {
+  activeJobs: ReturnType<typeof cron.schedule>[];
+  initialized: boolean;
+};
+
+const globalForScheduler = globalThis as typeof globalThis & { __positronScheduler?: SchedulerState };
+const state: SchedulerState = (globalForScheduler.__positronScheduler ??= { activeJobs: [], initialized: false });
 
 /**
  * Parse "HH:MM" strings into cron expressions.
@@ -49,10 +62,10 @@ function weeklyTimeToCron(spec: string): string | null {
  * Stop all active cron jobs and publish timers.
  */
 export function stopScheduler(): void {
-  for (const job of activeJobs) {
+  for (const job of state.activeJobs) {
     job.stop();
   }
-  activeJobs = [];
+  state.activeJobs = [];
   cancelAllTimers();
   cancelAllEditorialTimers();
   console.log("[scheduler] All jobs and timers stopped");
@@ -101,7 +114,7 @@ export async function reloadScheduler(): Promise<void> {
       timezone: tz,
     });
 
-    activeJobs.push(job);
+    state.activeJobs.push(job);
     console.log(`[scheduler] Pipeline scheduled: ${time} (${cronExpr}) TZ=${tz}`);
   }
 
@@ -137,7 +150,7 @@ export async function reloadScheduler(): Promise<void> {
       timezone: tz,
     });
 
-    activeJobs.push(job);
+    state.activeJobs.push(job);
     console.log(`[scheduler] Digest scheduled: ${time} (${cronExpr}) TZ=${tz}`);
   }
 
@@ -167,7 +180,7 @@ export async function reloadScheduler(): Promise<void> {
         timezone: tz,
       });
 
-      activeJobs.push(job);
+      state.activeJobs.push(job);
       console.log(`[scheduler] Necessary Negativity scheduled: ${neverSkipSpec} (${cronExpr}) TZ=${tz}`);
 
       // Catch up on boot, in the background — a container that was down over
@@ -189,19 +202,19 @@ export async function reloadScheduler(): Promise<void> {
   await syncTimersFromDb();
   await syncEditorialTimersFromDb();
 
-  console.log(`[scheduler] Active with ${activeJobs.length} cron jobs`);
+  console.log(`[scheduler] Active with ${state.activeJobs.length} cron jobs`);
 }
 
 /**
  * Initialize the scheduler. Called once from instrumentation.ts.
  */
 export async function initScheduler(): Promise<void> {
-  if (initialized) {
+  if (state.initialized) {
     // Already initialized — reload instead (handles dev hot reload)
     await reloadScheduler();
     return;
   }
 
-  initialized = true;
+  state.initialized = true;
   await reloadScheduler();
 }
