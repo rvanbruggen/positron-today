@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T20:45:17.502Z",
-  "total_rejected": 147154,
+  "exported_at": "2026-09-15T20:45:30.599Z",
+  "total_rejected": 147155,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2691
+      "count": 2692
     },
     {
       "category": "divisive-racism",
@@ -81,8 +81,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 8524,
-      "total": 8682
+      "negative": 8525,
+      "total": 8683
     },
     {
       "source": "VRT Nws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Skarbówka wyręczy przedsiębiorcę. Ministerstwo chce zautomatyzować rozliczenia VAT",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://pro.rp.pl/terminy-i-deklaracje-vat/art45144491-skarbowka-wyreczy-przedsiebiorce-ministerstwo-chce-zautomatyzowac-rozliczenia-vat",
+      "date": "2026-09-15 22:45",
+      "positivity_score": null
+    },
     {
       "source": "MIT Technology Review",
       "title": "AI models need more data about biology, and OpenAI is paying to create it",
@@ -9391,15 +9400,6 @@
       "url": "https://www.theverge.com/tech/994949/apple-intelligence-apple-home-icloud-plus-cost-subscription",
       "date": "2026-09-15 06:16",
       "positivity_score": 2
-    },
-    {
-      "source": "De Standaard Economie",
-      "title": "Europa wil een robotindustrie zo groot als de auto-industrie, maar kan beloftevolle bedrijven amper hier houden",
-      "reason": "This is corporate/industry news about Europe's robotics ambitions and funding challenges, which is routine tech-industry reporting and corporate PR.",
-      "category": "soft-news-filler",
-      "url": "https://www.standaard.be/economie/europa-wil-een-robotindustrie-zo-groot-als-de-auto-industrie-maar-kan-beloftevolle-bedrijven-amper-hier-houden/160859931.html",
-      "date": "2026-09-15 06:15",
-      "positivity_score": 3
     }
   ]
 }
