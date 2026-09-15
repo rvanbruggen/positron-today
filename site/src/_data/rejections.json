@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T20:45:07.338Z",
-  "total_rejected": 147153,
+  "exported_at": "2026-09-15T20:45:17.502Z",
+  "total_rejected": 147154,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2690
+      "count": 2691
     },
     {
       "category": "divisive-racism",
@@ -301,8 +301,8 @@
     },
     {
       "source": "MIT Technology Review",
-      "negative": 147,
-      "total": 176
+      "negative": 148,
+      "total": 177
     },
     {
       "source": "Positive News",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "MIT Technology Review",
+      "title": "AI models need more data about biology, and OpenAI is paying to create it",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.technologyreview.com/2026/09/15/1144129/ai-models-need-more-data-about-biology-and-openai-is-paying-to-create-it/",
+      "date": "2026-09-15 22:45",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "Which million-dollar math problem could AI solve next?",
@@ -9391,15 +9400,6 @@
       "url": "https://www.standaard.be/economie/europa-wil-een-robotindustrie-zo-groot-als-de-auto-industrie-maar-kan-beloftevolle-bedrijven-amper-hier-houden/160859931.html",
       "date": "2026-09-15 06:15",
       "positivity_score": 3
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Hooggerechtshof blokkeert Trumps plannen om stemmen per post te beperken",
-      "reason": "This is political news about US elections and Trump administration policy, which falls under politics regardless of framing.",
-      "category": "political-conflict",
-      "url": "https://www.standaard.be/buitenland/hooggerechtshof-blokkeert-trumps-plannen-om-stemmen-per-post-te-beperken/35131945.html",
-      "date": "2026-09-15 06:15",
-      "positivity_score": 2
     }
   ]
 }
