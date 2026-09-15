@@ -1,0 +1,19 @@
+---
+title: "A coral reef thought dead for 60 years is teeming with life"
+title_nl: "Een koraalrif dat 60 jaar dood werd geacht blijkt vol leven te zitten"
+title_fr: "Un récif corallien que l'on croyait mort depuis 60 ans fourmille de vie"
+date: 2026-09-15T08:30:16
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.sciencedaily.com/releases/2026/09/260913081927.htm"
+source_name: "ScienceDaily"
+topic: "Animals"
+tags: ["Animals","Environment","Science"]
+emoji: "🪸"
+summary: "Scientists in Benin have made a stunning discovery - a deep-water coral reef off the coast that was declared dead back in the 1960s is actually alive and thriving. Using modern sonar and underwater cameras, researchers found a healthy mesophotic coral ecosystem with eight different coral species and eight fish species living on the seafloor patches more than 50 meters below the surface. What makes this find so exciting is that it challenges our assumptions about what we think we know about West African coastal regions - if this reef was hiding in plain sight for six decades, how many other undocumented coral systems are out there waiting to be rediscovered? The team is cautious though, noting that each discovery needs to be confirmed through field work rather than assumptions."
+summary_nl: "Wetenschappers in Benin hebben een verbazingwekkende ontdekking gedaan - een diepzeekraalrif voor de kust dat in de jaren zestig voor dood werd verklaard, blijkt eigenlijk levendig en gezond te zijn. Met behulp van moderne sonar en onderwatercamera's vonden onderzoekers een gezond mesofotisch koraalecosysteem met acht verschillende koraalsoorten en acht vissoorten die leven op de zeebodemplekken meer dan 50 meter onder het oppervlak. Wat deze vondst zo spannend maakt, is dat het onze aannames over wat we dachten te weten over kustregio's in West-Afrika ter discussie stelt - als dit rif 60 jaar lang verborgen kon blijven, hoeveel ander ongedocumenteerde koraalstelsels wachten daar nog om herontdekt te worden? Het team is echter voorzichtig en stelt vast dat elke ontdekking door veldwerk moet worden bevestigd in plaats van op aannames."
+summary_fr: "Des scientifiques au Bénin ont fait une découverte stupéfiante - un récif corallien en eaux profondes au large de la côte qui avait été déclaré mort dans les années 1960 s'avère en fait vivant et prospère. À l'aide du sonar moderne et des caméras sous-marines, les chercheurs ont découvert un écosystème corallien mésophotique sain avec huit espèces de coraux différentes et huit espèces de poissons vivant sur les parcelles des fonds marins à plus de 50 mètres sous la surface. Ce qui rend cette découverte si passionnante, c'est qu'elle remet en question nos hypothèses sur ce que nous pensions connaître des régions côtières d'Afrique de l'Ouest - si ce récif a pu rester caché pendant soixante ans, combien d'autres systèmes coralliens non documentés attendent encore d'être redécouverts? L'équipe reste cependant prudente, notant que chaque découverte doit être confirmée par le travail sur le terrain plutôt que par des suppositions."
+layout: post.njk
+---
+
+Scientists in Benin have made a stunning discovery - a deep-water coral reef off the coast that was declared dead back in the 1960s is actually alive and thriving. Using modern sonar and underwater cameras, researchers found a healthy mesophotic coral ecosystem with eight different coral species and eight fish species living on the seafloor patches more than 50 meters below the surface. What makes this find so exciting is that it challenges our assumptions about what we think we know about West African coastal regions - if this reef was hiding in plain sight for six decades, how many other undocumented coral systems are out there waiting to be rediscovered? The team is cautious though, noting that each discovery needs to be confirmed through field work rather than assumptions.
