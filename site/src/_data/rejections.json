@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T16:14:43.201Z",
-  "total_rejected": 146661,
+  "exported_at": "2026-09-15T16:15:26.405Z",
+  "total_rejected": 146662,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2672
+      "count": 2673
     },
     {
       "category": "divisive-racism",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 7484,
-      "total": 7717
+      "negative": 7485,
+      "total": 7718
     },
     {
       "source": "Dagens Nyheter",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "VRT Nws",
+      "title": "Robots nemen eentonig werk over: Flanders Make uit Diepenbeek wil bedrijven sneller laten automatiseren",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://vrtnws.be/p.NvXXxy7En",
+      "date": "2026-09-15 18:15",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "Why the NIH must resist the metrics trap",
@@ -9391,15 +9400,6 @@
       "url": "https://www.knack.be/nieuws/wereld/live/oorlog-in-oekraine/oekraine-en-rusland-zullen-geen-energiedoelen-meer-aanvallen-volgens-trump-711329/",
       "date": "2026-09-14 18:26",
       "positivity_score": 3
-    },
-    {
-      "source": "Knack",
-      "title": "Departement Omgeving legde 80 overtreders boetes op tot 12.000 euro voor jachtmisdrijven",
-      "reason": "Local regulatory enforcement story with regional (Flemish) relevance only; enforcement of hunting laws is not positive news but administrative action.",
-      "category": "soft-news-filler",
-      "url": "https://www.knack.be/nieuws/belgie/departement-omgeving-legde-80-overtreders-boetes-op-tot-12-000-euro-voor-jachtmisdrijven/",
-      "date": "2026-09-14 18:26",
-      "positivity_score": 4
     }
   ]
 }
