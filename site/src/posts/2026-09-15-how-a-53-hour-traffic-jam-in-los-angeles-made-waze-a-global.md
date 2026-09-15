@@ -1,0 +1,21 @@
+---
+title: "How a 53-hour traffic jam in Los Angeles made Waze a global phenomenon"
+title_nl: "Hoe een 53-urige file in Los Angeles Waze wereldwijd deed doorbreken"
+title_fr: "Comment un embouteillage de 53 heures à Los Angeles a propulsé Waze dans le monde entier"
+date: 2026-09-15T13:51:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.lalibre.be/economie/entreprises-startup/2026/09/15/comment-un-embouteillage-de-53-heures-a-los-angeles-a-propulse-waze-dans-le-monde-entier-AGDDWRFEDJCPVCAAWTUWKQSM5A/"
+source_name: "La Libre Belgique"
+topic: "Economy"
+tags: ["Economy","Technology"]
+emoji: "🚗"
+summary: "Waze has become the go-to navigation app for millions of drivers worldwide, but its story starts with an Israeli entrepreneur named Uri Levine who got the idea in 2006 - inspired by comparing travel times with friends during a holiday celebration. The app really took off when Apple launched the App Store in 2008, suddenly making it possible to download and continuously update applications. Early adoption was slow and disappointing, with most users trying the app and abandoning it, except in a few markets like Ecuador and Slovakia. But everything changed in 2011 when the I-405 highway in Los Angeles was closed for construction - this massive traffic jam became the turning point that introduced Waze to American drivers and ultimately to the rest of the world."
+summary_nl: "Waze is inmiddels de favoriete navigatie-app van miljoenen automobilisten over de hele wereld, maar het verhaal begint bij de Israëlische ondernemer Uri Levine, die in 2006 op het idee kwam - geïnspireerd door de reistijden van vrienden during een vakantieviering te vergelijken. De app maakte echt een doorbraak toen Apple in 2008 de App Store lanceerde, wat het plotseling mogelijk maakte om applicaties te downloaden en voortdurend bij te werken. De vroege adoptie verliep traag en teleurstellend, met de meeste gebruikers die de app probeerden en vervolgens stopten - behalve in enkele markten zoals Ecuador en Slowakije. Maar alles veranderde in 2011 toen snelweg I-405 in Los Angeles werd gesloten voor werkzaamheden - deze massale file werd het omslagpunt dat Waze introduceerde aan Amerikaanse chauffeurs en uiteindelijk aan de rest van de wereld."
+summary_fr: "Waze est devenue l'application de navigation préférée de millions d'automobilistes dans le monde entier, mais son histoire commence avec l'entrepreneur israélien Uri Levine qui a eu l'idée en 2006 - inspiré par la comparaison des temps de trajet avec ses amis lors d'une célébration des vacances. L'application a vraiment décollé lorsqu'Apple a lancé l'App Store en 2008, rendant soudainement possible le téléchargement et la mise à jour continue des applications. L'adoption précoce a été lente et décevante, la plupart des utilisateurs essayant l'application avant l'abandonner, sauf sur quelques marchés comme l'Équateur et la Slovaquie. Mais tout a changé en 2011 lorsque l'autoroute I-405 à Los Angeles a été fermée pour des travaux de construction - cet énorme embouteillage est devenu le moment charnière qui a présenté Waze aux automobilistes américains et finalement au reste du monde."
+image_url: "https://www.lalibre.be/resizer/v2/65D37FJSRRAHPE36YUOYQVJNVQ.jpg?auth=4443504b51d87650e7e66182a148d5f815a82212ba939d6b1bafa5d18674ff39&width=1200&height=630&quality=85&focal=1771%2C1181"
+featured: true
+layout: post.njk
+---
+
+Waze has become the go-to navigation app for millions of drivers worldwide, but its story starts with an Israeli entrepreneur named Uri Levine who got the idea in 2006 - inspired by comparing travel times with friends during a holiday celebration. The app really took off when Apple launched the App Store in 2008, suddenly making it possible to download and continuously update applications. Early adoption was slow and disappointing, with most users trying the app and abandoning it, except in a few markets like Ecuador and Slovakia. But everything changed in 2011 when the I-405 highway in Los Angeles was closed for construction - this massive traffic jam became the turning point that introduced Waze to American drivers and ultimately to the rest of the world.
