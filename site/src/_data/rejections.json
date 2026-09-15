@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T06:21:45.411Z",
-  "total_rejected": 146269,
+  "exported_at": "2026-09-15T06:22:16.095Z",
+  "total_rejected": 146270,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2659
+      "count": 2660
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 12999,
-      "total": 13433
+      "negative": 13000,
+      "total": 13434
     },
     {
       "source": "Het Laatste Nieuws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Wendy Walraet pakt in Mechelen bij haar debuut de nationale titel 24-urenloop: “En nu dromen van de Spartatlon”",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/sport/sportregio/wendy-walraet-pakt-in-mechelen-bij-haar-debuut-de-nationale-titel-24-urenloop-en-nu-dromen-van-de-spartatlon/161446580.html",
+      "date": "2026-09-15 08:22",
+      "positivity_score": null
+    },
     {
       "source": "Frankfurter Allgemeine Zeitung",
       "title": "Verwaltungsgericht Trier: Warum das Trierer Asylgericht eines der schnellsten in Deutschland ist",
@@ -9389,15 +9398,6 @@
       "reason": "This is a political story about government policy decisions and partisan positions on climate regulation. It reports on a negative action (removing emissions caps) and does not qualify as positive news under rule 6.",
       "category": "political-conflict",
       "url": "https://www.lalibre.be/international/amerique/2026/09/14/ladministration-trump-veut-supprimer-les-plafonds-demissions-polluantes-des-centrales-electriques-5B6MC3UXGNGJVOLSUFT7I2DYYM/",
-      "date": "2026-09-14 10:29",
-      "positivity_score": 2
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "L'Iran dit que la réunion consacrée au détroit d'Ormuz a été reportée à la demande de l'Arabie Saoudite ",
-      "reason": "This is geopolitical/political conflict reporting about a postponed diplomatic meeting in the Middle East. It involves tensions between Iran and Saudi Arabia over Yemen, which are inherently negative political dynamics. Rule 6 applies: political-figure decisions and geopolitical analysis are excluded unless marking major breakthroughs in long-disputed conflicts—this is routine diplomatic friction, not a breakthrough.",
-      "category": "political-conflict",
-      "url": "https://www.lalibre.be/international/moyen-orient/iran/2026/09/14/liran-dit-que-la-reunion-consacree-au-detroit-dormuz-a-ete-reportee-a-la-demande-de-larabie-saoudite-BPFQ44KP7FBHRBFGGRNUNZ3QKM/",
       "date": "2026-09-14 10:29",
       "positivity_score": 2
     }
