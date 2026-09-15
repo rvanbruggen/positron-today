@@ -1,0 +1,19 @@
+---
+title: "A wake-up call: diversify global research funding"
+title_nl: "Een waarschuwing: diversifieer mondiale onderzoeksfinanciering"
+title_fr: "Un signal d'alarme : diversifier le financement mondial de la recherche"
+date: 2026-09-15T22:38:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.nature.com/articles/d41586-026-02904-8"
+source_name: "Nature"
+topic: "Economy"
+tags: ["Economy","Science","Society"]
+emoji: "🌍"
+summary: "The US National Science Foundation is facing a historic crunch - issuing its lowest number of new grants in four decades after withholding roughly $1 billion and withdrawing funding recommendations for over 150 peer-reviewed proposals. Meanwhile, other nations are stepping up: China's National Natural Science Foundation is boosting prestigious early-career grants by 50% this year, signalling a major shift in global research power dynamics. So here's the thing - as US policy uncertainty drives talented researchers and international collaborators away, the global research community faces a critical moment to build alternative research hubs and funding ecosystems. This divergence could reshape where science happens and who gets to participate in shaping our future."
+summary_nl: "De Amerikaanse National Science Foundation staat voor een historische crisis - met het laagste aantal nieuwe subsidies in vier decennia nadat ongeveer $1 miljard werd ingehouden en aanbevelingen voor meer dan 150 peer-reviewed projecten werden ingetrokken. Intussen vergroten andere landen hun inspanningen: de Chinese National Natural Science Foundation verhoogt prestigieuze beurzen voor jonge onderzoekers dit jaar met 50%, wat een grote verschuiving in mondiale onderzoeksdynamica signaleert. En hier is het belangrijk punt - nu Amerikaanse beleidsvolatiliteit talentvolle onderzoekers en internationale samenwerkingen verdrijft, staat de mondiale onderzoeksgemeenschap voor een kritiek moment om alternatieve onderzoekscentra en financieringsecosystemen op te bouwen. Deze uiteenlopende trends kunnen fundamenteel veranderen waar wetenschap plaatsvindt en wie daaraan kan deelnemen."
+summary_fr: "La National Science Foundation américaine fait face à une crise historique - elle émet le nombre le plus bas de nouvelles subventions en quatre décennies après avoir retenu environ 1 milliard de dollars et retiré les recommandations de financement pour plus de 150 projets évalués par les pairs. Pendant ce temps, d'autres nations renforcent leurs efforts : la National Natural Science Foundation chinoise augmente ses bourses prestigieuses pour jeunes chercheurs de 50% cette année, signalant un changement majeur dans la dynamique mondiale de la recherche. Et voici le point crucial - alors que l'instabilité politique américaine repousse les chercheurs talentueux et les collaborations internationales, la communauté mondiale de recherche se trouve face à un moment critique pour construire des pôles de recherche alternatifs et des écosystèmes de financement nouveaux. Cette divergence pourrait redessiner fondamentalement où se fait la science et qui peut y participer."
+layout: post.njk
+---
+
+The US National Science Foundation is facing a historic crunch - issuing its lowest number of new grants in four decades after withholding roughly $1 billion and withdrawing funding recommendations for over 150 peer-reviewed proposals. Meanwhile, other nations are stepping up: China's National Natural Science Foundation is boosting prestigious early-career grants by 50% this year, signalling a major shift in global research power dynamics. So here's the thing - as US policy uncertainty drives talented researchers and international collaborators away, the global research community faces a critical moment to build alternative research hubs and funding ecosystems. This divergence could reshape where science happens and who gets to participate in shaping our future.
