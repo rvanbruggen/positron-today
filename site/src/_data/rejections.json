@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T20:41:24.931Z",
-  "total_rejected": 147145,
+  "exported_at": "2026-09-15T20:41:37.385Z",
+  "total_rejected": 147146,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2682
+      "count": 2683
     },
     {
       "category": "divisive-racism",
@@ -145,14 +145,14 @@
       "total": 3961
     },
     {
+      "source": "La Libre Belgique",
+      "negative": 3063,
+      "total": 3102
+    },
+    {
       "source": "Neue Zürcher Zeitung",
       "negative": 3063,
       "total": 3076
-    },
-    {
-      "source": "La Libre Belgique",
-      "negative": 3062,
-      "total": 3101
     },
     {
       "source": "DR (Danish Public broadcaster)",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "La Libre Belgique",
+      "title": "OpenAI, Anthropic et Google travaillent à la création d'un organe de supervision des risques IA",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lalibre.be/economie/entreprises-startup/2026/09/15/openai-anthropic-et-google-travaillent-a-la-creation-dun-organe-de-supervision-des-risques-ia-QTW5L5FYX5FD5DJ2XVT2CRRJQA/",
+      "date": "2026-09-15 22:41",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "Record slow hurricane season, but Maritimers warned to stay vigilant about extreme weather",
@@ -9389,15 +9398,6 @@
       "reason": "Insufficient content to evaluate; appears to be a puzzle or game section title.",
       "category": "soft-news-filler",
       "url": "https://www.nrc.nl/puzzels/woordzoeker/2026/09/15/",
-      "date": "2026-09-15 06:15",
-      "positivity_score": 1
-    },
-    {
-      "source": "NRC",
-      "title": "Cinco ",
-      "reason": "Insufficient content to evaluate; appears to be a puzzle or game section title.",
-      "category": "soft-news-filler",
-      "url": "https://www.nrc.nl/puzzels/cinco/2026/09/15/",
       "date": "2026-09-15 06:15",
       "positivity_score": 1
     }
