@@ -1,0 +1,20 @@
+---
+title: "The forest officer who saved Kaziranga's rhinos from poachers"
+title_nl: "De boswachter die de neushoorns van Kaziranga redde van stropers"
+title_fr: "Le forestier qui a sauvé les rhinocéros de Kaziranga des braconniers"
+date: 2026-09-15T13:24:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://thebetterindia.com/web-stories/changemakers/mahi-miri-tribal-forest-officer-kaziranga-rhino-poaching-conservation-12520573"
+source_name: "The Better India"
+topic: "Animals"
+tags: ["Animals","Environment","Nature"]
+emoji: "🦏"
+summary: "So here's a fascinating story about Mahi Chandra Miri, a tribal forest officer from Assam who became one of the first people from his community selected for the Imperial Forest Service back in 1929. When he was posted to Kaziranga in the 1930s, he found a landscape under siege - poachers were hunting rhinos and elephants relentlessly, and the sanctuary needed serious protection. Miri set up camp on a hill overlooking the forest and used binoculars to spot poachers, then rode into the wilderness on elephant-back to pursue them and defend the wildlife. His dedication and innovative approach to organizing patrols helped transform Kaziranga into one of India's most protected sanctuaries, and his legacy shows us how one passionate person can make an enormous difference in conservation."
+summary_nl: "Dit is een fascinerend verhaal over Mahi Chandra Miri, een bosbeambte uit de Mising-gemeenschap van Assam die in 1929 één van de eerste uit zijn gemeenschap werd die werd geselecteerd voor de Keizerlijke Bosbouwdienst. Toen hij in de jaren 1930 naar Kaziranga werd geplaatst, vond hij een landschap onder beleg - stropers jaagden relentloos op neushoorns en olifanten, en het natuurreservaat had ernstige bescherming nodig. Miri richtte een kamp op een heuvel uit boven het bos en gebruikte verrekijkers om stropers op te sporen, waarna hij op oerug van olifanten het wild in ging om hen te achtervolgen en de dieren te verdedigen. Zijn toewijding en innovatieve aanpak van patrouilleorganisatie hielpen Kaziranga transformeren tot één van Indias meest beschermde sanctuaria."
+summary_fr: "Voici une histoire fascinante sur Mahi Chandra Miri, un agent forestier de la communauté Mising d'Assam qui devint en 1929 l'une des premières personnes de sa communauté sélectionnées pour le Service forestier impérial. Lorsqu'il a été affecté à Kaziranga dans les années 1930, il a trouvé un paysage assiégé - les braconniers chassaient impitoyablement les rhinocéros et les éléphants, et le sanctuaire avait besoin d'une protection sérieuse. Miri établit un camp sur une colline surplombant la forêt et utilisa des jumelles pour repérer les braconniers, puis chevaucha des éléphants dans la nature sauvage pour les poursuivre et défendre la faune. Son dévouement et son approche innovante de l'organisation des patrouilles ont aidé à transformer Kaziranga en l'un des sanctuaires les plus protégés de l'Inde, montrant comment une seule personne passionnée peut faire une énorme différence."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/2026/09/11/mahi-miri-2026-09-11-18-49-29.png"
+layout: post.njk
+---
+
+So here's a fascinating story about Mahi Chandra Miri, a tribal forest officer from Assam who became one of the first people from his community selected for the Imperial Forest Service back in 1929. When he was posted to Kaziranga in the 1930s, he found a landscape under siege - poachers were hunting rhinos and elephants relentlessly, and the sanctuary needed serious protection. Miri set up camp on a hill overlooking the forest and used binoculars to spot poachers, then rode into the wilderness on elephant-back to pursue them and defend the wildlife. His dedication and innovative approach to organizing patrols helped transform Kaziranga into one of India's most protected sanctuaries, and his legacy shows us how one passionate person can make an enormous difference in conservation.
