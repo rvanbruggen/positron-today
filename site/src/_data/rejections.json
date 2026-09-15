@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T16:13:23.957Z",
-  "total_rejected": 146656,
+  "exported_at": "2026-09-15T16:13:29.335Z",
+  "total_rejected": 146657,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2667
+      "count": 2668
     },
     {
       "category": "divisive-racism",
@@ -81,8 +81,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 8498,
-      "total": 8652
+      "negative": 8499,
+      "total": 8653
     },
     {
       "source": "VRT Nws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Rekordowa liczba stulatków w Japonii. W 60 lat wzrosła o ponad 700 razy",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rp.pl/spoleczenstwo/art45141321-rekordowa-liczba-stulatkow-w-japonii-w-60-lat-wzrosla-o-ponad-700-razy",
+      "date": "2026-09-15 18:13",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "”Priver les juifs de leurs pianos, c’était les priver de quelque chose de très important”",
@@ -9391,15 +9400,6 @@
       "url": "https://www.knack.be/nieuws/belgie/de-miljarden-van-belfius-slimme-verkoop-of-eenmalige-begrotingsoplossing/",
       "date": "2026-09-14 18:26",
       "positivity_score": 2
-    },
-    {
-      "source": "Knack",
-      "title": "EV-batterijen voor dummies: LFP, SoC, 800 V en meer uitgelegd",
-      "reason": "Educational explainer/lifestyle content about EV battery terminology; informative but not positive news.",
-      "category": "soft-news-filler",
-      "url": "https://www.knack.be/nieuws/auto/ev-batterijen-voor-dummies-lfp-soc-800-v-en-meer-uitgelegd/",
-      "date": "2026-09-14 18:26",
-      "positivity_score": 5
     }
   ]
 }
