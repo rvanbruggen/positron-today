@@ -1,0 +1,20 @@
+---
+title: "What are the smallest pieces of the universe?"
+title_nl: "Wat zijn de kleinste stukjes van het universum?"
+title_fr: "Quels sont les plus petits éléments de l'univers?"
+date: 2026-09-15T18:33:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.scientificamerican.com/article/what-are-the-smallest-pieces-of-the-universe/"
+source_name: "Scientific American"
+topic: "Science"
+tags: ["Science","Technology"]
+emoji: "⚛️"
+summary: "So, back in 2012, physicists at CERN made this incredible discovery - they found the Higgs boson, that elusive particle that completed the Standard Model and brought us to 17 known elementary particles. Now, here's the thing: these particles are supposed to be the smallest building blocks of nature, but scientists are asking themselves whether we've really reached the bottom. And this is where it gets fascinating - physicists wonder if particles might actually be something completely different, like tiny vibrating strings, or if there are even smaller pieces hiding inside what we think we already know. The search continues with more advanced tools, because the question of what truly is the most fundamental piece of reality is almost as much philosophical as it is scientific."
+summary_nl: "In 2012 maakten natuurkundigen bij CERN een ongelooflijke ontdekking - ze vonden het Higgs-boson, dat ongrijpbare deeltje dat het Standaardmodel voltooide en ons tot 17 bekende elementaire deeltjes bracht. Nu komt het interessante gedeelte: deze deeltjes zouden de kleinste bouwstenen van de natuur zijn, maar wetenschappers stellen zich af of we echt tot het einde zijn doorgedrongen. En hier wordt het echt fascinerend - natuurkundigen vragen zich af of deeltjes eigenlijk iets heel anders kunnen zijn, zoals kleine trillende snaren, of dat er nog kleinere stukjes verborgen zitten in wat we al kennen. Het onderzoek gaat door met meer geavanceerde hulpmiddelen, omdat de vraag wat werkelijk het meest fundamentele stukje werkelijkheid is vrijwel net zo filosofisch is als wetenschappelijk."
+summary_fr: "En 2012, les physiciens du CERN ont fait une découverte incroyable - ils ont trouvé le boson de Higgs, cette particule insaisissable qui complétait le Modèle standard et nous a menés à 17 particules élémentaires connues. Maintenant, voilà le truc intéressant : ces particules sont supposées être les plus petits éléments constitutifs de la nature, mais les scientifiques se demandent si nous avons vraiment atteint le fond. Et c'est là que cela devient fascinant - les physiciens se posent la question de savoir si les particules pourraient en réalité être quelque chose de complètement différent, comme de minuscules cordes vibrantes, ou s'il y a des éléments encore plus petits cachés dans ce que nous croyons déjà connaître. La recherche continue avec des outils plus avancés, car la question de ce qui est vraiment le morceau le plus fondamental de la réalité est presque aussi philosophique que scientifique."
+image_url: "https://static.scientificamerican.com/dam/asset/d5fec0ac-b5ce-4bec-9168-18323d6551ce/saw1026Benn01.jpg?m=1789396333.263&w=1200"
+layout: post.njk
+---
+
+So, back in 2012, physicists at CERN made this incredible discovery - they found the Higgs boson, that elusive particle that completed the Standard Model and brought us to 17 known elementary particles. Now, here's the thing: these particles are supposed to be the smallest building blocks of nature, but scientists are asking themselves whether we've really reached the bottom. And this is where it gets fascinating - physicists wonder if particles might actually be something completely different, like tiny vibrating strings, or if there are even smaller pieces hiding inside what we think we already know. The search continues with more advanced tools, because the question of what truly is the most fundamental piece of reality is almost as much philosophical as it is scientific.
