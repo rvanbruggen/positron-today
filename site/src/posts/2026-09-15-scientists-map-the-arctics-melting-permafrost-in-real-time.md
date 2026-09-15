@@ -1,0 +1,20 @@
+---
+title: "Scientists map the Arctic's melting permafrost in real time"
+title_nl: "Wetenschappers brengen smeltend permafrost in het Arctisch gebied real-time in kaart"
+title_fr: "Les scientifiques cartographient en temps réel le dégel du permafrost arctique"
+date: 2026-09-15T11:20:00
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://www.goodgoodgood.co/articles/thawing-permafrost-map"
+source_name: "Good Good Good"
+topic: "Environment"
+tags: ["Environment","Science","Technology"]
+emoji: "🗺️"
+summary: "Here's the thing - as Arctic temperatures rise at two to three times the global average, Alaska's permafrost is thawing and causing serious problems like collapsing buildings and sinking roads. Scientists can't dig down to measure permafrost directly, but they've spotted something clever - when the ice-rich ground melts, it creates thermokarst ponds and lakes that are easy to spot from satellite imagery. Using artificial intelligence to analyze these satellite images, an international team has now mapped over 4 million lakes and 70 million thermokarst ponds across the Arctic, tracking changes in near-real time. So now, Arctic communities can finally prepare for what's coming by knowing exactly where the most dangerous permafrost thawing is happening."
+summary_nl: "Dus hier zit het probleem - terwijl de temperaturen in het Arctisch gebied twee tot drie keer sneller stijgen dan gemiddeld wereldwijd, ontdooit het permafrost in Alaska en veroorzaakt dit ernstige problemen zoals ingestorte gebouwen en verzakkende wegen. Wetenschappers kunnen het permafrost niet rechtstreeks opgraven om te meten, maar ze hebben iets slims ontdekt - wanneer de ijsrijke grond smelt, ontstaan er thermokarstmeren die gemakkelijk vanuit satellietbeelden op te spotten zijn. Met behulp van kunstmatige intelligentie om deze satellietbeelden te analyseren, heeft een internationaal team nu meer dan 4 miljoen meren en 70 miljoen thermokarstmeren in het Arctisch gebied in kaart gebracht en volgt de veranderingen in bijna real-time. Dus nu kunnen Arctische gemeenschappen zich eindelijk voorbereiden door exact te weten waar de meest gevaarlijke ontdooiing van permafrost plaatsvindt."
+summary_fr: "Voilà le problème - tandis que les températures arctiques augmentent deux à trois fois plus vite que la moyenne mondiale, le permafrost en Alaska dégèle et cause de graves problèmes comme l'effondrement de bâtiments et l'affaissement des routes. Les scientifiques ne peuvent pas creuser le permafrost directement pour le mesurer, mais ils ont découvert quelque chose d'ingénieux - quand la terre riche en glace fond, elle crée des lacs thermokarstiques faciles à détecter sur les images satellites. En utilisant l'intelligence artificielle pour analyser ces images satellites, une équipe internationale a désormais cartographié plus de 4 millions de lacs et 70 millions de mares thermokarstiques dans l'Arctique, suivant les changements en temps quasi-réel. Maintenant, les communautés arctiques peuvent enfin se préparer en sachant exactement où le dégel du permafrost le plus dangereux se produit."
+image_url: "https://cdn.prod.website-files.com/5f6cc9cd16d59d990c8fca33/6a9894c8bfd90bdb3c12c4f7_6a9894c786730a1b598001f0_thawing-permafrost-map-featured-2.webp"
+layout: post.njk
+---
+
+Here's the thing - as Arctic temperatures rise at two to three times the global average, Alaska's permafrost is thawing and causing serious problems like collapsing buildings and sinking roads. Scientists can't dig down to measure permafrost directly, but they've spotted something clever - when the ice-rich ground melts, it creates thermokarst ponds and lakes that are easy to spot from satellite imagery. Using artificial intelligence to analyze these satellite images, an international team has now mapped over 4 million lakes and 70 million thermokarst ponds across the Arctic, tracking changes in near-real time. So now, Arctic communities can finally prepare for what's coming by knowing exactly where the most dangerous permafrost thawing is happening.
