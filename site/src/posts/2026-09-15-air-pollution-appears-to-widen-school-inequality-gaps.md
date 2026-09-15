@@ -1,0 +1,19 @@
+---
+title: "Air pollution appears to widen school inequality gaps"
+title_nl: "Luchtvervuiling lijkt onderwijsongevenheden te vergroten"
+title_fr: "La pollution de l'air semble aggraver les inégalités scolaires"
+date: 2026-09-15T08:36:00
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-15
+source_url: "https://www.lemonde.fr/planete/article/2026/09/15/la-pollution-de-l-air-contribuerait-a-creuser-les-inegalites-scolaires_6773950_3244.html"
+source_name: "Le Monde"
+topic: "Environment"
+tags: ["Environment","Health","Society"]
+emoji: "🌍"
+summary: "New research suggests that air pollution isn't just an environmental issue - it's actively affecting how well students perform in school, particularly in disadvantaged areas. So here's what's striking: kids breathing worse air show measurable declines in academic achievement, which means pollution is deepening existing educational divides rather than affecting everyone equally. The study reveals that students from lower-income families already facing educational challenges are now dealing with the added burden of polluted air impacting their concentration and cognitive development. And here's the thing - this finding highlights how environmental justice and educational equality are deeply connected, demanding urgent action on both fronts."
+summary_nl: "Nieuw onderzoek suggereert dat luchtvervuiling niet alleen een milieuprobleem is - het beïnvloedt ook meetbaar hoe goed leerlingen op school presteren, vooral in achtergestelde gebieden. Dus wat opvallend is: kinderen die slechtere lucht inademen, vertonen waarneembare dalingen in schoolprestaties, wat betekent dat vervuiling bestaande onderwijsongelijkheden verdiept in plaats van iedereen gelijk te treffen. Het onderzoek onthult dat leerlingen uit gezinnen met lagere inkomens, die al educatieve uitdagingen hebben, nu ook te maken krijgen met vervuilde lucht die hun concentratie en cognitieve ontwikkeling aantast. En hier is het interessante: deze bevinding laat zien hoe milieurechtvaardigheid en onderwijsgelijkheid diep met elkaar verbonden zijn, wat urgent optreden op beide fronten vereist."
+summary_fr: "De nouvelles recherches suggèrent que la pollution de l'air n'est pas seulement une question environnementale - elle affecte activement la façon dont les élèves réussissent à l'école, en particulier dans les zones défavorisées. Voilà ce qui est frappant : les enfants respirant un air plus pollué montrent des déclins mesurables dans les résultats scolaires, ce qui signifie que la pollution approfondit les inégalités éducatives existantes plutôt que d'affecter tout le monde équitablement. L'étude révèle que les élèves issus de familles aux revenus plus modestes, déjà confrontés à des défis éducatifs, font maintenant face au fardeau supplémentaire de la pollution de l'air impactant leur concentration et leur développement cognitif. Et voici l'essentiel : cette découverte montre comment la justice environnementale et l'égalité éducative sont profondément interconnectées, exigeant une action urgente sur les deux fronts."
+layout: post.njk
+---
+
+New research suggests that air pollution isn't just an environmental issue - it's actively affecting how well students perform in school, particularly in disadvantaged areas. So here's what's striking: kids breathing worse air show measurable declines in academic achievement, which means pollution is deepening existing educational divides rather than affecting everyone equally. The study reveals that students from lower-income families already facing educational challenges are now dealing with the added burden of polluted air impacting their concentration and cognitive development. And here's the thing - this finding highlights how environmental justice and educational equality are deeply connected, demanding urgent action on both fronts.
