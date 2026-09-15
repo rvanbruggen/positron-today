@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T06:21:15.894Z",
-  "total_rejected": 146268,
+  "exported_at": "2026-09-15T06:21:45.411Z",
+  "total_rejected": 146269,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2658
+      "count": 2659
     },
     {
       "category": "divisive-racism",
@@ -106,8 +106,8 @@
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 5811,
-      "total": 5836
+      "negative": 5812,
+      "total": 5837
     },
     {
       "source": "Le Monde",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Verwaltungsgericht Trier: Warum das Trierer Asylgericht eines der schnellsten in Deutschland ist",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.faz.net/aktuell/politik/inland/trier-eines-der-schnellsten-asylgerichte-in-deutschland-201154062.html",
+      "date": "2026-09-15 08:21",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "Canada’s 2026 census participation was among highest ever, says StatCan",
@@ -9389,15 +9398,6 @@
       "reason": "This is geopolitical/political conflict reporting about a postponed diplomatic meeting in the Middle East. It involves tensions between Iran and Saudi Arabia over Yemen, which are inherently negative political dynamics. Rule 6 applies: political-figure decisions and geopolitical analysis are excluded unless marking major breakthroughs in long-disputed conflicts—this is routine diplomatic friction, not a breakthrough.",
       "category": "political-conflict",
       "url": "https://www.lalibre.be/international/moyen-orient/iran/2026/09/14/liran-dit-que-la-reunion-consacree-au-detroit-dormuz-a-ete-reportee-a-la-demande-de-larabie-saoudite-BPFQ44KP7FBHRBFGGRNUNZ3QKM/",
-      "date": "2026-09-14 10:29",
-      "positivity_score": 2
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "Scène surréaliste à l'US Open : Alexander Zverev ne se rend pas compte qu'il vient de remporter la finale (VIDEO) ",
-      "reason": "This is sports content about a professional tennis match result and a player's reaction. It falls under Rule 1 (sports non-exceptional results) and Rule 7 (viral feel-good clickbait relying on emotional reaction rather than substance).",
-      "category": "sports-negative",
-      "url": "https://www.lalibre.be/sports/tennis/2026/09/14/scene-surrealiste-a-lus-open-alexander-zverev-ne-se-rend-pas-compte-quil-vient-de-remporter-la-finale-video-Q54SHNAJC5CG7JQAFNCTHI5GLQ/",
       "date": "2026-09-14 10:29",
       "positivity_score": 2
     }
