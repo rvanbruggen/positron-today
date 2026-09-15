@@ -1,0 +1,20 @@
+---
+title: "A new headset for depression is now available in the US"
+title_nl: "Een nieuw apparaat tegen depressie is nu beschikbaar in de VS"
+title_fr: "Un nouveau casque pour traiter la dépression est désormais disponible aux États-Unis"
+date: 2026-09-15T22:03:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.wired.com/story/flow-neuroscience-headset-help-depression-available-in-us/"
+source_name: "Wired"
+topic: "Health"
+tags: ["Health","Science","Technology"]
+emoji: "🧠"
+summary: "So, Flow Neuroscience - a Swedish company - has just gotten FDA approval to sell a wearable headset that treats depression right from home. The device stimulates the left frontal lobe of your brain for 30 minutes a day using gentle electrical pulses, targeting the same area that traditional magnetic treatments work on but without needing clinic visits. In trials, 45 percent of users saw their depression symptoms disappear after 10 weeks, compared to just 22 percent in a placebo group - and it works whether you're on antidepressants or not. The catch? It costs $2,200 for 10 weeks upfront, then $325 monthly, though the company is pushing insurers to cover it, and over 65,000 people have already used it successfully across Europe since 2019."
+summary_nl: "Flow Neuroscience, een Zweeds bedrijf, heeft zojuist FDA-goedkeuring gekregen om een draagbaar hoofdtelefoon-apparaat te verkopen dat depressie vanuit huis behandelt. Het apparaat stimuleert gedurende 30 minuten per dag uw linker voorhoofdshersengebied met zachte elektrische pulsen, gericht op hetzelfde gebied als traditionele magnetische behandelingen maar zonder kliniekbezoeken. In onderzoeken zag 45 procent van de gebruikers hun depressiesymptomen verdwijnen na tien weken, vergeleken met slechts 22 procent in een placebogroep - en het werkt of u nu antidepressiva gebruikt of niet. Het minpunt? Het kost $2.200 voor tien weken vooruitbetaald, daarna $325 per maand, hoewel het bedrijf verzekeraars probeert te overtuigen het te vergoeden, en meer dan 65.000 mensen gebruiken het al met succes in Europa sinds 2019."
+summary_fr: "Flow Neuroscience, une entreprise suédoise, vient d'obtenir l'approbation de la FDA pour vendre un casque portable qui traite la dépression à domicile. L'appareil stimule votre lobe frontal gauche pendant 30 minutes par jour à l'aide de légers impulsions électriques, ciblant la même zone que les traitements magnétiques traditionnels mais sans avoir besoin de visites à la clinique. Lors d'essais cliniques, 45 pour cent des utilisateurs ont vu leurs symptômes de dépression disparaître après dix semaines, comparé à seulement 22 pour cent dans un groupe placebo - et cela fonctionne que vous preniez des antidépresseurs ou non. Le hic? Cela coûte 2 200 dollars pour dix semaines à l'avance, puis 325 dollars par mois, bien que l'entreprise incite les assureurs à le couvrir, et plus de 65 000 personnes l'utilisent déjà avec succès en Europe depuis 2019."
+image_url: "https://media.wired.com/photos/6aa8633c181b95a3e876fad6/191:100/w_1280,c_limit/New-Headset-to-Cure-Depression-Science-FLOW29472(2).jpg"
+layout: post.njk
+---
+
+So, Flow Neuroscience - a Swedish company - has just gotten FDA approval to sell a wearable headset that treats depression right from home. The device stimulates the left frontal lobe of your brain for 30 minutes a day using gentle electrical pulses, targeting the same area that traditional magnetic treatments work on but without needing clinic visits. In trials, 45 percent of users saw their depression symptoms disappear after 10 weeks, compared to just 22 percent in a placebo group - and it works whether you're on antidepressants or not. The catch? It costs $2,200 for 10 weeks upfront, then $325 monthly, though the company is pushing insurers to cover it, and over 65,000 people have already used it successfully across Europe since 2019.
