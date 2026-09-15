@@ -1,0 +1,20 @@
+---
+title: "Can humans live forever?"
+title_nl: "Kunnen mensen voor altijd leven?"
+title_fr: "Les humains peuvent-ils vivre éternellement?"
+date: 2026-09-15T18:06:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.scientificamerican.com/article/can-humans-live-forever/"
+source_name: "Scientific American"
+topic: "Health"
+tags: ["Health","Science","Technology"]
+emoji: "⏳"
+summary: "So here's the thing - humans are probably unique in knowing we'll die someday, and that awareness has shaped everything from our religions to our philosophies. We've made incredible progress against mortality through medicine and better living conditions, but now we're facing an aging society where fewer young people support more elderly ones. Tech billionaires are now funding ambitious research not just to slow aging, but to defeat it entirely - which raises a fascinating question: is death biologically inevitable, or could we theoretically live forever? The diversity of lifespans in nature suggests aging isn't fixed in stone; mayflies live days while Greenland sharks live centuries, hinting that our lifespans might be more malleable than we think."
+summary_nl: "Dus hier is het ding - mensen zijn waarschijnlijk uniek omdat we weten dat we ooit zullen sterven, en dat besef heeft alles vormgegeven van onze religies tot onze filosofieën. We hebben ongelooflijke vooruitgang geboekt tegen sterfte door geneeskunde en betere leefomstandigheden, maar nu worden we geconfronteerd met een vergrijzende samenleving waar steeds minder jongeren meer ouderen ondersteunen. Tech-miljardairs financieren nu ambitieus onderzoek niet alleen om veroudering te vertragen, maar om het helemaal te overwinnen - wat een fascinerende vraag opwerpt: is dood biologisch onvermijdelijk, of zouden we theoretisch voor altijd kunnen leven? De diversiteit van levensduren in de natuur suggereert dat veroudering niet in steen gebeiteld is; eendagsvliegen leven maar enkele dagen terwijl Groenlandse haaien eeuwen leven, wat aangeeft dat onze levensduren flexibeler kunnen zijn dan we denken."
+summary_fr: "Donc voilà le truc - les humains sont probablement uniques en sachant que nous mourrons un jour, et cette conscience a façonné tout, de nos religions à nos philosophies. Nous avons fait des progrès incroyables contre la mortalité grâce à la médecine et aux meilleures conditions de vie, mais maintenant nous sommes confrontés à une société vieillissante où moins de jeunes soutiennent plus de personnes âgées. Les milliardaires de la technologie financent maintenant des recherches ambitieuses non seulement pour ralentir le vieillissement, mais pour le vaincre entièrement - ce qui soulève une question fascinante : la mort est-elle biologiquement inévitable, ou pourrions-nous théoriquement vivre éternellement? La diversité des durées de vie dans la nature suggère que le vieillissement n'est pas figé dans le marbre; les éphémères vivent quelques jours tandis que les requins du Groenland vivent des siècles, ce qui indique que nos durées de vie pourraient être plus flexibles que nous ne le pensons."
+image_url: "https://static.scientificamerican.com/dam/asset/38030320-b557-4937-987c-051b22719571/saw1026Rama01.jpg?m=1789396133.092&w=1200"
+layout: post.njk
+---
+
+So here's the thing - humans are probably unique in knowing we'll die someday, and that awareness has shaped everything from our religions to our philosophies. We've made incredible progress against mortality through medicine and better living conditions, but now we're facing an aging society where fewer young people support more elderly ones. Tech billionaires are now funding ambitious research not just to slow aging, but to defeat it entirely - which raises a fascinating question: is death biologically inevitable, or could we theoretically live forever? The diversity of lifespans in nature suggests aging isn't fixed in stone; mayflies live days while Greenland sharks live centuries, hinting that our lifespans might be more malleable than we think.
