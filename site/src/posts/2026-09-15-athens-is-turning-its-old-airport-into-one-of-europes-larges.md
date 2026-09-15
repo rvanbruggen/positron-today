@@ -1,0 +1,20 @@
+---
+title: "Athens is turning its old airport into one of Europe's largest parks"
+title_nl: "Athene transformeert zijn oude luchthaven in een van Europa's grootste parken"
+title_fr: "Athènes transforme son ancien aéroport en l'un des plus grands parcs d'Europe"
+date: 2026-09-15T12:34:00
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://www.goodnewsnetwork.org/athens-is-turning-its-old-airport-into-one-of-europes-largest-parks/"
+source_name: "Good News Network"
+topic: "Environment"
+tags: ["Environment","Nature","Society"]
+emoji: "🌳"
+summary: "Athens is reclaiming a former airport site to create the Ellinikon Park - Europe's second-largest city park spanning 400 acres along the coast. The ambitious project is specifically designed to combat the city's brutal summer heat, with every tree, plant, and pathway carefully positioned to keep temperatures up to 7.2°F cooler than surrounding concrete areas. So here's the thing - they're planting 30,000 trees and 3 million smaller plants across more than 520 species, with smart irrigation systems and water features to maintain moisture and cool air year-round. Given that Athens once held Europe's highest temperature record at 48°C, this green refuge couldn't come at a better time for residents of one of the continent's hottest cities."
+summary_nl: "Athene hergebruikt een voormalige luchthaventerrein om het Ellinikon Park te creëren - Europa's tweede grootste stadspark met een oppervlakte van 400 hectare langs de kust. Het ambitieuze project is speciaal ontworpen om de verschroeiende zomers van de stad tegen te gaan, waarbij elke boom, plant en pad zorgvuldig is geplaatst om temperaturen tot 7,2°F lager te houden dan de omringende betonoppervlakken. En hier is het interessante - ze planten 30.000 bomen en 3 miljoen kleinere planten over meer dan 520 soorten, met slim irrigatiesystemen en waterkenmerken die vocht en koele lucht behouden. Gezien het feit dat Athene ooit het record van Europa's hoogste temperatuur had met 48°C, kan deze groene toevlucht niet op een beter moment voor bewoners komen."
+summary_fr: "Athènes transforme un ancien site aéroportuaire pour créer le Parc Ellinikon - le deuxième plus grand parc urbain d'Europe s'étendant sur 400 acres le long de la côte. Le projet ambitieux est spécifiquement conçu pour combattre les étés brutaux de la ville, avec chaque arbre, plante et chemin soigneusement positionnés pour maintenir les températures jusqu'à 7,2°F plus frais que les zones de béton environnantes. Voilà - ils plantent 30 000 arbres et 3 millions de petites plantes sur plus de 520 espèces, avec des systèmes d'irrigation intelligents et des éléments aquatiques pour maintenir l'humidité et l'air frais toute l'année. Étant donné qu'Athènes a autrefois établi le record européen de la température la plus élevée à 48°C, ce refuge vert ne pourrait pas arriver à un meilleur moment pour les résidents de l'une des villes les plus chaudes du continent."
+image_url: "https://www.goodnewsnetwork.org/wp-content/uploads/2026/09/The-Ellinikon-design-concept-for-Athens-airport-rehab-The-Ellinikon.jpg"
+layout: post.njk
+---
+
+Athens is reclaiming a former airport site to create the Ellinikon Park - Europe's second-largest city park spanning 400 acres along the coast. The ambitious project is specifically designed to combat the city's brutal summer heat, with every tree, plant, and pathway carefully positioned to keep temperatures up to 7.2°F cooler than surrounding concrete areas. So here's the thing - they're planting 30,000 trees and 3 million smaller plants across more than 520 species, with smart irrigation systems and water features to maintain moisture and cool air year-round. Given that Athens once held Europe's highest temperature record at 48°C, this green refuge couldn't come at a better time for residents of one of the continent's hottest cities.
