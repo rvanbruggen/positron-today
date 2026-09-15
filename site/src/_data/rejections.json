@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T20:46:08.207Z",
-  "total_rejected": 147157,
+  "exported_at": "2026-09-15T20:46:22.683Z",
+  "total_rejected": 147158,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2694
+      "count": 2695
     },
     {
       "category": "divisive-racism",
@@ -106,8 +106,8 @@
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 5844,
-      "total": 5871
+      "negative": 5845,
+      "total": 5872
     },
     {
       "source": "Le Monde",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Sepideh Qolian: „Weder das Leben noch der Tod hat im heutigen Iran noch einen Wert“",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.faz.net/aktuell/politik/ausland/wie-die-aktivistin-sepideh-qolian-gegen-irans-regime-kaempft-201225682.html",
+      "date": "2026-09-15 22:46",
+      "positivity_score": null
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "Dementerende Tineke en Jeannine veilen kunst in Rubenshuis: “Morgen ben ik misschien al vergeten dat ik dit heb gemaakt”",
@@ -9391,15 +9400,6 @@
       "url": "https://www.knack.be/sport/prediction-markets-sport-vs-europa/",
       "date": "2026-09-15 06:16",
       "positivity_score": 3
-    },
-    {
-      "source": "The Verge",
-      "title": "Valve is still figuring out ‘how and when’ to do Steam Deck 2",
-      "reason": "This is a routine tech product update and speculation about future hardware; it lacks substantive breakthrough or civilisation-scale significance.",
-      "category": "soft-news-filler",
-      "url": "https://www.theverge.com/games/995256/valve-steam-deck-2-how-and-when",
-      "date": "2026-09-15 06:16",
-      "positivity_score": 4
     }
   ]
 }
