@@ -1,0 +1,19 @@
+---
+title: "Make AI traceable before it shapes global climate assessments"
+title_nl: "Maak AI traceerbaar voordat het mondiale klimaatbeoordelingen bepaalt"
+title_fr: "Rendez l'IA traçable avant qu'elle ne façonne les évaluations climatiques mondiales"
+date: 2026-09-15T23:02:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.nature.com/articles/d41586-026-02905-7"
+source_name: "Nature"
+topic: "Environment"
+tags: ["Environment","Science","Technology"]
+emoji: "🔍"
+summary: "So here's the thing - when the IPCC starts using AI tools for literature reviews and processing feedback, we need to understand exactly how those systems influence what evidence scientists actually see. I find this genuinely important because AI doesn't just help write reports - it can actually change which studies get noticed, how findings get grouped together, and what signals reach the researchers' attention in the first place. Now, that's not necessarily bad, but it does mean we need transparency and traceability built in from the very beginning of the process. The challenge is that without proper disclosure of how AI shaped the upstream work, we risk having global climate assessments that look solid but might be subtly shaped by tools nobody fully understands."
+summary_nl: "Dus hier is het punt - wanneer het IPCC AI-tools gaat gebruiken voor literatuuronderzoeken en het verwerken van feedback, moeten we precies begrijpen hoe die systemen beïnvloeden welk bewijs wetenschappers werkelijk zien. Ik vind dit werkelijk belangrijk omdat AI niet alleen helpt bij het schrijven van rapporten - het kan werkelijk veranderen welke studies opgemerkt worden, hoe bevindingen worden gegroepeerd, en welke signalen de aandacht van onderzoekers bereiken. Dat hoeft niet slecht te zijn, maar het betekent wel dat we transparantie en traceerbaarheid vanaf het allereerste begin ingebouwd moeten hebben. De uitdaging is dat zonder goede openbaarmaking van hoe AI het eerdere werk vormgaf, we het risico lopen dat mondiale klimaatbeoordelingen er solide uitzien maar subtiel vormgegeven zijn door gereedschappen die niemand volledig begrijpt."
+summary_fr: "Alors voilà le truc - quand le GIEC commence à utiliser des outils d'IA pour les revues de littérature et le traitement des commentaires, nous devons comprendre exactement comment ces systèmes influencent les preuves que les scientifiques voient réellement. Je trouve cela vraiment important parce que l'IA ne se contente pas d'aider à rédiger des rapports - elle peut réellement changer quelles études sont remarquées, comment les résultats sont regroupés, et quels signaux parviennent à l'attention des chercheurs en premier lieu. Maintenant, ce n'est pas nécessairement mauvais, mais cela signifie que nous avons besoin de transparence et de traçabilité dès le tout début du processus. Le défi est que sans divulgation appropriée de la façon dont l'IA a façonné le travail en amont, nous risquons d'avoir des évaluations climatiques mondiales qui paraissent solides mais pourraient être subtilement façonnées par des outils que personne ne comprend pleinement."
+layout: post.njk
+---
+
+So here's the thing - when the IPCC starts using AI tools for literature reviews and processing feedback, we need to understand exactly how those systems influence what evidence scientists actually see. I find this genuinely important because AI doesn't just help write reports - it can actually change which studies get noticed, how findings get grouped together, and what signals reach the researchers' attention in the first place. Now, that's not necessarily bad, but it does mean we need transparency and traceability built in from the very beginning of the process. The challenge is that without proper disclosure of how AI shaped the upstream work, we risk having global climate assessments that look solid but might be subtly shaped by tools nobody fully understands.
