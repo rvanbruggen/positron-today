@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T20:43:47.027Z",
-  "total_rejected": 147152,
+  "exported_at": "2026-09-15T20:45:07.338Z",
+  "total_rejected": 147153,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2689
+      "count": 2690
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 284,
-      "total": 447
+      "negative": 285,
+      "total": 448
     },
     {
       "source": "ScienceDaily",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "Which million-dollar math problem could AI solve next?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/which-million-dollar-math-problem-could-ai-solve-next/",
+      "date": "2026-09-15 22:45",
+      "positivity_score": null
+    },
     {
       "source": "Popular Science",
       "title": "68% of physicists don’t think the time started at the big bang",
@@ -9391,15 +9400,6 @@
       "url": "https://www.standaard.be/buitenland/hooggerechtshof-blokkeert-trumps-plannen-om-stemmen-per-post-te-beperken/35131945.html",
       "date": "2026-09-15 06:15",
       "positivity_score": 2
-    },
-    {
-      "source": "NRC",
-      "title": "Het lege koffertje van minister Heinen ",
-      "reason": "This is political news about a Dutch government budget announcement and minister profile, which falls under politics.",
-      "category": "political-conflict",
-      "url": "https://www.nrc.nl/nieuws/2026/09/15/het-lege-koffertje-van-minister-heinen-a4936640",
-      "date": "2026-09-15 06:15",
-      "positivity_score": 1
     }
   ]
 }
