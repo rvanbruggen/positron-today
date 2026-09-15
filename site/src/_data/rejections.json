@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T06:18:43.181Z",
-  "total_rejected": 146267,
+  "exported_at": "2026-09-15T06:21:15.894Z",
+  "total_rejected": 146268,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2657
+      "count": 2658
     },
     {
       "category": "divisive-racism",
@@ -186,8 +186,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 2479,
-      "total": 2530
+      "negative": 2480,
+      "total": 2531
     },
     {
       "source": "Euronews",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Canada’s 2026 census participation was among highest ever, says StatCan",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12058598/census-2026-participation-rate/",
+      "date": "2026-09-15 08:21",
+      "positivity_score": null
+    },
     {
       "source": "De Standaard Binnenland",
       "title": "De jakhals is op weg naar hier",
@@ -9391,15 +9400,6 @@
       "url": "https://www.lalibre.be/sports/tennis/2026/09/14/scene-surrealiste-a-lus-open-alexander-zverev-ne-se-rend-pas-compte-quil-vient-de-remporter-la-finale-video-Q54SHNAJC5CG7JQAFNCTHI5GLQ/",
       "date": "2026-09-14 10:29",
       "positivity_score": 2
-    },
-    {
-      "source": "La Libre Belgique",
-      "title": "L'alternative de l'Inde à ChatGPT : “C’est une capacité à avoir, c’est comme l’armement\"",
-      "reason": "This is corporate PR disguised as geopolitical news. The article centers on a startup's funding round and valuation milestone, with the 'autonomy in AI' framing serving as marketing narrative rather than substantive reporting. The mention of 'questionable practices' signals underlying concerns that undermine any positive positioning.",
-      "category": "soft-news-filler",
-      "url": "https://www.lalibre.be/economie/entreprises-startup/2026/09/14/linde-veut-son-propre-chatgpt-cest-une-capacite-a-avoir-cest-comme-larmement-JUCJ3UMH7FEYXEO4IFUSHUI5ZA/",
-      "date": "2026-09-14 10:29",
-      "positivity_score": 4
     }
   ]
 }
