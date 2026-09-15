@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-15T20:45:30.599Z",
-  "total_rejected": 147155,
+  "exported_at": "2026-09-15T20:45:49.774Z",
+  "total_rejected": 147156,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2692
+      "count": 2693
     },
     {
       "category": "divisive-racism",
@@ -81,8 +81,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 8525,
-      "total": 8683
+      "negative": 8526,
+      "total": 8684
     },
     {
       "source": "VRT Nws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Resort zdrowia chce wprowadzić „poradę infekcyjną”. Pielęgniarki przepiszą lek na grypę",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rp.pl/ochrona-zdrowia/art45144921-resort-zdrowia-chce-wprowadzic-porade-infekcyjna-pielegniarki-przepisza-lek-na-grype",
+      "date": "2026-09-15 22:45",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Skarbówka wyręczy przedsiębiorcę. Ministerstwo chce zautomatyzować rozliczenia VAT",
@@ -9389,15 +9398,6 @@
       "reason": "This article reports on corporate behavior and potential anti-competitive practices in AI; it documents concerns and criticism, not positive progress.",
       "category": "tech-ai-concern",
       "url": "https://www.theverge.com/ai-artificial-intelligence/995186/is-big-techs-ai-slowdown-a-safety-pact-or-a-cartel",
-      "date": "2026-09-15 06:16",
-      "positivity_score": 2
-    },
-    {
-      "source": "The Verge",
-      "title": "Apple Home’s new security camera features cost as much as $60 a month",
-      "reason": "This is corporate PR about new paid features for Apple products; it is a product-launch announcement with pricing details.",
-      "category": "soft-news-filler",
-      "url": "https://www.theverge.com/tech/994949/apple-intelligence-apple-home-icloud-plus-cost-subscription",
       "date": "2026-09-15 06:16",
       "positivity_score": 2
     }
