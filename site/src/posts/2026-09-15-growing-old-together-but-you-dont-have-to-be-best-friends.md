@@ -1,0 +1,20 @@
+---
+title: "Growing old together - but you don't have to be best friends"
+title_nl: "Samen ouder worden - maar je hoeft geen beste vriendinnen te zijn"
+title_fr: "Vieillir ensemble - mais vous n'avez pas besoin d'être meilleures amies"
+date: 2026-09-15T08:30:20
+source_pub_date: 2026-09-12
+fetched_date: 2026-09-15
+source_url: "https://www.nzz.ch/gesellschaft/einblick-in-eine-alters-wg-mehr-als-nur-ein-wohnmodell-ld.10010500"
+source_name: "Neue Zürcher Zeitung"
+topic: "Family life"
+tags: ["Family life","Health","Society"]
+emoji: "🏡"
+summary: "Five women in Romanshorn are proving that shared living can be a powerful way to age on your own terms - and they're doing it without pretending to be lifelong friends. What fascinates me about this project is how honestly they've tackled the big questions: how do you want to live as you get older, who do you want around you, and what really matters with the time you have left? They've even created a folder documenting each person's wishes for end-of-life care, turning conversations about death into something natural and even curious rather than taboo. So instead of the isolation that affects so many older people living alone, these five have built something practical and deeply human - a genuine community where being housemates is the starting point, and maybe friendship grows from there."
+summary_nl: "Vijf vrouwen in Romanshorn bewijzen dat samen wonen een krachtige manier kan zijn om op je eigen voorwaarden ouder te worden - en ze doen het zonder te doen alsof ze levenslange vriendinnen zijn. Wat me fascineert aan dit project is hoe eerlijk ze de grote vragen hebben aangepakt: hoe wil je leven als je ouder wordt, met wie wil je dat delen, en wat is echt belangrijk met de tijd die je nog hebt? Ze hebben zelfs een map gemaakt waarin iedereen vastlegt wat ze willen voor hun levenseinde, wat gesprekken over de dood iets natuurlijks maakt in plaats van iets taboes. In plaats van de eenzaamheid die zoveel ouderen alleen thuis ervaren, hebben deze vijf iets praktisch en diep menselijks opgebouwd - een echte gemeenschap waar huisgenoten het startpunt is, en misschien groeit daar vriendschap uit voort."
+summary_fr: "Cinq femmes à Romanshorn prouvent que la vie commune peut être un moyen puissant de vieillir selon ses propres conditions - et elles le font sans prétendre être des amies de toute une vie. Ce qui me fascine dans ce projet, c'est l'honnêteté avec laquelle elles ont abordé les grandes questions : comment veux-tu vivre en vieillissant, avec qui veux-tu le partager, et qu'est-ce qui compte vraiment avec le temps qu'il te reste? Elles ont même créé un classeur documentant les souhaits de chacun concernant les soins de fin de vie, transformant les conversations sur la mort en quelque chose de naturel et même de curieux plutôt que tabou. Ainsi, au lieu de l'isolement qui affecte tant de personnes âgées vivant seules, ces cinq femmes ont construit quelque chose de pratique et profondément humain - une véritable communauté où être colocataires est le point de départ, et peut-être que l'amitié en découle."
+image_url: "https://img-msp-prod.nzz.ch/2026/06/25/2434dfa8-0ce3-485a-ab9b-17085029ebe0.jpg?width=1200&amp;height=675&amp;fit=bounds&amp;quality=75&amp;auto=webp&amp;crop=4128,2322,x0,y215&amp;wmark=nzz"
+layout: post.njk
+---
+
+Five women in Romanshorn are proving that shared living can be a powerful way to age on your own terms - and they're doing it without pretending to be lifelong friends. What fascinates me about this project is how honestly they've tackled the big questions: how do you want to live as you get older, who do you want around you, and what really matters with the time you have left? They've even created a folder documenting each person's wishes for end-of-life care, turning conversations about death into something natural and even curious rather than taboo. So instead of the isolation that affects so many older people living alone, these five have built something practical and deeply human - a genuine community where being housemates is the starting point, and maybe friendship grows from there.
