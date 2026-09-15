@@ -1,0 +1,20 @@
+---
+title: "How your phone can give India's small artisans a marketplace beyond their towns"
+title_nl: "Hoe je telefoon Indische ambachtslieden kan helpen hun producten ver buiten hun dorp te verkopen"
+title_fr: "Comment votre téléphone peut donner aux petits artisans indiens un marché au-delà de leurs villes"
+date: 2026-09-15T17:06:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://thebetterindia.com/technology/digital-marketplaces-indian-small-sellers-pabiben-rabari-khurja-pottery-technology-india-12534277"
+source_name: "The Better India"
+topic: "Arts"
+tags: ["Arts","Economy","Technology"]
+emoji: "📱"
+summary: "So here's the thing - technology has completely transformed how Indian artisans reach customers, stretching the traditional bazaar far beyond physical town limits. Take Pabiben Rabari from Kutch, who took a traditional embroidery technique and turned it into the Pabi Bag, launching an online platform in 2015 that now supports over 300 women artisans. And it's not just individual stories - entire towns like Khurja, famous for pottery for 600 years, have discovered that customers no longer need to travel there to buy their ceramics and tableware. What's beautiful about this shift is that the artisan no longer waits for customers to arrive - instead, someone thousands of kilometres away can discover their work online, pay digitally, and have it delivered home."
+summary_nl: "En hier is het interessante - technologie heeft volledig veranderd hoe Indische ambachtslieden klanten bereiken, waardoor de traditionele bazaar ver buiten de stadsgrenzen reikt. Neem Pabiben Rabari uit Kutch, die een traditionele bordeurstechniek transformeerde tot de Pabi Bag en in 2015 een online platform lanceerde dat nu meer dan 300 vrouwen ambachtslieden ondersteunt. En het is niet alleen een individuaal verhaal - hele steden zoals Khurja, beroemd om zijn aardewerk gedurende 600 jaar, hebben ontdekt dat klanten niet meer hoeven te reizen om hun keramiek en tafelgerei te kopen. Wat mooi is aan deze verschuiving is dat de ambachtsman niet meer wacht tot klanten arriveren - in plaats daarvan kan iemand duizenden kilometer verderop hun werk online ontdekken, digitaal betalen en het thuis laten bezorgen."
+summary_fr: "Voilà ce qui est intéressant - la technologie a complètement transformé la façon dont les artisans indiens rejoignent les clients, étendant le bazar traditionnel bien au-delà des limites des villes. Prenez Pabiben Rabari de Kutch, qui a transformé une technique de broderie traditionnelle en le Pabi Bag et a lancé une plateforme en ligne en 2015 qui soutient maintenant plus de 300 artisanes. Et ce n'est pas seulement une histoire individuelle - des villes entières comme Khurja, célèbre pour sa poterie depuis 600 ans, ont découvert que les clients n'ont plus besoin de s'y rendre pour acheter leur céramique et leur vaisselle. Ce qui est magnifique dans ce changement, c'est que l'artisan n'attend plus l'arrivée des clients - au lieu de cela, quelqu'un à des milliers de kilomètres peut découvrir son travail en ligne, payer numériquement et le faire livrer à domicile."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/2026/09/15/online-shopping-2026-09-15-13-08-51.png"
+layout: post.njk
+---
+
+So here's the thing - technology has completely transformed how Indian artisans reach customers, stretching the traditional bazaar far beyond physical town limits. Take Pabiben Rabari from Kutch, who took a traditional embroidery technique and turned it into the Pabi Bag, launching an online platform in 2015 that now supports over 300 women artisans. And it's not just individual stories - entire towns like Khurja, famous for pottery for 600 years, have discovered that customers no longer need to travel there to buy their ceramics and tableware. What's beautiful about this shift is that the artisan no longer waits for customers to arrive - instead, someone thousands of kilometres away can discover their work online, pay digitally, and have it delivered home.
