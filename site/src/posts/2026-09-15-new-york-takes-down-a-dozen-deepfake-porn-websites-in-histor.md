@@ -1,0 +1,20 @@
+---
+title: "New York takes down a dozen deepfake porn websites in historic enforcement action"
+title_nl: "New York sluit een dozijn deepfake-pornosites in historische handhavingsactie"
+title_fr: "New York ferme une douzaine de sites pornographiques deepfake dans une action historique"
+date: 2026-09-15T11:32:00
+source_pub_date: 2026-09-14
+fetched_date: 2026-09-14
+source_url: "https://www.wired.com/story/new-york-seizes-a-dozen-celebrity-deepfake-websites/"
+source_name: "Wired"
+topic: "Society"
+tags: ["Society","Technology"]
+emoji: "🛡️"
+summary: "So here's something really significant - New York officials have seized more than a dozen websites that were hosting nonconsensual deepfake pornography, marking what's likely the largest takedown of its kind to date. Around 1,200 people - overwhelmingly women including celebrities, politicians, and activists - had their faces manipulated into explicit sexual videos without consent. The Manhattan District Attorney's Office says these violations cause immense emotional and mental harm to victims, and now they're calling on affected people to come forward. What's encouraging here is that this shows meaningful enforcement is actually possible, even as AI technology keeps improving and making these deepfakes more realistic and harder to spot."
+summary_nl: "Dus dit is echt significant - autoriteiten in New York hebben meer dan een dozijn websites gesloten die niet-consentiële deepfake-porno hosttten, waarschijnlijk de grootste actie tot nu toe. Ongeveer 1.200 mensen - overwegend vrouwen, waaronder beroemdheden, politici en activisten - hadden hun gezichten zonder toestemming in expliciete seksuele video's gemanipuleerd. Het Openbaar Ministerie van Manhattan zegt dat deze schendingen immense emotionele en mentale schade veroorzaken, en roept nu slachtoffers op zich aan te melden. Wat bemoedigend is, is dat dit aantoont dat effectieve handhaving echt mogelijk is, ook terwijl AI-technologie blijft verbeteren en deze deepfakes realistischer en moeilijker te detecteren maakt."
+summary_fr: "Donc c'est vraiment significatif - les autorités de New York ont fermé plus d'une douzaine de sites hébergeant de la pornographie deepfake non consentie, ce qui marque probablement la plus grande action d'application de ce type à ce jour. Environ 1.200 personnes - en grande majorité des femmes, dont des célébrités, des politiciens et des activistes - ont eu leurs visages manipulés dans des vidéos sexuelles explicites sans consentement. Le Bureau du procureur du district de Manhattan affirme que ces violations causent des dommages émotionnels et mentaux immenses, et appelle maintenant les victimes à se manifester. Ce qui est encourageant, c'est que cela montre qu'une application efficace de la loi est vraiment possible, même si la technologie IA s'améliore constamment et rend ces deepfakes plus réalistes et plus difficiles à détecter."
+image_url: "https://media.wired.com/photos/6aa81a44054ce52476eda4d7/191:100/w_1280,c_limit/Security_New%20York%20Seizes%20More%20Than%20a%20Dozen%20Celebrity%20Deepfake%20Websites_v1.jpg"
+layout: post.njk
+---
+
+So here's something really significant - New York officials have seized more than a dozen websites that were hosting nonconsensual deepfake pornography, marking what's likely the largest takedown of its kind to date. Around 1,200 people - overwhelmingly women including celebrities, politicians, and activists - had their faces manipulated into explicit sexual videos without consent. The Manhattan District Attorney's Office says these violations cause immense emotional and mental harm to victims, and now they're calling on affected people to come forward. What's encouraging here is that this shows meaningful enforcement is actually possible, even as AI technology keeps improving and making these deepfakes more realistic and harder to spot.
