@@ -1,0 +1,20 @@
+---
+title: "SpaceX prepares for historic first orbital flight of Starship megarodcket"
+title_nl: "SpaceX bereidt zich voor op historische eerste orbitale vlucht van Starship megarat"
+title_fr: "SpaceX se prépare pour le premier vol orbital historique de sa mégafusée Starship"
+date: 2026-09-16T04:20:57
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.lalibre.be/economie/entreprises-startup/2026/09/15/spacex-sapprete-a-mener-un-premier-vol-orbital-de-sa-megafusee-starship-VI2OG2O4CBCPNIBDBF3GL3NWKA/"
+source_name: "La Libre Belgique"
+topic: "Economy"
+tags: ["Economy","Science","Technology"]
+emoji: "🚀"
+summary: "SpaceX is gearing up for a major milestone - the first orbital flight of its Starship megarodcket, which could launch within days from Texas. This 14th test flight marks a crucial shift from previous suborbital attempts, and the company will also deploy 26 new-generation Starlink satellites during the mission. Unlike competitors, SpaceX embraces rapid prototyping with multiple test vehicles, even accepting spectacular explosions as part of the learning process. The path ahead still requires mastering orbital refueling in space and spacecraft catch techniques before this fully reusable rocket can handle commercial missions or journeys to the Moon and Mars."
+summary_nl: "SpaceX bereidt zich voor op een groot moment - de eerste orbitale vlucht van zijn gigantische Starship-raket, die in de komende dagen vanuit Texas zou kunnen opstijgen. Deze 14de testvlucht markeert een cruciaal verschil met eerdere suborbitalepogingen, en het bedrijf zal ook 26 satellietstelletjes van nieuwe generatie Starlink implementeren tijdens de missie. In tegenstelling tot concurrenten omhelst SpaceX snelle prototyping met meerdere testvoetuigen, waarbij spectaculaire explosies als leermoment worden aanvaard. Het pad naar voren vereist nog steeds het beheersen van orbitale brandstofbevoorrading in de ruimte en technieken voor het opvangen van ruimtevaartuigen voordat deze volledig herbruikbare raket commerciële missies of reizen naar de Maan en Mars kan uitvoeren."
+summary_fr: "SpaceX se prépare pour un moment historique - le premier vol orbital de sa mégafusée Starship, qui pourrait décoller dans les prochains jours depuis le Texas. Ce 14e vol d'essai marque un tournant crucial par rapport aux tentatives suborbitalés précédentes, et l'entreprise déploiera également 26 satellites Starlink de nouvelle génération lors de la mission. Contrairement à ses concurrents, SpaceX privilégie le prototypage rapide avec plusieurs véhicules d'essai, acceptant même les explosions spectaculaires comme partie intégrante du processus d'apprentissage. La route à suivre nécessite encore la maîtrise du ravitaillement en carburant en orbite et des techniques de capture de vaisseau spatial avant que cette fusée entièrement réutilisable ne puisse assurer des missions commerciales ou des voyages vers la Lune et Mars."
+image_url: "https://www.lalibre.be/resizer/v2/YAWI6HFJ2FHOTCGXOKZMY6Z7RE.jpg?auth=84abc2c5d1c96b58ca44949204a3f03f6c6de055d9188d859510b5f1a94ff803&width=1200&height=630&quality=85&focal=2000%2C1505"
+layout: post.njk
+---
+
+SpaceX is gearing up for a major milestone - the first orbital flight of its Starship megarodcket, which could launch within days from Texas. This 14th test flight marks a crucial shift from previous suborbital attempts, and the company will also deploy 26 new-generation Starlink satellites during the mission. Unlike competitors, SpaceX embraces rapid prototyping with multiple test vehicles, even accepting spectacular explosions as part of the learning process. The path ahead still requires mastering orbital refueling in space and spacecraft catch techniques before this fully reusable rocket can handle commercial missions or journeys to the Moon and Mars.
