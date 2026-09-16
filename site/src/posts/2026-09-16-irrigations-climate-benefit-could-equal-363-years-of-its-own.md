@@ -1,0 +1,20 @@
+---
+title: "Irrigation's climate benefit could equal 363 years of its own emissions"
+title_nl: "Het klimaatvoordeel van irrigatie zou gelijk kunnen staan aan 363 jaar eigen emissies"
+title_fr: "L'avantage climatique de l'irrigation pourrait égaler 363 ans de ses propres émissions"
+date: 2026-09-16T19:53:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.sciencedaily.com/releases/2026/09/260915232119.htm"
+source_name: "ScienceDaily"
+topic: "Environment"
+tags: ["Environment","Food","Science"]
+emoji: "🌾"
+summary: "New research from Colorado State University reveals something really encouraging - irrigating U.S. crops actually delivers a surprising climate win by letting farmers grow more food without clearing additional natural land. The key insight is that if we suddenly stopped irrigating, we'd need to convert vast new areas into farmland to replace lost production, and those emissions would be massive - 363 times larger than what irrigation currently produces. So when you do the math, the greenhouse gases we avoid by not converting that extra land amounts to 363 years' worth of today's irrigation emissions. And here's the thing - we can make this even better by switching irrigation pumps from fossil fuels to electric power as our energy grid gets cleaner."
+summary_nl: "Nieuw onderzoek van Colorado State University onthult iets heel bemoedigends - irrigatie van Amerikaanse gewassen levert eigenlijk een verrassend klimaatvoordeel op door boeren meer voedsel te laten produceren zonder extra natuurlijk land vrij te maken. Het cruciale inzicht is dat we, als we irrigatie plotseling zouden stopzetten, enorm veel nieuw land moeten omzetten in landbouw om de verloren productie te compenseren, en die emissies zouden veel groter zijn - 363 keer groter dan wat irrigatie momenteel produceert. Als je de wiskunde uitwerkt, betekent dit dat de broeikasgassen die we besparen door die extra grond niet om te zetten gelijk staat aan 363 jaar huidige irrigatie-emissies. En hier is het interessante - we kunnen dit nog beter maken door irrigatiepompen van fossiele brandstoffen naar elektrische energie over te schakelen naarmate ons energienet schoner wordt."
+summary_fr: "De nouvelles recherches de l'Université d'État du Colorado révèlent quelque chose de vraiment encourageant - l'irrigation des cultures américaines offre en réalité un avantage climatique surprenant en permettant aux agriculteurs de produire plus de nourriture sans défricher de nouvelles terres naturelles. L'idée clé est que si nous arrêtions soudainement l'irrigation, nous devrions convertir d'énormes nouvelles zones en terres agricoles pour compenser la production perdue, et ces émissions seraient massives - 363 fois plus grandes que ce que l'irrigation produit actuellement. Donc quand on fait les calculs, les gaz à effet de serre que nous évitions en ne convertissant pas cette terre supplémentaire équivalent à 363 ans des émissions d'irrigation actuelles. Et voici l'intéressant - nous pouvons faire encore mieux en passant les pompes d'irrigation des combustibles fossiles à l'énergie électrique à mesure que notre réseau énergétique devient plus propre."
+featured: true
+layout: post.njk
+---
+
+New research from Colorado State University reveals something really encouraging - irrigating U.S. crops actually delivers a surprising climate win by letting farmers grow more food without clearing additional natural land. The key insight is that if we suddenly stopped irrigating, we'd need to convert vast new areas into farmland to replace lost production, and those emissions would be massive - 363 times larger than what irrigation currently produces. So when you do the math, the greenhouse gases we avoid by not converting that extra land amounts to 363 years' worth of today's irrigation emissions. And here's the thing - we can make this even better by switching irrigation pumps from fossil fuels to electric power as our energy grid gets cleaner.
