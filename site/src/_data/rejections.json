@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T05:39:30.804Z",
-  "total_rejected": 147324,
+  "exported_at": "2026-09-16T05:40:15.029Z",
+  "total_rejected": 147325,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2699
+      "count": 2700
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 13026,
-      "total": 13289
+      "negative": 13027,
+      "total": 13290
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Vlaanderen geeft Fluvius groen licht om uitfasering aardgasnet voor te bereiden",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/binnenland/vlaanderen-geeft-fluvius-groen-licht-om-uitfasering-aardgasnet-voor-te-bereiden~a3b06265e/",
+      "date": "2026-09-16 07:40",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Od 1 października pobyt w sanatorium będzie tańszy. Nawet 200 zł oszczędności",
@@ -9391,15 +9400,6 @@
       "url": "https://www.nrc.nl/nieuws/2026/09/15/grootschalige-treinstoring-ontregelt-treinverkeer-in-midden-en-oost-en-noord-nederland-a4936642",
       "date": "2026-09-15 10:26",
       "positivity_score": 2
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Pentagon geeft nu toch toe dat er “tekort” aan munitie is in oorlog met Iran",
-      "reason": "This is geopolitical conflict reporting about military shortages in a war scenario, not positive news.",
-      "category": "war-conflict",
-      "url": "https://www.standaard.be/buitenland/pentagon-geeft-nu-toch-toe-dat-er-tekort-aan-munitie-is-in-oorlog-met-iran/35173881.html",
-      "date": "2026-09-15 10:26",
-      "positivity_score": 1
     }
   ]
 }
