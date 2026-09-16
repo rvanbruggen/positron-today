@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:05:09.281Z",
-  "total_rejected": 147972,
+  "exported_at": "2026-09-16T18:05:48.190Z",
+  "total_rejected": 147973,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2724
+      "count": 2725
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 287,
-      "total": 453
+      "negative": 288,
+      "total": 454
     },
     {
       "source": "ScienceDaily",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "Anthropic’s AI steals mathematicians’ record for most complicated curve",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/anthropics-ai-steals-mathematicians-record-for-most-complicated-curve/",
+      "date": "2026-09-16 20:05",
+      "positivity_score": null
+    },
     {
       "source": "Le Figaro",
       "title": "Plus grande diversité, influence américaine, effets de mode : comment le choix des prénoms a évolué ces 80 dernières années",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dn.se/debatt/liberalerna-ar-sveriges-mest-framgangsrika-parti-jo-faktiskt/",
       "date": "2026-09-15 21:22",
       "positivity_score": 2
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Annica Kvint: Soptipparna fylls av fina inredningar i strid med lagen",
-      "reason": "This is a critical opinion piece about waste management and environmental law compliance; while touching on environmental issues, it is primarily a complaint about illegal dumping rather than positive news.",
-      "category": "climate-environment",
-      "url": "https://www.dn.se/kultur/annica-kvint-soptipparna-fylls-av-fina-inredningar-i-strid-med-lagen/",
-      "date": "2026-09-15 21:22",
-      "positivity_score": 3
     }
   ]
 }
