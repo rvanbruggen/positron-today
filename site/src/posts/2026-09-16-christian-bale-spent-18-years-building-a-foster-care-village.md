@@ -1,0 +1,20 @@
+---
+title: "Christian Bale spent 18 years building a foster-care village - and it finally opened"
+title_nl: "Christian Bale werkte 18 jaar aan een pleeggezinsdorp - en het is eindelijk geopend"
+title_fr: "Christian Bale a travaillé 18 ans pour construire un village d'accueil - et il vient enfin d'ouvrir"
+date: 2026-09-16T09:24:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-16
+source_url: "https://www.upworthy.com/christian-bale-worked-for-nearly-2-decades-to-open-a-foster-care-village-last-week-it-finally-happened/"
+source_name: "Upworthy"
+topic: "Family life"
+tags: ["Family life","Society"]
+emoji: "🏡"
+summary: "So here's something really moving - Christian Bale and his wife Sibi have finally realized their dream of opening 'Together California,' a foster-care village they've been working on for nearly two decades. The nonprofit just opened 12 new homes in Palmdale that can care for up to 72 kids at a time, with the core mission of keeping siblings together rather than separating them in the system. Bale explains that his vision was sparked by love for his own children, and he believes this model could become the norm if done right. With over 30,000 children in foster care across Los Angeles alone, this village represents real, tangible hope - offering kids not just homes, but stability, support, and the message that people care about their future."
+summary_nl: "Dus hier gebeurt iets echt indrukwekkends - Christian Bale en zijn vrouw Sibi hebben eindelijk hun droom verwezenlijkt met de opening van 'Together California,' een pleeggezinsdorp waaraan ze bijna twee decennia hebben gewerkt. De non-profitorganisatie heeft net 12 nieuwe huizen in Palmdale geopend die tegelijk voor maximaal 72 kinderen kunnen zorgen, met als kernmissie dat broers en zussen bij elkaar blijven in plaats van gescheiden te worden. Bale verklaart dat zijn visie werd geboren uit liefde voor zijn eigen kinderen, en hij gelooft dat dit model de standaard zou kunnen worden als het goed wordt uitgevoerd. Met meer dan 30.000 kinderen in de pleegzorg alleen al in Los Angeles, vertegenwoordigt dit dorp echte, tastbare hoop - het geeft kinderen niet alleen huizen, maar ook stabiliteit, ondersteuning en het besef dat mensen om hun toekomst geven."
+summary_fr: "Donc voilà quelque chose de vraiment émouvant - Christian Bale et sa femme Sibi ont enfin réalisé leur rêve en ouvrant 'Together California,' un village d'accueil auquel ils travaillent depuis près de deux décennies. L'organisation à but non lucratif vient d'ouvrir 12 nouvelles maisons à Palmdale qui peuvent accueillir jusqu'à 72 enfants à la fois, avec pour mission centrale de maintenir les fratries ensemble au lieu de les séparer dans le système. Bale explique que sa vision est née de l'amour qu'il porte à ses propres enfants, et il croit que ce modèle pourrait devenir la norme s'il est bien exécuté. Avec plus de 30.000 enfants en accueil à travers Los Angeles seul, ce village représente un vrai, un vrai espoir tangible - offrant aux enfants non seulement des maisons, mais aussi la stabilité, le soutien et le message que les gens se soucient de leur avenir."
+image_url: "https://www.upworthy.com/wp-content/uploads/sites/2/2026/09/christian-bale.jpg"
+layout: post.njk
+---
+
+So here's something really moving - Christian Bale and his wife Sibi have finally realized their dream of opening 'Together California,' a foster-care village they've been working on for nearly two decades. The nonprofit just opened 12 new homes in Palmdale that can care for up to 72 kids at a time, with the core mission of keeping siblings together rather than separating them in the system. Bale explains that his vision was sparked by love for his own children, and he believes this model could become the norm if done right. With over 30,000 children in foster care across Los Angeles alone, this village represents real, tangible hope - offering kids not just homes, but stability, support, and the message that people care about their future.
