@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:04:07.697Z",
-  "total_rejected": 147968,
+  "exported_at": "2026-09-16T18:04:14.205Z",
+  "total_rejected": 147969,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2720
+      "count": 2721
     },
     {
       "category": "divisive-racism",
@@ -241,8 +241,8 @@
     },
     {
       "source": "Nature",
-      "negative": 923,
-      "total": 1155
+      "negative": 924,
+      "total": 1156
     },
     {
       "source": "Popular Science",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Transplanted human brain-tissue takes root in mice without a cortex",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/d41586-026-02927-1",
+      "date": "2026-09-16 20:04",
+      "positivity_score": null
+    },
     {
       "source": "Science.org news",
       "title": "Human neurons flourish in mouse brains, offering a new view of neurodevelopmental disorders",
@@ -9389,15 +9398,6 @@
       "reason": "This is business and regulatory news about extended producer responsibility (EPR) system implementation; it is corporate and political discussion without clear positive resolution.",
       "category": "soft-news-filler",
       "url": "https://www.rp.pl/forum-ekonomiczne/art45145421-firmy-za-wdrozeniem-rop-ale-wedlug-innych-zasad",
-      "date": "2026-09-15 21:22",
-      "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Property Forum 2026. Rynek nieruchomości wchodzi w czas strategicznych decyzji",
-      "reason": "This is a corporate event announcement about a real estate industry conference; it is corporate PR and event coverage padding.",
-      "category": "soft-news-filler",
-      "url": "https://www.rp.pl/wydarzenia-gospodarcze/art45145831-property-forum-2026-rynek-nieruchomosci-wchodzi-w-czas-strategicznych-decyzji",
       "date": "2026-09-15 21:22",
       "positivity_score": 2
     }
