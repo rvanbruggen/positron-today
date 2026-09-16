@@ -34,6 +34,37 @@ function rewriteImagePaths(content: string, filenames: string[]): string {
   });
 }
 
+const IMAGE_EMBED_RE = /!\[[^\]]*\]\([^)]+\)/;
+
+/**
+ * Attaching an image only sets image_filename, which the templates use for
+ * og:image and the JSON-LD block — nothing there puts the image in the article
+ * body. That is only ever done by an `![alt](file)` embed in the content
+ * itself, so an editorial uploaded without one publishes with no illustration
+ * on the page at all (three did, in Sept 2026).
+ *
+ * So: when a language variant carries no image at all, drop the first attached
+ * image in under the leading H1, which is where the house style puts it. A
+ * variant that already embeds *something* is left alone — the author placed
+ * those deliberately, and a second copy of the hero would be worse than none.
+ */
+export function ensureImageEmbed(content: string, filenames: string[], alt: string): string {
+  if (!content.trim() || filenames.length === 0) return content;
+  if (IMAGE_EMBED_RE.test(content)) return content;
+
+  const embed = `![${alt}](/assets/editorials/${filenames[0]})`;
+  const lines = content.split("\n");
+  const headingIdx = lines.findIndex(line => /^#\s+\S/.test(line));
+  if (headingIdx === -1) return `${embed}\n\n${content}`;
+
+  // Sit the embed in its own paragraph under the heading: swallow whatever
+  // blank lines already follow the title so the image is never left sharing a
+  // paragraph with the opening sentence, and never separated by a double gap.
+  const rest = lines.slice(headingIdx + 1);
+  while (rest.length > 0 && rest[0].trim() === "") rest.shift();
+  return [...lines.slice(0, headingIdx + 1), "", embed, "", ...rest].join("\n");
+}
+
 // ─── Translation ─────────────────────────────────────────────────────────────
 
 const REQUIRED_FIELDS = [
@@ -204,8 +235,10 @@ export function generateEditorialPageMarkdown(editorial: Record<string, unknown>
 
   // Store NL/FR content in frontmatter for the trilingual template
   // Use block scalar (|) for multiline content; rewrite image paths
-  const contentNl = rewriteImagePaths(String(editorial.content_nl ?? ""), filenames);
-  const contentFr = rewriteImagePaths(String(editorial.content_fr ?? ""), filenames);
+  const titleNl = String(editorial.title_nl ?? title);
+  const titleFr = String(editorial.title_fr ?? title);
+  const contentNl = ensureImageEmbed(rewriteImagePaths(String(editorial.content_nl ?? ""), filenames), filenames, titleNl);
+  const contentFr = ensureImageEmbed(rewriteImagePaths(String(editorial.content_fr ?? ""), filenames), filenames, titleFr);
   if (contentNl) {
     lines.push(`content_nl: |`);
     for (const line of contentNl.split("\n")) {
@@ -222,7 +255,7 @@ export function generateEditorialPageMarkdown(editorial: Record<string, unknown>
   lines.push(`layout: editorial.njk`);
   lines.push(`---`);
   lines.push(``);
-  lines.push(rewriteImagePaths(String(editorial.content_en ?? ""), filenames));
+  lines.push(ensureImageEmbed(rewriteImagePaths(String(editorial.content_en ?? ""), filenames), filenames, title));
 
   return lines.join("\n");
 }

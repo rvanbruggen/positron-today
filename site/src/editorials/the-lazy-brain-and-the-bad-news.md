@@ -12,6 +12,8 @@ audio_en: "/assets/editorials/audio/the-lazy-brain-and-the-bad-news-en.mp3"
 content_nl: |
   # De luie hersenen en het slechte nieuws
   
+  ![Een redactionele titelkaart op een crèmekleurige achtergrond met 'bad news = easy and lazy' in het zwart boven 'good news = worth the effort' in het rood. Een rode stippellijn klimt van linksonder, door een veld van verspreide grijze streepjes, naar een omcirkeld plusteken rechtsboven, met het onderschrift 'fig. 1 — the path of least resistance'.](/assets/editorials/positron-against-the-current.jpg)
+  
   Een paar weken geleden zat ik te broeden op iets dat voor mij als een echte tegenstrijdigheid leek. In eerdere editorials hebben we geschreven over het feit dat mensen schijnbaar actief op zoek gaan naar negatief nieuws - de ondergang, de somberheid, de verontwaardiging. Dat is goed gedocumenteerd, en het is een van de redenen waarom Positron überhaupt bestaat. Maar tegelijkertijd bleef ik stuiten op een andere waarheid die precies in de tegenovergestelde richting leek te wijzen: mensen zijn, laten we eerlijk zijn, behoorlijk lui. We optimaliseren voor gemak en genot. We nemen de lift, niet de trap. We bestellen eten, we swipen, we binge-watchen. De mensheid is een soort die op zoek is naar comfort, als er ooit een was.
   
   Dus hoe verzoen je die twee dingen? Als we allemaal genotszuchtige wezens van comfort zijn, waarom zouden we dan in hemelsnaam vrijwillig elke ochtend voor het ontbijt door een rivier van ellende waden? Zeker, een luie, genotszuchtige hersenen zou voor het goede nieuws kiezen?
@@ -63,6 +65,8 @@ content_nl: |
   Rik
 content_fr: |
   # Le cerveau paresseux et les mauvaises nouvelles
+  
+  ![Une carte-titre éditoriale sur fond crème portant « bad news = easy and lazy » en noir au-dessus de « good news = worth the effort » en rouge. Une courbe rouge en pointillés monte du coin inférieur gauche, à travers un champ de petits tirets gris épars, vers un signe plus entouré d'un cercle en haut à droite, légendé « fig. 1 — the path of least resistance ».](/assets/editorials/positron-against-the-current.jpg)
   
   Il y a quelques semaines, je réfléchissais à quelque chose qui me semblait être une véritable contradiction. Dans des éditoriaux précédents, nous avons écrit sur le fait que les gens semblent activement rechercher des nouvelles négatives - le désastre, le désespoir, l'indignation. C'est bien documenté, et c'est l'une des raisons pour lesquelles Positron existe en premier lieu. Mais en même temps, je tombais sans cesse sur une autre vérité qui semblait pointer dans la direction exactement opposée : les gens sont, soyons honnêtes, assez paresseux. Nous optimisons pour la commodité et le plaisir. Nous prenons l'ascenseur, pas les escaliers. Nous commandons à emporter, nous faisons défiler, nous faisons du binge-watching. L'humanité est une espèce en quête de confort, s'il en est.
   
@@ -117,6 +121,8 @@ layout: editorial.njk
 ---
 
 # The lazy brain and the bad news
+
+![An editorial title card on a cream ground reading 'bad news = easy and lazy' in black above 'good news = worth the effort' in red. A dashed red curve climbs from the bottom left, through a field of scattered grey dashes, to a circled plus sign at the top right, captioned 'fig. 1 — the path of least resistance'.](/assets/editorials/positron-against-the-current.jpg)
 
 A couple of weeks ago, I was mulling over something that seemed like a proper contradiction to me. In earlier editorials, we have written about the fact that people seem to actively seek out negative news - the doom, the gloom, the outrage. That's well documented, and it's one of the reasons why Positron exists in the first place. But at the same time, I kept bumping into another truth that seemed to point in exactly the opposite direction: people are, let's be honest, quite lazy. We optimise for convenience and pleasure. We take the elevator, not the stairs. We order in, we swipe, we binge. Humankind is a comfort-seeking species if there ever was one.
 

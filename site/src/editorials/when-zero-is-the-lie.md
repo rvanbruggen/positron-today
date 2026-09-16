@@ -11,6 +11,8 @@ image_url: "/assets/editorials/when-zero-is-the-lie.jpg"
 content_nl: |
   # Wanneer nul de leugen is
   
+  ![Twee lijngrafieken van dezelfde PISA-gegevens voor Vlaanderen, 2003 tot 2025. Links, getekend op de as van 450 tot 550 van De Standaard, dalen de lijnen voor lezen en wiskunde steil; rechts, op een as vanaf nul, wordt dezelfde daling van 63 punten — ongeveer drie schooljaren — afgevlakt tot een nauwelijks zichtbare helling.](/assets/editorials/when-zero-is-the-lie.jpg)
+  
   Vorige week ging ik door een kleine galerij van grafieken die de onderkant van de as afsnijden om een hobbel in een klif te veranderen. Ik gaf ook toe wat het triggerde: het [PISA-artikel in De Standaard](https://www.standaard.be/binnenland/leesniveau-van-vlaamse-jongeren-is-dramatisch-pisa-resultaten-boeren-opnieuw-sterk-achteruit/161100986.html) van 8 september, met zijn "dramatische" kop en zijn lijngrafieken die van 450 tot 550 lopen. Ik was, eerlijk gezegd, klaar om een stuk te schrijven over hoe onze kranten overdrijven om klikken te verkopen.
   
   Dus deed ik wat ik altijd tegen mensen zeg. Ik controleerde.
@@ -58,6 +60,8 @@ content_nl: |
   Rik
 content_fr: |
   # Quand le zéro est le mensonge
+  
+  ![Deux graphiques linéaires des mêmes données PISA pour la Flandre, de 2003 à 2025. À gauche, tracées sur l'axe de 450 à 550 utilisé par De Standaard, les courbes de lecture et de mathématiques chutent fortement ; à droite, sur un axe partant de zéro, la même baisse de 63 points — environ trois années scolaires — s'aplatit en une pente à peine visible.](/assets/editorials/when-zero-is-the-lie.jpg)
   
   La semaine dernière, j'ai parcouru une petite galerie de graphiques qui coupent le bas de l'axe pour transformer une bosse en falaise. J'ai également avoué ce qui a déclenché cela : l'[article PISA dans De Standaard](https://www.standaard.be/binnenland/leesniveau-van-vlaamse-jongeren-is-dramatisch-pisa-resultaten-boeren-opnieuw-sterk-achteruit/161100986.html) du 8 septembre, avec son titre "dramatique" et ses graphiques linéaires allant de 450 à 550. J'étais, franchement, prêt à écrire un article sur la façon dont nos journaux exagèrent pour vendre des clics.
   
@@ -108,6 +112,8 @@ layout: editorial.njk
 ---
 
 # When zero is the lie
+
+![Two line charts of the same PISA Flanders data, 2003 to 2025. On the left, drawn on De Standaard's axis of 450 to 550, the reading and mathematics lines fall steeply; on the right, drawn on an axis from zero, the same 63-point drop — about three school years — flattens into a barely visible slope.](/assets/editorials/when-zero-is-the-lie.jpg)
 
 Last week I went through a small gallery of charts that cut off the bottom of the axis to turn a bump into a cliff. I also confessed what triggered it: the [PISA article in De Standaard](https://www.standaard.be/binnenland/leesniveau-van-vlaamse-jongeren-is-dramatisch-pisa-resultaten-boeren-opnieuw-sterk-achteruit/161100986.html) of 8 September, with its "dramatic" headline and its line charts running from 450 to 550. I was, frankly, ready to write a piece about how our newspapers exaggerate to sell clicks.
 

@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { slugify } from "@/lib/publish-core";
+import { ensureImageEmbed } from "@/lib/editorial-core";
 
 export async function GET() {
   const result = await db.execute(
@@ -34,12 +35,18 @@ export async function POST(request: NextRequest) {
   const imageFilenames = imageArr.length > 0 ? JSON.stringify(imageArr.map(i => i.filename)) : null;
   const imageDatas = imageArr.length > 0 ? JSON.stringify(imageArr.map(i => i.data)) : null;
 
+  // Put the attached image into the body straight away, so it is visible (and
+  // its alt text editable) in the editor, carries through translation to NL/FR,
+  // and reaches Substack — which posts content_en verbatim. Uses the title as
+  // placeholder alt text; the author should replace it with a real description.
+  const sourceContent = ensureImageEmbed(content, imageArr.map(i => i.filename), extractedTitle);
+
   try {
     const result = await db.execute({
       sql: `INSERT INTO editorials (slug, source_language, ${contentField}, ${titleField}, image_filename, image_data)
             VALUES (?, ?, ?, ?, ?, ?)
             RETURNING *`,
-      args: [slug, lang, content, extractedTitle, imageFilenames, imageDatas],
+      args: [slug, lang, sourceContent, extractedTitle, imageFilenames, imageDatas],
     });
     return Response.json(result.rows[0], { status: 201 });
   } catch (err: unknown) {

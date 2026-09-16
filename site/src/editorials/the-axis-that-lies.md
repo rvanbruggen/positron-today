@@ -11,6 +11,8 @@ image_url: "/assets/editorials/the-axis-that-lies.jpg"
 content_nl: |
   # De as die liegt
   
+  ![Zes staafdiagrammen in twee rijen. De bovenste rij geeft drie gepubliceerde grafieken met afgesneden assen weer — NOS Journaal over de kosten van langdurige zorg, Fox News over de inschrijvingen voor Obamacare, Fox Business over het hoogste belastingtarief — waarbij kleine verschillen worden getekend als drie- tot vijfvoudige kloven. De onderste rij hertekent dezelfde cijfers vanaf nul, en elke kloof krimpt tot zijn werkelijke omvang.](/assets/editorials/the-axis-that-lies.jpg)
+  
   Vorige week las ik de PISA-coverage in De Standaard - de [artikel over de leesvaardigheden van Vlaamse 15-jarigen](https://www.standaard.be/binnenland/leesniveau-van-vlaamse-jongeren-is-dramatisch-pisa-resultaten-boeren-opnieuw-sterk-achteruit/161100986.html), wat geen vrolijke lectuur is voor een vader - en iets in de grafieken deed me stoppen. De verticale as begon niet bij nul. Hij begon bij 450. En mijn eerste reactie was: daar gaan we weer. Een andere krant die inzoomt op een klein stukje van de schaal om een lijn eruit te laten zien alsof hij van een klif is gevallen.
   
   Ik zal je volgende week vertellen wat ik vond toen ik dat daadwerkelijk controleerde (spoiler: het is interessanter dan ik verwachtte). Maar de reflex zelf was gerechtvaardigd, want deze truc is overal. En op een site die bestaat omdat het nieuws scheefgetrokken is naar het negatieve, denk ik dat het een eigen editorial verdient. Laat me dus beginnen met de overtreders.
@@ -60,6 +62,8 @@ content_nl: |
   Rik
 content_fr: |
   # L'axe qui ment
+  
+  ![Six graphiques à barres sur deux rangées. La rangée du haut reproduit trois graphiques publiés à l'axe tronqué — NOS Journaal sur les coûts des soins de longue durée, Fox News sur les inscriptions à Obamacare, Fox Business sur le taux d'imposition le plus élevé — où de petits écarts sont dessinés comme des différences de trois à cinq fois. La rangée du bas retrace les mêmes chiffres à partir de zéro, et chaque écart se réduit à sa taille réelle.](/assets/editorials/the-axis-that-lies.jpg)
   
   La semaine dernière, je lisais la couverture de PISA dans De Standaard - [celle sur les compétences en lecture des jeunes Flamands de 15 ans](https://www.standaard.be/binnenland/leesniveau-van-vlaamse-jongeren-is-dramatisch-pisa-resultaten-boeren-opnieuw-sterk-achteruit/161100986.html), ce qui n'est pas une lecture réjouissante pour un père - et quelque chose dans les graphiques m'a fait m'arrêter. L'axe vertical ne commençait pas à zéro. Il commençait à 450. Et ma première réaction a été : encore une fois. Un autre journal zoomant sur une partie de l'échelle pour faire en sorte qu'une ligne semble avoir chuté d'une falaise.
   
@@ -112,6 +116,8 @@ layout: editorial.njk
 ---
 
 # The axis that lies
+
+![Six bar charts in two rows. The top row reproduces three published charts with truncated axes — NOS Journaal on long-term care costs, Fox News on Obamacare enrolment, Fox Business on the top tax rate — where small differences are drawn as three- to fivefold gaps. The bottom row redraws the same numbers from zero, and every gap shrinks to its real size.](/assets/editorials/the-axis-that-lies.jpg)
 
 Last week I was reading the PISA coverage in De Standaard - the [one about the reading skills of Flemish 15-year-olds](https://www.standaard.be/binnenland/leesniveau-van-vlaamse-jongeren-is-dramatisch-pisa-resultaten-boeren-opnieuw-sterk-achteruit/161100986.html), which is not a happy read for a dad - and something in the charts made me stop. The vertical axis didn't start at zero. It started at 450. And my first reaction was: here we go again. Another newspaper zooming in on a sliver of the scale to make a line look like it fell off a cliff.
 
