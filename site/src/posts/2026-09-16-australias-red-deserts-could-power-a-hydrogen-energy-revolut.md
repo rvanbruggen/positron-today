@@ -1,0 +1,20 @@
+---
+title: "Australia's red deserts could power a hydrogen energy revolution"
+title_nl: "Australische rode woestijnen zouden een waterstofrevolutie kunnen aansturen"
+title_fr: "Les déserts rouges de l'Australie pourraient alimenter une révolution de l'énergie hydrogène"
+date: 2026-09-16T22:06:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.goodnewsnetwork.org/scientists-determine-australias-vast-red-deserts-could-fuel-a-hydrogen-powered-energy-revolution/"
+source_name: "Good News Network"
+topic: "Economy"
+tags: ["Economy","Environment","Science"]
+emoji: "⚡"
+summary: "Scientists at Edith Cowan University have discovered that magnetite - a mineral found beneath Australia's Pilbara region - can generate hydrogen gas when it reacts with hot water deep underground. This is genuinely exciting because hydrogen is one of the few proven green energies that can power heavy machinery like jets, ships, and trains without relying on fossil fuels. The research team found that by injecting a solution into banded iron formations, they can significantly stimulate hydrogen production at scale - and here's the thing, Australia could potentially become a major exporter of clean energy to the world. The breakthrough moves us closer to unlocking what could be an enormous, untapped energy reserve that could benefit Australia for generations to come."
+summary_nl: "Wetenschappers van de Edith Cowan University hebben ontdekt dat magnetiet - een mineraal onder de Pilbara-regio in Australië - waterstofgas kan opwekken wanneer het onder de grond met heet water reageert. Dit is werkelijk opwindend omdat waterstof een van de weinige bewezen groene energiebronnen is die zware machines zoals vliegtuigen, schepen en treinen kan aandrijven zonder fossiele brandstoffen. Het onderzoeksteam ontdekte dat door een oplossing in gebandeerde ijzerformaties in te spuiten, zij waterstofproductie op grote schaal kunnen stimuleren - en hier is het interessante: Australië zou mogelijk een grote exporteur van schone energie voor de wereld kunnen worden. Deze doorbraak brengt ons dichter bij het ontgrendelen van wat een enorm, ongebruikt energiereservoir zou kunnen zijn dat generaties lang voordeel kan opleveren."
+summary_fr: "Des scientifiques de l'Université Edith Cowan ont découvert que la magnétite - un minéral situé sous la région du Pilbara en Australie - peut générer du gaz hydrogène lorsqu'il réagit avec de l'eau chaude profondément sous terre. C'est véritablement passionnant car l'hydrogène est l'une des rares énergies vertes avérées qui peuvent alimenter des machines lourdes comme les avions, les navires et les trains sans dépendre des combustibles fossiles. L'équipe de recherche a découvert qu'en injectant une solution dans des formations de fer rubané, elle peut stimuler significativement la production d'hydrogène à grande échelle - et voilà l'intéressant : l'Australie pourrait potentiellement devenir un grand exportateur d'énergie propre pour le monde. Cette percée nous rapproche du déverrouillage de ce qui pourrait être une énorme réserve d'énergie inexploitée qui pourrait bénéficier à l'Australie pendant des générations."
+image_url: "https://www.goodnewsnetwork.org/wp-content/uploads/2026/09/Classic-Australian-Pilbara-region-banded-iron-formations-credit-Edith-Cowan-University-released.jpg"
+layout: post.njk
+---
+
+Scientists at Edith Cowan University have discovered that magnetite - a mineral found beneath Australia's Pilbara region - can generate hydrogen gas when it reacts with hot water deep underground. This is genuinely exciting because hydrogen is one of the few proven green energies that can power heavy machinery like jets, ships, and trains without relying on fossil fuels. The research team found that by injecting a solution into banded iron formations, they can significantly stimulate hydrogen production at scale - and here's the thing, Australia could potentially become a major exporter of clean energy to the world. The breakthrough moves us closer to unlocking what could be an enormous, untapped energy reserve that could benefit Australia for generations to come.
