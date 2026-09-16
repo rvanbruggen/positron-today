@@ -1,0 +1,20 @@
+---
+title: "It's almost time to airdrop rabies vaccines again"
+title_nl: "Het wordt bijna tijd om rabiësvaccins opnieuw uit te werpen"
+title_fr: "Il est bientôt temps de larguer à nouveau les vaccins antirabiques"
+date: 2026-09-16T04:36:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.popsci.com/environment/rabies-vaccine-airdrop-usda/"
+source_name: "Popular Science"
+topic: "Animals"
+tags: ["Animals","Environment","Health"]
+emoji: "💉"
+summary: "So here's the thing - rabies is still a major public health threat, killing around 59,000 people globally each year, and it's gotten trickier since it spread from dogs to wildlife like raccoons, foxes, and skunks. The USDA's been working since 1995 on a smart solution: they airdrop millions of fishmeal-coated vaccine packets across strategic areas to create a protective barrier against the disease. Next month, planes will be dropping these tiny vaccine baits across five southeastern states - Virginia, North Carolina, Tennessee, Georgia, and Alabama - targeting the most common rabies variants. And here's what's really encouraging - the vaccine inside is safe for over 60 animal species, so if you happen to find one in your yard, you can handle it safely with gloves."
+summary_nl: "Dus hier is het ding - rabiës is nog steeds een groot volksgezondheidsrisico dat jaarlijks ongeveer 59.000 mensen wereldwijd doodt, en het is veel ingewikkelder geworden nu het van honden naar wilde dieren zoals wasberen, vossen en stinkdieren is overgegaan. De USDA werkt sinds 1995 aan een slimme oplossing: zij werpen miljoenen vismeelcoate vaccinpakketten uit over strategische gebieden om een beschermende barrière tegen de ziekte te creëren. Volgende maand zullen vliegtuigen deze kleine vaccinbrokjes verspreiden over vijf zuidoostelijke staten - Virginia, North Carolina, Tennessee, Georgia en Alabama - gericht op de meest voorkomende rabiësvarianten. En hier is wat echt bemoedigend is - het vaccin erin is veilig voor meer dan 60 diersoorten, dus als je toevallig één in je tuin vindt, kun je het veilig met handschoenen hanteren."
+summary_fr: "Voilà la chose - la rage reste une menace majeure pour la santé publique, tuant environ 59 000 personnes par an dans le monde, et c'est devenu plus compliqué depuis qu'elle s'est propagée des chiens aux animaux sauvages comme les ratons laveurs, les renards et les mouffettes. L'USDA travaille depuis 1995 sur une solution intelligente : ils larguent des millions de paquets de vaccin enrobés de farine de poisson dans des zones stratégiques pour créer une barrière protectrice contre la maladie. Le mois prochain, des avions vont disperser ces petits appâts vaccinés dans cinq États du sud-est - la Virginie, la Caroline du Nord, le Tennessee, la Géorgie et l'Alabama - ciblant les variantes les plus courantes de la rage. Et voici ce qui est vraiment encourageant - le vaccin à l'intérieur est sans danger pour plus de 60 espèces animales, donc si vous trouvez un paquet dans votre jardin, vous pouvez le manipuler en toute sécurité avec des gants."
+image_url: "https://www.popsci.com/wp-content/uploads/2026/09/Raccoon-in-Tree.jpg?quality=85&w=1200"
+layout: post.njk
+---
+
+So here's the thing - rabies is still a major public health threat, killing around 59,000 people globally each year, and it's gotten trickier since it spread from dogs to wildlife like raccoons, foxes, and skunks. The USDA's been working since 1995 on a smart solution: they airdrop millions of fishmeal-coated vaccine packets across strategic areas to create a protective barrier against the disease. Next month, planes will be dropping these tiny vaccine baits across five southeastern states - Virginia, North Carolina, Tennessee, Georgia, and Alabama - targeting the most common rabies variants. And here's what's really encouraging - the vaccine inside is safe for over 60 animal species, so if you happen to find one in your yard, you can handle it safely with gloves.
