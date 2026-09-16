@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:09:27.678Z",
-  "total_rejected": 147979,
+  "exported_at": "2026-09-16T18:09:34.661Z",
+  "total_rejected": 147980,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2731
+      "count": 2732
     },
     {
       "category": "divisive-racism",
@@ -176,8 +176,8 @@
     },
     {
       "source": "Le Soir",
-      "negative": 2605,
-      "total": 2629
+      "negative": 2606,
+      "total": 2630
     },
     {
       "source": "Global News (Canada)",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Soir",
+      "title": "Comment deux traités viennent à bout du trou dans la couche d’ozone",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lesoir.be/771163/article/2026-09-16/comment-deux-traites-viennent-bout-du-trou-dans-la-couche-dozone",
+      "date": "2026-09-16 20:09",
+      "positivity_score": null
+    },
     {
       "source": "De Standaard Binnenland",
       "title": "Door verhoging minimumleeftijd zijn vorig jaar minder Belgen begonnen met online gokken ",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/vil-ikke-kraeve-doedstraf-til-soen-i-sag-om-drab-paa-reiner-parret",
       "date": "2026-09-15 21:22",
       "positivity_score": 1
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Göteborg hyllar Wilhelm Stenhammar med stor tonsättarfestival",
-      "reason": "This is a local cultural event (Gothenburg symphony orchestra festival) with primarily regional relevance; while celebrating a composer is positive, the story lacks universal significance beyond the local music scene.",
-      "category": "soft-news-filler",
-      "url": "https://www.dn.se/kultur/goteborg-hyllar-wilhelm-stenhammar-med-stor-tonsattarfestival/",
-      "date": "2026-09-15 21:22",
-      "positivity_score": 4
     }
   ]
 }
