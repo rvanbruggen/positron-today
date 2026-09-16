@@ -1,0 +1,20 @@
+---
+title: "Wind turbines have made up half this rancher's income since his fateful choice"
+title_nl: "Windturbines vormen al twintig jaar de helft van het inkomen van deze boer"
+title_fr: "Les éoliennes représentent la moitié des revenus de cet éleveur depuis sa décision audacieuse"
+date: 2026-09-16T00:09:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.goodnewsnetwork.org/wind-turbines-have-made-up-half-this-ranchers-income-since-fateful-choice-to-allow-them-on-his-land/"
+source_name: "Good News Network"
+topic: "Economy"
+tags: ["Economy","Environment","Family life"]
+emoji: "⚡"
+summary: "Back in 2006, Kansas rancher Peter Ferrell took a bold leap of faith by allowing 50 wind turbines on his 7,000-acre tallgrass prairie - and it's completely transformed his family's future. The Elk River Wind Power project has generated enough royalties to provide half his income ever since, giving him the financial security to pass the farm down to his children and grandchildren without burden. Now twenty years later, his cattle still graze peacefully, the prairie chickens still nest, and the turbines quietly turn - proving that conservation and renewable energy can work beautifully together. So impressed are other ranchers by his success that Ferrell now spends time helping them navigate the same decision he made, showing just how powerful one person's courage can be."
+summary_nl: "In 2006 nam boer Peter Ferrell uit Kansas een gedurfd besluit door 50 windturbines op zijn 7.000 hectare große graslanden toe te staan - en het heeft zijn familie's toekomst volledig veranderd. Het Elk River Wind Power project heeft hem sinds dien genoeg inkomsten gegeven om niet alleen financieel stabiel te zijn, maar ook de boerderij zonder schulden door te geven aan zijn kinderen en kleinkinderen. Nu, twintig jaar later, grazen zijn runderen nog steeds vredig, broeden de prairiehoenderen nog steeds, en draaien de turbines stille - wat bewijst dat duurzaamheid en schone energie perfect samen kunnen werken. Zozeer zijn andere boeren onder de indruk van zijn succes dat Ferrell nu andere boeren helpt dezelfde moedige keuze te maken."
+summary_fr: "En 2006, l'éleveur du Kansas Peter Ferrell a pris la décision audacieuse d'autoriser 50 éoliennes sur ses 7 000 hectares de prairie - ce qui a complètement transformé l'avenir de sa famille. Le projet d'énergie éolienne d'Elk River lui a depuis généré suffisamment de revenus pour assurer la stabilité financière et transmettre la ferme à ses enfants et petits-enfants sans dettes. Vingt ans plus tard, ses bovins paissent toujours paisiblement, les poules des prairies nichent encore, et les turbines tournent silencieusement - prouvant que la conservation et l'énergie renouvelable peuvent fonctionner magnifiquement ensemble. Tellement impressionnés par son succès, d'autres éleveurs lui demandent maintenant de les aider à prendre cette même décision courageuse."
+image_url: "https://www.goodnewsnetwork.org/wp-content/uploads/2026/09/credit-supplied-to-the-Environmental-Defense-Fund-as-a-courtesy-by-Pete-Ferrell.jpg"
+layout: post.njk
+---
+
+Back in 2006, Kansas rancher Peter Ferrell took a bold leap of faith by allowing 50 wind turbines on his 7,000-acre tallgrass prairie - and it's completely transformed his family's future. The Elk River Wind Power project has generated enough royalties to provide half his income ever since, giving him the financial security to pass the farm down to his children and grandchildren without burden. Now twenty years later, his cattle still graze peacefully, the prairie chickens still nest, and the turbines quietly turn - proving that conservation and renewable energy can work beautifully together. So impressed are other ranchers by his success that Ferrell now spends time helping them navigate the same decision he made, showing just how powerful one person's courage can be.
