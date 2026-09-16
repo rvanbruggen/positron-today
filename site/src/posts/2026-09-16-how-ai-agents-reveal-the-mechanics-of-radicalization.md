@@ -1,0 +1,21 @@
+---
+title: "How AI agents reveal the mechanics of radicalization"
+title_nl: "Hoe AI-agents het proces van radicalisering blootleggen"
+title_fr: "Comment les agents d'IA révèlent les mécanismes de la radicalisation"
+date: 2026-09-16T09:38:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.nrc.nl/nieuws/2026/09/16/met-ai-agents-kun-je-zien-hoe-het-proces-van-radicalisering-verloopt-het-begint-bij-de-behoefte-om-ergens-bij-te-horen-a4935625"
+source_name: "NRC"
+topic: "Science"
+tags: ["Science","Society","Technology"]
+emoji: "🤖"
+summary: "Inspired by the devastating Sri Lanka Easter bombings of 2019, Dutch police researcher Mijke van den Hurk set out to understand how ordinary people become radicalized - not by looking at single factors like poverty, but by examining how multiple mechanisms interact within their environment. She developed an innovative agent-based AI simulation model, similar to the video game The Sims, where hundreds of virtual agents react to each other on individual, social, and ideological levels. The agents in her model seek recognition, belonging, and group identity, showing how radicalization can emerge from the complex interplay of needs and social dynamics. This groundbreaking research approach offers new insights into extremism without relying on tired stereotypes about what a terrorist looks like."
+summary_nl: "Geïnspireerd door de verwoestende aanslag op Paaszondag 2019 in Sri Lanka, begon Nederlandse politieonderzoeker Mijke van den Hurk te onderzoeken hoe gewone mensen radicaliseren - niet door naar één factor te kijken, maar door te analyseren hoe meerdere mechanismen in hun omgeving met elkaar samenwerken. Ze ontwikkelde een innovatief simulatiemodel op basis van AI-agents, vergelijkbaar met het computerspel The Sims, waarin honderden virtuele agenten op elkaar reageren op persoonlijk, sociaal en ideologisch niveau. De agents in haar model zoeken erkenning, willen ergens bij horen en vormen groepsidentiteiten, wat laat zien hoe radicalisering kan ontstaan uit de complexe wisselwerking van behoeften en sociale dynamica. Dit baanbrekende onderzoek biedt nieuwe inzichten in extremisme zonder te vertrouwen op versleten stereotypen over hoe een terrorist eruitziet."
+summary_fr: "Inspirée par les attaques dévasttrices du dimanche de Pâques 2019 au Sri Lanka, la chercheuse de la police néerlandaise Mijke van den Hurk a voulu comprendre comment les gens ordinaires se radicalisent - non pas en examinant un seul facteur, mais en analysant comment plusieurs mécanismes interagissent dans leur environnement. Elle a développé un modèle de simulation innovant basé sur des agents d'IA, similaire au jeu vidéo The Sims, où des centaines d'agents virtuels réagissent les uns aux autres à des niveaux individuels, sociaux et idéologiques. Les agents de son modèle recherchent la reconnaissance, veulent appartenir à un groupe et forment des identités collectives, montrant comment la radicalisation peut émerger de l'interaction complexe des besoins et des dynamiques sociales. Cette recherche novatrice offre de nouvelles perspectives sur l'extrémisme sans s'appuyer sur des stéréotypes usés concernant l'apparence d'un terroriste."
+image_url: "https://images.nrc.nl/ZgfNkmKF5HCSUZERskEMivYiwfI=/1200x627/smart/filters:no_upscale()/s3/static.nrc.nl/wp-content/uploads/2026/09/04201228/190926WET_2035351820_4.jpg"
+featured: true
+layout: post.njk
+---
+
+Inspired by the devastating Sri Lanka Easter bombings of 2019, Dutch police researcher Mijke van den Hurk set out to understand how ordinary people become radicalized - not by looking at single factors like poverty, but by examining how multiple mechanisms interact within their environment. She developed an innovative agent-based AI simulation model, similar to the video game The Sims, where hundreds of virtual agents react to each other on individual, social, and ideological levels. The agents in her model seek recognition, belonging, and group identity, showing how radicalization can emerge from the complex interplay of needs and social dynamics. This groundbreaking research approach offers new insights into extremism without relying on tired stereotypes about what a terrorist looks like.
