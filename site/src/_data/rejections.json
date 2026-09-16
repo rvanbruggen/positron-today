@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T09:01:52.725Z",
-  "total_rejected": 147516,
+  "exported_at": "2026-09-16T09:02:10.788Z",
+  "total_rejected": 147517,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2705
+      "count": 2706
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "De Morgen",
-      "negative": 5366,
-      "total": 5450
+      "negative": 5367,
+      "total": 5451
     },
     {
       "source": "The New York Times",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "De Morgen",
+      "title": "Vlaanderen zet uitfasering aardgasnet in gang",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.demorgen.be/nieuws/vlaanderen-zet-uitfasering-aardgasnet-in-gang~b9c3a334/",
+      "date": "2026-09-16 11:02",
+      "positivity_score": null
+    },
     {
       "source": "Knack",
       "title": "‘Een kind is meer dan zijn PISA-score’",
@@ -9391,15 +9400,6 @@
       "url": "https://www.nature.com/articles/s41586-026-11137-8",
       "date": "2026-09-15 14:26",
       "positivity_score": 1
-    },
-    {
-      "source": "Nature",
-      "title": "Why Nepal floods resulted in a disaster even after satellites spotted danger",
-      "reason": "Analysis of a disaster outcome (floods)—recovery-from-negative story that requires knowledge of the preceding disaster to make sense.",
-      "category": "disaster-accident",
-      "url": "https://www.nature.com/articles/d41586-026-02907-5",
-      "date": "2026-09-15 14:26",
-      "positivity_score": 2
     }
   ]
 }
