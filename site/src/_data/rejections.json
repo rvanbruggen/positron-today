@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:05:48.190Z",
-  "total_rejected": 147973,
+  "exported_at": "2026-09-16T18:05:54.138Z",
+  "total_rejected": 147974,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2725
+      "count": 2726
     },
     {
       "category": "divisive-racism",
@@ -251,8 +251,8 @@
     },
     {
       "source": "ANSA English (Italy)",
-      "negative": 649,
-      "total": 657
+      "negative": 650,
+      "total": 658
     },
     {
       "source": "Euroactiv",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ANSA English (Italy)",
+      "title": "7.8% of women experienced sexual violence before age 16 - Istat",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.ansa.it/english/news/general_news/2026/09/16/7.8-of-women-experienced-sexual-violence-before-age-16-istat_f984b9cc-6d4d-41d3-a06d-e2872f7db736.html",
+      "date": "2026-09-16 20:05",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "Anthropic’s AI steals mathematicians’ record for most complicated curve",
@@ -9389,15 +9398,6 @@
       "reason": "This is political news about the speaker position and government power dynamics in Sweden; it is political conflict with local-only relevance.",
       "category": "political-conflict",
       "url": "https://www.dn.se/sverige/norlens-dagar-som-talman-ar-raknade-de-kan-ta-over/",
-      "date": "2026-09-15 21:22",
-      "positivity_score": 2
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "DN Debatt. ”Liberalerna är Sveriges mest framgångsrika parti – jo faktiskt”",
-      "reason": "This is a political opinion piece analyzing the Liberal Party's election performance and political strategy; it is partisan political commentary.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/debatt/liberalerna-ar-sveriges-mest-framgangsrika-parti-jo-faktiskt/",
       "date": "2026-09-15 21:22",
       "positivity_score": 2
     }
