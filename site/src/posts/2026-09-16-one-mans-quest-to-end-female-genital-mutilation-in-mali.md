@@ -1,0 +1,20 @@
+---
+title: "One man's quest to end female genital mutilation in Mali"
+title_nl: "Een man strijdt tegen vrouwelijke genitale verminking in Mali"
+title_fr: "Un homme lutte contre les mutilations génitales féminines au Mali"
+date: 2026-09-16T23:02:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://allafrica.com/stories/202609160173.html"
+source_name: "AllAfrica"
+topic: "Family life"
+tags: ["Family life","Health","Society"]
+emoji: "🕊️"
+summary: "Sidi Haidara used to believe that female genital mutilation was simply part of Mali's cultural traditions - but after participating in UN Women training sessions supported by Germany, his perspective completely shifted. Now he walks from village to village with a powerful new message: no tradition should ever come at the expense of a girl's health, rights, or future. Rather than imposing change from the outside, Haidara organizes community dialogues with families, religious leaders, and young people, encouraging conversations that challenge long-held beliefs. His work is showing real results - more parents are asking questions, families are abandoning the practice, and discussions about protecting girls have become increasingly open across Mali's Mopti and Gao regions."
+summary_nl: "Sidi Haidara geloofde ooit dat vrouwelijke genitale verminking gewoon deel uitmaakte van Mali's culturele tradities - maar na trainingen van UN Women met steun van Duitsland veranderde zijn kijk volledig. Nu loopt hij van dorp tot dorp met een krachtige boodschap: geen traditie mag ten koste gaan van de gezondheid, rechten of toekomst van een meisje. In plaats van verandering van buitenaf af te dwingen, organiseert Haidara gemeenschapsdialogen met families, religieuze leiders en jongeren die oude overtuigingen ter discussie stellen. Zijn werk toont echte resultaten - meer ouders stellen vragen, families geven de praktijk op, en gesprekken over het beschermen van meisjes worden steeds meer openbaar in de regio's Mopti en Gao."
+summary_fr: "Sidi Haidara croyait autrefois que les mutilations génitales féminines faisaient simplement partie des traditions culturelles du Mali - mais après avoir participé à des formations de l'ONU Femmes avec le soutien de l'Allemagne, sa perspective a complètement changé. Aujourd'hui, il parcourt les villages avec un message puissant : aucune tradition ne devrait jamais se faire au détriment de la santé, des droits ou de l'avenir d'une fille. Au lieu d'imposer le changement de l'extérieur, Haidara organise des dialogues communautaires avec les familles, les chefs religieux et les jeunes pour remettre en question les anciennes croyances. Son travail produit des résultats concrets - davantage de parents posent des questions, les familles abandonnent la pratique, et les discussions sur la protection des filles deviennent de plus en plus ouvertes dans les régions de Mopti et Gao."
+image_url: "https://cdn.allafrica.com/download/pic/main/main/csiid/00690390:9daa0a529b6d3ca2c50f27ea33177145:arc614x376:w1200.jpg"
+layout: post.njk
+---
+
+Sidi Haidara used to believe that female genital mutilation was simply part of Mali's cultural traditions - but after participating in UN Women training sessions supported by Germany, his perspective completely shifted. Now he walks from village to village with a powerful new message: no tradition should ever come at the expense of a girl's health, rights, or future. Rather than imposing change from the outside, Haidara organizes community dialogues with families, religious leaders, and young people, encouraging conversations that challenge long-held beliefs. His work is showing real results - more parents are asking questions, families are abandoning the practice, and discussions about protecting girls have become increasingly open across Mali's Mopti and Gao regions.
