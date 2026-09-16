@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:03:34.675Z",
-  "total_rejected": 147967,
+  "exported_at": "2026-09-16T18:04:07.697Z",
+  "total_rejected": 147968,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2719
+      "count": 2720
     },
     {
       "category": "divisive-racism",
@@ -281,8 +281,8 @@
     },
     {
       "source": "Science.org news",
-      "negative": 334,
-      "total": 437
+      "negative": 335,
+      "total": 438
     },
     {
       "source": "Scientific American",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Science.org news",
+      "title": "Human neurons flourish in mouse brains, offering a new view of neurodevelopmental disorders",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.science.org/content/article/human-neurons-flourish-mouse-brains-offering-new-view-neurodevelopmental-disorders",
+      "date": "2026-09-16 20:04",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Rok z systemem kaucyjnym w Polsce. Letni pik za nami, ale wyzwań nie brakuje",
@@ -9391,15 +9400,6 @@
       "url": "https://www.rp.pl/wydarzenia-gospodarcze/art45145831-property-forum-2026-rynek-nieruchomosci-wchodzi-w-czas-strategicznych-decyzji",
       "date": "2026-09-15 21:22",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Liczy się cały cykl życia",
-      "reason": "This is an opinion piece about lifecycle cost accounting in construction; while touching on environmental and economic efficiency, it lacks substantive positive news or actionable breakthrough.",
-      "category": "soft-news-filler",
-      "url": "https://www.rp.pl/forum-ekonomiczne/art45145811-liczy-sie-caly-cykl-zycia",
-      "date": "2026-09-15 21:22",
-      "positivity_score": 3
     }
   ]
 }
