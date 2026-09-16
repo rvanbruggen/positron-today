@@ -1,0 +1,21 @@
+---
+title: "Surgeon in Denmark operates on patient 1000 kilometers away using robot"
+title_nl: "Chirurg in Denemarken opereert patiënt 1000 kilometer verderop met behulp van robot"
+title_fr: "Un chirurgien au Danemark opère un patient à 1000 kilomètres de distance grâce à un robot"
+date: 2026-09-16T20:46:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://politiken.dk/danmark/sundhed/art10985480/Kirurg-i-Aabenraa-opererer-patient-1000-kilometer-v%C3%A6k-i-T%C3%B3rshavn"
+source_name: "Politiken.dk"
+topic: "Health"
+tags: ["Health","Science","Technology"]
+emoji: "🤖"
+summary: "A surgeon in Aabenraa has just pulled off something truly remarkable - sitting at his desk, he operated on a patient in the Faroe Islands using remote robot-assisted surgery, marking the first time this technology has been used for an actual operation in Denmark. The hernia surgery went exceptionally well, and the whole thing was carefully set up with a full surgical team standing by in Tórshavn, ready to step in if anything went wrong. So what's really exciting here is that this opens up new possibilities for patients living far away from major medical centers - they might finally get access to top-tier surgical expertise without having to travel. This is just the beginning of an ambitious project exploring how remote surgery can transform healthcare across the Nordic region."
+summary_nl: "Een chirurg in Aabenraa heeft net iets werkelijk opmerkelijks voor elkaar gekregen - zittend aan zijn bureau opereerde hij een patiënt op de Faeröer met behulp van robotgestuurde chirurgie op afstand, wat voor het eerst in Denemarken gebeurde voor een echte operatie. De breukcorrectie verliep uitzonderlijk goed, en het hele proces was zorgvuldig voorbereid met een volledig chirurgisch team ter plaatse in Tórshavn, klaar om in te grijpen als iets fout zou gaan. Wat echt opwindend is, is dat dit nieuwe mogelijkheden opent voor patiënten die ver weg van grote medische centra wonen - zij kunnen nu eindelijk toegang krijgen tot topklinische expertise zonder ver te hoeven reizen. Dit is slechts het begin van een ambitieus project dat onderzoekt hoe chirurgie op afstand de gezondheidszorg in de Noordse regio kan transformeren."
+summary_fr: "Un chirurgien à Aabenraa vient de réaliser quelque chose de vraiment remarquable - assis à son bureau, il a opéré un patient aux îles Féroé en utilisant la chirurgie robotique à distance, marquant la première fois que cette technologie est utilisée pour une opération réelle au Danemark. La chirurgie de hernie s'est déroulée exceptionnellement bien, et l'ensemble du processus a été soigneusement mis en place avec une équipe chirurgicale complète sur place à Tórshavn, prête à intervenir si quelque chose s'était mal passé. Ce qui est vraiment passionnant, c'est que cela ouvre de nouvelles possibilités pour les patients vivant loin des grands centres médicaux - ils pourraient enfin accéder à une expertise chirurgicale de haut niveau sans avoir à voyager. Ce n'est que le début d'un projet ambitieux explorant comment la chirurgie à distance peut transformer les soins de santé dans la région nordique."
+image_url: "https://politiken.dk/incoming/img10985494.2l88wr/ORIGINALS/original_750/6g100l80"
+featured: true
+layout: post.njk
+---
+
+A surgeon in Aabenraa has just pulled off something truly remarkable - sitting at his desk, he operated on a patient in the Faroe Islands using remote robot-assisted surgery, marking the first time this technology has been used for an actual operation in Denmark. The hernia surgery went exceptionally well, and the whole thing was carefully set up with a full surgical team standing by in Tórshavn, ready to step in if anything went wrong. So what's really exciting here is that this opens up new possibilities for patients living far away from major medical centers - they might finally get access to top-tier surgical expertise without having to travel. This is just the beginning of an ambitious project exploring how remote surgery can transform healthcare across the Nordic region.
