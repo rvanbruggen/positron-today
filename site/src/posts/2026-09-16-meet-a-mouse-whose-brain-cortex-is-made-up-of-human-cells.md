@@ -1,0 +1,21 @@
+---
+title: "Meet a mouse whose brain cortex is made up of human cells"
+title_nl: "Kennismaking met een muis waarvan de hersenschors uit menselijke cellen bestaat"
+title_fr: "Rencontre avec une souris dont le cortex cérébral est composé de cellules humaines"
+date: 2026-09-16T21:17:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.technologyreview.com/2026/09/16/1144210/meet-a-mouse-whose-brain-cortex-is-made-up-of-human-cells/"
+source_name: "MIT Technology Review"
+topic: "Health"
+tags: ["Health","Science","Technology"]
+emoji: "🧠"
+summary: "Neuroscientist Sergiu Pașca at Stanford has done something remarkable - he's created mice with human brain cells where their own cortex would normally be. By genetically engineering mice to lack most of their cortex and hippocampus, he created space for human neural tissue to grow and integrate with the rodent nervous system. The really fascinating part? These mice with human brain cells actually performed better on memory tests than mice with missing brain tissue alone, suggesting the human cells were genuinely contributing to their cognition. Now Pașca and his team are exploring how this xenocortical mouse could help us understand brain injuries and test treatments, while also being very careful about the ethical implications - he's drawing a clear line against trying this on primates."
+summary_nl: "Neurowetenschapper Sergiu Pașca van Stanford heeft iets opmerkelijks bereikt - hij heeft muizen gecreëerd met menselijke hersencellen op de plek waar normaal gesproken hun eigen hersenschors zou zitten. Door muizen genetisch zodanig aan te passen dat zij het grootste deel van hun hersenschors en hippocampus missen, creëerde hij ruimte voor menselijk zenuwweefsel om te groeien en zich te integreren met het zenuwstelsel van het knaagdier. Het echt fascinerende gedeelte? Deze muizen met menselijke hersencellen presteerden eigenlijk beter op geheugenproeven dan muizen met ontbrekend hersenweefsel alleen, wat suggereert dat het menselijke weefsel echt bijdroeg aan hun cognitie. Nu onderzoeken Pașca en zijn team hoe deze xenocorticale muis ons kan helpen hersenletsels begrijpen en behandelingen testen, terwijl zij zeer voorzichtig zijn met de ethische implicaties - hij trekt een duidelijke grens tegen pogingen dit bij primaten toe te passen."
+summary_fr: "Le neuroscientifique Sergiu Pașca de Stanford a réalisé quelque chose de remarquable - il a créé des souris avec des cellules cérébrales humaines à la place de leur cortex normal. En modifiant génétiquement des souris pour qu'elles manquent de la plupart de leur cortex et hippocampe, il a créé de l'espace pour que le tissu neural humain se développe et s'intègre avec le système nerveux du rongeur. La partie vraiment fascinante? Ces souris avec des cellules cérébrales humaines ont en fait obtenu de meilleurs résultats aux tests de mémoire que les souris ayant un tissu cérébral manquant, ce qui suggère que le tissu humain contribuait réellement à leur cognition. Maintenant, Pașca et son équipe explorent comment cette souris xénocorticale pourrait nous aider à comprendre les lésions cérébrales et tester les traitements, tout en étant très prudents quant aux implications éthiques - il trace une ligne claire contre toute tentative chez les primates."
+image_url: "https://wp.technologyreview.com/wp-content/uploads/2026/09/260915_HumanBrainTissueMice.jpg?resize=1200,600"
+featured: true
+layout: post.njk
+---
+
+Neuroscientist Sergiu Pașca at Stanford has done something remarkable - he's created mice with human brain cells where their own cortex would normally be. By genetically engineering mice to lack most of their cortex and hippocampus, he created space for human neural tissue to grow and integrate with the rodent nervous system. The really fascinating part? These mice with human brain cells actually performed better on memory tests than mice with missing brain tissue alone, suggesting the human cells were genuinely contributing to their cognition. Now Pașca and his team are exploring how this xenocortical mouse could help us understand brain injuries and test treatments, while also being very careful about the ethical implications - he's drawing a clear line against trying this on primates.
