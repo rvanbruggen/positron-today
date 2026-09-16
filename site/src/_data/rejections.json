@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:07:44.429Z",
-  "total_rejected": 147975,
+  "exported_at": "2026-09-16T18:08:14.527Z",
+  "total_rejected": 147974,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2727
+      "count": 2726
     },
     {
       "category": "divisive-racism",
@@ -191,8 +191,8 @@
     },
     {
       "source": "Euronews",
-      "negative": 2125,
-      "total": 2193
+      "negative": 2124,
+      "total": 2192
     },
     {
       "source": "Wired",
@@ -401,15 +401,6 @@
     }
   ],
   "articles": [
-    {
-      "source": "Euronews",
-      "title": "Canada invited to become first 'associate member' of the EU",
-      "reason": "Discarded on human review",
-      "category": "human-discarded",
-      "url": "https://www.euronews.com/my-europe/2026/09/16/canada-to-become-first-associate-member-of-the-eu",
-      "date": "2026-09-16 20:07",
-      "positivity_score": null
-    },
     {
       "source": "ANSA English (Italy)",
       "title": "7.8% of women experienced sexual violence before age 16 - Istat",
@@ -9400,6 +9391,15 @@
       "url": "https://www.dn.se/sverige/fysikernas-teori-darfor-blev-valet-sa-jamnt/",
       "date": "2026-09-15 21:22",
       "positivity_score": 3
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "Norléns dagar som talman är räknade – de kan ta över",
+      "reason": "This is political news about the speaker position and government power dynamics in Sweden; it is political conflict with local-only relevance.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/sverige/norlens-dagar-som-talman-ar-raknade-de-kan-ta-over/",
+      "date": "2026-09-15 21:22",
+      "positivity_score": 2
     }
   ]
 }
