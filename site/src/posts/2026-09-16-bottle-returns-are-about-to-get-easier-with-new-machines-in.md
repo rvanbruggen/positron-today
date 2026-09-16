@@ -1,0 +1,20 @@
+---
+title: "Bottle returns are about to get easier with new machines in shops"
+title_nl: "Flessenretour wordt binnenkort eenvoudiger met nieuwe automaten in winkels"
+title_fr: "Les retours de bouteilles vont bientôt être plus faciles avec de nouvelles machines dans les magasins"
+date: 2026-09-16T12:31:26
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.rp.pl/handel/art45146951-juz-niedlugo-zwrot-butelek-bedzie-latwiejszy-w-sklepach-stana-nowe-automaty"
+source_name: "Rzeczpospolita Poland"
+topic: "Economy"
+tags: ["Economy","Environment","Society"]
+emoji: "♻️"
+summary: "Poland's deposit system is getting a major accessibility boost - small shop owners will soon be able to install bottle collection machines without paying for the equipment, installation, or maintenance. So here's the thing: OK Operator Kaucyjny is offering these automats completely free, which means even tiny shops in smaller towns can finally participate in the system. The machines can be tailored to each shop's needs, and owners get paid for the bottles they collect - plus they might attract new customers who'll do their shopping after returning their empties. And here's the really exciting part: since the system launched on October 1st, 2025, Poland has already collected 3.2 billion bottles and cans, with 900 million returned in July alone."
+summary_nl: "Polens inlevingssysteem krijgt een grote boost in toegankelijkheid - eigenaren van kleine winkels kunnen binnenkort flessenautomaten installeren zonder betaling voor apparatuur, installatie of onderhoud. Nu is het volgende belangrijk: OK Operator Kaucyjny biedt deze automaten volledig gratis aan, wat betekent dat zelfs kleine winkels in kleinere plaatsen eindelijk kunnen deelnemen aan het systeem. De machines kunnen op maat worden gemaakt voor elke winkel, en eigenaren krijgen betaald voor de flessen die ze inzamelen - plus ze kunnen nieuwe klanten aantrekken die na het inleveren van hun lege verpakkingen gaan winkelen. En hier is het werkelijk spannende gedeelte: sinds het systeem op 1 oktober 2025 van start ging, heeft Polen al 3,2 miljard flessen en blikjes ingezameld, met 900 miljoen stuks die in juli alleen al zijn ingeleverd."
+summary_fr: "Le système de consigne polonais reçoit un énorme coup de pouce en accessibilité - les petits commerçants pourront bientôt installer des machines de collecte de bouteilles sans payer l'équipement, l'installation ou l'entretien. Voici le point clé: OK Operator Kaucyjny propose ces automates complètement gratuitement, ce qui signifie que même les petits magasins des petites villes peuvent enfin participer au système. Les machines peuvent être adaptées aux besoins de chaque boutique, et les propriétaires sont rémunérés pour les bouteilles qu'ils collectent - en plus, ils pourraient attirer de nouveaux clients qui feront leurs courses après avoir restitué leurs emballages vides. Et voici la partie vraiment excitante: depuis le lancement du système le 1er octobre 2025, la Pologne a déjà collecté 3,2 milliards de bouteilles et de canettes, avec 900 millions d'unités restituées en juillet seulement."
+image_url: "https://i.gremicdn.pl/image/free/3256c38877e7577ae37d4f1f562e9428/?t=resize:fill:2000:1250,enlarge:1&ctx=preview"
+layout: post.njk
+---
+
+Poland's deposit system is getting a major accessibility boost - small shop owners will soon be able to install bottle collection machines without paying for the equipment, installation, or maintenance. So here's the thing: OK Operator Kaucyjny is offering these automats completely free, which means even tiny shops in smaller towns can finally participate in the system. The machines can be tailored to each shop's needs, and owners get paid for the bottles they collect - plus they might attract new customers who'll do their shopping after returning their empties. And here's the really exciting part: since the system launched on October 1st, 2025, Poland has already collected 3.2 billion bottles and cans, with 900 million returned in July alone.
