@@ -1,0 +1,20 @@
+---
+title: "Sniffing out trouble: customs dogs remain vital in the age of AI"
+title_nl: "Speurhonden blijven cruciaal voor douane ondanks kunstmatige intelligentie"
+title_fr: "À la recherche des contrebandes: les chiens des douanes restent essentiels à l'ère de l'IA"
+date: 2026-09-16T21:36:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.euronews.com/2026/09/16/sniffing-out-trouble-customs-dogs-remain-vital-in-the-age-of-ai"
+source_name: "Euronews"
+topic: "Animals"
+tags: ["Animals","Society","Technology"]
+emoji: "🐕"
+summary: "So here's the thing - while AI and advanced scanning systems are transforming border controls, trained customs dogs are proving they're absolutely irreplaceable. Officials from over 50 countries gathered at the World Customs Organisation's forum in Tashkent to discuss how dogs possess detection abilities that artificial intelligence simply cannot substitute. The key insight is that these two tools work beautifully together: technology narrows down which shipments need closer inspection, while dogs provide that crucial scent-detection capability that machines just don't have. Now, as synthetic drug markets evolve, canine units are adapting too, training dogs to recognize new narcotic scents that cameras and algorithms would miss entirely."
+summary_nl: "Dus ondanks dat kunstmatige intelligentie en geavanceerde scansystemen grensbewaking transformeren, blijken getrainde speurhonden absoluut onmisbaar te zijn. Ambtenaren uit meer dan 50 landen verzamelden zich op het forum van de Wereld Douaneorganisatie in Tasjkent om te bespreken hoe honden detectiemogelijkheden hebben die kunstmatige intelligentie gewoon niet kan vervangen. Het inzicht is dat deze twee gereedschappen prachtig samenwerken: technologie beperkt welke zendingen nauwer moeten worden onderzocht, terwijl honden die cruciale geurvermogen bieden die machines niet hebben. Nu, naarmate synthetische drugmarkten evolueren, passen canine eenheden zich ook aan en trainen ze honden om nieuwe narcotische geuren te herkennen die camera's en algoritmen zouden missen."
+summary_fr: "Donc, malgré le fait que l'intelligence artificielle et les systèmes de balayage avancés transforment le contrôle aux frontières, les chiens spécialisés des douanes s'avèrent absolument irremplaçables. Des responsables de plus de 50 pays se sont réunis au forum de l'Organisation mondiale des douanes à Tachkent pour discuter de la façon dont les chiens possèdent des capacités de détection que l'intelligence artificielle ne peut tout simplement pas remplacer. L'enjeu clé est que ces deux outils fonctionnent merveilleusement ensemble: la technologie restreint les envois qui nécessitent un examen plus approfondi, tandis que les chiens fournissent cette capacité cruciale de détection d'odeurs que les machines ne possèdent pas. À présent, à mesure que les marchés des drogues synthétiques évoluent, les unités canines s'adaptent aussi, en entraînant les chiens à reconnaître de nouvelles odeurs narcotiques que les caméras et les algorithmes ne détecteraient jamais."
+image_url: "https://images.euronews.com/articles/stories/09/90/51/45/1200x675_cmsv2_7028a99c-8370-5587-a134-0e13bd89c342-9905145.jpg"
+layout: post.njk
+---
+
+So here's the thing - while AI and advanced scanning systems are transforming border controls, trained customs dogs are proving they're absolutely irreplaceable. Officials from over 50 countries gathered at the World Customs Organisation's forum in Tashkent to discuss how dogs possess detection abilities that artificial intelligence simply cannot substitute. The key insight is that these two tools work beautifully together: technology narrows down which shipments need closer inspection, while dogs provide that crucial scent-detection capability that machines just don't have. Now, as synthetic drug markets evolve, canine units are adapting too, training dogs to recognize new narcotic scents that cameras and algorithms would miss entirely.
