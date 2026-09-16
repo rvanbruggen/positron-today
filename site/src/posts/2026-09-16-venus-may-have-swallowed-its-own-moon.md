@@ -1,0 +1,19 @@
+---
+title: "Venus may have swallowed its own moon"
+title_nl: "Venus zou zijn eigen maan kunnen hebben opgeslikt"
+title_fr: "Vénus aurait peut-être avalé sa propre lune"
+date: 2026-09-16T19:38:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.sciencedaily.com/releases/2026/09/260915232122.htm"
+source_name: "ScienceDaily"
+topic: "Nature"
+tags: ["Nature","Science"]
+emoji: "🌑"
+summary: "So here's a fascinating puzzle that's been bugging scientists for years - Venus is basically Earth's twin in size and structure, yet it has no moon. New research from UC Riverside suggests something wild: Venus might actually have had a moon once, but its own gravity and incredibly slow rotation pulled it back down to crash into the planet. The key difference is that Earth's moon drifts away from us at about four centimeters per year because our planet spins quickly enough to transfer energy outward. But Venus takes 243 days just to rotate once, which means any moon would gradually spiral inward instead. Computer simulations testing this theory were remarkably consistent - across nearly every scenario, the hypothetical moon eventually collided with Venus, with larger moons crashing in even faster."
+summary_nl: "Hier is een fascinerende raadsel die wetenschappers al jaren bezighoudt - Venus is eigenlijk een tweelingzus van de Aarde in grootte en structuur, maar heeft geen maan. Nieuw onderzoek van UC Riverside suggereert iets wilds: Venus zou ooit een maan kunnen hebben gehad, maar de eigen zwaartekracht en ongelooflijk langzame rotatie trokken deze terug naar een botsing met de planeet. Het belangrijkste verschil is dat de maan van de Aarde van ons af drijft met ongeveer vier centimeter per jaar omdat onze planeet snel genoeg draait om energie naar buiten over te dragen. Maar Venus doet er 243 dagen over om eenmaal te draaien, wat betekent dat elke maan langzaam naar binnen zou spiralen. Computersimulaties die deze theorie testten, waren opmerkelijk consistent - in vrijwel elk scenario botste de hypothetische maan uiteindelijk met Venus, waarbij grotere manen nog sneller crashten."
+summary_fr: "Voici une énigme fascinante qui occupe les scientifiques depuis des années - Vénus est pratiquement la jumelle de la Terre en taille et en structure, mais elle n'a pas de lune. Une nouvelle recherche de l'UC Riverside suggère quelque chose de spectaculaire : Vénus aurait peut-être eu une lune autrefois, mais sa propre gravité et sa rotation incroyablement lente l'ont tirée vers une collision avec la planète. La différence clé est que la Lune de la Terre s'éloigne de nous à environ quatre centimètres par an parce que notre planète tourne assez rapidement pour transférer l'énergie vers l'extérieur. Mais Vénus prend 243 jours pour faire une seule rotation, ce qui signifie que toute lune spiralerait lentement vers l'intérieur. Les simulations informatiques testant cette théorie ont été remarquablement cohérentes - dans presque tous les scénarios, la lune hypothétique a finalement heurté Vénus, les plus grandes lunes s'écrasant encore plus rapidement."
+layout: post.njk
+---
+
+So here's a fascinating puzzle that's been bugging scientists for years - Venus is basically Earth's twin in size and structure, yet it has no moon. New research from UC Riverside suggests something wild: Venus might actually have had a moon once, but its own gravity and incredibly slow rotation pulled it back down to crash into the planet. The key difference is that Earth's moon drifts away from us at about four centimeters per year because our planet spins quickly enough to transfer energy outward. But Venus takes 243 days just to rotate once, which means any moon would gradually spiral inward instead. Computer simulations testing this theory were remarkably consistent - across nearly every scenario, the hypothetical moon eventually collided with Venus, with larger moons crashing in even faster.
