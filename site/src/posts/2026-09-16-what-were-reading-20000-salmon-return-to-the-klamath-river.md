@@ -1,0 +1,20 @@
+---
+title: "What we're reading: 20,000 salmon return to the Klamath River"
+title_nl: "Wat we lezen: 20.000 zalmen keren terug naar de Klamath River"
+title_fr: "Ce que nous lisons : 20 000 saumons reviennent à la rivière Klamath"
+date: 2026-09-16T12:31:21
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://reasonstobecheerful.world/what-were-reading-klamath-river-salmon-return/"
+source_name: "Reasons to be Cheerful"
+topic: "Animals"
+tags: ["Animals","Environment","Health"]
+emoji: "🐟"
+summary: "Here's something that genuinely got our team excited this week - 20,000 chinook salmon have migrated back up the Klamath River in just two years since four dams were removed, and the speed of this recovery has surprised even the experts. Now, I find this remarkable because it shows nature's incredible resilience when we actually give it a chance - researchers were expecting progress, sure, but not this fast. Of course, challenges remain with water allotments and the river's two remaining dams still in place, but this is unmistakable proof that dam removal works. We're also buzzing about how family planning services in Nigeria are getting smarter by involving men in conversations, recognizing that reproductive health decisions need everyone at the table."
+summary_nl: "Hier is iets wat ons team deze week echt enthousiast maakte - 20.000 chinook-zalmen zijn in slechts twee jaar na de verwijdering van vier dammen teruggekeerd naar de Klamath River, en het tempo van dit herstel heeft zelfs de experts verrast. Ik vind dit opmerkenswaardig omdat het de ongelooflijke veerkracht van de natuur laat zien als we haar werkelijk een kans geven - onderzoekers verwachtten vooruitgang, zeker, maar niet zo snel. Natuurlijk blijven er uitdagingen met watertoedelingen en de twee resterende dammen van de rivier, maar dit is onmiskenbaar bewijs dat damverwijdering werkt. We zijn ook enthousiast over hoe familieplanningsdiensten in Nigeria slimmer worden door mannen in gesprekken te betrekken en erkennen dat reproductieve gezondheidsbeslissingen iedereen aan tafel nodig hebben."
+summary_fr: "Voici quelque chose qui a vraiment enthousiasmé notre équipe cette semaine - 20 000 saumons chinook sont revenus en amont de la rivière Klamath en seulement deux ans depuis le retrait de quatre barrages, et la vitesse de ce rétablissement a surpris même les experts. Je trouve cela remarquable car cela montre la résilience incroyable de la nature quand nous lui donnons vraiment une chance - les chercheurs s'attendaient à des progrès, bien sûr, mais pas si rapidement. Bien sûr, des défis demeurent en matière d'allocations d'eau et les deux barrages restants de la rivière persistent, mais c'est une preuve incontestable que le retrait des barrages fonctionne. Nous sommes également enthousiastes à propos de la façon dont les services de planification familiale au Nigéria deviennent plus intelligents en impliquant les hommes dans les conversations, reconnaissant que les décisions en matière de santé reproductive nécessitent tout le monde à la table."
+image_url: "https://reasonstobecheerful.world/wp-content/uploads/2026/09/shutterstock_2531477959-scaled.jpg"
+layout: post.njk
+---
+
+Here's something that genuinely got our team excited this week - 20,000 chinook salmon have migrated back up the Klamath River in just two years since four dams were removed, and the speed of this recovery has surprised even the experts. Now, I find this remarkable because it shows nature's incredible resilience when we actually give it a chance - researchers were expecting progress, sure, but not this fast. Of course, challenges remain with water allotments and the river's two remaining dams still in place, but this is unmistakable proof that dam removal works. We're also buzzing about how family planning services in Nigeria are getting smarter by involving men in conversations, recognizing that reproductive health decisions need everyone at the table.
