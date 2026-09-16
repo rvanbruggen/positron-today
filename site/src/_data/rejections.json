@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:08:14.527Z",
-  "total_rejected": 147974,
+  "exported_at": "2026-09-16T18:08:28.781Z",
+  "total_rejected": 147975,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2726
+      "count": 2727
     },
     {
       "category": "divisive-racism",
@@ -106,8 +106,8 @@
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 5874,
-      "total": 5902
+      "negative": 5875,
+      "total": 5903
     },
     {
       "source": "Le Monde",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Antikes Strassennetz: Nicht alle Wege führten nach Rom",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.faz.net/aktuell/wissen/archaeologie-altertum/roemisches-strassennetz-ueberraschende-befunde-der-netzwerkanalyse-accg-201225115.html",
+      "date": "2026-09-16 20:08",
+      "positivity_score": null
+    },
     {
       "source": "ANSA English (Italy)",
       "title": "7.8% of women experienced sexual violence before age 16 - Istat",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dn.se/sverige/fysikernas-teori-darfor-blev-valet-sa-jamnt/",
       "date": "2026-09-15 21:22",
       "positivity_score": 3
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Norléns dagar som talman är räknade – de kan ta över",
-      "reason": "This is political news about the speaker position and government power dynamics in Sweden; it is political conflict with local-only relevance.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/sverige/norlens-dagar-som-talman-ar-raknade-de-kan-ta-over/",
-      "date": "2026-09-15 21:22",
-      "positivity_score": 2
     }
   ]
 }
