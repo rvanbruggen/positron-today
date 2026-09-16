@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:04:14.205Z",
-  "total_rejected": 147969,
+  "exported_at": "2026-09-16T18:04:21.241Z",
+  "total_rejected": 147970,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2721
+      "count": 2722
     },
     {
       "category": "divisive-racism",
@@ -241,8 +241,8 @@
     },
     {
       "source": "Nature",
-      "negative": 924,
-      "total": 1156
+      "negative": 925,
+      "total": 1157
     },
     {
       "source": "Popular Science",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Nature",
+      "title": "Developmental xenocortication using human-derived organoids in mice",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nature.com/articles/s41586-026-11032-2",
+      "date": "2026-09-16 20:04",
+      "positivity_score": null
+    },
     {
       "source": "Nature",
       "title": "Transplanted human brain-tissue takes root in mice without a cortex",
@@ -9389,15 +9398,6 @@
       "reason": "This is a consumer complaint story about retail deception in promotions; while it exposes a problem, it is fundamentally negative news about how stores cheat customers.",
       "category": "other-negative",
       "url": "https://www.rp.pl/handel/art45143041-tak-sklepy-oszukuja-na-promocjach-zlapala-sie-na-to-wiekszosc-polakow",
-      "date": "2026-09-15 21:22",
-      "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Firmy za wdrożeniem ROP, ale według innych zasad",
-      "reason": "This is business and regulatory news about extended producer responsibility (EPR) system implementation; it is corporate and political discussion without clear positive resolution.",
-      "category": "soft-news-filler",
-      "url": "https://www.rp.pl/forum-ekonomiczne/art45145421-firmy-za-wdrozeniem-rop-ale-wedlug-innych-zasad",
       "date": "2026-09-15 21:22",
       "positivity_score": 2
     }
