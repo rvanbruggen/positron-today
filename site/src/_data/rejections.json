@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-16T18:08:28.781Z",
-  "total_rejected": 147975,
+  "exported_at": "2026-09-16T18:08:41.895Z",
+  "total_rejected": 147976,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2727
+      "count": 2728
     },
     {
       "category": "divisive-racism",
@@ -186,8 +186,8 @@
     },
     {
       "source": "The Guardian Europe",
-      "negative": 2524,
-      "total": 2638
+      "negative": 2525,
+      "total": 2639
     },
     {
       "source": "Euronews",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The Guardian Europe",
+      "title": "European Union invites Canada to become first ever ‘associate member’",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.theguardian.com/world/2026/sep/16/von-der-leyen-mark-carney-canada-eu-first-associate-member",
+      "date": "2026-09-16 20:08",
+      "positivity_score": null
+    },
     {
       "source": "Frankfurter Allgemeine Zeitung",
       "title": "Antikes Strassennetz: Nicht alle Wege führten nach Rom",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dn.se/sverige/styret-av-region-stockholm-kraver-harda-forhandlingar/",
       "date": "2026-09-15 21:22",
       "positivity_score": 2
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Fysikernas teori: Därför blev valet så jämnt",
-      "reason": "This is political analysis of Swedish election results using mathematical theory; while intellectually interesting, it is fundamentally political commentary on election outcomes rather than positive news.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/sverige/fysikernas-teori-darfor-blev-valet-sa-jamnt/",
-      "date": "2026-09-15 21:22",
-      "positivity_score": 3
     }
   ]
 }
