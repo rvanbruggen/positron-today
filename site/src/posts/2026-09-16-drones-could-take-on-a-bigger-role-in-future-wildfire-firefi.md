@@ -1,0 +1,20 @@
+---
+title: "Drones could take on a bigger role in future wildfire firefighting"
+title_nl: "Drones kunnen een grotere rol spelen in toekomstige wildfireblussingoperaties"
+title_fr: "Les drones pourraient jouer un rôle plus important dans la lutte contre les feux de forêt"
+date: 2026-09-16T09:08:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://globalnews.ca/news/12060685/drones-bigger-role-future-wildfire-firefighting/"
+source_name: "Global News (Canada)"
+topic: "Environment"
+tags: ["Environment","Science","Technology"]
+emoji: "🚁"
+summary: "Kelowna is positioning itself as a Western Canadian hub for aerospace innovation through a new partnership between the city, FireSwarm Solutions, and Okanagan College - announced at the BC Municipalities convention. The collaboration focuses on developing autonomous drone-swarm technology designed to suppress wildfires in dangerous conditions where crewed helicopters can't safely operate. FireSwarm is working on ultra-heavy-lift drones capable of carrying 350 kilograms of water autonomously, with larger versions approaching the market soon. The partnership also includes a crucial education component, with Okanagan College building a new training facility and developing the country's first curriculum for aircraft maintenance engineers specializing in ultra-heavy-lift drone technology."
+summary_nl: "Kelowna positioneert zich als een hub voor ruimtevaart innovatie in West-Canada via een nieuw partnerschap tussen de stad, FireSwarm Solutions en Okanagan College - aangekondigd op de BC Municipalities conventie. De samenwerking richt zich op het ontwikkelen van autonome drone-swarm technologie die bosbranden kan bestrijden in gevaarlijke omstandigheden waar bemande helikopters niet veilig kunnen opereren. FireSwarm werkt aan zware cargo-drones die autonoom 350 kilogram water kunnen vervoeren, met grotere versies die binnenkort op de markt komen. Het partnerschap omvat ook een cruciaal onderwijscomponent, waarbij Okanagan College een nieuwe trainingshal bouwt en het eerste curriculum in het land ontwikkelt voor vliegtuigonderhoudstechnici gespecialiseerd in zware cargo-drones."
+summary_fr: "Kelowna se positionne comme centre d'innovation aérospatiale en Colombie-Britannique occidentale via un nouveau partenariat entre la ville, FireSwarm Solutions et Okanagan College - annoncé à la convention des Municipalités de la Colombie-Britannique. La collaboration se concentre sur le développement de la technologie autonome de drones en essaim conçue pour combattre les feux de forêt dans des conditions dangereuses où les hélicoptères pilotés ne peuvent pas opérer en sécurité. FireSwarm travaille sur des drones super-lourds capables de transporter 350 kilogrammes d'eau de manière autonome, avec des versions plus grandes arrivant bientôt sur le marché. Le partenariat comprend également un volet éducatif crucial, Okanagan College construisant une nouvelle installation d'entraînement et développant le premier programme au pays pour les techniciens d'entretien d'aéronefs spécialisés dans la technologie des drones super-lourds."
+image_url: "https://globalnews.ca/wp-content/uploads/2026/09/fire-drone.webp?w=720&h=379&crop=1"
+layout: post.njk
+---
+
+Kelowna is positioning itself as a Western Canadian hub for aerospace innovation through a new partnership between the city, FireSwarm Solutions, and Okanagan College - announced at the BC Municipalities convention. The collaboration focuses on developing autonomous drone-swarm technology designed to suppress wildfires in dangerous conditions where crewed helicopters can't safely operate. FireSwarm is working on ultra-heavy-lift drones capable of carrying 350 kilograms of water autonomously, with larger versions approaching the market soon. The partnership also includes a crucial education component, with Okanagan College building a new training facility and developing the country's first curriculum for aircraft maintenance engineers specializing in ultra-heavy-lift drone technology.
