@@ -1,0 +1,20 @@
+---
+title: "The ozone hole is healing, but extreme weather may be slowing recovery"
+title_nl: "Het ozongatgeneest, maar extreem weer kan het herstel vertragen"
+title_fr: "Le trou de la couche d'ozone se referme, mais les conditions météorologiques extrêmes pourraient ralentir sa guérison"
+date: 2026-09-16T08:46:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.scientificamerican.com/article/the-hole-in-the-ozone-layer-is-healing-but-extreme-weather-may-be-slowing-progress-down/"
+source_name: "Scientific American"
+topic: "Environment"
+tags: ["Environment","Health","Science"]
+emoji: "🌍"
+summary: "So here's the thing - the ozone hole is genuinely smaller than it's been in decades, which is fantastic news showing our Montreal Protocol treaty actually works. But and this is important - scientists are noticing it's healing slower than they predicted, with seasonal fluctuations making it tricky to spot real progress year to year. Now, what's really worrying researchers like UCLA's Suzanne Paulson is that extreme weather events, driven by climate change, are throwing spanners in the works and could keep creating new anomalies. The report shows ozone levels dipped unusually low in September 2025 instead of October, which they're linking to a fierce Arctic winter vortex - exactly the kind of chaos we'll see more of as global warming intensifies."
+summary_nl: "Dus het goeie nieuws - het ozongat is aanzienlijk kleiner dan in recente decennia, wat laat zien dat ons Montreal Protocol verdrag echt werkt. Maar en dit is belangrijk - wetenschappers merken op dat het langzamer geneest dan verwacht, en seizoensschommelingen maken het moeilijk om echte vooruitgang jaar na jaar op te sporen. Nu is wat onderzoekers zoals Suzanne Paulson van UCLA echt zorgen baart, dat extreem weer veroorzaakt door klimaatverandering roet in het eten gooit en nieuwe anomalieën kan blijven creëren. Het rapport laat zien dat ozonniveaus onverwacht laag daalden in september 2025 in plaats van oktober, wat ze koppelen aan een felle arctische winterwervel - precies het soort chaos dat we vaker zullen zien naarmate de aardverwarming intensiveert."
+summary_fr: "Alors voilà la bonne nouvelle - le trou de la couche d'ozone est considérablement plus petit qu'au cours des dernières décennies, ce qui prouve que notre traité du Protocole de Montréal fonctionne vraiment. Mais et c'est important - les scientifiques remarquent qu'il se referme plus lentement que prévu, et les fluctuations saisonnières rendent difficile de repérer les vrais progrès d'année en année. Maintenant, ce qui inquiète vraiment les chercheurs comme Suzanne Paulson de l'UCLA, c'est que les phénomènes météorologiques extrêmes, provoqués par le changement climatique, mettent des bâtons dans les roues et pourraient continuer à créer de nouvelles anomalies. Le rapport montre que les niveaux d'ozone ont baissé anormalement bas en septembre 2025 au lieu d'octobre, qu'ils associent à un fort vortex polaire arctique - exactement le genre de chaos que nous verrons davantage à mesure que le réchauffement climatique s'intensifie."
+image_url: "https://static.scientificamerican.com/dam/asset/cd8ec97a-f66e-42c7-bafc-aafd467ba01c/Ozone-hole.jpg?m=1789507763.064&w=1200"
+layout: post.njk
+---
+
+So here's the thing - the ozone hole is genuinely smaller than it's been in decades, which is fantastic news showing our Montreal Protocol treaty actually works. But and this is important - scientists are noticing it's healing slower than they predicted, with seasonal fluctuations making it tricky to spot real progress year to year. Now, what's really worrying researchers like UCLA's Suzanne Paulson is that extreme weather events, driven by climate change, are throwing spanners in the works and could keep creating new anomalies. The report shows ozone levels dipped unusually low in September 2025 instead of October, which they're linking to a fierce Arctic winter vortex - exactly the kind of chaos we'll see more of as global warming intensifies.
