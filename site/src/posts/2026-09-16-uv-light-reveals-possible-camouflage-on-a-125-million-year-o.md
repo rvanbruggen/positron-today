@@ -1,0 +1,19 @@
+---
+title: "UV light reveals possible camouflage on a 125-million-year-old crocodile"
+title_nl: "UV-licht onthult mogelijke camouflage op een 125 miljoen jaar oude krokodil"
+title_fr: "La lumière ultraviolette révèle un possible camouflage sur un crocodile vieux de 125 millions d'années"
+date: 2026-09-16T06:09:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.sciencedaily.com/releases/2026/09/260914102436.htm"
+source_name: "ScienceDaily"
+topic: "Animals"
+tags: ["Animals","Nature","Science"]
+emoji: "🦎"
+summary: "So here's what's fascinating - researchers examining a beautifully preserved fossil from Spain under ultraviolet light have uncovered hidden details about a tiny ancient crocodile that lived 125 million years ago. The UV technique revealed soft tissues, skin patterns, and sensory structures that had been invisible to the naked eye since the fossil was discovered over a century ago. What I find really compelling is that this creature, Montsecosuchus depereti, was only about 50 centimeters long but already possessed an advanced respiratory system adapted for semi-aquatic life. The team also discovered evidence suggesting early sensory organs in its skin - structures that may have evolved in specific areas before spreading more widely across later crocodylomorph species."
+summary_nl: "Wat een doorbraak - onderzoekers hebben een prachtig bewaarde fossiel uit Spanje onder ultraviolet licht bekeken en verborgen details ontdekt van een piepkleine oude krokodil van 125 miljoen jaar geleden. De UV-techniek maakte zachte weefsels, huidpatronen en sensorische structuren zichtbaar die sinds de ontdekking meer dan een eeuw geleden onzichtbaar waren gebleven. Wat mij echt fascineert is dat dit dier, Montsecosuchus depereti, slechts ongeveer 50 centimeter lang was maar al een geavanceerd ademhalingssysteem bezat dat aangepast was aan semi-aquatisch leven. Het team vond ook aanwijzingen voor vroege sensorische organen in de huid - structuren die mogelijk eerst in bepaalde gebieden zijn ontstaan voordat ze zich verspreidden bij latere krokodylomorfen-soorten."
+summary_fr: "Voilà une découverte remarquable - des chercheurs ont examiné un fossile magnifiquement préservé d'Espagne sous lumière ultraviolette et ont révélé des détails cachés d'un minuscule crocodile ancien datant de 125 millions d'années. La technique UV a rendu visible les tissus mous, les motifs de peau et les structures sensorielles qui étaient restés invisibles à l'œil nu depuis la découverte du fossile il y a plus d'un siècle. Ce qui me fascine vraiment, c'est que cette créature, Montsecosuchus depereti, ne mesurait qu'environ 50 centimètres de long mais possédait déjà un système respiratoire avancé adapté à la vie semi-aquatique. L'équipe a également trouvé des preuves d'organes sensoriels primitifs dans la peau - des structures qui auraient peut-être d'abord évolué dans des zones spécifiques avant de se propager chez les espèces de crocodylomorphes ultérieures."
+layout: post.njk
+---
+
+So here's what's fascinating - researchers examining a beautifully preserved fossil from Spain under ultraviolet light have uncovered hidden details about a tiny ancient crocodile that lived 125 million years ago. The UV technique revealed soft tissues, skin patterns, and sensory structures that had been invisible to the naked eye since the fossil was discovered over a century ago. What I find really compelling is that this creature, Montsecosuchus depereti, was only about 50 centimeters long but already possessed an advanced respiratory system adapted for semi-aquatic life. The team also discovered evidence suggesting early sensory organs in its skin - structures that may have evolved in specific areas before spreading more widely across later crocodylomorph species.
