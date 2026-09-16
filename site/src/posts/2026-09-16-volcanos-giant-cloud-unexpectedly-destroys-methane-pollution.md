@@ -1,0 +1,20 @@
+---
+title: "Volcano's giant cloud unexpectedly destroys methane pollution"
+title_nl: "Reuzeachtige vulkaanwolk vernietigt onverwacht methaan"
+title_fr: "Le nuage géant du volcan détruit inopinément la pollution au méthane"
+date: 2026-09-16T07:01:00
+source_pub_date: 2026-09-15
+fetched_date: 2026-09-15
+source_url: "https://www.sciencedaily.com/releases/2026/09/260915095750.htm"
+source_name: "ScienceDaily"
+topic: "Environment"
+tags: ["Environment","Nature","Science"]
+emoji: "🌋"
+summary: "So here's what amazed scientists - when Hunga Tonga erupted beneath the South Pacific in January 2022, its enormous volcanic plume didn't just cause destruction, it actually helped clean up methane pollution in the atmosphere. Researchers detected unusually high levels of formaldehyde in the cloud, which acts as a chemical fingerprint showing that methane was being destroyed continuously for over a week - removing about 900 megagrams per day, equivalent to emissions from two million cows. The mechanism involves volcanic ash mixing with seawater and sunlight, creating iron salt aerosols that release reactive chlorine atoms capable of breaking apart methane molecules. This discovery could have major implications for climate science, potentially helping researchers develop new strategies to reduce methane faster and slow near-term warming in ways nature itself is already demonstrating."
+summary_nl: "Wetenschappers waren verbaasd toen de reuzeachtige pluim van de Hunga Tonga-uitbarsting niet alleen vernietiging veroorzaakte, maar ook methaan uit de atmosfeer verwijderde. Ze detecteerden ongewoon hoge concentraties formaldehyde in de wolk, wat aantoonde dat methaan gedurende meer dan een week continu werd afgebroken - ongeveer 900 megagram per dag, wat overeenkomt met de emissies van twee miljoen koeien. Het mechanisme betreft vulkanische as die zich met zeewater en zonlicht mengt, waardoor ijzerzoutaggregaten ontstaan die reactieve chlooratomen vrijstellen die methaan kunnen afbreken. Deze ontdekking zou belangrijke gevolgen kunnen hebben voor klimaatwetenschap en helpt onderzoekers misschien wel nieuwe strategieën ontwikkelen om methaan sneller af te breken."
+summary_fr: "Les scientifiques ont été surpris de découvrir que l'énorme panache du volcan Hunga Tonga n'a pas seulement causé de la destruction, mais a aussi aidé à éliminer la pollution au méthane de l'atmosphère. Ils ont détecté des niveaux inhabituellement élevés de formaldéhyde dans le nuage, ce qui indiquait que le méthane était détruit continuellement pendant plus d'une semaine - environ 900 mégagrammes par jour, équivalent aux émissions de deux millions de vaches. Le mécanisme implique les cendres volcaniques se mélangeant à l'eau de mer et à la lumière du soleil, créant des aérosols de sel de fer qui libèrent des atomes de chlore réactifs capables de décomposer les molécules de méthane. Cette découverte pourrait avoir des implications majeures pour la science climatique et aider les chercheurs à développer de nouvelles stratégies pour réduire le méthane plus rapidement."
+featured: true
+layout: post.njk
+---
+
+So here's what amazed scientists - when Hunga Tonga erupted beneath the South Pacific in January 2022, its enormous volcanic plume didn't just cause destruction, it actually helped clean up methane pollution in the atmosphere. Researchers detected unusually high levels of formaldehyde in the cloud, which acts as a chemical fingerprint showing that methane was being destroyed continuously for over a week - removing about 900 megagrams per day, equivalent to emissions from two million cows. The mechanism involves volcanic ash mixing with seawater and sunlight, creating iron salt aerosols that release reactive chlorine atoms capable of breaking apart methane molecules. This discovery could have major implications for climate science, potentially helping researchers develop new strategies to reduce methane faster and slow near-term warming in ways nature itself is already demonstrating.
