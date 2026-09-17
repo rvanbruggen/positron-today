@@ -1,0 +1,20 @@
+---
+title: "Map of brain 'microproteins' could offer new clues to Alzheimer's disease"
+title_nl: "Kaart van hersenen-'microproteïnen' kan nieuwe aanwijzingen voor Alzheimer geven"
+title_fr: "Une carte des 'microprotéines' du cerveau pourrait offrir de nouveaux indices sur la maladie d'Alzheimer"
+date: 2026-09-17T00:33:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.nature.com/articles/d41586-026-02914-6"
+source_name: "Nature"
+topic: "Health"
+tags: ["Health","Science"]
+emoji: "🧠"
+summary: "Researchers have discovered over 1,000 previously overlooked microproteins in human brain tissue - the tiniest molecules that standard detection methods usually miss entirely. What makes this exciting is that dozens of these hidden proteins showed altered expression in people with Alzheimer's disease, suggesting they could unlock new understanding of how neurodegeneration happens. The team combined advanced techniques like mass spectrometry, RNA sequencing, and ribosomal profiling to create the largest atlas of microproteins in Alzheimer's to date, identifying 4,321 in total. By making this data publicly available, scientists can now design experiments to validate these proteins and potentially discover entirely new mechanisms of aging and disease."
+summary_nl: "Onderzoekers hebben meer dan duizend tot nu toe over het hoofd geziene microproteïnen in menselijk hersenweefsel ontdekt - de allerkleinste moleculen die standaard detectiemethoden normaal helemaal missen. Wat dit fascinerend maakt, is dat tientallen van deze verborgen proteïnen een veranderde expressie vertoonden bij mensen met Alzheimer, wat suggereert dat ze nieuw inzicht in neurodegeneratie kunnen opleveren. Het team combineerde geavanceerde technieken zoals massaspectrometrie, RNA-sequencing en ribosomale profilering om het grootste atlas van microproteïnen bij Alzheimer tot nu toe te creëren. Door deze gegevens openbaar beschikbaar te stellen, kunnen wetenschappers nu experimenten ontwerpen om deze proteïnen te valideren en mogelijk geheel nieuwe mechanismen van veroudering en ziekte ontdekken."
+summary_fr: "Les chercheurs ont découvert plus de mille microprotéines jusqu'alors négligées dans le tissu cérébral humain - les plus minuscules molécules que les méthodes de détection standard manquent habituellement complètement. Ce qui rend cela passionnant, c'est que des dizaines de ces protéines cachées ont montré une expression altérée chez les personnes atteintes de la maladie d'Alzheimer, ce qui suggère qu'elles pourraient révéler de nouveaux mécanismes de la neurodégénérescence. L'équipe a combiné des techniques avancées comme la spectrométrie de masse, le séquençage de l'ARN et le profilage ribosomique pour créer le plus grand atlas de microprotéines dans l'Alzheimer à ce jour. En mettant ces données à disposition du public, les scientifiques peuvent désormais concevoir des expériences pour valider ces protéines et découvrir potentiellement de tout nouveaux mécanismes du vieillissement et de la maladie."
+image_url: "https://media.nature.com/lw1200/magazine-assets/d41586-026-02914-6/d41586-026-02914-6_53717846.jpg"
+layout: post.njk
+---
+
+Researchers have discovered over 1,000 previously overlooked microproteins in human brain tissue - the tiniest molecules that standard detection methods usually miss entirely. What makes this exciting is that dozens of these hidden proteins showed altered expression in people with Alzheimer's disease, suggesting they could unlock new understanding of how neurodegeneration happens. The team combined advanced techniques like mass spectrometry, RNA sequencing, and ribosomal profiling to create the largest atlas of microproteins in Alzheimer's to date, identifying 4,321 in total. By making this data publicly available, scientists can now design experiments to validate these proteins and potentially discover entirely new mechanisms of aging and disease.
