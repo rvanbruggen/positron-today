@@ -1,0 +1,19 @@
+---
+title: "After 15 years of research, scientists finally crack the body temperature of Tyrannosaurus rex"
+title_nl: "Na 15 jaar onderzoek ontrafelen wetenschappers eindelijk de lichaamstemperatuur van Tyrannosaurus rex"
+title_fr: "Après 15 ans de recherche, les scientifiques découvrent enfin la température corporelle du Tyrannosaurus rex"
+date: 2026-09-17T09:31:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.demorgen.be/nieuws/na-15-jaar-onderzoek-lichaamstemperatuur-van-tyrannosaurus-rex-achterhaald-verklaart-mee-waarom-dino-bovenaan-voedselketen-stond~b1b40dca/"
+source_name: "De Morgen"
+topic: "Animals"
+tags: ["Animals","Nature","Science"]
+emoji: "🦖"
+summary: "So here's the thing - researchers have spent a decade and a half piecing together one of prehistory's biggest mysteries: just how warm did a T. rex actually run? Now they've got an answer, and it's fascinating because it turns out these creatures maintained a pretty high body temperature, which actually explains a lot about why they dominated the food chain so completely. And here's what's really striking - this metabolic intensity gave them the energy and hunting prowess to be apex predators unlike anything else in their ecosystem. Which brings me to the bigger picture: understanding the T. rex's internal workings helps us see dinosaurs not as cold, sluggish reptiles, but as active, powerful animals perfectly adapted to rule their world."
+summary_nl: "Dus hier is het ding - onderzoekers hebben anderhalf decennium besteed aan het ontrafelen van een van de grootste mysteries van de prehistorie: hoe warm was een T. rex eigenlijk? Nu hebben ze een antwoord, en het is fascinerend omdat deze dieren blijkbaar een behoorlijk hoge lichaamstemperatuur hadden, wat veel verklaart over hun dominante positie in de voedselketen. En dat is echt opvallend - deze metabole intensiteit gaf hen de energie en jachtkracht om ongekende toproofdieren te zijn in hun ecosysteem. Wat me naar het grotere plaatje brengt: het begrijpen van de inwendige werking van de T. rex helpt ons dinosaurussen niet als luie, koude reptiliën te zien, maar als actieve, krachtige dieren die perfect waren aangepast om hun wereld te beheersen."
+summary_fr: "Voilà le truc - les chercheurs ont passé une décennie et demie à démêler l'un des plus grands mystères de la préhistoire: à quelle température corporelle vivait un T. rex? Maintenant ils ont une réponse, et c'est fascinant car ces créatures maintenaient apparemment une température corporelle assez élevée, ce qui explique beaucoup leur domination totale de la chaîne alimentaire. Et c'est vraiment frappant - cette intensité métabolique leur donnait l'énergie et les capacités de chasse pour être des prédateurs apex sans équivalent dans leur écosystème. Ce qui m'amène au tableau plus large: comprendre le fonctionnement interne du T. rex nous aide à voir les dinosaures non pas comme des reptiles froids et léthargiques, mais comme des animaux actifs et puissants parfaitement adaptés pour dominer leur monde."
+layout: post.njk
+---
+
+So here's the thing - researchers have spent a decade and a half piecing together one of prehistory's biggest mysteries: just how warm did a T. rex actually run? Now they've got an answer, and it's fascinating because it turns out these creatures maintained a pretty high body temperature, which actually explains a lot about why they dominated the food chain so completely. And here's what's really striking - this metabolic intensity gave them the energy and hunting prowess to be apex predators unlike anything else in their ecosystem. Which brings me to the bigger picture: understanding the T. rex's internal workings helps us see dinosaurs not as cold, sluggish reptiles, but as active, powerful animals perfectly adapted to rule their world.
