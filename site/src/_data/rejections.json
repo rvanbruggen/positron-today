@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T10:43:32.068Z",
-  "total_rejected": 148621,
+  "exported_at": "2026-09-17T10:43:37.343Z",
+  "total_rejected": 148622,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2759
+      "count": 2760
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 6804,
-      "total": 6854
+      "negative": 6805,
+      "total": 6855
     },
     {
       "source": "Le Figaro",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "Därför ska en familj inte tiga om sin svåra hemlighet",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dn.se/insidan/darfor-ska-en-familj-inte-tiga-om-sin-svara-hemlighet/",
+      "date": "2026-09-17 12:43",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Faut-il continuer de pratiquer son sport quand on souffre d’arthrose ? Ou, au contraire, éviter d’en faire ?",
@@ -9391,15 +9400,6 @@
       "url": "https://www.faz.net/aktuell/finanzen/ubs-stratege-die-wahl-in-sachsen-anhalt-wird-den-aufschwung-nicht-stoppen-accg-201224666.html",
       "date": "2026-09-16 14:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Deutschland-Liveblog: CDU-Ministerpräsidenten gegen Minderheitsregierung und Personaldebatten",
-      "reason": "This is a live political blog covering government decisions, partisan positioning, and election-related political developments.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/politik/inland/liveticker-bundespolitik-cdu-ministerpraesidenten-gegen-minderheitsregierung-und-personaldebatten-faz-110093143.html",
-      "date": "2026-09-16 14:27",
-      "positivity_score": 1
     }
   ]
 }
