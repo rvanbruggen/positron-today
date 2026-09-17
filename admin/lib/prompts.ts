@@ -15,11 +15,20 @@ REJECT the article (verdict: NO) if ANY of the rules below is true. These are ha
 
 1. Sports. Professional sports content that is related to non-exceptional results, league standings, transfers, injuries, match previews, comeback stories, charity matches, retirements, contracts, sports-business news that is not truly, once in a lifetime level exceptional. Only allow exceptions if the story is truly emotional, inspiring, or human-interest with a unique characteristic that can be universally appreciated.
 
-2. Local-only relevance. The article would not interest a reader in another country. Single-village, single-town, single-neighbourhood, single-school, or municipal content: roadworks, community events, fundraisers, council decisions, regional weather, local crime or courts, neighbourhood disputes - even with a positive resolution. This includes: local festivals and markets ("Vijfde editie rommelmarkt"), neighbourhood revitalisation ("buurt herontdekt park"), local building or infrastructure projects, regional visitor/tourism statistics ("Paasvakantie lokte veel Duitsers"), local animal sightings, municipal investments, and any story whose main news value is "N people attended X" in a specific locality.
+2. Relevance confined to one place or institution. The article's significance depends on the reader living in, coming from, or caring about one particular place or organisation. Single-village, single-town, single-neighbourhood, single-school, or municipal content: roadworks, community events, fundraisers, council decisions, regional weather, local crime or courts, neighbourhood disputes - even with a positive resolution. This includes: local festivals and markets ("Vijfde editie rommelmarkt"), neighbourhood revitalisation ("buurt herontdekt park"), local building or infrastructure projects, regional visitor/tourism statistics ("Paasvakantie lokte veel Duitsers"), local animal sightings, municipal investments, and any story whose main news value is "N people attended X" in a specific locality.
+
+   This rule is NOT limited to small places - it applies with equal force at national and institutional scale. Also reject: one country's national award, prize, or "of the Year" honour; one country's budget, subsidy, or funding decision; one country's annual figures or rankings; one region's wildlife, beaches, or seasonal weather; one city's transport or housing scheme; one company's, university's, or hospital's administrative milestone - an anniversary, a ranking, a funding award, a new building; and archaeological or heritage finds of interest mainly in the country where they were made. Naming a country does not make a story local, and it does not make it universal either - what decides it is whether the significance itself travels, which is Gate 2 below.
+
+   This rule is about where the significance stops, not about where the events happened, and it must never be used to reject a real advance for having a dateline. If the story reports a genuine first, or a treatment, method, or technology that others elsewhere could adopt, this rule does NOT apply - accept it on its substance even when the headline names one country, hospital, or laboratory, and even when the article frames it as a national first. A clinical, surgical, or engineering first is an advance that travels, and stays an advance even when the article presents it as a first for that country or hospital and even when the underlying technology exists elsewhere - the news is that it has now been done. "First operation of its kind, performed in Denmark" passes; "Denmark's hospital budget rose this year" is one place's own affairs. Likewise, an observed change in nature - a species returning, a population recovering, a measured environmental shift - is not disqualified merely because it was observed in one named place.
+   What this rule catches is the story whose only subject is one place's own affairs: its politics, budgets, honours, statistics, schemes, and institutional milestones.
 
 3. Celebrities and entertainment industry. Gossip, awards, premieres, casting, relationships, royal-family colour pieces, red-carpet coverage - local or global fame. This extends to: TV personality profiles, reality-show contestants, celebrity pregnancy or family announcements, fan-culture stories, personal milestones of known figures, and any story that only matters because a famous person is involved.
 
+   Philanthropy and good works by a famous person are still celebrity stories. A well-known figure's charity, foundation, donation, school, village, or personal passion project belongs here however worthy the cause, and so does the ribbon-cutting coverage of it. Test: strip the name. If the same project carried out by someone unknown would not have been reported, the story is rule 3.
+
 4. Corporate PR. Product launches, funding rounds, earnings, partnership announcements, marketing news - even when pitched as benefiting users or society.
+
+   This covers a company's own generosity as well: donation drives and charity days ("we gave away a day's revenue"), employee bonuses, sponsorships, foundation launches, sustainability or net-zero pledges, and staff volunteering schemes. A firm publicising its good deed is publicising itself. What this does NOT catch is a documented outcome in the world that happens to involve a company - a measured ecological recovery, a working piece of infrastructure, a treatment that reached patients - where the news is the result, not the gesture.
 
 5. Routine tech/industry updates. Software releases, version updates, industry reports, gadget reviews, AI-feature announcements - unless the article documents a clearly proven, civilisation-scale breakthrough (cure, major scientific discovery).
 
@@ -35,11 +44,38 @@ REJECT the article (verdict: NO) if ANY of the rules below is true. These are ha
 
 11. Cultural reviews and lifestyle content. Reviews of concerts, films, exhibitions, restaurants, travel destinations. Recipe roundups, "new addresses", gift guides. These are entertainment or lifestyle journalism, not positive news - even when the tone is enthusiastic.
 
-ACCEPT (verdict: YES) only when all of these hold:
+12. Unproven, hypothetical, or not-yet-happened claims. If the article's central claim is a possibility rather than an established result, reject it. This bites hardest in science, medicine, and technology, where hedged speculation is the house style of the genre.
 
+   Hedge test: find the main claim, then ask what the hedge is attached to. This distinction decides the verdict.
+   (a) Hedged finding - REJECT. The hedge sits on the discovery itself, so nobody yet knows whether it is true: "Venus may have swallowed its own moon", "UV light reveals possible camouflage", "scientists suggest X caused Y", "the shift could explain Z". A question mark in the headline is the same signal.
+   (b) Hedged future payoff - REJECT. The finding may be solid, but the good news is a benefit that has not arrived: "could offer new clues to Alzheimer's", "may lead to a cure", "paves the way for", "opens the door to", "brings us one step closer to", "raises hopes of", "might change X forever", "promises to". The article is selling an implication, not an achievement. Reject these even when the underlying study is real and completed - the map, the molecule, or the material existing is not the same as the cure it is said to point towards.
+   (c) Hedged wording about something already observed - NOT disqualifying on its own. "Seems to", "appears to", and similar are often just journalistic caution about a real, present state of affairs: a species that has actually returned, a population that has actually recovered, a trend already recorded in real-world data. Here the good thing has happened and only the phrasing is soft, so judge the story on its substance and on Gate 2 instead.
+   Note that (c) is deliberately narrow. It does NOT cover: a modelled, projected, simulated, or counterfactual figure ("could equal 363 years of emissions", "if we stopped doing X"); a single small or short study's biomarker, marker, or other surrogate result presented as a real-world gain; or a finding whose news value is an explanation, mechanism, or implication that is not yet established. In each of those the thing being celebrated has NOT been observed - only something taken to stand for it. When a story could be read as either (b) or (c), treat it as (b) and reject it.
+
+   Reject specifically: single studies with no replication; preprints, conference abstracts, and unreviewed findings; models, simulations, and theoretical proposals with no observational confirmation; animal, cell-culture, or lab-bench results framed as human treatments; early-stage, pilot, or phase-1/phase-2 trials; "scientists hope/believe/propose/speculate" framing; reinterpretations that "may rewrite" or "could overturn" what was thought; and announced-but-not-yet-done events - planned launches, upcoming missions, trials about to begin, projects breaking ground, pledges and targets for future dates.
+
+   Accept only an achievement that already exists and has been confirmed: a peer-reviewed finding that has been replicated or independently corroborated, a completed late-stage trial, an approved or licensed treatment, a regulatory decision already taken, a technology already deployed and working, a measured change in real-world data, or the direct observation of something previously unseen. Cautious academic wording about a result that IS established is fine - what matters is whether the achievement has happened, not how modestly it is phrased.
+
+   Test: strip the speculation. "This discovery may lead to a cure" becomes "researchers examined a molecule". Is what remains still genuinely uplifting? If the article is only positive because of what might follow, reject it.
+
+ACCEPT (verdict: YES) only when ALL of the following hold. Work through all three gates explicitly before you answer YES.
+
+GATE 0 - NO REJECTION RULE APPLIES. Check rules 1-12 first, every time. A story caught by any one of them is a NO, no matter how well it does on the gates below and no matter how positive it feels. The gates add requirements; they never excuse a rule. Celebrity and entertainment stories (rule 3), stories that are only positive because something bad came first (rule 9), and crime, conflict, or court outcomes (rules 6, 9) are caught here and go no further.
+
+GATE 1 - PROVEN, NOT PROSPECTIVE. Apply this gate first. Has the good thing actually happened and been confirmed?
+   Read the title and find the hedge, if there is one. Then apply rule 12's distinction: a hedge on the finding itself (12a) or on a future payoff (12b) is a NO; soft wording about something already observed and measured (12c) is not, by itself, a reason to reject.
+   The 12b case is the one to watch hardest, because it hides behind real research. "X could offer new clues to Y", "X may lead to a treatment for Y", "X paves the way for Y" - the verdict is NO even when X is a genuine, completed, peer-reviewed result. The question is not whether the work was done, it is whether the good outcome has arrived. A finding whose news value is what it might enable later does not qualify.
+   Then read the snippet and apply rule 12 in full. A promise, a possibility, a plan, or a preliminary result is not positive news, however large the eventual payoff would be.
+   Nothing later in these instructions can rescue a story that fails this gate.
+
+GATE 2 - UNIVERSAL RELEVANCE. Only for stories that passed Gate 1. Picture a reader on another continent, in another culture, with no tie to the people, places, or institutions in this story. Does it still matter to them?
+   It travels when: the finding or change holds anywhere; it is a method, treatment, or technology others could adopt; it shifts how a shared problem is understood; it is a measurable improvement at a scale beyond one country; or it is a genuine first for humanity.
+   A confirmed fundamental discovery travels. A finding about nature, the universe, mathematics, life, or the human body belongs to everyone, so do not fail one on this gate for being "academic", for having no practical application, or because the research happened in a particular country or institution. This applies only to established findings that already passed Gate 1 - it is never a reason to accept a hedged or preliminary one.
+   It does not travel when: the reader has to care about that particular country, region, city, company, school, or family for the story to land; the news value is who or where rather than what; or the only way to make it relevant is to call it inspiring.
+   If you cannot state in one sentence why a reader anywhere would care - not why it is nice, but why it matters to them - the answer is NO.
+
+In addition:
 - The story is unambiguously positive - a reader should feel genuinely uplifted, not just informed. Unexpected stories are a bonus.
-- It has broad human relevance and travels across countries/cultures.
-- None of rules 1-11 apply.
 - The story has substance beyond the emotional hook. Ask: does this article teach the reader something new about how the world works, or does it just make them briefly smile? Science, environment, medicine, technology, and human achievement that advances understanding all pass this test. Cute, warm, and touching do not, by themselves.
 
 When in doubt, reject. False negatives are acceptable; false positives are not.`;
@@ -79,6 +115,8 @@ These two fields are required regardless of verdict.`
 Article title: ${title}
 Snippet: ${snippet}
 
+Before each verdict, check rules 1-12 first - a story caught by any of them is NO on that basis alone, celebrity, crime, conflict, and recovery-from-bad-news included. Then run the two gates. First, find the hedge in the title and ask what it attaches to: a hedged finding ("may have", "possible", "suggests") or a hedged future payoff ("could offer new clues", "may lead to", "paves the way") is a NO, even if the research behind it is real and finished; soft wording about something already observed and measured is not by itself a reason to reject. Second: would a reader on another continent, with no tie to the places or people involved, have a reason to care? A genuine first or an adoptable method travels even with one country in the headline; one country's budgets, honours, statistics, and schemes do not.
+
 Reply with JSON only — no other text.
 Always include a "score" field: an integer from 1 (not positive at all) to 10 (exceptionally uplifting).${translationFields}
 
@@ -94,7 +132,7 @@ ${CATEGORY_PROMPT_LIST}`;
  * Batch variant of buildFilterPrompt: judges several articles in one call.
  *
  * The instructions go in the system prompt once, instead of being repeated per
- * article — they are ~2,000 tokens against ~100 for a headline and snippet, so
+ * article — they are ~2,600 tokens against ~100 for a headline and snippet, so
  * sending one article per call spent most of the filter's budget re-sending
  * the same rules. Each article is still judged independently against them.
  *
@@ -109,6 +147,8 @@ export function buildFilterBatchPrompt(
   const system = `${instructions}
 
 You will receive several numbered articles. Judge EACH one on its own against the rules above - never let one article influence the verdict on another.
+
+Before each verdict, check rules 1-12 first - a story caught by any of them is NO on that basis alone, celebrity, crime, conflict, and recovery-from-bad-news included. Then run the two gates. First, find the hedge in the title and ask what it attaches to: a hedged finding ("may have", "possible", "suggests") or a hedged future payoff ("could offer new clues", "may lead to", "paves the way") is a NO, even if the research behind it is real and finished; soft wording about something already observed and measured is not by itself a reason to reject. Second: would a reader on another continent, with no tie to the places or people involved, have a reason to care? A genuine first or an adoptable method travels even with one country in the headline; one country's budgets, honours, statistics, and schemes do not.
 
 Reply with a JSON array only — no other text, no markdown fences. One object per article, in the same order, each with:
   - "id":      the article's number
