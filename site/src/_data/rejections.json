@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T16:29:15.757Z",
-  "total_rejected": 149086,
+  "exported_at": "2026-09-17T17:28:37.307Z",
+  "total_rejected": 149087,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2770
+      "count": 2771
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 295,
-      "total": 467
+      "negative": 296,
+      "total": 468
     },
     {
       "source": "ScienceDaily",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "Human brain organoid transplants mesh with mouse brains, forming active neural circuits",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/human-brain-organoid-transplants-mesh-with-mouse-brains-forming-active-neural-circuits/",
+      "date": "2026-09-17 19:28",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Africa: KOAFEC 2026 - Korea, African Development Bank Chart New Phase of Partnership On Ai, Digital Infrastructure and Private Investment",
@@ -9391,15 +9400,6 @@
       "url": "https://www.faz.net/aktuell/finanzen/finanzmarkt/benzin-und-heizoel-sind-aussergewoehnlich-teuer-geworden-201232890.html",
       "date": "2026-09-16 21:21",
       "positivity_score": 2
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "178 Euro je 100 Liter: Lohnt es sich, nun Heizöl für den Winter zu kaufen?",
-      "reason": "This is consumer-advice content about purchasing decisions during an economic hardship (high heating-oil prices), which is lifestyle/practical journalism, not positive news.",
-      "category": "soft-news-filler",
-      "url": "https://www.faz.net/aktuell/finanzen/finanzmarkt/heizoel-sollten-sie-nun-fuer-den-winter-vorsorgen-201232126.html",
-      "date": "2026-09-16 21:21",
-      "positivity_score": 3
     }
   ]
 }
