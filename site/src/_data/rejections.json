@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:32:21.118Z",
-  "total_rejected": 148441,
+  "exported_at": "2026-09-17T04:32:30.572Z",
+  "total_rejected": 148442,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2744
+      "count": 2745
     },
     {
       "category": "divisive-racism",
@@ -201,8 +201,8 @@
     },
     {
       "source": "RNZ (New Zealand)",
-      "negative": 1807,
-      "total": 1867
+      "negative": 1808,
+      "total": 1868
     },
     {
       "source": "De Standaard Binnenland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "RNZ (New Zealand)",
+      "title": "Autistic advocate hails introduction of low-sensory shopping at Dunedin Kmart",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rnz.co.nz/news/community/1423756/autistic-advocate-hails-introduction-of-low-sensory-shopping-at-dunedin-kmart",
+      "date": "2026-09-17 06:32",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "First batch of B.C. law students takes course over bar exam as Ontario mulls switch",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/repraesentanternes-hus-stemmer-tredje-gang-stoppe-iran-krig",
       "date": "2026-09-16 10:28",
       "positivity_score": 1
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Producent kosmetyków Garnier na cenzurowanym za greenwashing",
-      "reason": "This is a corporate regulatory enforcement story (greenwashing fine), which falls under corporate PR and negative business news, not positive news.",
-      "category": "other-negative",
-      "url": "https://www.rp.pl/konsumenci/art45147061-producent-kosmetykow-garnier-na-cenzurowanym-za-greenwashing",
-      "date": "2026-09-16 10:28",
-      "positivity_score": 2
     }
   ]
 }
