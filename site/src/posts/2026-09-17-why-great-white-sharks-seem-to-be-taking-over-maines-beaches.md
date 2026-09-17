@@ -1,0 +1,20 @@
+---
+title: "Why great white sharks seem to be taking over Maine's beaches"
+title_nl: "Waarom grote witte haaien de stranden van Maine lijken over te nemen"
+title_fr: "Pourquoi les grands requins blancs semblent envahir les plages du Maine"
+date: 2026-09-17T01:17:00
+source_pub_date: 2026-09-16
+fetched_date: 2026-09-16
+source_url: "https://www.wired.com/story/why-great-white-sharks-are-overrunning-maine/"
+source_name: "Wired"
+topic: "Animals"
+tags: ["Animals","Environment","Science"]
+emoji: "🦈"
+summary: "Maine experienced an unusual surge of great white shark sightings this summer, with a dozen reported near Pine Point Beach in just two days and multiple beach closures following encounters. Now, here's the thing - while warming ocean waters get blamed for everything these days, experts say the real story is more nuanced and actually quite encouraging. A successful conservation effort from the 1990s that protected both great whites and their seal prey is finally bearing fruit, with sharks now reaching breeding age after decades of protection. Add to that the fact that people are bringing better detection technology to beaches, and you've got a clearer picture of why these apex predators are showing up more frequently along the coast."
+summary_nl: "Maine beleefde deze zomer een ongebruikelijke toename van grote witte haaienwaarnemingen, met een dozijn gemeld in slechts twee dagen in de buurt van Pine Point Beach en meerdere strandsluitingen. Nu, en hier zit het interessante aan - hoewel opwarmende oceaanwaters tegenwoordig voor alles worden verantwoordelijk gesteld, zeggen experts dat het werkelijke verhaal veel genuanceerder en eigenlijk behoorlijk positief is. Een succesvolle beschermingsactie uit de jaren negentig die zowel grote witte haaien als hun sealbuit beschermde, begint nu eindelijk vruchten af te werpen, met haaien die nu voortplantingsleeftijd bereiken na decennia van bescherming. Voeg daar nog aan toe dat mensen betere detectietechnologie naar stranden meenemen, en je krijgt een helderder beeld van waarom deze topjagers vaker langs de kust verschijnen."
+summary_fr: "Le Maine a connu une augmentation inhabituelle des observations de grands requins blancs cet été, avec une douzaine signalées en seulement deux jours près de Pine Point Beach et plusieurs fermetures de plages suite à des rencontres. Or, voici la chose intéressante - bien que les eaux océaniques qui se réchauffent soient blâmées pour tout de nos jours, les experts disent que la vraie histoire est bien plus nuancée et en réalité plutôt encourageante. Un effort de conservation réussi des années quatre-vingt-dix qui protégeait à la fois les grands requins blancs et leurs proies en phoques commence enfin à porter ses fruits, les requins atteignant maintenant l'âge de reproduction après des décennies de protection. Ajoutez à cela le fait que les gens apportent une meilleure technologie de détection aux plages, et vous obtenez une image plus claire de pourquoi ces prédateurs apex apparaissent plus fréquemment le long de la côte."
+image_url: "https://media.wired.com/photos/6a9ec517f56ff571deb2aede/191:100/w_1280,c_limit/GettyImages-1141959253.jpg"
+layout: post.njk
+---
+
+Maine experienced an unusual surge of great white shark sightings this summer, with a dozen reported near Pine Point Beach in just two days and multiple beach closures following encounters. Now, here's the thing - while warming ocean waters get blamed for everything these days, experts say the real story is more nuanced and actually quite encouraging. A successful conservation effort from the 1990s that protected both great whites and their seal prey is finally bearing fruit, with sharks now reaching breeding age after decades of protection. Add to that the fact that people are bringing better detection technology to beaches, and you've got a clearer picture of why these apex predators are showing up more frequently along the coast.
