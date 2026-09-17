@@ -1,0 +1,19 @@
+---
+title: "Black and green rice hide surprising health benefits that white rice doesn't have"
+title_nl: "Zwarte en groene rijst verbergen verrassende gezondheidsvoordelen die witte rijst niet heeft"
+title_fr: "Le riz noir et vert cache des avantages sanitaires surprenants que le riz blanc n'a pas"
+date: 2026-09-17T13:09:00
+source_pub_date: 2026-09-17
+fetched_date: 2026-09-17
+source_url: "https://www.sciencedaily.com/releases/2026/09/260916232523.htm"
+source_name: "ScienceDaily"
+topic: "Food"
+tags: ["Food","Health","Science"]
+emoji: "🍚"
+summary: "Scientists at Hokkaido University have discovered something really exciting - black and green rice varieties contain special fats that white rice simply doesn't have. Using advanced techniques like mass spectrometry, the researchers identified 196 different lipid molecules in japonica rice, with pigmented varieties showing notably higher levels of beneficial compounds called FAHMFAs and LNAPEs. These fats have been linked to anti-inflammatory activity and better metabolic health, which is pretty remarkable when you think about how often rice is overlooked nutritionally. What really caught my attention is that black and green rice also produced slower blood sugar rises than white rice, suggesting they could help manage type 2 diabetes risk and support heart health."
+summary_nl: "Wetenschappers van de Hokkaido-universiteit hebben iets echt spannends ontdekt - zwarte en groene rijstvariëteiten bevatten speciale vetten die witte rijst simpelweg niet heeft. Met geavanceerde technieken zoals massaspectrometrie identificeerden onderzoekers 196 verschillende lipidenmoleculen in japonica-rijst, waarbij gekleurde variëteiten aanzienlijk hogere niveaus van nuttige stoffen als FAHMFAs en LNAPEs vertoonden. Deze vetten zijn eerder gelinkt aan anti-inflammatoire effecten en betere metabolische gezondheid, wat behoorlijk opmerkelijk is gezien hoe vaak rijst voedingskundig over het hoofd wordt gezien. Wat mij echt fascineerde is dat zwarte en groene rijst ook langzamere bloedsuikerpieken veroorzaakten dan witte rijst, wat suggereert dat ze type 2 diabetes-risico kunnen helpen beheersen en hartgezondheid kunnen ondersteunen."
+summary_fr: "Des scientifiques de l'université de Hokkaido ont découvert quelque chose de vraiment passionnant - les variétés de riz noir et vert contiennent des graisses spéciales que le riz blanc n'a tout simplement pas. Grâce à des techniques avancées comme la spectrométrie de masse, les chercheurs ont identifié 196 molécules lipidiques différentes dans le riz japonica, les variétés pigmentées montrant des niveaux notablement plus élevés de composés bénéfiques appelés FAHMFAs et LNAPEs. Ces graisses ont été associées à une activité anti-inflammatoire et à une meilleure santé métabolique, ce qui est assez remarquable quand on pense à la fréquence avec laquelle le riz est négligé sur le plan nutritionnel. Ce qui m'a vraiment frappé, c'est que le riz noir et vert ont également produit des augmentations de glycémie plus lentes que le riz blanc, suggérant qu'ils pourraient aider à gérer le risque de diabète de type 2 et soutenir la santé cardiaque."
+layout: post.njk
+---
+
+Scientists at Hokkaido University have discovered something really exciting - black and green rice varieties contain special fats that white rice simply doesn't have. Using advanced techniques like mass spectrometry, the researchers identified 196 different lipid molecules in japonica rice, with pigmented varieties showing notably higher levels of beneficial compounds called FAHMFAs and LNAPEs. These fats have been linked to anti-inflammatory activity and better metabolic health, which is pretty remarkable when you think about how often rice is overlooked nutritionally. What really caught my attention is that black and green rice also produced slower blood sugar rises than white rice, suggesting they could help manage type 2 diabetes risk and support heart health.
