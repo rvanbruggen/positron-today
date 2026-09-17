@@ -1,0 +1,20 @@
+---
+title: "Seeing the invisible: the fascinating history of radar invention"
+title_nl: "Het onzichtbare zien: de fascinerende geschiedenis van radaruitvinding"
+title_fr: "Voir l'invisible : la fascinante histoire de l'invention du radar"
+date: 2026-09-17T22:46:00
+source_pub_date: 2026-09-17
+fetched_date: 2026-09-17
+source_url: "https://historia.rp.pl/historia/art45154381-jak-widziec-niewidzialne-czyli-rozwoj-radaru"
+source_name: "Rzeczpospolita Poland"
+topic: "Science"
+tags: ["Science","Technology"]
+emoji: "📡"
+summary: "So here's the thing - radar has quite a journey behind it, and it's fascinating how many brilliant minds almost stumbled onto it without realizing what they'd found. Heinrich Hertz discovered that radio waves could bounce off objects back in 1886, but he never took it further, and neither did Aleksandr Popow when he noticed interference between ships on the Baltic. It wasn't until Christian Hülsmeyer, a German inventor, actually used radio waves on purpose to detect a ship in thick fog in 1904 that someone truly grasped the potential - and of course, the military rejected his telemobiloscope. What really changed everything was Albert Hull's invention of the magnetron in 1921, a powerful transmitter that finally gave radio waves enough energy to create echoes strong enough to detect distant objects."
+summary_nl: "En hier is het interessante - radar heeft best een lange weg achter zich, en het is fascinerend hoeveel briljante geesten er bijna per ongeluk op stuiten zonder dat ze begrepen wat ze hadden gevonden. Heinrich Hertz ontdekte al in 1886 dat radiogolven van objecten konden terugkaatsen, maar hij ging er niet mee aan de slag, net als Aleksandr Popow niet toen hij storing opmerkte tussen schepen op de Baltische Zee. Pas Christian Hülsmeyer, een Duitse uitvinder, gebruikte radiogolven in 1904 expres om een schip in dichte mist op te sporen - en uiteraard wees het leger zijn telemobiloscoop af. Wat echt alles veranderde was Albert Hulls uitvinding van de magnetron in 1921, een krachtige zender die radiogolven eindelijk genoeg energie gaf om sterke eches op te wekken waarmee verre objecten konden worden gedetecteerd."
+summary_fr: "Voilà ce qui est fascinant - le radar a derrière lui tout un parcours, et c'est incroyable de voir combien d'esprits brillants y ont presque découvert par hasard sans réaliser ce qu'ils tenaient. Heinrich Hertz a découvert dès 1886 que les ondes radio pouvaient rebondir sur les objets, mais il n'a pas poursuivi, tout comme Aleksandr Popow ne l'a pas fait quand il a remarqué des interférences entre les navires de la mer Baltique. Ce n'est que lorsque Christian Hülsmeyer, un inventeur allemand, a délibérément utilisé les ondes radio en 1904 pour détecter un navire dans un brouillard dense que quelqu'un a vraiment saisi le potentiel - et bien sûr, l'armée a rejeté son télémosiloscope. Ce qui a vraiment tout changé, c'est l'invention du magnétron par Albert Hull en 1921, un émetteur puissant qui a enfin donné aux ondes radio assez d'énergie pour créer des échos suffisamment forts pour détecter les objets lointains."
+image_url: "https://i.gremicdn.pl/image/free/7581be986e0a650f25a0be82718c0f7e/?t=resize:fill:2000:1250,enlarge:1&ctx=preview"
+layout: post.njk
+---
+
+So here's the thing - radar has quite a journey behind it, and it's fascinating how many brilliant minds almost stumbled onto it without realizing what they'd found. Heinrich Hertz discovered that radio waves could bounce off objects back in 1886, but he never took it further, and neither did Aleksandr Popow when he noticed interference between ships on the Baltic. It wasn't until Christian Hülsmeyer, a German inventor, actually used radio waves on purpose to detect a ship in thick fog in 1904 that someone truly grasped the potential - and of course, the military rejected his telemobiloscope. What really changed everything was Albert Hull's invention of the magnetron in 1921, a powerful transmitter that finally gave radio waves enough energy to create echoes strong enough to detect distant objects.
