@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:31:19.506Z",
-  "total_rejected": 148437,
+  "exported_at": "2026-09-17T04:31:28.304Z",
+  "total_rejected": 148438,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2740
+      "count": 2741
     },
     {
       "category": "divisive-racism",
@@ -136,8 +136,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 3918,
-      "total": 3971
+      "negative": 3919,
+      "total": 3972
     },
     {
       "source": "The Guardian",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Lebanon returns 37 artefacts smuggled out of Egypt six years ago",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.aljazeera.com/news/2026/9/16/lebanon-returns-37-artefacts-smuggled-out-of-egypt-six-years-ago?traffic_source=rss",
+      "date": "2026-09-17 06:31",
+      "positivity_score": null
+    },
     {
       "source": "De Standaard Binnenland",
       "title": "Zo stelpt Vlaanderen het huisartsentekort: van online matchmaker tot gratis vakantiehuis",
@@ -9389,15 +9398,6 @@
       "reason": "This is a political announcement by a government figure about legislative/policy plans. It falls squarely under Rule 6 (Politics): government decisions and political-figure profiles are rejected regardless of positive framing. The article is about EU policy direction, not a breakthrough agreement on a previously disputed topic.",
       "category": "political-conflict",
       "url": "https://www.rp.pl/polityka/art45146711-ursula-von-der-leyen-przedstawia-plan-na-kolejny-rok-europa-ma-byc-silniejsza-i-bardziej-samodzielna",
-      "date": "2026-09-16 10:27",
-      "positivity_score": 2
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Susanne Nyström: Varför säger ingen ifrån när Jimmie Åkesson går till attack?",
-      "reason": "This is partisan political commentary about Swedish politics, government coalitions, and political figures. It requires knowledge of domestic political context to understand and does not represent a breakthrough agreement or exceptional political development.",
-      "category": "political-conflict",
-      "url": "https://www.dn.se/ledare/susanne-nystrom-varfor-sager-ingen-ifran-nar-jimmie-akesson-gar-till-attack/",
       "date": "2026-09-16 10:27",
       "positivity_score": 2
     }
