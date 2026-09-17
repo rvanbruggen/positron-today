@@ -1,0 +1,21 @@
+---
+title: "The moon just got a massive new crater, and scientists are thrilled"
+title_nl: "De maan heeft zojuist een enorme nieuwe krater gekregen, en wetenschappers zijn enthousiast"
+title_fr: "La lune vient de recevoir un énorme nouveau cratère, et les scientifiques sont ravis"
+date: 2026-09-17T23:38:00
+source_pub_date: 2026-09-17
+fetched_date: 2026-09-17
+source_url: "https://www.popsci.com/science/new-moon-crater-photos/"
+source_name: "Popular Science"
+topic: "Nature"
+tags: ["Nature","Science","Technology"]
+emoji: "🌙"
+summary: "So, here's the thing - NASA's Lunar Reconnaissance Orbiter spotted something extraordinary on the moon's eastern edge back in October 2025: a brand-new crater 728 feet wide and 141 feet deep. An image-processing specialist named Robert Wagner was reviewing routine data when he noticed this massive bright circle surrounded by a darker halo - and immediately knew it was unlike anything he'd seen before. The crater, named McGetchin after a renowned lunar scientist, was created by an asteroid or comet roughly the size of a three-story building, making it the largest newly formed crater ever spotted in our solar system. What makes this discovery so special is that it gives astronomers a genuine once-in-a-century opportunity to study the immediate aftermath of such a massive impact and understand how space rocks shape our moon."
+summary_nl: "Dus hier gebeurde iets bijzonders - NASA's Lunar Reconnaissance Orbiter ontdekte in oktober 2025 iets uitzonderlijks aan de oostkant van de maan: een gloednieuwe krater van 728 voet breed en 141 voet diep. Een beeldverwerkingsspecialist genaamd Robert Wagner keek routinematig naar gegevens toen hij deze enorme heldere cirkel opmerkte omgeven door een donkerder halo - en wist onmiddellijk dat het iets was wat hij nog nooit eerder had gezien. De krater, genoemd McGetchin naar een beroemde maanwetenschapper, werd veroorzaakt door een asteroïde of komeet ongeveer zo groot als een gebouw van drie verdiepingen, waardoor het de grootste pas gevormde krater in ons zonnestelsel is. Wat deze ontdekking zo bijzonder maakt, is dat het astronomers een zeldzame kans in een eeuw geeft om de onmiddellijke gevolgen van zo'n massieve botsing te bestuderen en beter te begrijpen hoe ruimtestenen onze maan vormgeven."
+summary_fr: "Voilà quelque chose d'extraordinaire - l'Orbiteur de reconnaissance lunaire de la NASA a repéré un phénomène remarquable sur le bord est de la lune en octobre 2025 : un tout nouveau cratère de 728 pieds de large et 141 pieds de profondeur. Un spécialiste du traitement d'images nommé Robert Wagner examinait des données de routine lorsqu'il a remarqué ce cercle énorme et lumineux entouré d'une auréole plus sombre - et a immédiatement su que c'était sans précédent. Le cratère, baptisé McGetchin d'après un célèbre scientifique lunaire, a été créé par un astéroïde ou une comète de la taille d'un bâtiment de trois étages, ce qui en fait le plus grand cratère nouvellement formé jamais observé dans notre système solaire. Ce qui rend cette découverte si spéciale, c'est qu'elle offre aux astronomes une occasion extraordinaire, survenant une fois par siècle, d'étudier les conséquences immédiates d'un si massif impact et de mieux comprendre comment les roches spatiales façonnent notre lune."
+image_url: "https://www.popsci.com/wp-content/uploads/2026/09/New-Moon-Crater.png?w=1200"
+featured: true
+layout: post.njk
+---
+
+So, here's the thing - NASA's Lunar Reconnaissance Orbiter spotted something extraordinary on the moon's eastern edge back in October 2025: a brand-new crater 728 feet wide and 141 feet deep. An image-processing specialist named Robert Wagner was reviewing routine data when he noticed this massive bright circle surrounded by a darker halo - and immediately knew it was unlike anything he'd seen before. The crater, named McGetchin after a renowned lunar scientist, was created by an asteroid or comet roughly the size of a three-story building, making it the largest newly formed crater ever spotted in our solar system. What makes this discovery so special is that it gives astronomers a genuine once-in-a-century opportunity to study the immediate aftermath of such a massive impact and understand how space rocks shape our moon.
