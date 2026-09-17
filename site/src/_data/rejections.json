@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:33:29.398Z",
-  "total_rejected": 148448,
+  "exported_at": "2026-09-17T04:33:51.832Z",
+  "total_rejected": 148449,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2751
+      "count": 2752
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 13085,
-      "total": 13353
+      "negative": 13086,
+      "total": 13354
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Canada en Duitsland slaan handen in elkaar om ethische AI te ontwikkelen",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/internet/canada-en-duitsland-slaan-handen-in-elkaar-om-ethische-ai-te-ontwikkelen~aa7f4a3e/",
+      "date": "2026-09-17 06:33",
+      "positivity_score": null
+    },
     {
       "source": "Popular Science",
       "title": "Tyrannosaurus rex was warm-blooded, new study confirms",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/canada-skal-vaere-foerste-ikke-europaeiske-land-til-faa-et-associeret-eu-medlemskab",
       "date": "2026-09-16 10:28",
       "positivity_score": 2
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Belgisk regering spænder ben for evakuering af studerende fra Gaza",
-      "reason": "No snippet provided; title indicates a story about blocking evacuation from Gaza, which is war/conflict related.",
-      "category": "war-conflict",
-      "url": "https://www.dr.dk/nyheder/seneste/belgisk-regering-spaender-ben-evakuering-af-studerende-fra-gaza",
-      "date": "2026-09-16 10:28",
-      "positivity_score": 1
     }
   ]
 }
