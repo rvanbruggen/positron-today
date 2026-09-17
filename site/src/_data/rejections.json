@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:33:00.933Z",
-  "total_rejected": 148445,
+  "exported_at": "2026-09-17T04:33:10.684Z",
+  "total_rejected": 148446,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2748
+      "count": 2749
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 5573,
-      "total": 5646
+      "negative": 5574,
+      "total": 5647
     },
     {
       "source": "NRC",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Les prénoms donnés depuis quatre-vingts ans se sont beaucoup diversifiés, selon une étude de l’Insee",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/societe/article/2026/09/16/les-prenoms-donnes-depuis-quatre-vingts-ans-se-sont-beaucoup-diversifies-selon-une-etude-de-l-insee_6775436_3224.html",
+      "date": "2026-09-17 06:33",
+      "positivity_score": null
+    },
     {
       "source": "Good Good Good",
       "title": "More goats, sheep, and cattle are being used as wildfire prevention heroes: 'A tried-and-true strategy'",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/oeresundsbroen-er-spaerret-i-retning-mod-danmark",
       "date": "2026-09-16 10:28",
       "positivity_score": 3
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Krigsveteraner fylder på kandidatlisterne før weekendens valg i Rusland",
-      "reason": "No snippet provided; title indicates political coverage of Russian election candidates, falling under politics.",
-      "category": "political-conflict",
-      "url": "https://www.dr.dk/nyheder/seneste/krigsveteraner-fylder-paa-kandidatlisterne-foer-weekendens-valg-i-rusland",
-      "date": "2026-09-16 10:28",
-      "positivity_score": 1
     }
   ]
 }
