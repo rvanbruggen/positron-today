@@ -1,0 +1,21 @@
+---
+title: "A brand new cat species discovered in Bolivia - first time in over a century"
+title_nl: "Nieuw kattensoort ontdekt in Bolivia - eerste keer in meer dan een eeuw"
+title_fr: "Une toute nouvelle espèce de chat découverte en Bolivie - première fois en plus d'un siècle"
+date: 2026-09-17T20:52:00
+source_pub_date: 2026-09-17
+fetched_date: 2026-09-17
+source_url: "https://sukces.rp.pl/spoleczenstwo/art45157391-nowy-gatunek-kota-odkryty-w-boliwii-pierwszy-taki-przypadek-od-ponad-wieku"
+source_name: "Rzeczpospolita Poland"
+topic: "Animals"
+tags: ["Animals","Nature","Science"]
+emoji: "🐱"
+summary: "Scientists have confirmed the discovery of an entirely new cat species in Bolivia's misty Yungas region, calling it Tilcayo - the first such discovery in over 100 years. The tiny wildcat, weighing just 1.4 kg, was identified through genetic analysis after researchers studied DNA from 38 cats across South America and realized what were thought to be one unified species actually comprise five distinct species. What's fascinating is that this evolutionary line separated from its closest relatives about 1.4 million years ago, yet the animal had gone completely unrecognized by science until now. The discovery matters because these cats are threatened by deforestation and mining in their habitat, so understanding them as separate species helps conservationists protect them more effectively."
+summary_nl: "Wetenschappers hebben de ontdekking van een geheel nieuw kattensoort in Bolivia's mistige Yungas-regio bevestigd, genaamd Tilcayo - de eerste ontdekking in meer dan 100 jaar. Het kleine wilde katje, wegende slechts 1,4 kg, werd geïdentificeerd door genetische analyse nadat onderzoekers DNA van 38 katten uit Zuid-Amerika bestudeerden en ontdekten dat wat men dacht één soort te zijn, eigenlijk vijf verschillende soorten zijn. Wat fascinerend is, is dat deze evolutionaire lijn zich ongeveer 1,4 miljoen jaar geleden van verwante soorten afscheidde, maar het dier was tot nu toe volledig onbekend bij de wetenschap. De ontdekking is belangrijk omdat deze katten worden bedreigd door ontbossing en mijnbouw in hun habitat, dus het begrijpen van ze als aparte soorten helpt natuurbeschermers ze effectiever te beschermen."
+summary_fr: "Les scientifiques ont confirmé la découverte d'une toute nouvelle espèce de chat dans la région brumense des Yungas en Bolivie, appelée Tilcayo - la première découverte en plus de 100 ans. Le petit félin sauvage, pesant seulement 1,4 kg, a été identifié par analyse génétique après que des chercheurs aient étudié l'ADN de 38 chats à travers l'Amérique du Sud et réalisé que ce qu'on croyait être une seule espèce comprend en réalité cinq espèces distinctes. Ce qui est fascinant, c'est que cette lignée évolutive s'est séparée de ses plus proches parents il y a environ 1,4 million d'années, mais l'animal était resté complètement inconnu de la science jusqu'à présent. La découverte est importante car ces chats sont menacés par la déforestation et l'exploitation minière dans leur habitat, donc les comprendre comme des espèces distinctes aide les conservationnistes à les protéger plus efficacement."
+image_url: "https://i.gremicdn.pl/image/free/244084330e2e7444327e165007a9c5c4/?t=crop:8256:5120:nowe:0:192,resize:fill:2000:1250&ctx=preview"
+featured: true
+layout: post.njk
+---
+
+Scientists have confirmed the discovery of an entirely new cat species in Bolivia's misty Yungas region, calling it Tilcayo - the first such discovery in over 100 years. The tiny wildcat, weighing just 1.4 kg, was identified through genetic analysis after researchers studied DNA from 38 cats across South America and realized what were thought to be one unified species actually comprise five distinct species. What's fascinating is that this evolutionary line separated from its closest relatives about 1.4 million years ago, yet the animal had gone completely unrecognized by science until now. The discovery matters because these cats are threatened by deforestation and mining in their habitat, so understanding them as separate species helps conservationists protect them more effectively.
