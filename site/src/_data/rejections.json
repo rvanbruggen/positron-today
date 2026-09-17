@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:31:28.304Z",
-  "total_rejected": 148438,
+  "exported_at": "2026-09-17T04:31:33.048Z",
+  "total_rejected": 148439,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2741
+      "count": 2742
     },
     {
       "category": "divisive-racism",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 2565,
-      "total": 2622
+      "negative": 2566,
+      "total": 2623
     },
     {
       "source": "The Guardian Europe",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "Japan is now home to more than 100,000 people aged 100 or over",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12061690/japan-100000-over-100-centenarians/",
+      "date": "2026-09-17 06:31",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Lebanon returns 37 artefacts smuggled out of Egypt six years ago",
@@ -9391,15 +9400,6 @@
       "url": "https://turystyka.rp.pl/linie-lotnicze/art45147111-szykuje-sie-najwieksza-w-historii-modernizacja-najwiekszego-lotniska-na-teneryfie",
       "date": "2026-09-16 10:27",
       "positivity_score": 3
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Ursula von der Leyen przedstawia plan na kolejny rok. Europa ma być silniejsza i bardziej samodzielna",
-      "reason": "This is a political announcement by a government figure about legislative/policy plans. It falls squarely under Rule 6 (Politics): government decisions and political-figure profiles are rejected regardless of positive framing. The article is about EU policy direction, not a breakthrough agreement on a previously disputed topic.",
-      "category": "political-conflict",
-      "url": "https://www.rp.pl/polityka/art45146711-ursula-von-der-leyen-przedstawia-plan-na-kolejny-rok-europa-ma-byc-silniejsza-i-bardziej-samodzielna",
-      "date": "2026-09-16 10:27",
-      "positivity_score": 2
     }
   ]
 }
