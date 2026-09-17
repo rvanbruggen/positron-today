@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:29:24.109Z",
-  "total_rejected": 148434,
+  "exported_at": "2026-09-17T04:29:44.528Z",
+  "total_rejected": 148435,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2737
+      "count": 2738
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 13116,
-      "total": 13553
+      "negative": 13117,
+      "total": 13554
     },
     {
       "source": "Het Laatste Nieuws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Deels mens, deels muis: hybride brein zorgt mogelijk voor wetenschappelijke doorbraak",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/natuur-en-wetenschap/deels-mens-deels-muis-hybride-brein-zorgt-mogelijk-voor-wetenschappelijke-doorbraak/161563031.html",
+      "date": "2026-09-17 06:29",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "Alberta woman saves 2 strangers with living organ donations: ‘She’s a hero’",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dn.se/sport/inte-langre-bara-ett-halvt-maraton-darfor-har-distansen-klattrat-i-rang/",
       "date": "2026-09-16 10:27",
       "positivity_score": null
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Flanören: ”Har du försökt fixa saker nu igen?” sa min fru",
-      "reason": "This is a lifestyle/personality column about a character type ('Flanören' - 'The Flaneur') who ignores instruction manuals. It's entertainment/cultural commentary without substance, emotional appeal, or universal significance. It falls under soft lifestyle content and viral feel-good clickbait.",
-      "category": "soft-news-filler",
-      "url": "https://www.dn.se/kultur/flanoren-manualer-varfor-ska-man-lasa-dem/",
-      "date": "2026-09-16 10:27",
-      "positivity_score": 2
     }
   ]
 }
