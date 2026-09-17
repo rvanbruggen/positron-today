@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:33:51.832Z",
-  "total_rejected": 148449,
+  "exported_at": "2026-09-17T04:34:06.033Z",
+  "total_rejected": 148450,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2752
+      "count": 2753
     },
     {
       "category": "divisive-racism",
@@ -121,8 +121,8 @@
     },
     {
       "source": "De Morgen",
-      "negative": 5388,
-      "total": 5474
+      "negative": 5389,
+      "total": 5475
     },
     {
       "source": "The New York Times",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "De Morgen",
+      "title": "Energie-expert: ‘Je hebt al lang geen vloerverwarming meer nodig om een warmtepomp te kunnen gebruiken’",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.demorgen.be/nieuws/energie-expert-je-hebt-al-lang-geen-vloerverwarming-meer-nodig-om-een-warmtepomp-te-kunnen-gebruiken~b001492e/",
+      "date": "2026-09-17 06:34",
+      "positivity_score": null
+    },
     {
       "source": "Het Laatste Nieuws",
       "title": "Canada en Duitsland slaan handen in elkaar om ethische AI te ontwikkelen",
@@ -9391,15 +9400,6 @@
       "url": "https://www.rp.pl/budownictwo/art45146541-duze-przejecie-na-horyzoncie-budimex-wsrod-kandydatow-do-zakupu-ohla-zs-czy-jest-zainteresowany",
       "date": "2026-09-16 10:28",
       "positivity_score": 3
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Canada skal være første ikke-europæiske land til at få et associeret EU-medlemskab",
-      "reason": "No snippet provided; title alone suggests political/diplomatic news about EU membership status, which falls under politics.",
-      "category": "political-conflict",
-      "url": "https://www.dr.dk/nyheder/seneste/canada-skal-vaere-foerste-ikke-europaeiske-land-til-faa-et-associeret-eu-medlemskab",
-      "date": "2026-09-16 10:28",
-      "positivity_score": 2
     }
   ]
 }
