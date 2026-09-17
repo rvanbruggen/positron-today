@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:32:36.100Z",
-  "total_rejected": 148443,
+  "exported_at": "2026-09-17T04:32:42.751Z",
+  "total_rejected": 148444,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2746
+      "count": 2747
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 290,
-      "total": 459
+      "negative": 291,
+      "total": 460
     },
     {
       "source": "ScienceDaily",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "T. rex was as warm-blooded as humans, new study finds",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/t-rex-was-as-warm-blooded-as-humans-new-study-finds/",
+      "date": "2026-09-17 06:32",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "Japan just hit a new longevity milestone",
@@ -9389,15 +9398,6 @@
       "reason": "No snippet provided; title indicates military operations and flight suspensions, which is war/conflict related.",
       "category": "war-conflict",
       "url": "https://www.dr.dk/nyheder/seneste/polske-lufthavne-suspenderer-flyvninger-paa-grund-af-militaer-operation",
-      "date": "2026-09-16 10:28",
-      "positivity_score": 1
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Nyhedshelikopter styrtet ned i Los Angeles: Tre døde",
-      "reason": "This is a disaster/accident report about a helicopter crash with fatalities, not positive news.",
-      "category": "disaster-accident",
-      "url": "https://www.dr.dk/nyheder/seneste/tre-doede-i-helikopterstyrt-i-los-angeles",
       "date": "2026-09-16 10:28",
       "positivity_score": 1
     }
