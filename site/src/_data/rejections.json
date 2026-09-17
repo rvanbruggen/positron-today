@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:31:33.048Z",
-  "total_rejected": 148439,
+  "exported_at": "2026-09-17T04:32:01.430Z",
+  "total_rejected": 148440,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2742
+      "count": 2743
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 13084,
-      "total": 13352
+      "negative": 13085,
+      "total": 13353
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Stafchef van het Witte Huis Susie Wiles kankervrij na strijd tegen borstkanker",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/buitenland/stafchef-van-het-witte-huis-susie-wiles-kankervrij-na-strijd-tegen-borstkanker~aa9b8023/",
+      "date": "2026-09-17 06:32",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "Japan is now home to more than 100,000 people aged 100 or over",
@@ -9391,15 +9400,6 @@
       "url": "https://energia.rp.pl/ropa/art45147001-problemy-z-ropa-dla-orlenu-balczun-nie-mielismy-tak-trudnej-sytuacji-od-dekad",
       "date": "2026-09-16 10:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Szykuje się największa w historii modernizacja największego lotniska na Teneryfie",
-      "reason": "This is local-only infrastructure news about a single airport's renovation project. While modernization is positive, the story has no relevance beyond Tenerife and Spain—it's a municipal/regional investment announcement with no universal significance or broader impact.",
-      "category": "soft-news-filler",
-      "url": "https://turystyka.rp.pl/linie-lotnicze/art45147111-szykuje-sie-najwieksza-w-historii-modernizacja-najwiekszego-lotniska-na-teneryfie",
-      "date": "2026-09-16 10:27",
-      "positivity_score": 3
     }
   ]
 }
