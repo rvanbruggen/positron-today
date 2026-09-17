@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T13:37:04.335Z",
-  "total_rejected": 148849,
+  "exported_at": "2026-09-17T13:37:22.500Z",
+  "total_rejected": 148850,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2764
+      "count": 2765
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 293,
-      "total": 464
+      "negative": 294,
+      "total": 465
     },
     {
       "source": "ScienceDaily",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "OpenAI cracks the hidden math that keeps your texts from turning to gibberish",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/openai-cracks-the-hidden-math-that-keeps-your-texts-from-turning-to-gibberish/",
+      "date": "2026-09-17 15:37",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Africa: KOAFEC 2026 - African Development Bank and Korea's Export-Import Bank Strengthen Partnership to Finance Africa's Strategic Priorities",
@@ -9391,15 +9400,6 @@
       "url": "https://www.lemonde.fr/international/live/2026/09/16/en-direct-guerre-en-ukraine-serguei-lavrov-le-ministre-des-affaires-etrangeres-russe-menace-l-europe-d-une-guerre-tres-courte-en-cas-d-attaque-contre-la-russie_6772184_3210.html",
       "date": "2026-09-16 18:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "En Russie, un Etat prédateur au service de la guerre",
-      "reason": "This is analysis of state predation and asset seizure in wartime Russia; it documents systemic corruption and abuse tied to the Ukraine war.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/international/article/2026/09/16/en-russie-un-etat-predateur-au-service-de-la-guerre_6775246_3210.html",
-      "date": "2026-09-16 18:27",
-      "positivity_score": 1
     }
   ]
 }
