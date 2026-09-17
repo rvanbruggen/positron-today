@@ -1,0 +1,21 @@
+---
+title: "Built using a 200-year-old technique, Shimla homestay stays safe in Himachal's earthquakes"
+title_nl: "Gebouwd met een 200 jaar oude techniek, Shimla-pension blijft veilig bij aardbevingen in Himachal"
+title_fr: "Construit avec une technique vieille de 200 ans, le gîte de Shimla reste sûr lors des tremblements de terre de l'Himachal"
+date: 2026-09-17T15:07:00
+source_pub_date: 2026-09-17
+fetched_date: 2026-09-17
+source_url: "https://thebetterindia.com/328655/sunnymead-eco-friendly-earthquake-resistant-homestay-in-shimla-built-with-dhajji-dewari-architecture/"
+source_name: "The Better India"
+topic: "Environment"
+tags: ["Environment","Family life","Travel"]
+emoji: "🏡"
+summary: "In earthquake-prone Himachal Pradesh, a Delhi-born woman named Madhavi Bhatia has revived an ancient building technique called dhajji dewari at her ancestral home turned homestay, Sunnymead. This 200-year-old architectural style, which uses a quilt-like patchwork of wood and stone, allows buildings to tilt safely during earthquakes rather than collapse like modern structures often do. After inheriting the neglected property in 2010, Madhavi left her corporate job to restore it as a sustainable venture while honoring her family heritage and childhood memories. The result is a beautiful, earthquake-resistant homestay that proves ancient wisdom sometimes outperforms modern construction methods when it comes to surviving nature's most violent forces."
+summary_nl: "In aardbevingsgevaarlijke Himachal Pradesh heeft een Delhiase vrouw genaamd Madhavi Bhatia een oude bouwtechniek genaamd dhajji dewari nieuw leven ingeblazen in haar voorouderlijk huis, nu een pension genaamd Sunnymead. Deze 200 jaar oude bouwstijl, die gebruikmaakt van een lappendekenachtig patroon van hout en steen, stelt gebouwen in staat om veilig te kanelen tijdens aardbevingen in plaats van in te storten zoals moderne constructies vaak doen. Nadat Madhavi het verwaarloosde pand in 2010 erfde, gaf zij haar kantoorbaan op om het als duurzaam onderneming te restaureren en tegelijk haar familieerfenis en kinderherinneringen te eren. Het resultaat is een mooi, aardbevingsbestendig pension dat bewijst dat oude wijsheid soms beter werkt dan moderne bouwmethoden wanneer het gaat om het overleven van de meest gewelddadige natuurkrachten."
+summary_fr: "Dans le Himachal Pradesh exposé aux tremblements de terre, une femme originaire de Delhi nommée Madhavi Bhatia a ressuscité une ancienne technique de construction appelée dhajji dewari dans sa demeure ancestrale transformée en gîte, Sunnymead. Ce style architectural vieux de 200 ans, qui utilise un motif de patchwork de bois et de pierre, permet aux bâtiments de s'incliner en toute sécurité pendant les tremblements de terre plutôt que de s'effondrer comme le font souvent les structures modernes. Après avoir hérité de la propriété négligée en 2010, Madhavi a quitté son emploi de bureau pour la restaurer comme entreprise durable tout en honorant son héritage familial et ses souvenirs d'enfance. Le résultat est un beau gîte parasismique qui prouve que la sagesse ancienne surpasse parfois les méthodes de construction modernes lorsqu'il s'agit de survivre aux forces naturelles les plus violentes."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/uploads/2023/08/sustainable-homestay_11zon-1693486445.jpg"
+featured: true
+layout: post.njk
+---
+
+In earthquake-prone Himachal Pradesh, a Delhi-born woman named Madhavi Bhatia has revived an ancient building technique called dhajji dewari at her ancestral home turned homestay, Sunnymead. This 200-year-old architectural style, which uses a quilt-like patchwork of wood and stone, allows buildings to tilt safely during earthquakes rather than collapse like modern structures often do. After inheriting the neglected property in 2010, Madhavi left her corporate job to restore it as a sustainable venture while honoring her family heritage and childhood memories. The result is a beautiful, earthquake-resistant homestay that proves ancient wisdom sometimes outperforms modern construction methods when it comes to surviving nature's most violent forces.
