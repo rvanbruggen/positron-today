@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T13:37:22.500Z",
-  "total_rejected": 148850,
+  "exported_at": "2026-09-17T13:37:34.758Z",
+  "total_rejected": 148851,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2765
+      "count": 2766
     },
     {
       "category": "divisive-racism",
@@ -81,8 +81,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 8611,
-      "total": 8774
+      "negative": 8612,
+      "total": 8775
     },
     {
       "source": "VRT Nws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Natrafili na szczątki tajemniczych krewnych człowieka. Naukowcy pokazali badania",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rp.pl/nauka/art45148621-natrafili-na-szczatki-tajemniczych-krewnych-czlowieka-naukowcy-pokazali-badania",
+      "date": "2026-09-17 15:37",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "OpenAI cracks the hidden math that keeps your texts from turning to gibberish",
@@ -9391,15 +9400,6 @@
       "url": "https://www.lemonde.fr/international/article/2026/09/16/ursula-von-der-leyen-propose-au-canada-de-devenir-le-premier-membre-associe-de-l-union-europeenne_6775420_3210.html",
       "date": "2026-09-16 18:27",
       "positivity_score": 4
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, guerre en Ukraine : Zelensky se dit prêt à la tenue d’élections dès « demain » mais estime qu’il est impossible de les organiser à cause de la guerre",
-      "reason": "This is war-conflict coverage reporting on the impossibility of holding elections during active warfare; the story's substance is rooted in the ongoing negative conflict.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/international/live/2026/09/16/en-direct-guerre-en-ukraine-serguei-lavrov-le-ministre-des-affaires-etrangeres-russe-menace-l-europe-d-une-guerre-tres-courte-en-cas-d-attaque-contre-la-russie_6772184_3210.html",
-      "date": "2026-09-16 18:27",
-      "positivity_score": 2
     }
   ]
 }
