@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T12:28:59.855Z",
-  "total_rejected": 148848,
+  "exported_at": "2026-09-17T13:37:04.335Z",
+  "total_rejected": 148849,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2763
+      "count": 2764
     },
     {
       "category": "divisive-racism",
@@ -231,8 +231,8 @@
     },
     {
       "source": "AllAfrica",
-      "negative": 1037,
-      "total": 1106
+      "negative": 1038,
+      "total": 1107
     },
     {
       "source": "Humo",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "AllAfrica",
+      "title": "Africa: KOAFEC 2026 - African Development Bank and Korea's Export-Import Bank Strengthen Partnership to Finance Africa's Strategic Priorities",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://allafrica.com/stories/202609160743.html",
+      "date": "2026-09-17 15:37",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "Falklands MLA says islands have “state of the art” defense technology",
@@ -9391,15 +9400,6 @@
       "url": "https://www.lemonde.fr/international/article/2026/09/16/en-russie-un-etat-predateur-au-service-de-la-guerre_6775246_3210.html",
       "date": "2026-09-16 18:27",
       "positivity_score": 1
-    },
-    {
-      "source": "Le Monde",
-      "title": "Ebola en RDC : des « signes encourageants » dans la lutte contre l’épidémie, qui « continue de progresser et de tuer », déclare l’OMS",
-      "reason": "While vaccine trials are accelerating, the article's primary framing is a health scare—the worst Ebola outbreak in DRC history—and 'encouraging signs' are only positive relative to a catastrophic negative baseline.",
-      "category": "health-scare",
-      "url": "https://www.lemonde.fr/afrique/article/2026/09/16/ebola-en-rdc-des-signes-encourageants-dans-la-lutte-contre-l-epidemie-qui-continue-de-progresser-et-de-tuer-declare-l-oms_6775382_3212.html",
-      "date": "2026-09-16 18:27",
-      "positivity_score": 5
     }
   ]
 }
