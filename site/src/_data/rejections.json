@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-17T04:32:01.430Z",
-  "total_rejected": 148440,
+  "exported_at": "2026-09-17T04:32:21.118Z",
+  "total_rejected": 148441,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2743
+      "count": 2744
     },
     {
       "category": "divisive-racism",
@@ -181,8 +181,8 @@
     },
     {
       "source": "Global News (Canada)",
-      "negative": 2566,
-      "total": 2623
+      "negative": 2567,
+      "total": 2624
     },
     {
       "source": "The Guardian Europe",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "First batch of B.C. law students takes course over bar exam as Ontario mulls switch",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12061407/b-c-law-school-bar-exam/",
+      "date": "2026-09-17 06:32",
+      "positivity_score": null
+    },
     {
       "source": "Het Laatste Nieuws",
       "title": "Stafchef van het Witte Huis Susie Wiles kankervrij na strijd tegen borstkanker",
@@ -9390,15 +9399,6 @@
       "category": "other-negative",
       "url": "https://www.rp.pl/konsumenci/art45147061-producent-kosmetykow-garnier-na-cenzurowanym-za-greenwashing",
       "date": "2026-09-16 10:28",
-      "positivity_score": 2
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Problemy z ropą dla Orlenu. Balczun: nie mieliśmy tak trudnej sytuacji od dekad",
-      "reason": "This is a negative economic/political news story about supply disruptions and market crisis at a major Polish oil company. It reports on problems and warnings, not positive developments. The story requires knowledge of the preceding negative event (supply disruptions) to make sense, making it a negative-event update rather than positive news.",
-      "category": "economic-doom",
-      "url": "https://energia.rp.pl/ropa/art45147001-problemy-z-ropa-dla-orlenu-balczun-nie-mielismy-tak-trudnej-sytuacji-od-dekad",
-      "date": "2026-09-16 10:27",
       "positivity_score": 2
     }
   ]
