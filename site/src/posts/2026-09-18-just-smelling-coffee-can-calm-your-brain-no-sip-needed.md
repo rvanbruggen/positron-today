@@ -1,0 +1,20 @@
+---
+title: "Just smelling coffee can calm your brain - no sip needed"
+title_nl: "Je hoeft koffie niet eens te drinken - je brein reageert al op de geur"
+title_fr: "Vous n'avez même pas besoin de boire du café - votre cerveau réagit déjà à son arôme"
+date: 2026-09-18T08:30:13
+source_pub_date: 2026-09-17
+fetched_date: 2026-09-17
+source_url: "https://www.rp.pl/spoleczenstwo/art45158141-nie-trzeba-nawet-pic-kawy-mozg-reaguje-juz-na-sam-jej-zapach"
+source_name: "Rzeczpospolita Poland"
+topic: "Food"
+tags: ["Food","Health","Science"]
+emoji: "☕"
+summary: "Japanese researchers from Showa Pharmaceutical University discovered something fascinating - just sitting near freshly brewed coffee for five minutes can noticeably improve your mood, without you even taking a sip. Twenty young adults showed reduced negative emotions, less fatigue, tension and anxiety when exposed to coffee aroma, with measurable changes in their brain activity too. So, the smell triggers something real in how we feel, likely because our sense of smell connects directly to emotional brain areas and pulls up familiar associations - maybe memories of morning breaks or that cozy coffee ritual. The scientists are cautious though, noting that while the effect was real on a group level, the physical changes were subtle, and different people responded in different ways."
+summary_nl: "Onderzoekers van de Showa Pharmaceutical University in Japan ontdekten iets fascinerends - je hoeft maar vijf minuten naast vers gezette koffie te zitten om je stemming aanzienlijk te verbeteren, zonder zelfs maar een slokje te nemen. Twintig jonge volwassenen lieten verminderde negatieve emoties zien, minder vermoeidheid, spanning en angst wanneer ze werden blootgesteld aan koffiearoma, met meetbare veranderingen in hun hersenactiviteit. De geur triggert dus echt iets in hoe we ons voelen, waarschijnlijk omdat onze reukvermogen direct verbonden is met emotionele hersengebieden en vertrouwde associaties oproept - misschien herinneringen aan ochtendpauzes of dat gezellige koffieritueel. De wetenschappers zijn voorzichtig, omdat hoewel het effect op groepsniveau echt was, de fysieke veranderingen subtiel waren en verschillende mensen op verschillende manieren reageerden."
+summary_fr: "Des chercheurs de l'université pharmaceutique Showa au Japon ont découvert quelque chose de fascinant - il suffit de rester cinq minutes près d'un café fraîchement préparé pour améliorer notablement votre humeur, sans même en prendre une gorgée. Vingt jeunes adultes ont montré des émotions négatives réduites, moins de fatigue, de tension et d'anxiété lorsqu'ils étaient exposés à l'arôme du café, avec des changements mesurables dans leur activité cérébrale. L'odeur déclenche donc quelque chose de réel dans nos sentiments, probablement parce que notre odorat est directement connecté aux zones émotionnelles du cerveau et active des associations familières - peut-être des souvenirs de pauses matinales ou ce rituel douillet du café. Les scientifiques restent prudents, car bien que l'effet soit réel au niveau du groupe, les changements physiques étaient subtils et différentes personnes ont réagi de différentes façons."
+image_url: "https://i.gremicdn.pl/image/free/fc2a589399cc227d4470293f4fc286a4/?t=crop:5759:3572:nowe:1.1295147654619E-12:268,resize:fill:2000:1250&ctx=preview"
+layout: post.njk
+---
+
+Japanese researchers from Showa Pharmaceutical University discovered something fascinating - just sitting near freshly brewed coffee for five minutes can noticeably improve your mood, without you even taking a sip. Twenty young adults showed reduced negative emotions, less fatigue, tension and anxiety when exposed to coffee aroma, with measurable changes in their brain activity too. So, the smell triggers something real in how we feel, likely because our sense of smell connects directly to emotional brain areas and pulls up familiar associations - maybe memories of morning breaks or that cozy coffee ritual. The scientists are cautious though, noting that while the effect was real on a group level, the physical changes were subtle, and different people responded in different ways.
