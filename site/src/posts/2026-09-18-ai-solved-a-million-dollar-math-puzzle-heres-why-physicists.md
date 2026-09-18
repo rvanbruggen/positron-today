@@ -1,0 +1,20 @@
+---
+title: "AI solved a million-dollar math puzzle. Here's why physicists are staying cautious"
+title_nl: "AI loste een miljoen-dollar wiskundepuzzel op. Hier is waarom natuurkundigen voorzichtig blijven"
+title_fr: "L'IA a résolu une énigme mathématique d'un million de dollars. Voici pourquoi les physiciens restent prudents"
+date: 2026-09-18T22:32:00
+source_pub_date: 2026-09-18
+fetched_date: 2026-09-18
+source_url: "https://www.nature.com/articles/d41586-026-02922-6"
+source_name: "Nature"
+topic: "Science"
+tags: ["Science","Technology"]
+emoji: "🧮"
+summary: "OpenAI made waves last week by claiming its AI had solved one of the Millennium Prize Problems - proving that the famous Navier-Stokes equations can produce physically impossible results under certain extreme conditions. The breakthrough is genuinely impressive, but here's the thing: the equations break down at a scale so tiny - around 70 nanometres - that treating fluid as molecules rather than a continuous substance makes way more sense anyway. So while this is a beautiful mathematical achievement, it doesn't necessarily reshape how we actually model real-world fluid flow in engineering or physics. The takeaway is that AI's mathematical prowess is remarkable, but the practical limits of these ancient equations were already pretty well understood by researchers working on the ground."
+summary_nl: "OpenAI zorgde vorige week voor opwinding door te claimen dat zijn AI een van de Millennium Prize Problems heeft opgelost - en aantoonde dat de beroemde Navier-Stokes-vergelijkingen onder bepaalde extreem extreme omstandigheden fysiek onmogelijke resultaten kunnen opleveren. De doorbraak is echt indrukwekkend, maar hier is het punt: de vergelijkingen breken af op een schaal die zo klein is - ongeveer 70 nanometer - dat het veel logischer is om vloeistof als moleculen in plaats van een continu stof te behandelen. Dit is dus een mooie wiskundige prestatie, maar het verandert niet noodzakelijk hoe we vloeistofstroming in engineering of natuurkunde in de praktijk modelleren. De kernboodschap is dat de wiskundige kracht van AI opmerkelijk is, maar de praktische grenzen van deze eeuwenoude vergelijkingen waren onderzoekers op het terrein al goed bekend."
+summary_fr: "OpenAI a fait sensation la semaine dernière en affirmant que son IA avait résolu l'un des problèmes du millénaire - prouvant que les célèbres équations de Navier-Stokes peuvent produire des résultats physiquement impossibles dans certaines conditions extrêmes. La percée est véritablement impressionnante, mais voilà le truc : les équations s'effondrent à une échelle tellement minuscule - environ 70 nanomètres - qu'il est bien plus judicieux de traiter le fluide comme des molécules plutôt que comme une substance continue. C'est donc une belle réussite mathématique, mais elle ne remodèle pas nécessairement la façon dont nous modélisons réellement l'écoulement des fluides dans l'ingénierie ou la physique. L'essentiel est que la puissance mathématique de l'IA est remarquable, mais les limites pratiques de ces équations anciennes étaient déjà bien comprises par les chercheurs qui travaillent sur le terrain."
+image_url: "https://media.nature.com/lw1200/magazine-assets/d41586-026-02922-6/d41586-026-02922-6_53732854.jpg"
+layout: post.njk
+---
+
+OpenAI made waves last week by claiming its AI had solved one of the Millennium Prize Problems - proving that the famous Navier-Stokes equations can produce physically impossible results under certain extreme conditions. The breakthrough is genuinely impressive, but here's the thing: the equations break down at a scale so tiny - around 70 nanometres - that treating fluid as molecules rather than a continuous substance makes way more sense anyway. So while this is a beautiful mathematical achievement, it doesn't necessarily reshape how we actually model real-world fluid flow in engineering or physics. The takeaway is that AI's mathematical prowess is remarkable, but the practical limits of these ancient equations were already pretty well understood by researchers working on the ground.
