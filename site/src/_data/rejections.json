@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-18T12:28:37.179Z",
-  "total_rejected": 149939,
+  "exported_at": "2026-09-18T12:55:49.852Z",
+  "total_rejected": 149940,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2796
+      "count": 2797
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 232,
-      "total": 585
+      "negative": 233,
+      "total": 586
     },
     {
       "source": "Good Good Good",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "NASA’s Moon orbiter finds a 728-foot crater that wasn’t there before",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260917003715.htm",
+      "date": "2026-09-18 14:55",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Kenya: Fuel Tanker Explosion Kills Three, Injures 14 On Eldoret-Turbo Road",
@@ -9391,15 +9400,6 @@
       "url": "https://www.theguardian.com/environment/2026/sep/18/planets-atmosphere-breaks-record-for-water-vapour-levels-increasing-risk-of-extreme-heat-and-rainfall",
       "date": "2026-09-17 18:26",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Monde",
-      "title": "EN DIRECT, présidentielle 2027 : Gabriel Attal propose « de créer les Etats-Unis d’Europe en faisant le premier référendum européen »",
-      "reason": "Political campaign announcement by a French presidential candidate; partisan political commentary.",
-      "category": "political-conflict",
-      "url": "https://www.lemonde.fr/politique/live/2026/09/17/en-direct-presidentielle-2027-marine-le-pen-rencontre-des-habitants-sinistres-du-porge-marine-tondelier-presente-ses-mesures-pour-la-protection-de-l-enfance_6776151_823448.html",
-      "date": "2026-09-17 18:26",
-      "positivity_score": 1
     }
   ]
 }
