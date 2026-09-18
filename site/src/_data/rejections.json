@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-09-18T04:25:41.592Z",
-  "total_rejected": 149524,
+  "exported_at": "2026-09-18T04:26:53.829Z",
+  "total_rejected": 149531,
   "sources_count": 66,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 39914
+      "count": 39917
     },
     {
       "category": "soft-news-filler",
-      "count": 18364
+      "count": 18365
     },
     {
       "category": "sports-negative",
@@ -33,11 +33,11 @@
     },
     {
       "category": "war-conflict",
-      "count": 7520
+      "count": 7521
     },
     {
       "category": "other-negative",
-      "count": 6073
+      "count": 6074
     },
     {
       "category": "health-scare",
@@ -53,7 +53,7 @@
     },
     {
       "category": "climate-environment",
-      "count": 2933
+      "count": 2934
     },
     {
       "category": "human-discarded",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 13140,
-      "total": 13410
+      "negative": 13143,
+      "total": 13414
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 6145,
-      "total": 6196
+      "negative": 6146,
+      "total": 6197
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -176,8 +176,8 @@
     },
     {
       "source": "Le Soir",
-      "negative": 2654,
-      "total": 2679
+      "negative": 2656,
+      "total": 2681
     },
     {
       "source": "Global News (Canada)",
@@ -276,8 +276,8 @@
     },
     {
       "source": "MercoPress",
-      "negative": 420,
-      "total": 432
+      "negative": 421,
+      "total": 433
     },
     {
       "source": "Science.org news",
@@ -401,6 +401,69 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "EXCLUSIEF. “Ziekenfonds moedigt langdurig zieken aan om klacht in te dienen tegen controlearts”: klokkenluider schrijft vlammende brief aan overheid",
+      "reason": "Institutional corruption and misconduct allegation; the story is about wrongdoing within health-insurance administration, not a positive outcome.",
+      "category": "other-negative",
+      "url": "https://www.hln.be/binnenland/exclusief-ziekenfonds-moedigt-langdurig-zieken-aan-om-klacht-in-te-dienen-tegen-controlearts-klokkenluider-schrijft-vlammende-brief-aan-overheid~add09b01/",
+      "date": "2026-09-18 06:26",
+      "positivity_score": 2
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Minister vil femdoble bødestraf for snyd med bopælspligt",
+      "reason": "Government policy announcement about penalty increases; a domestic political/regulatory decision with no universal relevance or proven positive outcome.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/danmark/art10987696/Minister-vil-femdoble-b%C3%B8destraf-for-snyd-med-bop%C3%A6lspligt",
+      "date": "2026-09-18 06:26",
+      "positivity_score": 2
+    },
+    {
+      "source": "MercoPress",
+      "title": "Milei’s budget for 2027 contemplates the purchase of three conventional submarines and two frigates",
+      "reason": "Military procurement and defence-budget announcement by one country's government; a national policy decision with no universal significance.",
+      "category": "political-conflict",
+      "url": "https://en.mercopress.com/2026/09/18/milei-s-budget-for-2027-contemplates-the-purchase-of-three-conventional-submarines-and-two-frigates?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
+      "date": "2026-09-18 06:26",
+      "positivity_score": 2
+    },
+    {
+      "source": "Le Soir",
+      "title": "Georges-Louis Bouchez face à Bruno Colmant : « 150.000 à 200.000 fonctionnaires en moins, c’est possible »",
+      "reason": "Political commentary on government policy and budget decisions within one country; not a proven outcome or universal advance.",
+      "category": "political-conflict",
+      "url": "https://www.lesoir.be/771614/article/2026-09-18/georges-louis-bouchez-face-bruno-colmant-150000-200000-fonctionnaires-en-moins",
+      "date": "2026-09-18 06:26",
+      "positivity_score": 2
+    },
+    {
+      "source": "Le Soir",
+      "title": "La Belgique doit sauver ses puits de carbone",
+      "reason": "The article reports a measured environmental decline (forests absorbing less CO2 than in 1990) and calls for action, but the good outcome (restored carbon sinks) is prospective, not achieved; it is a problem statement with recommendations, not a confirmed improvement.",
+      "category": "climate-environment",
+      "url": "https://www.lesoir.be/771613/article/2026-09-18/la-belgique-doit-sauver-ses-puits-de-carbone",
+      "date": "2026-09-18 06:26",
+      "positivity_score": 4
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Eén, drie of vijf jaar vroeger stoppen met werken: zo zwaar weegt dat op je pensioen",
+      "reason": "Lifestyle and personal-finance explainer about pension calculations; no positive news event or outcome, just informational content.",
+      "category": "soft-news-filler",
+      "url": "https://www.hln.be/mijn-geld/een-drie-of-vijf-jaar-vroeger-stoppen-met-werken-zo-zwaar-weegt-dat-op-je-pensioen~a0b424bd/",
+      "date": "2026-09-18 06:26",
+      "positivity_score": 2
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Rusland plant “onbedoelde” luchtaanvallen op landen die Oekraïne steunen, zegt Poolse premier Tusk",
+      "reason": "War and conflict reporting; threat of military action against NATO allies.",
+      "category": "war-conflict",
+      "url": "https://www.hln.be/buitenland/rusland-plant-onbedoelde-luchtaanvallen-op-landen-die-oekraine-steunen-zegt-poolse-premier-tusk~a93df6b5/",
+      "date": "2026-09-18 06:26",
+      "positivity_score": 1
+    },
     {
       "source": "Nature",
       "title": "Mercury is shrinking with age — faster than thought",
@@ -9335,69 +9398,6 @@
       "reason": "This is political commentary on government response to a terrorist attack. It frames a policy debate (whether a ten-point plan adequately addresses terrorism prevention) rather than reporting positive news. Rule 6 applies: political-figure profiles and government decisions are rejected, and this article's substance is partisan analysis of policy gaps, not a breakthrough or exceptional agreement.",
       "category": "political-conflict",
       "url": "https://www.faz.net/aktuell/politik/inland/zehn-punkte-plan-zum-schutz-vor-islamistischem-terror-der-elfte-punkt-fehlt-201233049.html",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "The Guardian",
-      "title": "Raheem Sterling’s bleak tale a reminder of absurd path young footballers face | Jonathan Liew",
-      "reason": "Sports criticism examining systemic problems in youth football transfers; the story's substance is about exploitation and dysfunction, not positive news.",
-      "category": "sports-negative",
-      "url": "https://www.theguardian.com/football/2026/sep/17/raheem-sterling-bleak-tale-reminder-absurd-path-young-footballers-face",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "The Guardian",
-      "title": "Driving that’s too fast, too dangerous and utterly lawless: why do we tolerate this petro-masculinity? | George Monbiot",
-      "reason": "Opinion column criticizing dangerous driving behaviour and cultural attitudes; the article documents negative social trends and crime, not positive developments.",
-      "category": "crime-violence",
-      "url": "https://www.theguardian.com/commentisfree/2026/sep/17/driving-fast-dangerous-lawless-towns-countryside-suv-transport",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "The Guardian",
-      "title": "Tories challenge chancellor to rule out tax rises in budget – UK politics live",
-      "reason": "Political live-blog covering partisan budget debate and tax policy disagreements; routine political coverage with no positive breakthrough.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/politics/live/2026/sep/17/conservatives-badenoch-griffiths-healey-burnham-tax-rises-budget-economy-bank-of-england-latest-uk-politics-news-updates",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Euronews",
-      "title": "US Congress approves Russia sanctions that impact China and India",
-      "reason": "Geopolitical news about sanctions and trade threats in the context of war; this is conflict-related political-economic news.",
-      "category": "war-conflict",
-      "url": "https://www.euronews.com/2026/09/17/us-congress-approves-russia-sanctions-that-impact-china-and-india",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Euronews",
-      "title": "War in Ukraine: Odesa and Sumy suffer fires and casualties in new Russian attacks",
-      "reason": "War reporting documenting attacks, casualties, and destruction; this is negative-event coverage.",
-      "category": "war-conflict",
-      "url": "https://www.euronews.com/video/2026/09/17/war-in-ukraine-odesa-and-sumy-suffer-fires-and-casualties-in-new-russian-attacks",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Euronews",
-      "title": "Climate change was key factor in deadly Nepal-China flood, scientists say",
-      "reason": "Climate-disaster reporting; the story's substance is about a deadly flood caused by climate change and geological factors, not positive environmental progress.",
-      "category": "climate-environment",
-      "url": "https://www.euronews.com/2026/09/17/climate-change-was-key-factor-in-deadly-nepal-china-flood-scientists-say",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Vor der Duma-Wahl: Sanktionen sind kein stumpfes Schwert",
-      "reason": "This is political commentary about sanctions policy ahead of Russian elections. It discusses geopolitical strategy and economic impact in a partisan context, which falls under Rule 6 (Politics). The article is analytical commentary on government policy, not positive news.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/wirtschaft/sanktionen-gegen-russland-wirkung-trotz-aller-grenzen-201214491.html",
       "date": "2026-09-17 10:26",
       "positivity_score": 2
     }
