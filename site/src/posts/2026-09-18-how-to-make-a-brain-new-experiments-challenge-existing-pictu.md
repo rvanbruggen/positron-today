@@ -1,0 +1,20 @@
+---
+title: "How to make a brain: new experiments challenge existing picture"
+title_nl: "Hoe maak je een hersenen: nieuwe experimenten stellen bestaand beeld ter discussie"
+title_fr: "Comment fabriquer un cerveau : de nouvelles expériences remettent en question la théorie actuelle"
+date: 2026-09-18T22:09:00
+source_pub_date: 2026-09-18
+fetched_date: 2026-09-18
+source_url: "https://www.nature.com/articles/d41586-026-02943-1"
+source_name: "Nature"
+topic: "Health"
+tags: ["Health","Science"]
+emoji: "🧠"
+summary: "Scientists have long assumed that a single type of starter cell builds the entire brain, but exciting new research suggests it actually takes two different types of precursor cells to create this complex organ. One type of cell forms the hindbrain - responsible for vital functions like heartbeat and breathing - while another generates both the forebrain and midbrain, which handle higher-order thinking. The study, published in Nature Neuroscience, challenges our fundamental understanding of brain development and reveals how these two cell populations are strictly committed to their designated regions. Beyond the theory itself, the researchers have discovered an efficient way to coax stem cells into becoming hindbrain motor neurons, which could accelerate research into devastating diseases like ALS."
+summary_nl: "Wetenschappers hebben lang aangenomen dat een enkel type startcel het hele brein opbouwt, maar spannend nieuw onderzoek suggereert dat er eigenlijk twee verschillende soorten voorlopercellen nodig zijn om dit complexe orgaan te creëren. Het ene type cel vormt de achterhersenen - verantwoordelijk voor vitale functies zoals hartslag en ademhaling - terwijl het andere zowel de voorkant als het middendeel van het brein genereert, die gaan over hoger orde denken. De studie, gepubliceerd in Nature Neuroscience, stelt onze fundamentele begrip van hersenontwikkeling ter discussie en toont hoe deze twee celpopulaties strikt vastgelegd zijn op hun aangewezen regio's. Naast de theorie zelf hebben de onderzoekers een efficiënte manier ontdekt om stamcellen om te zetten in achterhersenen motorneuronen, wat onderzoek naar verwoestende ziekten zoals ALS kan versnellen."
+summary_fr: "Les scientifiques ont longtemps supposé qu'un seul type de cellule de départ construit l'ensemble du cerveau, mais une recherche nouvelle et passionnante suggère qu'il faut en réalité deux types différents de cellules précurseurs pour créer cet organe complexe. Un type de cellule forme le cerveau postérieur - responsable de fonctions vitales comme le battement cardiaque et la respiration - tandis qu'un autre génère à la fois le cerveau antérieur et le mésencéphale, qui gèrent la pensée d'ordre supérieur. L'étude, publiée dans Nature Neuroscience, remet en question notre compréhension fondamentale du développement cérébral et montre comment ces deux populations cellulaires sont strictement engagées dans leurs régions désignées. Au-delà de la théorie elle-même, les chercheurs ont découvert un moyen efficace de transformer les cellules souches en motoneurones du cerveau postérieur, ce qui pourrait accélérer la recherche sur des maladies dévastatrices comme la SLA."
+image_url: "https://media.nature.com/lw1200/magazine-assets/d41586-026-02943-1/d41586-026-02943-1_53728306.jpg"
+layout: post.njk
+---
+
+Scientists have long assumed that a single type of starter cell builds the entire brain, but exciting new research suggests it actually takes two different types of precursor cells to create this complex organ. One type of cell forms the hindbrain - responsible for vital functions like heartbeat and breathing - while another generates both the forebrain and midbrain, which handle higher-order thinking. The study, published in Nature Neuroscience, challenges our fundamental understanding of brain development and reveals how these two cell populations are strictly committed to their designated regions. Beyond the theory itself, the researchers have discovered an efficient way to coax stem cells into becoming hindbrain motor neurons, which could accelerate research into devastating diseases like ALS.
