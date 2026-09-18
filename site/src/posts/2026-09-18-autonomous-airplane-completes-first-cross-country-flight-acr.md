@@ -1,0 +1,20 @@
+---
+title: "Autonomous airplane completes first cross-country flight across the US"
+title_nl: "Autonoom vliegtuig voltooit eerste transcontinentale vlucht over de VS"
+title_fr: "Un avion autonome complète son premier vol transcontinental aux États-Unis"
+date: 2026-09-18T23:03:00
+source_pub_date: 2026-09-18
+fetched_date: 2026-09-18
+source_url: "https://www.popsci.com/technology/first-autonomous-flight-across-united-states/"
+source_name: "Popular Science"
+topic: "Science"
+tags: ["Science","Technology","Travel"]
+emoji: "✈️"
+summary: "So here's the thing - a retrofitted Cessna Caravan just flew itself across the entire United States, covering 3,199 miles from California to North Carolina without any help from its human safety pilot. What's really impressive is that the autonomous system, developed by Joby Aviation, handled every single stage of the journey - taxiing, takeoffs, landings, and everything in between. The plane even had to navigate some seriously tricky situations in real-time, like flying through busy airspace above Phoenix and dodging thunderstorms along the way. And because this is aviation history we're talking about, Joby had the Cessna do a symbolic low pass over the First Flight Monument in Kitty Hawk, North Carolina, paying homage to the Wright Brothers' 1903 achievement."
+summary_nl: "Hier is het interessante deel - een aangepaste Cessna Caravan heeft zichzelf zojuist over de hele Verenigde Staten gevlogen, met een afstand van 3.199 mijl van Californië naar North Carolina, zonder enige hulp van de menselijke veiligheidspiloot aan boord. Wat echt indrukwekkend is, is dat het autonome systeem van Joby Aviation elke fase van de reis aanstuurde - taxiën, starts, landingen en alles daartussenin. Het vliegtuig moest zelfs enkele serieuze real-time situaties navigeren, zoals het vliegen door druk luchtruim boven Phoenix en het ontwijken van onweersstormen onderweg. En omdat we het hier over luchtvaartgeschiedenis hebben, liet Joby de Cessna een symbolische laagvlucht uitvoeren over het First Flight Monument in Kitty Hawk, North Carolina, ter ere van de prestatie van de gebroeders Wright in 1903."
+summary_fr: "Voilà le plus intéressant - un Cessna Caravan transformé vient de se piloter lui-même sur toute la côte des États-Unis, couvrant 3.199 miles de la Californie à la Caroline du Nord sans aucune aide du pilote de sécurité humain à bord. Ce qui est vraiment impressionnant, c'est que le système autonome développé par Joby Aviation a géré chaque étape du voyage - le roulage, les décollages, les atterrissages et tout ce qui s'ensuit. L'avion a même dû naviguer en temps réel dans des situations sérieuses, comme voler dans l'espace aérien très fréquenté au-dessus de Phoenix et éviter les orages en chemin. Et comme nous parlons d'histoire de l'aviation, Joby a fait faire au Cessna un survol symbolique du First Flight Monument à Kitty Hawk, en Caroline du Nord, rendant hommage à la réussite des frères Wright en 1903."
+image_url: "https://www.popsci.com/wp-content/uploads/2026/09/Joby-Self-Flying-Plane.jpg?w=1200"
+layout: post.njk
+---
+
+So here's the thing - a retrofitted Cessna Caravan just flew itself across the entire United States, covering 3,199 miles from California to North Carolina without any help from its human safety pilot. What's really impressive is that the autonomous system, developed by Joby Aviation, handled every single stage of the journey - taxiing, takeoffs, landings, and everything in between. The plane even had to navigate some seriously tricky situations in real-time, like flying through busy airspace above Phoenix and dodging thunderstorms along the way. And because this is aviation history we're talking about, Joby had the Cessna do a symbolic low pass over the First Flight Monument in Kitty Hawk, North Carolina, paying homage to the Wright Brothers' 1903 achievement.
