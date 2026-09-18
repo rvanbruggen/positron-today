@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-18T16:57:42.220Z",
-  "total_rejected": 150225,
+  "exported_at": "2026-09-18T16:57:47.220Z",
+  "total_rejected": 150226,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2805
+      "count": 2806
     },
     {
       "category": "divisive-racism",
@@ -136,8 +136,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 4002,
-      "total": 4057
+      "negative": 4003,
+      "total": 4058
     },
     {
       "source": "The Guardian",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "New Bolivian cat claws its way into species list: What we meow",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.aljazeera.com/news/2026/9/18/new-bolivian-cat-claws-its-way-into-species-list-what-we-meow?traffic_source=rss",
+      "date": "2026-09-18 18:57",
+      "positivity_score": null
+    },
     {
       "source": "The New York Times",
       "title": "New Species of Cat Discovered for First Time in a Century",
@@ -9391,15 +9400,6 @@
       "url": "https://politiken.dk/kultur/film_og_tv/art10982620/Kendte-instrukt%C3%B8rer-st%C3%B8tter-prisvinders-kritik-af-d%C3%A5rlige-vilk%C3%A5r-i-dansk-film",
       "date": "2026-09-17 21:22",
       "positivity_score": 2
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Fem får intensiv behandling efter mulig eksplosion ved militært skydeområde i Sverige",
-      "reason": "Disaster/accident report of an explosion with injuries; negative event coverage.",
-      "category": "disaster-accident",
-      "url": "https://politiken.dk/internationalt/art10987558/Fem-f%C3%A5r-intensiv-behandling-efter-mulig-eksplosion-ved-milit%C3%A6rt-skydeomr%C3%A5de-i-Sverige",
-      "date": "2026-09-17 21:22",
-      "positivity_score": 1
     }
   ]
 }
