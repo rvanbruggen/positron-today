@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-18T04:24:53.549Z",
-  "total_rejected": 149522,
+  "exported_at": "2026-09-18T04:25:16.274Z",
+  "total_rejected": 149523,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2791
+      "count": 2792
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 13139,
-      "total": 13409
+      "negative": 13140,
+      "total": 13410
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Sinds hervorming in januari vindt 1 op de 8 Belgen die uitkering verliezen een job",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/binnenland/sinds-hervorming-in-januari-vindt-1-op-de-8-belgen-die-uitkering-verliezen-een-job~a08f128e/",
+      "date": "2026-09-18 06:25",
+      "positivity_score": null
+    },
     {
       "source": "BBC Top Stories",
       "title": "New wild cat species discovered - with only one known living member",
@@ -9391,15 +9400,6 @@
       "url": "https://www.faz.net/aktuell/feuilleton/debatten/warum-ein-schweizer-deutscher-werden-will-accg-201228351.html",
       "date": "2026-09-17 10:26",
       "positivity_score": null
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Collien Fernandes: „Ich habe das Gefühl, es wird immer schlimmer“",
-      "reason": "This is a celebrity profile piece about a TV personality who became known through allegations against her ex-husband. The article combines celebrity journalism (personal profile, fashion styling) with a story whose primary news value derives from a preceding negative event (accusations). It fails rules 3 (celebrity entertainment), 9 (recovery-from-negative framing), and 11 (lifestyle/fashion content).",
-      "category": "celebrity-entertainment",
-      "url": "https://www.faz.net/aktuell/gesellschaft/menschen/collien-fernandes-ich-habe-das-gefuhl-es-wird-immer-schlimmer-201202730.html",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 2
     }
   ]
 }
