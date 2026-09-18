@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-18T16:55:42.281Z",
-  "total_rejected": 150224,
+  "exported_at": "2026-09-18T16:57:42.220Z",
+  "total_rejected": 150225,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2804
+      "count": 2805
     },
     {
       "category": "divisive-racism",
@@ -126,8 +126,8 @@
     },
     {
       "source": "The New York Times",
-      "negative": 4871,
-      "total": 4927
+      "negative": 4872,
+      "total": 4928
     },
     {
       "source": "BBC Top Stories",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The New York Times",
+      "title": "New Species of Cat Discovered for First Time in a Century",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nytimes.com/2026/09/18/science/tilcayo-new-cat-species-bolivia.html",
+      "date": "2026-09-18 18:57",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "Two N.S. men accused of intimate partner violence are charged with attempted murder",
@@ -9391,15 +9400,6 @@
       "url": "https://politiken.dk/internationalt/art10987558/Fem-f%C3%A5r-intensiv-behandling-efter-mulig-eksplosion-ved-milit%C3%A6rt-skydeomr%C3%A5de-i-Sverige",
       "date": "2026-09-17 21:22",
       "positivity_score": 1
-    },
-    {
-      "source": "Politiken.dk",
-      "title": "Kasper Holten stopper som teaterchef på Det Kongelige Teater",
-      "reason": "Institutional milestone (theatre director departure and recruitment process) with significance confined to one organization.",
-      "category": "soft-news-filler",
-      "url": "https://politiken.dk/kultur/art10987555/Kasper-Holten-stopper-som-teaterchef-p%C3%A5-Det-Kongelige-Teater",
-      "date": "2026-09-17 21:22",
-      "positivity_score": 2
     }
   ]
 }
