@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-18T04:26:57.876Z",
-  "total_rejected": 149531,
+  "exported_at": "2026-09-18T06:50:17.663Z",
+  "total_rejected": 149532,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2793
+      "count": 2794
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 13143,
-      "total": 13414
+      "negative": 13144,
+      "total": 13415
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Wat gebeurde met de 100.000 Belgen die hun uitkering verloren?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/binnenland/wat-gebeurde-met-de-100-000-belgen-die-hun-uitkering-verloren~a08f128e/",
+      "date": "2026-09-18 08:50",
+      "positivity_score": null
+    },
     {
       "source": "Het Laatste Nieuws",
       "title": "EXCLUSIEF. “Ziekenfonds moedigt langdurig zieken aan om klacht in te dienen tegen controlearts”: klokkenluider schrijft vlammende brief aan overheid",
@@ -9391,15 +9400,6 @@
       "url": "https://www.euronews.com/2026/09/17/trump-suggests-eu-allowing-canada-as-associate-member-could-be-hostile-act",
       "date": "2026-09-17 10:26",
       "positivity_score": 1
-    },
-    {
-      "source": "Frankfurter Allgemeine Zeitung",
-      "title": "Islamistischer Terrorismus: Zehn Punkte, aber eine Leerstelle",
-      "reason": "This is political commentary on government response to a terrorist attack. It frames a policy debate (whether a ten-point plan adequately addresses terrorism prevention) rather than reporting positive news. Rule 6 applies: political-figure profiles and government decisions are rejected, and this article's substance is partisan analysis of policy gaps, not a breakthrough or exceptional agreement.",
-      "category": "political-conflict",
-      "url": "https://www.faz.net/aktuell/politik/inland/zehn-punkte-plan-zum-schutz-vor-islamistischem-terror-der-elfte-punkt-fehlt-201233049.html",
-      "date": "2026-09-17 10:26",
-      "positivity_score": 2
     }
   ]
 }
