@@ -1,0 +1,20 @@
+---
+title: "A simple 30-second test could predict how long you'll live"
+title_nl: "Een eenvoudige 30-secondentest zou kunnen voorspellen hoe lang je leeft"
+title_fr: "Un simple test de 30 secondes pourrait prédire votre longévité"
+date: 2026-09-18T08:30:08
+source_pub_date: 2026-09-18
+fetched_date: 2026-09-18
+source_url: "https://www.upworthy.com/people-in-their-70s-who-passed-this-test-had-a-lower-chance-of-dying-in-7-years/"
+source_name: "Upworthy"
+topic: "Health"
+tags: ["Health","Science"]
+emoji: "💪"
+summary: "So here's the thing - researchers in Taiwan tracked over 13,000 adults aged 65 and older for seven years, and they found something genuinely hopeful: people who could stand on one leg for 30 seconds had a 61% lower risk of dying in that timeframe. The study involved simple, low-tech fitness tests that measured balance, strength, endurance, and flexibility - nothing fancy required, just functional movement. And what's really encouraging is that many of these people had existing health conditions like high blood pressure, yet still saw dramatic improvements in life expectancy by staying physically active. Dr. Bob Baravarian explains it perfectly: good balance and muscle strength lead to better cardiovascular and cognitive health, which means you can keep walking and living independently for longer."
+summary_nl: "Dus hier zit het belangrijkste - onderzoekers in Taiwan volgden meer dan 13.000 volwassenen van 65 jaar en ouder gedurende zeven jaar, en ze ontdekten iets werkelijk hoopvol: mensen die een voet 30 seconden konden balanceren, hadden een 61% lager sterftecijfer in die periode. Het onderzoek gebruikte eenvoudige, low-tech fitnesstests die balans, kracht, uithoudingsvermogen en flexibiliteit maten - niets ingewikkelds nodig, gewoon functionele beweging. En wat echt bemoedigend is: veel van deze mensen hadden bestaande aandoeningen zoals hoge bloeddruk, maar zagen toch dramatische verbeteringen in levensverwachting door fysiek actief te blijven. Dr. Bob Baravarian zegt het perfect: goede balans en spierkracht leiden tot beter hart- en hersengesondheid, wat betekent dat je langer onafhankelijk kunt blijven lopen en leven."
+summary_fr: "Voici la chose essentielle - des chercheurs à Taiwan ont suivi plus de 13 000 adultes âgés de 65 ans et plus pendant sept ans, et ils ont découvert quelque chose véritablement encourageant : les personnes qui pouvaient se tenir sur une jambe pendant 30 secondes avaient un risque de mortalité 61% inférieur. L'étude a utilisé des tests de forme physique simples et peu technologiques mesurant l'équilibre, la force, l'endurance et la flexibilité - rien de compliqué nécessaire, juste du mouvement fonctionnel. Et ce qui est vraiment motivant, c'est que beaucoup de ces personnes avaient des conditions préexistantes comme l'hypertension artérielle, mais ont quand même vu des améliorations spectaculaires de l'espérance de vie en restant physiquement actives. Le Dr Bob Baravarian l'explique parfaitement : un bon équilibre et une bonne force musculaire mènent à une meilleure santé cardiovasculaire et cognitive, ce qui signifie que tu peux rester actif et indépendant plus longtemps."
+image_url: "https://www.upworthy.com/wp-content/uploads/sites/2/2026/09/stand-on-one-leg-challenge-SPLASH.jpg"
+layout: post.njk
+---
+
+So here's the thing - researchers in Taiwan tracked over 13,000 adults aged 65 and older for seven years, and they found something genuinely hopeful: people who could stand on one leg for 30 seconds had a 61% lower risk of dying in that timeframe. The study involved simple, low-tech fitness tests that measured balance, strength, endurance, and flexibility - nothing fancy required, just functional movement. And what's really encouraging is that many of these people had existing health conditions like high blood pressure, yet still saw dramatic improvements in life expectancy by staying physically active. Dr. Bob Baravarian explains it perfectly: good balance and muscle strength lead to better cardiovascular and cognitive health, which means you can keep walking and living independently for longer.
