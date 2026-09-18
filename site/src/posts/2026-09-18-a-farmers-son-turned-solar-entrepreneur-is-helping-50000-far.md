@@ -1,0 +1,20 @@
+---
+title: "A farmer's son turned solar entrepreneur is helping 50,000 farmers earn from the sun"
+title_nl: "Een zoonboer die zonnepanelen-ondernemer werd helpt 50.000 boeren verdienen met de zon"
+title_fr: "Un fils de fermier devenu entrepreneur solaire aide 50 000 agriculteurs à gagner de l'argent avec le soleil"
+date: 2026-09-18T19:24:33
+source_pub_date: 2026-09-18
+fetched_date: 2026-09-18
+source_url: "https://thebetterindia.com/innovation/solar-income-farmers-india-bhavesh-patidar-solarsure-pm-kusum-second-income-12548645"
+source_name: "The Better India"
+topic: "Economy"
+tags: ["Economy","Environment","Technology"]
+emoji: "☀️"
+summary: "Bhavesh Patidar grew up watching his father struggle to earn a stable income from farming, a memory that stayed with him through his IIT education and tech career. When he discovered India's PM-KUSUM scheme, he tested the idea of converting underused farmland into solar power plants on his own family's land - and the income proved far more predictable than traditional farming. His success inspired neighbours to ask how they could do the same, which sparked the founding of Solarsure in November 2024. Now, just months in, his company has already reached over 50,000 farmers across six Indian states, commissioned 300 MW of solar capacity, and helped farmers increase their income by more than 30 percent."
+summary_nl: "Bhavesh Patidar groeide op terwijl hij zag hoe zijn vader moeite had om een stabiel inkomen uit het boerenbedrijf te verdienen - een herinnering die hem bijbleef tijdens zijn IIT-opleiding en technologiecarrière. Toen hij Indiaën's PM-KUSUM-regeling ontdekte, testte hij het idee om ongebruikt landbouwgrond om te zetten in zonnepanelen-centrales op het land van zijn eigen familie - en het inkomen bleek veel voorspelbaarder dan traditioneel boerenbedrijf. Zijn succes inspireerde buren om te vragen hoe zij hetzelfde konden doen, wat leidde tot de oprichting van Solarsure in november 2024. Nu, slechts enkele maanden later, heeft zijn bedrijf al meer dan 50.000 boeren bereikt in zes Indiase staten, 300 MW aan zonnecapaciteit in bedrijf genomen en boeren geholpen hun inkomen met meer dan 30 procent te verhogen."
+summary_fr: "Bhavesh Patidar a grandi en voyant son père lutter pour obtenir un revenu stable de l'agriculture - un souvenir qui l'a suivi pendant ses études au IIT et sa carrière technologique. Quand il a découvert le programme PM-KUSUM de l'Inde, il a testé l'idée de convertir les terres agricoles inutilisées en centrales solaires sur les terres de sa propre famille - et le revenu s'est avéré beaucoup plus prévisible que l'agriculture traditionnelle. Son succès a inspiré les voisins à demander comment ils pouvaient faire la même chose, ce qui a déclenché la fondation de Solarsure en novembre 2024. Maintenant, seulement quelques mois plus tard, son entreprise a déjà atteint plus de 50 000 agriculteurs dans six États indiens, mis en service 300 MW de capacité solaire et aidé les agriculteurs à augmenter leurs revenus de plus de 30 pour cent."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/2026/09/18/solarsure-2026-09-18-18-13-43.png"
+layout: post.njk
+---
+
+Bhavesh Patidar grew up watching his father struggle to earn a stable income from farming, a memory that stayed with him through his IIT education and tech career. When he discovered India's PM-KUSUM scheme, he tested the idea of converting underused farmland into solar power plants on his own family's land - and the income proved far more predictable than traditional farming. His success inspired neighbours to ask how they could do the same, which sparked the founding of Solarsure in November 2024. Now, just months in, his company has already reached over 50,000 farmers across six Indian states, commissioned 300 MW of solar capacity, and helped farmers increase their income by more than 30 percent.
