@@ -1,0 +1,20 @@
+---
+title: "French startup's magnetic dyes slash fashion's water use and pollution"
+title_nl: "Frans bedrijf ontwikkelt magnetische verfstof die water- en milieubelasting van mode drastisch reduceert"
+title_fr: "Startup française crée des colorants magnétiques qui réduisent considérablement l'eau et la pollution de la mode"
+date: 2026-09-19T08:31:00
+source_pub_date: 2026-09-18
+fetched_date: 2026-09-18
+source_url: "https://www.goodnewsnetwork.org/companys-textile-dyes-work-through-magnetism-cutting-fashions-water-use-energy-and-pollution/"
+source_name: "Good News Network"
+topic: "Economy"
+tags: ["Economy","Environment","Technology"]
+emoji: "✨"
+summary: "So here's something genuinely exciting - a French startup called EverDye has cracked a major problem in textile dyeing by using electrostatic technology instead of boiling water and chemicals. Their non-toxic, mineral-based dyes stick to fabrics at room temperature through static electricity, cutting energy costs by 800% and water use by 40% compared to traditional methods. And this is the beautiful part - the dyes are just as durable and vibrant as conventional ones, but with absolutely zero toxic additives or petrochemicals involved. Best of all, factories can integrate this process with minimal hardware changes, which means this solution could actually scale up quickly and meaningfully reduce the 20% of global industrial water pollution that textile dyeing currently causes."
+summary_nl: "Een Frans bedrijf genaamd EverDye heeft een briljante oplossing gevonden voor het vervuilende textielverfsproces door magnetische technologie te gebruiken in plaats van kokend water en chemicaliën. Hun niet-giftige, op mineralen gebaseerde verfstof hechten zich bij kamertemperatuur aan stoffen door middel van elektrostatische aantrekking, wat energiekosten met 80% en watergebruik met 40% reduceert. Het mooiste ervan is dat deze verfstof net zo duurzaam en levendig is als traditionele verfstof, maar zonder giftige additieven of aardoliechemicaliën. Fabrieken kunnen dit proces integreren met minimale aanpassingen, wat betekent dat deze oplossing snel kan worden uitgerold en daadwerkelijk de 20% wereldwijde industriële watervervuiling door textielverven kan verminderen."
+summary_fr: "Une startup française appelée EverDye a trouvé une solution brillante au problème polluant de la teinture textile en utilisant la technologie magnétique au lieu de l'eau bouillante et des produits chimiques. Leurs colorants non toxiques à base de minéraux s'attachent aux tissus à température ambiante par attraction électrostatique, réduisant les coûts énergétiques de 80% et l'utilisation d'eau de 40% par rapport aux méthodes traditionnelles. Ce qui est vraiment magnifique, c'est que ces colorants sont tout aussi durables et vibrants que les colorants conventionnels, mais sans aucun additif toxique ni produits chimiques pétroliers. Les usines peuvent intégrer ce procédé avec des modifications minimales, ce qui signifie que cette solution pourrait rapidement se généraliser et réduire considérablement les 20% de la pollution industrielle mondiale de l'eau causée par la teinture textile."
+image_url: "https://www.goodnewsnetwork.org/wp-content/uploads/2026/09/credit-EverDye-e1789761780757.jpg"
+layout: post.njk
+---
+
+So here's something genuinely exciting - a French startup called EverDye has cracked a major problem in textile dyeing by using electrostatic technology instead of boiling water and chemicals. Their non-toxic, mineral-based dyes stick to fabrics at room temperature through static electricity, cutting energy costs by 800% and water use by 40% compared to traditional methods. And this is the beautiful part - the dyes are just as durable and vibrant as conventional ones, but with absolutely zero toxic additives or petrochemicals involved. Best of all, factories can integrate this process with minimal hardware changes, which means this solution could actually scale up quickly and meaningfully reduce the 20% of global industrial water pollution that textile dyeing currently causes.
