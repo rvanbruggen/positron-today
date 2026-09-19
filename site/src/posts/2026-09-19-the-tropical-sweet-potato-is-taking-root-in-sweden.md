@@ -1,0 +1,20 @@
+---
+title: "The tropical sweet potato is taking root in Sweden"
+title_nl: "De tropische zoete aardappel slaat aan in Zweden"
+title_fr: "La patate douce tropicale s'enracine en Suède"
+date: 2026-09-19T21:02:00
+source_pub_date: 2026-09-19
+fetched_date: 2026-09-19
+source_url: "https://www.dn.se/ekonomi/den-tropiska-sotpotatisen-slar-rot-i-sverige/"
+source_name: "Dagens Nyheter"
+topic: "Economy"
+tags: ["Economy","Food","Science"]
+emoji: "🥔"
+summary: "So here's what's exciting - sweet potatoes, originally from the tropics, are being tested across Sweden right now, with trials running from Skåne all the way up to Norrbotten. Researchers at Sweden's agricultural university are working with international partners to develop Swedish-adapted varieties that can thrive even in cooler climates. What makes this really interesting is that sweet potatoes are incredibly tough and resource-efficient plants - they handle drought well and need very few nutrients compared to regular potatoes. And this is the best part: within three to four years, Swedish farmers could be offering us a much wider range than what we find in stores today - orange, yellow, white varieties with different textures and flavors instead of the same Egyptian import we always see."
+summary_nl: "Dus wat is hier spannend - zoete aardappelen, oorspronkelijk uit de tropen, worden nu in heel Zweden getest, met proeven van Skåne tot aan Norrbotten. Onderzoekers van Zweden's landbouwuniversiteit werken samen met internationale partners om Zweeds aangepaste variëteiten te ontwikkelen die ook in kouder klimaten kunnen groeien. Wat dit echt interessant maakt is dat zoete aardappelen ongelooflijk taai en voedzaam efficiënt zijn - ze verdragen droogte goed en hebben veel minder voeding nodig dan gewone aardappelen. En dit is het beste gedeelte: binnen drie tot vier jaar zouden Zweedse boeren ons een veel breder aanbod kunnen geven dan wat we in winkels zien - oranje, gele, witte variëteiten met verschillende texturen en smaken in plaats van altijd dezelfde Egyptische import."
+summary_fr: "Voici ce qui est passionnant - les patates douces, originaires des tropiques, sont maintenant testées dans toute la Suède, avec des essais allant de Skåne jusqu'au Norrbotten. Les chercheurs de l'université agricole suédoise travaillent avec des partenaires internationaux pour développer des variétés adaptées à la Suède qui peuvent s'épanouir même dans les climats plus froids. Ce qui rend cela vraiment intéressant, c'est que les patates douces sont des plantes incroyablement robustes et efficaces - elles tolèrent bien la sécheresse et ont besoin de beaucoup moins de nutriments que les pommes de terre ordinaires. Et voici la meilleure partie : dans trois à quatre ans, les agriculteurs suédois pourraient nous offrir une gamme beaucoup plus large que ce que nous trouvons en magasins aujourd'hui - des variétés orange, jaunes, blanches avec différentes textures et saveurs au lieu de la même importation égyptienne habituelle."
+image_url: "https://static.bonniernews.se/ba/f935d33b-f11f-4bfb-bfe8-e442cf8a090b.jpeg?io=1&amp;auto=webp&amp;quality=80&amp;crop=1200:630,smart&amp;width=1200&amp;height=630"
+layout: post.njk
+---
+
+So here's what's exciting - sweet potatoes, originally from the tropics, are being tested across Sweden right now, with trials running from Skåne all the way up to Norrbotten. Researchers at Sweden's agricultural university are working with international partners to develop Swedish-adapted varieties that can thrive even in cooler climates. What makes this really interesting is that sweet potatoes are incredibly tough and resource-efficient plants - they handle drought well and need very few nutrients compared to regular potatoes. And this is the best part: within three to four years, Swedish farmers could be offering us a much wider range than what we find in stores today - orange, yellow, white varieties with different textures and flavors instead of the same Egyptian import we always see.
