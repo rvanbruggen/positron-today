@@ -388,7 +388,7 @@ async function runPositronitronLocked(
 
     const queueResult = await db.execute(`
       SELECT r.id, r.source_id, r.url, r.title, r.content, r.source_pub_date,
-             r.positivity_score, s.name as source_name
+             r.positivity_score, r.story_id, s.name as source_name
       FROM raw_articles r
       JOIN sources s ON r.source_id = s.id
       WHERE r.status = 'pending'
@@ -410,8 +410,16 @@ async function runPositronitronLocked(
     // near-identical scores, so they sort adjacent — went out twice.
     const recentPool = await buildDedupPool();
     const selected: typeof ranked = [];
+    // Story folding (lib/story-fold.ts) groups versions of one event under a
+    // story_id; never publish two of them in the same run.
+    const selectedStories = new Set<number>();
     for (const entry of ranked) {
       if (selected.length >= targetCount) break;
+      const storyId = entry.row.story_id != null ? Number(entry.row.story_id) : null;
+      if (storyId != null && selectedStories.has(storyId)) {
+        L(`  ✕ skipped "${String(entry.row.title)}" — another version of the same story is already selected`);
+        continue;
+      }
       const title = String(entry.row.preview_title_en || entry.row.title || "");
       const tokens = normaliseTitleTokens(title);
       const hint = findDuplicateHint(tokens, recentPool);
@@ -420,6 +428,7 @@ async function runPositronitronLocked(
         continue;
       }
       selected.push(entry);
+      if (storyId != null) selectedStories.add(storyId);
       // Add to the pool so the rest of this same batch is compared against it.
       recentPool.push({ item: { title, origin: "this run" }, tokens });
     }

@@ -38,7 +38,15 @@ export interface LLMProvider {
    * `temperature` is applied only where the model accepts it; omit it to keep
    * each provider's default.
    */
-  generate(prompt: string, systemPrompt?: string, maxTokens?: number, temperature?: number): Promise<string>;
+  generate(prompt: string, systemPrompt?: string, maxTokens?: number, temperature?: number, options?: GenerateOptions): Promise<string>;
+}
+
+export interface GenerateOptions {
+  /**
+   * Thinking depth / token spend, for Claude models that support it. Ignored
+   * elsewhere. Cheap, high-volume tasks (story matching) run at "low".
+   */
+  effort?: "low" | "medium" | "high";
 }
 
 // ---------------------------------------------------------------------------
@@ -55,6 +63,11 @@ const anthropic = new Anthropic();
  */
 function acceptsSampling(model: string): boolean {
   return !/^claude-(fable-5|mythos-5|opus-(5|4-[678])|sonnet-(5|4-6))/.test(model);
+}
+
+/** `output_config.effort` is accepted from Opus 4.5 / Sonnet 4.6 onward; Haiku 4.5 rejects it. */
+function acceptsEffort(model: string): boolean {
+  return /^claude-(fable-5|mythos-5|opus-(5|4-[5678])|sonnet-(5|4-6))/.test(model);
 }
 
 /**
@@ -86,18 +99,19 @@ class AnthropicProvider implements LLMProvider {
       model: this.model,
       // Thinking models spend part of the budget before writing any text, so a
       // 200-token cap would truncate the verdict away entirely.
-      max_tokens: acceptsSampling(this.model) ? 200 : 2000,
+      max_tokens: acceptsSampling(this.model) ? 600 : 2000,
       ...(acceptsSampling(this.model) ? { temperature: 0 } : {}),
       messages: [{ role: "user", content: prompt }],
     });
     return parseClassifyResponse(textOf(message));
   }
 
-  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200, temperature?: number): Promise<string> {
+  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200, temperature?: number, options?: GenerateOptions): Promise<string> {
     const message = await anthropic.messages.create({
       model: this.model,
       max_tokens: maxTokens,
       ...(temperature !== undefined && acceptsSampling(this.model) ? { temperature } : {}),
+      ...(options?.effort && acceptsEffort(this.model) ? { output_config: { effort: options.effort } } : {}),
       ...(systemPrompt ? { system: systemPrompt } : {}),
       messages: [{ role: "user", content: prompt }],
     });
@@ -299,24 +313,33 @@ export async function getNeverSkipProvider(): Promise<LLMProvider> {
   return buildProvider(settings, "neverskip");
 }
 
-type LLMTask = "filter" | "summarise" | "neverskip";
+/** Provider for story folding (matching new articles to existing stories). */
+export async function getFoldProvider(): Promise<LLMProvider> {
+  const settings = await getSettings();
+  return buildProvider(settings, "fold");
+}
+
+type LLMTask = "filter" | "summarise" | "neverskip" | "fold";
 
 const OLLAMA_DEFAULT_MODELS: Record<LLMTask, string> = {
   filter: "llama3.2:3b",
   summarise: "gemma3:27b",
   neverskip: "gemma3:27b",
+  fold: "gemma3:27b",
 };
 
 const OPENAI_DEFAULT_MODELS: Record<LLMTask, string> = {
   filter: "gpt-4.1-mini",
   summarise: "gpt-4.1",
   neverskip: "gpt-4.1",
+  fold: "gpt-4.1",
 };
 
 const ANTHROPIC_DEFAULT_MODELS: Record<LLMTask, string> = {
   filter: "claude-haiku-4-5-20251001",
   summarise: "claude-sonnet-5",
   neverskip: "claude-opus-5",
+  fold: "claude-sonnet-5",
 };
 
 function isAnthropicModelName(model: string): boolean {
@@ -331,10 +354,12 @@ function buildProvider(settings: LLMSettings, task: LLMTask): LLMProvider {
   const provider =
     task === "filter"    ? settings.filter_provider :
     task === "neverskip" ? settings.neverskip_provider :
+    task === "fold"      ? settings.fold_provider :
                            settings.summarise_provider;
   const rawModel =
     task === "filter"    ? settings.filter_model :
     task === "neverskip" ? settings.neverskip_model :
+    task === "fold"      ? settings.fold_model :
                            settings.summarise_model;
 
   if (provider === "openai") {

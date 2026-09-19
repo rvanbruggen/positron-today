@@ -27,6 +27,7 @@ import RSSParser from "rss-parser";
 import { withRetry } from "@/lib/retry";
 import { classifyBatch, CLASSIFY_BATCH_SIZE } from "@/lib/classify-batch";
 import { acquireLock, lockHolder, releaseLock } from "@/lib/run-lock";
+import { foldNewArticles } from "@/lib/story-fold";
 
 const parser = new RSSParser();
 
@@ -123,6 +124,9 @@ async function finishRun(runId: number, status: "done" | "error", errorMessage?:
 const FETCH_CONCURRENCY = 10;
 const AUTO_PAUSE_THRESHOLD = 5;
 const CASCADE_ERROR_RATIO = 0.3;
+// A pending item that fails to classify is retried on later runs and dropped
+// only after this many failures (runs are ~4h apart, so about a day).
+const MAX_CLASSIFY_ATTEMPTS = 5;
 
 async function fetchOneFeed(
   source: Record<string, unknown>,
@@ -280,6 +284,12 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
 
   let totalAdded = 0, totalFiltered = 0, totalErrors = 0;
 
+  // Items whose classification failed in THIS run. They stay in pending_items
+  // for the next run instead of being deleted (an outage - e.g. an exhausted
+  // API balance - used to drop every article it touched), but they must not be
+  // re-selected by this run's loop, or it would retry them forever.
+  const failedThisRun: number[] = [];
+
   while (true) {
     if (state.cancelRequested) break;
 
@@ -288,6 +298,7 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
              s.name AS source_name, s.language AS source_language
       FROM pending_items p
       JOIN sources s ON p.source_id = s.id
+      ${failedThisRun.length ? `WHERE p.id NOT IN (${failedThisRun.join(",")})` : ""}
       ORDER BY p.id ASC
       LIMIT ${CLASSIFY_BATCH_SIZE}
     `);
@@ -373,7 +384,17 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
       } catch (err) {
         console.warn(`[unified] Error classifying "${title}": ${err}`);
         totalErrors++;
-        await db.execute({ sql: "DELETE FROM pending_items WHERE id = ?", args: [id] });
+        failedThisRun.push(id);
+        // Keep the item for a later run; give up only after repeated failures,
+        // so one bad article cannot sit in the queue forever.
+        const attempt = await db.execute({
+          sql: "UPDATE pending_items SET attempts = attempts + 1 WHERE id = ? RETURNING attempts",
+          args: [id],
+        });
+        if (Number(attempt.rows[0]?.attempts ?? MAX_CLASSIFY_ATTEMPTS) >= MAX_CLASSIFY_ATTEMPTS) {
+          console.warn(`[unified] Giving up on "${title}" after ${MAX_CLASSIFY_ATTEMPTS} failed attempts`);
+          await db.execute({ sql: "DELETE FROM pending_items WHERE id = ?", args: [id] });
+        }
         await appendLog(runId, { type: "result", verdict: "error", title, message: String(err) });
       }
 
@@ -395,6 +416,18 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
       queueDepth: remainingDepth, hasMore: remainingDepth > 0,
     });
     await updateRun(runId, { queue_depth: remainingDepth });
+  }
+
+  // Attach this run's accepted articles to stories already in the queue, so one
+  // news event shows up as one card rather than once per outlet.
+  const fold = await foldNewArticles((line) => { appendLog(runId, { type: "phase", label: line }).catch(() => {}); });
+  if (fold.calls > 0 || fold.matched > 0) {
+    await appendLog(runId, {
+      type: "phase",
+      label: `Story folding: ${fold.matched} joined an existing story` +
+        (fold.filedUnderApproved ? ` (${fold.filedUnderApproved} filed under stories already approved)` : "") +
+        ` · ${fold.newStories} new`,
+    });
   }
 
   try { await exportRejections(); } catch { /* ok */ }

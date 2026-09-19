@@ -24,6 +24,20 @@ type RawArticle = {
   duplicate_of: DuplicateHint | null;
   preview_title_en: string | null;
   preview_snippet_en: string | null;
+  // Story folding: one card per story, see lib/story-fold.ts
+  story_id?: number;
+  story_state?: "open" | "skipped" | "approved";
+  story_history?: { approved: number; skipped: number; latest: string | null } | null;
+  story_versions?: StoryVersion[];
+};
+
+type StoryVersion = {
+  id: number;
+  title: string;
+  url: string;
+  source_name: string;
+  source_language: string;
+  preview_title_en: string | null;
 };
 
 const ORIGIN_LABELS: Record<DuplicateHint["origin"], string> = {
@@ -231,13 +245,15 @@ export default function PreviewPage() {
     setManualLoading(false);
   }
 
-  async function updateStatus(id: number, status: "approved" | "discarded") {
+  // `cardId` is the story card the article sits on: approving one version (or
+  // discarding the story) settles the whole card server-side, so it all goes.
+  async function updateStatus(id: number, status: "approved" | "discarded", cardId: number = id) {
     await fetch("/api/articles", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, status }),
     });
-    setArticles(prev => prev.filter(a => a.id !== id));
+    setArticles(prev => prev.filter(a => a.id !== cardId));
   }
 
   const isCancelled = logs.some(l => l.type === "fatal" && "message" in l && l.message === "Cancelled by user");
@@ -466,9 +482,11 @@ export default function PreviewPage() {
             No pending articles. Hit "Fetch new articles" to pull from your sources, or paste a URL above.
           </p>
         )}
-        {articles.map(article => (
-          <div key={article.id}
-            className={`bg-white rounded-xl p-5 shadow-sm border ${article.duplicate_of ? "border-orange-300 ring-1 ring-orange-100" : "border-yellow-200"}`}>
+        {articles.map(article => {
+          const versions = article.story_versions ?? [];
+          const settled = article.story_state === "approved" || article.story_state === "skipped";
+          const body = (
+          <>
             {article.duplicate_of && (
               <div className="mb-3 flex items-start gap-2 bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-xs text-orange-800">
                 <span className="shrink-0">⚠</span>
@@ -521,6 +539,29 @@ export default function PreviewPage() {
                 <p className="text-xs text-amber-400 mt-2">
                   {new Date(article.fetched_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                 </p>
+                {versions.length > 0 && (
+                  <details className="mt-2 text-xs">
+                    <summary className="cursor-pointer text-amber-700 font-medium">
+                      Also covered by {versions.length} other {versions.length === 1 ? "outlet" : "outlets"}
+                    </summary>
+                    <ul className="mt-1.5 flex flex-col gap-1.5">
+                      {versions.map(v => (
+                        <li key={v.id} className="flex items-start gap-2">
+                          <button onClick={() => updateStatus(v.id, "approved", article.id)}
+                            className="shrink-0 text-[11px] bg-green-50 hover:bg-green-100 text-green-700 px-2 py-0.5 rounded transition-colors">
+                            Use this one
+                          </button>
+                          <span className="min-w-0">
+                            <span className="text-amber-500">{v.source_name}</span>
+                            {" · "}
+                            <a href={v.url} target="_blank" rel="noopener noreferrer" className="text-amber-800 hover:text-amber-600">{v.title}</a>
+                            {v.preview_title_en && <span className="text-blue-700"> — {v.preview_title_en}</span>}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
               </div>
               <div className="flex gap-2 sm:shrink-0 flex-wrap">
                 <button onClick={() => updateStatus(article.id, "approved")}
@@ -529,12 +570,37 @@ export default function PreviewPage() {
                 </button>
                 <button onClick={() => updateStatus(article.id, "discarded")}
                   className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${article.duplicate_of ? "bg-orange-200 hover:bg-orange-300 text-orange-800" : "bg-gray-100 hover:bg-gray-200 text-gray-500"}`}>
-                  ✕ Discard
+                  {versions.length > 0 ? `✕ Discard story (${versions.length + 1})` : "✕ Discard"}
                 </button>
               </div>
             </div>
-          </div>
-        ))}
+          </>
+          );
+
+          // A story already decided on review arrives collapsed: visible, openable, out of the way.
+          if (settled) {
+            return (
+              <details key={article.id} className="bg-white/70 rounded-xl px-5 py-3 border border-dashed border-amber-200">
+                <summary className="cursor-pointer text-xs text-amber-600">
+                  <span className="font-semibold">
+                    {article.story_state === "approved" ? "Already approved" : "You skipped this story"}
+                  </span>
+                  {article.story_history?.latest && <span className="italic"> — &ldquo;{article.story_history.latest}&rdquo;</span>}
+                  <span> · new version: </span>
+                  <span className="text-amber-800">{article.preview_title_en || article.title}</span>
+                  {versions.length > 0 && <span> (+{versions.length} more)</span>}
+                </summary>
+                <div className="mt-3">{body}</div>
+              </details>
+            );
+          }
+          return (
+            <div key={article.id}
+              className={`bg-white rounded-xl p-5 shadow-sm border ${article.duplicate_of ? "border-orange-300 ring-1 ring-orange-100" : "border-yellow-200"}`}>
+              {body}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

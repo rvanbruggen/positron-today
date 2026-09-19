@@ -33,6 +33,10 @@ export async function PUT(request: NextRequest) {
       "neverskip_model",
       "neverskip_run_time",
       "neverskip_count",
+      "fold_enabled",
+      "fold_provider",
+      "fold_model",
+      "fold_window_days",
       "editorial_audio_enabled",
     ];
     const patch: Partial<LLMSettings> = {};

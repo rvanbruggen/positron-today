@@ -47,6 +47,10 @@ interface LLMSettings {
   neverskip_model: string;
   neverskip_run_time: string;
   neverskip_count: string;
+  fold_enabled: string;
+  fold_provider: Provider;
+  fold_model: string;
+  fold_window_days: string;
   editorial_audio_enabled: string;
 }
 
@@ -220,6 +224,10 @@ export default function SettingsPage() {
         if (!data.neverskip_model)    data.neverskip_model    = "claude-opus-5";
         if (data.neverskip_run_time == null) data.neverskip_run_time = "";
         if (!data.neverskip_count)    data.neverskip_count    = "5";
+        if (!data.fold_enabled)       data.fold_enabled       = "true";
+        if (!data.fold_provider)      data.fold_provider      = "anthropic";
+        if (!data.fold_model)         data.fold_model         = "claude-sonnet-5";
+        if (!data.fold_window_days)   data.fold_window_days   = "5";
         try { setRunTimes(JSON.parse(data.positronitron_run_times)); } catch {}
         try { setDigestTimes(JSON.parse(data.digest_run_times)); } catch {}
         setSettings(data);
@@ -1062,6 +1070,60 @@ export default function SettingsPage() {
             {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
             {digestResult && <p className="text-sm text-teal-700">{digestResult}</p>}
           </div>
+        </div>
+      </div>
+
+      {/* ── Story folding ── */}
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-amber-900 mb-0.5">🗂️ Story folding</h2>
+        <p className="text-xs text-amber-600 mb-3">
+          The same news event arrives from many outlets and languages — one story reached the queue
+          21 times in three weeks. After each pipeline run, newly accepted articles are matched to the
+          stories already in the queue, so each story shows up once in Preview with its other versions
+          one click away. A later version of a story you already approved is filed under it and stays
+          out of the queue. Nothing is deleted. One short model call per run.
+        </p>
+        <div className={`border rounded-xl p-5 space-y-5 transition-colors ${settings.fold_enabled === "true" ? "bg-teal-50 border-teal-300" : "bg-white border-yellow-200"}`}>
+          <label className="flex items-center gap-3 text-sm text-amber-800">
+            <input
+              id="fold-enabled"
+              type="checkbox"
+              checked={settings.fold_enabled === "true"}
+              onChange={e => patch("fold_enabled", e.target.checked ? "true" : "false")}
+              className="w-4 h-4 accent-teal-500"
+            />
+            <span className="font-medium">Fold repeats of the same story into one card</span>
+          </label>
+
+          <ProviderRow
+            provider={settings.fold_provider}
+            model={settings.fold_model}
+            ollamaModels={ollamaModels}
+            onProviderChange={v => patch("fold_provider", v)}
+            onModelChange={v => patch("fold_model", v)}
+          />
+          <p className="text-xs text-amber-600 -mt-2">
+            Sonnet 5 was checked against three weeks of real queue data: it found 92% of the repeats
+            Opus 5 found, with 96% precision, at about $0.035 per run. When unsure it leaves articles
+            apart — a missed match costs one extra card, a wrong one would hide a story.
+          </p>
+
+          <div className="pt-4 border-t border-yellow-100 flex items-center gap-2 flex-wrap">
+            <label htmlFor="fold-window" className="text-xs text-amber-700 font-medium">Match against stories from the last</label>
+            <input
+              id="fold-window"
+              type="number"
+              min={1}
+              max={30}
+              className="w-16 border border-yellow-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:border-yellow-400"
+              value={settings.fold_window_days}
+              onChange={e => patch("fold_window_days", e.target.value)}
+            />
+            <span className="text-xs text-amber-700">days</span>
+          </div>
+          <p className="text-xs text-amber-500 -mt-3">
+            99% of repeats arrived within 5 days of the story&apos;s first article. Save to apply.
+          </p>
         </div>
       </div>
 

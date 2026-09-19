@@ -214,7 +214,70 @@ export async function GET(request: NextRequest) {
     };
   });
 
-  return Response.json(annotated);
+  return Response.json(await groupByStory(annotated as unknown as Row[]));
+}
+
+type Row = Record<string, unknown>;
+
+/**
+ * Story folding (see lib/story-fold.ts): return one entry per story instead of
+ * one per article. The earliest queued article leads the card; the story's
+ * other queued articles ride along in `story_versions`, and `story_state` says
+ * what already happened to the story on review:
+ *   open     - nothing decided yet
+ *   skipped  - an earlier version was discarded on review
+ *   approved - an earlier version was approved (normally filed away by the
+ *              pipeline already; this covers approvals made since the last run)
+ * Articles not matched to a story yet are each their own story.
+ */
+async function groupByStory(rows: Row[]) {
+  const storyOf = (r: Row) => Number(r.story_id ?? r.id);
+  const groups = new Map<number, Row[]>();
+  for (const r of rows) {
+    const k = storyOf(r);
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k)!.push(r);
+  }
+
+  // What happened to each story's earlier articles. Only human decisions count:
+  // rows the pipeline filed away itself carry a fold_reason.
+  const history = new Map<number, { approved: number; skipped: number; latest: string | null }>();
+  const matched = [...groups.keys()].filter((k) => rows.some((r) => r.story_id != null && storyOf(r) === k));
+  if (matched.length) {
+    const res = await db.execute(
+      `SELECT story_id, status, COALESCE(preview_title_en, title) AS title
+       FROM raw_articles
+       WHERE story_id IN (${matched.join(",")}) AND status != 'pending' AND fold_reason IS NULL
+       ORDER BY id DESC`,
+    );
+    for (const h of res.rows) {
+      const k = Number(h.story_id);
+      const e = history.get(k) ?? { approved: 0, skipped: 0, latest: null };
+      if (h.status === "approved") e.approved++; else e.skipped++;
+      e.latest ??= String(h.title ?? "");
+      history.set(k, e);
+    }
+  }
+
+  const cards = [...groups.entries()].map(([k, members]) => {
+    members.sort((a, b) => Number(a.id) - Number(b.id));
+    const lead: Row = members[0];
+    const rest = members.slice(1);
+    const h = history.get(k);
+    return {
+      ...lead,
+      story_id: k,
+      story_state: h?.approved ? "approved" : h?.skipped ? "skipped" : "open",
+      story_history: h ?? null,
+      story_versions: rest.map((v) => ({
+        id: v.id, title: v.title, url: v.url, source_name: v.source_name,
+        source_language: v.source_language, preview_title_en: v.preview_title_en,
+      })),
+    };
+  });
+  // Newest story first, matching the old per-article order.
+  const when = (c: Row) => String(c.fetched_at ?? "");
+  return cards.sort((a, b) => when(b).localeCompare(when(a)));
 }
 
 export async function PATCH(request: NextRequest) {
@@ -417,6 +480,17 @@ export async function PATCH(request: NextRequest) {
       });
       // Keep the public rejection log in sync — fire and forget.
       exportRejections().catch((err) => console.error("[export-rejections]", err));
+    }
+
+    // Story folding: one decision settles the whole card. The story's other
+    // queued versions are filed away with a fold_reason and NOT written to the
+    // rejection log - the human decision above was recorded once, already.
+    if (raw && raw.story_id != null) {
+      await db.execute({
+        sql: `UPDATE raw_articles SET status = 'discarded', fold_reason = ?
+              WHERE story_id = ? AND id != ? AND status = 'pending'`,
+        args: [status === "approved" ? "sibling_approved" : "story_discarded", raw.story_id, id],
+      });
     }
   }
 

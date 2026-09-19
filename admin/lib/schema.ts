@@ -291,6 +291,16 @@ export async function initSchema() {
   // v3.3: positivity score on rejected articles (matches raw_articles column)
   try { await db.execute("ALTER TABLE rejected_articles ADD COLUMN positivity_score REAL"); } catch { /* already applied */ }
 
+  // v4.4: story folding. story_id is the id of the story's first article (NULL
+  // until matched); fold_reason marks rows the pipeline took out of the queue
+  // itself, so they are never mistaken for a human discard.
+  try { await db.execute("ALTER TABLE raw_articles ADD COLUMN story_id INTEGER"); } catch { /* already applied */ }
+  try { await db.execute("ALTER TABLE raw_articles ADD COLUMN fold_reason TEXT"); } catch { /* already applied */ }
+  try { await db.execute("CREATE INDEX IF NOT EXISTS idx_raw_articles_story_id ON raw_articles(story_id)"); } catch { /* already applied */ }
+
+  // v4.4: failed classifications are retried on later runs instead of deleted
+  try { await db.execute("ALTER TABLE pending_items ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0"); } catch { /* already applied */ }
+
   // v4.1: last audio-generation error, so a failed run is visible in the admin
   // instead of only in the container logs.
   try { await db.execute("ALTER TABLE editorials ADD COLUMN audio_error TEXT"); } catch { /* already applied */ }
