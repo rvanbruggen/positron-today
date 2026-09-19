@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-19T06:14:05.697Z",
-  "total_rejected": 150643,
+  "exported_at": "2026-09-19T06:14:14.027Z",
+  "total_rejected": 150644,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2820
+      "count": 2821
     },
     {
       "category": "divisive-racism",
@@ -126,8 +126,8 @@
     },
     {
       "source": "The New York Times",
-      "negative": 4882,
-      "total": 4939
+      "negative": 4883,
+      "total": 4940
     },
     {
       "source": "BBC Top Stories",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "The New York Times",
+      "title": "F.A.A. to Roll Out New A.I. Tool for Washington Airports",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.nytimes.com/2026/09/18/us/politics/faa-ai-dc-airports.html",
+      "date": "2026-09-19 08:14",
+      "positivity_score": null
+    },
     {
       "source": "De Standaard Economie",
       "title": "Barista en grafisch ontwerper Sarah Ouaamari heeft ADHD: “Als volwassene merk ik steeds meer de impact van mijn neurodiversiteit”",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dn.se/sport/djurgardskaptenen-vill-bryta-trenden-i-avicii-arena-vet-inte-vad-det-beror-pa/",
       "date": "2026-09-18 10:27",
       "positivity_score": 2
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Filmlistan vecka 38: Sinnliga kockfilmen ”Tony” är ny på bio",
-      "reason": "This is a film review and entertainment/lifestyle content listing new movies in cinemas, which is cultural criticism not positive news.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.dn.se/kultur/filmlistan-vecka-38-sinnliga-kockfilmen-tony-ar-ny-pa-bio/",
-      "date": "2026-09-18 10:27",
-      "positivity_score": 3
     }
   ]
 }
