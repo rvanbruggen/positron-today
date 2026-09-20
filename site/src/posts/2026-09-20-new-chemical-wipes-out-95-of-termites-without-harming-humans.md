@@ -1,0 +1,19 @@
+---
+title: "New chemical wipes out 95% of termites without harming humans"
+title_nl: "Nieuw chemisch middel elimineert 95% van termiten zonder mensen te schaden"
+title_fr: "Un nouveau produit chimique élimine 95% des termites sans nuire aux humains"
+date: 2026-09-20T12:33:00
+source_pub_date: 2026-09-19
+fetched_date: 2026-09-20
+source_url: "https://www.sciencedaily.com/releases/2026/09/260919025248.htm"
+source_name: "ScienceDaily"
+topic: "Environment"
+tags: ["Environment","Health","Science"]
+emoji: "🦟"
+summary: "So researchers at UC Riverside have discovered something really clever - they found a biological weakness in drywood termites that these hidden pests simply cannot escape. The chemical bistrifluron works by interfering with chitin production, which means termites can't build new exoskeletons when they molt, and that's something they have to do about seven times in their lives. In lab tests, this treatment achieved 95.7 percent mortality when termites could choose between treated and untreated wood, and nearly 99 percent when they were continuously exposed to it. And here's what makes me excited - it's way more environmentally friendly than traditional treatments and completely harmless to humans because it targets a biological system insects have but mammals don't."
+summary_nl: "Onderzoekers van de UC Riverside hebben iets echt slims ontdekt - ze vonden een biologische zwakheid in driehouttermiten die deze verborgen plaagdieren simpelweg niet kunnen ontsnappen. Het chemische middel bistrifluron werkt door de chitineproductie te verstoren, waardoor termiten geen nieuwe exoskeletjes kunnen maken wanneer ze vervellen, wat ze ongeveer zeven keer in hun leven moeten doen. In laboratoriumtesten bereikte deze behandeling 95,7 procent mortaliteit wanneer termiten konden kiezen tussen behandeld en onbehandeld hout, en bijna 99 procent wanneer ze voortdurend eraan werden blootgesteld. En wat mij enthousiast maakt - het is veel milieuvriendelijker dan traditionele behandelingen en volledig onschadelijk voor mensen omdat het zich richt op een biologisch systeem dat alleen insecten hebben."
+summary_fr: "Des chercheurs de l'UC Riverside ont découvert quelque chose de vraiment ingénieux - ils ont trouvé une faiblesse biologique chez les termites du bois sec que ces parasites cachés ne peuvent simplement pas éviter. Le produit chimique bistrifluron fonctionne en interférant avec la production de chitine, ce qui signifie que les termites ne peuvent pas construire de nouveaux exosquelettes quand ils muent, et c'est quelque chose qu'ils doivent faire environ sept fois dans leur vie. Dans les tests de laboratoire, ce traitement a atteint 95,7 pour cent de mortalité lorsque les termites pouvaient choisir entre du bois traité et non traité, et près de 99 pour cent lorsqu'ils y étaient continuellement exposés. Et ce qui m'enthousiasme - c'est beaucoup plus respectueux de l'environnement que les traitements traditionnels et complètement inoffensif pour les humains car il cible un système biologique que seuls les insectes possèdent."
+layout: post.njk
+---
+
+So researchers at UC Riverside have discovered something really clever - they found a biological weakness in drywood termites that these hidden pests simply cannot escape. The chemical bistrifluron works by interfering with chitin production, which means termites can't build new exoskeletons when they molt, and that's something they have to do about seven times in their lives. In lab tests, this treatment achieved 95.7 percent mortality when termites could choose between treated and untreated wood, and nearly 99 percent when they were continuously exposed to it. And here's what makes me excited - it's way more environmentally friendly than traditional treatments and completely harmless to humans because it targets a biological system insects have but mammals don't.
