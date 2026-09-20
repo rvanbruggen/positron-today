@@ -1,0 +1,20 @@
+---
+title: "DR Congo rolls out Ebola vaccine for health workers as outbreak accelerates"
+title_nl: "DR Congo start met Ebola-vaccinatie voor gezondheidswerkers terwijl uitbraak versnelt"
+title_fr: "La RDC déploie le vaccin contre Ebola pour les travailleurs de la santé alors que l'épidémie s'accélère"
+date: 2026-09-20T06:35:00
+source_pub_date: 2026-09-20
+fetched_date: 2026-09-20
+source_url: "https://www.aljazeera.com/news/2026/9/20/dr-congo-rolls-out-ebola-vaccine-for-health-workers-as-death-toll-rises?traffic_source=rss"
+source_name: "Al Jazeera English"
+topic: "Health"
+tags: ["Health","Science"]
+emoji: "💉"
+summary: "Health workers in the Democratic Republic of the Congo have started receiving the Ervebo vaccine in what many see as a crucial step against the world's fastest-growing Ebola outbreak. Some 50,000 frontline staff will receive the jab, which was originally developed for a different Ebola strain, with 20,000 enrolled in a one-year clinical trial to monitor its effectiveness. The rollout began in Bunia, the epicentre of this devastating outbreak in Ituri province, and will expand to North Kivu where cases are rising sharply. So here's the thing - while early data suggests the vaccine could offer some protection against the current Bundibugyo strain, there's still uncertainty, and health officials acknowledge we don't yet know how effective it will be."
+summary_nl: "Gezondheidswerkers in de Democratische Republiek Congo zijn begonnen met het ontvangen van het Ervebo-vaccin in wat veel mensen zien als een cruciale stap tegen de snelst groeiende Ebola-uitbraak ter wereld. Ongeveer 50.000 frontlinewerkers zullen het vaccin krijgen, dat oorspronkelijk voor een ander Ebola-stam werd ontwikkeld, met 20.000 deelnemers in een klinische proef van een jaar om de effectiviteit ervan te volgen. De uitrol begon in Bunia, het epicentrum van deze verwoestende uitbraak in de Ituri-provincie, en zal zich uitbreiden naar Noord-Kivu waar de gevallen scherp stijgen. En hier komt het belangrijke punt - hoewel vroege gegevens suggereren dat het vaccin enige bescherming kan bieden tegen de huidige Bundibugyo-stam, is er nog steeds onzekerheid, en gezondheidsambtenaren geven toe dat we nog niet weten hoe effectief het zal zijn."
+summary_fr: "Les travailleurs de la santé en République démocratique du Congo ont commencé à recevoir le vaccin Ervebo dans ce que beaucoup considèrent comme une étape cruciale contre l'épidémie d'Ebola qui se propage le plus rapidement au monde. Environ 50 000 travailleurs de première ligne recevront le vaccin, qui a été initialement développé pour une autre souche d'Ebola, avec 20 000 participants à un essai clinique d'un an pour surveiller son efficacité. Le déploiement a commencé à Bunia, l'épicentre de cette épidémie dévastatrice dans la province de l'Ituri, et s'étendra à Nord-Kivu où les cas augmentent considérablement. Et voilà la question importante - bien que les données précoces suggèrent que le vaccin pourrait offrir une certaine protection contre la souche Bundibugyo actuelle, il existe encore une incertitude, et les responsables de la santé admettent que nous ne savons pas encore à quel point il sera efficace."
+image_url: "https://www.aljazeera.com/wp-content/uploads/2026/09/epa_6aaeffbd4704-1789853629.jpg?resize=1920%2C1440"
+layout: post.njk
+---
+
+Health workers in the Democratic Republic of the Congo have started receiving the Ervebo vaccine in what many see as a crucial step against the world's fastest-growing Ebola outbreak. Some 50,000 frontline staff will receive the jab, which was originally developed for a different Ebola strain, with 20,000 enrolled in a one-year clinical trial to monitor its effectiveness. The rollout began in Bunia, the epicentre of this devastating outbreak in Ituri province, and will expand to North Kivu where cases are rising sharply. So here's the thing - while early data suggests the vaccine could offer some protection against the current Bundibugyo strain, there's still uncertainty, and health officials acknowledge we don't yet know how effective it will be.
