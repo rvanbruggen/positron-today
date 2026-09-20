@@ -1,0 +1,19 @@
+---
+title: "A giant crater may reveal the origin of Mars' doomed moon"
+title_nl: "Een gigantische krater kan het ontstaan van Mars' vervloekte maan onthullen"
+title_fr: "Un cratère géant pourrait révéler l'origine de la lune condamnée de Mars"
+date: 2026-09-20T14:07:00
+source_pub_date: 2026-09-19
+fetched_date: 2026-09-20
+source_url: "https://www.sciencedaily.com/releases/2026/09/260919031040.htm"
+source_name: "ScienceDaily"
+topic: "Nature"
+tags: ["Nature","Science"]
+emoji: "🌙"
+summary: "Scientists are diving deep into one of planetary science's biggest mysteries - where did Phobos, Mars' strange little moon, actually come from? The key might be hidden in Stickney Crater, an enormous impact scar that could tell us whether Phobos formed from debris blasted into orbit by a giant collision with Mars, or whether it was captured as a wandering asteroid billions of years ago. Researchers are now studying Phobos' gravity and internal structure to figure out how dense it really is and whether it contains water ice - clues that could settle this debate once and for all. What's fascinating is that Phobos survived such a massive impact at all, suggesting it might have an unusually spongy, low-density interior that absorbed the blow like a cosmic cushion."
+summary_nl: "Wetenschappers duiken diep in een van de grootste mysteries van de planetaire wetenschap - waar komt Phobos, de vreemde kleine maan van Mars, eigenlijk vandaan? Het antwoord zou verborgen kunnen zijn in de Stickney-krater, een enorm inslagkrater dat kan onthullen of Phobos is ontstaan uit puin dat in een baan rond Mars is geslingerd door een gigantische botsing, of dat het werd ingevangen als een zwervende asteroïde miljarden jaren geleden. Onderzoekers bestuderen nu de zwaartekracht en interne structuur van Phobos om erachter te komen hoe dicht het echt is en of het water-ijs bevat - aanwijzingen die dit debat eens en voor altijd kunnen beslechten. Wat fascinerend is dat Phobos zo'n enorme inslag überhaupt heeft overleefd, wat suggereert dat het een ongewoon sponsachtig, laagdicht-interieur heeft dat de klap als een kosmisch kussen heeft opgenomen."
+summary_fr: "Les scientifiques plongent dans l'un des plus grands mystères de la science planétaire - d'où vient vraiment Phobos, l'étrange petite lune de Mars? La clé pourrait se cacher dans le cratère Stickney, une énorme cicatrice d'impact qui pourrait révéler si Phobos s'est formé à partir de débris projetés en orbite par une collision géante avec Mars, ou s'il a été capturé comme un astéroïde errant il y a des milliards d'années. Les chercheurs étudient maintenant la gravité et la structure interne de Phobos pour découvrir sa véritable densité et si elle contient de la glace d'eau - des indices qui pourraient trancher ce débat une fois pour toutes. Ce qui est fascinant, c'est que Phobos ait survécu à un impact aussi massif, ce qui suggère qu'elle possède un intérieur inhabituellement poreux et peu dense qui a absorbé le choc comme un coussin cosmique."
+layout: post.njk
+---
+
+Scientists are diving deep into one of planetary science's biggest mysteries - where did Phobos, Mars' strange little moon, actually come from? The key might be hidden in Stickney Crater, an enormous impact scar that could tell us whether Phobos formed from debris blasted into orbit by a giant collision with Mars, or whether it was captured as a wandering asteroid billions of years ago. Researchers are now studying Phobos' gravity and internal structure to figure out how dense it really is and whether it contains water ice - clues that could settle this debate once and for all. What's fascinating is that Phobos survived such a massive impact at all, suggesting it might have an unusually spongy, low-density interior that absorbed the blow like a cosmic cushion.
