@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-20T05:53:26.425Z",
-  "total_rejected": 151425,
+  "exported_at": "2026-09-20T05:53:53.195Z",
+  "total_rejected": 151426,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2830
+      "count": 2831
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 13292,
-      "total": 13734
+      "negative": 13293,
+      "total": 13735
     },
     {
       "source": "Het Laatste Nieuws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Een op de zeven kilogram PMD belandt nog steeds onterecht in de blauwe zak",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/binnenland/een-op-de-zeven-kilogram-pmd-belandt-nog-steeds-onterecht-in-de-blauwe-zak/161702217.html",
+      "date": "2026-09-20 07:53",
+      "positivity_score": null
+    },
     {
       "source": "Rzeczpospolita Poland",
       "title": "Fruczak gołąbek to nowy „polski koliber”. Gdy podleci, warto zachować spokój",
@@ -9391,15 +9400,6 @@
       "url": "https://www.gva.be/sport/atletiek/noor-vidts-staat-na-eerste-dag-aan-de-leiding-in-zevenkamp-van-talence-nafi-thiam-volgt-op-plaats-twee/161675319.html",
       "date": "2026-09-18 22:37",
       "positivity_score": 2
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "ASSISEN. Vader Rennlhij schuldig aan moord op Jairon, vier huisgenoten schuldig aan onthouden van voedsel en verzorging",
-      "reason": "Crime and court verdict coverage; the story reports a criminal conviction and sentencing, which is a negative-event outcome.",
-      "category": "crime-violence",
-      "url": "https://www.gva.be/regio/antwerpen/kempen/turnhout/assisen.-vader-rennlhij-schuldig-aan-moord-op-jairon-vier-huisgenoten-schuldig-aan-onthouden-van-voedsel-en-verzorging/161646664.html",
-      "date": "2026-09-18 22:37",
-      "positivity_score": 1
     }
   ]
 }
