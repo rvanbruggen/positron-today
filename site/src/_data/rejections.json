@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-20T19:22:19.182Z",
-  "total_rejected": 152042,
+  "exported_at": "2026-09-20T20:36:13.021Z",
+  "total_rejected": 152043,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2833
+      "count": 2834
     },
     {
       "category": "divisive-racism",
@@ -101,8 +101,8 @@
     },
     {
       "source": "Politiken.dk",
-      "negative": 6252,
-      "total": 6307
+      "negative": 6253,
+      "total": 6308
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Politiken.dk",
+      "title": "»Det er jo som at spille fodbold på samme stadion som Ronaldo«",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://politiken.dk/danmark/hovedstaden/art10989829/%C2%BBDet-er-jo-som-at-spille-fodbold-p%C3%A5-samme-stadion-som-Ronaldo%C2%AB",
+      "date": "2026-09-20 22:36",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "How will Saudi Arabia deal with the Houthis?",
@@ -9391,15 +9400,6 @@
       "url": "https://www.knack.be/nieuws/wereld/live/amerikaanse-verkiezingen-2024/reporters-van-cnn-en-ms-now-inderdaad-geweerd-uit-witte-huis-1391035/",
       "date": "2026-09-19 18:26",
       "positivity_score": 2
-    },
-    {
-      "source": "Knack",
-      "title": "Dirk Draulans’ Beestenboel: de groene zandloopkever loopt zo snel dat hij niet goed meer kan zien",
-      "reason": "This is a nature-curiosity column about an insect's speed—interesting but lacking substance beyond the observation itself; it does not teach how the world works or advance understanding.",
-      "category": "soft-news-filler",
-      "url": "https://www.knack.be/nieuws/wetenschap/de-groene-zandloopkever-loopt-zo-snel-dat-hij-niet-goed-meer-kan-zien/",
-      "date": "2026-09-19 18:26",
-      "positivity_score": 5
     }
   ]
 }
