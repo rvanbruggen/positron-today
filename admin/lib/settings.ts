@@ -1,6 +1,6 @@
 import db from "./db";
 
-export type LLMProvider = "anthropic" | "ollama" | "openai";
+export type LLMProvider = "anthropic" | "ollama" | "openai" | "gemini";
 
 /**
  * Positronitron automation mode.

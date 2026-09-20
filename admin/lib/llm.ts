@@ -1,10 +1,11 @@
 /**
  * LLM provider abstraction.
  *
- * Three implementations:
+ * Four implementations:
  *   - AnthropicProvider  — calls the Anthropic API (current default)
  *   - OllamaProvider     — calls a local Ollama instance via its OpenAI-compatible API
  *   - OpenAIProvider     — calls the OpenAI ChatGPT API
+ *   - GeminiProvider     — calls the Google Gemini API via its OpenAI-compatible endpoint
  *
  * Use getFilterProvider() / getSummariseProvider() to get the right provider
  * based on the current settings (read from DB at call time, so changes apply immediately).
@@ -246,6 +247,92 @@ class OpenAIProvider implements LLMProvider {
 }
 
 // ---------------------------------------------------------------------------
+// Gemini implementation (OpenAI-compatible /v1beta/openai endpoint)
+// ---------------------------------------------------------------------------
+
+/**
+ * Gemini models always think: Google documents that reasoning cannot be turned
+ * off for 2.5 Pro or for any Gemini 3 model, and the thinking tokens come out
+ * of the same output budget as the answer. Passing a caller's 200-token
+ * classify cap straight through would spend the whole budget before the
+ * verdict is written — the same truncation the Anthropic provider hits on
+ * thinking models (see acceptsSampling above).
+ *
+ * So every call asks for the lowest reasoning effort and adds this headroom on
+ * top of the budget the caller asked for. Callers keep expressing the length of
+ * the *answer* they want, exactly as they do for the other providers.
+ */
+const GEMINI_THINKING_HEADROOM = 2048;
+
+class GeminiProvider implements LLMProvider {
+  private readonly endpoint =
+    "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
+
+  constructor(private model: string) {}
+
+  async classify(prompt: string): Promise<ClassifyResult> {
+    const raw = await this.call(prompt, undefined, 200, 0);
+    return parseClassifyResponse(raw);
+  }
+
+  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200, temperature = 0.3): Promise<string> {
+    return this.call(prompt, systemPrompt, maxTokens, temperature);
+  }
+
+  private async call(
+    userPrompt: string,
+    systemPrompt: string | undefined,
+    maxTokens: number,
+    temperature: number,
+  ): Promise<string> {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) throw new Error("GEMINI_API_KEY is not set in .env.local");
+
+    const messages: { role: string; content: string }[] = [];
+    if (systemPrompt) messages.push({ role: "system", content: systemPrompt });
+    messages.push({ role: "user", content: userPrompt });
+
+    return withRetry(async () => {
+      const res = await fetch(this.endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: this.model,
+          messages,
+          max_tokens: maxTokens + GEMINI_THINKING_HEADROOM,
+          temperature,
+          reasoning_effort: "low",
+        }),
+        signal: AbortSignal.timeout(120_000),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Gemini error ${res.status}: ${text.slice(0, 200)}`);
+      }
+
+      const data = await res.json();
+      const content = (data.choices?.[0]?.message?.content ?? "").trim();
+
+      // An empty answer means the model spent the entire budget on thinking.
+      // Failing loudly beats returning "" — the classify parser would read that
+      // as a rejection, and summarisation would store an empty summary.
+      if (!content) {
+        const finish = data.choices?.[0]?.finish_reason ?? "unknown";
+        throw new Error(
+          `Gemini ${this.model} returned no text (finish_reason: ${finish}) — ` +
+          `the answer was likely crowded out by thinking tokens.`,
+        );
+      }
+      return content;
+    }, { label: `Gemini ${this.model}`, baseDelayMs: 1000 });
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Shared response parser
 // ---------------------------------------------------------------------------
 
@@ -342,12 +429,36 @@ const ANTHROPIC_DEFAULT_MODELS: Record<LLMTask, string> = {
   fold: "claude-sonnet-5",
 };
 
+/**
+ * Fallbacks only — the Settings UI fills its Gemini dropdown from the live
+ * model list for the configured key.
+ *
+ * Pinned ids, not floating aliases, so that a filter tuned and evaluated
+ * against one model is not silently moved to another. The exception is
+ * neverskip: its pro-class judgement call has no pinned stable option (2.5 Pro
+ * is already refused for accounts new to the API, and every 3.x Pro id is a
+ * preview), so it takes the alias and follows Google's current Pro.
+ *
+ * Note that an id appearing in the account's model list is not proof it can be
+ * called: retired models are still listed, and return 404 on use.
+ */
+const GEMINI_DEFAULT_MODELS: Record<LLMTask, string> = {
+  filter: "gemini-3.5-flash-lite",
+  summarise: "gemini-3.8-flash",
+  neverskip: "gemini-pro-latest",
+  fold: "gemini-3.5-flash",
+};
+
 function isAnthropicModelName(model: string): boolean {
   return model.startsWith("claude-");
 }
 
 function isOpenAIModelName(model: string): boolean {
   return model.startsWith("gpt-") || /^o[1-9]/i.test(model);
+}
+
+function isGeminiModelName(model: string): boolean {
+  return model.startsWith("gemini-");
 }
 
 function buildProvider(settings: LLMSettings, task: LLMTask): LLMProvider {
@@ -364,25 +475,40 @@ function buildProvider(settings: LLMSettings, task: LLMTask): LLMProvider {
 
   if (provider === "openai") {
     const model =
-      !rawModel || isAnthropicModelName(rawModel)
+      !rawModel || isAnthropicModelName(rawModel) || isGeminiModelName(rawModel)
         ? OPENAI_DEFAULT_MODELS[task]
         : rawModel;
     return new OpenAIProvider(model);
   }
 
-  if (provider === "ollama") {
-    // Guard 1: empty model stored → use sensible Ollama default
-    // Guard 2: Anthropic/OpenAI model name stored while provider is Ollama (mismatched settings)
-    //          → swap to Ollama default instead of sending "claude-*" or "gpt-*" to Ollama
+  if (provider === "gemini") {
     const model =
       !rawModel || isAnthropicModelName(rawModel) || isOpenAIModelName(rawModel)
+        ? GEMINI_DEFAULT_MODELS[task]
+        : rawModel;
+    return new GeminiProvider(model);
+  }
+
+  if (provider === "ollama") {
+    // Guard 1: empty model stored → use sensible Ollama default
+    // Guard 2: cloud model name stored while provider is Ollama (mismatched settings)
+    //          → swap to Ollama default instead of sending "claude-*", "gpt-*"
+    //            or "gemini-*" to Ollama
+    const model =
+      !rawModel || isAnthropicModelName(rawModel) || isOpenAIModelName(rawModel) || isGeminiModelName(rawModel)
         ? OLLAMA_DEFAULT_MODELS[task]
         : rawModel;
     return new OllamaProvider(model, settings.ollama_base_url || "http://localhost:11434");
   }
 
-  // Default: anthropic
-  const model = rawModel || ANTHROPIC_DEFAULT_MODELS[task];
+  // Default: anthropic. A model name belonging to another cloud provider means
+  // the stored pair is mismatched, so fall back rather than post "gemini-*" or
+  // "gpt-*" to the Anthropic API; any other value is passed through, which
+  // keeps Claude model ids that predate ANTHROPIC_MODELS working.
+  const model =
+    !rawModel || isOpenAIModelName(rawModel) || isGeminiModelName(rawModel)
+      ? ANTHROPIC_DEFAULT_MODELS[task]
+      : rawModel;
   return new AnthropicProvider(ANTHROPIC_MODELS[model] ?? model);
 }
 

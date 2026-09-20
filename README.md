@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips, and surfacing the consequential few that shouldn't be lost in the pile.
 
-**Version:** 4.4.0 · **Live site:** [positron.today](https://positron.today)
+**Version:** 4.5.0 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -57,7 +57,7 @@ A positron is the antimatter counterpart of an electron — positively charged, 
 
 ## AI Providers
 
-Each task in the pipeline can independently use **Anthropic**, **OpenAI**, or **Ollama**. You configure this at runtime in **Admin → Settings** — no code changes or restarts needed.
+Each task in the pipeline can independently use **Anthropic**, **OpenAI**, **Google Gemini**, or **Ollama**. You configure this at runtime in **Admin → Settings** — no code changes or restarts needed.
 
 | Task | Recommended local model | Recommended cloud model |
 |------|------------------------|------------------------|
@@ -69,6 +69,8 @@ Each task in the pipeline can independently use **Anthropic**, **OpenAI**, or **
 **Anthropic** is the cloud option — highest quality, especially for multilingual summarisation. Requires an `ANTHROPIC_API_KEY` and has per-token costs.
 
 **OpenAI** (ChatGPT) is the second cloud option — comparable quality to Anthropic, with a different model family (GPT-4o, GPT-4o mini, o3, o3-mini). Requires an `OPENAI_API_KEY` and has per-token costs.
+
+**Google Gemini** is the third cloud option, reached through Google's OpenAI-compatible endpoint. Requires a `GEMINI_API_KEY` and has per-token costs. Its model dropdown is filled from the live model list for that key rather than from a hard-coded list, because Google's line-up changes often — press **Test connection** in Settings to refresh it. Note that Google lists models it no longer serves to newer accounts, so an id can appear in the dropdown and still answer 404 on first use. Gemini models always reason, and those thinking tokens are drawn from the same output budget as the answer, so each call asks for the lowest reasoning effort and adds headroom on top of the requested answer length.
 
 You can mix and match freely, e.g. Ollama for filtering (high volume, low cost) and Anthropic or OpenAI for summarisation (low volume, higher quality).
 
@@ -116,6 +118,9 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 # OpenAI — only required if you use OpenAI as a provider in Settings
 OPENAI_API_KEY=sk-...
+
+# Google Gemini — only required if you use Gemini as a provider in Settings
+GEMINI_API_KEY=...
 
 # GitHub — required for publishing articles and the rejection log to the site repo
 GITHUB_TOKEN=ghp_...
@@ -528,6 +533,7 @@ Run the admin directly with Node.js — no Docker needed. See the [Setup](#setup
 | `DATABASE_AUTH_TOKEN` | Turso only | Auth token for Turso cloud database |
 | `ANTHROPIC_API_KEY` | If using Anthropic | Required only when Anthropic is selected as a provider in Settings |
 | `OPENAI_API_KEY` | If using OpenAI | Required only when OpenAI is selected as a provider in Settings |
+| `GEMINI_API_KEY` | If using Gemini | Required only when Gemini is selected as a provider in Settings. Read at startup, so the admin server needs a restart after changing it |
 | `GITHUB_TOKEN` | Yes | PAT with `repo` scope for committing to the site |
 | `GITHUB_REPO` | Yes | `owner/repo` format |
 | `GITHUB_BRANCH` | No | Target branch (default: `main`) |
@@ -543,7 +549,7 @@ Run the admin directly with Node.js — no Docker needed. See the [Setup](#setup
 
 > **Editorial audio is off by default.** Setting the two `ELEVENLABS_*` vars is not enough — switch it on in **Admin → Settings → Editorial audio**. A cloned voice is a *professional voice*, which ElevenLabs only serves on a paid Creator-tier plan or above; with the feature on and no such plan, every generation fails with `403 subscription_required`. Editorials published while it is off simply have no audio player; MP3s generated earlier stay on the site and keep playing.
 
-> **Note:** If you use Ollama for both tasks, neither `ANTHROPIC_API_KEY` nor `OPENAI_API_KEY` is needed. Social account IDs for Post for Me are managed through the Settings UI and stored in the database — no env vars needed.
+> **Note:** If you use Ollama for both tasks, none of `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` or `GEMINI_API_KEY` is needed. Social account IDs for Post for Me are managed through the Settings UI and stored in the database — no env vars needed.
 
 ---
 

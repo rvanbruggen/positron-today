@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { DEFAULT_FILTER_INSTRUCTIONS, DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 
-type Provider = "anthropic" | "ollama" | "openai";
+type Provider = "anthropic" | "ollama" | "openai" | "gemini";
 type PositronitronMode = "off" | "fetch" | "summarise" | "full";
 const POSITRONITRON_MODES: PositronitronMode[] = ["off", "fetch", "summarise", "full"];
 
@@ -81,8 +81,15 @@ const PLATFORM_META: Record<string, { label: string; emoji: string; color: strin
 const PROVIDER_LABELS: Record<Provider, string> = {
   anthropic: "Anthropic (cloud)",
   openai:    "OpenAI ChatGPT (cloud)",
+  gemini:    "Google Gemini (cloud)",
   ollama:    "Ollama (local)",
 };
+
+/**
+ * Fallback for a slot switched to Gemini before the live model list has
+ * loaded. /api/gemini-models fills the dropdown with what the key can reach.
+ */
+const GEMINI_FALLBACK_MODEL = "gemini-3.5-flash-lite";
 
 function Badge({ ok }: { ok: boolean | null }) {
   if (ok === null) return <span className="text-xs text-amber-400">checking…</span>;
@@ -101,6 +108,10 @@ export default function SettingsPage() {
   const [ollamaModels, setOllamaModels] = useState<string[]>([]);
   const [ollamaError, setOllamaError]   = useState<string | null>(null);
   const [checking, setChecking]         = useState(false);
+  const [geminiModels, setGeminiModels] = useState<string[]>([]);
+  const [geminiOk, setGeminiOk]         = useState<boolean | null>(null);
+  const [geminiError, setGeminiError]   = useState<string | null>(null);
+  const [checkingGemini, setCheckingGemini] = useState(false);
 
   // Social accounts state
   type SocialAccount = { id: string; platform: string; username: string; profile_photo_url: string | null; status: string };
@@ -201,17 +212,24 @@ export default function SettingsPage() {
         // Auto-correct mismatched provider/model pairs
         const isClaudeModel  = (m: string) => m?.startsWith("claude-");
         const isOpenAIModel  = (m: string) => m?.startsWith("gpt-") || /^o[1-9]/i.test(m ?? "");
-        if (data.filter_provider === "ollama" && (isClaudeModel(data.filter_model) || isOpenAIModel(data.filter_model))) {
+        const isGeminiModel  = (m: string) => m?.startsWith("gemini-");
+        if (data.filter_provider === "ollama" && (isClaudeModel(data.filter_model) || isOpenAIModel(data.filter_model) || isGeminiModel(data.filter_model))) {
           data.filter_model = "";
         }
-        if (data.summarise_provider === "ollama" && (isClaudeModel(data.summarise_model) || isOpenAIModel(data.summarise_model))) {
+        if (data.summarise_provider === "ollama" && (isClaudeModel(data.summarise_model) || isOpenAIModel(data.summarise_model) || isGeminiModel(data.summarise_model))) {
           data.summarise_model = "";
         }
-        if (data.filter_provider === "openai" && isClaudeModel(data.filter_model)) {
+        if (data.filter_provider === "openai" && (isClaudeModel(data.filter_model) || isGeminiModel(data.filter_model))) {
           data.filter_model = "gpt-4.1-mini";
         }
-        if (data.summarise_provider === "openai" && isClaudeModel(data.summarise_model)) {
+        if (data.summarise_provider === "openai" && (isClaudeModel(data.summarise_model) || isGeminiModel(data.summarise_model))) {
           data.summarise_model = "gpt-4.1";
+        }
+        if (data.filter_provider === "gemini" && !isGeminiModel(data.filter_model)) {
+          data.filter_model = GEMINI_FALLBACK_MODEL;
+        }
+        if (data.summarise_provider === "gemini" && !isGeminiModel(data.summarise_model)) {
+          data.summarise_model = "gemini-3.8-flash";
         }
         // Ensure new fields have defaults if not yet in DB
         if (data.filter_prompt_override   == null) data.filter_prompt_override   = "";
@@ -258,6 +276,27 @@ export default function SettingsPage() {
       setOllamaError(data.error ?? "Unknown error");
     }
   }, [settings]);
+
+  const checkGemini = useCallback(async () => {
+    setCheckingGemini(true);
+    setGeminiOk(null);
+    setGeminiError(null);
+    const res = await fetch("/api/gemini-models");
+    const data = await res.json();
+    setCheckingGemini(false);
+    if (res.ok) {
+      setGeminiOk(true);
+      setGeminiModels(data.models ?? []);
+    } else {
+      setGeminiOk(false);
+      setGeminiError(data.error ?? "Unknown error");
+    }
+  }, []);
+
+  // Load the Gemini model list once on mount so the dropdowns are populated
+  // without the user having to press anything. Without a key this just leaves
+  // the badge unreachable, which is the honest state.
+  useEffect(() => { checkGemini(); }, [checkGemini]);
 
   function toggleSocialAccount(id: string) {
     setEnabledIds((prev) => {
@@ -440,6 +479,7 @@ export default function SettingsPage() {
           provider={settings.filter_provider}
           model={settings.filter_model}
           ollamaModels={ollamaModels}
+          geminiModels={geminiModels}
           onProviderChange={v => patch("filter_provider", v)}
           onModelChange={v => patch("filter_model", v)}
         />
@@ -500,6 +540,7 @@ export default function SettingsPage() {
           provider={settings.summarise_provider}
           model={settings.summarise_model}
           ollamaModels={ollamaModels}
+          geminiModels={geminiModels}
           onProviderChange={v => patch("summarise_provider", v)}
           onModelChange={v => patch("summarise_model", v)}
         />
@@ -547,6 +588,41 @@ export default function SettingsPage() {
             {saveMsg && <p className="text-sm text-amber-600">{saveMsg}</p>}
           </div>
         </div>
+      </Section>
+
+      {/* ── Gemini connection ── */}
+      <Section title="Gemini connection" subtitle="Only needed if you are using Google Gemini for any task above.">
+        <div className="flex gap-3 items-center mb-3 flex-wrap">
+          <p className="text-sm text-amber-700 flex-1 min-w-[220px]">
+            Key read from <code className="font-mono text-xs bg-amber-50 border border-yellow-200 px-1 rounded">GEMINI_API_KEY</code>.
+            Changing it needs an admin server restart.
+          </p>
+          <button
+            onClick={() => checkGemini()}
+            disabled={checkingGemini}
+            className="text-sm bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50 whitespace-nowrap"
+          >
+            {checkingGemini ? "Checking…" : "Test connection"}
+          </button>
+          <Badge ok={geminiOk} />
+        </div>
+        {geminiError && (
+          <p className="text-xs text-red-500 mb-2">{geminiError}</p>
+        )}
+        {geminiModels.length > 0 && (
+          <div className="bg-amber-50 border border-yellow-200 rounded-lg p-3">
+            <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-2">
+              Available models ({geminiModels.length})
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {geminiModels.map(m => (
+                <span key={m} className="text-xs font-mono bg-white border border-yellow-200 text-amber-800 px-2 py-0.5 rounded">
+                  {m}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </Section>
 
       {/* ── Ollama connection ── */}
@@ -1099,6 +1175,7 @@ export default function SettingsPage() {
             provider={settings.fold_provider}
             model={settings.fold_model}
             ollamaModels={ollamaModels}
+            geminiModels={geminiModels}
             onProviderChange={v => patch("fold_provider", v)}
             onModelChange={v => patch("fold_model", v)}
           />
@@ -1141,6 +1218,7 @@ export default function SettingsPage() {
             provider={settings.neverskip_provider}
             model={settings.neverskip_model}
             ollamaModels={ollamaModels}
+            geminiModels={geminiModels}
             onProviderChange={v => patch("neverskip_provider", v)}
             onModelChange={v => patch("neverskip_model", v)}
           />
@@ -1381,10 +1459,11 @@ function Section({ title, subtitle, children }: {
   );
 }
 
-function ProviderRow({ provider, model, ollamaModels, onProviderChange, onModelChange }: {
+function ProviderRow({ provider, model, ollamaModels, geminiModels, onProviderChange, onModelChange }: {
   provider: Provider;
   model: string;
   ollamaModels: string[];
+  geminiModels: string[];
   onProviderChange: (v: Provider) => void;
   onModelChange: (v: string) => void;
 }) {
@@ -1401,6 +1480,7 @@ function ProviderRow({ provider, model, ollamaModels, onProviderChange, onModelC
             onProviderChange(p);
             if (p === "anthropic") onModelChange("claude-haiku-4-5-20251001");
             else if (p === "openai") onModelChange("gpt-4.1-mini");
+            else if (p === "gemini") onModelChange(geminiModels[0] ?? GEMINI_FALLBACK_MODEL);
             else if (ollamaModels.length > 0) onModelChange(ollamaModels[0]);
             else onModelChange("");
           }}
@@ -1434,6 +1514,27 @@ function ProviderRow({ provider, model, ollamaModels, onProviderChange, onModelC
               <option key={m.value} value={m.value}>{m.label}</option>
             ))}
           </select>
+        ) : provider === "gemini" ? (
+          geminiModels.length > 0 ? (
+            <select
+              className="w-full border border-yellow-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:border-yellow-400"
+              value={model}
+              onChange={e => onModelChange(e.target.value)}
+            >
+              {/* The stored model may predate this list, or be one the key cannot
+                  reach; keep it selectable rather than silently showing another. */}
+              {(geminiModels.includes(model) ? geminiModels : [model, ...geminiModels]).map(m => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
+          ) : (
+            <input
+              className="w-full border border-yellow-200 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:border-yellow-400"
+              placeholder="e.g. gemini-3.5-flash-lite"
+              value={model}
+              onChange={e => onModelChange(e.target.value)}
+            />
+          )
         ) : ollamaModels.length > 0 ? (
           <select
             className="w-full border border-yellow-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:border-yellow-400"
@@ -1455,6 +1556,9 @@ function ProviderRow({ provider, model, ollamaModels, onProviderChange, onModelC
         {provider === "ollama" && ollamaModels.length === 0 && (
           <p className="text-xs text-amber-500 mt-1">Test the Ollama connection below to populate the model list.</p>
         )}
+        {provider === "gemini" && geminiModels.length === 0 && (
+          <p className="text-xs text-amber-500 mt-1">Test the Gemini connection below to populate the model list.</p>
+        )}
       </div>
     </div>
   );
@@ -1472,9 +1576,11 @@ function ConfigRow({ label, provider, model, extra }: {
             ? "bg-green-100 text-green-700"
             : provider === "openai"
               ? "bg-purple-100 text-purple-700"
-              : "bg-blue-100 text-blue-700"
+              : provider === "gemini"
+                ? "bg-indigo-100 text-indigo-700"
+                : "bg-blue-100 text-blue-700"
         }`}>
-          {provider === "ollama" ? "Ollama (local)" : provider === "openai" ? "OpenAI" : "Anthropic"}
+          {provider === "ollama" ? "Ollama (local)" : provider === "openai" ? "OpenAI" : provider === "gemini" ? "Gemini" : "Anthropic"}
         </span>
       </td>
       <td className="py-1.5 pr-4 font-mono text-xs text-amber-800">{model}</td>
