@@ -1,0 +1,20 @@
+---
+title: "The new urban smog is noise - and it's killing 66,000 Europeans every year"
+title_nl: "De nieuwe stadsmog heet lawaai - en het doodt jaarlijks 66.000 Europeanen"
+title_fr: "Le nouveau smog urbain s'appelle bruit - et il tue 66 000 Européens chaque année"
+date: 2026-09-21T04:20:16
+source_pub_date: 2026-09-20
+fetched_date: 2026-09-20
+source_url: "https://moto.rp.pl/tu-i-teraz/art45163201-nowy-miejski-smog-nazywa-sie-halas-i-odpowiada-w-europie-za-66-tys-przedwczesnych-zgonow-kazdego-roku"
+source_name: "Rzeczpospolita Poland"
+topic: "Environment"
+tags: ["Environment","Health","Society"]
+emoji: "🔊"
+summary: "So here's the thing - noise pollution is quietly becoming Europe's biggest public health crisis, and most of us don't even realise it. The numbers are genuinely staggering: 66,000 premature deaths annually, 17 million people suffering chronic irritation, and the economic cost hitting 95 billion euros a year. Road traffic is the main culprit, affecting 92 million Europeans, not airplanes like you'd think - and the scary part is that WHO warns damage happens at noise levels lower than current legal limits. The good news is that cities like Paris are fighting back with smart solutions: lower speed limits, quieter road surfaces, better public transport, and electric vehicles that make a real difference at street level."
+summary_nl: "Dus hier zit het probleem - geluidsoverlast wordt stilletjes Europas grootste volksgezondheidscrisis, en de meesten van ons beseffen het niet eens. De cijfers zijn werkelijk schrikbarend: 66.000 voortijdige sterfgevallen per jaar, 17 miljoen mensen met chronische irritatie, en de economische kosten bedragen 95 miljard euro jaarlijks. Wegverkeer is de grootste boosdoener en treft 92 miljoen Europeanen - niet vliegverkeer zoals je zou verwachten - en het akelige is dat de WHO waarschuwt dat schade ontstaat bij geluidsniveaus onder de huidige wettelijke grenzen. Het goede nieuws is dat steden als Parijs terugslaan met slimme oplossingen: lagere snelheidslimieten, stillere wegdekken, beter openbaar vervoer en elektrische voertuigen die op straatniveau echt verschil maken."
+summary_fr: "Voilà le problème - la pollution sonore devient tranquillement la plus grande crise sanitaire de l'Europe, et la plupart d'entre nous ne le réalisent même pas. Les chiffres sont vraiment terrifiant : 66 000 décès prématurés par an, 17 millions de personnes souffrant d'irritation chronique, et le coût économique atteint 95 milliards d'euros annuellement. Le trafic routier est le principal coupable, affectant 92 millions d'Européens - pas l'aviation comme on pourrait le penser - et le plus inquiétant est que l'OMS avertit que les dommages commencent à des niveaux sonores inférieurs aux limites légales actuelles. La bonne nouvelle, c'est que des villes comme Paris contre-attaquent avec des solutions intelligentes : vitesses limitées, revêtements routiers plus silencieux, meilleurs transports publics et véhicules électriques qui font vraiment la différence au niveau des rues."
+image_url: "https://i.gremicdn.pl/image/free/a6e7ecfc3054a10f15fc4306e15e4f24/?t=crop:5437:3372:nowe:0:129,resize:fill:2000:1250&ctx=preview"
+layout: post.njk
+---
+
+So here's the thing - noise pollution is quietly becoming Europe's biggest public health crisis, and most of us don't even realise it. The numbers are genuinely staggering: 66,000 premature deaths annually, 17 million people suffering chronic irritation, and the economic cost hitting 95 billion euros a year. Road traffic is the main culprit, affecting 92 million Europeans, not airplanes like you'd think - and the scary part is that WHO warns damage happens at noise levels lower than current legal limits. The good news is that cities like Paris are fighting back with smart solutions: lower speed limits, quieter road surfaces, better public transport, and electric vehicles that make a real difference at street level.
