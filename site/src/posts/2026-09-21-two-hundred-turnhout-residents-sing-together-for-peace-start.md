@@ -1,0 +1,20 @@
+---
+title: "Two hundred Turnhout residents sing together for peace: 'Start by being more tolerant yourself'"
+title_nl: "Tweehonderd Turnhoutenaars zingen samen voor de vrede: 'Begin met jezelf verdraagzamer te zijn'"
+title_fr: "Deux cents habitants de Turnhout chantent ensemble pour la paix: 'Commencez par être plus tolérant envers vous-même'"
+date: 2026-09-21T04:20:20
+source_pub_date: 2026-09-20
+fetched_date: 2026-09-20
+source_url: "https://vrtnws.be/p.pAM3vakYY"
+source_name: "VRT Nws"
+topic: "Arts"
+tags: ["Arts","Family life","Society"]
+emoji: "🕊️"
+summary: "In Turnhout, around 200 residents gathered at cultural venue de Warande to sing 'What a Wonderful World' together, joining a global movement for Peace Day. They also unveiled a powerful artwork made from approximately 6,000 hand-folded paper cranes - inspired by a Japanese legend about making wishes for health and peace. Mayor Hannes Anaf emphasized that peace starts with kindness toward your neighbors and tolerance for different opinions, even challenging the harsh tone often found on social media. Now the crane artwork will be distributed symbolically throughout the city, with pieces going to community centers, local organizations, and to all the residents who participated, spreading the message of peace in a beautiful, tangible way."
+summary_nl: "In Turnhout kwamen ongeveer 200 inwoners samen in cultuurhuis de Warande om 'What a Wonderful World' te zingen, als onderdeel van een wereldwijd vredesbewegement. Zij onthulden ook een indrukwekkend kunstwerk gemaakt van zo'n 6.000 handgevouwen papieren kraanvogels - geïnspireerd door een Japanse legende over wensen doen voor gezondheid en vrede. Burgemeester Hannes Anaf benadrukkte dat vrede begint met vriendelijkheid naar je buren en verdraagzaamheid voor verschillende meningen, en sprak ook kritiek uit op de harde toon op sociale media. Het kraanvogel-kunstwerk zal nu symbolisch over de stad verspreid worden, met onderdelen naar buurthuizen, lokale organisaties en alle deelnemers, wat de vredesboodschap op een mooie, tastbare manier verspreidt."
+summary_fr: "À Turnhout, environ 200 habitants se sont réunis au centre culturel de Warande pour chanter ensemble 'What a Wonderful World', participant à un mouvement mondial pour la Journée de la Paix. Ils ont également dévoilé une œuvre d'art impressionnante fabriquée à partir d'environ 6 000 grues en papier plié à la main - inspirée par une légende japonaise sur la formulation de vœux pour la santé et la paix. Le maire Hannes Anaf a souligné que la paix commence par la gentillesse envers vos voisins et la tolérance envers les opinions différentes, critiquant aussi le ton dur souvent trouvé sur les réseaux sociaux. L'œuvre d'art en papier grue sera maintenant distribuée symboliquement dans toute la ville, avec des pièces allant aux maisons communautaires, aux organisations locales et à tous les résidents participants, propageant le message de paix d'une manière belle et tangible."
+image_url: "https://images.vrt.be/vrtnws_share/2026/09/20/78c451bc-9fc2-457c-bf9a-96cea2097e95.jpg"
+layout: post.njk
+---
+
+In Turnhout, around 200 residents gathered at cultural venue de Warande to sing 'What a Wonderful World' together, joining a global movement for Peace Day. They also unveiled a powerful artwork made from approximately 6,000 hand-folded paper cranes - inspired by a Japanese legend about making wishes for health and peace. Mayor Hannes Anaf emphasized that peace starts with kindness toward your neighbors and tolerance for different opinions, even challenging the harsh tone often found on social media. Now the crane artwork will be distributed symbolically throughout the city, with pieces going to community centers, local organizations, and to all the residents who participated, spreading the message of peace in a beautiful, tangible way.
