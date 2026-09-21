@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-21T06:42:10.809Z",
-  "total_rejected": 152255,
+  "exported_at": "2026-09-21T06:42:17.404Z",
+  "total_rejected": 152256,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2839
+      "count": 2840
     },
     {
       "category": "divisive-racism",
@@ -231,8 +231,8 @@
     },
     {
       "source": "AllAfrica",
-      "negative": 1077,
-      "total": 1148
+      "negative": 1078,
+      "total": 1149
     },
     {
       "source": "Humo",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "AllAfrica",
+      "title": "Africa: Korea, African Development Bank Sign Deal to Launch Joint Ai Hub to Support Africa",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://allafrica.com/stories/202609180673.html",
+      "date": "2026-09-21 08:42",
+      "positivity_score": null
+    },
     {
       "source": "Het Laatste Nieuws",
       "title": "Remco Evenepoel valt na vierde wereldtitel in armen van Oumi, vader Patrick trots: “Hij kan als geen ander naar een doel toeleven”",
@@ -9391,15 +9400,6 @@
       "url": "https://www.lefigaro.fr/politique/dans-le-monde-rouge-de-twitch-sardoche-le-streamer-francais-libertarien-qui-reve-d-union-des-droites-entre-knafo-et-lisnard-20260919",
       "date": "2026-09-19 22:36",
       "positivity_score": 2
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Louvre : deux Allemands interpellés pour de légères dégradations dans la salle de la «Joconde»",
-      "reason": "Crime and vandalism incident at a museum; this is a negative event (property damage), not positive news.",
-      "category": "crime-violence",
-      "url": "https://www.lefigaro.fr/culture/patrimoine/louvre-deux-allemands-interpelles-pour-de-legeres-degradations-dans-la-salle-de-la-joconde-20260919",
-      "date": "2026-09-19 22:36",
-      "positivity_score": 1
     }
   ]
 }
