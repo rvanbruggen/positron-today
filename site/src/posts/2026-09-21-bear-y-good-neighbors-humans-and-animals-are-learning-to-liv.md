@@ -1,0 +1,20 @@
+---
+title: "Bear-y good neighbors: humans and animals are learning to live together in an expanding LA"
+title_nl: "Berenbuurtgenoten: mensen en dieren leren samen te leven in een groeiend LA"
+title_fr: "De bons voisins ours: les humains et les animaux apprennent à vivre ensemble dans un LA en expansion"
+date: 2026-09-21T04:20:18
+source_pub_date: 2026-09-20
+fetched_date: 2026-09-20
+source_url: "https://www.theguardian.com/us-news/2026/sep/20/los-angeles-bear-coexistence"
+source_name: "The Guardian Europe"
+topic: "Animals"
+tags: ["Animals","Environment","Nature"]
+emoji: "🐻"
+summary: "As Los Angeles sprawls outward, black bears are increasingly moving into suburban neighborhoods, drawn by the easy calories found in trash, pools, and fruit trees. What's fascinating is that residents like Brian Gordon and his partner in Monrovia are discovering that coexistence is absolutely possible - they even share their pool with a bear family and document it on Instagram. The key, according to researchers, is making neighborhoods unattractive to bears by securing food sources and giving them space to pass through. Climate change and recent wildfires are forcing bears to expand their ranges in search of food, making this human-wildlife balance more important than ever."
+summary_nl: "Terwijl Los Angeles uitbreidt, trekken zwarte beren steeds vaker naar buurten in de vorsteden, aangetrokken door de gemakkelijke calorieën in afval, zwembaden en fruitbomen. Wat fascinerend is, is dat bewoners zoals Brian Gordon en zijn partner in Monrovia ontdekken dat samenleven absoluut mogelijk is - ze delen zelfs hun zwembad met een berenfamilie en documenteren dit op Instagram. Volgens onderzoekers is het sleutel om buurten voor beren onattractief te maken door voedselbronnen veilig te stellen en hun ruimte te geven om erdoorheen te gaan. Klimaatverandering en recente bosbranden dwingen beren hun leefgebied uit te breiden op zoek naar voedsel, wat dit evenwicht tussen mens en wild steeds belangrijker maakt."
+summary_fr: "Alors que Los Angeles s'étend vers l'extérieur, les ours noirs s'installent de plus en plus dans les banlieues, attirés par les calories faciles trouvées dans les ordures, les piscines et les vergers. Ce qui est fascinant, c'est que des résidents comme Brian Gordon et son partenaire à Monrovia découvrent que la coexistence est absolument possible - ils partagent même leur piscine avec une famille d'ours et la documentent sur Instagram. Selon les chercheurs, la clé est de rendre les quartiers peu attrayants pour les ours en sécurisant les sources alimentaires et en leur donnant l'espace pour passer. Le changement climatique et les récents incendies de forêt forcent les ours à étendre leurs territoires à la recherche de nourriture, rendant cet équilibre entre humains et faune sauvage de plus en plus important."
+image_url: "https://i.guim.co.uk/img/media/17bcb82ac8452599951cef98f1343ee5763f7c44/49_0_725_580/master/725.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=789af3679d688e7eeba2911082e9f2fd"
+layout: post.njk
+---
+
+As Los Angeles sprawls outward, black bears are increasingly moving into suburban neighborhoods, drawn by the easy calories found in trash, pools, and fruit trees. What's fascinating is that residents like Brian Gordon and his partner in Monrovia are discovering that coexistence is absolutely possible - they even share their pool with a bear family and document it on Instagram. The key, according to researchers, is making neighborhoods unattractive to bears by securing food sources and giving them space to pass through. Climate change and recent wildfires are forcing bears to expand their ranges in search of food, making this human-wildlife balance more important than ever.
