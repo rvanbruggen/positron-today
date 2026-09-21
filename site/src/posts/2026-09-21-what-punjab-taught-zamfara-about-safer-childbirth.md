@@ -1,0 +1,20 @@
+---
+title: "What Punjab taught Zamfara about safer childbirth"
+title_nl: "Wat Punjab Zamfara leerde over veiliger bevallen"
+title_fr: "Ce que le Punjab a enseigné à Zamfara sur l'accouchement plus sûr"
+date: 2026-09-21T11:33:00
+source_pub_date: 2026-09-21
+fetched_date: 2026-09-21
+source_url: "https://allafrica.com/stories/202609210103.html"
+source_name: "AllAfrica"
+topic: "Health"
+tags: ["Health","Society"]
+emoji: "👶"
+summary: "Nigeria faces a severe maternal health crisis, with maternal mortality among the highest globally - and Zamfara State in the northwest was hit particularly hard. Rather than starting with new budgets or construction, the state took a smart approach: they first assessed what was actually happening on the ground through independent evaluation of their primary healthcare facilities. What they found was shocking - labour wards so degraded they couldn't continue, missing equipment, and chronic medicine shortages despite having skilled birth attendants. The state then mobilized political will and resources, establishing 23 safe delivery centers and strengthening their drug supply system, leading to drastic improvements in essential medicine availability and safer deliveries."
+summary_nl: "Nigeria worstelt met een ernstige crisis in moedergezondheidszorg, met sterftecijfers bij bevalling tot de hoogste ter wereld - en Zamfara State in het noordwesten was bijzonder hard getroffen. In plaats van meteen met nieuwe budgetten of bouwprojecten te beginnen, nam de staat een slimme aanpak: eerst onderzoeken wat er werkelijk op de grond gebeurde door onafhankelijke evaluatie van hun primaire gezondheidsfaciliteiten. Wat ze vonden was schokkerend - verloskamers in zo'n slechte staat dat ze niet verder konden gaan, ontbrekende apparatuur en chronische geneesmiddelenschaarste ondanks geschoolde vroedvrouwen. De staat mobiliseerde vervolgens politieke wil en middelen, richtte 23 veilige bevalingscentra op en verstevigde hun geneesmiddelensysteem, wat leidde tot drastische verbeteringen in beschikbaarheid van essentiële medicijnen en veiliger bevallingen."
+summary_fr: "Le Nigeria fait face à une crise grave de la santé maternelle, avec un taux de mortalité à l'accouchement parmi les plus élevés au monde - et l'État de Zamfara au nord-ouest en a été particulièrement touché. Plutôt que de commencer par de nouveaux budgets ou constructions, l'État a adopté une approche intelligente : d'abord évaluer ce qui se passait réellement sur le terrain grâce à une évaluation indépendante de ses établissements de soins de santé primaires. Ce qu'ils ont découvert était choquant - des salles d'accouchement dans un état si dégradé qu'ils ne pouvaient pas continuer, des équipements manquants et une pénurie chronique de médicaments malgré la présence de sages-femmes qualifiées. L'État a ensuite mobilisé la volonté politique et les ressources, établissant 23 centres d'accouchement sûrs et renforçant son système d'approvisionnement en médicaments, ce qui a conduit à des améliorations drastiques dans la disponibilité des médicaments essentiels et des accouchements plus sûrs."
+image_url: "https://cdn.allafrica.com/download/pic/main/main/csiid/00470137:2e37599262c174be600675eff3eb04b9:arc614x376:w1200.jpg"
+layout: post.njk
+---
+
+Nigeria faces a severe maternal health crisis, with maternal mortality among the highest globally - and Zamfara State in the northwest was hit particularly hard. Rather than starting with new budgets or construction, the state took a smart approach: they first assessed what was actually happening on the ground through independent evaluation of their primary healthcare facilities. What they found was shocking - labour wards so degraded they couldn't continue, missing equipment, and chronic medicine shortages despite having skilled birth attendants. The state then mobilized political will and resources, establishing 23 safe delivery centers and strengthening their drug supply system, leading to drastic improvements in essential medicine availability and safer deliveries.
