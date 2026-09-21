@@ -2,7 +2,7 @@
 
 > A positive-news aggregator that uses AI to filter, summarise, and publish only uplifting stories — while openly logging the negative articles it skips, and surfacing the consequential few that shouldn't be lost in the pile.
 
-**Version:** 4.5.1 · **Live site:** [positron.today](https://positron.today)
+**Version:** 4.5.2 · **Live site:** [positron.today](https://positron.today)
 
 ---
 
@@ -70,7 +70,7 @@ Each task in the pipeline can independently use **Anthropic**, **OpenAI**, **Goo
 
 **OpenAI** (ChatGPT) is the second cloud option — comparable quality to Anthropic, with a different model family (GPT-4o, GPT-4o mini, o3, o3-mini). Requires an `OPENAI_API_KEY` and has per-token costs.
 
-**Google Gemini** is the third cloud option, reached through Google's OpenAI-compatible endpoint. Requires a `GEMINI_API_KEY` and has per-token costs. Its model dropdown is filled from the live model list for that key rather than from a hard-coded list, because Google's line-up changes often — press **Test connection** in Settings to refresh it. Note that Google lists models it no longer serves to newer accounts, so an id can appear in the dropdown and still answer 404 on first use. Gemini models always reason, and those thinking tokens are drawn from the same output budget as the answer, so each call asks for the lowest reasoning effort and adds headroom on top of the requested answer length.
+**Google Gemini** is the third cloud option, reached through Google's OpenAI-compatible endpoint. Requires a `GEMINI_API_KEY` and has per-token costs. Its model dropdown offers a deliberate shortlist — `gemini-3.1-flash-lite` (cheapest, for filtering and story folding), `gemini-3.5-flash-lite`, `gemini-3.8-flash` (summarisation) and the `gemini-pro-latest` alias (Necessary Negativity) — intersected with the models the configured key actually lists, so nothing is offered that cannot be selected. Google publishes around twenty text models; the rest are previews, legacy lines or a worse deal than one of these, and the numbering misleads (the 3.5 line is legacy, and `gemini-3.5-flash` costs twice `gemini-3.8-flash`). To offer more, extend `GEMINI_SHORTLIST` in `admin/app/api/gemini-models/route.ts`. Press **Test connection** in Settings to refresh the list. Gemini models always reason, and those thinking tokens are drawn from the same output budget as the answer, so each call asks for the lowest reasoning effort and adds headroom on top of the requested answer length.
 
 You can mix and match freely, e.g. Ollama for filtering (high volume, low cost) and Anthropic or OpenAI for summarisation (low volume, higher quality).
 

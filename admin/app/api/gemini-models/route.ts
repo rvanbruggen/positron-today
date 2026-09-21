@@ -22,6 +22,33 @@ const NON_TEXT_MARKERS = [
   "embedding", "image", "veo", "tts", "audio", "live", "computer-use", "robotics", "transcribe",
 ];
 
+/**
+ * The models actually offered in Settings, cheapest first. Google lists around
+ * twenty text models; all but these are deliberately withheld, because the list
+ * is a menu of things that cost money per call and most entries are a worse
+ * deal than one already here.
+ *
+ * Prices are per 1M tokens, checked 21 September 2026, output including
+ * thinking tokens. The numbering is not a price or recency order: the 3.5 line
+ * is legacy, and gemini-3.5-flash ($1.50/$9.00) costs twice gemini-3.8-flash.
+ *
+ *   gemini-3.1-flash-lite  $0.25/$1.50  cheapest — filtering, story folding
+ *   gemini-3.5-flash-lite  $0.30/$2.50  alternative lite, if 3.1 disappoints
+ *   gemini-3.8-flash       $0.75/$3.75  best Flash — summarisation
+ *                                       (rises to $1.50/$7.50 on 1 Jan 2027)
+ *   gemini-pro-latest      ~$2.00/$12   Pro-class judgement — Necessary
+ *                                       Negativity. An alias because every
+ *                                       pinned Pro id is a preview.
+ *
+ * To offer a different model, add its id here.
+ */
+const GEMINI_SHORTLIST = [
+  "gemini-3.1-flash-lite",
+  "gemini-3.5-flash-lite",
+  "gemini-3.8-flash",
+  "gemini-pro-latest",
+];
+
 export async function GET() {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
@@ -46,13 +73,22 @@ export async function GET() {
 
     const data = await res.json();
     // The OpenAI-compatible endpoint returns { data: [{ id: "models/gemini-..." }] }
-    const models: string[] = (data.data ?? [])
+    const available: string[] = (data.data ?? [])
       .map((m: { id: string }) => (m.id ?? "").replace(/^models\//, ""))
       .filter((id: string) => id.startsWith("gemini-"))
-      .filter((id: string) => !NON_TEXT_MARKERS.some((marker) => id.includes(marker)))
-      .sort((a: string, b: string) => b.localeCompare(a));   // newest generation first
+      .filter((id: string) => !NON_TEXT_MARKERS.some((marker) => id.includes(marker)));
 
-    return Response.json({ ok: true, models });
+    // Offer the shortlist, in shortlist order, limited to what this key lists.
+    const shortlisted = GEMINI_SHORTLIST.filter((id) => available.includes(id));
+
+    // Safety valve: if Google renames or retires the whole shortlist, fall back
+    // to every text model rather than leaving the admin with an empty dropdown
+    // and no way to pick anything.
+    const models = shortlisted.length > 0
+      ? shortlisted
+      : available.sort((a, b) => b.localeCompare(a));
+
+    return Response.json({ ok: true, models, shortlisted: shortlisted.length > 0 });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     return Response.json(

@@ -463,12 +463,19 @@ const ANTHROPIC_DEFAULT_MODELS: Record<LLMTask, string> = {
  *
  * Note that an id appearing in the account's model list is not proof it can be
  * called: retired models are still listed, and return 404 on use.
+ *
+ * The numbering does not track price or recency the way it looks: the 3.5 line
+ * is legacy, and gemini-3.5-flash costs twice gemini-3.8-flash ($1.50/$9.00 per
+ * 1M tokens against $0.75/$3.75). The high-volume slots therefore take
+ * gemini-3.1-flash-lite, the cheapest text model on the list at $0.25/$1.50.
+ * Output pricing includes thinking tokens, which is why calls ask for the
+ * lowest reasoning effort.
  */
 const GEMINI_DEFAULT_MODELS: Record<LLMTask, string> = {
-  filter: "gemini-3.5-flash-lite",
+  filter: "gemini-3.1-flash-lite",
   summarise: "gemini-3.8-flash",
   neverskip: "gemini-pro-latest",
-  fold: "gemini-3.5-flash",
+  fold: "gemini-3.1-flash-lite",
 };
 
 function isAnthropicModelName(model: string): boolean {

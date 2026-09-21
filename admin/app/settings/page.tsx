@@ -89,7 +89,7 @@ const PROVIDER_LABELS: Record<Provider, string> = {
  * Fallback for a slot switched to Gemini before the live model list has
  * loaded. /api/gemini-models fills the dropdown with what the key can reach.
  */
-const GEMINI_FALLBACK_MODEL = "gemini-3.5-flash-lite";
+const GEMINI_FALLBACK_MODEL = "gemini-3.1-flash-lite";
 
 function Badge({ ok }: { ok: boolean | null }) {
   if (ok === null) return <span className="text-xs text-amber-400">checking…</span>;
@@ -612,15 +612,23 @@ export default function SettingsPage() {
         {geminiModels.length > 0 && (
           <div className="bg-amber-50 border border-yellow-200 rounded-lg p-3">
             <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-2">
-              Available models ({geminiModels.length})
+              Offered models ({geminiModels.length})
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-3">
               {geminiModels.map(m => (
                 <span key={m} className="text-xs font-mono bg-white border border-yellow-200 text-amber-800 px-2 py-0.5 rounded">
                   {m}
                 </span>
               ))}
             </div>
+            <p className="text-xs text-amber-600">
+              A shortlist, not everything Google offers — the rest are previews, legacy
+              models, or a worse deal than one of these. Cheapest first:
+              <span className="font-mono"> 3.1-flash-lite</span> for filtering and folding,
+              <span className="font-mono"> 3.8-flash</span> for summarisation,
+              <span className="font-mono"> pro-latest</span> for Necessary Negativity.
+              Widen the list in <span className="font-mono">app/api/gemini-models/route.ts</span>.
+            </p>
           </div>
         )}
       </Section>
@@ -1530,7 +1538,7 @@ function ProviderRow({ provider, model, ollamaModels, geminiModels, onProviderCh
           ) : (
             <input
               className="w-full border border-yellow-200 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:border-yellow-400"
-              placeholder="e.g. gemini-3.5-flash-lite"
+              placeholder="e.g. gemini-3.1-flash-lite"
               value={model}
               onChange={e => onModelChange(e.target.value)}
             />
