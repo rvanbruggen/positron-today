@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-21T04:18:12.080Z",
-  "total_rejected": 152251,
+  "exported_at": "2026-09-21T05:28:52.380Z",
+  "total_rejected": 152252,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2835
+      "count": 2836
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 4743,
-      "total": 4882
+      "negative": 4744,
+      "total": 4883
     },
     {
       "source": "Al Jazeera English",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Specialist courts for rape cases to be rolled out across England and Wales",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c5lympv9nw3jo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-09-21 07:28",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "ICE officer shoots and wounds man in Austin, Texas, officials say",
@@ -9391,15 +9400,6 @@
       "url": "https://www.nytimes.com/2026/09/19/nyregion/artificial-intelligence-drones-police.html",
       "date": "2026-09-19 22:36",
       "positivity_score": 2
-    },
-    {
-      "source": "The Washington Post",
-      "title": "Houthis claim attacks on ‘sensitive sites’ in Saudi Arabian capital",
-      "reason": "Military conflict: Houthi attacks on Saudi Arabia are war and conflict, not positive news.",
-      "category": "war-conflict",
-      "url": "https://www.washingtonpost.com/world/2026/09/19/houthis-claim-attacks-sensitive-sites-saudi-arabian-capital/",
-      "date": "2026-09-19 22:36",
-      "positivity_score": 1
     }
   ]
 }
