@@ -253,14 +253,18 @@ class OpenAIProvider implements LLMProvider {
 /**
  * Gemini models always think: Google documents that reasoning cannot be turned
  * off for 2.5 Pro or for any Gemini 3 model, and the thinking tokens come out
- * of the same output budget as the answer. Passing a caller's 200-token
- * classify cap straight through would spend the whole budget before the
- * verdict is written — the same truncation the Anthropic provider hits on
- * thinking models (see acceptsSampling above).
+ * of the same output budget as the answer — the same trap the Anthropic
+ * provider hits on thinking models (see acceptsSampling above).
  *
  * So every call asks for the lowest reasoning effort and adds this headroom on
  * top of the budget the caller asked for. Callers keep expressing the length of
  * the *answer* they want, exactly as they do for the other providers.
+ *
+ * Measured against the live API, the risk is real but model-dependent: a
+ * one-article classify on gemini-3.5-flash-lite finished inside a bare
+ * 200-token cap, while gemini-pro-latest on a ranking prompt hit
+ * finish_reason "length" after 7 output tokens without the headroom and
+ * completed in 134 with it.
  */
 const GEMINI_THINKING_HEADROOM = 2048;
 
@@ -271,12 +275,29 @@ class GeminiProvider implements LLMProvider {
   constructor(private model: string) {}
 
   async classify(prompt: string): Promise<ClassifyResult> {
-    const raw = await this.call(prompt, undefined, 200, 0);
-    return parseClassifyResponse(raw);
+    const { text, finish } = await this.call(prompt, undefined, 200, 0);
+    // A verdict cut off mid-JSON is worse than no verdict: parseClassifyResponse
+    // would find no object, fall back to scanning for "YES", and file the
+    // article as a rejection. Measured on gemini-pro-latest without headroom, a
+    // truncated reply came back as 13 characters of an opening fence — enough
+    // to parse as NO. Fail instead, so withRetry retries and the pipeline's
+    // attempts counter can hold the article for a later run.
+    if (finish === "length") {
+      throw new Error(
+        `Gemini ${this.model} truncated the verdict (finish_reason: length) — raise the token budget.`,
+      );
+    }
+    return parseClassifyResponse(text);
   }
 
-  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200, temperature = 0.3): Promise<string> {
-    return this.call(prompt, systemPrompt, maxTokens, temperature);
+  async generate(prompt: string, systemPrompt?: string, maxTokens = 1200, temperature = 0.3, options?: GenerateOptions): Promise<string> {
+    // Deliberately tolerant of finish_reason "length" here, unlike classify:
+    // the batch classifier parses per verdict, so a truncated reply still
+    // yields every complete answer before the cut (see classify-batch.ts).
+    // `effort` maps onto Gemini's own reasoning_effort, which takes the same
+    // three names, so a caller asking Claude to think harder asks Gemini too.
+    const { text } = await this.call(prompt, systemPrompt, maxTokens, temperature, options?.effort);
+    return text;
   }
 
   private async call(
@@ -284,7 +305,8 @@ class GeminiProvider implements LLMProvider {
     systemPrompt: string | undefined,
     maxTokens: number,
     temperature: number,
-  ): Promise<string> {
+    effort: GenerateOptions["effort"] = "low",
+  ): Promise<{ text: string; finish: string }> {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) throw new Error("GEMINI_API_KEY is not set in .env.local");
 
@@ -304,7 +326,7 @@ class GeminiProvider implements LLMProvider {
           messages,
           max_tokens: maxTokens + GEMINI_THINKING_HEADROOM,
           temperature,
-          reasoning_effort: "low",
+          reasoning_effort: effort,
         }),
         signal: AbortSignal.timeout(120_000),
       });
@@ -316,18 +338,18 @@ class GeminiProvider implements LLMProvider {
 
       const data = await res.json();
       const content = (data.choices?.[0]?.message?.content ?? "").trim();
+      const finish = data.choices?.[0]?.finish_reason ?? "unknown";
 
       // An empty answer means the model spent the entire budget on thinking.
       // Failing loudly beats returning "" — the classify parser would read that
       // as a rejection, and summarisation would store an empty summary.
       if (!content) {
-        const finish = data.choices?.[0]?.finish_reason ?? "unknown";
         throw new Error(
           `Gemini ${this.model} returned no text (finish_reason: ${finish}) — ` +
           `the answer was likely crowded out by thinking tokens.`,
         );
       }
-      return content;
+      return { text: content, finish };
     }, { label: `Gemini ${this.model}`, baseDelayMs: 1000 });
   }
 }
