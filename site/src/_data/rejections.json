@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-21T11:21:45.265Z",
-  "total_rejected": 152416,
+  "exported_at": "2026-09-21T11:21:53.736Z",
+  "total_rejected": 152417,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2844
+      "count": 2845
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 13333,
-      "total": 13609
+      "negative": 13334,
+      "total": 13610
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "“Op de spoed beseften ze niet dat ik een hartstilstand had”: hartproblemen bij vrouwen worden vaak niet meteen herkend, zoals bij Eben (24) en Hilde (51)",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/binnenland/op-de-spoed-beseften-ze-niet-dat-ik-een-hartstilstand-had-hartproblemen-bij-vrouwen-worden-vaak-niet-meteen-herkend-zoals-bij-eben-24-en-hilde-51~adb98f9a/",
+      "date": "2026-09-21 13:21",
+      "positivity_score": null
+    },
     {
       "source": "Gazet van Antwerpen",
       "title": "Herselt maakt werk van dementievriendelijke gemeente: “Meer dan een medische diagnose”",
@@ -9391,15 +9400,6 @@
       "url": "https://www.rnz.co.nz/news/emergencies_local/1478821/one-dead-after-motorbike-crash-in-matamata-piako",
       "date": "2026-09-20 06:16",
       "positivity_score": 1
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "title": "Tiaki Wai warning wastewater discharged in Lower Hutt stream",
-      "reason": "Local environmental incident with no universal significance: wastewater overflow in one suburb is a local infrastructure problem, not a replicable solution or broader environmental advance.",
-      "category": "soft-news-filler",
-      "url": "https://www.rnz.co.nz/news/regional/1478433/tiaki-wai-warning-wastewater-discharged-in-lower-hutt-stream",
-      "date": "2026-09-20 06:16",
-      "positivity_score": 2
     }
   ]
 }
