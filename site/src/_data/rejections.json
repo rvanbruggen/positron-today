@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-21T11:21:31.622Z",
-  "total_rejected": 152415,
+  "exported_at": "2026-09-21T11:21:45.265Z",
+  "total_rejected": 152416,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2843
+      "count": 2844
     },
     {
       "category": "divisive-racism",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 13361,
-      "total": 13805
+      "negative": 13362,
+      "total": 13806
     },
     {
       "source": "Het Laatste Nieuws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Herselt maakt werk van dementievriendelijke gemeente: “Meer dan een medische diagnose”",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/regio/antwerpen/kempen/herselt/herselt-maakt-werk-van-dementievriendelijke-gemeente-meer-dan-een-medische-diagnose/161739136.html",
+      "date": "2026-09-21 13:21",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Le coût de la canicule de cet été pour l’économie belge se chiffre en milliards : \"On ne sent pas de prise de conscience politique\"",
@@ -9391,15 +9400,6 @@
       "url": "https://www.rnz.co.nz/news/regional/1478433/tiaki-wai-warning-wastewater-discharged-in-lower-hutt-stream",
       "date": "2026-09-20 06:16",
       "positivity_score": 2
-    },
-    {
-      "source": "The Better India",
-      "title": "Heartbroken After College Shutdown, Teacher Started Mushroom Farming; Earns Rs 1.5 Lakh/Month ",
-      "reason": "Recovery-from-negative: the story's positive framing depends entirely on the preceding trauma of the college closure; without that negative event, there is no news hook.",
-      "category": "human-discarded",
-      "url": "https://thebetterindia.com/329202/gwalior-professor-nidhi-katare-becomes-successful-mushroom-farmer-earns-lakhs/",
-      "date": "2026-09-20 06:16",
-      "positivity_score": 5
     }
   ]
 }
