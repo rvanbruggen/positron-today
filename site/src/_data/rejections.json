@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-21T11:34:04.126Z",
-  "total_rejected": 152610,
+  "exported_at": "2026-09-21T11:36:16.200Z",
+  "total_rejected": 152611,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2853
+      "count": 2854
     },
     {
       "category": "divisive-racism",
@@ -291,8 +291,8 @@
     },
     {
       "source": "ScienceDaily",
-      "negative": 244,
-      "total": 608
+      "negative": 245,
+      "total": 609
     },
     {
       "source": "Good Good Good",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "ScienceDaily",
+      "title": "Millions take calcium and vitamin D for bone health. A major review finds little benefit",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.sciencedaily.com/releases/2026/09/260920030147.htm",
+      "date": "2026-09-21 13:36",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "Canada invites the UK to join its economic alliance with the European Union",
@@ -9391,15 +9400,6 @@
       "url": "https://www.nytimes.com/2026/09/20/business/china-ai-economy.html",
       "date": "2026-09-20 14:25",
       "positivity_score": 3
-    },
-    {
-      "source": "The New York Times",
-      "title": "Who Gets to Decide A.I.’s Moral Code?",
-      "reason": "Tech anxiety story about power concentration and influence over AI values; raises concerns rather than reporting a positive achievement.",
-      "category": "tech-ai-concern",
-      "url": "https://www.nytimes.com/2026/09/20/briefing/chatbot-agents-deepmind-anthropic-openai.html",
-      "date": "2026-09-20 14:25",
-      "positivity_score": 2
     }
   ]
 }
