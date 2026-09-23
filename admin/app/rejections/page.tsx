@@ -3,6 +3,9 @@
 import { useEffect, useState, useRef, useMemo } from "react";
 import { REJECTION_CATEGORIES, CATEGORY_MAP } from "@/lib/rejection-categories";
 import { formatRejectionTimestamp } from "@/lib/schedule-time";
+import DecisionTrail from "@/app/components/DecisionTrail";
+import DecisionFilters from "@/app/components/DecisionFilters";
+import { trailFacets, trailMatches, type PromptVersionInfo, type Trails } from "@/lib/decision-types";
 
 type SortKey = "title" | "source" | "category" | "score" | "date";
 type SortDir = "asc" | "desc";
@@ -43,6 +46,8 @@ function CategoryBadge({ slug }: { slug: string | null }) {
 
 type RejectionsResponse = {
   items: Rejection[];
+  trails: Trails;
+  prompts: PromptVersionInfo[];
   total: number;
   topSources: { source: string; count: number }[];
   byCategory: Record<string, number>;
@@ -57,6 +62,10 @@ export default function RejectionsPage() {
   const [uncategorisedCount, setUncategorisedCount] = useState(0);
   const [filter, setFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
+  const [trails, setTrails] = useState<Trails>({});
+  const [prompts, setPrompts] = useState<PromptVersionInfo[]>([]);
+  const [modelFilter, setModelFilter] = useState("all");
+  const [promptFilter, setPromptFilter] = useState("all");
   const [exporting, setExporting] = useState(false);
   const [exportMsg, setExportMsg] = useState<string | null>(null);
 
@@ -77,6 +86,8 @@ export default function RejectionsPage() {
     const res = await fetch("/api/rejected");
     const data: RejectionsResponse = await res.json();
     setItems(data.items);
+    setTrails(data.trails ?? {});
+    setPrompts(data.prompts ?? []);
     setTotal(data.total);
     setTopSources(data.topSources);
     setByCat(data.byCategory);
@@ -221,9 +232,12 @@ export default function RejectionsPage() {
     if (currentPage !== 1) setCurrentPage(1);
   }
 
+  const facets = useMemo(() => trailFacets(trails), [trails]);
+
   const shown = useMemo(() => {
     const filtered = items.filter(i => {
       if (categoryFilter !== "all" && (i.rejection_category ?? "") !== categoryFilter) return false;
+      if (!trailMatches(trails[i.url], modelFilter, promptFilter)) return false;
       if (!filter) return true;
       return (
         i.title.toLowerCase().includes(filter.toLowerCase()) ||
@@ -240,7 +254,7 @@ export default function RejectionsPage() {
       else cmp = a.fetched_at.localeCompare(b.fetched_at); // date
       return sortDir === "asc" ? cmp : -cmp;
     });
-  }, [items, filter, categoryFilter, sortKey, sortDir]);
+  }, [items, filter, categoryFilter, modelFilter, promptFilter, trails, sortKey, sortDir]);
 
   return (
     <div>
@@ -375,8 +389,14 @@ export default function RejectionsPage() {
             <option key={c.slug} value={c.slug}>{c.emoji} {c.label}</option>
           ))}
         </select>
-        {(filter || categoryFilter !== "all") && (
-          <button onClick={() => { setFilter(""); setCategoryFilter("all"); }}
+        <DecisionFilters
+          models={facets.models} prompts={facets.prompts}
+          model={modelFilter} prompt={promptFilter}
+          onModel={(v) => { setModelFilter(v); setCurrentPage(1); }}
+          onPrompt={(v) => { setPromptFilter(v); setCurrentPage(1); }}
+        />
+        {(filter || categoryFilter !== "all" || modelFilter !== "all" || promptFilter !== "all") && (
+          <button onClick={() => { setFilter(""); setCategoryFilter("all"); setModelFilter("all"); setPromptFilter("all"); setCurrentPage(1); }}
             className="text-xs text-amber-500 hover:text-amber-700 transition-colors">
             Clear ✕
           </button>
@@ -421,6 +441,7 @@ export default function RejectionsPage() {
                     Score<SortIcon col="score" />
                   </button>
                 </th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden md:table-cell">Decision</th>
                 <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide whitespace-nowrap">
                   <button onClick={() => handleSort("date")} className="flex items-center hover:text-amber-900 transition-colors">
                     Date<SortIcon col="date" />
@@ -444,6 +465,10 @@ export default function RejectionsPage() {
                       {item.rejection_reason && (
                         <p className="text-xs text-red-400 italic mt-0.5 line-clamp-1">✗ {item.rejection_reason}</p>
                       )}
+                      {/* On phones the Decision column is hidden; show the trail here instead. */}
+                      <div className="md:hidden mt-1">
+                        <DecisionTrail steps={trails[item.url]} prompts={prompts} />
+                      </div>
                     </td>
 
                     {/* Source */}
@@ -469,6 +494,11 @@ export default function RejectionsPage() {
                       ) : (
                         <span className="text-amber-300 text-xs">—</span>
                       )}
+                    </td>
+
+                    {/* Decision */}
+                    <td className="px-4 py-2.5 hidden md:table-cell">
+                      <DecisionTrail steps={trails[item.url]} prompts={prompts} />
                     </td>
 
                     {/* Date */}

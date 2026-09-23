@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
 import { recordDecision } from "@/lib/decision-log";
+import { loadTrails } from "@/lib/decision-trail";
 
 export async function GET() {
   // Browsable list is capped at 1,000 most recent — matches the public site's
@@ -36,8 +37,12 @@ export async function GET() {
     `),
   ]);
 
+  const { trails, prompts } = await loadTrails(items.rows.map((r) => String(r.url)));
+
   return Response.json({
     items: items.rows,
+    trails,
+    prompts,
     total: Number(totalResult.rows[0]?.total ?? 0),
     topSources: topSourcesResult.rows.map(r => ({
       source: String(r.source_name),

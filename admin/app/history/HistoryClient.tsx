@@ -2,6 +2,10 @@
 
 import { useState, useMemo } from "react";
 import EditArticleModal, { type EditableFields } from "@/app/components/EditArticleModal";
+import ActionsMenu from "@/app/components/ActionsMenu";
+import DecisionTrail from "@/app/components/DecisionTrail";
+import DecisionFilters from "@/app/components/DecisionFilters";
+import { trailFacets, trailMatches, type PromptVersionInfo, type Trails } from "@/lib/decision-types";
 
 type ArticleTag = { id: number; name: string; emoji: string };
 
@@ -70,9 +74,13 @@ type SortDir = "asc" | "desc";
 export default function HistoryClient({
   initialArticles,
   allTags,
+  trails,
+  prompts,
 }: {
   initialArticles: Article[];
   allTags: ArticleTag[];
+  trails: Trails;
+  prompts: PromptVersionInfo[];
 }) {
   const [articles, setArticles]           = useState<Article[]>(initialArticles);
   const [resetting, setResetting]         = useState<Set<number>>(new Set());
@@ -86,6 +94,8 @@ export default function HistoryClient({
   );
   const [filterTag, setFilterTag]         = useState("all");
   const [filterMonth, setFilterMonth]     = useState("all");
+  const [filterModel, setFilterModel]     = useState("all");
+  const [filterPrompt, setFilterPrompt]   = useState("all");
   const [sortKey, setSortKey]             = useState<SortKey>("date");
   const [sortDir, setSortDir]             = useState<SortDir>("desc");
   const [error, setError]                 = useState<string | null>(null);
@@ -116,10 +126,13 @@ export default function HistoryClient({
     [articles]
   );
 
+  const facets = useMemo(() => trailFacets(trails), [trails]);
+
   const displayed = useMemo(() => {
     const filtered = articles.filter((a) => {
       if (filterTag !== "all" && !a.tags.some((t) => t.name === filterTag)) return false;
       if (filterMonth !== "all" && articleMonth(a) !== filterMonth) return false;
+      if (!trailMatches(trails[a.source_url], filterModel, filterPrompt)) return false;
       return true;
     });
     return [...filtered].sort((a, b) => {
@@ -134,7 +147,7 @@ export default function HistoryClient({
       }
       return sortDir === "asc" ? cmp : -cmp;
     });
-  }, [articles, filterTag, filterMonth, sortKey, sortDir]);
+  }, [articles, filterTag, filterMonth, filterModel, filterPrompt, trails, sortKey, sortDir]);
 
   async function republish(id: number) {
     setRepublishing((prev) => new Set(prev).add(id));
@@ -263,8 +276,13 @@ export default function HistoryClient({
             {availableMonths.map((m) => <option key={m} value={m}>{formatMonth(m)}</option>)}
           </select>
         </div>
-        {(filterTag !== "all" || filterMonth !== "all") && (
-          <button onClick={() => { setFilterTag("all"); setFilterMonth("all"); }}
+        <DecisionFilters
+          models={facets.models} prompts={facets.prompts}
+          model={filterModel} prompt={filterPrompt}
+          onModel={setFilterModel} onPrompt={setFilterPrompt}
+        />
+        {(filterTag !== "all" || filterMonth !== "all" || filterModel !== "all" || filterPrompt !== "all") && (
+          <button onClick={() => { setFilterTag("all"); setFilterMonth("all"); setFilterModel("all"); setFilterPrompt("all"); }}
             className="text-xs text-amber-500 hover:text-amber-700 transition-colors">
             Clear ✕
           </button>
@@ -289,12 +307,13 @@ export default function HistoryClient({
                   </button>
                 </th>
                 <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden lg:table-cell">Tags</th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide hidden md:table-cell">Decision</th>
                 <th className="text-left px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide whitespace-nowrap">
                   <button onClick={() => handleSort("date")} className="flex items-center hover:text-amber-900 transition-colors">
                     Date<SortIcon col="date" />
                   </button>
                 </th>
-                <th className="text-right px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide">Actions</th>
+                <th className="text-right px-4 py-2.5 text-xs font-semibold text-amber-700 uppercase tracking-wide"><span className="hidden sm:inline">Actions</span></th>
               </tr>
             </thead>
             <tbody>
@@ -306,7 +325,7 @@ export default function HistoryClient({
                   <tr key={a.id} className={`${!isLast ? "border-b border-yellow-50" : ""} hover:bg-amber-50/40 transition-colors`}>
 
                     {/* Title — featured articles render in bold red to scan easily */}
-                    <td className="px-4 py-2.5 max-w-xs">
+                    <td className="pl-3 pr-2 sm:px-4 py-2.5 max-w-xs">
                       <div className="flex items-start gap-1.5">
                         <span className="shrink-0 text-base leading-5">{a.article_emoji ?? "📰"}</span>
                         <div className="min-w-0">
@@ -322,6 +341,10 @@ export default function HistoryClient({
                               {title}
                             </span>
                           )}
+                          {/* On phones the Decision column is hidden; show the trail here instead. */}
+                          <div className="md:hidden mt-1">
+                            <DecisionTrail steps={trails[a.source_url]} prompts={prompts} />
+                          </div>
                         </div>
                       </div>
                     </td>
@@ -362,8 +385,13 @@ export default function HistoryClient({
                       </div>
                     </td>
 
+                    {/* Decision */}
+                    <td className="px-4 py-2.5 hidden md:table-cell">
+                      <DecisionTrail steps={trails[a.source_url]} prompts={prompts} />
+                    </td>
+
                     {/* Date */}
-                    <td className="px-4 py-2.5 text-xs text-amber-500 whitespace-nowrap">
+                    <td className="px-2 sm:px-4 py-2.5 text-xs text-amber-500 whitespace-nowrap">
                       {a.source_pub_date ? (
                         <div>
                           <div title="Original source date">{formatDate(a.source_pub_date)}</div>
@@ -374,91 +402,68 @@ export default function HistoryClient({
                       )}
                     </td>
 
-                    {/* Actions — icon-only compact buttons, tooltips on hover */}
-                    <td className="px-3 py-2.5">
-                      <div className="flex items-center gap-1 justify-end">
-
-                        {/* Publish to Substack */}
-                        <button
-                          onClick={() => postToSubstack(a)}
-                          disabled={postingSubstack.has(a.id) || postedSubstack.has(a.id)}
-                          title={
-                            postedSubstack.has(a.id)
-                              ? `Published to Substack${a.substack_posted_at ? ` on ${formatDate(a.substack_posted_at)}` : ""}`
-                              : "Publish to Substack"
-                          }
-                          className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors disabled:opacity-40 ${
-                            postedSubstack.has(a.id)
-                              ? "bg-orange-200 text-orange-700"
-                              : "bg-orange-100 hover:bg-orange-200 text-orange-700"
-                          }`}>
-                          {postingSubstack.has(a.id) ? "⏳" : postedSubstack.has(a.id) ? "📰✓" : "📰"}
-                        </button>
-
-                        {/* Digest pick */}
-                        <button
-                          onClick={() => toggleDigestPick(a)}
-                          disabled={togglingDigest.has(a.id)}
-                          title={
-                            a.digest_posted_at
-                              ? `Included in digest on ${formatDate(a.digest_posted_at)}`
-                              : a.digest_pick
-                              ? "Remove from next social digest and from the wide card (republishes the post)"
-                              : "Include in next social digest and promote to the wide card (republishes the post)"
-                          }
-                          className={`w-7 h-7 flex items-center justify-center rounded text-sm transition-colors disabled:opacity-40 ${
-                            a.digest_posted_at
-                              ? "bg-teal-200 text-teal-700"
-                              : a.digest_pick
-                              ? "bg-teal-100 hover:bg-teal-200 text-teal-700 ring-2 ring-teal-400"
-                              : "bg-gray-100 hover:bg-gray-200 text-gray-400"
-                          }`}>
-                          {togglingDigest.has(a.id) ? "⏳" : a.digest_posted_at ? "📬✓" : "📬"}
-                        </button>
-
-                        {/* Edit */}
-                        <button
-                          onClick={() => setEditingId(a.id)}
-                          title="Edit article"
-                          className="w-7 h-7 flex items-center justify-center rounded bg-amber-100 hover:bg-amber-200 text-amber-700 transition-colors text-sm">
-                          ✏️
-                        </button>
-
-                        {/* Republish */}
-                        <button
-                          onClick={() => republish(a.id)}
-                          disabled={republishing.has(a.id) || republished.has(a.id)}
-                          title="Republish to site"
-                          className="w-7 h-7 flex items-center justify-center rounded bg-green-100 hover:bg-green-200 text-green-700 transition-colors disabled:opacity-40 text-sm font-bold">
-                          {republished.has(a.id) ? "✓" : republishing.has(a.id) ? "⏳" : (
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                              <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-                            </svg>
-                          )}
-                        </button>
-
-                        {/* Re-summarise */}
-                        <button
-                          onClick={() => resummarise(a.id)}
-                          disabled={resetting.has(a.id)}
-                          title="Move back to Preview queue"
-                          className="w-7 h-7 flex items-center justify-center rounded bg-blue-50 hover:bg-blue-100 text-blue-500 transition-colors disabled:opacity-40 text-sm font-bold">
-                          {resetting.has(a.id) ? "⏳" : (
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                              <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.85"/>
-                            </svg>
-                          )}
-                        </button>
-
-                        {/* Remove */}
-                        <button
-                          onClick={() => removeFromSite(a)}
-                          disabled={removing.has(a.id)}
-                          title="Remove from site"
-                          className="w-7 h-7 flex items-center justify-center rounded bg-red-50 hover:bg-red-100 text-red-400 hover:text-red-600 transition-colors disabled:opacity-40 text-sm font-bold">
-                          {removing.has(a.id) ? "⏳" : "✕"}
-                        </button>
-
+                    {/* Actions — status badges, then one compact menu */}
+                    <td className="pl-1 pr-3 sm:px-3 py-2.5">
+                      <div className="flex items-center gap-1.5 justify-end">
+                        {postedSubstack.has(a.id) && (
+                          <span className="hidden md:inline text-xs px-1 rounded whitespace-nowrap bg-orange-100 text-orange-700"
+                            title={`Published to Substack${a.substack_posted_at ? ` on ${formatDate(a.substack_posted_at)}` : ""}`}>
+                            📰✓
+                          </span>
+                        )}
+                        {(a.digest_pick || a.digest_posted_at) && (
+                          <span className={`hidden md:inline text-xs px-1 rounded whitespace-nowrap ${a.digest_posted_at ? "bg-teal-200 text-teal-700" : "bg-teal-100 text-teal-700 ring-1 ring-teal-400"}`}
+                            title={a.digest_posted_at ? `Included in digest on ${formatDate(a.digest_posted_at)}` : "Picked for the next social digest"}>
+                            {a.digest_posted_at ? "📬✓" : "📬"}
+                          </span>
+                        )}
+                        <ActionsMenu
+                          busy={postingSubstack.has(a.id) || togglingDigest.has(a.id) || republishing.has(a.id) || resetting.has(a.id) || removing.has(a.id)}
+                          done={republished.has(a.id)}
+                          items={[
+                            {
+                              key: "edit", icon: "✏️", label: "Edit article",
+                              onSelect: () => setEditingId(a.id),
+                            },
+                            {
+                              key: "republish", icon: "🔁", label: "Republish to site",
+                              disabled: republishing.has(a.id),
+                              onSelect: () => republish(a.id),
+                            },
+                            {
+                              key: "substack", icon: "📰",
+                              label: postedSubstack.has(a.id) ? "Published to Substack" : "Publish to Substack",
+                              hint: postedSubstack.has(a.id) && a.substack_posted_at ? formatDate(a.substack_posted_at) : undefined,
+                              disabled: postingSubstack.has(a.id) || postedSubstack.has(a.id),
+                              onSelect: () => postToSubstack(a),
+                            },
+                            {
+                              key: "digest", icon: "📬",
+                              label: a.digest_posted_at
+                                ? "Included in digest"
+                                : a.digest_pick ? "Remove from next digest" : "Include in next digest",
+                              hint: a.digest_posted_at
+                                ? formatDate(a.digest_posted_at)
+                                : a.digest_pick
+                                ? "Also drops the wide card (republishes the post)"
+                                : "Also promotes to the wide card (republishes the post)",
+                              disabled: togglingDigest.has(a.id),
+                              onSelect: () => toggleDigestPick(a),
+                            },
+                            {
+                              key: "resummarise", icon: "↺", label: "Re-summarise",
+                              hint: "Move back to the Preview queue",
+                              separated: true,
+                              disabled: resetting.has(a.id),
+                              onSelect: () => resummarise(a.id),
+                            },
+                            {
+                              key: "remove", icon: "✕", label: "Remove from site", danger: true,
+                              disabled: removing.has(a.id),
+                              onSelect: () => removeFromSite(a),
+                            },
+                          ]}
+                        />
                       </div>
                     </td>
 

@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import db from "@/lib/db";
 import HistoryClient from "./HistoryClient";
+import { loadTrails } from "@/lib/decision-trail";
 
 function parseTagData(raw: unknown): { id: number; name: string; emoji: string }[] {
   if (!raw) return [];
@@ -64,5 +65,7 @@ export default async function HistoryPage() {
     emoji: String(t.emoji),
   }));
 
-  return <HistoryClient initialArticles={articles} allTags={allTags} />;
+  const { trails, prompts } = await loadTrails(articles.map((a) => a.source_url));
+
+  return <HistoryClient initialArticles={articles} allTags={allTags} trails={trails} prompts={prompts} />;
 }
