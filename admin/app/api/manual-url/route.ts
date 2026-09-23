@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { parseArticle } from "@/lib/parse-html";
+import { recordDecision } from "@/lib/decision-log";
 
 async function getManualSourceId(): Promise<number> {
   const existing = await db.execute(
@@ -79,6 +80,7 @@ export async function POST(request: NextRequest) {
       sql: "INSERT INTO raw_articles (source_id, url, title, content) VALUES (?, ?, ?, ?)",
       args: [sourceId, url, title, content],
     });
+    await recordDecision({ url, stage: "review", actor: "human", verdict: "manual_add" });
 
     return Response.json({ added: true, title });
   } catch (err) {

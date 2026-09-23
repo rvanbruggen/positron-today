@@ -18,6 +18,7 @@ import db from "@/lib/db";
 import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
+import { promptVersionId, recordDecision } from "@/lib/decision-log";
 import { parseArticle } from "@/lib/parse-html";
 import { nextSlot, parseScheduleWallString, toScheduleWallString } from "@/lib/schedule-time";
 
@@ -190,7 +191,15 @@ Output ONLY this exact JSON object and nothing else. All fields are required:
 
     missingFields = REQUIRED_TRANSLATION_FIELDS.filter(f => !result[f]);
 
-    if (missingFields.length === 0) return result;  // ✓ all fields present
+    if (missingFields.length === 0) {  // ✓ all fields present
+      await recordDecision({
+        url: sourceUrl, stage: "summarise", actor: "llm", verdict: "summarised",
+        provider: provider.name, model: provider.model,
+        promptVersionId: await promptVersionId("summarise", style),
+        callPath: attempt > 1 ? "retry" : "first_attempt",
+      });
+      return result;
+    }
 
     console.warn(`[summarise] attempt ${attempt}/${MAX_ATTEMPTS}: missing fields: ${missingFields.join(", ")}`);
     if (attempt === MAX_ATTEMPTS) {

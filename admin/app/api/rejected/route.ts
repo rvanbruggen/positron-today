@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
+import { recordDecision } from "@/lib/decision-log";
 
 export async function GET() {
   // Browsable list is capped at 1,000 most recent — matches the public site's
@@ -89,6 +90,15 @@ export async function POST(request: NextRequest) {
       args: [article.source_id, article.url as string, article.title as string, article.snippet ?? ""],
     });
   }
+
+  // The rejected row is deleted below, so carry the reason and category being
+  // overridden into the decision log - rejections from before the log existed
+  // have no other record of them.
+  await recordDecision({
+    url: String(article.url), stage: "review", actor: "human", verdict: "restore",
+    reason: (article.rejection_reason as string | null) ?? null,
+    category: (article.rejection_category as string | null) ?? null,
+  });
 
   // Remove from rejected so it doesn't show as both
   await db.execute({ sql: "DELETE FROM rejected_articles WHERE id = ?", args: [id] });

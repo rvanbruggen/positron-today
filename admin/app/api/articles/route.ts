@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import db from "@/lib/db";
 import { exportRejections } from "@/lib/export-rejections";
+import { recordDecision } from "@/lib/decision-log";
 import {
   findDuplicateHint,
   normaliseTitleTokens,
@@ -451,6 +452,12 @@ export async function PATCH(request: NextRequest) {
       args: [id],
     });
     const raw = rawResult.rows[0];
+    if (raw) {
+      await recordDecision({
+        url: String(raw.url), stage: "review", actor: "human",
+        verdict: status === "approved" ? "approve" : "discard",
+      });
+    }
     if (raw && status === "approved") {
       await db.execute({
         sql: `INSERT OR IGNORE INTO articles (raw_article_id, source_url, source_name, status, positivity_score)
@@ -486,11 +493,19 @@ export async function PATCH(request: NextRequest) {
     // queued versions are filed away with a fold_reason and NOT written to the
     // rejection log - the human decision above was recorded once, already.
     if (raw && raw.story_id != null) {
-      await db.execute({
+      const foldReason = status === "approved" ? "sibling_approved" : "story_discarded";
+      const siblings = await db.execute({
         sql: `UPDATE raw_articles SET status = 'discarded', fold_reason = ?
-              WHERE story_id = ? AND id != ? AND status = 'pending'`,
-        args: [status === "approved" ? "sibling_approved" : "story_discarded", raw.story_id, id],
+              WHERE story_id = ? AND id != ? AND status = 'pending'
+              RETURNING url`,
+        args: [foldReason, raw.story_id, id],
       });
+      for (const sib of siblings.rows) {
+        await recordDecision({
+          url: String(sib.url), stage: "fold", actor: "rule", verdict: "discard",
+          reason: `${foldReason} (story ${raw.story_id})`,
+        });
+      }
     }
   }
 

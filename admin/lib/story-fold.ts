@@ -21,6 +21,7 @@
 import db from "./db";
 import { getSettings } from "./settings";
 import { getFoldProvider } from "./llm";
+import { recordDecision } from "./decision-log";
 
 /** New articles per matching call; the story list is sent alongside. */
 const MAX_NEW_PER_CALL = 40;
@@ -107,7 +108,7 @@ export interface FoldSummary {
  * folding is a convenience, and a failure must not break the pipeline run -
  * unmatched articles simply show as their own story and are retried next run.
  */
-export async function foldNewArticles(log?: (line: string) => void): Promise<FoldSummary> {
+export async function foldNewArticles(log?: (line: string) => void, runId?: number): Promise<FoldSummary> {
   const summary: FoldSummary = { matched: 0, newStories: 0, filedUnderApproved: 0, calls: 0, failed: false };
   const settings = await getSettings();
   if (settings.fold_enabled !== "true") return summary;
@@ -120,7 +121,7 @@ export async function foldNewArticles(log?: (line: string) => void): Promise<Fol
 
     while (true) {
       const fresh = await db.execute({
-        sql: `SELECT r.id, r.title, r.preview_title_en, r.status, s.name AS source_name
+        sql: `SELECT r.id, r.url, r.title, r.preview_title_en, r.status, s.name AS source_name
               FROM raw_articles r JOIN sources s ON s.id = r.source_id
               WHERE r.story_id IS NULL AND r.fetched_at >= datetime('now', ?)
               ORDER BY r.id ASC LIMIT ${MAX_NEW_PER_CALL}`,
@@ -178,6 +179,11 @@ Reply with JSON only, no other text: {"assignments":[{"n":1,"match":"S4"},{"n":2
         const id = Number(row.id);
         const story = assignments.get(id) ?? id;
         if (story === id) summary.newStories++; else summary.matched++;
+        // Only matches are logged: "new story" is the default and changes nothing.
+        const provenance = {
+          url: String(row.url), stage: "fold", actor: "llm",
+          provider: provider.name, model: provider.model, runId,
+        } as const;
         if (story !== id && row.status === "pending" && approved.has(story)) {
           await db.execute({
             sql: `UPDATE raw_articles SET story_id = ?, status = 'discarded', fold_reason = 'story_already_approved'
@@ -185,8 +191,10 @@ Reply with JSON only, no other text: {"assignments":[{"n":1,"match":"S4"},{"n":2
             args: [story, id],
           });
           summary.filedUnderApproved++;
+          await recordDecision({ ...provenance, verdict: "discard", reason: `story_already_approved (story ${story})` });
         } else {
           await db.execute({ sql: "UPDATE raw_articles SET story_id = ? WHERE id = ?", args: [story, id] });
+          if (story !== id) await recordDecision({ ...provenance, verdict: "join", reason: `story ${story}` });
         }
       }
     }

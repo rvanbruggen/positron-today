@@ -2,13 +2,15 @@ import db from "@/lib/db";
 import { getFilterProvider } from "@/lib/llm";
 import { CATEGORY_PROMPT_LIST, CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import { exportRejections } from "@/lib/export-rejections";
+import { recordDecision } from "@/lib/decision-log";
 
 async function classifyRejection(
   title: string,
   snippet: string,
   existingReason: string,
-): Promise<{ reason: string; category: string }> {
+): Promise<{ reason: string; category: string; provider: string; model: string }> {
   const provider = await getFilterProvider();
+  const who = { provider: provider.name, model: provider.model };
 
   const prompt = `You are categorising a news article that was already rejected from a positive-news site called "Positiviteiten".
 
@@ -43,11 +45,13 @@ ${CATEGORY_PROMPT_LIST}`;
       category: (typeof parsed.category === "string" && parsed.category)
                   ? parsed.category
                   : "other-negative",
+      ...who,
     };
   } catch {
     return {
       reason:   existingReason || "does not fit positive news criteria",
       category: "other-negative",
+      ...who,
     };
   }
 }
@@ -76,7 +80,7 @@ export async function POST() {
       try {
         // Fetch all articles missing a category
         const result = await db.execute(`
-          SELECT id, title, snippet, rejection_reason
+          SELECT id, url, title, snippet, rejection_reason
           FROM rejected_articles
           WHERE rejection_category IS NULL OR rejection_category = ''
           ORDER BY fetched_at DESC
@@ -101,8 +105,14 @@ export async function POST() {
           const existingReason = String(row.rejection_reason ?? "");
 
           try {
-            const { reason, category } = await classifyRejection(title, snippet, existingReason);
+            const { reason, category, provider, model } = await classifyRejection(title, snippet, existingReason);
             const safeCategory = CATEGORY_SLUGS.includes(category) ? category : "other-negative";
+            // The UPDATE below overwrites the original reason; the decision log
+            // keeps both.
+            await recordDecision({
+              url: String(row.url), stage: "backfill", actor: "llm", verdict: "recategorise",
+              reason, category: safeCategory, provider, model,
+            });
 
             await db.execute({
               sql: `UPDATE rejected_articles

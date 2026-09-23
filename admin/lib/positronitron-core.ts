@@ -8,6 +8,7 @@ import { exportRejections } from "@/lib/export-rejections";
 import { getSummariseProvider } from "@/lib/llm";
 import { DEFAULT_SUMMARISE_STYLE } from "@/lib/prompts";
 import { getSettings } from "@/lib/settings";
+import { promptVersionId, recordDecision } from "@/lib/decision-log";
 import { parseArticle } from "@/lib/parse-html";
 import { acquireLock, lockHolder, releaseLock } from "@/lib/run-lock";
 import { nextSlot, parseScheduleWallString, scheduleNow, toScheduleWallString } from "@/lib/schedule-time";
@@ -184,7 +185,15 @@ Output ONLY this exact JSON object and nothing else. All fields are required:
     };
 
     missingFields = REQUIRED_TRANSLATION_FIELDS.filter((f) => !result[f]);
-    if (missingFields.length === 0) return result;
+    if (missingFields.length === 0) {
+      await recordDecision({
+        url: sourceUrl, stage: "summarise", actor: "llm", verdict: "summarised",
+        provider: provider.name, model: provider.model,
+        promptVersionId: await promptVersionId("summarise", style),
+        callPath: attempt > 1 ? "retry" : "first_attempt",
+      });
+      return result;
+    }
 
     if (attempt === MAX_ATTEMPTS) {
       throw new Error(`LLM missing fields after ${MAX_ATTEMPTS} attempts: ${missingFields.join(", ")}`);
@@ -444,13 +453,19 @@ async function runPositronitronLocked(
     // taken a candidate in the meantime, rowsAffected tells us and we drop it.
     // Defence in depth: the lock above should already prevent this.
     const candidates: typeof queueResult.rows = [];
-    for (const { row } of selected) {
+    for (const { row, composite_score, source_weight } of selected) {
       const claim = await db.execute({
         sql: "UPDATE raw_articles SET status = 'approved' WHERE id = ? AND status = 'pending'",
         args: [Number(row.id)],
       });
       if (claim.rowsAffected > 0) {
         candidates.push(row);
+        await recordDecision({
+          url: String(row.url), stage: "positronitron", actor: "rule", verdict: "pick",
+          score: composite_score,
+          reason: `positivity ${Number(row.positivity_score)} × source weight ${source_weight.toFixed(2)}`,
+          callPath: isManual ? "manual" : "scheduled",
+        });
       } else {
         L(`  ✕ skipped "${row.title}" — already claimed by another run`);
       }

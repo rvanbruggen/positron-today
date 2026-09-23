@@ -27,7 +27,7 @@ interface BackupFile {
 }
 
 // Tables that have AUTOINCREMENT sequences to reset
-const SEQUENCE_TABLES = ["sources", "topics", "articles", "rejected_articles"];
+const SEQUENCE_TABLES = ["sources", "topics", "articles", "rejected_articles", "prompt_versions", "decisions"];
 
 function rowToStatement(table: string, row: Record<string, unknown>): InStatement {
   const keys = Object.keys(row);
@@ -75,6 +75,13 @@ export async function POST(request: Request) {
     stmts.push("DELETE FROM topics");
     stmts.push("DELETE FROM sources");
     stmts.push("DELETE FROM settings");
+    // The decision log is only replaced when the backup carries one, so
+    // restoring a backup made before it existed does not erase it.
+    const hasDecisionLog = Array.isArray(tables.decisions);
+    if (hasDecisionLog) {
+      stmts.push("DELETE FROM decisions");
+      stmts.push("DELETE FROM prompt_versions");
+    }
 
     // 2. Restore: sources
     for (const row of tables.sources ?? []) {
@@ -117,6 +124,18 @@ export async function POST(request: Request) {
       });
     }
     stats.settings = (tables.settings ?? []).length;
+
+    // decision log (prompt_versions first: decisions reference it)
+    if (hasDecisionLog) {
+      for (const row of tables.prompt_versions ?? []) {
+        stmts.push(rowToStatement("prompt_versions", row));
+      }
+      stats.prompt_versions = (tables.prompt_versions ?? []).length;
+      for (const row of tables.decisions ?? []) {
+        stmts.push(rowToStatement("decisions", row));
+      }
+      stats.decisions = (tables.decisions ?? []).length;
+    }
 
     // 3. Reset AUTOINCREMENT sequences
     for (const table of SEQUENCE_TABLES) {

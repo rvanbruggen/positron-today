@@ -5,7 +5,7 @@
  * The resulting file can be imported via POST /api/restore.
  *
  * Tables exported: sources, topics, articles, article_tags,
- *                  rejected_articles, settings
+ *                  rejected_articles, settings, prompt_versions, decisions
  *
  * raw_articles are intentionally omitted — they are large and
  * can always be re-fetched from source RSS feeds.
@@ -20,6 +20,8 @@ const TABLES = [
   "article_tags",
   "rejected_articles",
   "settings",
+  "prompt_versions",
+  "decisions",
 ] as const;
 
 export async function GET() {

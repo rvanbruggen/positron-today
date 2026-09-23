@@ -28,6 +28,7 @@ import { withRetry } from "@/lib/retry";
 import { classifyBatch, CLASSIFY_BATCH_SIZE } from "@/lib/classify-batch";
 import { acquireLock, lockHolder, releaseLock } from "@/lib/run-lock";
 import { foldNewArticles } from "@/lib/story-fold";
+import { promptVersionId, recordDecision } from "@/lib/decision-log";
 
 const parser = new RSSParser();
 
@@ -281,6 +282,7 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
   const settings = await getSettings();
   const { DEFAULT_FILTER_INSTRUCTIONS } = await import("./prompts");
   const filterInstructions = settings.filter_prompt_override || DEFAULT_FILTER_INSTRUCTIONS;
+  const filterPromptId = await promptVersionId("filter", filterInstructions);
 
   let totalAdded = 0, totalFiltered = 0, totalErrors = 0;
 
@@ -348,8 +350,14 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
 
       try {
         const needsTranslation = !isNativeOutputLanguage(sourceLanguage);
-        const result = batchVerdicts.get(rowIndex)
+        const batchVerdict = batchVerdicts.get(rowIndex);
+        const result = batchVerdict
           ?? await provider.classify(buildFilterPrompt(filterInstructions, title, snippet, needsTranslation));
+        const provenance = {
+          url: itemUrl, stage: "filter", actor: "llm",
+          provider: provider.name, model: provider.model, promptVersionId: filterPromptId,
+          callPath: batchVerdict ? "batch" : "single", runId,
+        } as const;
 
         if (!result.fits) {
           const safeCategory = CATEGORY_SLUGS.includes(result.category ?? "other-negative")
@@ -363,6 +371,10 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
               args: [sourceId, sourceName, itemUrl, title, snippet.slice(0, 500), result.reason, safeCategory, sourcePubDate, result.score ?? null],
             });
           } catch { /* duplicate */ }
+          await recordDecision({
+            ...provenance, verdict: "reject",
+            reason: result.reason, category: safeCategory, score: result.score ?? null,
+          });
           totalFiltered++;
           await appendLog(runId, { type: "result", verdict: "filtered", title, reason: result.reason, category: safeCategory });
         } else {
@@ -376,6 +388,7 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
               result.preview_title_en ?? null, result.preview_snippet_en ?? null,
             ],
           });
+          await recordDecision({ ...provenance, verdict: "accept", score: result.score ?? null });
           totalAdded++;
           await appendLog(runId, { type: "result", verdict: "added", title, score: result.score });
         }
@@ -420,7 +433,7 @@ async function classifyAllPending(runId: number): Promise<{ added: number; filte
 
   // Attach this run's accepted articles to stories already in the queue, so one
   // news event shows up as one card rather than once per outlet.
-  const fold = await foldNewArticles((line) => { appendLog(runId, { type: "phase", label: line }).catch(() => {}); });
+  const fold = await foldNewArticles((line) => { appendLog(runId, { type: "phase", label: line }).catch(() => {}); }, runId);
   if (fold.calls > 0 || fold.matched > 0) {
     await appendLog(runId, {
       type: "phase",

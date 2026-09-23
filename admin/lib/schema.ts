@@ -301,6 +301,42 @@ export async function initSchema() {
   // v4.4: failed classifications are retried on later runs instead of deleted
   try { await db.execute("ALTER TABLE pending_items ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0"); } catch { /* already applied */ }
 
+  // v4.6: decision provenance (see lib/decision-log.ts). prompt_versions holds
+  // each distinct editable prompt once, keyed by its hash; decisions is an
+  // append-only log of every accept / reject / pick / summarise, recording who
+  // or what made it, with which model and which prompt version.
+  try {
+    await db.execute(`CREATE TABLE IF NOT EXISTS prompt_versions (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      kind       TEXT NOT NULL,
+      sha256     TEXT NOT NULL,
+      text       TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE (kind, sha256)
+    )`);
+  } catch { /* already applied */ }
+  try {
+    await db.execute(`CREATE TABLE IF NOT EXISTS decisions (
+      id                INTEGER PRIMARY KEY AUTOINCREMENT,
+      url               TEXT NOT NULL,
+      stage             TEXT NOT NULL,
+      actor             TEXT NOT NULL CHECK(actor IN ('llm', 'human', 'rule')),
+      verdict           TEXT NOT NULL,
+      reason            TEXT,
+      category          TEXT,
+      score             REAL,
+      provider          TEXT,
+      model             TEXT,
+      prompt_version_id INTEGER REFERENCES prompt_versions(id),
+      call_path         TEXT,
+      run_id            INTEGER,
+      app_version       TEXT,
+      created_at        TEXT NOT NULL DEFAULT (datetime('now'))
+    )`);
+  } catch { /* already applied */ }
+  try { await db.execute("CREATE INDEX IF NOT EXISTS idx_decisions_url ON decisions(url)"); } catch { /* already applied */ }
+  try { await db.execute("CREATE INDEX IF NOT EXISTS idx_decisions_stage_created ON decisions(stage, created_at)"); } catch { /* already applied */ }
+
   // v4.1: last audio-generation error, so a failed run is visible in the admin
   // instead of only in the container logs.
   try { await db.execute("ALTER TABLE editorials ADD COLUMN audio_error TEXT"); } catch { /* already applied */ }

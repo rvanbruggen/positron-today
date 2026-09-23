@@ -31,6 +31,10 @@ export interface ClassifyResult {
 }
 
 export interface LLMProvider {
+  /** Which provider and model this instance calls — recorded in the decision log. */
+  readonly name: "anthropic" | "ollama" | "openai" | "gemini";
+  readonly model: string;
+
   /** Binary classification — used for the positivity filter. */
   classify(prompt: string, systemPrompt?: string): Promise<ClassifyResult>;
 
@@ -93,7 +97,9 @@ const ANTHROPIC_MODELS: Record<string, string> = {
 };
 
 class AnthropicProvider implements LLMProvider {
-  constructor(private model: string) {}
+  readonly name = "anthropic" as const;
+
+  constructor(readonly model: string) {}
 
   async classify(prompt: string): Promise<ClassifyResult> {
     const message = await anthropic.messages.create({
@@ -125,8 +131,10 @@ class AnthropicProvider implements LLMProvider {
 // ---------------------------------------------------------------------------
 
 class OllamaProvider implements LLMProvider {
+  readonly name = "ollama" as const;
+
   constructor(
-    private model: string,
+    readonly model: string,
     private baseUrl: string,
   ) {}
 
@@ -183,9 +191,10 @@ class OllamaProvider implements LLMProvider {
 // ---------------------------------------------------------------------------
 
 class OpenAIProvider implements LLMProvider {
+  readonly name = "openai" as const;
   private readonly endpoint = "https://api.openai.com/v1/chat/completions";
 
-  constructor(private model: string) {}
+  constructor(readonly model: string) {}
 
   async classify(prompt: string): Promise<ClassifyResult> {
     const raw = await this.call(prompt, undefined, 200, 0);
@@ -271,8 +280,9 @@ const GEMINI_THINKING_HEADROOM = 2048;
 class GeminiProvider implements LLMProvider {
   private readonly endpoint =
     "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
+  readonly name = "gemini" as const;
 
-  constructor(private model: string) {}
+  constructor(readonly model: string) {}
 
   async classify(prompt: string): Promise<ClassifyResult> {
     const { text, finish } = await this.call(prompt, undefined, 200, 0);
