@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-24T17:21:50.959Z",
-  "total_rejected": 156430,
+  "exported_at": "2026-09-24T17:25:11.572Z",
+  "total_rejected": 156431,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2917
+      "count": 2918
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 7145,
-      "total": 7206
+      "negative": 7146,
+      "total": 7207
     },
     {
       "source": "Le Figaro",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "Bokmässa i Bredäng lyfter kreatörer med funktionsnedsättning",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dn.se/kultur/bokmassa-i-bredang-lyfter-kreatorer-med-funktionsnedsattning/",
+      "date": "2026-09-24 19:25",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Cameroon: Cameroon Cotton Farmers Pair Improved Seed With Nature-Based Methods",
@@ -9391,15 +9400,6 @@
       "url": "https://english.elpais.com/international/2026-09-23/iranian-president-accuses-us-and-israel-of-violating-international-law-at-the-un.html",
       "date": "2026-09-23 21:22",
       "positivity_score": 1
-    },
-    {
-      "source": "El pais",
-      "title": "Sánchez and Mamdani defend Spain’s social policies: ‘The powerful fear us’",
-      "reason": "The article is political commentary on Spain's social policies and immigration, which is political content.",
-      "category": "political-conflict",
-      "url": "https://english.elpais.com/international/2026-09-23/sanchez-and-mamdani-defend-spains-social-policies-the-powerful-fear-us.html",
-      "date": "2026-09-23 21:22",
-      "positivity_score": 3
     }
   ]
 }
