@@ -1,0 +1,20 @@
+---
+title: "New data centers in Oregon will be charged for all costs associated with growing energy need"
+title_nl: "Nieuwe datacenters in Oregon betalen voor alle kosten van groeiende energiebehoefte"
+title_fr: "Les nouveaux centres de données en Oregon paieront tous les coûts liés à la croissance des besoins énergétiques"
+date: 2026-09-25T09:39:00
+source_pub_date: 2026-09-24
+fetched_date: 2026-09-24
+source_url: "https://www.goodgoodgood.co/articles/oregon-data-centers-charged-by-pacific-power"
+source_name: "Good Good Good"
+topic: "Economy"
+tags: ["Economy","Environment","Technology"]
+emoji: "⚡"
+summary: "So: Oregon’s Pacific Power utility has agreed to a groundbreaking deal that makes new data centers pay for all the energy projects and infrastructure they require. This means data centers will cover costs for new power plants, batteries, and even transmission lines that serve them, ensuring other customers aren’t subsidizing their massive energy use. It’s a big step forward under Oregon’s POWER Act, and the agreement is praised as the strongest yet from a for-profit utility. Now, the Public Utility Commission is expected to approve this, though the data center industry might appeal. And here’s the thing - this approach could set a new standard for fair energy cost distribution."
+summary_nl: "Dus: Pacific Power in Oregon heeft een baanbrekende overeenkomst gesloten waarbij nieuwe datacenters alle kosten betalen voor de energieprojecten en infrastructuur die ze nodig hebben. Dit betekent dat datacenters betalen voor nieuwe energiecentrales, batterijen en zelfs transmissielijnen die hen bedienen, zodat andere klanten niet opdraaien voor hun enorme energieverbruik. Het is een grote stap vooruit onder de POWER Act van Oregon, en de overeenkomst wordt geprezen als de sterkste tot nu toe van een commerciële energieleverancier. Nu wordt verwacht dat de Public Utility Commission dit goedkeurt, hoewel de datacenterindustrie mogelijk in beroep gaat. En hier is het mooie aan - deze aanpak kan een nieuwe standaard zetten voor eerlijke verdeling van energiekosten."
+summary_fr: "Alors: Pacific Power en Oregon a conclu un accord novateur qui oblige les nouveaux centres de données à payer tous les coûts des projets énergétiques et infrastructures dont ils ont besoin. Cela signifie que ces centres couvriront les frais des nouvelles centrales, batteries et lignes de transmission qui les desservent, évitant ainsi que les autres clients subventionnent leur énorme consommation d’énergie. C’est une avancée majeure sous la loi POWER de l’Oregon, et cet accord est salué comme le plus fort jamais obtenu d’une entreprise électrique à but lucratif. La Commission des services publics devrait approuver cela bientôt, même si l’industrie des centres de données pourrait faire appel. Et voici le truc - cette approche pourrait devenir un nouveau standard pour une répartition équitable des coûts énergétiques."
+image_url: "https://cdn.prod.website-files.com/5f6cc9cd16d59d990c8fca33/6ab55f850229184df8659373_6ab55f8558e15b39fcef1c3b_oregon-data-centers-charged-by-pacific-power-featured.webp"
+layout: post.njk
+---
+
+So: Oregon’s Pacific Power utility has agreed to a groundbreaking deal that makes new data centers pay for all the energy projects and infrastructure they require. This means data centers will cover costs for new power plants, batteries, and even transmission lines that serve them, ensuring other customers aren’t subsidizing their massive energy use. It’s a big step forward under Oregon’s POWER Act, and the agreement is praised as the strongest yet from a for-profit utility. Now, the Public Utility Commission is expected to approve this, though the data center industry might appeal. And here’s the thing - this approach could set a new standard for fair energy cost distribution.
