@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-27T05:16:14.960Z",
-  "total_rejected": 158840,
+  "exported_at": "2026-09-27T05:17:15.197Z",
+  "total_rejected": 158841,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2942
+      "count": 2943
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 5995,
-      "total": 6075
+      "negative": 5996,
+      "total": 6076
     },
     {
       "source": "NRC",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Triathlon : un deuxième titre mondial pour Cassandre Beaugrand, deux ans après son triomphe à Paris 2024",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sport/article/2026/09/26/triathlon-un-deuxieme-titre-mondial-pour-cassandre-beaugrand-deux-ans-apres-son-triomphe-a-paris-2024_6783509_3242.html",
+      "date": "2026-09-27 07:17",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Africa: Social PPPs in Africa - From Frameworks to Implementation",
@@ -9391,15 +9400,6 @@
       "url": "https://globalnews.ca/news/12073599/new-brunswick-fed-funding-infrastructure/",
       "date": "2026-09-25 22:37",
       "positivity_score": 3
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "After 2 youths stalked on Snapchat, review your kid’s settings, police urge",
-      "reason": "The article is a local police advisory about social media safety, relevant only locally.",
-      "category": "other-negative",
-      "url": "https://globalnews.ca/news/12073319/edmonton-alert-snapchat-location-sexual-exploitation/",
-      "date": "2026-09-25 22:37",
-      "positivity_score": 2
     }
   ]
 }
