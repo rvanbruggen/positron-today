@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-27T05:17:15.197Z",
-  "total_rejected": 158841,
+  "exported_at": "2026-09-27T05:17:33.232Z",
+  "total_rejected": 158842,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2943
+      "count": 2944
     },
     {
       "category": "divisive-racism",
@@ -171,8 +171,8 @@
     },
     {
       "source": "Le Soir",
-      "negative": 2962,
-      "total": 2994
+      "negative": 2963,
+      "total": 2995
     },
     {
       "source": "Global News (Canada)",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Soir",
+      "title": "« La situation était grave et critique » : un pompier belge réanime une femme à bord d’un vol Brussels Airlines",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lesoir.be/773259/article/2026-09-26/la-situation-etait-grave-et-critique-un-pompier-belge-reanime-une-femme-bord-dun",
+      "date": "2026-09-27 07:17",
+      "positivity_score": null
+    },
     {
       "source": "Le Monde",
       "title": "Triathlon : un deuxième titre mondial pour Cassandre Beaugrand, deux ans après son triomphe à Paris 2024",
@@ -9391,15 +9400,6 @@
       "url": "https://globalnews.ca/news/12073041/winnipeg-woman-speaking-out-after-alleged-romance-scam/",
       "date": "2026-09-25 22:37",
       "positivity_score": 2
-    },
-    {
-      "source": "Global News (Canada)",
-      "title": "Feds grant New Brunswick $461 million for infrastructure projects",
-      "reason": "The article is about a government funding transfer for local infrastructure projects, which is local-only relevance.",
-      "category": "other-negative",
-      "url": "https://globalnews.ca/news/12073599/new-brunswick-fed-funding-infrastructure/",
-      "date": "2026-09-25 22:37",
-      "positivity_score": 3
     }
   ]
 }
