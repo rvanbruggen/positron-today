@@ -1,0 +1,20 @@
+---
+title: "Forget recycling. what if we could compost or reuse everything?"
+title_nl: "Vergeet recyclage. wat als we alles konden composteren of hergebruiken?"
+title_fr: "Oubliez le recyclage. et si nous pouvions tout composter ou réutiliser ?"
+date: 2026-09-28T12:30:46
+source_pub_date: 2026-09-28
+fetched_date: 2026-09-28
+source_url: "https://reasonstobecheerful.world/forget-recycling-what-if-we-could-compost-or-reuse-everything/"
+source_name: "Reasons to be Cheerful"
+topic: "Environment"
+tags: ["Environment","Science","Technology"]
+emoji: "♻️"
+summary: "I find the Cradle to Cradle philosophy absolutely fascinating because it shifts our focus from just minimizing damage to actually designing systems that benefit the planet. Instead of just recycling, we are looking at a world where materials are either safely returned to nature or kept in an endless industrial loop. Just look at the C2C LAB in Berlin, where everything from the lamp shades to the office chairs is designed to be composted or dismantled. It is such a hopeful vision, showing us that buildings can act like trees by producing more energy than they consume. Which brings me to the best part: this is already happening with modular phones and sustainable construction projects that prove we can create value while restoring biodiversity."
+summary_nl: "Ik vind de Cradle to Cradle-filosofie absoluut fascinerend omdat het onze focus verlegt van enkel schade beperken naar het ontwerpen van systemen die de planeet echt ten goede komen. In plaats van alleen te recyclen, kijken we naar een wereld waarin materialen ofwel veilig terugkeren naar de natuur, ofwel in een eindeloze industriële lus blijven. Kijk maar naar het C2C LAB in Berlijn, waar alles, van de lampenkappen tot de bureaustoelen, is ontworpen om te worden gecomposteerd of uit elkaar gehaald. Het is zo'n hoopvolle visie die ons laat zien dat gebouwen als bomen kunnen fungeren door meer energie te produceren dan ze verbruiken. En hier is het mooie: dit gebeurt al met modulaire telefoons en duurzame bouwprojecten die bewijzen dat we waarde kunnen creëren terwijl we de biodiversiteit herstellen."
+summary_fr: "Je trouve la philosophie Cradle to Cradle absolument fascinante car elle déplace notre attention de la simple réduction des dommages vers la conception de systèmes qui profitent réellement à la planète. Au lieu de simplement recycler, nous envisageons un monde où les matériaux sont soit renvoyés en toute sécurité à la nature, soit maintenus dans une boucle industrielle infinie. Regardez le C2C LAB à Berlin, où tout, des abat-jours aux chaises de bureau, est conçu pour être composté ou démonté. C'est une vision tellement pleine d'espoir, nous montrant que les bâtiments peuvent agir comme des arbres en produisant plus d'énergie qu'ils n'en consomment. Et voici le meilleur : cela se produit déjà avec des téléphones modulaires et des projets de construction durables qui prouvent que nous pouvons créer de la valeur tout en restaurant la biodiversité."
+image_url: "https://reasonstobecheerful.world/wp-content/uploads/2026/09/NASA-landscaping-Credit-JP-Wiens-scaled.jpg"
+layout: post.njk
+---
+
+I find the Cradle to Cradle philosophy absolutely fascinating because it shifts our focus from just minimizing damage to actually designing systems that benefit the planet. Instead of just recycling, we are looking at a world where materials are either safely returned to nature or kept in an endless industrial loop. Just look at the C2C LAB in Berlin, where everything from the lamp shades to the office chairs is designed to be composted or dismantled. It is such a hopeful vision, showing us that buildings can act like trees by producing more energy than they consume. Which brings me to the best part: this is already happening with modular phones and sustainable construction projects that prove we can create value while restoring biodiversity.
