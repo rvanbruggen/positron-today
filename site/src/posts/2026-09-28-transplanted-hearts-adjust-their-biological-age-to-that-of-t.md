@@ -1,0 +1,20 @@
+---
+title: "Transplanted hearts adjust their biological age to that of their host"
+title_nl: "Getransplanteerde harten passen hun biologische leeftijd aan die van de gastheer aan"
+title_fr: "Les cœurs transplantés ajustent leur âge biologique à celui de leur hôte"
+date: 2026-09-28T12:35:00
+source_pub_date: 2026-09-28
+fetched_date: 2026-09-28
+source_url: "https://www.nature.com/articles/d41586-026-03043-w"
+source_name: "Nature"
+topic: "Health"
+tags: ["Health","Science"]
+emoji: "🫀"
+summary: "So, I just read this fascinating study about heart transplants, and it turns out that donor hearts actually adapt to the biological age of the person receiving them. It is quite incredible to think that a heart from an older donor can essentially get a refresh inside a younger body, while younger hearts might age a bit faster in an older host. This research, which looked at both mice and human patients, suggests that we might be able to use organs from older donors more effectively than we thought before. Which brings me to the potential impact here, as this could really help shorten those long waiting lists for transplants. And here's the thing - it shows just how much our environment and our own bodies influence the organs we carry, which is just mind-blowing to me."
+summary_nl: "Ik las net een fascinerend onderzoek over harttransplantaties, en het blijkt dat donorharten zich daadwerkelijk aanpassen aan de biologische leeftijd van de ontvanger. Het is echt ongelooflijk om te bedenken dat een hart van een oudere donor in een jonger lichaam een soort verjongingskuur krijgt, terwijl jongere harten in een ouder lichaam sneller verouderen. Dit onderzoek, uitgevoerd bij zowel muizen als mensen, suggereert dat we organen van oudere donoren misschien wel veel effectiever kunnen inzetten dan we voorheen dachten. Dat brengt me bij de mogelijke impact, want dit zou echt kunnen helpen om die lange wachtlijsten voor transplantaties in te korten. En het mooie is dat het laat zien hoeveel onze omgeving en ons eigen lichaam de organen die we dragen beïnvloeden, wat ik echt verbazingwekkend vind."
+summary_fr: "Je viens de lire une étude fascinante sur les greffes cardiaques, et il s'avère que les cœurs des donneurs s'adaptent en réalité à l'âge biologique de la personne qui les reçoit. C'est assez incroyable de penser qu'un cœur provenant d'un donneur plus âgé peut essentiellement se régénérer dans un corps plus jeune, tandis que les cœurs plus jeunes pourraient vieillir un peu plus vite chez un hôte plus âgé. Ces recherches, qui ont porté à la fois sur des souris et sur des patients humains, suggèrent que nous pourrions utiliser les organes de donneurs plus âgés plus efficacement que nous ne le pensions auparavant. Ce qui m'amène à l'impact potentiel ici, car cela pourrait vraiment aider à réduire ces longues listes d'attente pour les greffes. Et voici le point clé - cela montre à quel point notre environnement et notre propre corps influencent les organes que nous portons, ce qui est tout simplement époustouflant pour moi."
+image_url: "https://media.nature.com/lw1200/magazine-assets/d41586-026-03043-w/d41586-026-03043-w_53762006.jpg"
+layout: post.njk
+---
+
+So, I just read this fascinating study about heart transplants, and it turns out that donor hearts actually adapt to the biological age of the person receiving them. It is quite incredible to think that a heart from an older donor can essentially get a refresh inside a younger body, while younger hearts might age a bit faster in an older host. This research, which looked at both mice and human patients, suggests that we might be able to use organs from older donors more effectively than we thought before. Which brings me to the potential impact here, as this could really help shorten those long waiting lists for transplants. And here's the thing - it shows just how much our environment and our own bodies influence the organs we carry, which is just mind-blowing to me.
