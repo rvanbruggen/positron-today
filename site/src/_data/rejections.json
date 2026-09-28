@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-28T04:38:12.734Z",
-  "total_rejected": 159732,
+  "exported_at": "2026-09-28T04:38:20.000Z",
+  "total_rejected": 159733,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2960
+      "count": 2961
     },
     {
       "category": "divisive-racism",
@@ -211,8 +211,8 @@
     },
     {
       "source": "Upworthy",
-      "negative": 1760,
-      "total": 2264
+      "negative": 1761,
+      "total": 2265
     },
     {
       "source": "De Standaard Economie",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Upworthy",
+      "title": "Beavers were brought to the desert to save a dying river. 6 years later, here are the results.",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.upworthy.com/beavers-brought-to-the-desert-to-save-dying-river-6-years-later-here-are-the-results-ex1-2/",
+      "date": "2026-09-28 06:38",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "6 Things ASHA Workers Want Every Household To Know About Dengue And Malaria Prevention ",
@@ -9391,15 +9400,6 @@
       "url": "https://www.demorgen.be/snelnieuws/openai-zegt-ontwikkeling-van-krachtigste-modellen-te-pauzeren-na-veiligheidsincidenten~b9ef8d94/",
       "date": "2026-09-27 06:15",
       "positivity_score": 2
-    },
-    {
-      "source": "De Morgen",
-      "title": "EU kondigt noodhulppakket van 700 miljoen euro aan voor crisissen wereldwijd",
-      "reason": "The article is about an EU emergency aid package announcement, which is corporate/government PR rather than a confirmed positive outcome.",
-      "category": "political-conflict",
-      "url": "https://www.demorgen.be/snelnieuws/eu-kondigt-noodhulppakket-van-700-miljoen-euro-aan-voor-crisissen-wereldwijd~b942dd5f/",
-      "date": "2026-09-27 06:15",
-      "positivity_score": 3
     }
   ]
 }
