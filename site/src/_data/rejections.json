@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-28T04:39:46.110Z",
-  "total_rejected": 159735,
+  "exported_at": "2026-09-28T04:39:59.214Z",
+  "total_rejected": 159736,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2963
+      "count": 2964
     },
     {
       "category": "divisive-racism",
@@ -106,8 +106,8 @@
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 6309,
-      "total": 6339
+      "negative": 6310,
+      "total": 6340
     },
     {
       "source": "Le Monde",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Für Feld und Garten: Rettet Mulch die Ernte? Zwei Bauern haben es ausprobiert",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.faz.net/aktuell/rhein-main/region-und-hessen/gemueseanbau-mit-mulch-gelingt-fast-ohne-bewaesserung-so-funktioniert-es-accg-201252491.html",
+      "date": "2026-09-28 06:39",
+      "positivity_score": null
+    },
     {
       "source": "La Libre Belgique",
       "title": "Deux ancêtres fantômes se cachent encore dans notre ADN",
@@ -9391,15 +9400,6 @@
       "url": "https://www.lefigaro.fr/international/a-lourdes-leon-xiv-face-aux-victimes-de-violences-sexuelles-dans-l-eglise-20260927",
       "date": "2026-09-27 06:15",
       "positivity_score": 2
-    },
-    {
-      "source": "De Morgen",
-      "title": "Minstens een dode in New York door noodweer in noordoosten van de VS",
-      "reason": "The article reports a fatality due to severe weather, which is a disaster and negative event.",
-      "category": "disaster-accident",
-      "url": "https://www.demorgen.be/snelnieuws/minstens-een-dode-in-new-york-door-noodweer-in-noordoosten-van-de-vs~b755ff2f/",
-      "date": "2026-09-27 06:15",
-      "positivity_score": 1
     }
   ]
 }
