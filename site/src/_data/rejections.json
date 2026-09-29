@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-29T19:22:54.423Z",
-  "total_rejected": 161753,
+  "exported_at": "2026-09-29T19:45:35.607Z",
+  "total_rejected": 161754,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2997
+      "count": 2998
     },
     {
       "category": "divisive-racism",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 13878,
-      "total": 14160
+      "negative": 13879,
+      "total": 14161
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "KIJK. Nieuwste vrachtvliegtuig van Airbus vliegt voor het eerst",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/buitenland/kijk-nieuwste-vrachtvliegtuig-van-airbus-vliegt-voor-het-eerst~a8829b50/",
+      "date": "2026-09-29 21:45",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "'Relapse is a part of recovery': the round-the-clock fight against meth",
@@ -9391,15 +9400,6 @@
       "url": "https://www.gva.be/buitenland/nederlandse-cybersecurity-expert-aangehouden-in-onderzoek-naar-fbi-hackers-zijn-baas-is-geschokt-ik-geloofde-in-tweede-kansen/162297185.html",
       "date": "2026-09-29 06:16",
       "positivity_score": 2
-    },
-    {
-      "source": "Science.org news",
-      "title": "Scientists engineered a glowing cuttlefish. Why was it so hard?",
-      "reason": "The article relies on a 'future payoff' hedge ('pave way for'), failing the requirement for proven, completed results.",
-      "category": "human-discarded",
-      "url": "https://www.science.org/content/article/scientists-engineered-glowing-cuttlefish-why-was-it-so-hard",
-      "date": "2026-09-29 06:16",
-      "positivity_score": 3
     }
   ]
 }
