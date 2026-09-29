@@ -1,0 +1,20 @@
+---
+title: "Saving the siamese crocodile: cambodia moves to protect one of the world’s last wild populations"
+title_nl: "De siamese krokodil redden: cambodja beschermt een van de laatste wilde populaties ter wereld"
+title_fr: "Sauver le crocodile du siam : le cambodge protège l'une des dernières populations sauvages au monde"
+date: 2026-09-29T07:09:00
+source_pub_date: 2026-09-29
+fetched_date: 2026-09-29
+source_url: "https://www.theguardian.com/environment/2026/sep/29/cambodia-chorng-indigenous-communities-siamese-crocodile-endangered-conservation-aoe"
+source_name: "The Guardian Europe"
+topic: "Animals"
+tags: ["Animals","Environment","Nature"]
+emoji: "🐊"
+summary: "I am absolutely thrilled to share this wonderful news from the Cardamom mountains in Cambodia. It turns out that the Indigenous Chorng communities have been the secret guardians of the Siamese crocodile all along, helping scientists rediscover this critically endangered species. Now, the government has officially declared a massive wetland area as a genetic conservation site to keep these incredible reptiles safe. It is just amazing to see how local knowledge and modern conservation can work together to bring a species back from the brink. And here is the thing - this 'genetic bank' could eventually help restore populations across all of south-east Asia!"
+summary_nl: "Ik ben ontzettend enthousiast om dit prachtige nieuws uit het Cardamom-gebergte in Cambodja met jullie te delen. Het blijkt dat de inheemse Chorng-gemeenschappen al die tijd de geheime beschermers van de Siamese krokodil zijn geweest en wetenschappers hielpen deze ernstig bedreigde soort te herontdekken. Nu heeft de overheid officieel een enorm waterrijk aangewezen als genetisch beschermd gebied om deze ongelooflijke reptielen veilig te houden. Het is echt geweldig om te zien hoe lokale kennis en moderne natuurbescherming kunnen samenwerken om een soort van de rand van de afgrond te redden. En weet je wat het mooie is - deze 'genetische bank' zou uiteindelijk kunnen helpen om populaties in heel Zuidoost-Azië te herstellen!"
+summary_fr: "Je suis absolument ravi de partager cette merveilleuse nouvelle venant des montagnes des Cardamomes au Cambodge. Il s'avère que les communautés indigènes Chorng ont été les gardiens secrets du crocodile du Siam depuis toujours, aidant les scientifiques à redécouvrir cette espèce en danger critique d'extinction. Désormais, le gouvernement a officiellement déclaré une vaste zone humide comme site de conservation génétique pour assurer la sécurité de ces incroyables reptiles. C'est tout simplement fantastique de voir comment les connaissances locales et la conservation moderne peuvent travailler ensemble pour ramener une espèce au bord du gouffre. Et voici le plus beau - cette 'banque génétique' pourrait éventuellement aider à restaurer les populations dans toute l'Asie du Sud-Est !"
+image_url: "https://i.guim.co.uk/img/media/953dc4a0932e8d826e93eaefe98c8b2e4582f361/23_325_2841_2275/master/2841.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=a7554b7e9fac4291d5caf92504ea7b18"
+layout: post.njk
+---
+
+I am absolutely thrilled to share this wonderful news from the Cardamom mountains in Cambodia. It turns out that the Indigenous Chorng communities have been the secret guardians of the Siamese crocodile all along, helping scientists rediscover this critically endangered species. Now, the government has officially declared a massive wetland area as a genetic conservation site to keep these incredible reptiles safe. It is just amazing to see how local knowledge and modern conservation can work together to bring a species back from the brink. And here is the thing - this 'genetic bank' could eventually help restore populations across all of south-east Asia!
