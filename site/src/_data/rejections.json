@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-29T05:49:36.221Z",
-  "total_rejected": 160943,
+  "exported_at": "2026-09-29T05:58:32.206Z",
+  "total_rejected": 160944,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 2994
+      "count": 2995
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 6070,
-      "total": 6152
+      "negative": 6071,
+      "total": 6153
     },
     {
       "source": "NRC",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Un nouveau cancer sur huit est causé par des infections, selon une étude du CIRC",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/sante/article/2026/09/29/un-nouveau-cancer-sur-huit-cause-par-des-infections-selon-une-etude-du-circ_6785310_1651302.html",
+      "date": "2026-09-29 07:58",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "South Africa: Activists Demand Police Action After 12th Woman Killed",
@@ -9389,15 +9398,6 @@
       "reason": "This is a report on a security threat/potential crime, which is excluded.",
       "category": "crime-violence",
       "url": "https://www.lesoir.be/773471/article/2026-09-28/projet-dattaque-contre-une-base-militaire-en-angleterre-la-police-enquete-sur-un",
-      "date": "2026-09-28 14:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Procès de Rachida Dati : quatre ans de prison, dont deux ferme sous bracelet électronique, requis par le parquet contre l’ex-ministre",
-      "reason": "This is a report on a legal/political trial, which is excluded under Rule 6.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/actualite-france/proces-de-rachida-dati-quatre-ans-de-prison-dont-deux-ferme-sous-bracelet-electronique-requis-contre-l-ex-ministre-20260928",
       "date": "2026-09-28 14:26",
       "positivity_score": 1
     }
