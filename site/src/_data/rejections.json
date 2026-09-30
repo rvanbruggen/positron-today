@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-30T10:37:00.086Z",
-  "total_rejected": 162185,
+  "exported_at": "2026-09-30T10:37:20.484Z",
+  "total_rejected": 162186,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3003
+      "count": 3004
     },
     {
       "category": "divisive-racism",
@@ -195,14 +195,14 @@
       "total": 2462
     },
     {
+      "source": "RNZ (New Zealand)",
+      "negative": 2165,
+      "total": 2236
+    },
+    {
       "source": "Wired",
       "negative": 2165,
       "total": 2270
-    },
-    {
-      "source": "RNZ (New Zealand)",
-      "negative": 2164,
-      "total": 2235
     },
     {
       "source": "De Standaard Binnenland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "RNZ (New Zealand)",
+      "title": "Pacific leaders unite on climate at UNGA: 'Think of the children'",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rnz.co.nz/news/pacific/1659474/pacific-leaders-unite-on-climate-at-unga-think-of-the-children",
+      "date": "2026-09-30 12:37",
+      "positivity_score": null
+    },
     {
       "source": "NRC",
       "title": "Twee klinieken bieden na pilot voortaan maagverkleining voor tieners aan ",
@@ -9389,15 +9398,6 @@
       "reason": "The article covers corporate IPO disclosures about AI risks and financial details, which is corporate PR and tech industry news.",
       "category": "other-negative",
       "url": "https://www.theverge.com/ai-artificial-intelligence/1001838/anthropic-ipo-prospectus-ai-safety-threat",
-      "date": "2026-09-29 14:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "The Verge",
-      "title": "Your car’s data privacy problems are worse than you think",
-      "reason": "The article discusses data privacy issues with cars, a routine tech and industry update.",
-      "category": "other-negative",
-      "url": "https://www.theverge.com/transportation/1001463/car-data-privacy-northeastern-study-honda-gm-ford",
       "date": "2026-09-29 14:26",
       "positivity_score": 2
     }
