@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-30T19:10:34.520Z",
-  "total_rejected": 162631,
+  "exported_at": "2026-09-30T19:11:30.416Z",
+  "total_rejected": 162632,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3008
+      "count": 3009
     },
     {
       "category": "divisive-racism",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 6135,
-      "total": 6218
+      "negative": 6136,
+      "total": 6219
     },
     {
       "source": "NRC",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "« Le danger des épisodes méditerranéens », comme celui qui touche le Sud-Est actuellement, « ce sont les crues éclair : tout déborde très vite »",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/planete/article/2026/09/30/le-danger-des-episodes-mediterraneens-ce-sont-les-crues-eclair-tout-deborde-tres-vite_6786074_3244.html",
+      "date": "2026-09-30 21:11",
+      "positivity_score": null
+    },
     {
       "source": "Scientific American",
       "title": "AI solves a ‘holy grail’ problem from probability theory",
@@ -9389,15 +9398,6 @@
       "reason": "This is a local sports championship calendar announcement with no wider relevance.",
       "category": "sports-negative",
       "url": "https://www.gva.be/sport/racesporten/rally/belgische-rallykampioenschap-wordt-compacter-in-2027/162348333.html",
-      "date": "2026-09-29 21:21",
-      "positivity_score": 2
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Vlaamse regering halveert extra budget voor De Lijn: “Zo overtuigen we niemand om de auto te laten staan”",
-      "reason": "This is a local government budget cut story with no universal significance.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/binnenland/vlaamse-regering-halveert-extra-budget-voor-de-lijn-zo-overtuigen-we-niemand-om-de-auto-te-laten-staan/162348131.html",
       "date": "2026-09-29 21:21",
       "positivity_score": 2
     }
