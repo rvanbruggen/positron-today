@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-30T10:37:20.484Z",
-  "total_rejected": 162186,
+  "exported_at": "2026-09-30T10:37:50.255Z",
+  "total_rejected": 162187,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3004
+      "count": 3005
     },
     {
       "category": "divisive-racism",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 8041,
-      "total": 8289
+      "negative": 8042,
+      "total": 8290
     },
     {
       "source": "Dagens Nyheter",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "VRT Nws",
+      "title": "Oude krokodillen konden 80 miljoen jaar geleden Atlantische Oceaan oversteken",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://vrtnws.be/p.Ray3QQRA9",
+      "date": "2026-09-30 12:37",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "Pacific leaders unite on climate at UNGA: 'Think of the children'",
@@ -9389,15 +9398,6 @@
       "reason": "The article discusses political calls for AI regulation between countries, which is political news.",
       "category": "political-conflict",
       "url": "https://www.theverge.com/policy/1001767/khanna-ai-safety-china-treaty",
-      "date": "2026-09-29 14:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "The Verge",
-      "title": "Anthropic warns of ‘catastrophic’ AI risks in its own IPO filing",
-      "reason": "The article covers corporate IPO disclosures about AI risks and financial details, which is corporate PR and tech industry news.",
-      "category": "other-negative",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1001838/anthropic-ipo-prospectus-ai-safety-threat",
       "date": "2026-09-29 14:26",
       "positivity_score": 2
     }
