@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-30T19:10:10.260Z",
-  "total_rejected": 162630,
+  "exported_at": "2026-09-30T19:10:34.520Z",
+  "total_rejected": 162631,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3007
+      "count": 3008
     },
     {
       "category": "divisive-racism",
@@ -286,8 +286,8 @@
     },
     {
       "source": "Scientific American",
-      "negative": 348,
-      "total": 532
+      "negative": 349,
+      "total": 533
     },
     {
       "source": "ScienceDaily",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Scientific American",
+      "title": "AI solves a ‘holy grail’ problem from probability theory",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.scientificamerican.com/article/ai-solves-a-holy-grail-problem-from-probability-theory/",
+      "date": "2026-09-30 21:10",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "The ‘Super El Nino’ is upon us. What does that mean for Ontario’s fall colours?",
@@ -9389,15 +9398,6 @@
       "reason": "This is a local government budget cut story with no universal significance.",
       "category": "political-conflict",
       "url": "https://www.gva.be/binnenland/vlaamse-regering-halveert-extra-budget-voor-de-lijn-zo-overtuigen-we-niemand-om-de-auto-te-laten-staan/162348131.html",
-      "date": "2026-09-29 21:21",
-      "positivity_score": 2
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "VOETBALBABBELS. Drie ploegen met het maximum op kop in derde provinciale A ",
-      "reason": "This is a local sports league update with no exceptional or universal significance.",
-      "category": "sports-negative",
-      "url": "https://www.gva.be/sport/sportregio/voetbalbabbels.-drie-ploegen-met-het-maximum-op-kop-in-derde-provinciale-a/162348002.html",
       "date": "2026-09-29 21:21",
       "positivity_score": 2
     }
