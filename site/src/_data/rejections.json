@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-09-30T19:09:46.737Z",
-  "total_rejected": 162629,
+  "exported_at": "2026-09-30T19:10:10.260Z",
+  "total_rejected": 162630,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3006
+      "count": 3007
     },
     {
       "category": "divisive-racism",
@@ -170,14 +170,14 @@
       "total": 3131
     },
     {
+      "source": "Global News (Canada)",
+      "negative": 3033,
+      "total": 3102
+    },
+    {
       "source": "De Standaard Buitenland",
       "negative": 3032,
       "total": 3051
-    },
-    {
-      "source": "Global News (Canada)",
-      "negative": 3032,
-      "total": 3101
     },
     {
       "source": "The Verge",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Global News (Canada)",
+      "title": "The ‘Super El Nino’ is upon us. What does that mean for Ontario’s fall colours?",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://globalnews.ca/news/12082856/will-super-el-nino-impact-ontario-fall/",
+      "date": "2026-09-30 21:10",
+      "positivity_score": null
+    },
     {
       "source": "The Better India",
       "title": "This Warning System Turns Weather Data into Village-Level Alerts ",
@@ -9389,15 +9398,6 @@
       "reason": "This is a local sports league update with no exceptional or universal significance.",
       "category": "sports-negative",
       "url": "https://www.gva.be/sport/sportregio/voetbalbabbels.-drie-ploegen-met-het-maximum-op-kop-in-derde-provinciale-a/162348002.html",
-      "date": "2026-09-29 21:21",
-      "positivity_score": 2
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "“De voorzitter die campagne voert tegen Trump, speelt nu zelf voor Trump”: Jinnih Beels over poging om haar uit provinciebestuur te zetten",
-      "reason": "This is a local political conflict story about a provincial government dispute.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/de-voorzitter-die-campagne-voert-tegen-trump-speelt-nu-zelf-voor-trump-jinnih-beels-over-poging-om-haar-uit-provinciebestuur-te-zetten/162306813.html",
       "date": "2026-09-29 21:21",
       "positivity_score": 2
     }
