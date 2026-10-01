@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-01T04:36:49.193Z",
-  "total_rejected": 163081,
+  "exported_at": "2026-10-01T04:37:03.565Z",
+  "total_rejected": 163082,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3018
+      "count": 3019
     },
     {
       "category": "divisive-racism",
@@ -86,8 +86,8 @@
     },
     {
       "source": "VRT Nws",
-      "negative": 8077,
-      "total": 8327
+      "negative": 8078,
+      "total": 8328
     },
     {
       "source": "Dagens Nyheter",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "VRT Nws",
+      "title": "Rotselaar zet drones in om energieverlies bij woningen op te sporen",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://vrtnws.be/p.PqXWW5DJa",
+      "date": "2026-10-01 06:37",
+      "positivity_score": null
+    },
     {
       "source": "Good News Network",
       "title": "New Gobi Desert Fossil Rewrites a Chapter of Mammal Evolution",
@@ -9391,15 +9400,6 @@
       "url": "https://www.lemonde.fr/economie/article/2026/09/30/openai-pousse-la-logique-des-agents-ia-en-proposant-un-genre-de-collaborateur-virtuel-actif-vingt-quatre-heures-sur-vingt-quatre_6785725_3234.html",
       "date": "2026-09-30 10:26",
       "positivity_score": 3
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "DISCUSSIE. Vind jij dat de regering in het begrotingsakkoord te sterk naar de middenklasse kijkt?",
-      "reason": "The article discusses political debate on government budget policy, a political topic.",
-      "category": "political-conflict",
-      "url": "https://www.gva.be/binnenland/discussie.-vind-jij-dat-de-regering-in-het-begrotingsakkoord-te-sterk-naar-de-middenklasse-kijkt/162357762.html",
-      "date": "2026-09-30 10:26",
-      "positivity_score": 2
     }
   ]
 }
