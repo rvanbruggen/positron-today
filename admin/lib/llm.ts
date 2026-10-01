@@ -218,10 +218,14 @@ class OpenAIProvider implements LLMProvider {
     if (systemPrompt) messages.push({ role: "system", content: systemPrompt });
     messages.push({ role: "user", content: userPrompt });
 
-    // OpenAI reasoning models (o1*, o3*, …) reject `temperature` and `top_p`
-    // and require `max_completion_tokens` instead of `max_tokens`. Detect by
-    // the canonical "o<digit>" prefix so future o-series releases work too.
-    const isReasoningModel = /^o[1-9]/i.test(this.model);
+    // OpenAI reasoning models reject `max_tokens` (they need
+    // `max_completion_tokens`) and any `temperature` other than the default.
+    // That is the o-series and, since GPT-5, every gpt-<5 or later> model —
+    // confirmed against gpt-6-luna on 1 October 2026. Detect by prefix so
+    // future releases work too.
+    const gptMajor = /^gpt-(\d+)/i.exec(this.model);
+    const isReasoningModel =
+      /^o[1-9]/i.test(this.model) || (gptMajor !== null && Number(gptMajor[1]) >= 5);
     const body: Record<string, unknown> = {
       model: this.model,
       messages,
