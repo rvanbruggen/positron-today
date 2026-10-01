@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-01T04:34:28.430Z",
-  "total_rejected": 163079,
+  "exported_at": "2026-10-01T04:35:33.226Z",
+  "total_rejected": 163080,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3016
+      "count": 3017
     },
     {
       "category": "divisive-racism",
@@ -131,8 +131,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 5026,
-      "total": 5169
+      "negative": 5027,
+      "total": 5170
     },
     {
       "source": "Al Jazeera English",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Swiss glaciers suffer 'disastrous' year of ice loss, threatening water supplies",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/articles/c6n9w0ypjwl9o?at_medium=RSS&at_campaign=rss",
+      "date": "2026-10-01 06:35",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "Nearly $4 million announced towards collecting forestry waste to be turned into biofuel",
@@ -9391,15 +9400,6 @@
       "url": "https://www.gva.be/sport/sportregio/volleybabbels.-vrouwen-olvoc-olen-nemen-vliegende-start-vrouwen-beerse-boeken-eerste-zege-en-mannen-hellvoc-b-starten-beter-dan-vorig-seizoen/162340185.html",
       "date": "2026-09-30 10:26",
       "positivity_score": 3
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Organisatoren van de jaarmarkt willen olifanten op hun evenement",
-      "reason": "The article is about a local event and its promotional theme, relevant only locally.",
-      "category": "other-negative",
-      "url": "https://www.gva.be/regio/antwerpen/kempen/olen/organisatoren-van-de-jaarmarkt-willen-olifanten-op-hun-evenement/162337823.html",
-      "date": "2026-09-30 10:26",
-      "positivity_score": 2
     }
   ]
 }
