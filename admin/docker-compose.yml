@@ -1,6 +1,7 @@
 services:
   admin:
     build: .
+    container_name: positron-admin
     ports:
       - "3000:3000"
     volumes:
