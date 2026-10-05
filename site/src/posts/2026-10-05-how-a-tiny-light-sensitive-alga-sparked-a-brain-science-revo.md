@@ -1,0 +1,20 @@
+---
+title: "How a tiny light-sensitive alga sparked a brain science revolution"
+title_nl: "Hoe een piepkleine lichtgevoelige alg leidde tot een revolutie in de hersenwetenschap"
+title_fr: "Comment une minuscule algue sensible à la lumière a révolutionné les neurosciences"
+date: 2026-10-05T19:34:00
+source_pub_date: 2026-10-05
+fetched_date: 2026-10-05
+source_url: "https://www.nrc.nl/nieuws/2026/10/05/een-alg-die-extreem-snel-op-licht-reageert-leidde-tot-een-revolutie-in-de-hersenwetenschap-a4938080"
+source_name: "NRC"
+topic: "Health"
+tags: ["Health","Science","Technology"]
+emoji: "💡"
+summary: "I find it utterly fascinating how some of our biggest scientific breakthroughs start with the humblest little organisms. Three brilliant researchers have just been awarded the Nobel Prize for creating optogenetics - a mind-blowing technique that lets us switch individual brain cells on and off using pulses of light. Now, the trick all started by looking at a tiny single-celled alga that converts light into electrical signals twenty times faster than our own eyes do. And here's the thing: by borrowing this exact mechanism, scientists can now explore how memories, fear, and brain circuits really function in real time. It is such an uplifting reminder of how pure curiosity about nature can end up illuminating the deepest mysteries of the human brain."
+summary_nl: "Ik vind het werkelijk fascinerend hoe enkele van onze grootste wetenschappelijke doorbraken beginnen bij de allerkleinste organismen. Drie fantastische onderzoekers hebben zojuist de Nobelprijs gewonnen voor het ontwikkelen van optogenetica - een verbluffende techniek waarmee we individuele hersencellen kunnen aan- en uitzetten met lichtflitsen. Nu, die hele ontdekking begon ooit bij een piepklein eencellig algje dat licht wel twintig keer sneller in elektriciteit omzet dan onze eigen ogen. En hier zit de magie: door dat unieke mechanisme te kopiëren, kunnen wetenschappers nu live ontrafelen hoe herinneringen, emoties en hersenbanen echt werken. Het is zo'n heerlijk hoopvol bewijs van hoe pure nieuwsgierigheid naar de natuur uiteindelijk de diepste mysteries van ons brein kan verhelderen."
+summary_fr: "Je trouve absolument fascinant de voir comment nos plus grandes avancées scientifiques démarrent parfois grâce aux organismes les plus modestes. Trois chercheurs formidables viennent de recevoir le prix Nobel pour avoir inventé l'optogénétique - une technique bluffante qui permet d'activer ou d'éteindre des neurones précis grâce à des impulsions lumineuses. Or, toute l'aventure a commencé en étudiant une minuscule algue unicellulaire capable de transformer la lumière en électricité vingt fois plus vite que nos yeux. Et c'est là toute la beauté de la chose: en reprenant ce mécanisme, les scientifiques peuvent désormais décortiquer la mémoire, les émotions et le fonctionnement de nos circuits cérébraux en temps réel. C'est un merveilleux rappel que la simple curiosité envers la nature peut éclairer les plus grands mystères du cerveau humain."
+image_url: "https://images.nrc.nl/Tpa6StRFUnJfnQENiWMi5YrbzvU=/1200x627/smart/filters:no_upscale()/s3/static.nrc.nl/wp-content/uploads/2026/10/05103916/051026WET_2037027148_-Geneeskunde.jpg"
+layout: post.njk
+---
+
+I find it utterly fascinating how some of our biggest scientific breakthroughs start with the humblest little organisms. Three brilliant researchers have just been awarded the Nobel Prize for creating optogenetics - a mind-blowing technique that lets us switch individual brain cells on and off using pulses of light. Now, the trick all started by looking at a tiny single-celled alga that converts light into electrical signals twenty times faster than our own eyes do. And here's the thing: by borrowing this exact mechanism, scientists can now explore how memories, fear, and brain circuits really function in real time. It is such an uplifting reminder of how pure curiosity about nature can end up illuminating the deepest mysteries of the human brain.
