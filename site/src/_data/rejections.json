@@ -1,15 +1,15 @@
 {
-  "exported_at": "2026-10-06T04:20:36.602Z",
-  "total_rejected": 168387,
+  "exported_at": "2026-10-06T04:30:53.354Z",
+  "total_rejected": 168403,
   "sources_count": 66,
   "category_breakdown": [
     {
       "category": "political-conflict",
-      "count": 45123
+      "count": 45128
     },
     {
       "category": "soft-news-filler",
-      "count": 21065
+      "count": 21066
     },
     {
       "category": "sports-negative",
@@ -17,23 +17,23 @@
     },
     {
       "category": "crime-violence",
-      "count": 14122
+      "count": 14126
     },
     {
       "category": "celebrity-entertainment",
-      "count": 11520
+      "count": 11521
     },
     {
       "category": "disaster-accident",
-      "count": 10835
+      "count": 10836
     },
     {
       "category": "economic-doom",
-      "count": 9690
+      "count": 9691
     },
     {
       "category": "war-conflict",
-      "count": 8872
+      "count": 8874
     },
     {
       "category": "other-negative",
@@ -41,7 +41,7 @@
     },
     {
       "category": "health-scare",
-      "count": 5596
+      "count": 5597
     },
     {
       "category": "divisive-social",
@@ -71,13 +71,13 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 14330,
-      "total": 14785
+      "negative": 14332,
+      "total": 14787
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 14276,
-      "total": 14560
+      "negative": 14278,
+      "total": 14562
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -91,18 +91,18 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 7703,
-      "total": 7770
+      "negative": 7704,
+      "total": 7771
     },
     {
       "source": "Le Figaro",
-      "negative": 7311,
-      "total": 7376
+      "negative": 7314,
+      "total": 7379
     },
     {
       "source": "Politiken.dk",
-      "negative": 6899,
-      "total": 6967
+      "negative": 6902,
+      "total": 6970
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
@@ -136,13 +136,13 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 4985,
-      "total": 5051
+      "negative": 4986,
+      "total": 5052
     },
     {
       "source": "The Guardian",
-      "negative": 4171,
-      "total": 4331
+      "negative": 4173,
+      "total": 4333
     },
     {
       "source": "La Libre Belgique",
@@ -151,8 +151,8 @@
     },
     {
       "source": "Neue Zürcher Zeitung",
-      "negative": 3511,
-      "total": 3526
+      "negative": 3513,
+      "total": 3528
     },
     {
       "source": "DR (Danish Public broadcaster)",
@@ -401,6 +401,150 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Mexican and Colombian cartel mercenaries filmed fighting in Ukraine",
+      "reason": "The article concerns cartel members joining combat in the Ukraine war, so it is conflict coverage rather than positive news.",
+      "category": "war-conflict",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/10/6/mexican-and-colombian-cartel-mercenaries-filmed-fighting-in-ukraine?traffic_source=rss",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 1
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "EXCLUSIEF. HLN-journalist ontdekt website met naaktfoto’s van 10.000 vrouwen. Meddy (31) is één van hen: “Zelfs de politie legde de schuld bij mij”",
+      "reason": "The story reports large-scale sexual exploitation and severe harm to victims, making it crime-focused rather than positive news.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/binnenland/exclusief-hln-journalist-ontdekt-website-met-naaktfotos-van-10-000-vrouwen-meddy-31-is-een-van-hen-zelfs-de-politie-legde-de-schuld-bij-mij~a2f13a41/",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 1
+    },
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Dansleraar (33) mikt op vrijspraak na seksueel getinte berichtjes naar meisjes: “Ik heb mijn partner bedrogen, maar ik wilde niemand kwetsen”",
+      "reason": "This is coverage of allegations of sexual misconduct involving minors and a court case.",
+      "category": "crime-violence",
+      "url": "https://www.hln.be/roeselare/dansleraar-33-mikt-op-vrijspraak-na-seksueel-getinte-berichtjes-naar-meisjes-ik-heb-mijn-partner-bedrogen-maar-ik-wilde-niemand-kwetsen~a4849689/",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 1
+    },
+    {
+      "source": "Le Figaro",
+      "title": "EN DIRECT - Blocage des lycées : des dizaines de milliers de lycéens dans la rue pour un «acte III» sous haute surveillance",
+      "reason": "The article covers political demonstrations and school blockades, which fall under political coverage.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/actualite-france/en-direct-blocage-des-lycees-des-dizaines-de-milliers-de-lyceens-dans-la-rue-pour-un-acte-iii-sous-haute-surveillance-20261006",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Le Figaro",
+      "title": "L’histoire du Québec, 250 ans de lutte pour préserver sa liberté et son identité",
+      "reason": "The story is about an election, sovereignty, and political identity rather than positive news.",
+      "category": "political-conflict",
+      "url": "https://www.lefigaro.fr/vox/histoire/l-histoire-du-quebec-250-ans-de-lutte-pour-preserver-sa-liberte-et-son-identite-20261004",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Le Figaro",
+      "title": "Travail : l’absentéisme dans le privé et dans le public toujours à un niveau record",
+      "reason": "The article reports record-high workplace absenteeism and a challenge for government, offering no uplifting established outcome.",
+      "category": "economic-doom",
+      "url": "https://www.lefigaro.fr/conjoncture/travail-l-absenteisme-dans-le-prive-et-dans-le-public-toujours-a-un-niveau-record-20261006",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "LIVE OORLOG IN OEKRAÏNE. Dode en zes gewonden bij Oekraïense droneaanvallen bij Moskou",
+      "reason": "This is live coverage of the war in Ukraine and deadly attacks.",
+      "category": "war-conflict",
+      "url": "https://www.gva.be/buitenland/live-oorlog-in-oekraine.-dode-en-zes-gewonden-bij-oekraense-droneaanvallen-bij-moskou/76695337.html",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 1
+    },
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Trump akkoord met vuurpeloton voor schutter op militaire basis: voor het eerst sinds 1961 executie door leger",
+      "reason": "The article concerns a state-approved execution and a fatal shooting, so it is crime and political news.",
+      "category": "crime-violence",
+      "url": "https://www.gva.be/buitenland/trump-akkoord-met-vuurpeloton-voor-schutter-op-militaire-basis-voor-het-eerst-sinds-1961-executie-door-leger/162634409.html",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 1
+    },
+    {
+      "source": "The Guardian",
+      "title": "‘I call them erotic landscapes’: fashion photographer Tim Walker on his powerful tapestry of queer Britain",
+      "reason": "This is an entertainment-industry profile centered on a well-known fashion photographer and his work.",
+      "category": "celebrity-entertainment",
+      "url": "https://www.theguardian.com/artanddesign/2026/oct/06/fashion-photographer-tim-walker-tapestry-queer-british-life",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "The Guardian",
+      "title": "‘It could knock a whole street down’: the art of defusing a second world war bomb",
+      "reason": "The article focuses on the dangerous discovery and disposal of unexploded bombs, making it disaster-threat coverage rather than uplifting news.",
+      "category": "disaster-accident",
+      "url": "https://www.theguardian.com/news/ng-interactive/2026/oct/06/it-could-knock-a-whole-street-down-the-art-of-defusing-a-second-world-war-bomb",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "Auch nach zwei Todesspritzen lebt Christa Pike noch – wie kann das sein? Das Wichtigste zum misslungenen Hinrichtungsversuch in den USA",
+      "reason": "The story describes a botched execution that left a prisoner requiring hospital ventilation, not a positive outcome.",
+      "category": "crime-violence",
+      "url": "https://www.nzz.ch/wissenschaft/auch-nach-zwei-todesspritzen-lebt-christa-pike-noch-wie-kann-das-sein-das-wichtigste-zum-misslungenen-hinrichtungsversuch-in-den-usa-ld.10026747",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 1
+    },
+    {
+      "source": "Neue Zürcher Zeitung",
+      "title": "Das Spital-Phänomen: Ausgerechnet im Arztberuf arbeiten immer mehr Männer Teilzeit",
+      "reason": "The article presents a tentative workplace trend without establishing a clearly uplifting, broadly significant outcome.",
+      "category": "soft-news-filler",
+      "url": "https://www.nzz.ch/wirtschaft/das-spital-phaenomen-ausgerechnet-im-arztberuf-arbeiten-immer-mehr-maenner-teilzeit-ld.10025948",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 3
+    },
+    {
+      "source": "Dagens Nyheter",
+      "title": "På lätt ironisk prosa tar Strömberg och Nilsson med sig läsarna tillbaka till åren med Tidö",
+      "reason": "This is a review of a book about a political government and its recent history.",
+      "category": "political-conflict",
+      "url": "https://www.dn.se/kultur/pa-latt-ironisk-prosa-tar-stromberg-och-nilsson-med-sig-lasarna-tillbaka-till-aren-med-tido/",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "New York slår alarm over udbrud af mæslinger",
+      "reason": "The article reports a major measles outbreak and deaths, making it health-scare coverage.",
+      "category": "health-scare",
+      "url": "https://politiken.dk/internationalt/int_usa/art11010152/New-York-sl%C3%A5r-alarm-over-udbrud-af-m%C3%A6slinger",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 1
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Trump betaler alligevel selv for Trump-reklamer",
+      "reason": "This is political coverage about a president’s campaign advertising and funding.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/internationalt/art11010154/Trump-betaler-alligevel-selv-for-Trump-reklamer",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 2
+    },
+    {
+      "source": "Politiken.dk",
+      "title": "Reform af jobcentre giver travlhed hos forsikringsselskaber",
+      "reason": "The article concerns a government reform and reported uncertainty around its effects, not an established positive outcome.",
+      "category": "political-conflict",
+      "url": "https://politiken.dk/danmark/oekonomi/art10993939/Reform-af-jobcentre-giver-travlhed-hos-forsikringsselskaber",
+      "date": "2026-10-06 06:30",
+      "positivity_score": 2
+    },
     {
       "source": "AllAfrica",
       "title": "Kenya: Ruto Pledges Kenya's Support for South Sudan Elections, Urges Dialogue",
@@ -9254,150 +9398,6 @@
       "reason": "The article is political live coverage of a snap election amid a housing crisis and tense partisan conflict.",
       "category": "political-conflict",
       "url": "https://www.theguardian.com/world/live/2026/oct/05/europe-spain-pedro-sanchez-election-housing-france-school-protests-ukraine-russia-latest-news-updates",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "The Guardian",
-      "title": "Andrew Mountbatten-Windsor launches legal action against police over Epstein raids",
-      "reason": "This is court coverage about a former royal’s legal challenge connected to his arrest, not a positive development.",
-      "category": "crime-violence",
-      "url": "https://www.theguardian.com/uk-news/2026/oct/05/andrew-mountbatten-windsor-court-action-police-epstein-raids",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "The Guardian",
-      "title": "Tories to pledge to scrap Environment Agency and Natural England",
-      "reason": "The article reports a political party’s proposed policy changes, including scrapping environmental agencies and housing rules.",
-      "category": "political-conflict",
-      "url": "https://www.theguardian.com/politics/2026/oct/04/tories-scrap-environment-agency-natural-england-conservative-conference",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Espagne : Pedro Sánchez convoque des élections anticipées le 29 novembre",
-      "reason": "The article is about a political leader calling an early election.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/international/espagne-pedro-sanchez-convoque-des-elections-anticipees-le-29-novembre-20261005",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Budget 2027 : le gouvernement va «prélever» 2,1 milliards d’euros sur l’Unédic en 2027, annonce Jean-Pierre Farandou",
-      "reason": "This is political coverage of a government budget decision concerning unemployment-insurance funds.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/social/budget-2027-le-gouvernement-va-prelever-2-1-milliards-d-euros-sur-l-unedic-en-2027-annonce-jean-pierre-farandou-20261005",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Christophe de Voogd : « État-providence, vers la fin de “la grande fiction” »",
-      "reason": "This is political commentary on the welfare state and government policy.",
-      "category": "political-conflict",
-      "url": "https://www.lefigaro.fr/vox/economie/christophe-de-voogd-etat-providence-vers-la-fin-de-la-grande-fiction-20261005",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Le Figaro",
-      "title": "Avec l’opération Vivaldi, les drones et les robots ukrainiens font reculer l’armée russe",
-      "reason": "The article describes military action in the ongoing war in Ukraine.",
-      "category": "war-conflict",
-      "url": "https://www.lefigaro.fr/international/avec-l-operation-vivaldi-les-drones-et-les-robots-ukrainiens-font-reculer-l-armee-russe-20261005",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Le Figaro",
-      "title": "« Les Geran-5 ne sont presque plus des drones » : dans le ciel de Kiev, l’éprouvant combat face aux nouvelles technologies russes",
-      "reason": "This is war reporting about Russian attacks and Ukraine’s efforts to defend against them.",
-      "category": "war-conflict",
-      "url": "https://www.lefigaro.fr/international/les-geran-5-ne-sont-presque-plus-des-drones-dans-le-ciel-de-kiev-l-eprouvant-combat-face-aux-nouvelles-technologies-russes-20261005",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Le Figaro",
-      "title": "«Impressionné par ce qu’il fait, par sa maturité» : Jérémy Jacquet, l’homme pressé des Bleus qui a tapé dans l’oeil de Zidane",
-      "reason": "This is routine sports coverage profiling a young footballer’s promising start, without an exceptional or universally significant achievement.",
-      "category": "sports-negative",
-      "url": "https://www.lefigaro.fr/sports/football/ligue-des-nations/impressionne-par-ce-qu-il-fait-par-sa-maturite-jeremy-jacquet-l-homme-presse-des-bleus-qui-a-tape-dans-l-oeil-de-zidane-20261005",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 3
-    },
-    {
-      "source": "Positive News",
-      "title": "Meet the 14-year-old uncovering London’s lost history",
-      "reason": "The story is a personal profile of a teenager pursuing a hobby centered on London’s local history, without a broader achievement or significance established in the snippet.",
-      "category": "soft-news-filler",
-      "url": "https://www.positive.news/environment/meet-the-14-year-old-uncovering-londons-lost-history/",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 4
-    },
-    {
-      "source": "Good News Network",
-      "title": "Good News in History, October 5",
-      "reason": "This is a daily history roundup, explicitly excluded as event-coverage padding, and its subject is also a celebrity’s charity foundation.",
-      "category": "soft-news-filler",
-      "url": "https://www.goodnewsnetwork.org/events061005/",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Andrew daagt politie voor rechter: Britse ex-prins betwist rechtmatigheid huiszoekingen bij arrestatie",
-      "reason": "This is celebrity coverage about a former royal’s legal challenge over police searches.",
-      "category": "celebrity-entertainment",
-      "url": "https://vrtnws.be/p.WkX4xay31",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Wie wint straks de Nobelprijs voor Geneeskunde? Volg het hier vanaf 11.30 uur",
-      "reason": "This is a live guide to an upcoming award announcement rather than coverage of a substantive, established achievement.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.ZWnnnLV5B",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Jasmijn Van Hoof vertrouwde Kürt Rogiers blind in ‘De verraders’: “Geen haar op mijn hoofd dat dacht dat hij een verrader was”",
-      "reason": "This is celebrity/reality-TV coverage focused on a contestant’s personal experience and the show’s events.",
-      "category": "celebrity-entertainment",
-      "url": "https://www.hln.be/tv/jasmijn-van-hoof-vertrouwde-kurt-rogiers-blind-in-de-verraders-geen-haar-op-mijn-hoofd-dat-dacht-dat-hij-een-verrader-was~a1ad9fd7/",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Meer dan een op de drie jongeren verzwijgt betaalfraude voor ouders",
-      "reason": "The article centers on a company-sponsored survey about young people being targeted by payment fraud, not an uplifting, established improvement.",
-      "category": "crime-violence",
-      "url": "https://www.hln.be/binnenland/meer-dan-een-op-de-drie-jongeren-verzwijgt-betaalfraude-voor-ouders~a9fe5bc1/",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 2
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Hackers krijgen via Deens burgerregister toegang tot gegevens van 8,8 miljoen mensen",
-      "reason": "This reports a major cybercrime and exposure of personal data, which is negative news.",
-      "category": "crime-violence",
-      "url": "https://www.hln.be/buitenland/hackers-krijgen-via-deens-burgerregister-toegang-tot-gegevens-van-8-8-miljoen-mensen~a57017ac/",
-      "date": "2026-10-05 10:26",
-      "positivity_score": 1
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Estland verschuift troepen richting Russische grens: “Moeten vanaf de eerste gevechten winnen”",
-      "reason": "The story concerns military preparations amid the threat of conflict, so it is geopolitical and not positive news.",
-      "category": "war-conflict",
-      "url": "https://www.hln.be/buitenland/estland-verschuift-troepen-richting-russische-grens-moeten-vanaf-de-eerste-gevechten-winnen~a94f6014/",
       "date": "2026-10-05 10:26",
       "positivity_score": 1
     }
