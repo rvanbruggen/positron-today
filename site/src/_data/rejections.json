@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-07T12:27:40.797Z",
-  "total_rejected": 170090,
+  "exported_at": "2026-10-07T14:57:31.087Z",
+  "total_rejected": 170091,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3273
+      "count": 3274
     },
     {
       "category": "climate-environment",
@@ -161,8 +161,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 3348,
-      "total": 3367
+      "negative": 3349,
+      "total": 3368
     },
     {
       "source": "Le Soir",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Rigshospitalet får hjælp fra Norge til sjældne transplantationer",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dr.dk/nyheder/seneste/rigshospitalet-faar-hjaelp-fra-norge-til-sjaeldne-transplantationer",
+      "date": "2026-10-07 16:57",
+      "positivity_score": null
+    },
     {
       "source": "Al Jazeera English",
       "title": "Christa Pike is awake after surviving execution: What happens now?",
@@ -9391,15 +9400,6 @@
       "url": "https://www.gva.be/crimi/nicolas-ullens-door-assisenjury-schuldig-bevonden-aan-moord-op-barones-mimi-zijn-daden-waren-weloverdacht/162638865.html",
       "date": "2026-10-06 18:25",
       "positivity_score": 1
-    },
-    {
-      "source": "Gazet van Antwerpen",
-      "title": "Vogelpik op de fiets blijft na bijna honderd jaar enorm populair: “Gooien is bijzaak, we doen mee voor de gezelligheid”",
-      "reason": "Local festival and community tradition in a specific municipality.",
-      "category": "soft-news-filler",
-      "url": "https://www.gva.be/regio/antwerpen/kempen/merksplas/vogelpik-op-de-fiets-blijft-na-bijna-honderd-jaar-enorm-populair-gooien-is-bijzaak-we-doen-mee-voor-de-gezelligheid/162666172.html",
-      "date": "2026-10-06 18:25",
-      "positivity_score": 4
     }
   ]
 }
