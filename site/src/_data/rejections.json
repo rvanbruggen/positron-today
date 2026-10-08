@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-08T14:05:59.166Z",
-  "total_rejected": 171311,
+  "exported_at": "2026-10-08T14:06:02.037Z",
+  "total_rejected": 171312,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3285
+      "count": 3286
     },
     {
       "category": "climate-environment",
@@ -76,8 +76,8 @@
     },
     {
       "source": "Het Laatste Nieuws",
-      "negative": 14430,
-      "total": 14721
+      "negative": 14431,
+      "total": 14722
     },
     {
       "source": "Rzeczpospolita Poland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Het Laatste Nieuws",
+      "title": "Belgen vragen internetextensie .meow aan voor queergemeenschap",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.hln.be/binnenland/belgen-vragen-internetextensie-meow-aan-voor-queergemeenschap~acc24fab/",
+      "date": "2026-10-08 16:06",
+      "positivity_score": null
+    },
     {
       "source": "Wired",
       "title": "A Scientist Working on the ‘IceCube’ Neutrino Detector Explains the Nobel Prize–Winning Technology",
@@ -9391,15 +9400,6 @@
       "url": "https://www.lefigaro.fr/nantes/sa-voiture-incendiee-en-marge-du-blocage-des-lycees-une-etudiante-nantaise-recoit-plus-de-4-000-euros-de-dons-20261007",
       "date": "2026-10-07 18:25",
       "positivity_score": 3
-    },
-    {
-      "source": "The New York Times",
-      "title": "From Iran to the U.K., Trump Is Being Forced Into Retreat",
-      "reason": "Geopolitical and political analysis of foreign policy and international relations.",
-      "category": "war-conflict",
-      "url": "https://www.nytimes.com/2026/10/07/us/politics/trump-iran-retreat.html",
-      "date": "2026-10-07 18:25",
-      "positivity_score": 2
     }
   ]
 }
