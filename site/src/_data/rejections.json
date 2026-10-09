@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-09T12:27:22.294Z",
-  "total_rejected": 172454,
+  "exported_at": "2026-10-09T12:43:38.163Z",
+  "total_rejected": 172455,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3296
+      "count": 3297
     },
     {
       "category": "climate-environment",
@@ -106,8 +106,8 @@
     },
     {
       "source": "Frankfurter Allgemeine Zeitung",
-      "negative": 6771,
-      "total": 6807
+      "negative": 6772,
+      "total": 6808
     },
     {
       "source": "Le Monde",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Frankfurter Allgemeine Zeitung",
+      "title": "Gespräche in Peking: China verkündet Einigung mit EU für den Handel mit Hybridautos",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/china-verkuendet-einigung-mit-eu-bei-handel-mit-hybridautos-accg-201303275.html",
+      "date": "2026-10-09 14:43",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Ethiopia: Call for a Special Session to Prevent Further Atrocities",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dn.se/insandare/lat-vintern-bli-fargstark/",
       "date": "2026-10-08 18:26",
       "positivity_score": 3
-    },
-    {
-      "source": "Neue Zürcher Zeitung",
-      "title": "Russland lässt die wichtigsten Fragen zum möglichen Pestfall in Sibirien offen",
-      "reason": "Deals with a potential plague case, a death of unknown cause, and speculation about catastrophe scenarios.",
-      "category": "health-scare",
-      "url": "https://www.nzz.ch/international/russland-laesst-die-wichtigsten-fragen-zum-moeglichen-pestfall-in-sibirien-offen-ld.10027910",
-      "date": "2026-10-08 18:26",
-      "positivity_score": 2
     }
   ]
 }
