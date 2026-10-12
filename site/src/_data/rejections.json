@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-12T15:23:27.503Z",
-  "total_rejected": 175213,
+  "exported_at": "2026-10-12T15:23:38.241Z",
+  "total_rejected": 175214,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3323
+      "count": 3324
     },
     {
       "category": "climate-environment",
@@ -171,8 +171,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 3439,
-      "total": 3460
+      "negative": 3440,
+      "total": 3461
     },
     {
       "source": "De Standaard Buitenland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Seniorer og ikke-vestlige indvandrere driver historisk høj beskæftigelse",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dr.dk/nyheder/seneste/seniorer-og-ikke-vestlige-indvandrere-driver-historisk-hoej-beskaeftigelse",
+      "date": "2026-10-12 17:23",
+      "positivity_score": null
+    },
     {
       "source": "The New York Times",
       "title": "Robert E. Hall and Michael Woodford Awarded Nobel for Economics",
@@ -9391,15 +9400,6 @@
       "url": "https://www.faz.net/aktuell/sport/rhein-main-sport/eintracht-frankfurt/eintracht-frankfurt-kroesches-defensive-ist-nicht-konkurrenzfaehig-201307186.html",
       "date": "2026-10-11 14:26",
       "positivity_score": 1
-    },
-    {
-      "source": "Le Monde",
-      "title": "Défense : tout en attendant des Européens qu’ils augmentent leurs capacités, les Etats-Unis entravent les efforts de leurs alliés",
-      "reason": "Geopolitical commentary and defense policy tensions.",
-      "category": "war-conflict",
-      "url": "https://www.lemonde.fr/international/article/2026/10/11/defense-tout-en-attendant-des-europeens-qu-ils-augmentent-leurs-capacites-les-etats-unis-entravent-les-efforts-de-leurs-allies_6791306_3210.html",
-      "date": "2026-10-11 14:26",
-      "positivity_score": 2
     }
   ]
 }
