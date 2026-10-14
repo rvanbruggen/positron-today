@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-14T19:36:10.945Z",
-  "total_rejected": 177819,
+  "exported_at": "2026-10-14T19:36:33.525Z",
+  "total_rejected": 177820,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3384
+      "count": 3385
     },
     {
       "category": "climate-environment",
@@ -96,8 +96,8 @@
     },
     {
       "source": "Le Figaro",
-      "negative": 7625,
-      "total": 7692
+      "negative": 7626,
+      "total": 7693
     },
     {
       "source": "Politiken.dk",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Figaro",
+      "title": "Retraites : les pensions complémentaires du privé revalorisées de 1,4 % au 1er novembre",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lefigaro.fr/conjoncture/retraites-les-pensions-complementaires-du-prive-revalorisees-de-1-4-au-1er-novembre-20261014",
+      "date": "2026-10-14 21:36",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Africa: Africa CDC Introduces New Public Health Training Accreditation Framework",
@@ -9391,15 +9400,6 @@
       "url": "https://www.standaard.be/buitenland/elon-musk-draait-de-geldkraan-weer-open-voor-de-republikeinen/162999775.html",
       "date": "2026-10-14 06:15",
       "positivity_score": 1
-    },
-    {
-      "source": "De Standaard Buitenland",
-      "title": "Longkanker vastgesteld bij paus Leo, kwaadaardige knobbel verwijderd tijdens operatie",
-      "reason": "Article is about a cancer diagnosis and surgery, falling under health scare/recovery from a negative event.",
-      "category": "health-scare",
-      "url": "https://www.standaard.be/buitenland/longkanker-vastgesteld-bij-paus-leo-kwaadaardige-knobbel-verwijderd-tijdens-operatie/163032584.html",
-      "date": "2026-10-14 06:15",
-      "positivity_score": 2
     }
   ]
 }
