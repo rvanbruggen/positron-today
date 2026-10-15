@@ -1,0 +1,20 @@
+---
+title: "How an accelerating Earth led experts to adopt the leap hour"
+title_nl: "Hoe een versnellende aarde experts op het schrikkeluur bracht"
+title_fr: "Comment l’accélération de la Terre a conduit les experts à adopter l’heure intercalaire"
+date: 2026-10-15T23:03:00
+source_pub_date: 2026-10-15
+fetched_date: 2026-10-15
+source_url: "https://www.theguardian.com/science/2026/oct/15/times-up-for-the-leap-second-as-scientists-swap-it-for-the-leap-hour"
+source_name: "The Guardian"
+topic: "Science"
+tags: ["Science","Technology"]
+emoji: "⏱️"
+summary: "Here’s a fascinating shift in how we keep the world’s clocks in step: timekeepers from 69 countries have voted to replace leap seconds with a leap hour, starting next year. The change responds to Earth’s irregular rotation, which has recently sped up enough to raise the possibility of a tricky negative leap second. By letting coordinated universal time drift by as much as an hour before adjusting it, experts aim to spare computer networks and critical infrastructure from disruptive one-second changes - and that adjustment is not expected for thousands of years. So, we keep the link between clock time and Earth’s rotation while making timekeeping much easier for the digital systems we rely on."
+summary_nl: "Wat een boeiende verandering in hoe we de klokken wereldwijd gelijk laten lopen: tijdwaarnemers uit 69 landen hebben gestemd om vanaf volgend jaar schrikkelseconden te vervangen door een schrikkeluur. De verandering speelt in op de onregelmatige draaiing van de aarde, die de laatste tijd is versneld en zo de kans op een lastige negatieve schrikkelseconde vergroot. Door de gecoördineerde wereldtijd tot wel een uur te laten afwijken voordat er wordt bijgestuurd, willen experts computer- en infrastructuursystemen beschermen tegen problemen door een correctie van één seconde - en die aanpassing wordt pas over duizenden jaren verwacht. Zo blijft de verbinding tussen kloktijd en de draaiing van de aarde behouden, terwijl tijdwaarneming een stuk eenvoudiger wordt voor de digitale systemen waarop we vertrouwen."
+summary_fr: "Quel changement fascinant dans la façon de synchroniser les horloges du monde entier : les spécialistes du temps de 69 pays ont voté pour remplacer les secondes intercalaires par une heure intercalaire dès l’année prochaine. Cette décision répond à la rotation irrégulière de la Terre, qui s’est récemment accélérée au point de faire craindre une délicate seconde intercalaire négative. En laissant le temps universel coordonné s’écarter jusqu’à une heure avant de le corriger, les experts veulent protéger les réseaux informatiques et les infrastructures essentielles des perturbations liées à un changement d’une seconde - une correction qui ne devrait pas être nécessaire avant des milliers d’années. Ainsi, le lien entre l’heure officielle et la rotation de la Terre est préservé, tout en simplifiant la gestion du temps pour les systèmes numériques dont nous dépendons."
+image_url: "https://i.guim.co.uk/img/media/e8625b862c3605490cdf938ebc9cf85795994976/228_0_4910_3928/master/4910.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=8f16294fcc5bb0791fb0e1dc1ba18eee"
+layout: post.njk
+---
+
+Here’s a fascinating shift in how we keep the world’s clocks in step: timekeepers from 69 countries have voted to replace leap seconds with a leap hour, starting next year. The change responds to Earth’s irregular rotation, which has recently sped up enough to raise the possibility of a tricky negative leap second. By letting coordinated universal time drift by as much as an hour before adjusting it, experts aim to spare computer networks and critical infrastructure from disruptive one-second changes - and that adjustment is not expected for thousands of years. So, we keep the link between clock time and Earth’s rotation while making timekeeping much easier for the digital systems we rely on.
