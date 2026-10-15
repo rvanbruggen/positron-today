@@ -1,0 +1,20 @@
+---
+title: "Microsoft and Japan disrupt network behind over a billion scam messages"
+title_nl: "Microsoft en Japan leggen netwerk achter meer dan een miljard scamberichten plat"
+title_fr: "Microsoft et le Japon démantèlent un réseau à l’origine de plus d’un milliard de messages frauduleux"
+date: 2026-10-15T09:01:00
+source_pub_date: 2026-10-14
+fetched_date: 2026-10-14
+source_url: "https://www.theverge.com/tech/1011487/microsoft-scam-messages-marketplace-takedown"
+source_name: "The Verge"
+topic: "Society"
+tags: ["Society","Technology"]
+emoji: "🛡️"
+summary: "So, there’s some encouraging news for anyone tired of fake delivery and parking-ticket texts: Microsoft and Japan’s National Police Agency have helped dismantle a marketplace and phishing tools linked to more than a billion scam messages. Since January 2026, the YAM Store marketplace and the CoGUI and Iron Man kits have targeted over 75,000 organizations across more than 150 countries. Microsoft says scammers used them to obtain accounts and impersonate organizations, with Iron Man offering more than 2,300 ready-made templates. The company disabled over 20,000 connected accounts and blocked more than 100,000 fraudulent web domains, while partners seized and redirected domains powering the operation."
+summary_nl: "Er is hoopgevend nieuws voor iedereen die genoeg heeft van nepberichten over pakketjes en parkeerboetes: Microsoft en de Japanse Nationale Politie hebben geholpen een marktplaats en phishingtools op te doeken die verband houden met meer dan een miljard scamberichten. Sinds januari 2026 hebben YAM Store en de tools CoGUI en Iron Man meer dan 75.000 organisaties in ruim 150 landen als doelwit gehad. Volgens Microsoft gebruikten oplichters deze diensten om accounts te bemachtigen en organisaties na te bootsen; Iron Man bood daarvoor meer dan 2.300 kant-en-klare sjablonen. Microsoft schakelde ruim 20.000 betrokken accounts uit en blokkeerde meer dan 100.000 frauduleuze webdomeinen, terwijl partners de domeinen achter de operatie in beslag namen en omleidden."
+summary_fr: "Voici une nouvelle encourageante pour celles et ceux qui en ont assez des faux textos de livraison ou d’amendes de stationnement : Microsoft et l’Agence nationale de police japonaise ont contribué au démantèlement d’une place de marché et d’outils d’hameçonnage liés à plus d’un milliard de messages frauduleux. Depuis janvier 2026, YAM Store et les kits CoGUI et Iron Man ont visé plus de 75 000 organisations dans plus de 150 pays. Selon Microsoft, les escrocs s’en servaient pour obtenir des comptes et usurper l’identité d’organisations, tandis qu’Iron Man proposait plus de 2 300 modèles prêts à l’emploi. Microsoft a désactivé plus de 20 000 comptes associés et bloqué plus de 100 000 domaines web frauduleux, tandis que ses partenaires ont saisi et redirigé les domaines utilisés par l’opération."
+image_url: "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/23318439/akrales_220309_4977_0324.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200"
+layout: post.njk
+---
+
+So, there’s some encouraging news for anyone tired of fake delivery and parking-ticket texts: Microsoft and Japan’s National Police Agency have helped dismantle a marketplace and phishing tools linked to more than a billion scam messages. Since January 2026, the YAM Store marketplace and the CoGUI and Iron Man kits have targeted over 75,000 organizations across more than 150 countries. Microsoft says scammers used them to obtain accounts and impersonate organizations, with Iron Man offering more than 2,300 ready-made templates. The company disabled over 20,000 connected accounts and blocked more than 100,000 fraudulent web domains, while partners seized and redirected domains powering the operation.
