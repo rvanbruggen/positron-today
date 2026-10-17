@@ -1,0 +1,20 @@
+---
+title: "Plants bend their roots away from decaying plants"
+title_nl: "Planten buigen hun wortels weg van rottende planten"
+title_fr: "Les plantes éloignent leurs racines des végétaux en décomposition"
+date: 2026-10-17T16:33:55
+source_pub_date: 2026-10-17
+fetched_date: 2026-10-17
+source_url: "https://www.scientificamerican.com/article/plants-move-to-get-away-from-their-decaying-brethren/"
+source_name: "Scientific American"
+topic: "Environment"
+tags: ["Environment","Nature","Science"]
+emoji: "🌱"
+summary: "So, plants may look rooted in place, but their roots can steer away from decaying plant matter in a newly identified movement researchers call saprotropism. After noticing roots bending away from a contaminated lab plate, Yuzhou Zhang’s team tested the response with rotting apple and found it in Arabidopsis, tomatoes and wheat, but not around decaying animal tissue. The researchers link the behavior to acidic chemical gradients from decomposing plants: abscisic acid builds up on the side facing the decay, prompting growth in the opposite direction. This could help plants avoid pathogens and offers an intriguing new window into how they sense their surroundings, though the signaling details still need further study."
+summary_nl: "Planten lijken misschien stevig op hun plek te staan, maar hun wortels kunnen wegsturen van rottend plantenmateriaal, in een pas ontdekte beweging die onderzoekers saprotropisme noemen. Nadat Yuzhou Zhang wortels zag afbuigen van een besmette laboratoriumschaal, testte zijn team de reactie met rottende appel en vond die bij zandraket, tomaten en tarwe, maar niet bij rottend dierlijk weefsel. De onderzoekers denken dat zure chemische gradiënten van ontbindende planten de reactie veroorzaken: aan de kant van het rottende materiaal hoopt abscisinezuur zich op, waardoor de wortels de andere kant op groeien. Zo kunnen planten mogelijk ziekteverwekkers vermijden, en krijgen we een boeiend nieuw kijkje in hoe ze hun omgeving waarnemen, al moet het precieze signaalmechanisme nog verder worden onderzocht."
+summary_fr: "Les plantes semblent immobiles, mais leurs racines peuvent s’écarter des matières végétales en décomposition grâce à un mouvement récemment découvert, baptisé saprotropisme. Après avoir remarqué des racines qui se détournaient d’une boîte de laboratoire contaminée, l’équipe de Yuzhou Zhang a testé cette réaction avec des pommes pourries et l’a observée chez l’arabette, la tomate et le blé, mais pas au contact de tissus animaux en décomposition. Les chercheurs relient ce comportement aux gradients chimiques acides produits par les végétaux qui se décomposent : l’acide abscissique s’accumule du côté des déchets et pousse les racines à croître dans la direction opposée. Cette réaction pourrait aider les plantes à éviter les agents pathogènes et nous renseigne de façon fascinante sur leur perception de l’environnement, même si les mécanismes de signalisation restent à éclaircir."
+image_url: "https://static.scientificamerican.com/dam/asset/6b0e8aee-eced-4303-8bea-4a7267ec6ae8/saw1126Adva-skullroots.jpg?m=1790615840.35&w=1200"
+layout: post.njk
+---
+
+So, plants may look rooted in place, but their roots can steer away from decaying plant matter in a newly identified movement researchers call saprotropism. After noticing roots bending away from a contaminated lab plate, Yuzhou Zhang’s team tested the response with rotting apple and found it in Arabidopsis, tomatoes and wheat, but not around decaying animal tissue. The researchers link the behavior to acidic chemical gradients from decomposing plants: abscisic acid builds up on the side facing the decay, prompting growth in the opposite direction. This could help plants avoid pathogens and offers an intriguing new window into how they sense their surroundings, though the signaling details still need further study.
