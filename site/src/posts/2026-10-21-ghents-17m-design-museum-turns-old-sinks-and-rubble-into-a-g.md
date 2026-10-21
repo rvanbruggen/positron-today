@@ -1,0 +1,20 @@
+---
+title: "Ghent’s £17m design museum turns old sinks and rubble into a green marvel"
+title_nl: "Het Gentse designmuseum van £17 miljoen maakt van oude wastafels en puin een groen wonder"
+title_fr: "Le musée du design de Gand, à 17 millions de livres, transforme vieux lavabos et gravats en merveille écologique"
+date: 2026-10-21T00:37:00
+source_pub_date: 2026-10-20
+fetched_date: 2026-10-20
+source_url: "https://www.theguardian.com/artanddesign/2026/oct/20/ghent-design-museum-co2-absorbing-recycling"
+source_name: "The Guardian Europe"
+topic: "Arts"
+tags: ["Arts","Environment","Society"]
+emoji: "🧱"
+summary: "Wow, Ghent’s new €20m design museum is built from the city’s discarded concrete, windows, windscreens, sinks and even toilets, giving reuse a striking civic home. Its specially developed bricks contain 63% construction waste sourced within 8km, use around two-thirds less embodied carbon than fired clay bricks, and keep absorbing CO2 as their lime cures. Inside, local clay and experimental biomaterials show how circular design can shape everyday spaces, while a public brickmaking festival invited residents to get hands-on. And here’s the thing: a 40-person citizens’ panel helped shape a welcoming museum designed to serve the community, not just display objects."
+summary_nl: "Wat een bijzonder gebouw: het nieuwe designmuseum van €20 miljoen in Gent is gemaakt van afgedankt beton, ramen, autoruiten, wastafels en zelfs toiletten uit de stad. De speciaal ontwikkelde bakstenen bestaan voor 63% uit bouwafval uit een straal van 8 kilometer, hebben ongeveer twee derde minder ingebedde CO2-uitstoot dan gebakken kleibakstenen en blijven CO2 opnemen terwijl de kalk uithardt. Binnen tonen lokale klei en experimentele biomaterialen hoe circulair ontwerp ook alledaagse ruimtes vorm kan geven, en tijdens een openbaar baksteenfestival konden inwoners zelf aan de slag. En daar zit de kracht: een burgerpanel van 40 mensen hielp mee aan een gastvrij museum dat de gemeenschap wil dienen, en niet alleen voorwerpen tentoonstelt."
+summary_fr: "Quel beau projet : le nouveau musée du design de Gand, d’un coût de 20 millions d’euros, est construit avec du béton, des fenêtres, des pare-brise, des lavabos et même des toilettes mis au rebut dans la ville. Ses briques spécialement conçues contiennent 63 % de déchets de construction récupérés dans un rayon de 8 kilomètres, affichent environ deux tiers de carbone incorporé en moins que les briques d’argile cuites et continuent d’absorber du CO2 pendant le durcissement de la chaux. À l’intérieur, l’argile locale et des biomatériaux expérimentaux montrent comment le design circulaire peut transformer les espaces du quotidien, tandis qu’un festival public de fabrication de briques a permis aux habitants de participer. Et voici ce qui rend le projet si inspirant : un panel citoyen de 40 personnes a contribué à façonner un musée accueillant, conçu pour servir la communauté et pas seulement exposer des objets."
+image_url: "https://i.guim.co.uk/img/media/45ff4a8b77472279494db3470a90bc0073ec22b9/0_69_1200_960/master/1200.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=cd480c869cf32ce447c082dba4080b6e"
+layout: post.njk
+---
+
+Wow, Ghent’s new €20m design museum is built from the city’s discarded concrete, windows, windscreens, sinks and even toilets, giving reuse a striking civic home. Its specially developed bricks contain 63% construction waste sourced within 8km, use around two-thirds less embodied carbon than fired clay bricks, and keep absorbing CO2 as their lime cures. Inside, local clay and experimental biomaterials show how circular design can shape everyday spaces, while a public brickmaking festival invited residents to get hands-on. And here’s the thing: a 40-person citizens’ panel helped shape a welcoming museum designed to serve the community, not just display objects.
