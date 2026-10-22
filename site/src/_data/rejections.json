@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-22T04:16:37.744Z",
-  "total_rejected": 185308,
+  "exported_at": "2026-10-22T04:45:16.954Z",
+  "total_rejected": 185309,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3474
+      "count": 3475
     },
     {
       "category": "climate-environment",
@@ -71,8 +71,8 @@
   "source_breakdown": [
     {
       "source": "Gazet van Antwerpen",
-      "negative": 15295,
-      "total": 15757
+      "negative": 15296,
+      "total": 15758
     },
     {
       "source": "Het Laatste Nieuws",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Gazet van Antwerpen",
+      "title": "Duursportster zwemt als eerste ooit de volledige kust van Californië af, 1.448 kilometer van Oregon tot Mexico",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.gva.be/buitenland/duursportster-zwemt-als-eerste-ooit-de-volledige-kust-van-californie-af-1.448-kilometer-van-oregon-tot-mexico/163431948.html",
+      "date": "2026-10-22 06:45",
+      "positivity_score": null
+    },
     {
       "source": "MercoPress",
       "title": "Global alert over two critical PHP flaws forces government websites offline",
@@ -9391,15 +9400,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/nyt-millionprojekt-skal-styrke-kvaliteten-paa-erhvervsuddannelserne",
       "date": "2026-10-21 10:26",
       "positivity_score": 3
-    },
-    {
-      "source": "DR (Danish Public broadcaster)",
-      "title": "Storbritannien godkender gasfelt i Nordsøen",
-      "reason": "Fossil fuel project approval, which does not fit positive-news environmental standards.",
-      "category": "climate-environment",
-      "url": "https://www.dr.dk/nyheder/seneste/storbritannien-godkender-gasfelt-i-nordsoeen",
-      "date": "2026-10-21 10:26",
-      "positivity_score": 2
     }
   ]
 }
