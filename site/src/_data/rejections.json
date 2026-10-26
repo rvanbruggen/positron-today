@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-10-26T06:30:18.170Z",
-  "total_rejected": 189106,
+  "exported_at": "2026-10-26T06:30:45.506Z",
+  "total_rejected": 189107,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3514
+      "count": 3515
     },
     {
       "category": "climate-environment",
@@ -111,8 +111,8 @@
     },
     {
       "source": "Le Monde",
-      "negative": 7188,
-      "total": 7291
+      "negative": 7189,
+      "total": 7292
     },
     {
       "source": "NRC",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Le Monde",
+      "title": "Serbie : Aleksandar Vucic reconnaît sa défaite aux élections législatives anticipées",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.lemonde.fr/international/article/2026/10/25/serbie-aleksandar-vucic-reconnait-sa-defaite-aux-elections-legislatives-anticipees_6800116_3210.html",
+      "date": "2026-10-26 07:30",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "Air New Zealand becomes first international airline to land in Sydney's new airport",
@@ -9389,15 +9398,6 @@
       "reason": "This is internal political party conflict and expulsion, violating rule 6.",
       "category": "political-conflict",
       "url": "https://www.rp.pl/polityka/art45391381-wyrzucona-z-polski-2050-pelczynska-nalecz-odpowiada-holowni-kierownik-i-tak-nie-doceni",
-      "date": "2026-10-24 22:37",
-      "positivity_score": 1
-    },
-    {
-      "source": "Rzeczpospolita Poland",
-      "title": "Potężny atak na Arabię Saudyjską. Huti uderzyli w lotniska i instalacje naftowe",
-      "reason": "This is a military attack on oil infrastructure and airports, violating rule 6.",
-      "category": "war-conflict",
-      "url": "https://www.rp.pl/konflikty-zbrojne/art45391671-potezny-atak-na-arabie-saudyjska-huti-uderzyli-w-lotniska-i-instalacje-naftowe",
       "date": "2026-10-24 22:37",
       "positivity_score": 1
     }
