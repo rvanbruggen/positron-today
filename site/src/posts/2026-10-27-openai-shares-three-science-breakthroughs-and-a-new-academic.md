@@ -1,0 +1,21 @@
+---
+title: "OpenAI shares three science breakthroughs and a new academic collaboration model"
+title_nl: "OpenAI deelt drie wetenschappelijke doorbraken en een nieuw samenwerkingsmodel met academici"
+title_fr: "OpenAI annonce trois avancées scientifiques et une nouvelle collaboration avec les universitaires"
+date: 2026-10-27T06:35:00
+source_pub_date: 2026-10-26
+fetched_date: 2026-10-27
+source_url: "https://www.theverge.com/ai-artificial-intelligence/1019143/openai-eth-kaseya-science-math-physics"
+source_name: "The Verge"
+topic: "Science"
+tags: ["Science","Technology"]
+emoji: "🔬"
+summary: "So: OpenAI has shared three major AI-generated results in mathematics, computer science, and physics. In mathematics, its model claims to prove the local smoothing conjecture and related longstanding conjectures, with the output released for researchers to examine. In computer science, a proposed proof says the widely accepted Exponential Time Hypothesis is false, and an independent group of experts will scrutinize the work. The physics result concerns rigorous proofs for interacting quantum field theories, including quantum chromodynamics, though its full details have not yet been released. And here's the thing: OpenAI is inviting public input on how to verify AI discoveries and set fair norms for access, credit, and collaboration."
+summary_nl: "Zo: OpenAI heeft drie belangrijke, door AI gegenereerde resultaten gedeeld in de wiskunde, informatica en natuurkunde. In de wiskunde stelt het model een bewijs te hebben gevonden voor het vermoeden van lokale afvlakking en verwante, al lang bestaande vermoedens; de resultaten zijn vrijgegeven zodat onderzoekers ze kunnen bestuderen. In de informatica beweert een voorgesteld bewijs dat de algemeen aanvaarde Exponential Time Hypothesis onjuist is, en een onafhankelijke groep experts zal het werk onderzoeken. Het natuurkundige resultaat gaat over strenge bewijzen voor interagerende kwantumveldentheorieën, waaronder kwantumchromodynamica, al zijn de volledige details nog niet gepubliceerd. En dit is interessant: OpenAI vraagt het publiek mee te denken over hoe AI-ontdekkingen gecontroleerd kunnen worden en hoe eerlijke afspraken over toegang, erkenning en samenwerking eruitzien."
+summary_fr: "Alors : OpenAI a présenté trois résultats majeurs générés par l’IA en mathématiques, en informatique et en physique. En mathématiques, son modèle affirme avoir démontré la conjecture de régularisation locale ainsi que des conjectures connexes de longue date, et les résultats sont publiés pour être examinés par les chercheurs. En informatique, une preuve proposée soutient que l’hypothèse du temps exponentiel, largement admise, est fausse, et un groupe indépendant d’experts va étudier les travaux. Le résultat en physique porte sur des preuves rigoureuses concernant des théories quantiques des champs en interaction, dont la chromodynamique quantique, mais les détails complets ne sont pas encore publiés. Et voici le point intéressant : OpenAI invite le public à réfléchir aux moyens de vérifier les découvertes de l’IA et d’établir des règles équitables pour l’accès, la reconnaissance et la collaboration."
+image_url: "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/STKS537_AI_MATH_2.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200"
+featured: true
+layout: post.njk
+---
+
+So: OpenAI has shared three major AI-generated results in mathematics, computer science, and physics. In mathematics, its model claims to prove the local smoothing conjecture and related longstanding conjectures, with the output released for researchers to examine. In computer science, a proposed proof says the widely accepted Exponential Time Hypothesis is false, and an independent group of experts will scrutinize the work. The physics result concerns rigorous proofs for interacting quantum field theories, including quantum chromodynamics, though its full details have not yet been released. And here's the thing: OpenAI is inviting public input on how to verify AI discoveries and set fair norms for access, credit, and collaboration.
