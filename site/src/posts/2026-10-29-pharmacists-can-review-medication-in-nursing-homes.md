@@ -1,0 +1,20 @@
+---
+title: "Pharmacists can review medication in nursing homes"
+title_nl: "Apothekers mogen medicatie in woonzorgcentra herzien"
+title_fr: "Les pharmaciens peuvent réviser les médicaments en maison de repos"
+date: 2026-10-29T18:16:00
+source_pub_date: 2026-10-29
+fetched_date: 2026-10-29
+source_url: "https://www.lalibre.be/belgique/societe/2026/10/29/les-pharmaciens-autorises-a-reviser-la-medication-des-residents-des-maisons-de-repos-HWPD5MJ325B5HKYDP4G6KZLSR4/"
+source_name: "La Libre Belgique"
+topic: "Health"
+tags: ["Health","Society"]
+emoji: "💊"
+summary: "Pharmacists in Belgian nursing homes will be able to review residents’ medication plans, helping spot risky interactions, incorrect doses and prescriptions that may no longer be needed. The review will be coordinated with the treating or coordinating doctor and a nurse, while the doctor keeps final say on any changes after speaking with the resident or their representative. It will be free for residents and offered every two years, or sooner when prescribed, with priority for people with treatment-related concerns, psychotropic medicines, serious kidney problems or a recent hospital stay. The initiative aims to help older residents take only the medicines they truly need, and around 8,500 people are expected to benefit each year."
+summary_nl: "Apothekers in Belgische woonzorgcentra mogen voortaan de medicatieschema’s van bewoners nakijken om gevaarlijke wisselwerkingen, verkeerde doseringen en onnodige voorschriften op te sporen. Dat gebeurt in overleg met de behandelende of coördinerende arts en een verpleegkundige; de arts beslist uiteindelijk over aanpassingen, na overleg met de bewoner of diens vertegenwoordiger. De controle is gratis en vindt om de twee jaar plaats, of vaker als de arts dat voorschrijft, met voorrang voor bewoners met klachten over hun behandeling, psychofarmaca, ernstige nierproblemen of een recent ziekenhuisverblijf. Zo moeten ouderen alleen de geneesmiddelen nemen die ze echt nodig hebben, en jaarlijks kunnen naar verwachting ongeveer 8.500 bewoners van de opvolging gebruikmaken."
+summary_fr: "Dans les maisons de repos belges, les pharmaciens pourront désormais examiner les traitements des résidents afin de repérer les interactions à risque, les dosages incorrects et les prescriptions devenues inutiles. Cet examen sera mené en concertation avec le médecin traitant ou coordinateur et une infirmière; le médecin restera responsable de toute modification, après échange avec le résident ou son représentant. Gratuit pour les résidents, le suivi pourra avoir lieu tous les deux ans, ou plus souvent sur prescription, avec une priorité pour les personnes qui rencontrent des difficultés liées à leur traitement, prennent des psychotropes, souffrent de graves problèmes rénaux ou ont récemment été hospitalisées. Cette mesure vise à aider les personnes âgées à ne prendre que les médicaments dont elles ont réellement besoin, et quelque 8.500 résidents devraient en bénéficier chaque année."
+image_url: "https://www.lalibre.be/resizer/v2/KVU7PLRLZVFN7ITMCD5MKSM7KA.jpg?auth=43e78777c787cf09cf28da2557cedca8cbe54e09f5c62e82ddf110eed272b120&width=1200&height=630&quality=85&focal=549%2C366"
+layout: post.njk
+---
+
+Pharmacists in Belgian nursing homes will be able to review residents’ medication plans, helping spot risky interactions, incorrect doses and prescriptions that may no longer be needed. The review will be coordinated with the treating or coordinating doctor and a nurse, while the doctor keeps final say on any changes after speaking with the resident or their representative. It will be free for residents and offered every two years, or sooner when prescribed, with priority for people with treatment-related concerns, psychotropic medicines, serious kidney problems or a recent hospital stay. The initiative aims to help older residents take only the medicines they truly need, and around 8,500 people are expected to benefit each year.
