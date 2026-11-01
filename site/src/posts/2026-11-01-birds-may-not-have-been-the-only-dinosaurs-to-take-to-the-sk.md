@@ -1,0 +1,20 @@
+---
+title: "Birds may not have been the only dinosaurs to take to the skies"
+title_nl: "Vogels waren mogelijk niet de enige dinosauriërs die het luchtruim veroverden"
+title_fr: "Les oiseaux n’auraient pas été les seuls dinosaures à conquérir les airs"
+date: 2026-11-01T21:33:00
+source_pub_date: 2026-11-01
+fetched_date: 2026-11-01
+source_url: "https://www.lalibre.be/planete/2026/11/01/les-oiseaux-nauraient-pas-ete-les-seuls-dinosaures-a-conquerir-les-airs-MY6FICL7XNAZ3DSO5X3ZW73NCI/"
+source_name: "La Libre Belgique"
+topic: "Animals"
+tags: ["Animals","Nature","Science"]
+emoji: "🦖"
+summary: "A remarkably well-preserved fossil from northeastern China is shedding new light on how flight-related abilities evolved in dinosaurs. Just 57 centimetres long, Norellraptor barsboldi lived more than 100 million years ago and belonged to a group of small feathered dinosaurs called microraptorines. By studying its anatomy and examining its bones under a microscope, researchers found that microraptorines and early birds developed flight-related traits in different sequences. This suggests that aerial abilities may have evolved independently in several dinosaur lineages - a fascinating example of evolutionary convergence and a reminder that fossils can still reshape our understanding of life’s history."
+summary_nl: "Een uitzonderlijk goed bewaard fossiel uit het noordoosten van China werpt nieuw licht op de ontwikkeling van vliegvermogen bij dinosauriërs. Norellraptor barsboldi was slechts 57 centimeter lang, leefde meer dan 100 miljoen jaar geleden en behoorde tot een groep kleine, gevederde dinosauriërs die microraptorinen worden genoemd. Door de anatomie te bestuderen en de botten microscopisch te onderzoeken, ontdekten onderzoekers dat microraptorinen en de vroege vogels vliegkenmerken in een andere volgorde ontwikkelden. Dat wijst erop dat luchtverplaatsing bij verschillende dinosauriërlijnen onafhankelijk kan zijn ontstaan - een boeiend voorbeeld van evolutionaire convergentie en een herinnering dat fossielen ons beeld van de geschiedenis van het leven blijven veranderen."
+summary_fr: "Un fossile exceptionnellement bien conservé découvert dans le nord-est de la Chine apporte de nouveaux éclairages sur l’évolution des capacités liées au vol chez les dinosaures. Long de seulement 57 centimètres, Norellraptor barsboldi vivait il y a plus de 100 millions d’années et appartenait à un groupe de petits dinosaures à plumes appelés microraptorinés. En étudiant son anatomie et en examinant ses os au microscope, les chercheurs ont constaté que les microraptorinés et les premiers oiseaux avaient développé les caractères liés au vol dans un ordre différent. Cela suggère que des capacités aériennes ont pu apparaître indépendamment dans plusieurs lignées de dinosaures - un bel exemple de convergence évolutive et un rappel que les fossiles peuvent encore transformer notre compréhension de l’histoire du vivant."
+image_url: "https://www.lalibre.be/resizer/v2/F6HQO2LQARE3DKKEY5WYROKSYI.jpg?auth=e4fdbf7e511eb65806c45787657e04a50b47fb048941b40fe299598ccd471253&width=1200&height=630&quality=85&focal=86%2C122"
+layout: post.njk
+---
+
+A remarkably well-preserved fossil from northeastern China is shedding new light on how flight-related abilities evolved in dinosaurs. Just 57 centimetres long, Norellraptor barsboldi lived more than 100 million years ago and belonged to a group of small feathered dinosaurs called microraptorines. By studying its anatomy and examining its bones under a microscope, researchers found that microraptorines and early birds developed flight-related traits in different sequences. This suggests that aerial abilities may have evolved independently in several dinosaur lineages - a fascinating example of evolutionary convergence and a reminder that fossils can still reshape our understanding of life’s history.
