@@ -1,0 +1,20 @@
+---
+title: "Beyond Ranthambore: eight tiger cubs bring new hope for Rajasthan"
+title_nl: "Voorbij Ranthambore: acht tijgerwelpen geven Rajasthan nieuwe hoop"
+title_fr: "Au-delà de Ranthambore : huit petits tigres ravivent l’espoir au Rajasthan"
+date: 2026-11-02T17:34:54
+source_pub_date: 2026-11-02
+fetched_date: 2026-11-02
+source_url: "https://thebetterindia.com/wildlife/tiger-breeding-kailadevi-wildlife-sanctuary-rajasthan-cubs-ranthambore-conservation-12775902"
+source_name: "The Better India"
+topic: "Animals"
+tags: ["Animals","Environment","Nature"]
+emoji: "🐅"
+summary: "Now, here’s the encouraging news: after nearly three decades without documented successful breeding, Kailadevi Wildlife Sanctuary has recorded eight tiger cubs and three adult tigers over the past five years. A WWF-India and Rajasthan Forest Department study used 186 camera-trap stations to document 27 mammal species, highlighting the rich wildlife that can sustain tigers. As a northern extension of Ranthambore, Kailadevi could help create a second breeding population, but its future depends on connected forests, abundant prey and continued monitoring. And here's the thing: conservation efforts supporting residents in 46 nearby villages show how local livelihoods and wildlife protection can go hand in hand."
+summary_nl: "En hier is het goede nieuws: na bijna drie decennia zonder gedocumenteerde succesvolle voortplanting zijn er in het Kailadevi-wildreservaat de afgelopen vijf jaar acht tijgerwelpen en drie volwassen tijgers geregistreerd. In een onderzoek van WWF-India en de bosdienst van Rajasthan werden met 186 cameravallen 27 zoogdiersoorten vastgelegd, wat laat zien hoe rijk het gebied aan wilde dieren is. Als noordelijke uitloper van Ranthambore kan Kailadevi bijdragen aan een tweede voortplantingsgebied, maar daarvoor zijn verbonden bossen, voldoende prooidieren en blijvende monitoring nodig. En het mooie is: natuurbehoud dat inwoners van 46 omliggende dorpen ondersteunt, laat zien hoe lokale bestaansmiddelen en bescherming van wilde dieren elkaar kunnen versterken."
+summary_fr: "Et voici une nouvelle réjouissante : après près de trois décennies sans reproduction réussie documentée, la réserve naturelle de Kailadevi a recensé huit petits tigres et trois tigres adultes au cours des cinq dernières années. Une étude de WWF-India et du service forestier du Rajasthan a utilisé 186 stations de pièges photographiques pour répertorier 27 espèces de mammifères, révélant la richesse de la faune locale. Prolongement nord de Ranthambore, Kailadevi pourrait accueillir une deuxième population reproductrice, à condition de préserver des forêts reliées entre elles, des proies en nombre suffisant et un suivi continu. Et voici l’essentiel : les initiatives de conservation qui soutiennent les habitants de 46 villages voisins montrent que les moyens de subsistance locaux et la protection de la faune peuvent avancer de concert."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/2026/11/02/glowg-2026-11-02-14-39-30.png"
+layout: post.njk
+---
+
+Now, here’s the encouraging news: after nearly three decades without documented successful breeding, Kailadevi Wildlife Sanctuary has recorded eight tiger cubs and three adult tigers over the past five years. A WWF-India and Rajasthan Forest Department study used 186 camera-trap stations to document 27 mammal species, highlighting the rich wildlife that can sustain tigers. As a northern extension of Ranthambore, Kailadevi could help create a second breeding population, but its future depends on connected forests, abundant prey and continued monitoring. And here's the thing: conservation efforts supporting residents in 46 nearby villages show how local livelihoods and wildlife protection can go hand in hand.
