@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-11-09T20:33:10.507Z",
-  "total_rejected": 204408,
+  "exported_at": "2026-11-09T20:33:20.482Z",
+  "total_rejected": 204409,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3701
+      "count": 3702
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 9359,
-      "total": 9450
+      "negative": 9360,
+      "total": 9451
     },
     {
       "source": "Le Figaro",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "Pensionsavtal klart för över två miljoner svenskar",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dn.se/ekonomi/pensionsavtal-klart-for-over-tva-miljoner-svenskar/",
+      "date": "2026-11-09 21:33",
+      "positivity_score": null
+    },
     {
       "source": "Global News (Canada)",
       "title": "Transferring money between accounts is about to get faster in Canada",
@@ -9391,15 +9400,6 @@
       "url": "https://www.demorgen.be/nieuws/in-een-normaal-functionerende-rechtsstaat-had-trump-in-de-cel-gezeten-de-rechtsstaat-in-de-vs-heeft-gefaald~b06abd09/",
       "date": "2026-11-09 06:15",
       "positivity_score": 2
-    },
-    {
-      "source": "Het Laatste Nieuws",
-      "title": "Thermostaat verlagen naar 21, 20 of 19 graden? Zoveel bespaar je daarmee op je energiefactuur",
-      "reason": "Practical financial advice on lowering heating bills due to energy prices.",
-      "category": "economic-doom",
-      "url": "https://www.hln.be/mijn-geld/thermostaat-verlagen-naar-21-20-of-19-graden-zoveel-bespaar-je-daarmee-op-je-energiefactuur~a932812d/",
-      "date": "2026-11-09 06:15",
-      "positivity_score": 4
     }
   ]
 }
