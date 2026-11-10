@@ -1,0 +1,20 @@
+---
+title: "A new AI tool from Google DeepMind proves key Signal safeguards"
+title_nl: "Een nieuwe AI-tool van Google DeepMind bewijst belangrijke beveiligingen van Signal"
+title_fr: "Un nouvel outil d’IA de Google DeepMind prouve des protections clés de Signal"
+date: 2026-11-10T14:07:00
+source_pub_date: 2026-11-10
+fetched_date: 2026-11-10
+source_url: "https://www.wired.com/story/a-new-ai-tool-from-google-deepmind-formally-verified-the-signal-protocol/"
+source_name: "Wired"
+topic: "Science"
+tags: ["Science","Technology"]
+emoji: "🔐"
+summary: "Google DeepMind researchers used their AlphaProof Code framework to formally verify several important cryptographic guarantees in the Signal protocol, completing the proof of concept in just four weeks. The work offers independent reassurance about technology used by Signal, Google Messages, and WhatsApp, while showing how AI agents can speed up mathematical checks of software. The analysis found no new vulnerabilities in the parts examined, and correctly flagged known flaws in older Signal versions, but it did not verify the entire app. DeepMind has shared its specification and proof, while making AI-assisted verification practical and affordable at a much larger scale remains the next challenge."
+summary_nl: "Onderzoekers van Google DeepMind gebruikten hun AlphaProof Code-raamwerk om verschillende belangrijke cryptografische garanties van het Signal-protocol formeel te verifiëren, en rondden deze proef in slechts vier weken af. Het werk biedt onafhankelijke geruststelling over technologie die wordt gebruikt door Signal, Google Berichten en WhatsApp, en laat zien hoe AI-agenten wiskundige softwarecontroles kunnen versnellen. De analyse vond geen nieuwe kwetsbaarheden in de onderzochte onderdelen en herkende bekende fouten in oudere versies van Signal, maar verifieerde niet de volledige app. DeepMind heeft de specificatie en het bewijs gedeeld; de volgende uitdaging is om AI-ondersteunde verificatie op veel grotere schaal praktisch en betaalbaar te maken."
+summary_fr: "Les chercheurs de Google DeepMind ont utilisé leur cadre AlphaProof Code pour vérifier formellement plusieurs garanties cryptographiques importantes du protocole Signal, en menant cette preuve de concept à bien en seulement quatre semaines. Ce travail renforce la confiance dans une technologie utilisée par Signal, Google Messages et WhatsApp, tout en montrant comment des agents d’IA peuvent accélérer les vérifications mathématiques de logiciels. L’analyse n’a révélé aucune nouvelle vulnérabilité dans les parties étudiées et a bien repéré des failles connues dans d’anciennes versions de Signal, mais elle n’a pas vérifié l’application entière. DeepMind a publié sa spécification et sa preuve, tandis que le prochain défi consiste à rendre la vérification assistée par l’IA pratique et abordable à bien plus grande échelle."
+image_url: "https://media.wired.com/photos/6af23a5e398c3a1348a23455/191:100/w_1280,c_limit/Security_A%20New%20AI%20Tool%20From%20Google%20DeepMind%20Formally%20Verified%20the%20Signal%20Protocol_v1.jpg"
+layout: post.njk
+---
+
+Google DeepMind researchers used their AlphaProof Code framework to formally verify several important cryptographic guarantees in the Signal protocol, completing the proof of concept in just four weeks. The work offers independent reassurance about technology used by Signal, Google Messages, and WhatsApp, while showing how AI agents can speed up mathematical checks of software. The analysis found no new vulnerabilities in the parts examined, and correctly flagged known flaws in older Signal versions, but it did not verify the entire app. DeepMind has shared its specification and proof, while making AI-assisted verification practical and affordable at a much larger scale remains the next challenge.
