@@ -10,18 +10,94 @@ function getClient(): SubstackClient {
   return new SubstackClient({ publicationUrl: PUBLICATION_URL, token: sid });
 }
 
+/**
+ * Check that SUBSTACK_SID is still a valid login.
+ *
+ * Calls the drafts list, which needs a logged-in session (drafts are private),
+ * rather than the public archive: the archive answers 200 without a login, so
+ * it reported "connected" even with an expired cookie.
+ */
 export async function checkSubstackHealth(): Promise<{ ok: boolean; error?: string }> {
   const sid = process.env.SUBSTACK_SID;
   if (!sid) return { ok: false, error: "SUBSTACK_SID env var is not set" };
   try {
-    const res = await fetch(`${PUBLICATION_URL}/api/v1/archive?limit=1`, {
+    const res = await fetch(`${PUBLICATION_URL}/api/v1/drafts?offset=0&limit=1`, {
       headers: { Cookie: `substack.sid=${sid}` },
+      redirect: "manual",
     });
-    if (!res.ok) return { ok: false, error: `Substack API returned ${res.status} — cookie may have expired` };
+    if (res.status === 401 || res.status === 403) {
+      return { ok: false, error: `Substack rejected the login (${res.status}) — the SUBSTACK_SID cookie has likely expired` };
+    }
+    if (!res.ok) return { ok: false, error: `Substack drafts API returned ${res.status}` };
+    const body = await res.json().catch(() => null);
+    if (!Array.isArray(body)) {
+      return { ok: false, error: "Substack drafts API did not return a draft list — the cookie may not be a valid login" };
+    }
     return { ok: true };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return { ok: false, error: msg };
+  }
+}
+
+// ── Last cross-post failure ────────────────────────────────────────────────
+// Posting runs in the background (publish timer, digest pick), so a failure
+// never reaches the admin UI. Keep the most recent one in the settings table
+// so the Settings page can show it; a successful post clears it.
+
+const LAST_ERROR_KEY = "substack_last_error";
+
+export interface SubstackFailure {
+  at: string;
+  articleId: number;
+  title: string;
+  error: string;
+}
+
+async function recordFailure(failure: SubstackFailure): Promise<void> {
+  try {
+    await db.execute({
+      sql: "INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+      args: [LAST_ERROR_KEY, JSON.stringify(failure)],
+    });
+  } catch (err) {
+    console.error("[substack] Could not record failure:", err instanceof Error ? err.message : err);
+  }
+}
+
+async function clearFailure(): Promise<void> {
+  try {
+    await db.execute({ sql: "DELETE FROM settings WHERE key = ?", args: [LAST_ERROR_KEY] });
+  } catch {
+    // Non-critical
+  }
+}
+
+export async function getLastSubstackFailure(): Promise<SubstackFailure | null> {
+  try {
+    const r = await db.execute({ sql: "SELECT value FROM settings WHERE key = ?", args: [LAST_ERROR_KEY] });
+    const v = r.rows[0]?.value;
+    return v ? (JSON.parse(String(v)) as SubstackFailure) : null;
+  } catch {
+    return null;
+  }
+}
+
+// Same selection as postPendingSubstack(), shared so the status count matches
+// what will actually be posted.
+const PENDING_WHERE = `
+  status = 'published'
+  AND (post_to_substack = 1 OR digest_pick = 1)
+  AND substack_posted_at IS NULL
+  AND published_at >= '2026-06-25'
+`;
+
+export async function countPendingSubstack(): Promise<number> {
+  try {
+    const r = await db.execute(`SELECT COUNT(*) AS n FROM articles WHERE ${PENDING_WHERE}`);
+    return Number(r.rows[0]?.n ?? 0);
+  } catch {
+    return 0;
   }
 }
 
@@ -175,6 +251,7 @@ export async function postToSubstack(articleId: number): Promise<SubstackPostRes
     const { url } = await createAndPublishDraft(title, subtitle, bodyJson, imageUrl);
 
     console.log(`[substack] Posted article ${articleId}: "${title}" → ${url}`);
+    await clearFailure();
     return { ok: true, url };
   } catch (err) {
     // Roll back the claim so the article can be retried
@@ -184,6 +261,7 @@ export async function postToSubstack(articleId: number): Promise<SubstackPostRes
     });
     const msg = err instanceof Error ? err.message : String(err);
     console.error(`[substack] Failed to post article ${articleId}:`, msg);
+    await recordFailure({ at: new Date().toISOString(), articleId, title, error: msg.slice(0, 1000) });
     if (msg.includes("401") || msg.includes("403") || msg.includes("authentication")) {
       console.error("[substack] ⚠ Your SUBSTACK_SID cookie has likely expired. Sign into Substack in your browser, copy the new substack.sid cookie value, and update the SUBSTACK_SID env var.");
     }
@@ -201,10 +279,7 @@ export async function postPendingSubstack(): Promise<{ posted: number; skipped: 
   const pending = await db.execute(`
     SELECT id, title_en, title_nl
     FROM articles
-    WHERE status = 'published'
-      AND (post_to_substack = 1 OR digest_pick = 1)
-      AND substack_posted_at IS NULL
-      AND published_at >= '2026-06-25'
+    WHERE ${PENDING_WHERE}
     ORDER BY published_at ASC
   `);
 

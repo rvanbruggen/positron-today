@@ -1,8 +1,12 @@
-import { checkSubstackHealth } from "@/lib/substack";
+import { checkSubstackHealth, countPendingSubstack, getLastSubstackFailure } from "@/lib/substack";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const result = await checkSubstackHealth();
-  return Response.json(result);
+  const [health, pending, lastFailure] = await Promise.all([
+    checkSubstackHealth(),
+    countPendingSubstack(),
+    getLastSubstackFailure(),
+  ]);
+  return Response.json({ ...health, pending, lastFailure });
 }
