@@ -101,6 +101,65 @@ export async function countPendingSubstack(): Promise<number> {
   }
 }
 
+// ── Author ID ──────────────────────────────────────────────────────────────
+// Drafts need a byline (`draft_bylines`) with the author's Substack user ID.
+// It used to be read from the single newest archive post only, so as soon as
+// that newest item had no `publishedBylines` every cross-post failed with
+// "Could not determine Substack author ID". Now, in order:
+//   1. SUBSTACK_USER_ID env var, if set
+//   2. the ID cached in the settings table after an earlier lookup
+//   3. the first post with a byline among the newest 25 archive posts
+// and the ID found in step 3 is cached so later posts don't depend on the
+// archive at all.
+
+const AUTHOR_ID_KEY = "substack_author_id";
+
+export async function getSubstackAuthorId(cookie: string): Promise<number> {
+  const fromEnv = Number(process.env.SUBSTACK_USER_ID);
+  if (Number.isInteger(fromEnv) && fromEnv > 0) return fromEnv;
+
+  try {
+    const r = await db.execute({ sql: "SELECT value FROM settings WHERE key = ?", args: [AUTHOR_ID_KEY] });
+    const cached = Number(r.rows[0]?.value);
+    if (Number.isInteger(cached) && cached > 0) return cached;
+  } catch {
+    // settings table unavailable — fall through to the archive
+  }
+
+  const archiveRes = await fetch(`${PUBLICATION_URL}/api/v1/archive?sort=new&limit=25`, {
+    headers: { Cookie: cookie },
+  });
+  if (!archiveRes.ok) throw new Error(`Failed to fetch Substack archive (${archiveRes.status})`);
+  const archive = await archiveRes.json();
+  const posts: Array<Record<string, unknown>> = Array.isArray(archive) ? archive : [];
+
+  for (const post of posts) {
+    const bylines = post.publishedBylines as Array<{ id?: unknown }> | undefined;
+    const id = Number(bylines?.[0]?.id);
+    if (Number.isInteger(id) && id > 0) {
+      try {
+        await db.execute({
+          sql: "INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+          args: [AUTHOR_ID_KEY, String(id)],
+        });
+      } catch {
+        // caching is an optimisation only
+      }
+      return id;
+    }
+  }
+
+  // Say what the archive held, so the cause can be read from the error itself.
+  const first = posts[0];
+  const detail = first
+    ? `newest item: "${String(first.title ?? "")}" (type ${String(first.type ?? "?")}, fields: ${Object.keys(first).slice(0, 40).join(", ")})`
+    : `archive returned ${Array.isArray(archive) ? "no posts" : typeof archive}`;
+  throw new Error(
+    `Could not determine Substack author ID: none of the newest ${posts.length} archive posts has publishedBylines — ${detail}. ` +
+    `Set SUBSTACK_USER_ID in .env.docker to your Substack user ID to bypass this lookup.`,
+  );
+}
+
 function buildPostBodyJson(article: Record<string, unknown>) {
   const emoji = String(article.article_emoji ?? "✨");
   const summary = String(article.summary_en ?? "");
@@ -154,14 +213,7 @@ async function createAndPublishDraft(
   const sid = process.env.SUBSTACK_SID!;
   const cookie = `substack.sid=${sid}`;
 
-  // Get author user ID from an existing published post
-  const archiveRes = await fetch(`${PUBLICATION_URL}/api/v1/archive?limit=1`, {
-    headers: { Cookie: cookie },
-  });
-  if (!archiveRes.ok) throw new Error(`Failed to fetch Substack archive (${archiveRes.status})`);
-  const archive = await archiveRes.json();
-  const userId = archive?.[0]?.publishedBylines?.[0]?.id as number | undefined;
-  if (!userId) throw new Error("Could not determine Substack author ID from existing posts");
+  const userId = await getSubstackAuthorId(cookie);
 
   const draftPayload: Record<string, unknown> = {
     draft_title: title,

@@ -1,4 +1,5 @@
 import db from "@/lib/db";
+import { getSubstackAuthorId } from "@/lib/substack";
 import sharp from "sharp";
 
 const SITE_BASE = "https://positron.today";
@@ -308,14 +309,7 @@ export async function postEditorialToSubstack(
   }
 
   try {
-    // Get author user ID
-    const archiveRes = await fetch(`${PUBLICATION_URL}/api/v1/archive?limit=1`, {
-      headers: { Cookie: cookie },
-    });
-    if (!archiveRes.ok) throw new Error(`Failed to fetch Substack archive (${archiveRes.status})`);
-    const archive = await archiveRes.json();
-    const userId = archive?.[0]?.publishedBylines?.[0]?.id as number | undefined;
-    if (!userId) throw new Error("Could not determine Substack author ID from existing posts");
+    const userId = await getSubstackAuthorId(cookie);
 
     const draftPayload: Record<string, unknown> = {
       draft_title: title,
