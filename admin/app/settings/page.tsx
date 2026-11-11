@@ -140,6 +140,8 @@ export default function SettingsPage() {
   const [substackOk,      setSubstackOk]      = useState<boolean | null>(null);
   const [substackError,   setSubstackError]   = useState<string | null>(null);
   const [substackChecking, setSubstackChecking] = useState(false);
+  const [substackPending, setSubstackPending] = useState<number | null>(null);
+  const [substackLastFailure, setSubstackLastFailure] = useState<{ at: string; articleId: number; title: string; error: string } | null>(null);
 
   // Digest state
   const [digestTimes,      setDigestTimes]      = useState<string[]>([]);
@@ -196,6 +198,8 @@ export default function SettingsPage() {
       .then(data => {
         setSubstackOk(data.ok ?? false);
         setSubstackError(data.error ?? null);
+        setSubstackPending(typeof data.pending === "number" ? data.pending : null);
+        setSubstackLastFailure(data.lastFailure ?? null);
       })
       .catch(() => {
         setSubstackOk(false);
@@ -1099,6 +1103,8 @@ export default function SettingsPage() {
                   const data = await res.json();
                   setSubstackOk(data.ok ?? false);
                   setSubstackError(data.error ?? null);
+                  setSubstackPending(typeof data.pending === "number" ? data.pending : null);
+                  setSubstackLastFailure(data.lastFailure ?? null);
                 } catch {
                   setSubstackOk(false);
                   setSubstackError("Failed to reach status endpoint");
@@ -1112,6 +1118,20 @@ export default function SettingsPage() {
               {substackChecking ? "Checking…" : "Re-check"}
             </button>
           </div>
+          {substackPending !== null && substackPending > 0 && (
+            <p className="mt-3 text-xs text-amber-800">
+              {substackPending} published article{substackPending === 1 ? "" : "s"} waiting to be cross-posted.
+            </p>
+          )}
+          {substackLastFailure && (
+            <div className="mt-3 bg-red-50 border border-red-200 rounded-lg p-3 text-xs text-red-700">
+              <p className="font-semibold mb-1">
+                Last cross-post failed · {new Date(substackLastFailure.at).toLocaleString("en-GB", { timeZone: "Europe/Brussels" })}
+              </p>
+              <p className="mb-1">&ldquo;{substackLastFailure.title}&rdquo; (article {substackLastFailure.articleId})</p>
+              <p className="font-mono break-words whitespace-pre-wrap">{substackLastFailure.error}</p>
+            </div>
+          )}
           {substackOk === false && (
             <div className="mt-4 bg-red-50 border border-red-200 rounded-lg p-3 text-xs text-red-700">
               <p className="font-semibold mb-1">How to fix:</p>
