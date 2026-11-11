@@ -131,7 +131,11 @@ export async function getSubstackAuthorId(cookie: string): Promise<number> {
   });
   if (!archiveRes.ok) throw new Error(`Failed to fetch Substack archive (${archiveRes.status})`);
   const archive = await archiveRes.json();
-  const posts: Array<Record<string, unknown>> = Array.isArray(archive) ? archive : [];
+  // The archive used to be a bare array of posts; since early November 2026 it
+  // is an object: { posts: [...], nextCursor }. Accept both.
+  const posts: Array<Record<string, unknown>> = Array.isArray(archive)
+    ? archive
+    : Array.isArray(archive?.posts) ? archive.posts : [];
 
   for (const post of posts) {
     const bylines = post.publishedBylines as Array<{ id?: unknown }> | undefined;
@@ -153,7 +157,7 @@ export async function getSubstackAuthorId(cookie: string): Promise<number> {
   const first = posts[0];
   const detail = first
     ? `newest item: "${String(first.title ?? "")}" (type ${String(first.type ?? "?")}, fields: ${Object.keys(first).slice(0, 40).join(", ")})`
-    : `archive returned ${Array.isArray(archive) ? "no posts" : typeof archive}`;
+    : `archive returned ${Array.isArray(archive) || Array.isArray(archive?.posts) ? "no posts" : `an object with fields ${Object.keys(archive ?? {}).join(", ")}`}`;
   throw new Error(
     `Could not determine Substack author ID: none of the newest ${posts.length} archive posts has publishedBylines — ${detail}. ` +
     `Set SUBSTACK_USER_ID in .env.docker to your Substack user ID to bypass this lookup.`,
