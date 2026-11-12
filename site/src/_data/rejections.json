@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-11-12T09:26:34.149Z",
-  "total_rejected": 207005,
+  "exported_at": "2026-11-12T10:11:32.934Z",
+  "total_rejected": 207006,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3741
+      "count": 3742
     },
     {
       "category": "divisive-racism",
@@ -91,8 +91,8 @@
     },
     {
       "source": "Dagens Nyheter",
-      "negative": 9474,
-      "total": 9569
+      "negative": 9475,
+      "total": 9570
     },
     {
       "source": "Le Figaro",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Dagens Nyheter",
+      "title": "SJ byter spår – nattågen till Tyskland börjar rulla igen",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dn.se/ekonomi/sj-byter-spar-nattagen-till-tyskland-borjar-rulla-igen/",
+      "date": "2026-11-12 11:11",
+      "positivity_score": null
+    },
     {
       "source": "The Journal (Ireland)",
       "title": "Barry Andrews: My skin cancer was spotted by chance. Others should not have to rely on luck",
@@ -9391,15 +9400,6 @@
       "url": "https://vrtnws.be/p.pAxDeKaLk",
       "date": "2026-11-11 14:25",
       "positivity_score": 3
-    },
-    {
-      "source": "VRT Nws",
-      "title": "Presentieklooster in Lotenhulle sluit: laatste 8 zusters verhuizen naar Ruiselede",
-      "reason": "Rule 2: Local-only news about a specific convent closing.",
-      "category": "soft-news-filler",
-      "url": "https://vrtnws.be/p.KK81pVqmL",
-      "date": "2026-11-11 14:25",
-      "positivity_score": 2
     }
   ]
 }
