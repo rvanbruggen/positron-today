@@ -1,0 +1,20 @@
+---
+title: "Five beautiful eco buildings around the world"
+title_nl: "Vijf prachtige ecologische gebouwen wereldwijd"
+title_fr: "Cinq magnifiques bâtiments écologiques dans le monde"
+date: 2026-11-15T05:24:54
+source_pub_date: 2026-11-14
+fetched_date: 2026-11-14
+source_url: "https://www.theguardian.com/artanddesign/2026/nov/14/architects-dream-five-beautiful-eco-buildings"
+source_name: "The Guardian Europe"
+topic: "Arts"
+tags: ["Arts","Environment","Nature"]
+emoji: "🌿"
+summary: "With construction responsible for more than a third of global emissions, these five buildings show how sustainable design can be both climate-conscious and beautiful. In Brazil, the Children’s Village uses local timber, earth bricks and clever natural ventilation to keep student dormitories comfortable without air conditioning. Bali’s bamboo Arc gym spans a sports court without columns, while Sweden’s Sara Kulturhus celebrates locally sourced timber in a striking, 20-storey cultural centre. And here’s the thing: each project responds thoughtfully to its place and makes the most of materials that can lower environmental impact. Together, they offer an inspiring glimpse of architecture that puts people, beauty and the planet in the same frame."
+summary_nl: "Omdat de bouwsector verantwoordelijk is voor meer dan een derde van de wereldwijde uitstoot, tonen deze vijf gebouwen hoe duurzaam ontwerp tegelijk klimaatvriendelijk en mooi kan zijn. In Brazilië gebruikt Children’s Village lokaal hout, leemstenen en slimme natuurlijke ventilatie om de slaapvertrekken van leerlingen zonder airconditioning comfortabel te houden. De bamboe sporthal Arc op Bali overspant een sportveld zonder steunpilaren, terwijl het Zweedse Sara Kulturhus lokaal hout in de kijker zet in een opvallend cultuurcentrum van twintig verdiepingen. En dit is het mooie eraan: elk project sluit zorgvuldig aan bij zijn omgeving en benut materialen die de impact op het milieu kunnen verkleinen. Samen geven ze een inspirerend beeld van architectuur die mensen, schoonheid en de planeet met elkaar verbindt."
+summary_fr: "Puisque la construction représente plus d’un tiers des émissions mondiales, ces cinq bâtiments montrent qu’un design durable peut être à la fois respectueux du climat et magnifique. Au Brésil, le Children’s Village associe bois local, briques de terre et ventilation naturelle ingénieuse pour garder les dortoirs confortables sans climatisation. À Bali, le gymnase Arc en bambou couvre un terrain de sport sans pilier, tandis qu’en Suède, Sara Kulturhus met à l’honneur le bois local dans un centre culturel remarquable de vingt étages. Et voici ce qui me plaît : chaque projet s’accorde avec son environnement et mise sur des matériaux susceptibles de réduire son impact écologique. Ensemble, ils offrent un aperçu inspirant d’une architecture qui rapproche les personnes, la beauté et la planète."
+image_url: "https://i.guim.co.uk/img/media/0495dc059349b25c9cee08f8042edf9458d15d61/379_32_1904_1523/master/1904.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=724e934ebc27f5c181e545f77fc90c95"
+layout: post.njk
+---
+
+With construction responsible for more than a third of global emissions, these five buildings show how sustainable design can be both climate-conscious and beautiful. In Brazil, the Children’s Village uses local timber, earth bricks and clever natural ventilation to keep student dormitories comfortable without air conditioning. Bali’s bamboo Arc gym spans a sports court without columns, while Sweden’s Sara Kulturhus celebrates locally sourced timber in a striking, 20-storey cultural centre. And here’s the thing: each project responds thoughtfully to its place and makes the most of materials that can lower environmental impact. Together, they offer an inspiring glimpse of architecture that puts people, beauty and the planet in the same frame.
