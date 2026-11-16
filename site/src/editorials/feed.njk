@@ -1,0 +1,25 @@
+---
+permalink: editorials/feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Positron Today — Editorials</title>
+    <link>https://positron.today/editorials/</link>
+    <description>Original articles by Rik Van Bruggen about the Positron Today project, the philosophy behind it, and the pursuit of positive news.</description>
+    <language>en</language>
+    <atom:link href="https://positron.today/editorials/feed.xml" rel="self" type="application/rss+xml"/>
+    {% if collections.editorials.length %}<lastBuildDate>{{ collections.editorials[0].date | dateRfc822 }}</lastBuildDate>{% endif %}
+    {%- for post in collections.editorials %}
+    <item>
+      <title>{{ post.data.title | escape }}</title>
+      <link>https://positron.today{{ post.url }}</link>
+      <guid isPermaLink="true">https://positron.today{{ post.url }}</guid>
+      <pubDate>{{ post.date | dateRfc822 }}</pubDate>
+      <dc:creator>Rik Van Bruggen</dc:creator>
+      <description>{{ post.data.summary | plainText | escape }}</description>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

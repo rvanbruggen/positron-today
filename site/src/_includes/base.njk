@@ -51,6 +51,11 @@
   <link rel="alternate" type="application/rss+xml" title="Positron Today (English)" href="https://positron.today/feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Positron Today (Nederlands)" href="https://positron.today/feed-nl.xml">
   <link rel="alternate" type="application/rss+xml" title="Positron Today (Français)" href="https://positron.today/feed-fr.xml">
+  {%- if page.url == "/editorials/" %}
+  <link rel="alternate" type="application/rss+xml" title="Positron Today — Editorials (English)" href="https://positron.today/editorials/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Positron Today — Columns (Nederlands)" href="https://positron.today/editorials/feed-nl.xml">
+  <link rel="alternate" type="application/rss+xml" title="Positron Today — Éditoriaux (Français)" href="https://positron.today/editorials/feed-fr.xml">
+  {%- endif %}
   <link rel="stylesheet" href="/assets/themes.css">
   <script>
     // Resolve language: URL ?lang= param takes priority, then localStorage, then 'en'.

@@ -103,6 +103,16 @@ module.exports = function (eleventyConfig) {
     return d.toUTCString();
   });
 
+  // Strips inline Markdown (emphasis, code, links) so summaries can go into
+  // RSS <description> as plain text — e.g. "*is*" → "is", "[a](b)" → "a".
+  eleventyConfig.addFilter("plainText", (str) => String(str ?? "")
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/(\*\*|__)(.+?)\1/g, "$2")
+    .replace(/(^|[^\w*])\*(?!\s)(.+?)\*(?!\w)/g, "$1$2")
+    .replace(/(^|[^\w])_(?!\s)(.+?)_(?!\w)/g, "$1$2")
+    .replace(/`([^`]*)`/g, "$1")
+    .trim());
+
   // "13 Apr 2026, at 08:30" — compact date+time for card meta.
   // If the time component is midnight (00:00) the article predates timed publishing,
   // so we omit the time to avoid showing a confusing "at 00:00".

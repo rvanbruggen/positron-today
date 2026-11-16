@@ -1,0 +1,25 @@
+---
+permalink: editorials/feed-nl.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Positron Today — Columns</title>
+    <link>https://positron.today/editorials/</link>
+    <description>Originele artikelen van Rik Van Bruggen over het Positron Today project, de filosofie erachter, en de zoektocht naar positief nieuws.</description>
+    <language>nl</language>
+    <atom:link href="https://positron.today/editorials/feed-nl.xml" rel="self" type="application/rss+xml"/>
+    {% if collections.editorials.length %}<lastBuildDate>{{ collections.editorials[0].date | dateRfc822 }}</lastBuildDate>{% endif %}
+    {%- for post in collections.editorials %}
+    <item>
+      <title>{{ (post.data.title_nl if post.data.title_nl else post.data.title) | escape }}</title>
+      <link>https://positron.today{{ post.url }}</link>
+      <guid isPermaLink="true">https://positron.today{{ post.url }}</guid>
+      <pubDate>{{ post.date | dateRfc822 }}</pubDate>
+      <dc:creator>Rik Van Bruggen</dc:creator>
+      <description>{{ (post.data.summary_nl if post.data.summary_nl else post.data.summary) | plainText | escape }}</description>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>
