@@ -73,10 +73,21 @@
       // Apply immediately so CSS hides the wrong-language spans before first paint.
       document.documentElement.setAttribute('data-lang', lang);
 
-      // Resolve theme: localStorage, default 'classic'. No FOUC — set on <html>
-      // before the body renders so themes.css overrides apply on first paint.
+      // Resolve theme: ?theme= link param (this visit only), then localStorage,
+      // default 'classic'. No FOUC — set on <html> before the body renders so
+      // themes.css overrides apply on first paint.
+      // A ?theme= link (e.g. from personal.bruggen.com) is kept in sessionStorage,
+      // so it lasts while the visitor browses but never overwrites the colours
+      // they picked themselves. Choosing a theme in the nav clears it (setTheme).
       var VALID_THEMES = ['classic', 'mono', 'mondrian'];
-      var theme = localStorage.getItem('positron-today-theme') || 'classic';
+      var urlTheme = new URLSearchParams(window.location.search).get('theme');
+      try {
+        if (urlTheme && VALID_THEMES.indexOf(urlTheme) !== -1) sessionStorage.setItem('positron-today-theme-visit', urlTheme);
+      } catch (e) {}
+      var visitTheme = null;
+      try { visitTheme = sessionStorage.getItem('positron-today-theme-visit'); } catch (e) {}
+      var theme = (urlTheme && VALID_THEMES.indexOf(urlTheme) !== -1 && urlTheme)
+        || visitTheme || localStorage.getItem('positron-today-theme') || 'classic';
       if (VALID_THEMES.indexOf(theme) === -1) theme = 'classic';
       document.documentElement.setAttribute('data-theme', theme);
     })();
@@ -88,6 +99,7 @@
       if (VALID_THEMES.indexOf(theme) === -1) theme = 'classic';
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('positron-today-theme', theme);
+      try { sessionStorage.removeItem('positron-today-theme-visit'); } catch (e) {}
     }
 
     // Updates the page URL to reflect the active language without a reload.
