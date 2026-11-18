@@ -456,8 +456,8 @@ title: Positivity Score
 
     // Theme-aware colors for chart axes
     var theme = document.documentElement.getAttribute('data-theme') || 'classic';
-    var gridColor = theme === 'mono' ? '#e5e5e5' : theme === 'mondrian' ? '#e5e5e5' : '#fde68a';
-    var labelColor = theme === 'mono' ? '#555555' : theme === 'mondrian' ? '#111111' : '#b45309';
+    var gridColor = theme === 'mono' ? '#e5e5e5' : (theme === 'mondrian' || theme === 'modern') ? '#e5e5e5' : '#fde68a';
+    var labelColor = theme === 'mono' ? '#555555' : (theme === 'mondrian' || theme === 'modern') ? '#111111' : '#b45309';
 
     // Y axis (dynamic, rounded to nearest 10)
     var yStep = yMax <= 30 ? 5 : 10;

@@ -5,7 +5,8 @@
    styled here — it continues to use the inline styles in base.njk and each
    page template unchanged.
 
-   These overrides only apply when the user picks "mono" or "mondrian" from
+   These overrides only apply when the user picks "mono", "mondrian" or
+   "modern" (Modern Mondrian: the Mondrian rules with a different palette) from
    the theme dropdown, which sets html[data-theme="..."] and persists to
    localStorage (see base.njk).
 
@@ -37,13 +38,13 @@ html[data-theme="mono"] body {
 
 /* Hide the amber watermark entirely in modern themes */
 html[data-theme="mono"] .page-watermark,
-html[data-theme="mondrian"] .page-watermark { display: none !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .page-watermark { display: none !important; }
 
 /* Show only the matching logo; hide the others */
 html[data-theme="mono"]     .brand-logo-classic,
 html[data-theme="mono"]     .brand-logo-mondrian,
-html[data-theme="mondrian"] .brand-logo-classic,
-html[data-theme="mondrian"] .brand-logo-mono,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .brand-logo-classic,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .brand-logo-mono,
 html[data-theme="classic"]  .brand-logo-mono,
 html[data-theme="classic"]  .brand-logo-mondrian,
 html:not([data-theme])      .brand-logo-mono,
@@ -484,7 +485,7 @@ html[data-theme="mono"] .tag-card-img     { border-radius: 0; filter: grayscale(
    THEME: MONDRIAN — white bg, bold primary borders
    ============================================================================ */
 
-html[data-theme="mondrian"] {
+html:is([data-theme="mondrian"], [data-theme="modern"]) {
   --md-bg: #ffffff;
   --md-fg: #111111;
   --md-muted: #555555;
@@ -494,179 +495,189 @@ html[data-theme="mondrian"] {
   --md-black: #111111;
 }
 
-html[data-theme="mondrian"] body {
+/* MODERN MONDRIAN — every Mondrian rule above and below also applies to
+   data-theme="modern" (via :is), with a softer palette: aubergine instead of
+   red, oily blue instead of blue, terracotta instead of yellow. Same palette
+   as the modern theme on the bruggen.com sites (?theme=modern). */
+html[data-theme="modern"] {
+  --md-red: #5e2a52;
+  --md-blue: #1f4f5c;
+  --md-yellow: #c9663f;
+}
+
+html:is([data-theme="mondrian"], [data-theme="modern"]) body {
   background: var(--md-bg);
   color: var(--md-fg);
   font-family: ui-sans-serif, -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* Nav: white with a bold black bottom border */
-html[data-theme="mondrian"] nav {
+html:is([data-theme="mondrian"], [data-theme="modern"]) nav {
   background: #ffffff;
   border-bottom: 6px solid var(--md-black);
 }
-html[data-theme="mondrian"] nav .brand,
-html[data-theme="mondrian"] nav a { color: var(--md-black); font-weight: 700; }
-html[data-theme="mondrian"] nav a:hover { color: var(--md-blue); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) nav .brand,
+html:is([data-theme="mondrian"], [data-theme="modern"]) nav a { color: var(--md-black); font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) nav a:hover { color: var(--md-blue); }
 
-html[data-theme="mondrian"] .nav-select {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nav-select {
   background: #ffffff;
   color: var(--md-black);
   border: 3px solid var(--md-black);
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .nav-select:focus { outline: 3px solid var(--md-blue); outline-offset: 1px; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nav-select:focus { outline: 3px solid var(--md-blue); outline-offset: 1px; }
 
 /* Footer */
-html[data-theme="mondrian"] footer {
+html:is([data-theme="mondrian"], [data-theme="modern"]) footer {
   color: var(--md-muted);
   border-top: 6px solid var(--md-black);
 }
 
 /* Page header */
-html[data-theme="mondrian"] .page-header h1 {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .page-header h1 {
   color: var(--md-black);
   font-weight: 900;
   letter-spacing: -0.02em;
 }
-html[data-theme="mondrian"] .page-header p { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .page-header p { color: var(--md-muted); }
 
 /* Filter bar */
-html[data-theme="mondrian"] .tag-picker-btn,
-html[data-theme="mondrian"] .date-range-select {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-picker-btn,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .date-range-select {
   background: #ffffff;
   color: var(--md-black);
   border: 3px solid var(--md-black);
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .tag-picker-btn.has-selection { background: var(--md-yellow); }
-html[data-theme="mondrian"] .date-range-select.has-selection { background: var(--md-yellow); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-picker-btn.has-selection { background: var(--md-yellow); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .date-range-select.has-selection { background: var(--md-yellow); }
 
-html[data-theme="mondrian"] .tag-picker-panel {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-picker-panel {
   background: #ffffff;
   border: 3px solid var(--md-black);
   border-radius: 0;
   box-shadow: 6px 6px 0 0 var(--md-black);
 }
-html[data-theme="mondrian"] .tag-chip {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-chip {
   background: #ffffff !important;
   color: var(--md-black) !important;
   border: 2px solid var(--md-black) !important;
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .tag-chip.selected {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-chip.selected {
   background: var(--md-yellow) !important;
   color: var(--md-black) !important;
   box-shadow: none;
 }
-html[data-theme="mondrian"] .search-input {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .search-input {
   background: #ffffff;
   color: var(--md-black);
   border: 3px solid var(--md-black);
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .search-input::placeholder { color: var(--md-muted); opacity: 0.7; }
-html[data-theme="mondrian"] .search-input:focus { outline: 3px solid var(--md-blue); outline-offset: 1px; border-color: var(--md-black); }
-html[data-theme="mondrian"] .search-input.has-value { background: var(--md-yellow); }
-html[data-theme="mondrian"] .search-result-count { color: var(--md-muted); font-weight: 700; }
-html[data-theme="mondrian"] .filter-clear { color: var(--md-red); font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .search-input::placeholder { color: var(--md-muted); opacity: 0.7; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .search-input:focus { outline: 3px solid var(--md-blue); outline-offset: 1px; border-color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .search-input.has-value { background: var(--md-yellow); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .search-result-count { color: var(--md-muted); font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .filter-clear { color: var(--md-red); font-weight: 700; }
 
 /* Cards: white background, thick colored borders — rotate through the Mondrian
    palette based on the card-<color> class so neighbors differ */
-html[data-theme="mondrian"] .card,
-html[data-theme="mondrian"] .card.card-yellow,
-html[data-theme="mondrian"] .card.card-orange,
-html[data-theme="mondrian"] .card.card-rose,
-html[data-theme="mondrian"] .card.card-purple,
-html[data-theme="mondrian"] .card.card-blue,
-html[data-theme="mondrian"] .card.card-cyan,
-html[data-theme="mondrian"] .card.card-teal,
-html[data-theme="mondrian"] .card.card-green,
-html[data-theme="mondrian"] .card.card-lime,
-html[data-theme="mondrian"] .card.card-pink {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-yellow,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-orange,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-rose,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-purple,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-blue,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-cyan,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-teal,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-green,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-lime,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-pink {
   background: #ffffff !important;
   color: var(--md-black) !important;
   border-radius: 0;
   border: 5px solid var(--md-black) !important;
 }
-html[data-theme="mondrian"] .card.card-yellow,
-html[data-theme="mondrian"] .card.card-orange,
-html[data-theme="mondrian"] .card.card-lime { border-color: var(--md-yellow) !important; }
-html[data-theme="mondrian"] .card.card-blue,
-html[data-theme="mondrian"] .card.card-cyan,
-html[data-theme="mondrian"] .card.card-teal,
-html[data-theme="mondrian"] .card.card-purple { border-color: var(--md-blue) !important; }
-html[data-theme="mondrian"] .card.card-rose,
-html[data-theme="mondrian"] .card.card-pink,
-html[data-theme="mondrian"] .card.card-green { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-yellow,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-orange,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-lime { border-color: var(--md-yellow) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-blue,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-cyan,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-teal,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-purple { border-color: var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-rose,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-pink,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card.card-green { border-color: var(--md-red) !important; }
 
-html[data-theme="mondrian"] .search-result-card,
-html[data-theme="mondrian"] .search-result-card[class*="card-"] {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .search-result-card,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .search-result-card[class*="card-"] {
   background: #ffffff !important;
   color: var(--md-black) !important;
   border-radius: 0;
   border: 5px solid var(--md-black) !important;
 }
-html[data-theme="mondrian"] .search-result-card-img { border-radius: 0; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .search-result-card-img { border-radius: 0; }
 @media (hover: hover) {
-  html[data-theme="mondrian"] .search-result-card:hover {
+  html:is([data-theme="mondrian"], [data-theme="modern"]) .search-result-card:hover {
     transform: translateY(-2px);
     box-shadow: 6px 6px 0 0 var(--md-black);
   }
 }
-html[data-theme="mondrian"] .card-title   { color: var(--md-black); font-weight: 800; }
-html[data-theme="mondrian"] .card-summary { color: var(--md-black); opacity: 0.85; }
-html[data-theme="mondrian"] .card-tag,
-html[data-theme="mondrian"] .card-meta    { color: var(--md-muted); opacity: 1; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card-title   { color: var(--md-black); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card-summary { color: var(--md-black); opacity: 0.85; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card-tag,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card-meta    { color: var(--md-muted); opacity: 1; }
 /* Mondrian uses --md-muted color to mute, not opacity — neutralise the
    0.6 span-opacity rule from index.njk so text isn't double-muted. */
-html[data-theme="mondrian"] .card-meta > span:not(.card-meta-right),
-html[data-theme="mondrian"] .card-meta-right > span { opacity: 1; }
-html[data-theme="mondrian"] .card-img     { border-radius: 0; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card-meta > span:not(.card-meta-right),
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card-meta-right > span { opacity: 1; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .card-img     { border-radius: 0; }
 @media (hover: hover) {
-  html[data-theme="mondrian"] .card:hover {
+  html:is([data-theme="mondrian"], [data-theme="modern"]) .card:hover {
     transform: translateY(-2px);
     box-shadow: 6px 6px 0 0 var(--md-black);
   }
 }
-html[data-theme="mondrian"] .empty,
-html[data-theme="mondrian"] .no-match { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .empty,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .no-match { color: var(--md-muted); }
 
 /* Post page: white cards with primary borders */
-html[data-theme="mondrian"] .post-back { color: var(--md-blue); font-weight: 700; }
-html[data-theme="mondrian"] .post-back:hover { color: var(--md-red); }
-html[data-theme="mondrian"] .post-header {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-back { color: var(--md-blue); font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-back:hover { color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-header {
   background: #ffffff !important;
   border: 5px solid var(--md-red) !important;
   border-radius: 0;
   color: var(--md-black) !important;
 }
-html[data-theme="mondrian"] .post-body {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-body {
   background: #ffffff !important;
   border: 5px solid var(--md-blue) !important;
   border-radius: 0;
   color: var(--md-black) !important;
 }
-html[data-theme="mondrian"] .post-hero {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-hero {
   border: 5px solid var(--md-black) !important;
   border-radius: 0;
 }
-html[data-theme="mondrian"] .post-source {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-source {
   background: var(--md-yellow) !important;
   border: 3px solid var(--md-black) !important;
   border-radius: 0;
   color: var(--md-black) !important;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .post-title { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .post-meta,
-html[data-theme="mondrian"] .post-tag,
-html[data-theme="mondrian"] .post-share-label { color: var(--md-muted); }
-html[data-theme="mondrian"] .share-btn-copy {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-title { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-meta,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-tag,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-share-label { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .share-btn-copy {
   background: #ffffff !important;
   color: var(--md-black) !important;
   border: 3px solid var(--md-black) !important;
@@ -674,92 +685,92 @@ html[data-theme="mondrian"] .share-btn-copy {
 }
 
 /* --- editorial.njk (mondrian) — override purple accent colors --- */
-html[data-theme="mondrian"] .post-body h2,
-html[data-theme="mondrian"] .post-body h3 { color: var(--md-black) !important; font-weight: 900; }
-html[data-theme="mondrian"] .post-body a { color: var(--md-blue) !important; border-bottom: 2px solid var(--md-blue); text-decoration: none; }
-html[data-theme="mondrian"] .post-body a:hover { color: var(--md-red) !important; border-color: var(--md-red); }
-html[data-theme="mondrian"] .post-body blockquote {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-body h2,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-body h3 { color: var(--md-black) !important; font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-body a { color: var(--md-blue) !important; border-bottom: 2px solid var(--md-blue); text-decoration: none; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-body a:hover { color: var(--md-red) !important; border-color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-body blockquote {
   border-left: 5px solid var(--md-red) !important;
   color: var(--md-muted) !important;
 }
-html[data-theme="mondrian"] .post-body img { border-radius: 0; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .post-body img { border-radius: 0; }
 
 /* --- editorial.njk audio player (mondrian) --- */
-html[data-theme="mondrian"] .audio-player {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .audio-player {
   background: #ffffff !important;
   border: 3px solid var(--md-blue) !important;
   border-radius: 0;
 }
-html[data-theme="mondrian"] .audio-player-label { color: var(--md-black) !important; font-weight: 800; }
-html[data-theme="mondrian"] .audio-download { color: var(--md-blue) !important; text-decoration: none; border-bottom: 2px solid var(--md-blue); }
-html[data-theme="mondrian"] .audio-download:hover { color: var(--md-red) !important; border-color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .audio-player-label { color: var(--md-black) !important; font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .audio-download { color: var(--md-blue) !important; text-decoration: none; border-bottom: 2px solid var(--md-blue); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .audio-download:hover { color: var(--md-red) !important; border-color: var(--md-red); }
 
 /* --- editorials/index.njk (mondrian) --- */
-html[data-theme="mondrian"] .editorials-header h1 { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .editorials-header p  { color: var(--md-muted); }
-html[data-theme="mondrian"] .editorial-card {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .editorials-header h1 { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .editorials-header p  { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .editorial-card {
   background: #ffffff !important;
   border: 5px solid var(--md-blue) !important;
   border-radius: 0;
 }
 @media (hover: hover) {
-  html[data-theme="mondrian"] .editorial-card:hover {
+  html:is([data-theme="mondrian"], [data-theme="modern"]) .editorial-card:hover {
     box-shadow: 6px 6px 0 0 var(--md-black);
     border-color: var(--md-blue) !important;
   }
 }
-html[data-theme="mondrian"] .editorial-card-title { color: var(--md-black) !important; font-weight: 800; }
-html[data-theme="mondrian"] .editorial-card-date  { color: var(--md-muted) !important; }
-html[data-theme="mondrian"] .editorial-card-summary { color: var(--md-black) !important; }
-html[data-theme="mondrian"] .editorials-empty { color: var(--md-muted) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .editorial-card-title { color: var(--md-black) !important; font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .editorial-card-date  { color: var(--md-muted) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .editorial-card-summary { color: var(--md-black) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .editorials-empty { color: var(--md-muted) !important; }
 
 /* Generic headings on other pages */
-html[data-theme="mondrian"] main h1,
-html[data-theme="mondrian"] main h2,
-html[data-theme="mondrian"] main h3 { color: var(--md-black); }
-html[data-theme="mondrian"] main    { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) main h1,
+html:is([data-theme="mondrian"], [data-theme="modern"]) main h2,
+html:is([data-theme="mondrian"], [data-theme="modern"]) main h3 { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) main    { color: var(--md-black); }
 
 /* --- about.njk (mondrian) --- */
-html[data-theme="mondrian"] .about-prose h1 { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .about-prose p  { color: var(--md-black); }
-html[data-theme="mondrian"] .section-heading {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .about-prose h1 { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .about-prose p  { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .section-heading {
   color: var(--md-black);
   border-bottom: 5px solid var(--md-black);
   font-weight: 900;
 }
-html[data-theme="mondrian"] .pipeline-step {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .pipeline-step {
   background: #ffffff !important;
   border: 4px solid var(--md-black) !important;
   border-radius: 0;
 }
-html[data-theme="mondrian"] .pipeline-step.highlight {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .pipeline-step.highlight {
   background: var(--md-yellow) !important;
   border-color: var(--md-black) !important;
 }
-html[data-theme="mondrian"] .pipeline-arrow { color: var(--md-red); font-weight: 900; }
-html[data-theme="mondrian"] .pipeline-label { color: var(--md-black); }
-html[data-theme="mondrian"] .pipeline-desc  { color: var(--md-muted); }
-html[data-theme="mondrian"] .sources-lang-label { color: var(--md-blue); font-weight: 800; }
-html[data-theme="mondrian"] .source-pill {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .pipeline-arrow { color: var(--md-red); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .pipeline-label { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .pipeline-desc  { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .sources-lang-label { color: var(--md-blue); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .source-pill {
   background: #ffffff !important;
   border: 3px solid var(--md-black) !important;
   color: var(--md-black) !important;
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .source-pill:hover {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .source-pill:hover {
   background: var(--md-yellow) !important;
 }
-html[data-theme="mondrian"] .source-pill .feed-dot { background: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .source-pill .feed-dot { background: var(--md-red); }
 /* Loose paragraphs in about.njk have inline color — override with !important */
-html[data-theme="mondrian"] .about-wrap p          { color: var(--md-black) !important; }
-html[data-theme="mondrian"] .about-wrap p a        { color: var(--md-blue) !important; border-bottom: 2px solid var(--md-blue); }
-html[data-theme="mondrian"] .about-wrap p span[style*="background"] { background: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .about-wrap p          { color: var(--md-black) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .about-wrap p a        { color: var(--md-blue) !important; border-bottom: 2px solid var(--md-blue); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .about-wrap p span[style*="background"] { background: var(--md-red) !important; }
 
 /* --- contact.njk (mondrian) --- */
-html[data-theme="mondrian"] .contact-block h1    { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .contact-block .intro { color: var(--md-black); }
-html[data-theme="mondrian"] .contact-link {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-block h1    { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-block .intro { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-link {
   background: #ffffff !important;
   border: 4px solid var(--md-black) !important;
   color: var(--md-black) !important;
@@ -767,113 +778,113 @@ html[data-theme="mondrian"] .contact-link {
 }
 /* Rotate through the Mondrian palette so the contact links form a grid-like
    strip of primary-edged blocks. Applies to the 5 <a> children of .contact-links. */
-html[data-theme="mondrian"] .contact-links > a:nth-child(5n+1) { border-color: var(--md-red) !important; }
-html[data-theme="mondrian"] .contact-links > a:nth-child(5n+2) { border-color: var(--md-blue) !important; }
-html[data-theme="mondrian"] .contact-links > a:nth-child(5n+3) { border-color: var(--md-yellow) !important; }
-html[data-theme="mondrian"] .contact-links > a:nth-child(5n+4) { border-color: var(--md-black) !important; }
-html[data-theme="mondrian"] .contact-links > a:nth-child(5n+5) { border-color: var(--md-red) !important; }
-html[data-theme="mondrian"] .contact-link:hover {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-links > a:nth-child(5n+1) { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-links > a:nth-child(5n+2) { border-color: var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-links > a:nth-child(5n+3) { border-color: var(--md-yellow) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-links > a:nth-child(5n+4) { border-color: var(--md-black) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-links > a:nth-child(5n+5) { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-link:hover {
   box-shadow: 6px 6px 0 0 var(--md-black);
 }
-html[data-theme="mondrian"] .contact-link-label { color: var(--md-muted); font-weight: 800; }
-html[data-theme="mondrian"] .contact-link-value { color: var(--md-black); font-weight: 800; }
-html[data-theme="mondrian"] .contact-link-note  { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-link-label { color: var(--md-muted); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-link-value { color: var(--md-black); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .contact-link-note  { color: var(--md-muted); }
 
 /* --- negativity.njk (mondrian) --- */
-html[data-theme="mondrian"] .stat-card {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-card {
   background: #ffffff !important;
   border: 5px solid var(--md-black) !important;
   border-radius: 0;
 }
 /* Rotate stat cards through primaries for a Mondrian grid feel */
-html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+1) { border-color: var(--md-red) !important; }
-html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+2) { border-color: var(--md-blue) !important; }
-html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
-html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+4) { border-color: var(--md-black) !important; }
-html[data-theme="mondrian"] .stat-num { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .stat-lbl { color: var(--md-muted); }
-html[data-theme="mondrian"] .breakdown-section {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-grid > .stat-card:nth-child(4n+1) { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-grid > .stat-card:nth-child(4n+2) { border-color: var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-grid > .stat-card:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-grid > .stat-card:nth-child(4n+4) { border-color: var(--md-black) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-num { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-lbl { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .breakdown-section {
   background: #ffffff !important;
   border: 5px solid var(--md-blue) !important;
   border-radius: 0;
 }
-html[data-theme="mondrian"] .breakdown-title { color: var(--md-muted); }
-html[data-theme="mondrian"] .breakdown-label { color: var(--md-black); }
-html[data-theme="mondrian"] .breakdown-bar-wrap {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .breakdown-title { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .breakdown-label { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .breakdown-bar-wrap {
   background: #f3f4f6 !important;
   border: 1px solid var(--md-black);
   border-radius: 0;
 }
-html[data-theme="mondrian"] .breakdown-bar { border-radius: 0; }
-html[data-theme="mondrian"] .breakdown-count { color: var(--md-muted); }
-html[data-theme="mondrian"] .cat-pill {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .breakdown-bar { border-radius: 0; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .breakdown-count { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .cat-pill {
   background: #ffffff !important;
   border: 3px solid var(--md-black) !important;
   color: var(--md-black) !important;
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .cat-pill.active {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .cat-pill.active {
   background: var(--md-yellow) !important;
 }
-html[data-theme="mondrian"] .rejection-card {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .rejection-card {
   background: #ffffff !important;
   border: 3px solid var(--md-black) !important;
   border-radius: 0;
 }
-html[data-theme="mondrian"] .rejection-card[data-cat] {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .rejection-card[data-cat] {
   border-left: 8px solid var(--md-red) !important;
 }
-html[data-theme="mondrian"] .rejection-title  { color: var(--md-black); font-weight: 800; }
-html[data-theme="mondrian"] .rejection-meta   { color: var(--md-muted); }
-html[data-theme="mondrian"] .rejection-reason { color: var(--md-muted); }
-html[data-theme="mondrian"] .rejection-reason::before { color: var(--md-red); }
-html[data-theme="mondrian"] .cat-badge {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .rejection-title  { color: var(--md-black); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .rejection-meta   { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .rejection-reason { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .rejection-reason::before { color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .cat-badge {
   color: var(--md-black) !important;
   border: 2px solid var(--md-black) !important;
   background: #ffffff !important;
   border-radius: 0;
   font-weight: 800;
 }
-html[data-theme="mondrian"] .updated      { color: var(--md-muted); }
-html[data-theme="mondrian"] .page-size-label,
-html[data-theme="mondrian"] .page-info    { color: var(--md-muted); }
-html[data-theme="mondrian"] .page-size-select,
-html[data-theme="mondrian"] .page-btn {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .updated      { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .page-size-label,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .page-info    { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .page-size-select,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .page-btn {
   background: #ffffff !important;
   border: 3px solid var(--md-black) !important;
   color: var(--md-black) !important;
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .page-btn:hover:not(:disabled) {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .page-btn:hover:not(:disabled) {
   background: var(--md-yellow) !important;
 }
 
 /* --- archive/index.njk (mondrian) --- */
-html[data-theme="mondrian"] .archive-header h1 { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .archive-header p  { color: var(--md-muted); }
-html[data-theme="mondrian"] .archive-back a {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-header h1 { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-header p  { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-back a {
   color: var(--md-blue);
   border-bottom: 3px solid var(--md-blue);
   font-weight: 700;
 }
-html[data-theme="mondrian"] .archive-back a:hover { color: var(--md-red); border-color: var(--md-red); }
-html[data-theme="mondrian"] .month-link {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-back a:hover { color: var(--md-red); border-color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .month-link {
   background: #ffffff !important;
   border: 4px solid var(--md-black) !important;
   color: var(--md-black) !important;
   border-radius: 0;
 }
-html[data-theme="mondrian"] .month-list > .month-link:nth-child(4n+1) { border-color: var(--md-red) !important; }
-html[data-theme="mondrian"] .month-list > .month-link:nth-child(4n+2) { border-color: var(--md-blue) !important; }
-html[data-theme="mondrian"] .month-list > .month-link:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
-html[data-theme="mondrian"] .month-list > .month-link:nth-child(4n+4) { border-color: var(--md-black) !important; }
-html[data-theme="mondrian"] .month-link:hover {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .month-list > .month-link:nth-child(4n+1) { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .month-list > .month-link:nth-child(4n+2) { border-color: var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .month-list > .month-link:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .month-list > .month-link:nth-child(4n+4) { border-color: var(--md-black) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .month-link:hover {
   box-shadow: 6px 6px 0 0 var(--md-black);
 }
-html[data-theme="mondrian"] .month-name  { color: var(--md-black); font-weight: 800; }
-html[data-theme="mondrian"] .month-count {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .month-name  { color: var(--md-black); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .month-count {
   background: var(--md-yellow) !important;
   color: var(--md-black) !important;
   border: 2px solid var(--md-black);
@@ -882,34 +893,34 @@ html[data-theme="mondrian"] .month-count {
 }
 
 /* --- archive/month.njk (mondrian) --- */
-html[data-theme="mondrian"] .archive-nav a {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-nav a {
   background: #ffffff !important;
   border: 3px solid var(--md-black) !important;
   color: var(--md-black) !important;
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .archive-nav a:hover {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-nav a:hover {
   background: var(--md-yellow) !important;
 }
 
 /* --- archive hub (mondrian) --- */
-html[data-theme="mondrian"] .archive-hub-header h1 { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .archive-hub-header p  { color: var(--md-muted); }
-html[data-theme="mondrian"] .archive-hub-link {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-header h1 { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-header p  { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-link {
   background: #ffffff !important;
   border: 4px solid var(--md-black) !important;
   color: var(--md-black) !important;
   border-radius: 0;
 }
-html[data-theme="mondrian"] .archive-hub-options > .archive-hub-link:nth-child(1) { border-color: var(--md-red) !important; }
-html[data-theme="mondrian"] .archive-hub-options > .archive-hub-link:nth-child(2) { border-color: var(--md-blue) !important; }
-html[data-theme="mondrian"] .archive-hub-link:hover {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-options > .archive-hub-link:nth-child(1) { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-options > .archive-hub-link:nth-child(2) { border-color: var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-link:hover {
   box-shadow: 6px 6px 0 0 var(--md-black);
 }
-html[data-theme="mondrian"] .archive-hub-label { font-weight: 800; }
-html[data-theme="mondrian"] .archive-hub-desc  { color: var(--md-muted); }
-html[data-theme="mondrian"] .archive-hub-count {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-label { font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-desc  { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .archive-hub-count {
   background: var(--md-yellow) !important;
   color: var(--md-black) !important;
   border: 2px solid var(--md-black);
@@ -918,82 +929,82 @@ html[data-theme="mondrian"] .archive-hub-count {
 }
 
 /* --- tags index / by-topic cloud (mondrian) --- */
-html[data-theme="mondrian"] .tags-index-wrap h1 { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .tags-index-wrap .lede { color: var(--md-muted); }
-html[data-theme="mondrian"] .tag-tile,
-html[data-theme="mondrian"] .tag-tile.card-yellow,
-html[data-theme="mondrian"] .tag-tile.card-orange,
-html[data-theme="mondrian"] .tag-tile.card-rose,
-html[data-theme="mondrian"] .tag-tile.card-purple,
-html[data-theme="mondrian"] .tag-tile.card-blue,
-html[data-theme="mondrian"] .tag-tile.card-cyan,
-html[data-theme="mondrian"] .tag-tile.card-teal,
-html[data-theme="mondrian"] .tag-tile.card-green,
-html[data-theme="mondrian"] .tag-tile.card-lime,
-html[data-theme="mondrian"] .tag-tile.card-pink {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tags-index-wrap h1 { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tags-index-wrap .lede { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-yellow,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-orange,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-rose,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-purple,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-blue,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-cyan,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-teal,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-green,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-lime,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-pink {
   background: #ffffff !important;
   color: var(--md-black) !important;
   border: 3px solid var(--md-black) !important;
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .tag-tile.card-yellow,
-html[data-theme="mondrian"] .tag-tile.card-orange,
-html[data-theme="mondrian"] .tag-tile.card-lime { border-color: var(--md-yellow) !important; }
-html[data-theme="mondrian"] .tag-tile.card-blue,
-html[data-theme="mondrian"] .tag-tile.card-cyan,
-html[data-theme="mondrian"] .tag-tile.card-teal,
-html[data-theme="mondrian"] .tag-tile.card-purple { border-color: var(--md-blue) !important; }
-html[data-theme="mondrian"] .tag-tile.card-rose,
-html[data-theme="mondrian"] .tag-tile.card-pink,
-html[data-theme="mondrian"] .tag-tile.card-green { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-yellow,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-orange,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-lime { border-color: var(--md-yellow) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-blue,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-cyan,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-teal,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-purple { border-color: var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-rose,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-pink,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile.card-green { border-color: var(--md-red) !important; }
 @media (hover: hover) {
-  html[data-theme="mondrian"] .tag-tile:hover {
+  html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-tile:hover {
     box-shadow: 4px 4px 0 0 var(--md-black);
     transform: translateY(-1px);
   }
 }
 
 /* --- individual tag page cards (mondrian) --- */
-html[data-theme="mondrian"] .tag-header h1 { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .tag-header p  { color: var(--md-muted); }
-html[data-theme="mondrian"] .tag-crumb     { color: var(--md-blue); border-bottom: 3px solid var(--md-blue); font-weight: 700; }
-html[data-theme="mondrian"] .tag-crumb:hover { color: var(--md-red); border-color: var(--md-red); }
-html[data-theme="mondrian"] .tag-card,
-html[data-theme="mondrian"] .tag-card.card-yellow,
-html[data-theme="mondrian"] .tag-card.card-orange,
-html[data-theme="mondrian"] .tag-card.card-rose,
-html[data-theme="mondrian"] .tag-card.card-purple,
-html[data-theme="mondrian"] .tag-card.card-blue,
-html[data-theme="mondrian"] .tag-card.card-cyan,
-html[data-theme="mondrian"] .tag-card.card-teal,
-html[data-theme="mondrian"] .tag-card.card-green,
-html[data-theme="mondrian"] .tag-card.card-lime,
-html[data-theme="mondrian"] .tag-card.card-pink {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-header h1 { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-header p  { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-crumb     { color: var(--md-blue); border-bottom: 3px solid var(--md-blue); font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-crumb:hover { color: var(--md-red); border-color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-yellow,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-orange,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-rose,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-purple,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-blue,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-cyan,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-teal,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-green,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-lime,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-pink {
   background: #ffffff !important;
   color: var(--md-black) !important;
   border-radius: 0;
   border: 5px solid var(--md-black) !important;
 }
-html[data-theme="mondrian"] .tag-card.card-yellow,
-html[data-theme="mondrian"] .tag-card.card-orange,
-html[data-theme="mondrian"] .tag-card.card-lime { border-color: var(--md-yellow) !important; }
-html[data-theme="mondrian"] .tag-card.card-blue,
-html[data-theme="mondrian"] .tag-card.card-cyan,
-html[data-theme="mondrian"] .tag-card.card-teal,
-html[data-theme="mondrian"] .tag-card.card-purple { border-color: var(--md-blue) !important; }
-html[data-theme="mondrian"] .tag-card.card-rose,
-html[data-theme="mondrian"] .tag-card.card-pink,
-html[data-theme="mondrian"] .tag-card.card-green { border-color: var(--md-red) !important; }
-html[data-theme="mondrian"] .tag-card-title   { color: var(--md-black); font-weight: 800; }
-html[data-theme="mondrian"] .tag-card-summary { color: var(--md-black); opacity: 0.85; }
-html[data-theme="mondrian"] .tag-card-tag,
-html[data-theme="mondrian"] .tag-card-meta    { color: var(--md-muted); opacity: 1; }
-html[data-theme="mondrian"] .tag-card-meta > span:not(.tag-card-meta-right),
-html[data-theme="mondrian"] .tag-card-meta-right > span { opacity: 1; }
-html[data-theme="mondrian"] .tag-card-img     { border-radius: 0; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-yellow,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-orange,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-lime { border-color: var(--md-yellow) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-blue,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-cyan,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-teal,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-purple { border-color: var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-rose,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-pink,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card.card-green { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card-title   { color: var(--md-black); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card-summary { color: var(--md-black); opacity: 0.85; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card-tag,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card-meta    { color: var(--md-muted); opacity: 1; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card-meta > span:not(.tag-card-meta-right),
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card-meta-right > span { opacity: 1; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card-img     { border-radius: 0; }
 @media (hover: hover) {
-  html[data-theme="mondrian"] .tag-card:hover {
+  html:is([data-theme="mondrian"], [data-theme="modern"]) .tag-card:hover {
     transform: translateY(-2px);
     box-shadow: 6px 6px 0 0 var(--md-black);
   }
@@ -1143,25 +1154,25 @@ html[data-theme="mono"] .preset-pill:hover {
 }
 
 /* ── MONDRIAN ── */
-html[data-theme="mondrian"] .how-section {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .how-section {
   background: #ffffff;
   border: 3px solid var(--md-blue);
   border-radius: 0;
 }
-html[data-theme="mondrian"] .how-title { color: var(--md-black); font-weight: 800; }
-html[data-theme="mondrian"] .how-steps li { color: var(--md-black); }
-html[data-theme="mondrian"] .how-steps li::before { color: var(--md-red); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .how-title { color: var(--md-black); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .how-steps li { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .how-steps li::before { color: var(--md-red); font-weight: 900; }
 
-html[data-theme="mondrian"] .score-input {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .score-input {
   background: #ffffff;
   border: 3px solid var(--md-black);
   border-radius: 0;
   color: var(--md-black);
   font-weight: 700;
 }
-html[data-theme="mondrian"] .score-input:focus { border-color: var(--md-blue); }
-html[data-theme="mondrian"] .score-input::placeholder { color: var(--md-muted); }
-html[data-theme="mondrian"] .score-btn {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .score-input:focus { border-color: var(--md-blue); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .score-input::placeholder { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .score-btn {
   background: var(--md-red);
   color: #ffffff;
   border: 3px solid var(--md-black);
@@ -1169,96 +1180,96 @@ html[data-theme="mondrian"] .score-btn {
   font-weight: 800;
   box-shadow: 4px 4px 0 var(--md-black);
 }
-html[data-theme="mondrian"] .score-btn:hover {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .score-btn:hover {
   background: var(--md-blue);
   transform: translate(-1px, -1px);
   box-shadow: 5px 5px 0 var(--md-black);
 }
 
-html[data-theme="mondrian"] .loading { color: var(--md-muted); }
-html[data-theme="mondrian"] .loading-spinner { border-color: var(--md-yellow); border-top-color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .loading { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .loading-spinner { border-color: var(--md-yellow); border-top-color: var(--md-red); }
 
-html[data-theme="mondrian"] .error-msg {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .error-msg {
   background: #ffffff;
   border: 3px solid var(--md-red);
   border-radius: 0;
   color: var(--md-black);
 }
 
-html[data-theme="mondrian"] .gauge-label { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .gauge-label { color: var(--md-muted); }
 
-html[data-theme="mondrian"] .score-page .stat-card,
-html[data-theme="mondrian"] .stat-card {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .score-page .stat-card,
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-card {
   border: 5px solid var(--md-black) !important;
   border-radius: 0;
   background: #ffffff !important;
 }
-html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+1) { border-color: var(--md-red) !important; }
-html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+2) { border-color: var(--md-blue) !important; }
-html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
-html[data-theme="mondrian"] .stat-grid > .stat-card:nth-child(4n+4) { border-color: var(--md-black) !important; }
-html[data-theme="mondrian"] .stat-num.positive { color: var(--md-black); font-weight: 900; }
-html[data-theme="mondrian"] .stat-num.negative { color: var(--md-red); font-weight: 900; }
-html[data-theme="mondrian"] .stat-num.neutral  { color: var(--md-muted); font-weight: 900; }
-html[data-theme="mondrian"] .stat-lbl { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-grid > .stat-card:nth-child(4n+1) { border-color: var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-grid > .stat-card:nth-child(4n+2) { border-color: var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-grid > .stat-card:nth-child(4n+3) { border-color: var(--md-yellow) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-grid > .stat-card:nth-child(4n+4) { border-color: var(--md-black) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-num.positive { color: var(--md-black); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-num.negative { color: var(--md-red); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-num.neutral  { color: var(--md-muted); font-weight: 900; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .stat-lbl { color: var(--md-muted); }
 
-html[data-theme="mondrian"] .section-heading {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .section-heading {
   color: var(--md-black);
   border-bottom: 5px solid var(--md-black);
   font-weight: 900;
 }
 
-html[data-theme="mondrian"] .headline-item {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .headline-item {
   border-radius: 0;
 }
-html[data-theme="mondrian"] .headline-item.positive {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .headline-item.positive {
   background: #ffffff;
   border-left: 5px solid var(--md-blue);
   color: var(--md-black);
 }
-html[data-theme="mondrian"] .headline-item.negative {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .headline-item.negative {
   background: #ffffff;
   border-left: 5px solid var(--md-red);
   color: var(--md-black);
 }
-html[data-theme="mondrian"] .headline-item.neutral {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .headline-item.neutral {
   background: #ffffff;
   border-left: 5px solid var(--md-yellow);
   color: var(--md-muted);
 }
-html[data-theme="mondrian"] .sentiment-tag {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .sentiment-tag {
   border-radius: 0;
   font-weight: 800;
   border: 2px solid var(--md-black);
 }
-html[data-theme="mondrian"] .sentiment-tag.positive { background: #ffffff; color: var(--md-blue); }
-html[data-theme="mondrian"] .sentiment-tag.negative { background: #ffffff; color: var(--md-red); }
-html[data-theme="mondrian"] .sentiment-tag.neutral  { background: var(--md-yellow); color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .sentiment-tag.positive { background: #ffffff; color: var(--md-blue); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .sentiment-tag.negative { background: #ffffff; color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .sentiment-tag.neutral  { background: var(--md-yellow); color: var(--md-black); }
 
-html[data-theme="mondrian"] .scored-url { color: var(--md-muted); }
-html[data-theme="mondrian"] .scored-url a { color: var(--md-blue); border-bottom: 2px solid var(--md-blue); text-decoration: none; }
-html[data-theme="mondrian"] .scored-url a:hover { color: var(--md-red); border-color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .scored-url { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .scored-url a { color: var(--md-blue); border-bottom: 2px solid var(--md-blue); text-decoration: none; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .scored-url a:hover { color: var(--md-red); border-color: var(--md-red); }
 
-html[data-theme="mondrian"] .chart-section {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .chart-section {
   background: #ffffff;
   border: 3px solid var(--md-black);
   border-radius: 0;
 }
-html[data-theme="mondrian"] .chart-title { color: var(--md-black); font-weight: 800; }
-html[data-theme="mondrian"] .chart-updated { color: var(--md-muted); }
-html[data-theme="mondrian"] .chart-legend-item { color: var(--md-black); font-weight: 700; }
-html[data-theme="mondrian"] .chart-legend-swatch { border-radius: 0; border: 1px solid var(--md-black); }
-html[data-theme="mondrian"] .chart-empty { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .chart-title { color: var(--md-black); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .chart-updated { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .chart-legend-item { color: var(--md-black); font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .chart-legend-swatch { border-radius: 0; border: 1px solid var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .chart-empty { color: var(--md-muted); }
 
-html[data-theme="mondrian"] .presets-label { color: var(--md-muted); font-weight: 800; }
-html[data-theme="mondrian"] .preset-pill {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .presets-label { color: var(--md-muted); font-weight: 800; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .preset-pill {
   background: #ffffff;
   border: 3px solid var(--md-black);
   border-radius: 0;
   color: var(--md-black);
   font-weight: 700;
 }
-html[data-theme="mondrian"] .preset-pill:hover {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .preset-pill:hover {
   background: var(--md-yellow);
 }
 
@@ -1314,56 +1325,56 @@ html[data-theme="mono"] .install-already {
 }
 
 /* ── MONDRIAN ── primary palette, thick black borders, sharp corners */
-html[data-theme="mondrian"] .install-hero h1 { color: var(--md-black); font-weight: 800; letter-spacing: -0.01em; }
-html[data-theme="mondrian"] .install-hero p  { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-hero h1 { color: var(--md-black); font-weight: 800; letter-spacing: -0.01em; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-hero p  { color: var(--md-muted); }
 
-html[data-theme="mondrian"] .install-cta button {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-cta button {
   background: var(--md-red);
   color: #ffffff;
   border: 3px solid var(--md-black);
   border-radius: 0;
   box-shadow: 6px 6px 0 var(--md-black);
 }
-html[data-theme="mondrian"] .install-cta button:hover {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-cta button:hover {
   background: var(--md-blue);
   transform: translate(-2px, -2px);
   box-shadow: 8px 8px 0 var(--md-black);
 }
-html[data-theme="mondrian"] .install-cta button:active {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-cta button:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 var(--md-black);
 }
-html[data-theme="mondrian"] .install-cta button:disabled {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-cta button:disabled {
   background: #ffffff;
   color: var(--md-black);
   box-shadow: 4px 4px 0 var(--md-black);
 }
-html[data-theme="mondrian"] .install-status { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-status { color: var(--md-muted); }
 
-html[data-theme="mondrian"] .install-step {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-step {
   background: #ffffff;
   border: 3px solid var(--md-black);
   border-radius: 0;
 }
-html[data-theme="mondrian"] .install-step h3 { color: var(--md-black); }
-html[data-theme="mondrian"] .install-step ol { color: var(--md-black); }
-html[data-theme="mondrian"] .install-step strong { color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-step h3 { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-step ol { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-step strong { color: var(--md-red); }
 
-html[data-theme="mondrian"] .install-qr {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-qr {
   background: var(--md-yellow);
   border: 3px solid var(--md-black);
   border-radius: 0;
 }
-html[data-theme="mondrian"] .install-qr h2 { color: var(--md-black); }
-html[data-theme="mondrian"] .install-qr p  { color: var(--md-black); }
-html[data-theme="mondrian"] .install-qr img {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-qr h2 { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-qr p  { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-qr img {
   border-radius: 0;
   box-shadow: 4px 4px 0 var(--md-black);
   border: 3px solid var(--md-black);
   background: #ffffff;
 }
 
-html[data-theme="mondrian"] .install-already {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .install-already {
   background: var(--md-yellow);
   border: 3px solid var(--md-black);
   color: var(--md-black);
@@ -1429,55 +1440,55 @@ html[data-theme="mono"] .nn-story-meta { color: var(--mono-muted); }
 html[data-theme="mono"] .nn-considered { color: var(--mono-muted); }
 
 /* --- MONDRIAN --- */
-html[data-theme="mondrian"] .tab-btn {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tab-btn {
   background: #ffffff;
   color: var(--md-black);
   border: 3px solid var(--md-black);
   border-radius: 0;
   font-weight: 700;
 }
-html[data-theme="mondrian"] .tab-btn[aria-selected="true"] {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .tab-btn[aria-selected="true"] {
   background: var(--md-yellow);
 }
 
-html[data-theme="mondrian"] .nn-intro { color: var(--md-fg); }
-html[data-theme="mondrian"] .nn-intro strong { color: var(--md-black); }
-html[data-theme="mondrian"] .nn-intro a { color: var(--md-red) !important; font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-intro { color: var(--md-fg); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-intro strong { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-intro a { color: var(--md-red) !important; font-weight: 700; }
 
 /* Three cards, three primaries — the one place the Mondrian palette maps
    naturally onto the content instead of being imposed on it. */
-html[data-theme="mondrian"] .nn-theme-card {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-theme-card {
   background: #ffffff;
   border: 3px solid var(--md-black);
   border-radius: 0;
 }
-html[data-theme="mondrian"] .nn-theme-grid > .nn-theme-card:nth-child(1) { border-left: 10px solid var(--md-red) !important; }
-html[data-theme="mondrian"] .nn-theme-grid > .nn-theme-card:nth-child(2) { border-left: 10px solid var(--md-blue) !important; }
-html[data-theme="mondrian"] .nn-theme-grid > .nn-theme-card:nth-child(3) { border-left: 10px solid var(--md-yellow) !important; }
-html[data-theme="mondrian"] .nn-theme-name { color: var(--md-black); }
-html[data-theme="mondrian"] .nn-theme-desc { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-theme-grid > .nn-theme-card:nth-child(1) { border-left: 10px solid var(--md-red) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-theme-grid > .nn-theme-card:nth-child(2) { border-left: 10px solid var(--md-blue) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-theme-grid > .nn-theme-card:nth-child(3) { border-left: 10px solid var(--md-yellow) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-theme-name { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-theme-desc { color: var(--md-muted); }
 
-html[data-theme="mondrian"] .nn-note {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-note {
   background: #ffffff;
   border: 3px solid var(--md-black);
   border-left: 10px solid var(--md-blue);
   border-radius: 0;
   color: var(--md-fg);
 }
-html[data-theme="mondrian"] .nn-note strong { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-note strong { color: var(--md-black); }
 
-html[data-theme="mondrian"] .nn-week {
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-week {
   background: #ffffff;
   border: 3px solid var(--md-black);
   border-radius: 0;
 }
-html[data-theme="mondrian"] .nn-week > summary { color: var(--md-black); font-weight: 700; }
-html[data-theme="mondrian"] .nn-week > summary::before { color: var(--md-red); }
-html[data-theme="mondrian"] .nn-week > summary:hover { background: #f7f7f7; }
-html[data-theme="mondrian"] .nn-theme-block { border-top: 3px solid var(--md-black); }
-html[data-theme="mondrian"] .nn-theme-heading { color: var(--md-black); }
-html[data-theme="mondrian"] .nn-summary { color: var(--md-fg); }
-html[data-theme="mondrian"] .nn-story { border-left: 5px solid var(--md-black) !important; }
-html[data-theme="mondrian"] .nn-story a { color: var(--md-black); font-weight: 700; }
-html[data-theme="mondrian"] .nn-story-meta { color: var(--md-muted); }
-html[data-theme="mondrian"] .nn-considered { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-week > summary { color: var(--md-black); font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-week > summary::before { color: var(--md-red); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-week > summary:hover { background: #f7f7f7; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-theme-block { border-top: 3px solid var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-theme-heading { color: var(--md-black); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-summary { color: var(--md-fg); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-story { border-left: 5px solid var(--md-black) !important; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-story a { color: var(--md-black); font-weight: 700; }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-story-meta { color: var(--md-muted); }
+html:is([data-theme="mondrian"], [data-theme="modern"]) .nn-considered { color: var(--md-muted); }
