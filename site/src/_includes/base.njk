@@ -102,6 +102,21 @@
       try { sessionStorage.removeItem('positron-today-theme-visit'); } catch (e) {}
     }
 
+    // Modern Mondrian travels with the visitor: while it is active, links to
+    // the bruggen.com sites get ?theme=modern, so they open in the same palette
+    // (they also send ?theme=modern back here). Set at click time because the
+    // theme can change from the nav while the page is open.
+    function carryModernTheme(e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a || document.documentElement.getAttribute('data-theme') !== 'modern') return;
+      try {
+        var u = new URL(a.href);
+        if (/(^|\.)bruggen\.com$/.test(u.hostname)) { u.searchParams.set('theme', 'modern'); a.href = u.href; }
+      } catch (err) {}
+    }
+    document.addEventListener('click', carryModernTheme, true);
+    document.addEventListener('auxclick', carryModernTheme, true);
+
     // Updates the page URL to reflect the active language without a reload.
     // English is the default so it gets no param (cleaner URLs).
     // Called by setLang and all page-specific overrides so every page is shareable.
