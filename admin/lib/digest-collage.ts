@@ -1,12 +1,18 @@
 /**
- * Digest collage image — 1080x1080 scattered "polaroid pile" of 3–5 articles.
+ * Digest collage image — 1080x1080 "colour tiles" grid of 3–5 articles.
  *
- * Each article is rendered as a polaroid: a cream frame with a small rotation
- * and drop shadow, the article's OG image shown *in full* (sized to its own
- * aspect ratio — never cropped to a slice), and the emoji + title in the thick
- * bottom margin. Cards are arranged per count so they only kiss at the corners,
- * keeping every photo essentially fully visible. Amber/gold border and branding
- * badge match the existing single-article Instagram cards.
+ * A bold headline sits above a grid of tiles. Each tile shows the article's
+ * OG image cropped to a uniform frame (so nothing overlaps or gets covered),
+ * above a bright colour band carrying the emoji and the title in large type.
+ * Titles are sized for phone screens: 25–36px on the 1080 canvas, wrapping to
+ * up to 3–4 lines instead of being cut off after a few words.
+ *
+ * Layouts per count (rows of tiles):
+ *   3 → one wide tile on top, two below
+ *   4 → 2 × 2
+ *   5 → two on top, three below
+ *
+ * Preview via /api/post-social-digest?preview=image.
  */
 
 import { createRequire } from "module";
@@ -25,76 +31,76 @@ export const MIN_DIGEST_ARTICLES = 3;
 export const MAX_DIGEST_ARTICLES = 5;
 
 const CANVAS = 1080;
-const BORDER = 8;
-const INNER_BORDER = 2;
-const FRAME_PAD = 16; // cream margin on top + sides of the photo
-const CAPTION_H = 72; // thick polaroid bottom margin for the title
-const DEFAULT_ASPECT = 1.91; // OG landscape, used when dimensions are unknown
+const GAP = 20; // outer padding and space between tiles
+const HEADER_H = 80; // headline row height (below the top padding)
+const HEADLINE = "The good news digest";
 
-// Largest edge (px) we embed a photo at. Polaroids display at most ~490px wide,
-// so this keeps photos crisp at 2x while bounding the base64 each one adds to the
-// satori SVG. Without this cap, full-resolution OG images inflate the SVG past
-// librsvg's ~10MB XML parse limit and sharp fails to rasterize the collage.
-const MAX_PHOTO_EDGE = 900;
+// Background and text colours
+const PAGE_BG = "#FFF8EC";
+const INK = "#1F1300";
 
-interface Placement {
-  cx: number; // center x on the 1080 canvas
-  cy: number; // center y
-  w: number; // polaroid frame width
-  rot: number; // rotation in degrees
+// Band colours, cycled per tile. White text on each of the dark-enough ones
+// has a contrast ratio of at least 3.8:1; the yellow band uses dark ink (10.9:1).
+const PALETTE: { bg: string; fg: string }[] = [
+  { bg: "#FFC83D", fg: "#2B1900" }, // sunshine yellow
+  { bg: "#0E9384", fg: "#FFFFFF" }, // teal
+  { bg: "#E5484D", fg: "#FFFFFF" }, // coral
+  { bg: "#7C5CFF", fg: "#FFFFFF" }, // violet
+  { bg: "#2672E8", fg: "#FFFFFF" }, // blue
+];
+
+// Number of tiles in each row, per article count.
+const ROWS: Record<number, number[]> = {
+  3: [1, 2],
+  4: [2, 2],
+  5: [2, 3],
+};
+
+// Embedded photos are rendered at 1.5x their displayed size: crisp enough
+// for social feeds, while keeping each base64 image small so the satori SVG
+// stays well under librsvg's ~10MB XML parse limit when sharp rasterizes it.
+const PHOTO_SCALE = 1.5;
+
+interface TileSpec {
+  w: number;
+  h: number;
+  photoH: number;
+  fontSize: number;
+  emojiSize: number;
+  maxLines: number;
+  maxChars: number;
 }
 
-/**
- * Per-count scatter arrangements. Centers/rotations are tuned so cards overlap
- * only at the corners; preview via /api/post-social-digest?preview=image.
- */
-const ARRANGEMENTS: Record<number, Placement[]> = {
-  3: [
-    { cx: 300, cy: 410, w: 470, rot: -7 },
-    { cx: 780, cy: 380, w: 470, rot: 6 },
-    { cx: 545, cy: 720, w: 470, rot: -2 },
-  ],
-  4: [
-    { cx: 305, cy: 360, w: 450, rot: -6 },
-    { cx: 775, cy: 335, w: 450, rot: 6 },
-    { cx: 330, cy: 770, w: 450, rot: 5 },
-    { cx: 760, cy: 775, w: 450, rot: -6 },
-  ],
-  5: [
-    { cx: 285, cy: 295, w: 375, rot: -7 },
-    { cx: 795, cy: 280, w: 375, rot: 6 },
-    { cx: 540, cy: 552, w: 338, rot: -1 },
-    { cx: 295, cy: 800, w: 375, rot: 5 },
-    { cx: 800, cy: 805, w: 375, rot: -6 },
-  ],
-};
+/** Typography and proportions per tile width (wide / half / third). */
+function tileSpec(perRow: number, w: number, h: number): TileSpec {
+  if (perRow === 1) {
+    return { w, h, photoH: Math.round(h * 0.6), fontSize: 36, emojiSize: 48, maxLines: 2, maxChars: 90 };
+  }
+  if (perRow === 2) {
+    return { w, h, photoH: Math.round(h * 0.55), fontSize: 29, emojiSize: 40, maxLines: 3, maxChars: 85 };
+  }
+  return { w, h, photoH: Math.round(h * 0.45), fontSize: 25, emojiSize: 34, maxLines: 4, maxChars: 80 };
+}
 
 function truncateTitle(title: string, maxLen: number): string {
   if (title.length <= maxLen) return title;
-  return title.slice(0, maxLen - 1) + "…";
+  return title.slice(0, maxLen - 1).trimEnd() + "…";
 }
 
 /**
- * Normalize a fetched image to a downscaled PNG data URI so satori can always
- * render it. Photos are capped at MAX_PHOTO_EDGE on their longest side: this
- * keeps each embedded base64 image small enough that the final satori SVG stays
- * under librsvg's XML parse limit when sharp rasterizes the collage.
+ * Crop a fetched image to exactly the tile's photo frame and re-encode it as
+ * a JPEG data URI. "attention" positioning keeps the most salient part of the
+ * picture in frame.
  */
-async function normalizeImageToPng(dataUri: string): Promise<{ pngUri: string; width: number; height: number }> {
+async function cropToFrame(dataUri: string, w: number, h: number): Promise<string> {
   const base64 = dataUri.split(",")[1];
   if (!base64) throw new Error("Invalid data URI");
   const buf = Buffer.from(base64, "base64");
-  const pngBuf = await sharp(buf)
-    .resize(MAX_PHOTO_EDGE, MAX_PHOTO_EDGE, { fit: "inside", withoutEnlargement: true })
-    .png({ compressionLevel: 9 })
+  const out = await sharp(buf)
+    .resize(Math.round(w * PHOTO_SCALE), Math.round(h * PHOTO_SCALE), { fit: "cover", position: "attention" })
+    .jpeg({ quality: 82 })
     .toBuffer();
-  // Read dimensions from the resized buffer so the displayed aspect ratio matches
-  // exactly what we embed.
-  const meta = await sharp(pngBuf).metadata();
-  const width = meta.width ?? 800;
-  const height = meta.height ?? 418;
-  const pngUri = `data:image/png;base64,${pngBuf.toString("base64")}`;
-  return { pngUri, width, height };
+  return `data:image/jpeg;base64,${out.toString("base64")}`;
 }
 
 export async function generateDigestCollage(articles: DigestArticle[]): Promise<Buffer> {
@@ -105,125 +111,128 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
   }
 
   const fonts = await getFonts();
-  const placements = ARRANGEMENTS[articles.length];
+  const rows = ROWS[articles.length];
+
+  // Work out each tile's size from the row layout.
+  const gridH = CANVAS - GAP - HEADER_H - GAP - GAP;
+  const rowH = Math.floor((gridH - GAP * (rows.length - 1)) / rows.length);
+  const specs: TileSpec[] = [];
+  for (const perRow of rows) {
+    const w = Math.floor((CANVAS - GAP * 2 - GAP * (perRow - 1)) / perRow);
+    for (let i = 0; i < perRow; i++) specs.push(tileSpec(perRow, w, rowH));
+  }
 
   const rawDataUris = await Promise.all(
     articles.map((a) => (a.imageUrl ? prefetchImageAsDataUri(a.imageUrl) : Promise.resolve(null))),
   );
 
-  // Normalize all images to PNG and extract dimensions in one pass
-  const imageData = await Promise.all(
+  const photos = await Promise.all(
     rawDataUris.map(async (uri, i) => {
-      if (!uri) return { pngUri: null, aspect: DEFAULT_ASPECT };
+      if (!uri) return null;
       try {
-        const { pngUri, width, height } = await normalizeImageToPng(uri);
-        return { pngUri, aspect: width / height };
+        return await cropToFrame(uri, specs[i].w, specs[i].photoH);
       } catch (err) {
-        console.warn(`[digest-collage] Image ${i} normalization failed, using emoji fallback:`, err instanceof Error ? err.message : err);
-        return { pngUri: null, aspect: DEFAULT_ASPECT };
+        console.warn(`[digest-collage] Image ${i} processing failed, using emoji fallback:`, err instanceof Error ? err.message : err);
+        return null;
       }
     }),
   );
 
-  const heroDataUris = imageData.map((d) => d.pngUri);
-  const aspects = imageData.map((d) => d.aspect);
-
   console.log(
-    `[digest-collage] Generating polaroid collage: count=${articles.length}, fonts=${fonts.length}, images=${heroDataUris.filter(Boolean).length}/${articles.length}`,
+    `[digest-collage] Generating colour-tile collage: count=${articles.length}, fonts=${fonts.length}, images=${photos.filter(Boolean).length}/${articles.length}`,
   );
 
-  function polaroid(article: DigestArticle, heroUri: string | null, aspect: number, p: Placement, index: number) {
-    const innerW = p.w - FRAME_PAD * 2;
-    // Display the whole image, bounded so very tall photos don't blow up the pile.
-    const photoMaxH = p.w * 1.05;
-    const dispH = Math.min(innerW / aspect, photoMaxH);
-    const dispW = Math.min(dispH * aspect, innerW);
-    const frameH = FRAME_PAD + dispH + CAPTION_H;
-
-    const left = Math.round(p.cx - p.w / 2);
-    const top = Math.round(p.cy - frameH / 2);
-
+  function tile(article: DigestArticle, photo: string | null, s: TileSpec, index: number) {
+    const colour = PALETTE[index % PALETTE.length];
     return React.createElement(
       "div",
       {
         key: index,
         style: {
-          position: "absolute",
-          left,
-          top,
-          width: p.w,
-          height: frameH,
-          transform: `rotate(${p.rot}deg)`,
-          background: "#fbf7ee",
-          borderRadius: 4,
-          boxShadow: "0 12px 32px rgba(0,0,0,0.5)",
+          width: s.w,
+          height: s.h,
           display: "flex",
           flexDirection: "column" as const,
-          alignItems: "center",
-          paddingTop: FRAME_PAD,
+          borderRadius: 18,
+          overflow: "hidden",
+          background: colour.bg,
         },
       },
-      // Photo — shown in full, centered in the cream frame
+      photo
+        ? React.createElement("img", {
+            src: photo,
+            alt: "",
+            width: s.w,
+            height: s.photoH,
+            style: { width: s.w, height: s.photoH, objectFit: "cover" },
+          })
+        : // No image: a big emoji on a slightly darker shade of the band colour
+          React.createElement(
+            "div",
+            {
+              style: {
+                width: s.w,
+                height: s.photoH,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(0,0,0,0.12)",
+                fontSize: Math.round(s.photoH * 0.45),
+              },
+            },
+            article.emoji,
+          ),
+      // Colour band with emoji + title
       React.createElement(
         "div",
         {
           style: {
-            width: innerW,
-            height: dispH,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-            background: "#2a1505",
-          },
-        },
-        heroUri
-          ? React.createElement("img", {
-              src: heroUri,
-              alt: "",
-              width: Math.round(dispW),
-              height: Math.round(dispH),
-              style: { width: Math.round(dispW), height: Math.round(dispH), objectFit: "contain" },
-            })
-          : React.createElement(
-              "div",
-              { style: { fontSize: 96, lineHeight: 1, opacity: 0.5, display: "flex" } },
-              article.emoji,
-            ),
-      ),
-      // Caption in the thick bottom margin
-      React.createElement(
-        "div",
-        {
-          style: {
-            width: innerW,
-            height: CAPTION_H,
+            flex: 1,
             display: "flex",
             flexDirection: "row" as const,
             alignItems: "center",
-            gap: 8,
-            paddingTop: 6,
+            gap: 14,
+            padding: s.w > 600 ? "0 30px" : "0 20px",
           },
         },
-        React.createElement("div", { style: { fontSize: 26, lineHeight: 1, display: "flex" } }, article.emoji),
+        React.createElement(
+          "div",
+          { style: { fontSize: s.emojiSize, lineHeight: 1, display: "flex", flexShrink: 0 } },
+          article.emoji,
+        ),
         React.createElement(
           "div",
           {
             style: {
-              fontFamily: "Playfair Display",
+              fontFamily: "Inter",
               fontWeight: 700,
-              fontSize: 18,
-              lineHeight: 1.15,
-              color: "#3a1d05",
-              display: "flex",
+              fontSize: s.fontSize,
+              lineHeight: 1.18,
+              color: colour.fg,
+              display: "block",
               flex: 1,
+              lineClamp: s.maxLines,
             },
           },
-          truncateTitle(article.title, 50),
+          truncateTitle(article.title, s.maxChars),
         ),
       ),
     );
   }
+
+  // Group tiles into rows
+  let cursor = 0;
+  const rowElements = rows.map((perRow, r) => {
+    const children = [];
+    for (let i = 0; i < perRow; i++, cursor++) {
+      children.push(tile(articles[cursor], photos[cursor] ?? null, specs[cursor], cursor));
+    }
+    return React.createElement(
+      "div",
+      { key: `row-${r}`, style: { display: "flex", flexDirection: "row" as const, gap: GAP } },
+      ...children,
+    );
+  });
 
   const element = React.createElement(
     "div",
@@ -232,73 +241,62 @@ export async function generateDigestCollage(articles: DigestArticle[]): Promise<
         width: CANVAS,
         height: CANVAS,
         display: "flex",
-        position: "relative",
-        overflow: "hidden",
-        background: "linear-gradient(135deg, #3a1a05 0%, #1a0800 100%)",
+        flexDirection: "column" as const,
+        background: PAGE_BG,
+        padding: GAP,
       },
     },
-    // Amber border
+    // Header: headline + brand badge
     React.createElement(
       "div",
       {
         style: {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          border: `${BORDER}px solid #d97706`,
-          display: "flex",
-        },
-      },
-      React.createElement("div", {
-        style: {
-          position: "absolute",
-          top: 3,
-          left: 3,
-          right: 3,
-          bottom: 3,
-          border: `${INNER_BORDER}px solid #fbbf24`,
-          display: "flex",
-        },
-      }),
-    ),
-    // Polaroid pile
-    ...articles.map((a, i) => polaroid(a, heroDataUris[i] ?? null, aspects[i] ?? DEFAULT_ASPECT, placements[i], i)),
-    // Branding badge (top-center)
-    React.createElement(
-      "div",
-      {
-        style: {
-          position: "absolute",
-          top: 24,
-          left: "50%",
-          transform: "translateX(-50%)",
+          height: HEADER_H,
           display: "flex",
           alignItems: "center",
-          gap: 8,
-          background: "rgba(26,8,0,0.85)",
-          border: "1.5px solid rgba(217,119,6,0.6)",
-          borderRadius: 999,
-          padding: "9px 20px",
-          zIndex: 10,
+          justifyContent: "space-between",
+          padding: "0 8px",
         },
       },
-      React.createElement("span", { style: { fontSize: 18, display: "flex" } }, "⚡"),
       React.createElement(
-        "span",
+        "div",
+        { style: { display: "flex", fontFamily: "Playfair Display", fontWeight: 900, fontSize: 52, color: INK } },
+        HEADLINE,
+      ),
+      React.createElement(
+        "div",
         {
           style: {
-            fontFamily: "Inter",
-            fontWeight: 700,
-            fontSize: 16,
-            color: "#fef9c3",
-            letterSpacing: "0.09em",
             display: "flex",
+            alignItems: "center",
+            gap: 10,
+            background: INK,
+            borderRadius: 999,
+            padding: "10px 24px",
           },
         },
-        "POSITRON TODAY",
+        React.createElement("span", { style: { fontSize: 22, display: "flex" } }, "⚡"),
+        React.createElement(
+          "span",
+          {
+            style: {
+              fontFamily: "Inter",
+              fontWeight: 700,
+              fontSize: 20,
+              color: "#FFE066",
+              letterSpacing: "0.1em",
+              display: "flex",
+            },
+          },
+          "POSITRON TODAY",
+        ),
       ),
+    ),
+    // Tile grid
+    React.createElement(
+      "div",
+      { style: { display: "flex", flexDirection: "column" as const, gap: GAP, marginTop: GAP } },
+      ...rowElements,
     ),
   );
 
