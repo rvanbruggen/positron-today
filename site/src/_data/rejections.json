@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-11-24T23:04:51.595Z",
-  "total_rejected": 220039,
+  "exported_at": "2026-11-24T23:05:26.273Z",
+  "total_rejected": 220040,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3892
+      "count": 3893
     },
     {
       "category": "divisive-racism",
@@ -81,8 +81,8 @@
     },
     {
       "source": "Rzeczpospolita Poland",
-      "negative": 12274,
-      "total": 12499
+      "negative": 12275,
+      "total": 12500
     },
     {
       "source": "Dagens Nyheter",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Rzeczpospolita Poland",
+      "title": "Przed przelewem bank sprawdzi dane odbiorcy",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.rp.pl/banki/art45471161-przed-przelewem-bank-sprawdzi-dane-odbiorcy",
+      "date": "2026-11-25 00:05",
+      "positivity_score": null
+    },
     {
       "source": "Good Good Good",
       "title": "‘BeSeen’ vending machines offer 24/7 help to people experiencing homelessness. They’re staffed by virtual volunteers worldwide",
@@ -9389,15 +9398,6 @@
       "reason": "This is a domestic political news story about party negotiations and government formation.",
       "category": "political-conflict",
       "url": "https://www.dn.se/sverige/cs-aterupptar-forhandlingar-med-m-kd-och-l/",
-      "date": "2026-11-24 06:16",
-      "positivity_score": 3
-    },
-    {
-      "source": "Dagens Nyheter",
-      "title": "Insändare. Noterat av DN:s läsare den 23 november",
-      "reason": "This is a routine reader feedback roundup column about current events and news content.",
-      "category": "soft-news-filler",
-      "url": "https://www.dn.se/insandare/noterat-av-dns-lasare-den-23-november-3/",
       "date": "2026-11-24 06:16",
       "positivity_score": 3
     }
