@@ -1,0 +1,20 @@
+---
+title: "Black mapmakers reclaim history through maps"
+title_nl: "Zwarte kaartenmakers heroveren geschiedenis met kaarten"
+title_fr: "Des cartographes noirs font revivre l’histoire par les cartes"
+date: 2026-11-24T21:35:00
+source_pub_date: 2026-11-24
+fetched_date: 2026-11-24
+source_url: "https://www.goodgoodgood.co/articles/black-artists-mapmaking-cartography"
+source_name: "Good Good Good"
+topic: "Arts"
+tags: ["Arts","Society"]
+emoji: "🗺️"
+summary: "Maps can do far more than show streets: they can reveal whose histories have been erased and help communities tell their own stories. Geography professors Derek Alderman and Joshua Inwood’s Living Black Atlas highlights how Black cartographers have used mapmaking to challenge racism and improve political and material conditions. Projects such as Tonika Lewis Johnson’s Folded Map Project connect Chicago residents on racially divided sides of the city, while the Chicago Black Social Culture Map celebrates the city’s Black cultural legacy. And in Colorado, artist CooXooEii Black layers Indigenous art and poetry onto maps to question racist place names - a vivid reminder that maps can support learning, connection, and healing."
+summary_nl: "Kaarten tonen veel meer dan straten: ze kunnen zichtbaar maken wiens geschiedenis is uitgewist en gemeenschappen helpen hun eigen verhalen te vertellen. Het Living Black Atlas van aardrijkskundedocenten Derek Alderman en Joshua Inwood belicht hoe zwarte kaartenmakers kaarten hebben ingezet om racisme aan te kaarten en politieke en materiële omstandigheden te verbeteren. Projecten zoals Tonika Lewis Johnsons Folded Map Project verbinden inwoners aan weerszijden van raciaal gescheiden Chicago, terwijl de Chicago Black Social Culture Map het zwarte culturele erfgoed van de stad viert. In Colorado combineert kunstenaar CooXooEii Black inheemse kunst en poëzie met kaarten om racistische plaatsnamen ter discussie te stellen - een krachtige herinnering dat kaarten kunnen bijdragen aan leren, verbinding en herstel."
+summary_fr: "Les cartes ne servent pas seulement à trouver son chemin : elles peuvent révéler les histoires effacées et aider les communautés à raconter leur propre histoire. Le Living Black Atlas, créé par les professeurs de géographie Derek Alderman et Joshua Inwood, met en lumière la manière dont les cartographes noirs ont utilisé la cartographie pour combattre le racisme et améliorer les conditions politiques et matérielles. Des projets comme le Folded Map Project de Tonika Lewis Johnson rapprochent des habitants de quartiers séparés par la ségrégation à Chicago, tandis que la Chicago Black Social Culture Map célèbre l’héritage culturel noir de la ville. Au Colorado, l’artiste CooXooEii Black superpose art autochtone et poésie à des cartes pour questionner les noms de lieux racistes - une belle illustration du pouvoir des cartes pour favoriser l’apprentissage, les liens et la guérison."
+image_url: "https://cdn.prod.website-files.com/6ac7f2e22eaacd2873850a17/6b04a8732286e55b7f593806_6b04a8721e5ae8ee5153847d_screenshot-2026-11-23-at-3-38-02-pm-featured.webp"
+layout: post.njk
+---
+
+Maps can do far more than show streets: they can reveal whose histories have been erased and help communities tell their own stories. Geography professors Derek Alderman and Joshua Inwood’s Living Black Atlas highlights how Black cartographers have used mapmaking to challenge racism and improve political and material conditions. Projects such as Tonika Lewis Johnson’s Folded Map Project connect Chicago residents on racially divided sides of the city, while the Chicago Black Social Culture Map celebrates the city’s Black cultural legacy. And in Colorado, artist CooXooEii Black layers Indigenous art and poetry onto maps to question racist place names - a vivid reminder that maps can support learning, connection, and healing.
