@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-11-25T05:16:24.627Z",
-  "total_rejected": 220230,
+  "exported_at": "2026-11-25T06:25:30.756Z",
+  "total_rejected": 220231,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3894
+      "count": 3895
     },
     {
       "category": "divisive-racism",
@@ -136,8 +136,8 @@
     },
     {
       "source": "BBC Top Stories",
-      "negative": 6502,
-      "total": 6664
+      "negative": 6503,
+      "total": 6665
     },
     {
       "source": "La Libre Belgique",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "BBC Top Stories",
+      "title": "Watch: China's Shenzhou-24 carries Pakistan's first astronaut into space",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.bbc.co.uk/news/videos/cmz74l0yzzvyo?at_medium=RSS&at_campaign=rss",
+      "date": "2026-11-25 07:25",
+      "positivity_score": null
+    },
     {
       "source": "RNZ (New Zealand)",
       "title": "Hamilton streets reopen after suspicious item found",
@@ -9391,15 +9400,6 @@
       "url": "https://www.thejournal.ie/burnham-eu-referendum-reaction-7235848-Nov2026/",
       "date": "2026-11-24 10:26",
       "positivity_score": 3
-    },
-    {
-      "source": "The Journal (Ireland)",
-      "title": "The 9 at 9: Tuesday",
-      "reason": "News roundup covering political dismissals and stock market movements.",
-      "category": "soft-news-filler",
-      "url": "https://www.thejournal.ie/morning-rundown-tuesday-november-7235875-Nov2026/",
-      "date": "2026-11-24 10:26",
-      "positivity_score": 2
     }
   ]
 }
