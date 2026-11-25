@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-11-25T09:27:10.230Z",
-  "total_rejected": 220406,
+  "exported_at": "2026-11-25T10:58:57.284Z",
+  "total_rejected": 220407,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3895
+      "count": 3896
     },
     {
       "category": "divisive-racism",
@@ -171,8 +171,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 4098,
-      "total": 4130
+      "negative": 4099,
+      "total": 4131
     },
     {
       "source": "De Standaard Buitenland",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Danskernes formue er vokset",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dr.dk/nyheder/seneste/danskernes-formue-er-vokset",
+      "date": "2026-11-25 11:58",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "Africa: All of Africa Today - November 25, 2026",
@@ -9391,15 +9400,6 @@
       "url": "https://english.elpais.com/spain/2026-11-24/what-do-the-latest-polls-show-ahead-of-spains-general-election.html",
       "date": "2026-11-24 14:26",
       "positivity_score": 3
-    },
-    {
-      "source": "El pais",
-      "title": "Palestinian ambulances become ‘direct targets’ in the West Bank",
-      "reason": "Covers attacks and obstructions against medical workers in a conflict zone.",
-      "category": "war-conflict",
-      "url": "https://english.elpais.com/international/2026-11-24/palestinian-ambulances-become-direct-targets-in-the-west-bank.html",
-      "date": "2026-11-24 14:26",
-      "positivity_score": 1
     }
   ]
 }
