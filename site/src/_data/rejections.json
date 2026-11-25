@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-11-25T10:58:57.284Z",
-  "total_rejected": 220407,
+  "exported_at": "2026-11-25T11:14:31.596Z",
+  "total_rejected": 220408,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3896
+      "count": 3897
     },
     {
       "category": "divisive-racism",
@@ -116,8 +116,8 @@
     },
     {
       "source": "Al Jazeera English",
-      "negative": 7761,
-      "total": 7850
+      "negative": 7762,
+      "total": 7851
     },
     {
       "source": "NRC",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "Al Jazeera English",
+      "title": "Pakistan rejoices as country’s first astronaut enters orbit",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.aljazeera.com/news/2026/11/25/pakistan-rejoices-as-countrys-first-astronaut-enters-orbit?traffic_source=rss",
+      "date": "2026-11-25 12:14",
+      "positivity_score": null
+    },
     {
       "source": "DR (Danish Public broadcaster)",
       "title": "Danskernes formue er vokset",
@@ -9391,15 +9400,6 @@
       "url": "https://pro.rp.pl/magazyn-o-biznesie/art45533331-ebi-rozmawia-o-finansowaniu-portu-polska-i-elektrowni-atomowej",
       "date": "2026-11-24 14:26",
       "positivity_score": 4
-    },
-    {
-      "source": "El pais",
-      "title": "What do the latest polls show ahead of Spain’s general election? ",
-      "reason": "Election polling coverage.",
-      "category": "political-conflict",
-      "url": "https://english.elpais.com/spain/2026-11-24/what-do-the-latest-polls-show-ahead-of-spains-general-election.html",
-      "date": "2026-11-24 14:26",
-      "positivity_score": 3
     }
   ]
 }
