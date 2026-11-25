@@ -11,7 +11,7 @@
  * rejected = negative.
  */
 
-import { commitToGitHub } from "@/lib/publish-core";
+import { commitToGitHub, type StagedFile } from "@/lib/publish-core";
 import db from "@/lib/db";
 
 const GITHUB_REPO = process.env.GITHUB_REPO ?? "";
@@ -137,7 +137,8 @@ function pruneOldEntries(entries: ScoreEntry[]): ScoreEntry[] {
   return entries.filter((e) => e.date >= cutoffStr);
 }
 
-export async function runScoreTracker(): Promise<{
+/** With `opts.stage`, the scores file is staged for a batched commit instead of committed. */
+export async function runScoreTracker(opts: { stage?: StagedFile[] } = {}): Promise<{
   ok: boolean;
   scored: number;
   failed: number;
@@ -199,8 +200,15 @@ export async function runScoreTracker(): Promise<{
   const content = JSON.stringify(data, null, 2);
   console.log(`[score-tracker] Committing ${allEntries.length} entries (${Math.round(content.length / 1024)} KB)…`);
 
+  const message = `Update positivity scores (${now.slice(0, 10)})`;
+  if (opts.stage) {
+    opts.stage.push({ path: DATA_PATH, content, message });
+    console.log(`[score-tracker] Staged ${results.length} new scores for the batched commit`);
+    return { ok: true, scored: results.length, failed: skipped };
+  }
+
   try {
-    await commitToGitHub(DATA_PATH, content, `Update positivity scores (${now.slice(0, 10)})`);
+    await commitToGitHub(DATA_PATH, content, message);
     console.log(`[score-tracker] Committed ${results.length} new scores across ${dates.length} dates`);
   } catch (err) {
     const cause = err instanceof Error && "cause" in err ? ` cause=${(err as { cause?: unknown }).cause}` : "";

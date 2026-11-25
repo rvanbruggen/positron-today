@@ -118,61 +118,163 @@ export interface GitHubFileEntry {
   encoding?: "utf-8" | "base64";
 }
 
+/**
+ * Commit several files in ONE commit via the Git Data API.
+ *
+ * Each separate Contents-API commit triggers its own GitHub Pages build, and
+ * bursts of 3–4 commits seconds apart were cancelling each other's deploys
+ * mid-flight (Nov 2026). Batching keeps one publish cycle = one push.
+ *
+ * Retries the whole sequence from a fresh branch ref, so a concurrent commit
+ * landing between our read and the ref update (non-fast-forward → 422) is
+ * absorbed instead of failing.
+ */
 export async function commitMultipleToGitHub(files: GitHubFileEntry[], message: string) {
+  if (files.length === 0) return;
   const apiBase = `https://api.github.com/repos/${GITHUB_REPO}`;
   const headers: Record<string, string> = {
     Authorization: `Bearer ${GITHUB_TOKEN}`,
     Accept: "application/vnd.github+json",
     "Content-Type": "application/json",
   };
+  const t = (ms: number) => AbortSignal.timeout(ms);
 
-  const refRes = await fetch(`${apiBase}/git/ref/heads/${GITHUB_BRANCH}`, { headers });
-  if (!refRes.ok) throw new Error(`Failed to get branch ref: ${refRes.status}`);
-  const latestSha = (await refRes.json()).object.sha;
-
-  const commitRes = await fetch(`${apiBase}/git/commits/${latestSha}`, { headers });
-  if (!commitRes.ok) throw new Error(`Failed to get commit: ${commitRes.status}`);
-  const baseTreeSha = (await commitRes.json()).tree.sha;
-
-  const treeEntries = [];
+  // Blobs don't depend on the base commit, so create them once.
+  const treeEntries: Array<{ path: string; mode: string; type: string; sha: string }> = [];
   for (const file of files) {
     const blobRes = await fetch(`${apiBase}/git/blobs`, {
       method: "POST",
       headers,
-      body: JSON.stringify({
-        content: file.content,
-        encoding: file.encoding ?? "utf-8",
-      }),
+      body: JSON.stringify({ content: file.content, encoding: file.encoding ?? "utf-8" }),
+      signal: t(60_000),
     });
     if (!blobRes.ok) throw new Error(`Failed to create blob for ${file.path}: ${blobRes.status}`);
     const blobSha = (await blobRes.json()).sha;
     treeEntries.push({ path: file.path, mode: "100644", type: "blob", sha: blobSha });
   }
 
-  const treeRes = await fetch(`${apiBase}/git/trees`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify({ base_tree: baseTreeSha, tree: treeEntries }),
-  });
-  if (!treeRes.ok) throw new Error(`Failed to create tree: ${treeRes.status}`);
-  const newTreeSha = (await treeRes.json()).sha;
+  const MAX_RETRIES = 3;
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    try {
+      const refRes = await fetch(`${apiBase}/git/ref/heads/${GITHUB_BRANCH}`, { headers, signal: t(30_000) });
+      if (!refRes.ok) throw new Error(`Failed to get branch ref: ${refRes.status}`);
+      const latestSha = (await refRes.json()).object.sha;
 
-  const newCommitRes = await fetch(`${apiBase}/git/commits`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify({ message, tree: newTreeSha, parents: [latestSha] }),
-  });
-  if (!newCommitRes.ok) throw new Error(`Failed to create commit: ${newCommitRes.status}`);
-  const newCommitSha = (await newCommitRes.json()).sha;
+      const commitRes = await fetch(`${apiBase}/git/commits/${latestSha}`, { headers, signal: t(30_000) });
+      if (!commitRes.ok) throw new Error(`Failed to get commit: ${commitRes.status}`);
+      const baseTreeSha = (await commitRes.json()).tree.sha;
 
-  const updateRefRes = await fetch(`${apiBase}/git/refs/heads/${GITHUB_BRANCH}`, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify({ sha: newCommitSha }),
-  });
-  if (!updateRefRes.ok) throw new Error(`Failed to update ref: ${updateRefRes.status}`);
+      const treeRes = await fetch(`${apiBase}/git/trees`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ base_tree: baseTreeSha, tree: treeEntries }),
+        signal: t(60_000),
+      });
+      if (!treeRes.ok) throw new Error(`Failed to create tree: ${treeRes.status}`);
+      const newTreeSha = (await treeRes.json()).sha;
 
-  console.log(`[commitMultipleToGitHub] Committed ${files.length} files in ${newCommitSha.slice(0, 8)}`);
+      const newCommitRes = await fetch(`${apiBase}/git/commits`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ message, tree: newTreeSha, parents: [latestSha] }),
+        signal: t(30_000),
+      });
+      if (!newCommitRes.ok) throw new Error(`Failed to create commit: ${newCommitRes.status}`);
+      const newCommitSha = (await newCommitRes.json()).sha;
+
+      const updateRefRes = await fetch(`${apiBase}/git/refs/heads/${GITHUB_BRANCH}`, {
+        method: "PATCH",
+        headers,
+        body: JSON.stringify({ sha: newCommitSha }),
+        signal: t(30_000),
+      });
+      if (!updateRefRes.ok) throw new Error(`Failed to update ref: ${updateRefRes.status}`);
+
+      console.log(`[commitMultipleToGitHub] Committed ${files.length} files in ${newCommitSha.slice(0, 8)}`);
+      return;
+    } catch (err) {
+      if (attempt < MAX_RETRIES - 1) {
+        console.warn(`[commitMultipleToGitHub] attempt ${attempt + 1} failed: ${err instanceof Error ? err.message : err}, retrying…`);
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+        continue;
+      }
+      throw err;
+    }
+  }
+}
+
+/**
+ * A file staged for a batched commit, with the commit-message line that a
+ * standalone commit of it would have used.
+ */
+export interface StagedFile extends GitHubFileEntry {
+  message: string;
+}
+
+/**
+ * Commit staged files together. One file → the usual single-file commit with
+ * its own message. Several → one batched commit; if the batch fails, fall back
+ * to committing each file on its own so nothing is lost.
+ */
+export async function commitStagedFiles(files: StagedFile[], summary: string): Promise<void> {
+  if (files.length === 0) return;
+  if (files.length === 1) {
+    await commitToGitHub(files[0].path, files[0].content, files[0].message);
+    return;
+  }
+  const message = `${summary}\n\n${files.map((f) => `- ${f.message}`).join("\n")}`;
+  try {
+    await commitMultipleToGitHub(files, message);
+  } catch (err) {
+    console.warn(`[commitStagedFiles] batch commit failed (${err instanceof Error ? err.message : err}), committing files one by one`);
+    const errors: string[] = [];
+    for (const f of files) {
+      try {
+        await commitToGitHub(f.path, f.content, f.message);
+      } catch (e) {
+        errors.push(`${f.path}: ${e instanceof Error ? e.message : e}`);
+      }
+    }
+    if (errors.length) throw new Error(`commitStagedFiles: ${errors.join("; ")}`);
+  }
+}
+
+/** Current text of a file on the branch, or null if missing/unreadable. Works for files over 1 MB. */
+export async function fetchGitHubFileText(path: string): Promise<string | null> {
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}?ref=${encodeURIComponent(GITHUB_BRANCH)}`,
+      {
+        headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github.raw+json" },
+        signal: AbortSignal.timeout(30_000),
+      },
+    );
+    if (!res.ok) return null;
+    return await res.text();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * True when `content` (JSON) matches what is already committed at `path`,
+ * ignoring the given top-level timestamp keys. Used to skip commits whose only
+ * change would be `exported_at` — each one costs a full Pages deploy.
+ * Any doubt (fetch error, unparsable JSON) → false, so we commit as before.
+ */
+export async function jsonUnchangedOnGitHub(path: string, content: string, ignoreKeys: string[]): Promise<boolean> {
+  const current = await fetchGitHubFileText(path);
+  if (current == null) return false;
+  try {
+    const strip = (text: string) => {
+      const obj = JSON.parse(text) as Record<string, unknown>;
+      for (const k of ignoreKeys) delete obj[k];
+      return JSON.stringify(obj);
+    };
+    return strip(current) === strip(content);
+  } catch {
+    return false;
+  }
 }
 
 export async function deleteFromGitHub(path: string, message: string) {
@@ -310,6 +412,12 @@ async function publishScheduledArticlesLocked(): Promise<PublishResult> {
 
   const results: Array<{ id: number; title: string; ok: boolean; path?: string; error?: string }> = [];
 
+  // Prepare every due article first, then commit them together: several
+  // posts falling due at once used to become several pushes seconds apart,
+  // each starting (and cancelling) a GitHub Pages deploy.
+  type Prepared = { id: number; title: string; path: string; markdown: string; message: string };
+  const prepared: Prepared[] = [];
+
   for (const article of due) {
     const id = Number(article.id);
     const title = String(article.title_en ?? article.title_nl ?? article.id);
@@ -331,21 +439,49 @@ async function publishScheduledArticlesLocked(): Promise<PublishResult> {
 
       const markdown = generateMarkdown(article as Record<string, unknown>, tagNames);
       const isRepublish = !!article.published_path;
-      await commitToGitHub(
-        path, markdown,
-        isRepublish ? `Update post: ${title}` : `Add post: ${title}`,
-      );
-
-      await db.execute({
-        sql: "UPDATE articles SET status = 'published', published_at = datetime('now'), published_path = ? WHERE id = ?",
-        args: [path, id],
+      prepared.push({
+        id, title, path, markdown,
+        message: isRepublish ? `Update post: ${title}` : `Add post: ${title}`,
       });
-
-      results.push({ id, title, ok: true, path });
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      console.error(`[publish-scheduled] Failed to publish article ${id}:`, message);
+      console.error(`[publish-scheduled] Failed to prepare article ${id}:`, message);
       results.push({ id, title, ok: false, error: message });
+    }
+  }
+
+  const markPublished = async (p: Prepared) => {
+    await db.execute({
+      sql: "UPDATE articles SET status = 'published', published_at = datetime('now'), published_path = ? WHERE id = ?",
+      args: [p.path, p.id],
+    });
+    results.push({ id: p.id, title: p.title, ok: true, path: p.path });
+  };
+
+  let batched = false;
+  if (prepared.length > 1) {
+    try {
+      await commitMultipleToGitHub(
+        prepared.map((p) => ({ path: p.path, content: p.markdown })),
+        `Add ${prepared.length} posts\n\n${prepared.map((p) => `- ${p.message}`).join("\n")}`,
+      );
+      batched = true;
+    } catch (err) {
+      console.warn(
+        `[publish-scheduled] Batch commit of ${prepared.length} posts failed ` +
+        `(${err instanceof Error ? err.message : err}), committing one by one`,
+      );
+    }
+  }
+
+  for (const p of prepared) {
+    try {
+      if (!batched) await commitToGitHub(p.path, p.markdown, p.message);
+      await markPublished(p);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      console.error(`[publish-scheduled] Failed to publish article ${p.id}:`, message);
+      results.push({ id: p.id, title: p.title, ok: false, error: message });
     }
   }
 

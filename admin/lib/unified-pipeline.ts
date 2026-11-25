@@ -21,7 +21,7 @@ import { buildFilterPrompt } from "@/lib/prompts";
 import { CATEGORY_SLUGS } from "@/lib/rejection-categories";
 import { isNativeOutputLanguage } from "@/lib/languages";
 import { runPositronitron } from "@/lib/positronitron-core";
-import { publishScheduledArticles } from "@/lib/publish-core";
+import { publishScheduledArticles, commitStagedFiles, type StagedFile } from "@/lib/publish-core";
 import { postPendingSocial } from "@/lib/social-post-core";
 import RSSParser from "rss-parser";
 import { withRetry } from "@/lib/retry";
@@ -551,11 +551,19 @@ async function runUnifiedPipelineLocked(options?: { isManual?: boolean }): Promi
       }
     }
 
+    // End-of-run data exports: rejection log, source list, positivity scores.
+    //
+    // Each export stages its file instead of committing it, and everything is
+    // committed in ONE push at the end. Three commits seconds apart used to
+    // start three GitHub Pages deploys that cancelled each other mid-flight.
+    // Exports whose only change would be `exported_at` stage nothing.
+    const staged: StagedFile[] = [];
+
     // Export rejection log
     await updateRun(runId, { phase: "export" });
     await appendLog(runId, { type: "exporting" });
     try {
-      const expResult = await exportRejections();
+      const expResult = await exportRejections({ stage: staged });
       await appendLog(runId, { type: "exported", count: expResult?.exported ?? 0 });
     } catch (err) {
       await appendLog(runId, { type: "export_error", message: String(err) });
@@ -568,7 +576,7 @@ async function runUnifiedPipelineLocked(options?: { isManual?: boolean }): Promi
     // permanently out of step with the database, because nothing re-synced it.
     // Re-exporting each run makes the drift self-correcting.
     try {
-      const srcResult = await exportSources();
+      const srcResult = await exportSources({ stage: staged });
       await appendLog(runId, { type: "sources_exported", count: srcResult?.exported ?? 0 });
     } catch (err) {
       await appendLog(runId, { type: "sources_export_error", message: String(err) });
@@ -577,10 +585,17 @@ async function runUnifiedPipelineLocked(options?: { isManual?: boolean }): Promi
     // Update positivity score chart
     try {
       const { runScoreTracker } = await import("@/lib/score-tracker");
-      const scoreResult = await runScoreTracker();
+      const scoreResult = await runScoreTracker({ stage: staged });
       await appendLog(runId, { type: "scores", scored: scoreResult.scored, skipped: scoreResult.failed });
     } catch (err) {
       console.warn("[unified] Score tracker error:", err instanceof Error ? err.message : err);
+    }
+
+    try {
+      await commitStagedFiles(staged, "Update site data");
+      console.log(`[unified] Data export: ${staged.length} file(s) committed`);
+    } catch (err) {
+      await appendLog(runId, { type: "export_error", message: String(err) });
     }
 
     await finishRun(runId, "done");

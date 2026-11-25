@@ -1,36 +1,25 @@
 import db from "./db";
 import { formatRejectionTimestamp } from "./schedule-time";
+// Shared helpers: retries + 409 handling, and the batched-commit staging type.
+import { commitToGitHub, jsonUnchangedOnGitHub, type StagedFile } from "./publish-core";
 
 const GITHUB_TOKEN  = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO   = process.env.GITHUB_REPO!;
-const GITHUB_BRANCH = process.env.GITHUB_BRANCH ?? "main";
 
-async function commitToGitHub(path: string, content: string, message: string) {
-  const encoded = Buffer.from(content).toString("base64");
-  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+const REJECTIONS_PATH = "site/src/_data/rejections.json";
 
-  let sha: string | undefined;
-  const existing = await fetch(url, {
-    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" },
-  });
-  if (existing.ok) sha = (await existing.json()).sha;
-
-  const body: Record<string, unknown> = { message, content: encoded, branch: GITHUB_BRANCH };
-  if (sha) body.sha = sha;
-
-  const res = await fetch(url, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
-}
-
-export async function exportRejections(): Promise<{ exported: number }> {
+/**
+ * Export the rejection log to the public site.
+ *
+ * - Skips the commit when nothing but `exported_at` would change: the log is
+ *   exported several times per pipeline run, and each no-op commit used to
+ *   cost a full GitHub Pages deploy.
+ * - With `opts.stage`, the file is pushed onto that list instead of being
+ *   committed, so the caller can commit several exports in one push.
+ */
+export async function exportRejections(
+  opts: { stage?: StagedFile[] } = {},
+): Promise<{ exported: number; unchanged?: boolean }> {
   if (!GITHUB_TOKEN || !GITHUB_REPO) {
     throw new Error("GITHUB_TOKEN and GITHUB_REPO must be set");
   }
@@ -108,11 +97,16 @@ export async function exportRejections(): Promise<{ exported: number }> {
     })),
   };
 
-  await commitToGitHub(
-    "site/src/_data/rejections.json",
-    JSON.stringify(payload, null, 2),
-    `Update rejection log (${payload.articles.length} articles)`
-  );
+  const content = JSON.stringify(payload, null, 2);
+  const message = `Update rejection log (${payload.articles.length} articles)`;
+
+  if (await jsonUnchangedOnGitHub(REJECTIONS_PATH, content, ["exported_at"])) {
+    console.log("[export-rejections] Unchanged apart from exported_at — skipping commit");
+    return { exported: payload.articles.length, unchanged: true };
+  }
+
+  if (opts.stage) opts.stage.push({ path: REJECTIONS_PATH, content, message });
+  else await commitToGitHub(REJECTIONS_PATH, content, message);
 
   return { exported: payload.articles.length };
 }

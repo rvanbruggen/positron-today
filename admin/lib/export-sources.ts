@@ -3,7 +3,7 @@ import db from "./db";
 // 409 SHA conflict that happens when another export commits between the read
 // and the write. A single unretried failure here used to lose the update
 // permanently, because nothing re-syncs sources.json on a schedule.
-import { commitToGitHub } from "./publish-core";
+import { commitToGitHub, jsonUnchangedOnGitHub, type StagedFile } from "./publish-core";
 
 const GITHUB_TOKEN  = process.env.GITHUB_TOKEN!;
 const GITHUB_REPO   = process.env.GITHUB_REPO!;
@@ -33,7 +33,15 @@ function normaliseSourceUrl(raw: string): string {
   return `https://${trimmed}`;
 }
 
-export async function exportSources(): Promise<{ exported: number }> {
+const SOURCES_PATH = "site/src/_data/sources.json";
+
+/**
+ * Export the active source list. Skips timestamp-only commits; with
+ * `opts.stage` the file is staged for the caller's batched commit instead.
+ */
+export async function exportSources(
+  opts: { stage?: StagedFile[] } = {},
+): Promise<{ exported: number; unchanged?: boolean }> {
   if (!GITHUB_TOKEN || !GITHUB_REPO) {
     throw new Error("GITHUB_TOKEN and GITHUB_REPO must be set");
   }
@@ -80,11 +88,16 @@ export async function exportSources(): Promise<{ exported: number }> {
     by_language: byLanguage,
   };
 
-  await commitToGitHub(
-    "site/src/_data/sources.json",
-    JSON.stringify(payload, null, 2),
-    `Update sources list (${rows.length} active sources)`
-  );
+  const content = JSON.stringify(payload, null, 2);
+  const message = `Update sources list (${rows.length} active sources)`;
+
+  if (await jsonUnchangedOnGitHub(SOURCES_PATH, content, ["exported_at"])) {
+    console.log("[export-sources] Unchanged apart from exported_at — skipping commit");
+    return { exported: rows.length, unchanged: true };
+  }
+
+  if (opts.stage) opts.stage.push({ path: SOURCES_PATH, content, message });
+  else await commitToGitHub(SOURCES_PATH, content, message);
 
   return { exported: rows.length };
 }

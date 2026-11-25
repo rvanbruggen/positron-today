@@ -1,38 +1,53 @@
 name: Deploy public site to GitHub Pages
 
+# Two jobs with two different concurrency rules (Nov 2026):
+#
+# - build: cancellable. The admin often pushes several commits within
+#   seconds; a newer push cancels the older build, and a short debounce at
+#   the start lets a burst settle so it ends in ONE build.
+# - deploy: never cancelled once running. Cancelling deploy-pages mid-flight
+#   leaves a Pages deployment half-alive on GitHub's side, and the next deploy
+#   then fails with "Deployment failed, try again later". With
+#   cancel-in-progress: false, at most one newer deploy waits behind the
+#   running one (GitHub drops older *pending* runs, which is harmless).
+#
+# History: April 2026 queued everything (cancel: false, one group) — deploys
+# then stacked up behind a stuck one. July 2026 cancelled everything
+# (cancel: true) — which caused the ghost deployments above. Splitting the
+# groups gets cancellable builds without killing deploys.
+#
+# Retries happen inside the deploy job. The old retry-on-failure job
+# dispatched a new run in the same concurrency group, which cancelled the run
+# that started it — so failures showed up as "cancelled" and stayed hidden.
+
 on:
   push:
     branches: [main]
     paths:
       - "site/**"
   workflow_dispatch:
-    inputs:
-      retry_attempt:
-        description: "Retry attempt number (auto-set by retry job)"
-        default: "0"
 
 permissions:
   contents: read
   pages: write
   id-token: write
-  actions: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages-build
+      cancel-in-progress: true
     steps:
+      - name: Debounce bursts of commits
+        if: github.event_name == 'push'
+        run: sleep 30
+
       - uses: actions/checkout@v6
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: site/package-lock.json
 
@@ -50,29 +65,39 @@ jobs:
         with:
           path: site/_site
 
-      - uses: actions/deploy-pages@v5
-        id: deployment
-
-      # Social posting is no longer triggered from here. The admin server's
-      # built-in publish timer (admin/lib/publish-timer.ts) publishes each
-      # scheduled article and calls postPendingSocial() itself — polling for
-      # Pages liveness before posting. The old /api/post-pending-social route
-      # was removed in v2.35.0, so this workflow no longer pings the admin.
-
-  retry-on-failure:
-    needs: build-and-deploy
-    if: failure() && (github.event.inputs.retry_attempt || '0') < '2'
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy1.outputs.page_url || steps.deploy2.outputs.page_url || steps.deploy3.outputs.page_url }}
     steps:
-      - name: Wait 60s before retry
+      - uses: actions/deploy-pages@v5
+        id: deploy1
+        continue-on-error: true
+
+      - name: Wait before retry 1
+        if: steps.deploy1.outcome == 'failure'
         run: sleep 60
 
-      - name: Re-trigger deploy
-        run: |
-          ATTEMPT=$(( ${{ github.event.inputs.retry_attempt || 0 }} + 1 ))
-          echo "Retry attempt $ATTEMPT of 2"
-          gh workflow run deploy-site.yml \
-            --repo "${{ github.repository }}" \
-            -f retry_attempt="$ATTEMPT"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/deploy-pages@v5
+        id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        continue-on-error: true
+
+      - name: Wait before retry 2
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        run: sleep 120
+
+      - uses: actions/deploy-pages@v5
+        id: deploy3
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+
+      # Social posting is not triggered from here. The admin server's
+      # built-in publish timer (admin/lib/publish-timer.ts) publishes each
+      # scheduled article and calls postPendingSocial() itself, polling for
+      # Pages liveness before posting.
