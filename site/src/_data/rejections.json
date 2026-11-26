@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-11-26T09:26:34.578Z",
-  "total_rejected": 221506,
+  "exported_at": "2026-11-26T10:00:27.516Z",
+  "total_rejected": 221507,
   "sources_count": 66,
   "category_breakdown": [
     {
@@ -57,7 +57,7 @@
     },
     {
       "category": "human-discarded",
-      "count": 3916
+      "count": 3917
     },
     {
       "category": "divisive-racism",
@@ -171,8 +171,8 @@
     },
     {
       "source": "DR (Danish Public broadcaster)",
-      "negative": 4123,
-      "total": 4156
+      "negative": 4124,
+      "total": 4157
     },
     {
       "source": "The Verge",
@@ -401,6 +401,15 @@
     }
   ],
   "articles": [
+    {
+      "source": "DR (Danish Public broadcaster)",
+      "title": "Flere ikke-vestlige indvandrere er i beskæftigelse",
+      "reason": "Discarded on human review",
+      "category": "human-discarded",
+      "url": "https://www.dr.dk/nyheder/seneste/flere-ikke-vestlige-indvandrere-er-i-beskaeftigelse",
+      "date": "2026-11-26 11:00",
+      "positivity_score": null
+    },
     {
       "source": "AllAfrica",
       "title": "South Africa: Ramaphosa Wins in Court, but the Phala Phala Saga Is By No Means Over",
@@ -9391,15 +9400,6 @@
       "url": "https://www.nature.com/articles/d41586-026-03835-0",
       "date": "2026-11-25 14:26",
       "positivity_score": 4
-    },
-    {
-      "source": "Science.org news",
-      "title": "Europe looks beyond its giant telescope to its next big bet",
-      "reason": "Corporate/institutional planning and bidding news for a future telescope project, failing Gate 1.",
-      "category": "soft-news-filler",
-      "url": "https://www.science.org/content/article/europe-looks-beyond-its-giant-telescope-its-next-big-bet",
-      "date": "2026-11-25 14:26",
-      "positivity_score": 3
     }
   ]
 }
