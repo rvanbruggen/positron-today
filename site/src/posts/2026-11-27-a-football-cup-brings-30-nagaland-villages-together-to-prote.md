@@ -1,0 +1,20 @@
+---
+title: "A football cup brings 30 Nagaland villages together to protect pangolins"
+title_nl: "Een voetbaltoernooi verenigt 30 dorpen in Nagaland om schubdieren te beschermen"
+title_fr: "Un tournoi de football réunit 30 villages du Nagaland pour protéger les pangolins"
+date: 2026-11-27T13:07:00
+source_pub_date: 2026-11-27
+fetched_date: 2026-11-27
+source_url: "https://thebetterindia.com/wildlife/india-community-led-wildlife-conservation-pangolin-whale-shark-rescue-12845533"
+source_name: "The Better India"
+topic: "Animals"
+tags: ["Animals","Environment","Sports"]
+emoji: "🐾"
+summary: "In October 2026, eight village football clubs came together for the Pangolin Cup in Nagaland, drawing at least 10,000 players and spectators. Between matches, people learned why Chinese pangolins are endangered and how they help keep forest ecosystems healthy. The Pochury Hoho then banned pangolin hunting across 30 villages, with a fine of 50,000 rupees for anyone who hunts or trades the animal. Just weeks later, resident Ngoushutho Ngouri alerted forest officials to a pangolin near Meluri, and they safely returned it to the forest. And here's the thing: community-led bans now cover more than 300 villages in Nagaland and Manipur, while fishers in Gujarat have helped release over 1,000 whale sharks."
+summary_nl: "In oktober 2026 kwamen acht voetbalclubs uit dorpen in Nagaland samen voor de Pangolin Cup, die minstens 10.000 spelers en toeschouwers trok. Tussen de wedstrijden leerden mensen waarom Chinese schubdieren bedreigd zijn en hoe ze bijdragen aan gezonde bosecosystemen. Daarna verbood de Pochury Hoho de jacht op schubdieren in 30 dorpen, met een boete van 50.000 roepies voor wie het dier bejaagt of verhandelt. Enkele weken later waarschuwde inwoner Ngoushutho Ngouri boswachters voor een schubdier bij Meluri, waarna zij het veilig terugbrachten naar het bos. En dat is nog niet alles: gemeenschapsverboden gelden inmiddels in meer dan 300 dorpen in Nagaland en Manipur, terwijl vissers in Gujarat hielpen meer dan 1.000 walvishaaien vrij te laten."
+summary_fr: "En octobre 2026, huit clubs de football de villages se sont retrouvés au Nagaland pour la Pangolin Cup, qui a attiré au moins 10 000 joueurs et spectateurs. Entre les matchs, les participants ont découvert pourquoi le pangolin de Chine est menacé et comment il contribue à l’équilibre des écosystèmes forestiers. La Pochury Hoho a ensuite interdit la chasse aux pangolins dans 30 villages, avec une amende de 50 000 roupies pour toute personne qui en chasse ou en commerce. Quelques semaines plus tard, Ngoushutho Ngouri a prévenu les agents forestiers de la présence d’un pangolin près de Meluri, et l’animal a été relâché sans danger dans la forêt. Et ce n’est pas tout : des interdictions communautaires couvrent désormais plus de 300 villages au Nagaland et au Manipur, tandis que des pêcheurs du Gujarat ont contribué à libérer plus de 1 000 requins-baleines."
+image_url: "https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/2026/11/27/community-led-wildlife-conservation-in-india-2026-11-27-13-55-58.png"
+layout: post.njk
+---
+
+In October 2026, eight village football clubs came together for the Pangolin Cup in Nagaland, drawing at least 10,000 players and spectators. Between matches, people learned why Chinese pangolins are endangered and how they help keep forest ecosystems healthy. The Pochury Hoho then banned pangolin hunting across 30 villages, with a fine of 50,000 rupees for anyone who hunts or trades the animal. Just weeks later, resident Ngoushutho Ngouri alerted forest officials to a pangolin near Meluri, and they safely returned it to the forest. And here's the thing: community-led bans now cover more than 300 villages in Nagaland and Manipur, while fishers in Gujarat have helped release over 1,000 whale sharks.
