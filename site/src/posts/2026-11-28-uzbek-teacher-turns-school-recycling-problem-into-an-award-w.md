@@ -1,0 +1,20 @@
+---
+title: "Uzbek teacher turns school recycling problem into an award-winning green education project"
+title_nl: "Oezbeekse docent maakt van afvalprobleem op school een bekroond duurzaam onderwijsproject"
+title_fr: "Un enseignant ouzbek transforme un problème de tri à l’école en projet éducatif primé"
+date: 2026-11-28T00:08:00
+source_pub_date: 2026-11-27
+fetched_date: 2026-11-27
+source_url: "https://www.euronews.com/2026/11/27/uzbek-teacher-turns-school-recycling-problem-into-an-award-winning-green-education-project"
+source_name: "Euronews"
+topic: "Environment"
+tags: ["Environment","Society"]
+emoji: "♻️"
+summary: "When history teacher Abrorjon Sadriddinov noticed students putting food scraps in recycling bins, he teamed up with them to rethink environmental education at their school in Namangan. Their Sustainable Future Society programme has reached 25,000 people across 25 schools and inspired 128 student-led projects, including recycling systems and energy-saving measures. The school earned an internationally recognised Green Flag, and the initiative won first prize at the European Training Foundation’s 2026 Green Skills Award, selected from 369 applications from 94 countries. And here's the thing: the model can be adopted by other schools without major investment, showing how practical learning can help communities build a greener future."
+summary_nl: "Toen geschiedenisleraar Abrorjon Sadriddinov zag dat leerlingen etensresten in de recyclingbakken gooiden, bedacht hij samen met hen een nieuwe aanpak voor milieueducatie op hun school in Namangan. Hun programma Sustainable Future Society bereikte 25.000 mensen op 25 scholen en bracht 128 projecten voort die door leerlingen werden geleid, waaronder recyclingsystemen en energiebesparende maatregelen. De school kreeg het internationaal erkende Green Flag-certificaat en het initiatief won de eerste prijs bij de Green Skills Award 2026 van de European Training Foundation, uit 369 inzendingen uit 94 landen. En hier zit de kracht: andere scholen kunnen het model zonder grote investeringen overnemen, waardoor praktisch leren gemeenschappen helpt aan een groenere toekomst."
+summary_fr: "Lorsque l’enseignant d’histoire Abrorjon Sadriddinov a remarqué que ses élèves jetaient des déchets alimentaires dans les bacs de recyclage, il a repensé avec eux l’éducation à l’environnement dans leur école de Namangan. Leur programme Sustainable Future Society a touché 25 000 personnes dans 25 écoles et donné naissance à 128 projets menés par des élèves, notamment des systèmes de recyclage et des mesures d’économie d’énergie. L’école a obtenu le label international Green Flag et le projet a remporté le premier prix des Green Skills Awards 2026 de la Fondation européenne pour la formation, parmi 369 candidatures de 94 pays. Et voici ce qui est formidable : d’autres écoles peuvent adopter ce modèle sans investissement important, faisant de l’apprentissage pratique un moteur pour bâtir un avenir plus vert."
+image_url: "https://images.euronews.com/articles/stories/10/01/10/52/1200x675_cmsv2_a646628f-a291-591c-b1cf-f057bac3f5cb-10011052.jpg"
+layout: post.njk
+---
+
+When history teacher Abrorjon Sadriddinov noticed students putting food scraps in recycling bins, he teamed up with them to rethink environmental education at their school in Namangan. Their Sustainable Future Society programme has reached 25,000 people across 25 schools and inspired 128 student-led projects, including recycling systems and energy-saving measures. The school earned an internationally recognised Green Flag, and the initiative won first prize at the European Training Foundation’s 2026 Green Skills Award, selected from 369 applications from 94 countries. And here's the thing: the model can be adopted by other schools without major investment, showing how practical learning can help communities build a greener future.
